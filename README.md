@@ -255,10 +255,10 @@ The application Javascript and CSS are minified into four files:
 
 | File			        |										                                        |
 | --------------------- | ----------------------------------------------------------------------------- |
-| app/viewer-min.css	| Compressed CSS loaded when accessing the Map Series as a viewer		        |
-| app/viewer-min.js	    | Compressed Javascript loaded when accessing the Map Series as a viewer	    |
-| app/builder-min.css	| Compressed CSS loaded when accessing the Map Series as an author		        |
-| app/builder-min.js	| Compressed Javascript loaded when accessing the Map Series as an author	    |
+| app/viewer-min.css	| Compressed CSS loaded when accessing the story as a viewer		        |
+| app/viewer-min.js	    | Compressed Javascript loaded when accessing the story as a viewer	    |
+| app/builder-min.css	| Compressed CSS loaded when accessing the story as an author		        |
+| app/builder-min.js	| Compressed Javascript loaded when accessing the story as an author	    |
 
 Depending on the URL parameters, index.html will load the corresponding files.
 
@@ -269,7 +269,7 @@ Find a bug or want to request a new feature?  Please let us know by submitting a
 Esri welcomes contributions from anyone and everyone. Please see our [guidelines for contributing](https://github.com/esri/contributing).
 
 ## Licensing
-Copyright 2013 Esri
+Copyright 2016 Esri
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -285,12 +285,29 @@ limitations under the License.
 
 A copy of the license is available in the repository's [LICENSE.txt](LICENSE.txt) file.
 
-Some open-source components of this project are licensed under other License terms, see `src/lib-app/` folder for respective licence files.
+Some open-source components of this project are licensed under other License terms, see `src/lib/` folder for respective licence files.
 
 | Library               | License   |
 | --------------------- | --------- |
 | Bootstrap 			      | MIT 		  |
 | jQuery 				        | MIT 		  |
+| MediumEditor          | MIT       |
+| React                 | BSD       |
+| React-redux           | MIT       |
+| Redux                 | MIT       |
+| Fluidbox              | MIT       |
+| Froogaloop            | N/A       |
+| youtube-api           | N/A       |
+| ZeroClipboard         | MIT       |
+| ProgressJS            | MIT       |
+| FastClick             | MIT       |
+| Font Awesome          | SIL/MIT   |
+| Sortable              | MIT       |
+| React-Bootstrap       | MIT       |
+| Loader                | MIT       |
+| Hermite-resize        | MIT       |
+| Babel Polyfill        | MIT       |
+| jquery-mousewheel     | MIT       |
 
 
 [](Esri Tags: Storytelling Cascade ArcGIS-Online Template)
