@@ -44,7 +44,7 @@ Enjoy!
 You can continue to use the builder in ArcGIS Online to modify your story.
 See [customize the look and feel section](#customize-the-look-and-feel) or [developer guide](#developer-guide) if you want to modify the app.
 
-*If you are using Portal for ArcGIS, please follow the instructions at the end of `app/config.js` to configure the application. Optionally you can also [configure the application](#can-the-template-be-used-offline) to use the ArcGIS API for JavaScript included on your Portal.*
+*If you are using Portal for ArcGIS, please follow the instructions at the end of `app/config.js` to configure the application.*
 
 ## Feedback / support
 We would love to hear from you!
@@ -59,7 +59,7 @@ When you contact us, don't hesitate to include a link to your application to mak
 
 ## FAQ
 
-For more answers, please see the [Story Map website FAQ page](https://storymaps.arcgis.com/en/faq/) it includes a section about [Cascade](https://storymapsstg.arcgis.com/en/faq/#category10).
+For more answers, please see the [Story Map website FAQ page](https://storymaps.arcgis.com/en/faq/) it includes a section about [Cascade](https://storymaps.arcgis.com/en/faq/#category10).
 
 ### What are the supported browsers?
 Cascade stories are supported on Internet Explorer 11 and above, Chrome, Firefox, Safari and the most recent tablet and smartphone devices.
@@ -131,7 +131,7 @@ In addition to the configuration offered by the builder, the file `app/config.js
 
 ## Customize the look and feel
 
-Cascade doesn't yet offer a configuration experience to customize the application colors. Most of the look and feel customization can be done using the [regular Application Download](http://links.esri.com/storymaps/cascade_template_zip) and including the css/html overrides directly into `index.html`. A `style` tag is already present for you in `index.html` (search for `/* CUSTOM CSS RULES */`).
+Cascade doesn't yet offer a configuration experience to customize the application colors. Most of the look and feel customization can be done using the [regular application download](http://links.esri.com/storymaps/cascade_template_zip) and including the css/html overrides directly into `index.html`. A `style` tag is already present for you in `index.html` (search for `/* CUSTOM CSS RULES */`).
 
 As the application Javascript and CSS are minified, **we don't recommend that you directely edit those files** (e.g. `viewer-min.css`, `viewer-min.js`, ...). In addition to being hard to edit, this will make application update complex for you.
 
@@ -220,7 +220,7 @@ The deploy folder now contains the built application that you can deploy to your
 The build script perform code validation through [ESLint](http://eslint.org/), you can disable those validations by editing Gruntfile.js and look for the following comments `/* Comment out to disable code linting */`.
 
 ### Design
-Cascade relies on AMD and Dojo loader [AMD](http://help.arcgis.com/en/webapi/javascript/arcgis/jshelp/#inside_dojo_amd) for application structure. Some components in builder use [React](https://facebook.github.io/react/).
+Cascade relies on AMD and Dojo loader [AMD](https://developers.arcgis.com/javascript/3/jshelp/inside_dojo_amd.html) for application structure. Some components in builder use [React](https://facebook.github.io/react/).
 
 The application is structured as this:
 
@@ -285,7 +285,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 
-A copy of the license is available in the repository's [LICENSE.txt](LICENSE.txt) file.
+A copy of the license is available in the repository's [LICENSE](LICENSE) file.
 
 Some open-source components of this project are licensed under other License terms, see `src/lib/` folder for respective licence files.
 
