@@ -5,12 +5,10 @@ The Story Map Cascade℠ app lets you combine narrative text with maps, images, 
 ![App ID](todo.png)
 
 [View it live](http://links.esri.com/storymaps/story_map_cascade_overview_1) | 
-[Map Journal page on Esri Story Maps website](https://storymaps.arcgis.com/en/app-list/cascade/) |
+[Cascade presentation on Esri Story Maps website](https://storymaps.arcgis.com/en/app-list/cascade/) |
 [Download](http://links.esri.com/storymaps/cascade_template_zip)
 
 **Latest release is version 1.0.0**, if you want to be informed of new releases, we recommend you to watch this repository ([see GitHub help](https://help.github.com/articles/watching-repositories)). See the [release page](https://github.com/Esri/story-map-cascade/releases) for release notes.
-
-For more infomation about using and customizing Esri's Storytelling Apps follow the [Story Maps Developers' Corner](https://developerscorner.storymaps.arcgis.com).
 
 ## Help content
 
@@ -26,7 +24,7 @@ For more infomation about using and customizing Esri's Storytelling Apps follow 
  * [Licensing](#licensing)
 
 ## Introduction
-A Cascade story can be created from [ArcGIS Online](http://arcgis.com), from the [Esri Story Maps website](https://storymaps.arcgis.com/) or from a [Portal for ArcGIS](http://www.esri.com/software/arcgis/arcgisserver/extensions/portal-for-arcgis) deployment. The Cascade's data are stored in a Web Application Item (this includes the narrative content, reference to the webmap(s), webscene(s) pictures, videos and the settings).
+A Cascade story can be created from [ArcGIS Online](http://arcgis.com), from the [Esri Story Maps website](https://storymaps.arcgis.com/) or from a [Portal for ArcGIS](http://www.esri.com/software/arcgis/arcgisserver/extensions/portal-for-arcgis) deployment. The Cascade's data are stored in a Web Application Item.
 This repository provides the application source code for developers that want to customize the application.
 
 For more information about the application, including a gallery of examples and a step-by-step tutorial, please see the [Cascade page](https://storymaps.arcgis.com/en/app-list/cascade/) on the [Esri Story Maps website](https://storymaps.arcgis.com/).
@@ -51,8 +49,9 @@ See [customize the look and feel section](#customize-the-look-and-feel) or [deve
 ## Feedback / support
 We would love to hear from you!
 * [StoryMaps Website](https://storymaps.arcgis.com/)
-* [Let us know about your application](https://storymaps.arcgis.com/en/gallery/submission-form/)
-* [Story Maps forum on GeoNet](http://links.esri.com/storymaps/story_maps_geonet)
+* [Story Maps community forum](http://links.esri.com/storymaps/story_maps_geonet)
+* [Let us know about your story](https://storymaps.arcgis.com/en/gallery/submission-form/)
+* [Story Maps Developers' Corner](https://developerscorner.storymaps.arcgis.com)
 * [@EsriStoryMaps](https://twitter.com/EsriStoryMaps)
 * [ArcGIS Blog](https://blogs.esri.com/esri/arcgis/)
 
@@ -60,7 +59,7 @@ When you contact us, don't hesitate to include a link to your application to mak
 
 ## FAQ
 
-Please see the [Story Map website FAQ page](https://storymaps.arcgis.com/en/faq/) it includes a section about [Cascade](https://storymapsstg.arcgis.com/en/faq/#category10).
+For more answers, please see the [Story Map website FAQ page](https://storymaps.arcgis.com/en/faq/) it includes a section about [Cascade](https://storymapsstg.arcgis.com/en/faq/#category10).
 
 ### What are the supported browsers?
 Cascade stories are supported on Internet Explorer 11 and above, Chrome, Firefox, Safari and the most recent tablet and smartphone devices.
@@ -132,7 +131,7 @@ In addition to the configuration offered by the builder, the file `app/config.js
 
 ## Customize the look and feel
 
-Cascade doesn't yet offer a configuration experience to customize the application colors. Most of the look and feel customization can be done using the [regular Application Download](http://links.esri.com/storymaps/cascade_template_zip) and including the css/html overrides directly into `index.html`. 
+Cascade doesn't yet offer a configuration experience to customize the application colors. Most of the look and feel customization can be done using the [regular Application Download](http://links.esri.com/storymaps/cascade_template_zip) and including the css/html overrides directly into `index.html`. A `style` tag is already present for you in `index.html` (search for `/* CUSTOM CSS RULES */`).
 
 As the application Javascript and CSS are minified, **we don't recommend that you directely edit those files** (e.g. `viewer-min.css`, `viewer-min.js`, ...). In addition to being hard to edit, this will make application update complex for you.
 
@@ -140,11 +139,11 @@ If you want to change the behavior of one functionality or want to add new one, 
 
 The easiest way to find the id or path of a DOM element that you want to customize is to use your browser developer tool, read documentation for [Chrome](https://developers.google.com/chrome-developer-tools/), [Safari](https://developer.apple.com/library/safari/documentation/AppleApplications/Conceptual/Safari_Developer_Guide/Introduction/Introduction.html), [Firefox](https://getfirebug.com/).
 
-Customization can achieved through the `style` tag already present for you in `index.html` (search for `/* CUSTOM CSS RULES */`).
-
 ## Developer guide
 This developer guide is intended for developers that wants to modify the behavior or add new functionalities to the Cascade application. 
 It requires knowledge of HTML, Javascript and CSS languages.
+
+For more infomation about using and customizing Esri's Storytelling Apps follow the [Story Maps Developers' Corner](https://developerscorner.storymaps.arcgis.com).
 
 ### Application life cycle
 Cascade fires events that allow customization with lose integration. This mean that you don't need to understand the application internals to implement simple extension.
@@ -163,7 +162,6 @@ require(["dojo/topic"], function(topic) {
     /*
      * Custom Javascript to be executed when the application is ready goes here
      */
-
     console.log('Cascade is ready');
   });
 
@@ -171,7 +169,7 @@ require(["dojo/topic"], function(topic) {
    * Custom Javascript to be executed when a section becomes active
    */
   topic.subscribe("story-scroll-section", function(cfg){
-    //console.log("The section", cfg.index, "is now active");
+    console.log("The section", cfg.index, "is now active");
   });
 });
 ...
@@ -206,10 +204,12 @@ This will create a new `node-modules` folder in your project root with all the t
  * Make accessible the Cascade folder on a web server. Use your favorite server or run one with `grunt server`, this will start a server on port `8080`
  * If using a Portal for ArcGIS instance configure the sharing url `app/config.js` (last property)
  * Use the URL parameter `appid` to specify the web item to be loaded, e.g.: http://localhost:8080/index.html?appid=ABCD (configuring index.html > configOptions.appid is not supported in development mode)
+ * Run the following command to install dependencies: `bower install`
  * Run the following command: `grunt dev`
 
 ### How to build application from the source code
   * Open a terminal and navigate to the Cascade folder 
+  * If not already done, run the following command to install dependencies: `bower install`
   * Run the following command: `grunt`
 
 The deploy folder now contains the built application that you can deploy to your web server.
@@ -226,7 +226,7 @@ The application is structured as this:
 | Path          			                  	| Contains																						|
 | ---------------------------------------------	|  -------------------------------------------------------------------------------------------- |
 | Gruntfile.js									| Build configuration																			|
-| src/											| Main source code folder with index.html and the Eclipse project configuration					|
+| src/											| Main source code folder with index.html					|
 | src/app/										| Javascript and CSS source code 																|
 | src/app/config.js			            		| App configuration file (loaded at execution time) 											|
 | src/app/storymaps/common/				| Modules common across storymaps templates (main module is Core.js)							|
