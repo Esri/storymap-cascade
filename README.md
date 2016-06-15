@@ -140,6 +140,7 @@ If you want to change the behavior of one functionality or want to add new one, 
 The easiest way to find the id or path of a DOM element that you want to customize is to use your browser developer tool, read documentation for [Chrome](https://developers.google.com/chrome-developer-tools/), [Safari](https://developer.apple.com/library/safari/documentation/AppleApplications/Conceptual/Safari_Developer_Guide/Introduction/Introduction.html), [Firefox](https://getfirebug.com/).
 
 ## Developer guide
+
 This developer guide is intended for developers that wants to modify the behavior or add new functionalities to the Cascade application. 
 It requires knowledge of HTML, Javascript and CSS languages.
 
