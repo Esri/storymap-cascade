@@ -2,7 +2,7 @@
 
 The Story Map Cascade℠ app lets you combine narrative text with maps, images, and multimedia content in an engaging, full-screen scrolling experience. In a Cascade story, sections containing text and in-line media can be interspersed with "immersive" sections that fill the screen with your maps, 3D scenes, images, and videos. Cascade is ideal for making compelling, in-depth stories that are very easy for people to navigate.
 
-![App ID](todo.png)
+![Screenshot](todo.png)
 
 [View it live](http://links.esri.com/storymaps/story_map_cascade_overview_1) | 
 [Cascade presentation on Esri Story Maps website](https://storymaps.arcgis.com/en/app-list/cascade/) |
@@ -33,7 +33,7 @@ For more information about the application, including a gallery of examples and 
 First create your Cascade story in ArcGIS Online using the [step-by-step tutorial](https://storymaps.arcgis.com/en/app-list/cascade/tutorial/).
 Once your story is ready, you have to find its ID in ArcGIS Online. The ID is a 32 character string that you will find in your web browser's address bar when you are viewing your story.
 
-![App ID](todo.png)
+![Screenshot](todo.png)
 
 1. [Download the application](http://links.esri.com/storymaps/cascade_template_zip)
 2. Deploy the application on your webserver. See [FAQ](#how-to-deploy-the-application-on-a-web-server) for details
