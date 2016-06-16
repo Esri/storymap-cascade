@@ -1,0 +1,35 @@
+@import './../../../Variables';
+
+.op-item {
+  cursor: pointer;
+  position: relative;
+  border: 2px solid transparent;
+  display: flex;
+  flex: 0 0 auto;
+
+  & + & {
+    margin-top: 8px;
+  }
+
+  &.organize {
+    cursor: move;
+
+    &.undraggable {
+      cursor: default;
+    }
+
+    &:not(.selected) {
+      &:hover {
+        border-color: transparent;
+      }
+    }
+  }
+
+  &:hover {
+    border-color: @hover-border-color;
+  }
+
+  &.selected {
+    border-color: @selected-border-color;
+  }
+}

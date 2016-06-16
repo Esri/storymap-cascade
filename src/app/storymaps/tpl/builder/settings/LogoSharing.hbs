@@ -1,0 +1,44 @@
+<div class="hc-container split">
+  <div class="hc-item">
+    <div class="hc-row item-title">{{strings.logo}}</div>
+    <div class="hc-row">
+      <div class="hc-item-container" style="background: {{background}};">
+        <img src="{{settings.logo.url}}" class="hc-logo{{#unless settings.logo.enabled}} hidden{{/unless}}">
+        <div class="hc-logo-button{{#if settings.logo.enabled}} hidden{{/if}} btn btn-primary">{{strings.logoButton}}</div>
+        <div class="hc-action-icon-underlay">
+          <i class="hc-action-icon hc-settings fa fa-cog"></i>
+          <i class="hc-action-icon hc-remove fa fa-trash{{#unless settings.logo.enabled}} hidden{{/unless}}"></i>
+        </div>
+      </div>
+    </div>
+    <div class="hc-logo-upload-msg alert" role="alert"></div>
+  </div>
+  <div class="hc-item">
+    <div class="hc-row item-title">{{strings.logoLink}}</div>
+    <div class="hc-row">
+      <input type="text" value="{{settings.logo.link}}" class="hc-text-input logo-link" {{#unless settings.logo.enabled}}disabled{{/unless}}>
+    </div>
+  </div>
+</div>
+<div class="hc-container split">
+  <div class="hc-item">
+    <div class="hc-row item-title">{{strings.customHeaderText}}</div>
+    <div class="hc-row">
+      <input type="text" maxlength={{maxCharacters}} size={{maxCharacters}} value="{{settings.link.title}}" class="hc-text-input truncated link-title">
+    </div>
+  </div>
+  <div class="hc-item">
+    <div class="hc-row item-title">{{strings.link}}</div>
+    <div class="hc-row tagline-link" data-toggle="tooltip" title="{{strings.taglineLinkDisabledTooltip}}">
+      <input type="text" {{#if emptyTagline}}disabled{{/if}} value="{{settings.link.url}}" class="hc-text-input link-url">
+    </div>
+  </div>
+  <div class="hc-item">
+    <div class="hc-row">
+      <label class="hc-check-label">
+        <input type="checkbox" class="hc-checkbox social-checkbox" {{#if settings.social.enabled}}checked{{/if}}>
+        <span class="hc-check-label-text">{{strings.enableSocialSharing}}</span>
+      </label>
+    </div>
+  </div>
+</div>

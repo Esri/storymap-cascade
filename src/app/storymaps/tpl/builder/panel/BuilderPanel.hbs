@@ -1,0 +1,47 @@
+<div class="builder-buttons">
+  <img src="resources/tpl/builder/icons/builder.jpg" />
+
+  <button class="btn btn-settings">
+    <i class="fa fa-cogs" aria-hidden="true"></i>
+    <span class="btn-label">Settings</span>
+  </button>
+  <div class="beta-feedback">
+    <a href="http://links.esri.com/storymaps/cascade-beta-feedback" target="_blank">Beta feedback</a>
+    <i class="beta-tooltip fa fa-info-circle" aria-hidden="true"></i>
+  </div>
+
+  <button class="btn btn-share">
+    <i class="fa fa-share" aria-hidden="true"></i>
+    <span class="btn-label">Share</span>
+
+    <div class="btn-share-container">
+      <div class="btn-share-wrapper" data-level="private" data-title="Private">
+  			<span class="small-loader"></span>
+  			<i class="share-icon fa fa-user" aria-hidden="true"></i>
+  		</div>
+  		<div class="btn-share-wrapper" data-level="account" data-title="Organization">
+  			<span class="small-loader"></span>
+  			<i class="share-icon fa fa-users" aria-hidden="true"></i>
+  		</div>
+  		<div class="btn-share-wrapper" data-level="public" data-title="Public">
+  			<span class="small-loader"></span>
+  			<i class="share-icon fa fa-globe" aria-hidden="true"></i>
+  		</div>
+    </div>
+  </button>
+
+  <button class="btn btn-preview">
+    <i class="fa fa-eye" aria-hidden="true"></i>
+    <span class="btn-label">View story</span>
+  </button>
+
+  <button id="save-button" class="btn btn-save" data-toggle="tooltip" data-placement="top" data-title="There was an error saving your story.">
+    <i class="btn-save-icon fa fa-floppy-o" aria-hidden="true"></i>
+    <span class="btn-save-loader small-loader"></span>
+    <span class="btn-save-success glyphicon glyphicon-ok"></span>
+    <span class="btn-save-error glyphicon glyphicon-exclamation-sign"></span>
+    <span class="btn-save-label">{{btnSave}}</span>
+  </button>
+</div>
+
+<div class="overview"></div>

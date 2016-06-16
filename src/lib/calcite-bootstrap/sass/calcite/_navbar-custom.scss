@@ -1,0 +1,74 @@
+// ┌────────────────┐
+// │ Navbar: Custom │
+// └────────────────┘
+
+// Moves the hamburger icon to the left side of the navbar
+.navbar-toggle{
+  float: left;
+  margin-left: $navbar-padding-horizontal;
+  margin-right: 0px;
+}
+
+// Places a small profile image in the user menu
+.navbar-icon {
+  width: 32px;
+  position: relative;
+  float: left;
+  padding-right: 6px;
+  padding-bottom: 10px;
+}
+
+// Sets the font-size of the brand and navbar links slightly smaller than base
+.navbar-nav,
+.navbar-brand,
+.navbar-btn,
+.navbar-text,
+.navbar-form,
+.navbar-form input,
+.navbar-form button,
+.navbar-nav .dropdown-menu {
+	font-weight: 400;
+	font-size: $font-size-base;
+  letter-spacing: 0px;
+	// Bump weight of span for branding up coinciding with navbar-nav
+	.gis {
+		font-weight: 600;
+	}
+}
+
+// Ease the hover state in and out
+.navbar-brand {
+	&:hover {
+		transition: color 150ms linear, text-decoration 150ms linear;
+	}
+}
+
+// Add a rule and color transition to the top of navbar nav links
+.navbar-nav {
+  > li {
+    > a {
+      padding-left: 0px !important;
+      padding-right: 0px !important;
+      margin-left: 8px;
+      margin-right: 8px;
+      &:hover,
+      &:focus {
+        background-image: linear-gradient(to bottom, transparent 92%, $Calcite_Highlight_Blue_350 93%, $Calcite_Highlight_Blue_350 100%);
+        transition: color 150ms linear, text-decoration 150ms linear;
+      }
+      @media (max-width: 767px) {
+        &:hover,
+        &:focus {
+          background-image: none;
+        }         
+      }
+    }
+  }
+}
+
+// Adds padding to active navbar links
+.navbar-default .navbar-nav > .active > a,
+.navbar-inverse .navbar-nav > .active > a {
+  padding-left: 8px;
+  padding-right: 8px;
+}

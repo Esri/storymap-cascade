@@ -1,0 +1,198 @@
+/*
+ * Open Sans
+ */
+
+@font-face {
+  font-family: 'open_sans';
+  src: url('../../../lib/calcite-bootstrap/css/fonts/OpenSans-Light-webfont.woff2') format('woff2'),
+       url('../../../lib/calcite-bootstrap/css/fonts/OpenSans-Light-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'open_sans';
+  src: url('../../../lib/calcite-bootstrap/css/fonts/OpenSans-Semibold-webfont.woff2') format('woff2'),
+       url('../../../lib/calcite-bootstrap/css/fonts/OpenSans-Semibold-webfont.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'open_sans';
+  src: url('../../../lib/calcite-bootstrap/css/fonts/OpenSans-LightItalic-webfont.woff2') format('woff2'),
+       url('../../../lib/calcite-bootstrap/css/fonts/OpenSans-LightItalic-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'open_sans';
+  src: url('../../../lib/calcite-bootstrap/css/fonts/OpenSans-SemiboldItalic-webfont.woff2') format('woff2'),
+       url('../../../lib/calcite-bootstrap/css/fonts/OpenSans-SemiboldItalic-webfont.woff') format('woff');
+  font-weight: bold;
+  font-style: italic;
+}
+
+/*
+@font-face {
+  font-family: 'open_sans';
+  src: url('_resources/fonts/OpenSans-Light-webfont.woff2') format('woff2'),
+       url('_resources/fonts/OpenSans-Light-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'open_sans';
+  src: url('_resources/fonts/OpenSans-Semibold-webfont.woff2') format('woff2'),
+       url('_resources/fonts/OpenSans-Semibold-webfont.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'open_sans';
+  src: url('_resources/fonts/OpenSans-LightItalic-webfont.woff2') format('woff2'),
+       url('_resources/fonts/OpenSans-LightItalic-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'open_sans';
+  src: url('_resources/fonts/OpenSans-SemiboldItalic-webfont.woff2') format('woff2'),
+       url('_resources/fonts/OpenSans-SemiboldItalic-webfont.woff') format('woff');
+  font-weight: bold;
+  font-style: italic;
+}
+*/
+
+/*
+ * Lora
+ */
+
+@font-face {
+  font-family: 'lora';
+  src: url('_resources/fonts/lora-regular-webfont.woff2') format('woff2'),
+       url('_resources/fonts/lora-regular-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+    font-family: 'lora';
+    src: url('_resources/fonts/lora-bold-webfont.woff2') format('woff2'),
+         url('_resources/fonts/lora-bold-webfont.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+  font-family: 'lora';
+  src: url('_resources/fonts/lora-italic-webfont.woff2') format('woff2'),
+       url('_resources/fonts/lora-italic-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'lora';
+  src: url('_resources/fonts/lora-bolditalic-webfont.woff2') format('woff2'),
+       url('_resources/fonts/lora-bolditalic-webfont.woff') format('woff');
+  font-weight: bold;
+  font-style: italic;
+}
+
+/*
+ * Glyphicons
+ */
+
+/*
+@font-face {
+  font-family: 'Glyphicons Halflings';
+  src: url('../../../lib/calcite-bootstrap/css/fonts/glyphicons-halflings-regular.eot');
+  src: url('../../../lib/calcite-bootstrap/css/fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'),
+        url('../../../lib/calcite-bootstrap/css/fonts/glyphicons-halflings-regular.woff2') format('woff2'),
+        url('../../../lib/calcite-bootstrap/css/fonts/glyphicons-halflings-regular.woff') format('woff'),
+        url('../../../lib/calcite-bootstrap/css/fonts/glyphicons-halflings-regular.ttf') format('truetype'),
+        url('../../../lib/calcite-bootstrap/css/fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+}
+*/
+
+/*
+ * Loader
+ */
+
+.small-loader {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background: url(../../../resources/tpl/viewer/icons/loading-light.gif);
+  background-size: 17px 20px;
+  background-repeat: no-repeat;
+  vertical-align: -5px;
+  margin-right: 2px;
+}
+
+.large-loader {
+  display: inline-block;
+  width: 33px;
+  height: 39px;
+  background: url(../../../resources/tpl/viewer/icons/loading-light.gif);
+  background-size: 33px 39px;
+  background-repeat: no-repeat;
+  margin-left: -19px;
+  margin-top: -20px;
+}
+
+/*
+ * Error box
+ */
+
+#loadingOverlay.error {
+  position: fixed !important;
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+#fatalError {
+	position: fixed;
+	display: none;
+	z-index: 3000;
+	top: 50%;
+	left: 0px;
+	width: 100%;
+}
+
+#fatalError > table {
+	margin-top: -42px;
+	margin-left:-247px;
+	max-width: 490px;
+	min-height: 85px;
+	background-color: white;
+	border: 2px solid #428BC9;
+	padding:0px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#fatalError .error-title {
+	margin-right: 12px;
+}
+
+#fatalError .error-msg {
+	margin-top: 8px;
+	padding-bottom: 8px;
+	margin-right: 8px;
+}
+
+#fatalError-icon {
+	background: url('_resources/icons/warning-icon.png') 0 0px;
+	width: 75px;
+	height: 75px;
+	background-repeat: no-repeat;
+	background-size: 60px 60px;
+	background-position: 5px 10px;
+}

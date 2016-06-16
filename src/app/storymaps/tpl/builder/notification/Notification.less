@@ -1,0 +1,26 @@
+@import "../../core/Variables";
+
+.notification-container {
+  position: fixed;
+  top: 50px;
+  right: 10px;
+  z-index: 9;
+}
+
+.builder-notification {
+  width: 100%;
+  margin-top: 10px;
+
+  .alert {
+    position: relative;
+    display: inline-block;
+    margin: 0;
+    padding: 10px 20px 10px 10px;
+
+    button.close {
+      position: absolute;
+      right: 2px;
+      top: -4px;
+    }
+  }
+}

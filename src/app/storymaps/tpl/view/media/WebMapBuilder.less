@@ -1,0 +1,35 @@
+/*
+ * Layer list
+ */
+
+.layer-list-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+
+  width: 220px;
+  overflow: auto;
+
+  z-index: 2;
+  text-align: left;
+  pointer-events: none;
+
+  .esriLayerList {
+    pointer-events: all;
+  }
+}
+
+.block-type-webmap:not(.block-size-small) .layer-list-container {
+  top: inherit;
+  bottom: 170px;
+  max-height: calc(~"100% - 170px");
+}
+
+.block-type-webmap.block-size-small .layer-list-container {
+  right: -220px;
+}
+
+.background .layer-list-container {
+  top: 50px;
+}

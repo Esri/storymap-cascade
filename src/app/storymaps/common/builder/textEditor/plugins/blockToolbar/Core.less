@@ -1,0 +1,187 @@
+.block-toolbar-button {
+  display: block;
+  position: absolute;
+  top: 0;
+
+  font-size: 0.9em;
+
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  /* Below add menu */
+  z-index: 9;
+
+  visibility: hidden;
+  opacity: 0;
+
+  transition: opacity .2s ease-in-out;
+  -moz-transition: opacity .2s ease-in-out;
+  -webkit-transition: opacity .2s ease-in-out;
+
+  // The button
+  .block-toolbar-button-status {
+    display: block;
+    box-sizing: border-box;
+    width: 32px;
+    height: 32px;
+    border-radius: 20px;
+    border: 1px solid;
+    font-size: 16px;
+    line-height: 31px;
+    text-align: center;
+    text-decoration: none;
+    background: #fff;
+    transform: rotate(0);
+    transition: transform 100ms;
+    text-decoration: underline;
+    cursor: pointer;
+    margin-left: -10px;
+
+    color: #000;
+
+    &:hover {
+      opacity: 0.6;
+    }
+
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  // Button is visible
+  &.active {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  // Toolbar is open
+  &.buttons-active {
+    /* Above add menu when active */
+    z-index: 11;
+
+    .block-toolbar-button-status {
+      transition: transform 250ms;
+      transform: rotate(45deg);
+    }
+  }
+}
+
+// Toolbar container
+.block-toolbar-buttons {
+  display: block;
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  background-color: #fff;
+  box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.5);
+
+  /* Above add toolbar */
+  z-index: 11;
+
+  visibility: hidden;
+  opacity: 0;
+
+  transition: opacity .2s ease-in-out;
+  -moz-transition: opacity .2s ease-in-out;
+  -webkit-transition: opacity .2s ease-in-out;
+
+  &::after {
+    border-width: 15px 15px 0 15px;
+    left: 8px;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    li {
+      display: inline-block;
+      transform: scale(0);
+      transition: transform .1s 10ms;
+
+      a {
+        box-sizing: border-box;
+        display: inline-block;
+        padding: 0 5px;
+        width: 42px;
+        height: 32px;
+        font-size: 20px;
+        line-height: 28px;
+        text-align: center;
+        cursor: pointer;
+
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+
+        color: #000;
+
+        &:hover {
+          background-color: #d3d3d3;
+        }
+
+        &.active {
+          background-color: #b3b3b3;
+        }
+
+        .fa {
+          font-size: 15px;
+        }
+      }
+    }
+
+    /*
+     * Add a visual separator
+     * TODO: should be dynamic if we keep this
+     */
+
+    li:nth-child(3) a {
+      border-right: 1px solid black;
+    }
+  }
+
+  &.active {
+    // Toolbar
+    //display: block;
+    opacity: 1;
+    visibility: visible;
+
+    width: inherit;
+    height: inherit;
+
+    li {
+      transition-duration: .2s;
+      transform: scale(1);
+      transition-delay: 10ms;
+
+      &:nth-child(2) {
+        transition-delay: 30ms;
+      }
+      &:nth-child(3) {
+        transition-delay: 60ms;
+      }
+      &:nth-child(4) {
+        transition-delay: 90ms;
+      }
+      &:nth-child(5) {
+        transition-delay: 120ms;
+      }
+      &:nth-child(6) {
+        transition-delay: 150ms;
+      }
+    }
+  }
+}

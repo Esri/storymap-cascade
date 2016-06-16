@@ -1,0 +1,23 @@
+<div class="hc-intro">{{strings.intro}}</div>
+
+<div class="hc-container header-container">
+    <div class="hc-row">
+        <div class="hc-column first">{{strings.title}}</div>
+        <div class="hc-column last">{{strings.bookmark}}</div>
+    </div>
+</div>
+<ul class="hc-container content">
+  {{#each bookmarks}}
+    <li class="hc-row bookmark-row{{#if disabled}} disabled{{/if}}" data-index="{{@index}}">
+      <div class="hc-column first">
+        <label class="hc-check-label">
+          <input type="checkbox" class="hc-checkbox space bookmark-checkbox" {{#unless disabled}}checked{{/unless}}>
+          <span class="hc-check-label-text truncated">{{title}}</span>
+        </label>
+      </div>
+      <div class="hc-column last">
+          <input type="text" {{#if disabled}}disabled{{/if}} maxlength={{../maxCharacters}} size={{../maxCharacters}} value="{{bookmark}}" class="hc-text-input truncated bookmark-text">
+      </div>
+    </li>
+  {{/each}}
+</ul>

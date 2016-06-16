@@ -1,0 +1,51 @@
+@import './../../../Variables';
+
+.action-overlay-gradient {
+  background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.3) 40%, black 100%);
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.3) 40%, black 100%);
+}
+
+.action-overlay-horizontal-gradient {
+  background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.3) 40%, black 100%);
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.3) 40%, black 100%);
+}
+
+.op-action-overlay {
+  align-items: center;
+  bottom: 0;
+  left: 0;
+  color: @icon-color;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  position: absolute;
+  width: 100%;
+  z-index: 0;
+  .action-overlay-gradient;
+
+  .action-icon {
+    font-size: @item-icon-size;
+    padding: 5px;
+    margin: 5px;
+    opacity: 0.8;
+
+    &:hover {
+      opacity: 1;
+    }
+
+    &.op-hidden {
+      visibility: hidden;
+    }
+  }
+}
+
+.op-style-horizontal {
+  .op-action-overlay {
+    right: 0;
+    left: auto;
+    height: 100%;
+    width: auto;
+    flex-direction: column-reverse;
+    .action-overlay-horizontal-gradient;
+  }
+}

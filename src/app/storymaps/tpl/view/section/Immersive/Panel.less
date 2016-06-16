@@ -1,0 +1,275 @@
+.imm-panel {
+
+}
+
+@import "../../../core/Variables";
+
+/*
+ * /!\ The rules related to size and placement have couterpart in JavaScript
+ *  for the builder UI, see PanelBuilder > updateBuilderEditorPlacementRules
+ */
+
+.imm-panel {
+  min-height: 100vh;
+  width: 0;
+
+  .blocksWrapper {
+    position: absolute;
+  }
+
+  .blocks {
+    padding: 15px;
+
+    /* no size config yet */
+    .block-media,
+    .block-caption {
+      width: 100%;
+    }
+
+    .block-type-video .block-media {
+      padding-top: 50% !important;
+    }
+  }
+
+  /*
+   * Theme
+   */
+
+  &.theme-white-over-black {
+    .blocks {
+      color: #FFF;
+      background-color: rgba(0, 0, 0, 0.75);
+    }
+  }
+
+  &.theme-black-over-white {
+    .blocks {
+      color: #000;
+      background-color: rgba(255, 255, 255, 0.75);
+    }
+  }
+
+  /*
+   * Style
+   */
+
+  &.style-text-shadow.theme-black-over-white {
+    .blocks {
+      text-shadow: 0 0 8px rgba(255, 255, 255, 1);
+      background-color: inherit;
+    }
+  }
+
+  &.style-text-shadow.theme-white-over-black {
+    .blocks {
+      text-shadow: 0 0 8px rgba(0, 0, 0, 1);
+      background-color: inherit;
+    }
+  }
+
+  /*
+   * Placement
+   */
+
+  &.placement-right .blocksWrapper {
+    left: inherit;
+    right: 30px;
+  }
+
+  &.placement-center .blocksWrapper {
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/*
+ * Scroll full
+ */
+
+.layout-scroll-full {
+  .foreground {
+    position: absolute;
+    bottom: 150px;
+
+    .imm-panel {
+      margin-left: 30px;
+
+      .blocksWrapper {
+        min-width: 250px;
+        max-width: 400px;
+      }
+
+      /*
+       * Size
+       */
+
+       &.size-small .blocksWrapper {
+         width: 28%;
+         max-width: 300px;
+       }
+
+       &.size-medium .blocksWrapper {
+        width: 38%;
+      }
+
+       &.size-large .blocksWrapper {
+        width: 48%;
+        max-width: 600px;
+      }
+
+      /*
+       * Placement
+       */
+
+      &.placement-right {
+        margin-right: 30px;
+        margin-left: auto;
+      }
+
+      &.placement-center {
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+  }
+}
+
+/*
+ * Scroll partial
+ */
+
+.layout-scroll-partial {
+  .foreground {
+    position: fixed;
+    bottom: inherit;
+    top: 0;
+
+    .imm-panel {
+      position: absolute;
+      top: 0;
+      left: 30px;
+
+      opacity: 0;
+      visibility: hidden;
+
+      min-width: 250px;
+      max-width: 400px;
+
+      .blocksWrapper {
+        width: 100%;
+      }
+
+
+      /* less and calc */
+      /*min-height: calc(~"100vh - 50px");*/
+
+      /*
+      .block {
+        background-color: rgba(0,0,0,0.4);
+        color: #FFF;
+        border-radius: 2px;
+      }
+      */
+
+      /*
+       * Size
+       */
+
+       &.size-small {
+         width: 21%;
+         max-width: 300px;
+       }
+
+       &.size-medium {
+        width: 30%;
+      }
+
+       &.size-large {
+        width: 37%;
+        max-width: 600px;
+      }
+
+      /*
+       * Placement
+       */
+
+      &.placement-right {
+        right: 30px;
+        left: inherit;
+      }
+
+      /*
+       * scroll-partial centered behave like scroll-full
+       * can they all behae like that?
+       * TODO
+       */
+      &.placement-center {
+        left: 0 !important;
+        right: 0;
+        width: calc(~"100% - 250px");
+        min-width: inherit;
+        max-width: inherit;
+
+        .blocksWrapper {
+          width: inherit;
+          margin-left: auto;
+          margin-right: auto;
+          display: block;
+          position: relative;
+          min-width: 250px;
+          max-width: 400px;
+        }
+
+        &.size-small .blocksWrapper {
+          width: 28%;
+          max-width: 300px;
+        }
+
+        &.size-medium .blocksWrapper {
+         width: 38%;
+       }
+
+        &.size-large .blocksWrapper {
+         width: 48%;
+         max-width: 600px;
+       }
+      }
+    }
+  }
+
+  /* prevent conflict with previous section - panel can be over */
+  &:not(.active) .imm-panel {
+    display: none;
+  }
+}
+
+/*
+ * Responsive
+ */
+
+body.mobile-view .imm-panel {
+ .blocks {
+   padding: 5px;
+ }
+}
+
+/*
+ * Builder
+ */
+
+.builder-mode .layout-scroll-partial .imm-panel {
+  &.placement-right {
+    margin-right: @builder-panel-width;
+  }
+
+  &.placement-center {
+    left: -@builder-panel-width;
+  }
+
+  /* TODO */
+  .blocks {
+    position: absolute;
+  }
+}

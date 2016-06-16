@@ -1,0 +1,83 @@
+@import "../../variables";
+
+.mp-gallery {
+  padding: 10px 20px;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 100%;
+  overflow-y: auto;
+  flex-grow: 1;
+
+  .alert {
+    text-align: center;
+
+    &.limit-reached {
+      padding: 5px 10px;
+      margin: 1em 0;
+    }
+  }
+
+  .placeholder {
+    font-size: 52px;
+    line-height: 1.5em;
+    color: @gray-lighter;
+    text-align: center;
+    margin: 20px 20px 0;
+  }
+
+  .small-loader {
+    width: 40px;
+    height: 40px;
+    background-size: contain;
+  }
+
+  .popover.remove .popover-content {
+    padding: 0 3px;
+    font-size: 12px;
+    color: @gray-darker;
+  }
+
+  .popover-content {
+    font-size: 0.8em;
+    padding: 0.5em 1em;
+    max-height: 500px;
+    overflow: hidden;
+
+    .item-popover-title {
+      font-weight: bold;
+    }
+  }
+
+  .popover-content .unused {
+    opacity: 0.5;
+  }
+
+
+  @media (max-width: @screen-md) {
+    .placeholder {
+      font-size: 42px;
+    }
+  }
+
+  @media (max-width: @screen-sm) {
+    & {
+      padding: 10px;
+      flex: 1 1 1px;
+    }
+    .alert {
+      max-height: 7em;
+    }
+    .row:before {
+      content: none;
+    }
+
+    .placeholder {
+      font-size: 32px;
+      padding-top: 0;
+    }
+  }
+
+}

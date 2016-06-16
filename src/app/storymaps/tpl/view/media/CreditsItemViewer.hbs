@@ -1,0 +1,14 @@
+<li class="cr-item viewer">
+  <div class="cr-item-main">
+    <div class="cr-input-container first">
+      <div class="cr-item-input cr-content">{{label}}</div>
+    </div>
+    <span class="cr-pipe"></span>
+    <div class="cr-input-container">
+      {{#if link}}
+        <a href="{{link}}" class="cr-item-input cr-source cr-link" target="_blank">{{source}}</a>
+      {{else}}
+        <div class="cr-item-input cr-source">{{source}}</div>
+      {{/if}}
+  </div>
+</li>

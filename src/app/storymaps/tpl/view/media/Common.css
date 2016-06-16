@@ -1,0 +1,222 @@
+.block {
+  position: relative;
+  margin-top: 30px;
+  word-wrap: break-word;
+}
+
+.block-media {
+  position: relative;
+}
+
+/* to avoid issue with map popup
+ * TODO: why is that needed? */
+.media-media {
+  line-height: normal;
+}
+
+body.mobile-view .block-media {
+  width: 100%;
+}
+
+/*
+ * Loading
+ */
+
+.media-loading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #EEE;
+}
+
+.media-loading .large-loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
+/*
+ * Media caption
+ */
+
+ /* common with gallery */
+.block-caption {
+  outline: none;
+  font-family: 'open_sans', sans-serif;
+  font-size: 14px;
+  line-height: 22px;
+  opacity: .65;
+  width: 100%;
+  text-align: center;
+  padding-top: 5px;
+  margin-top: 0 !important;
+}
+
+body.mobile-view .block-caption {
+  font-size: 12px;
+}
+
+body.builder-mode .block-caption {
+  min-height: 40px;
+  cursor: text;
+}
+
+body.builder-mode .block-caption:not(:focus):empty:before {
+  content: attr(data-placeholder);
+  font-style: italic;
+  color: #999;
+}
+
+.background .caption {
+ position: absolute;
+ top: 650px;
+ left: 40px;
+ background-color: rgba(255,255,255,.6);
+ border-radius: 0 2px 2px 0;
+ padding: 15px 20px;
+ width: 300px;
+ font-size: 1.1em;
+ line-height: 150%;
+}
+
+body.mobile .background .caption,
+body.touch .background .caption {
+  left: 0px;
+  margin-left: auto;
+  margin-right: auto;
+  top: inherit !important;
+  bottom: 50px;
+  width: 90%;
+  right: 0;
+
+  font-size: 1.0em;
+  line-height: 145%;
+  color: #373737;
+}
+
+/*
+ * Interaction
+ */
+
+.interaction-enabled .media-media {
+  pointer-events: all;
+}
+
+.interaction-disabled .media-media {
+  pointer-events: none;
+}
+
+.interaction-button:not(.interaction-enabled) .media-media {
+  pointer-events: none;
+}
+
+.interaction-container {
+  position: absolute;
+  bottom: 50px;
+  right: 7px;
+  pointer-events: auto;
+  display: none;
+  z-index: 99;
+}
+
+.interaction-container .glyphicon {
+  margin-right: 4px;
+}
+
+.interaction-button .interaction-container {
+  display: block;
+  pointer-events: auto;
+}
+
+.interaction-container.enabled .int-container-disabled {
+  display: none;
+}
+
+.interaction-container:not(.enabled) .int-container-enabled {
+  display: none;
+}
+
+/*
+ * When builder config is open, interaction are always authorized
+ */
+.builder-config-open .media-media {
+  pointer-events: all !important;
+}
+
+.builder-config-open .interaction-container {
+  display: none !important;
+}
+
+/*
+body.mobile-view .section:not(.events-mobile-central) .interaction-container{
+  display: none;
+}
+
+.events-mobile-central .interaction-container {
+  opacity: 0.3;
+  pointer-events: none;
+  top: 20px;
+  left: 50%;
+  right: auto;
+  bottom: auto;
+  margin-left: -60px;
+}
+
+.events-mobile-central.active .interaction-container {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.events-mobile-central .btn {
+  width: 130px;
+}
+
+.events-mobile-central .background:not(.enable-events) .webpage {
+  opacity: .3;
+}
+*/
+
+/*
+ * Background
+ */
+
+ .bg-color {
+   position: absolute;
+   top: 0;
+   bottom: 0;
+   left: 0;
+   right: 0;
+   width: 100%;
+   height: 100%
+}
+
+/*
+ * Error
+ */
+
+.media-error {
+  background-color: rgba(255, 0, 0, 0.5);
+  border-radius: 4px;
+  color: #FFF;
+  padding: 15px;
+  width: 90%;
+  margin-left: 5%;
+}
+
+/*
+ * Hide all builder UI in viewer
+ */
+
+.builder-ui {
+  display: none;
+}
+
+body.builder-mode .builder-ui {
+  display: inherit;
+}
+
+.builder-config-open .block-caption {
+  display: none;
+}

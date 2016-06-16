@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="JavaScript image loader.">
+  <meta name="keywords" content="HTML, CSS, JS, JavaScript, image, loader, canvas, Exif, orientation, front-end, frontend, web development">
+  <meta name="author" content="Fengyuan Chen">
+  <title>Loader</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+  <!--[if lt IE 10]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  <![endif]-->
+
+  <!-- Header -->
+  <header class="navbar navbar-static-top docs-header" id="top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-target="#navbar-collapse-1" data-toggle="collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="./">Loader</a>
+      </div>
+      <nav class="collapse navbar-collapse" id="navbar-collapse-1" role="navigation">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="https://github.com/fengyuanchen/loader/blob/master/README.md">Docs</a></li>
+          <li><a href="https://github.com/fengyuanchen/loader">GitHub</a></li>
+          <li><a href="http://chenfengyuan.com">About</a></li>
+          <li><a href="http://fengyuanchen.github.io">More</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Jumbotron -->
+  <div class="jumbotron docs-jumbotron">
+    <div class="container">
+      <h1>Loader</h1>
+      <p class="lead">JavaScript image loader.</p>
+    </div>
+  </div>
+
+  <!-- Content -->
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-3">
+        <div class="docs-preview">
+          <img src="img/potala.jpg" alt="Potala Palace">
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="docs-dropzone">
+          Drop image here or <input type="file" name="file" accept="image/*">
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="docs-loaded"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="docs-footer">
+    <div class="container">
+      <span class="hearts"></span>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <script src="http://fengyuanchen.github.io/js/main.js"></script>
+  <script src="js/loader.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

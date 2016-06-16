@@ -1,0 +1,22 @@
+{
+  "name": "froogaloop",
+  "version": "0.1.0",
+  "homepage": "https://github.com/vimeo/player-api/tree/master/javascript",
+  "description": "https://github.com/vimeo/player-api/blob/master/readme.mdown",
+  "main": "froogaloop.js",
+  "keywords": [
+    "vimeo",
+    "froogaloop"
+  ],
+  "authors": [
+    "vimeo"
+  ],
+  "license": "none",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

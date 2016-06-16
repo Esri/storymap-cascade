@@ -1,0 +1,204 @@
+.section-layout-sequence {
+  overflow: hidden;
+  padding-top: 0;
+}
+
+/*
+ * Foreground
+ */
+
+.section-layout-sequence .foreground {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
+  text-align: center;
+}
+
+/*
+ * Block
+ */
+
+.section-layout-sequence p {
+  width: 50%;
+  font-size: 20px;
+  line-height: 150%;
+  margin-left: auto;
+  margin-right: auto;
+  /*padding-top: 30px;*/
+  text-align: left;
+}
+
+.section-layout-sequence h1,
+.section-layout-sequence h2,
+.section-layout-sequence blockquote {
+  width: 45%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.section-layout-sequence blockquote {
+  font-family: 'lora', serif;
+  font-size: 24px;
+  line-height: 30px;
+  text-align: left;
+}
+
+body.mobile-view .section-layout-sequence blockquote {
+  font-size: 20px !important;
+  line-height: 24px;
+}
+
+/* TODO: For media but could be used for all? */
+
+.block-size-small,
+.block-size-medium,
+.block-size-large {
+  width: 100%;
+}
+
+.block-size-small .block-media,
+.block-size-small .block-caption {
+  width: 40%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.block-size-medium .block-media,
+.block-size-medium .block-caption {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.block-size-large .block-media,
+.block-size-large .block-caption {
+  width: 100%;
+}
+
+.block-caption {
+  padding: 0 5px;
+}
+
+/*
+ * Responsive
+ */
+
+body.mobile-view .section-layout-sequence {
+  .block {
+    margin-top: 20px;
+  }
+
+  p.block {
+    font-size: 16px;
+    width: 90%;
+  }
+
+  h1, h2, blockquote {
+    width: 80%;
+  }
+
+  blockquote {
+    padding: 0 12px;
+  }
+
+  h1 {
+    font-size: 26px;
+    line-height: 32px;
+  }
+
+  h2 {
+    font-size: 24px;
+  }
+
+  .block-media {
+    width: 100%;
+  }
+}
+
+
+
+
+
+/*
+ * Huge first letter for first block of the sequence
+ *  and block that wants it (like after a gallery)
+ */
+
+/* could have be done in pure CSS but JS may allow finer control more easily */
+/*.section-layout-sequence:not(.sequence-2) .block:nth-child(1) h1::first-letter,*/
+/*.section-layout-sequence .image-gallery + .block .block-inner::first-letter*/
+.section-layout-sequence .block.first-letter-huge::first-letter,
+.section-layout-sequence h1.first-letter-huge::first-letter {
+  font-size: 200%;
+  color: #a5a948;
+  vertical-align: 0px;
+}
+
+
+/*
+ * Mobile warning
+ */
+
+.section-layout-sequence.sequence-2,
+.section-layout-sequence.sequence-2 .block {
+  padding-top: 0px;
+}
+
+.section-layout-sequence.sequence-2 .block {
+  width: 90%;
+  margin-left: 5%;
+  background-color: rgba(255, 0, 0, 0.5);
+  border-radius: 4px;
+  color: #FFF;
+  padding: 15px;
+}
+
+/*
+ * test with background and scroll foreground
+ */
+
+.section-layout-sequence.sequence-3 .foreground {
+  position: relative;
+  bottom: inherit;
+}
+
+.section-layout-sequence.sequence-3 .block {
+  min-height: initial !important; /* because of less??? */
+  width: 50% !important;
+  padding-top: 10px !important;
+}
+
+.section-layout-sequence.sequence-4 .foreground {
+  position: relative;
+  bottom: inherit;
+  width: 50%;
+  margin-left: 40px;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.section-layout-sequence.sequence-4 .block {
+  min-height: initial !important;
+  width: 100% !important;
+  padding-top: 0 !important;
+}
+
+/*
+.section-layout-sequence.sequence-4 .block-inner {
+  background-color: initial;
+}
+*/
+
+/*
+ * Builder
+ */
+
+.builder-mode .section-layout-sequence h1.block::after,
+.builder-mode .section-layout-sequence h2.block::after,
+.builder-mode .section-layout-sequence blockquote.block::after,
+.builder-mode .section-layout-sequence .image-gallery::after {
+  width: 80%;
+  left: 50%;
+  right: 50%;
+  margin-left: -40%;
+}

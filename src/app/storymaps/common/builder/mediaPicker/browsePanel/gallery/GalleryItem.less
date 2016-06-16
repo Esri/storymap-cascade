@@ -1,0 +1,106 @@
+@import "../../variables";
+
+@imgHeight: 100px; // also needs to be changed in constants.jsx
+@albumHeight: 150px;
+
+.mp-gallery-item {
+  cursor: pointer;
+  text-align: center;
+  -webkit-flex: 0 1 auto;
+  flex: 0 1 auto;
+  margin: 4px 8px;
+  max-width: 100%;
+
+  .img-wrapper {
+    position: relative;
+    display: inline-block;
+
+    .remove {
+      line-height: 1em;
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      padding: 5px;
+      margin: 1px;
+      background: @brand-danger;
+      color: white;
+      display: none;
+    }
+
+    &:hover .remove {
+      display: block;
+    }
+
+    .remove:hover {
+      background: darken(@brand-danger, 5%);
+      box-shadow: 0 0 2px 1px @shadow-gray;
+    }
+
+  }
+
+  &.unused {
+    .title, img {
+      opacity: 0.5; // also change popover-content in Gallery
+    }
+
+    img {
+      border: 1px dashed @shadow-gray;
+      padding: 4px;
+    }
+
+  }
+
+  img {
+    max-width: 100%;
+
+    &:hover {
+      box-shadow: 0 0 10px 4px @shadow-gray;
+    }
+  }
+
+  &.album img {
+    height: @albumHeight;
+  }
+
+  &.image img {
+    height: @imgHeight;
+  }
+
+  .title .fa {
+    margin-right: 5px;
+  }
+
+  .fa-globe.fa-lg {
+    font-size: 1.5em;
+  }
+
+  .title {
+    font-size: 12px;
+    text-align: center;
+
+    // overflow: hidden;
+    // word-break: break-all;
+    // width: 100%;
+    // white-space: nowrap;
+    // text-overflow: ellipsis;
+
+    // width: 100%;
+    // word-break: break-word;
+    // line-height: 1.2em;
+
+    width: 100%;
+    line-height: 1.2em;
+    height: 2.5em;
+    overflow: hidden;
+    margin-top: 2px;
+    -webkit-line-clamp: 2;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow-wrap: break-word;
+
+    .break-all {
+      word-break: break-all;
+    }
+
+  }
+}

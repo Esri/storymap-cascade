@@ -1,0 +1,11 @@
+// Calcite Fast Fonts Imports
+@import url(https://fast.fonts.net/cssapi/9431e9a5-7a6d-4b5f-82be-4d935972de5a.css);
+
+// Set variable to change the primary typeface in the font stack
+$primary-font-sanserif:  'Avenir Next W01', 'Avenir Next', 'Avenir';
+$primary-font-serif: 'Kepler W01';
+
+$primary-headings-weight: 300;
+
+// Calcite Module Variables
+@import "variables";

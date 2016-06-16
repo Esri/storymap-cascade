@@ -1,0 +1,14 @@
+{
+  "name": "calcite-bootstrap",
+  "_cacheHeaders": {
+    "ETag": "\"d55fe96a2aed23fd209fc8f2765ffd0e\"",
+    "Last-Modified": "Mon, 04 Apr 2016 17:38:19 GMT",
+    "Content-Length": "1113654",
+    "Content-Type": "application/octet-stream",
+    "Content-Disposition": "attachment; filename=calcite-bootstrap.zip"
+  },
+  "_release": "e-tag:d55fe96a2",
+  "_source": "https://github.com/Esri/calcite-bootstrap/releases/download/v0.3.2/calcite-bootstrap.zip",
+  "_target": "*",
+  "_originalSource": "https://github.com/Esri/calcite-bootstrap/releases/download/v0.3.2/calcite-bootstrap.zip"
+}

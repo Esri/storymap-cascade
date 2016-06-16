@@ -1,0 +1,35 @@
+.transition-gradient {
+  background: -webkit-linear-gradient(left, rgba(0,0,0,0) 0%,rgba(0,0,0,0.7) 100%);
+  background-image: linear-gradient(to right, rgba(0,0,0,0) 0%, rgba(0,0,0,0.7) 100%);
+}
+
+.op-transition-container {
+  padding: 0 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 0 0 auto;
+  .transition-gradient;
+
+  .op-transition-button {
+    .icon {
+      opacity: 0.4;
+
+      &:hover {
+        opacity: 0.6;
+      }
+    }
+  }
+
+  .transition-button {
+    cursor: pointer;
+  }
+
+  .transition-hidden {
+    visibility: hidden;
+  }
+}
+
+.op-transition-container-hidden {
+  visibility: hidden;
+}

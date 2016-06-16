@@ -1,0 +1,45 @@
+.img-gallery-invite {
+  visibility: hidden;
+  opacity: 0;
+
+  font-size: 40px;
+  background-color: #FFF;
+  color: #000;
+
+  cursor: pointer;
+
+  .img-gallery-add {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    z-index: 1001;
+    opacity: 0.7;
+
+    cursor: pointer !important;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  .img-gallery-invite-background {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 0;
+    height: 0;
+    z-index: 1001;
+
+    border-left: 100px solid transparent;
+    border-right: 0px solid transparent;
+    border-top: 0px solid rgba(232, 232, 232, 0.65);
+    border-bottom: 100px solid rgba(232, 232, 232, 0.65);
+
+    cursor: pointer !important;
+  }
+}
+
+.block.image .block-media:hover .img-gallery-invite:not(.disabled) {
+  visibility: visible !important;
+  opacity: 1 ! important;
+}

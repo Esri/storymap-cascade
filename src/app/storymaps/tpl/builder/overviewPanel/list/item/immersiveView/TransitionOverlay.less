@@ -1,0 +1,49 @@
+@import './../../../Variables';
+
+.op-transition-overlay {
+
+  .popover-content {
+    padding: 5px 30px 20px;
+  }
+
+  .title {
+    text-align: center;
+  }
+
+  .list {
+    padding-left: 0;
+    margin-top: 12px;
+  }
+
+  .item {
+    cursor: pointer;
+    list-style-type: none;
+    background: @popover-item-background-color;
+    font-size: @popover-item-text-size;
+    padding: 1px 20px 1px 4px;
+    position: relative;
+
+    &:nth-child(n+2) {
+      margin-top: 5px;
+    }
+
+    &.selected {
+      color: @item-button-text-color;
+      background: @popover-item-selected-background-color;
+    }
+
+    &.disabled {
+      color: @popover-item-disabled-background-color;
+      cursor: default;
+    }
+
+    .icon {
+      color: @icon-inverse-color;
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: translate(-120%, 10%); /* Puts it off the edge of the item without affecting width */
+      z-index: 0;
+    }
+  }
+}

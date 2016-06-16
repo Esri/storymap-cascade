@@ -1,0 +1,223 @@
+.media-cfg-invite {
+  visibility: hidden;
+  opacity: 0;
+
+  font-size: 40px;
+  background-color: #FFF;
+  color: #000;
+
+  cursor: pointer;
+
+  .builder-invite-open,
+  .builder-invite-close {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    z-index: 1001;
+    opacity: 0.7;
+
+    cursor: pointer !important;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  .builder-invite-close {
+    display: none;
+  }
+
+  .builder-invite-background {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 0;
+    z-index: 1001;
+
+    border-left: 0px solid transparent;
+    border-right: 100px solid transparent;
+    border-top: 0px solid rgba(232, 232, 232, 0.65);
+    border-bottom: 100px solid rgba(232, 232, 232, 0.65);
+
+    cursor: pointer !important;
+  }
+
+  &.active {
+    visibility: visible !important;
+    opacity: 1 ! important;
+
+    .builder-invite-open {
+      display: none;
+    }
+
+    .builder-invite-close {
+      display: block;
+    }
+  }
+}
+
+.media-cfg-panel {
+  display: block;
+  width: 100%;
+  font-family: 'open_sans', sans-serif;
+
+  .builder-config {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+
+    visibility: hidden;
+    opacity: 0;
+
+    background-color: rgba(255, 255, 255, 0.9);
+    z-index: 99;
+
+    height: 0;
+
+    /*
+    -webkit-transition: min-height 1s;
+    -moz-transition: min-height 1s;
+    -ms-transition: min-height 1s;
+    -o-transition: min-height 1s;
+    transition: min-height 1s;
+    */
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      right: 0;
+      z-index: 0;
+      height: 10px;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0) 100%);
+    }
+
+    /*
+    &::before {
+      content: '';
+      position: absolute;
+      top: -10px;
+      left: 0;
+      right: 0;
+      z-index: 0;
+      height: 10px;
+      background: linear-gradient(to top, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0) 100%);
+    }
+    */
+
+    .config-main {
+      flex: 0 1 1000px;
+      max-width: 90%;
+      display: flex;
+
+      @media (max-width: 1000px) {
+        max-width: 100%;
+      }
+    }
+
+    .builder-tabs {
+      border-right: 1px solid #CCC;
+      padding: 10px 0 10px 10px;
+      list-style-type: none;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      max-width: 235px;
+      position: relative;
+      display: flex;
+      flex: 0 1 auto;
+
+      .tab {
+        position: relative;
+        display: flex;
+        font-size: 18px;
+        align-items: center;
+        color: #AAA;
+        cursor: pointer;
+        padding: 12px 20px 12px 0;
+        /* Above the close button */
+        z-index: 9999;
+        border-top: 1px solid transparent;
+        border-bottom: 1px solid transparent;
+
+        &:hover {
+          color: #777;
+        }
+
+        &.selected {
+          color: black;
+          border-top-color: #E8E8E8;
+          border-bottom-color: #E8E8E8;
+        }
+
+        &.selected:after {
+          content: '';
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          right: -15px;
+          border-bottom: 15px solid transparent;
+          border-top: 15px solid transparent;
+          border-left: 15px solid white;
+          z-index: 2;
+        }
+
+        &.selected:before {
+          content: '';
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          right: -17px;
+          border-bottom: 17px solid transparent;
+          border-top: 17px solid transparent;
+          border-left: 17px solid #CCC;
+          z-index: 1;
+        }
+
+        .config-tab-icon {
+          margin-right: 7px;
+        }
+
+      }
+    }
+
+    .config-content {
+      flex: 1 1 0;
+      display: flex;
+      padding: 20px;
+      color: #444;
+    }
+
+    .builder-active-tab {
+      display: flex;
+      flex-wrap: wrap;
+      flex: 1 0 0;
+    }
+  }
+
+  &.active {
+    .builder-config {
+      visibility: visible;
+      opacity: 1;
+      min-height: 175px;
+      height: inherit;
+    }
+  }
+}
+
+/*
+ * Invite visibility for block and background
+ */
+
+.block-media:hover .media-cfg-invite{
+  visibility: visible !important;
+  opacity: 1 ! important;
+}
+
+.background .media-cfg-invite {
+  visibility: visible !important;
+  opacity: 1 ! important;
+}

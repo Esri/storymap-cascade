@@ -1,0 +1,11 @@
+{
+  "name": "react-redux",
+  "_cacheHeaders": {
+    "Last-Modified": "Sun, 13 Mar 2016 01:01:16 GMT",
+    "Content-Type": "application/javascript; charset=utf-8"
+  },
+  "main": "index.js",
+  "_source": "https://cdnjs.cloudflare.com/ajax/libs/react-redux/4.4.1/react-redux.js",
+  "_target": "*",
+  "_originalSource": "https://cdnjs.cloudflare.com/ajax/libs/react-redux/4.4.1/react-redux.js"
+}

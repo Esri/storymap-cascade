@@ -1,0 +1,25 @@
+{
+  "name": "Progress.js",
+  "version": "0.1.0",
+  "description": "Themeable HTML5 progress bar library",
+  "keywords": [
+    "progress",
+    "progressbar",
+    "loading"
+  ],
+  "homepage": "http://usablica.github.io/progress.js/",
+  "author": "Afshin Mehrabani",
+  "main": [
+    "src/progress.js",
+    "src/progressjs.css"
+  ],
+  "_release": "0.1.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.1.0",
+    "commit": "acba45829bfea7ba073aedca7d70fcf47e22317b"
+  },
+  "_source": "https://github.com/usablica/progress.js.git",
+  "_target": "*",
+  "_originalSource": "https://github.com/usablica/progress.js.git"
+}

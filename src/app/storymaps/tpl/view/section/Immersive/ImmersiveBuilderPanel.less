@@ -1,0 +1,38 @@
+@import "../../../core/Variables";
+
+.section-immersive {
+
+  &:not(.active) .builder-panel {
+    position: absolute;
+    top: calc(~"100vh - 125px");
+    left: 0;
+    width: 100%;
+  }
+
+  .builder-panel {
+    position: fixed;
+    bottom: 0;
+    left: @builder-panel-width;
+    width: calc(100% ~"-" @builder-panel-width);
+
+    height: @immersive-panel-height;
+
+    background: #333;
+    z-index: 999;
+
+    &:before {
+      content: '';
+      height: 10px;
+      position: absolute;
+      top: 0;
+      left: ;
+      right: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.4) 100%);
+      z-index: 999;
+    }
+  }
+
+  &.active .builder-panel {
+    display: block;
+  }
+}

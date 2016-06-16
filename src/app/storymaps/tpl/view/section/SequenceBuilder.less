@@ -1,0 +1,25 @@
+@import "../../core/Variables";
+
+.section-layout-sequence .foreground::after {
+  width: 100%;
+  padding: 0 25%;
+  margin-top: 32px;
+  font-size: 18px;
+  text-align: left;
+  color: #aaa;
+}
+
+/* medium editor require 140px + the 45px of padding
+  can't seem to remove the padding and give it 140px
+  it must be scrolling by itself */
+body.builder-mode .section:nth-child(2).section-layout-sequence .foreground {
+  min-height: 195px;
+  padding-bottom: 55px;
+}
+
+.section-layout-sequence .medium-editor-placeholder .block::after {
+  opacity: 1;
+  margin-top: 30px;
+  transition: none;
+  -webkit-transition: none;
+}

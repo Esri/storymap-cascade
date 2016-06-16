@@ -1,0 +1,29 @@
+.discover {
+  width: 100%;
+  text-align: center;
+}
+
+.discover strong {
+  display: inline-block;
+  margin: 20px 0 15px 0;
+  font-size: 1.5em;
+  color: #FFF;
+}
+
+.discover table {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.discover td {
+  vertical-align: top;
+  width: 25%;
+}
+
+.discover-item img {
+  max-width: 70%;
+}
+
+body.mobile .discover-item img {
+  max-width: 90%;
+}

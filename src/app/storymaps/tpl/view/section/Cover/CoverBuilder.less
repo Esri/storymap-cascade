@@ -1,0 +1,167 @@
+.section-layout-cover {
+  font-family: 'open_sans', sans-serif;
+
+  .scroll-invite {
+    left: 90px !important;
+    width: calc(~"100% - 180px") !important;
+  }
+
+  &.hide-scroll-invite .scroll-invite {
+    display: none;
+  }
+
+  .cover-title,
+  .cover-subtitle {
+    outline: none;    
+
+    &:hover:not(:focus):not(.title-error) {
+      border: 2px solid rgba(241, 248, 253, 0.14);
+    }
+  }
+
+  /*
+   * Title
+   */
+
+   .cover-title[contenteditable=true]:empty {
+     font-size: 45px;
+     line-height: 57px;
+     color: #DADADA;
+     margin: auto;
+     width: 90%;
+
+     border: 2px solid rgba(241, 248, 253, 0.14);
+   }
+
+  .cover-title[contenteditable=true]:not(:focus):empty:before {
+    display: block;
+    content: attr(placeholder-line1) '\a' attr(placeholder-line2);
+    white-space: pre;
+  }
+
+  .cover-title[contenteditable=true]:focus {
+    font-size: 7em;
+    line-height: 115px;
+  }
+
+  .cover-title.title-error {
+    border: 2px solid rgba(228, 80, 80, 1.0);
+    box-shadow: 0 0 6px 2px rgba(228, 80, 80, 0.6) inset;
+  }
+
+  /*
+  would be what you want, placeholder disapear on click but creates other issues
+  .cover-title[contenteditable=true]:focus:before {
+    display: none;
+  }
+  */
+
+  /*
+
+  TODO: Attempt to get a blinking cursor when the field is not selected
+  Should probably just make it red when there is no title
+
+  .cover-title::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    border-left: 1px solid #A00;
+    animation: blink 1s infinite;
+    -webkit-animation: blink 1s infinite;
+  }
+
+  .cover-title-mock-cursor {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+
+    width: 1px;
+    height: 49px;
+    border-left: 1px solid #A00;
+
+    animation: blink 1s infinite;
+    -webkit-animation: blink 1s infinite;
+  }
+
+  .cover-title[contenteditable=true]:empty ~ .cover-title-mock-cursor {
+    display: block;
+  }
+
+  .cover-title[contenteditable=true]:focus ~ .cover-title-mock-cursor {
+    display: none;
+  }
+
+  @-webkit-keyframes blink {
+    0%, 49.9%, 100%   { opacity: 0; }
+    50%, 99.9% { opacity: 1; }
+  }
+  */
+
+  /*
+   * Subtitle
+   */
+
+  .cover-subtitle[contenteditable=true]:empty {
+     font-size: 18px;
+     line-height: 32px;
+     color: #d4d4d4;
+     width: 90%;
+   }
+
+  .cover-subtitle[contenteditable=true]:not(:focus):empty:before{
+    display: block;
+    content: attr(placeholder);
+  }
+
+  /*
+   * Media placeholder
+   */
+
+  .cover-media-placeholder {
+    position: absolute;
+    width: 100%;
+
+    text-align: center;
+    color: #000;
+    text-shadow: none;
+
+    &.active {
+      display: block;
+    }
+
+    &:hover {
+      opacity: 0.9;
+    }
+
+    .cover-media-placeholder-wrapper {
+      display: inline-block;
+      background-color: #CCC;
+      border-radius: 2px;
+      padding: 5px 10px;
+      margin-top: 50px;
+      cursor: pointer;
+
+      .ph-icon-media {
+        font-size: 50px;
+      }
+    }
+  }
+
+  /*
+   * Media
+   */
+
+  .media-cfg-invite,
+  .media-cfg-panel {
+    pointer-events: all;
+  }
+
+  .media-cfg-panel {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+}

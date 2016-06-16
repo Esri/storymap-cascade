@@ -1,0 +1,218 @@
+@import "../../core/Variables";
+
+.story-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  width: 100%;
+  height: 50px;
+
+  padding: 5px;
+
+  z-index: 999;
+  background-color: rgba(0,0,0,1);
+
+  -webkit-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.75);
+  box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.75);
+
+  -moz-transition: background 1s linear;
+  -webkit-transition: background 1s linear;
+  -o-transition: background 1s linear;
+  transition: background 1s linear;
+
+  font-family: 'open_sans', sans-serif;
+}
+
+body.builder-mode .story-header {
+  left: @builder-panel-width;
+  width: calc(100% ~"-" @builder-panel-width);
+}
+
+.story-header.compact {
+  background-color: rgba(0,0,0,0);
+  -webkit-box-shadow: inherit;
+  -moz-box-shadow: inherit;
+  box-shadow: inherit;
+}
+
+.logo-title-container {
+  display: flex;
+  flex: 0 1 auto;
+  align-items: center;
+  max-width: 75%;
+  min-width: 0;
+}
+
+/*
+ * Logo
+ */
+
+.story-header .logo-wrapper {
+  flex: 0 1 auto;
+  margin-right: 4px;
+}
+
+.story-header .logoLink {
+  display: block;
+  -moz-transition: background 1s ease-in;
+  -webkit-transition: background 1s ease-in;
+  -o-transition: background 1s ease-in;
+  transition: background 1s ease-in;
+}
+
+.story-header .logoImg {
+  max-width: 210px;
+  max-height: 42px;
+}
+
+/* TODO: only for esri logo */
+.story-header.compact .logoImg {
+  /*background-position-y: -0;*/
+  -webkit-filter: drop-shadow(0px 0px 3px #000);
+  filter: drop-shadow(0px 0px 3px #000);
+}
+
+/*
+ * Title
+ */
+
+.story-header .title {
+  font-size: 2.1em;
+  height: 42px;
+  line-height: 38px;
+  margin-left: 14px;
+  -moz-transition: opacity 1s linear;
+  -webkit-transition: opacity 1s linear;
+  -o-transition: opacity 1s linear;
+  transition: opacity 1s linear;
+  color: #FFF;
+  opacity: 1;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.story-header.compact .title {
+  opacity: 0;
+}
+
+/*
+ * Edit button
+ */
+
+.header-edit-button {
+  display: none;
+  margin-right: 8px;
+
+  .header-edit-icon {
+    margin-right: 6px;
+  }
+
+  .header-edit-close {
+    margin-left: 5px;
+    cursor: pointer;
+    pointer-events: all;
+  }
+}
+
+body.mobile-view .header-edit-button {
+  display: none !important;
+}
+
+/*
+ * Link
+ */
+.story-header .linkContainer {
+  margin-right: 8px;
+  vertical-align: 1px;
+
+  .link {
+    color: inherit;
+  }
+}
+
+.story-header .link:hover {
+  color: #ACACAC;
+}
+
+/*
+ * Share
+ */
+
+.story-header .share {
+  display: flex;
+  align-items: center;
+  flex: 0 0 auto;
+  color: #CECECE;
+}
+
+.story-header.compact .share {
+  color: #FFF;
+  text-shadow: 0 0 8px #000;
+}
+
+.story-header .share-btn {
+  display: none;
+  font-size: 1.2em;
+  cursor: pointer;
+  padding-right: 2px;
+  opacity: 0.9;
+
+  &.share-disabled {
+    pointer-events: none;
+    opacity: 0.5;
+  }
+}
+
+.story-header .share-btn.active {
+  display: inline-block;
+}
+
+.story-header .share-btn:hover {
+  opacity: 1;
+}
+
+.tooltip.custom-share-tooltip {
+  opacity: 1;
+}
+
+/*
+  Responsive
+*/
+
+body.mobile-view .story-header .linkContainer {
+  display: none;
+}
+
+body.mobile-view .story-header .logo-title-container {
+  max-width: 90%;
+}
+
+
+/*
+ * Refugee
+ */
+
+body.mobile-view .story-header:not(.compact) .logo-wrapper {
+  display: none;
+}
+
+body.mobile-view .story-header .title {
+  font-size: 1.3em;
+  margin-left: 5px;
+  transition: initial;
+}
+
+body.mobile-view .story-header .shareIcon {
+  vertical-align: 1px;
+}
+
+body.custom-story-usgs .story-header.compact .logoImg {
+  -webkit-filter: drop-shadow(0px 0px 5px rgba(255,255,255,0.8));
+}

@@ -1,0 +1,70 @@
+// ┌─────────────────┐
+// │ Buttons: Custom │
+// └─────────────────┘
+
+// Link normally uses gray. This rule forces btn-link to always use the color defined for links.
+.btn {
+  transition: all .25s ease;
+}
+
+.btn-link {
+  color: $link-color !important;
+}
+
+.btn-group.open {
+  .btn-default {
+    background-color: $Calcite_Blue_100;
+  }
+  .dropdown-toggle {
+    box-shadow: none;
+  }
+}
+
+.btn-default {
+  &:hover, :active {
+    background-color: $Calcite_Highlight_Blue_400;
+    color: $Calcite_Gray_050;
+  }
+  &:focus {
+    background-color: $Calcite_Gray_050;
+    color: $link-color;
+  }
+}
+
+.btn-primary {
+  &:hover {
+    background-color: $Calcite_Highlight_Blue_400;
+    border-color: $Calcite_Highlight_Blue_400;
+  }
+}
+
+.btn-success {
+  &:hover {
+    background-color: $Calcite_Green_a200;
+    border-color: $Calcite_Green_a200;
+  }
+}
+
+.btn-info {
+  &:hover {
+    background-color: $Calcite_Highlight_Blue_400;
+    color: $Calcite_Gray_050;
+  }
+}
+
+.btn-warning {
+  &:hover {
+    background-color: $Calcite_Yellow_a150;
+    color: $Calcite_Gray_650;
+  }
+}
+
+.btn-danger {
+  &:hover {
+    background-color: $Calcite_Red_a200;
+  }
+}
+
+.btn-default.active {
+  background-color: $Calcite_Blue_100;
+}

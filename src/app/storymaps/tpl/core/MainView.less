@@ -1,0 +1,86 @@
+@import "Variables";
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body.error {
+  position: fixed;
+}
+
+html, body, h1, h2, h3, h4, h5, h6, p, ul, form {
+  margin: 0;
+}
+
+body {
+  font-family: 'open_sans', sans-serif;
+  line-height: 180%;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'open_sans', sans-serif;
+  font-weight: inherit;
+}
+
+
+h1 {
+  /*margin-top: 0 !important;*/
+}
+
+p {
+  line-height: 180%;
+}
+
+/*
+h1 {
+  font-size: 7em;
+  line-height: 115%;
+}
+
+h2 {
+  font-size: 1.8em;
+  line-height: 145%;
+}
+
+h3 {
+  font-size: 2.2em;
+  line-height: 135%;
+}
+
+h4 {
+  font-size: 2em;
+}
+*/
+
+iframe {
+  border: none;
+}
+
+/*
+ * Sections container
+ */
+
+.sections {
+  font-family: 'lora', serif;
+  width: 100%;
+  /*
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  */
+}
+
+body.builder-mode .sections {
+  margin-left: @builder-panel-width;
+  width: calc(100% ~"-" @builder-panel-width);
+}
+
+/*
+ * Hide sign in
+ */
+
+.esriSignInDialog, .dijitDialogUnderlayWrapper {
+  display: none !important;
+}

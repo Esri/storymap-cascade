@@ -1,0 +1,37 @@
+{
+  "name": "cascade-storytelling-template-js-dev",
+  "version": "1.0.0",
+  "homepage": "",
+  "authors": [
+    "Gregory L'Azou <glazou@esri.com>"
+  ],
+  "license": "ApacheV2",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "react": "^15.0.2",
+    "react-redux": "https://cdnjs.cloudflare.com/ajax/libs/react-redux/4.4.1/react-redux.js",
+    "redux": "https://cdnjs.cloudflare.com/ajax/libs/redux/3.3.1/redux.min.js",
+    "calcite-bootstrap": "https://github.com/Esri/calcite-bootstrap/releases/download/v0.3.2/calcite-bootstrap.zip",
+    "fluidbox": "^2.0.3",
+    "jquery": "^2.2.3",
+    "froogaloop": "^1.0.0",
+    "zero-clipboard": "https://github.com/zeroclipboard/zeroclipboard/archive/v2.2.0.zip",
+    "progress.js": "https://github.com/usablica/progress.js.git",
+    "youtube-api": "https://www.youtube.com/iframe_api",
+    "fastclick": "^1.0.6",
+    "medium-editor": "^5.16.0",
+    "font-awesome": "^4.6.1",
+    "Sortable": "angular-ng-sortablejs#^1.4.2",
+    "react-bootstrap": "^0.29.4",
+    "loader": "https://github.com/fengyuanchen/loader/archive/eb81471c8ac608fef799e3b90b8c2ead6ff62a82.zip",
+    "resample-hermite": "https://github.com/viliusle/Hermite-resize/archive/ede593b94d8fc9a33141229dc72fd334c7563baf.zip",
+    "babel-polyfill": "^0.0.1",
+    "jquery-mousewheel": "^3.1.13"
+  }
+}

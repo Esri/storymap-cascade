@@ -1,0 +1,65 @@
+// ┌────────────────┐
+// │ Calcite Header │
+// └────────────────┘
+
+.cal-header {
+	position: relative;
+	padding: 30px 15px 0px 15px;
+	margin-bottom: $calcite-header-margin-bottom; 
+	color: $Calcite_Gray_050;
+	background-color: $brand-primary;
+	// background: url('../images/header-topo.png') no-repeat;
+    // background-repeat: no-repeat;
+    // background-position: center top;
+    // background-size: cover;
+
+	h1 {
+		margin-top: 0;
+		font-size: $font-size-h1;
+		font-weight: 300;
+		line-height: 1.25;
+		@media (max-width: $screen-sm) {
+		    font-size: $font-size-large;
+		    padding-left: 0px;
+		}
+	}
+	h2 {
+		margin-top: 0;
+		font-size: 1.6em;
+		font-weight: 400;
+		line-height: 1;
+		@media (max-width: $screen-sm) {
+		    font-size: $font-size-large;
+		    padding-left: 0px;
+		}
+	}
+
+	// Special styles for tabs that are in the header
+	.nav-tabs {
+	  border-bottom: 1px solid $calcite-tabs-border-color;
+	  > li {
+	    > a {
+	      margin-right: 4px;
+	      color: $Calcite_Gray_050;
+	      background: $transparent-background;
+	      &:hover {
+			background: $transparent-background-hover;
+	        border-color: $calcite-tabs-link-hover-border-color $calcite-tabs-link-hover-border-color $calcite-tabs-border-color $calcite-tabs-link-hover-border-color;
+	      }
+	    }
+
+	    &.active > a {
+	      &,
+	      &:hover,
+	      &:focus {
+	        color: $calcite-tabs-active-link-color;
+	        background-color: $calcite-tabs-active-link-bg;
+	        border: 1px solid transparent;
+	        border-bottom-color: transparent;
+	        cursor: default;
+	      }
+	    }
+	  }
+	}
+
+}

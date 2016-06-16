@@ -1,0 +1,84 @@
+@import "../../variables";
+
+.mp-sidepanel {
+
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  .content-toggle {
+    width: 100%;
+    font-size: inherit;
+
+    label {
+      padding: 2px 6px;
+      font-size: inherit;
+      word-break: break-all;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+  }
+
+  .divider {
+    width: 80%;
+    text-align: center;
+    border-bottom: 1px solid @gray;
+    margin: 10px auto 25px;
+    line-height: 0;
+
+    span {
+      color: @gray;
+      background: #fff;
+      padding: 0 10px;
+    }
+  }
+
+  .photo-input {
+    flex-grow: 1;
+    position: relative;
+
+    .drag-area {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  @media (min-width: (@screen-sm + 1)) {
+    .content-toggle > .btn {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      text-align: left;
+    }
+
+    .content-toggle > .btn + .btn {
+      margin-left: 0;
+      margin-top: -1px;
+    }
+  }
+
+  @media (max-width: @screen-sm) {
+
+    .photo-input {
+      flex-grow: 0;
+    }
+
+    .photo-input .drag-area {
+      position: static;
+      height: auto;
+      width: auto;
+    }
+
+    .col-xs-6 {
+      // override .btn-block
+      width: 49%;
+    }
+    .col-xs-6:nth-of-type(1) {
+      margin-left: 2%;
+    }
+
+  }
+
+}

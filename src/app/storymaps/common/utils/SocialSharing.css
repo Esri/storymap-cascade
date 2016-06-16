@@ -1,0 +1,45 @@
+.shareIcon {
+	display: none;
+	cursor: pointer;
+	margin-left: 0;
+	color: inherit;
+	vertical-align: 0px;
+}
+
+.shareIcon.active {
+	display: inline-block;
+}
+
+.shareIcon.disabled {
+	cursor: default;
+	opacity: 0.5 !important;
+}
+
+.shareBtns > .shareIcon ~ .shareIcon {
+	margin-left: 4px;
+}
+
+.shareIcon:hover {
+	color: #ACACAC;
+}
+
+.share_bitly {
+	vertical-align: 1px;
+	margin-left: 2px;
+}
+.shareIcon[class^="icon-"]:before, .shareIcon[class*=" icon-"]:before {
+	font-size: 120%;
+	margin: 0 !important;
+}
+
+.social .popover-title {
+	display: none;
+}
+
+#bitlyInput {
+	font-family: sans-serif !important;
+}
+
+#bitlyInput::-ms-clear {
+	display: none;
+}

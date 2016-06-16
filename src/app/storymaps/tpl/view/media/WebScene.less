@@ -1,0 +1,87 @@
+/*
+ * Simple aspect ratio for the media height
+ */
+
+.block-type-webscene,
+.background-type-webscene {
+  .scene {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+  }
+
+  .block-media {
+    padding-top: 50%;
+  }
+
+  &.block-size-small .block-media {
+    padding-top: 30%;
+  }
+
+  &.block-size-large .block-media {
+    padding-top: calc(~"100vh - 120px");
+  }
+
+  /*
+   * Interaction
+   */
+
+  .esri-ui-bottom-right {
+    margin-right: -7px;
+  }
+
+  .interaction-container {
+    bottom: 23px;
+  }
+
+  &.interaction-button:not(.builder-config-open) .esri-ui-bottom-right {
+    bottom: 35px;
+  }
+
+  &.interaction-disabled,
+  &.interaction-button:not(.interaction-enabled) {
+    .scene .esri-compass,
+    .scene .esri-zoom {
+      display: none;
+    }
+  }
+
+  &.builder-config-open {
+    .scene .esri-compass,
+    .scene .esri-zoom {
+      display: inherit !important;
+    }
+  }
+}
+
+.background-type-webscene {
+  .scene {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+/*
+ * Customization
+ */
+
+.scene .esri-ui-bottom-right {
+  flex-direction: column;
+}
+
+.scene .esri-compass {
+  margin-bottom: 15px;
+}
+
+/*
+ * Error
+ */
+
+.background-type-webscene .media-error {
+  top: 200px;
+  bottom: inherit;
+  width: 90%;
+  height: 80px;
+}

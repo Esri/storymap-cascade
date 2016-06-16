@@ -1,0 +1,95 @@
+/*
+ * Simple aspect ratio for the media height
+ */
+
+.block-type-video {
+  position: relative;
+
+  .video {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    width: 100%;
+    height: 100%;
+  }
+
+  .block-media {
+    padding-top: 50%;
+  }
+
+  &.block-size-small .block-media {
+    padding-top: 30%;
+  }
+
+  &.block-size-large .block-media {
+    padding-top: 70%;
+  }
+}
+
+/*
+ * Attempt to be full CSS. Should work if can set one of those two rules depending on screen ratio
+ * first for portrait screen, second for landscape
+ *
+ * so this still require JS JS but it's way less intensive and could only be triggered when screen 'orientation' change
+.background-type-video {
+  .video {
+    position: absolute;
+
+    width: calc(~"16/9*100vh");
+    min-width: 100%;
+    min-height: 100vh;
+    left: calc(~"100vw/2 - 16/9*100vh/2");
+
+    top: calc(~"100vh/2 - 3/4*100vw/2");
+    left: auto;
+    width: 100vw;
+    height: calc(~"3/4*100vh");
+  }
+}
+*/
+
+/*
+ * Background
+ */
+
+.video-viewport {
+  position: absolute;
+  top: 0;
+  overflow: hidden;
+  /*z-index: -1;*/
+}
+
+.background .video-viewport,
+.background .video-viewport iframe {
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/*
+ * Custom player controls
+ */
+
+.player-controls {
+  position: absolute;
+  top: 35px;
+  left: 200px;
+}
+
+/*
+ * Generic
+ */
+
+.video {
+  border: 0;
+}
+
+/*
+ * Responsive
+ */
+
+body.mobile-view .block-type-video .block-media {
+  padding-top: 50%;
+}

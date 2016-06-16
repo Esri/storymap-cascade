@@ -1,0 +1,55 @@
+/*
+ * Simple aspect ratio for the media height
+ */
+
+.block-webpage {
+  .webpage {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    width: 100%;
+    height: 100%;
+  }
+
+  .block-media {
+    padding-top: 50%;
+  }
+
+  &.block-size-small .block-media {
+    padding-top: 30%;
+  }
+
+  &.block-size-large .block-media {
+    padding-top: calc(~"100vh - 120px");
+  }
+
+  .interaction-container {
+    bottom: 5px;
+    right: 20px;
+  }
+}
+
+.background-type-webpage {
+  width: 100%;
+  height: 100%;
+
+  .media-loading {
+    z-index: -1;
+  }
+
+  .webpage-container {
+    width: 100%;
+    height: 100%;
+  }
+
+  .webpage {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.scroll-off .webpage {
+  pointer-events: none;
+}

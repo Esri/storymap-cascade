@@ -1,0 +1,13 @@
+{
+  "name": "resample-hermite",
+  "_cacheHeaders": {
+    "ETag": "\"ede593b94d8fc9a33141229dc72fd334c7563baf\"",
+    "Content-Length": "4293",
+    "Content-Type": "application/zip",
+    "Content-Disposition": "attachment; filename=Hermite-resize-ede593b94d8fc9a33141229dc72fd334c7563baf.zip"
+  },
+  "_release": "e-tag:ede593b94",
+  "_source": "https://github.com/viliusle/Hermite-resize/archive/ede593b94d8fc9a33141229dc72fd334c7563baf.zip",
+  "_target": "*",
+  "_originalSource": "https://github.com/viliusle/Hermite-resize/archive/ede593b94d8fc9a33141229dc72fd334c7563baf.zip"
+}

@@ -1,0 +1,84 @@
+.image-gallery {
+  .image-gallery-item {
+    .builder-ui.hidden {
+      display: none;
+    }
+    .builder-ui.ig-item {
+      display: flex;
+      justify-content: space-between;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 999;
+      background: rgba(0,0,0,0.7);
+    }
+
+    .builder-ui.ig-add {
+      display: none;
+      cursor: pointer;
+      position: absolute;
+      right: -45px;
+      width: 40px;
+      height: 40px;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 999;
+      border: 2px solid black;
+      border-radius: 20px;
+      opacity: 0.7;
+
+      &:hover {
+        opacity: 1;
+
+        .ig-add-icon {
+          color: black;
+        }
+      }
+
+      &.disabled {
+        cursor: default;
+        border-color: #666;
+
+        &:hover {
+          opacity: 0.7;
+        }
+
+        .ig-add-icon {
+          color: #666;
+        }
+
+        .ig-action-icon {
+          cursor: default;
+        }
+      }
+    }
+
+    &:last-child {
+      .builder-ui.ig-add {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+
+    .ig-action-icon {
+      color: white;
+      cursor: pointer;
+      font-size: 24px;
+      padding: 10px;
+      opacity: 0.9;
+
+      &:hover {
+        opacity: 1;
+      }
+
+      &.ig-add-icon {
+        color: black;
+        padding: 0;
+        top: -1px;
+        left: 1px;
+      }
+    }
+  }
+}

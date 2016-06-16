@@ -1,0 +1,83 @@
+@import "../../variables";
+
+
+.mp-browse-panel-containers .browse-panel-container.url-container {
+  padding: 10% 50px;
+  vertical-align: middle;
+  display: block;
+
+  .help-section {
+    color: @gray;
+    display: flex;
+    line-height: 1.5em;
+
+
+    .media-icons {
+      flex-shrink: 0;
+      font-size: 36px;
+      padding-right: 10px;
+      margin-right: 30px;
+      border-right: 1px solid @gray;
+
+      .fa, .www {
+        margin-right: 15px;
+      }
+
+      .www {
+        font-size: 30px;
+      }
+    }
+  }
+
+  .help-title {
+    color: @gray;
+    font-weight: bold;
+    font-size: 1.5em;
+  }
+
+  .alert {
+    margin: 12px 0;
+
+    .block-span {
+      display: block;
+    }
+  }
+
+  .search {
+    margin: 1.5em 0;
+
+    .form-control {
+      height: 6em;
+      resize: none;
+    }
+
+    .input-group-addon {
+      font-size: 1.5em;
+    }
+
+    // apparently need these separated. italicize placeholder.
+    ::-webkit-input-placeholder {
+      color: @gray-lighter;
+      padding-top: 1.5em;
+      font-style: italic;
+    }
+    ::-moz-placeholder {
+      color: @gray-lighter;
+      padding-top: 1.5em;
+      font-style: italic;
+    }
+    :-moz-placeholder {
+      color: @gray-lighter;
+      padding-top: 1.5em;
+      font-style: italic;
+    }
+    :-ms-input-placeholder {
+      color: @gray-lighter;
+      padding-top: 1.5em;
+      font-style: italic;
+    }
+  }
+
+
+
+}

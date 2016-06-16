@@ -1,0 +1,378 @@
+@import "../../../core/Variables";
+
+.view-panel {
+  background: #333;
+  height: 125px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+
+  &:before {
+    content: '';
+    height: 10px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.4) 100%);
+    z-index: 999;
+  }
+}
+
+.section-layout-cover {
+  height: 100vh;
+}
+
+/* Prevent the cover from appearing when there is an issue in an animation */
+.section-layout-cover:not(.active) {
+  visibility: hidden;
+}
+
+.section-layout-cover.blur,
+.section-layout-cover.delay {
+  height: 150vh;
+}
+
+.section-layout-cover.scale {
+  height: 125vh;
+}
+
+.section-layout-cover.partial-page {
+  height: 70vh;
+}
+
+.section-layout-cover.curtain {
+  box-shadow: 1px 1px 10px 2px #444;
+}
+
+/*
+ *  Cover vertical/horizontal centering
+ *  - http://www.smashingmagazine.com/2013/08/09/absolute-horizontal-vertical-centering-css/4/
+ *  - http://codepen.io/shshaw/full/gEiDt#Comparison-Table
+ *  - https://css-tricks.com/centering-in-the-unknown/
+ */
+.section-layout-cover .wrapper {
+  text-align: center;
+  /* May want to do this if there is risk the container may be narrower than the element inside */
+  /*white-space: nowrap;*/
+  height: 100%;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  overflow: hidden;
+}
+
+body.builder-mode .section-layout-cover .wrapper {
+  width: calc(100% ~"-" @builder-panel-width);
+}
+
+.section-layout-cover.curtain .wrapper {
+  position: relative;
+}
+
+.section-layout-cover .wrapper:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  /*margin-right: -0.25em;*/ /* Adjusts for spacing */
+}
+
+.section-layout-cover.partial-page .wrapper {
+  height: 70%;
+}
+
+.section-layout-cover .foreground {
+  display: inline-block;
+  vertical-align: middle;
+  width: calc(~"100% - 20px");
+  text-align: center;
+  color: #FFF;
+  margin-top: -50px;
+  text-shadow: 0 0 8px rgba(0, 0, 0, 0.95);
+}
+
+.foo {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.section-layout-cover .cover-title {
+  font-size: 7em;
+  line-height: 1.2;
+  border: 2px solid transparent;
+}
+
+.section-layout-cover .cover-subtitle {
+  margin-top: 30px;
+  border: 2px solid transparent;
+}
+
+.section-layout-cover .cover-title, .section-layout-cover .cover-subtitle {
+  max-width: 100%;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+/*.section-layout-cover .foreground h1, .section-layout-cover .foreground h2 {
+  max-width: 100%;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}*/
+
+.section-layout-cover.partial-page .scroll-invite-btn {
+  display: none;
+}
+
+.section-layout-cover .author-info {
+  opacity: 0;
+}
+
+
+/*
+ * Cover loading
+ */
+
+.section-layout-cover.scale .background,
+.section-layout-cover.blur .background,
+.section-layout-cover.delay .background,
+.section-layout-cover.curtain .background {
+  opacity: 0;
+}
+
+.section-layout-cover.scale .background,
+.section-layout-cover.blur .background {
+  transform: scale(1.1);
+}
+
+.section-layout-cover.scale .foreground,
+.section-layout-cover.blur .foreground {
+  transform: translateY(-20px);
+  opacity: 0;
+}
+
+.section-layout-cover.delay .cover-title,
+.section-layout-cover.curtain .cover-title {
+  opacity: 0;
+}
+
+.section-layout-cover.delay .cover-subtitle,
+.section-layout-cover.curtain .cover-subtitle {
+  opacity: 0;
+}
+
+.fade-in-background {
+  animation: fade-in-background 3s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fade-in-background {
+  100% {
+    opacity: 1;
+  }
+}
+
+ .scale-out {
+   animation: 1.5s scale-out;
+   animation-timing-function: ease;
+   animation-fill-mode: forwards;
+ }
+
+ @keyframes scale-out {
+   0% {
+     transform: scale(1.1);
+     opacity: 0;
+   }
+   100% {
+     transform: scale(1);
+     opacity: 1;
+   }
+ }
+
+ .slide-text {
+   animation: 1.5s slide-text;
+   animation-timing-function: ease;
+   animation-fill-mode: forwards;
+ }
+
+ @keyframes slide-text {
+   100% {
+     opacity: 1;
+     transform: translateY(0);
+   }
+ }
+
+ .fade-in-cover-title {
+   animation: fade-in-cover-title 2s;
+ }
+
+ @keyframes fade-in-cover-title {
+   100% {
+     opacity: 1;
+   }
+ }
+
+ .fade-in-cover-subtitle {
+   animation: fade-in-cover-subtitle 2s;
+ }
+
+ @keyframes fade-in-cover-subtitle {
+   100% {
+     opacity: 1;
+   }
+ }
+
+
+/*
+ * Scroll invite
+ */
+
+.section-layout-cover .scroll-invite {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  padding: 15px;
+  text-align: center;
+}
+
+body.mobile-view .section-layout-cover .scroll-invite {
+  padding-bottom: 10px;
+}
+
+.section-layout-cover .scroll-invite-btn {
+  height: 52px;
+  /* TODO broken in dev */
+  background: url('../../../../../../../resources/tpl/viewer/icons/scroll-invite.png');
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-size: 130px 52px;
+  cursor: pointer;
+
+  -webkit-animation-name: blinker;
+  -webkit-animation-duration: 2.5s;
+  -webkit-animation-timing-function: cubic-bezier(.5, 0, 1, 1);
+  -webkit-animation-iteration-count: infinite;
+
+  -moz-animation-name: blinker;
+  -moz-animation-duration: 2.5s;
+  -moz-animation-timing-function: cubic-bezier(.5, 0, 1, 1);
+  -moz-animation-iteration-count: infinite;
+
+  animation-name: blinker;
+  animation-duration: 2.5s;
+  animation-timing-function: cubic-bezier(.5, 0, 1, 1);
+  animation-iteration-count: infinite;
+}
+
+@-moz-keyframes blinker {
+    0% { opacity: 1.0; }
+    50% { opacity: 0.6; }
+    100% { opacity: 1.0; }
+}
+
+@-webkit-keyframes blinker {
+    0% { opacity: 1.0; }
+    50% { opacity: 0.6; }
+    100% { opacity: 1.0; }
+}
+
+@keyframes blinker {
+    0% { opacity: 1.0; }
+    50% { opacity: 0.6; }
+    100% { opacity: 1.0; }
+}
+
+
+/*
+ * Responsive
+ */
+
+body.mobile-view .section-layout-cover .cover-title {
+   font-size: 3em;
+}
+
+body.mobile-view .section-layout-cover .cover-subtitle {
+   font-size: 1.2em;
+   width: 100%;
+   margin-top: 10px;
+}
+
+body.mobile-view .section-layout-cover .cover-title, body.mobile-view .section-layout-cover .cover-subtitle {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+body.mobile-view .section-layout-cover .author-info {
+  bottom: 70px;
+}
+
+/*
+ * Credits
+ */
+
+.section-layout-cover .cover-credits-left,
+.section-layout-cover .cover-credits-right {
+  position: absolute;
+  bottom: 0px;
+  font-size: 1em;
+  opacity: .65;
+  color: #FFF;
+
+  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  word-wrap: break-word;
+  text-align: left;
+}
+
+.section-layout-cover .cover-credits-left {
+  left: 5px;
+}
+
+.section-layout-cover .cover-credits-right {
+  right: 5px;
+}
+
+body.mobile-view .section-layout-cover .cover-credits-left {
+  bottom: 20px;
+}
+
+body.mobile-view .section-layout-cover .cover-credits-right {
+  bottom: 0;
+  left: 5px;
+  right: inherit;
+}
+
+/*
+ * Builder
+ */
+
+.cover-media-placeholder {
+  display: none;
+}
+
+.title-error-container {
+  position: absolute;
+  top: -65px;
+  left: 0;
+  right: 0;
+  z-index: 0;
+}
+
+.title-error-message {
+  display: inline-block;
+  cursor: default;
+  background: rgba(228,80,80, 0.8);
+  font-size: 18px;
+  padding: 10px 20px;
+  line-height: 1.3;
+}

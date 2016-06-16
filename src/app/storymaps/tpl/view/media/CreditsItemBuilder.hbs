@@ -1,0 +1,23 @@
+<li class="cr-item builder{{#if empty}} cr-empty{{/if}}{{#if incomplete}} cr-incomplete{{/if}}">
+  <div class="cr-item-main">
+    <div class="cr-input-container first">
+      <div class="cr-validation-warning cr-hidden">
+        {{text.warning}}
+      </div>
+      <div class="cr-item-input cr-content" contenteditable="true" placeholder="{{text.content}}">{{label}}</div>
+    </div>
+    <span class="cr-pipe"></span>
+    <div class="cr-input-container">
+      <div class="cr-item-input cr-source{{#if link}} cr-link{{/if}}" contenteditable="true" placeholder="{{text.source}}" data-toggle="popover" data-link="{{link}}">{{source}}</div>
+      <div class="cr-item-remove cr-hidden">
+        <i class="cr-remove-icon fa fa-trash"></i>
+      </div>
+  </div>
+  <div class="cr-builder-ui cr-hidden">
+    <div class="cr-add-line">
+      <div class="cr-add-button cr-hidden">
+        <i class="cr-add-icon fa fa-plus"></i>
+      </div>
+    </div>
+  </div>
+</li>

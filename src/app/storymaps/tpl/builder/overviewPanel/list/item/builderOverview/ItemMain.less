@@ -1,0 +1,96 @@
+@import './../../../Variables';
+
+.overlay-gradient {
+  background: -webkit-linear-gradient(top, white 0%, white 50%, rgba(255,255,255,0) 100%);
+  background: linear-gradient(to bottom, white 0%, white 50%, rgba(255, 255, 255, 0) 100%);
+}
+
+.op-item-main.builder-overview {
+  display: block;
+  width: 0; /* Prevents the white-space:nowrap property below from making the whole container larger */
+  overflow: hidden;
+  background-color: #CCC;
+
+  &.tall {
+    height: @item-tall-height;
+  }
+
+  &.short {
+    height: @item-small-height;
+    position: relative;
+
+    .item-label {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 0;
+    }
+  }
+
+  .item-label {
+    color: @item-overlay-text-color;
+    text-align: center;
+    font-size: @item-label-size;
+    text-shadow: 1px 1px 7px black;
+    padding: 0 @item-text-side-padding;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    word-wrap: break-word;
+    max-height: 42px;
+    line-height: @item-overlay-line-height;
+  }
+
+  .item-icon {
+    line-height: 0;
+    padding-left: 5px;
+    color: @icon-color;
+    display: block;
+
+    .icon {
+      vertical-align: top;
+    }
+  }
+
+  .title-bar {
+    background: @overlay-background-color;
+    color: @item-overlay-text-color;
+    padding: @item-text-top-padding @item-text-side-padding;
+
+    .icon {
+      vertical-align: middle;
+      margin-right: 12px;
+      margin-bottom: 4px;
+    }
+
+    .title {
+      display: inline-block;
+      vertical-align: middle;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+      width: 95%;
+    }
+  }
+
+  .text-overlay {
+    .overlay-gradient;
+    padding: @item-text-top-padding @item-text-side-padding 20px;
+  }
+
+  .item-text {
+    font-size: @item-text-size;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    max-height: 55px;
+    word-wrap: break-word;
+    line-height: @item-overlay-line-height;
+  }
+}

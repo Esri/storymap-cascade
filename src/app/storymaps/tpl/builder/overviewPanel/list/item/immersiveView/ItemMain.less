@@ -1,0 +1,29 @@
+@import './../../../Variables';
+
+.op-style-horizontal {
+  .op-item-main {
+    position: relative;
+    flex: 0 1 auto;
+    width: 140px;
+
+    .media-type {
+      position: absolute;
+      top: 0;
+      left: 0;
+      border-top: 55px solid @overlay-background-color;
+      border-right: 55px solid transparent;
+      height: 0;
+      width: 0;
+      z-index: 0;
+    }
+
+    .icon {
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      z-index: 0;
+      height: @item-icon-size;
+      width: auto;
+    }
+  }
+}

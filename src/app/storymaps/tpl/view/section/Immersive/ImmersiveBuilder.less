@@ -1,0 +1,52 @@
+.background-title h2 {
+  outline: none;
+  border: 2px solid transparent;
+}
+
+.background-title h2[contenteditable=true]:empty {
+  border: 1px dashed #AAA;
+  width: 400px;
+  margin: auto;
+  color: #AAA;
+  text-shadow: 0 0 8px rgba(0, 0, 0, 0.95);
+  border: 2px solid rgba(241, 248, 253, 0.94);
+}
+
+.background-title h2[contenteditable=true]:not(:focus):empty:before{
+  display: block;
+  content: attr(placeholder);
+}
+
+body.builder-mode .section-immersive .blocks {
+  width: 100%;
+  /* view panel + header + some margin */
+  max-height: calc(~"100vh - 125px - 50px - 50px");
+}
+
+.section-immersive .background .media-cfg-panel {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+}
+
+.section-immersive .foreground {
+  opacity: 1;
+
+  transition: all .5s ease-in-out;
+  -moz-transition: all .5s ease-in-out;
+  -webkit-transition: all .5s ease-in-out;
+
+  .img-gallery-invite {
+    display: none;
+  }
+}
+
+.section-immersive.hide-foreground .foreground {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.section-immersive .background-type-webmap.builder-config-open .esriSimpleSliderTL {
+  bottom: 220px;
+}

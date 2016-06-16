@@ -1,0 +1,37 @@
+@import './../../../Variables';
+
+.chosen {
+  .op-inline-add-container {
+    opacity: 0;
+  }
+}
+
+.op-inline-add-container {
+  display: flex;
+  flex: 0 0 auto;
+  width: 35px;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+
+  .add-button {
+    background: @icon-faded-color;
+    cursor: pointer;
+    width: 26px;
+    height: 26px;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: @icon-inverse-color;
+
+    &:hover {
+      background: @icon-color;
+    }
+
+    .icon {
+      top: -1px;
+      left: 1px;
+    }
+  }
+}

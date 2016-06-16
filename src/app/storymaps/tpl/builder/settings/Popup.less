@@ -1,0 +1,245 @@
+.hc-dialog {
+    .modal-body {
+      height: 450px;
+    }
+
+    .toggles {
+      display: flex;
+      border-bottom: 1px solid #333;
+      font-size: 18px;
+      height: 40px;
+      line-height: 40px;
+    }
+
+    .toggle {
+      flex-basis: 0;
+      flex-grow: 1;
+      flex-shrink: 1;
+      text-align: center;
+      background: #EEE;
+      cursor: pointer;
+    }
+}
+
+.toggle + .toggle {
+  margin-left: 5px;
+}
+
+.toggle.selected {
+  background: #333;
+  color: white;
+}
+
+.modal-tab {
+  display: none;
+
+  &.selected {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+}
+
+.hc-container {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+
+    &.header-container {
+        font-size: 18px;
+        margin-bottom: 20px;
+        flex: 0 0 auto;
+    }
+
+    &.content {
+        overflow-y: auto;
+    }
+
+    &.split {
+        padding: 20px 0;
+        align-items: center;
+
+        &:nth-child(n+2) {
+            border-top: 1px solid #EEE;
+        }
+    }
+}
+
+ul.hc-container {
+    padding-left: 0;
+    list-style-type: none;
+}
+
+.hc-row {
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+
+    &.item-title {
+        color: #777;
+        margin-bottom: 2px;
+    }
+}
+
+.hc-container.content .hc-row:nth-child(n+2) {
+    margin-top: 10px;
+}
+
+.hc-column {
+     display: flex;
+     flex: 1 1 auto;
+
+     &.first {
+         margin-right: 30px;
+     }
+
+     &.last {
+         flex: 0 0 190px;
+     }
+}
+
+.hc-check-label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0;
+    flex: 1 0 auto;
+}
+
+.hc-check-label-text {
+    flex: 1 1 auto;
+    width: 0;
+    font-weight: normal;
+    cursor: pointer;
+
+    &.truncated {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+}
+
+.hc-row.disabled .hc-check-label-text {
+    color: #AAA;
+}
+
+input.hc-checkbox {
+  cursor: pointer;
+  margin: 0 8px 0 0;
+
+  &.space {
+      margin: 0 15px 0 0;
+  }
+}
+
+.hc-text-input {
+    flex: 1 0 auto;
+    padding: 2px 8px;
+
+    &[disabled] {
+      color: #AAA;
+    }
+
+    &.truncated {
+        flex: 0 0 auto;
+    }
+}
+
+
+/* LOGO AND SHARING STYLES */
+
+.hc-item {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    width: 55%;
+
+    &:nth-child(n+2) {
+        margin-top: 20px;
+    }
+}
+
+.hc-item-container {
+    border: 1px solid #EEE;
+    display: flex;
+    flex: 1 0 auto;
+    height: 62px;
+    padding: 10px;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+}
+
+.hc-logo {
+    flex: 0 1 auto;
+    align-self: center;
+    max-height: 42px;
+    max-width: 210px;
+}
+
+.hc-action-icon-underlay {
+  background: black;
+  position: absolute;
+  z-index: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.hc-action-icon {
+    color: white;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 6px;
+    opacity: 0.9;
+
+    &:hover {
+      opacity: 1;
+    }
+}
+
+.hc-logo-button.hidden, .hc-logo.hidden, .hc-action-icon.hidden {
+   display: none;
+}
+
+.hc-intro {
+  font-size: 90%;
+  margin-bottom: 20px;
+}
+
+.hc-logo-upload-msg {
+  display: none;
+  margin-top: 5px;
+  padding: 5px 10px;
+  flex: 1 0 auto;
+
+  &.alert-success,
+  &.alert-warning,
+  &.alert-danger {
+    display: block;
+  }
+}
+
+
+/*
+* Responsive
+*/
+
+
+@media (max-height: 710px) {
+    .hc-dialog {
+      margin-top: 20px;
+      margin-bottom: 0;
+
+      .modal-body {
+        height: 400px;
+
+        .hc-container.split {
+          padding: 10px 0;
+        }
+      }
+    }
+}

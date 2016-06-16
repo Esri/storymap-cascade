@@ -1,0 +1,11 @@
+{
+  "name": "youtube-api",
+  "_cacheHeaders": {
+    "Content-Length": "745",
+    "Content-Type": "application/javascript"
+  },
+  "main": "index",
+  "_source": "https://www.youtube.com/iframe_api",
+  "_target": "*",
+  "_originalSource": "https://www.youtube.com/iframe_api"
+}

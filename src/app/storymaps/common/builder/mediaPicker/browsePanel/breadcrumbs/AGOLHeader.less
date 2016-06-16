@@ -1,0 +1,192 @@
+@import "../../variables";
+
+.agol-header {
+
+  height: 2.5em;
+  text-align: right;
+  padding-right: 40px;
+  margin-bottom: 10px;
+
+  @media (max-width: @screen-md) {
+    font-size: 12px;
+    padding-right: 20px;
+  }
+
+  @media (max-width: ((@screen-md + @screen-sm) / 2)) {
+    font-size: 11px;
+    padding-right: 0;
+  }
+
+
+  .btn {
+    border: 1px solid @gray-lighter;
+    line-height: 2em;
+    color: @gray;
+
+    &.active {
+      box-shadow: none;
+      color: @gray-darker;
+      border-color: @gray-darker;
+      box-shadow: inset 1px 1px 0 @gray-darker, inset -1px -1px 0 @gray-darker;
+      font-weight: bold;
+    }
+  }
+
+  .filter-toggle,
+  .filter-toggle .btn,
+  .sort-toggle,
+  .sort-toggle .btn {
+    height: 100%;
+  }
+
+  .vert-divider {
+    display: inline-block;
+    vertical-align: middle;
+    border-left: 1px solid @gray-lighter;
+    margin: 0 1em;
+    height: 100%;
+
+    @media (max-width: @screen-md) {
+      margin: 0 0.75em;
+    }
+    @media (max-width: ((@screen-md + @screen-sm) / 2)) {
+      margin: 0 0.5em;
+    }
+  }
+
+  .calendar-sort {
+
+    vertical-align: top;
+
+    .fa-angle-up,
+    .fa-angle-down,
+    .fa-chevron-up,
+    .fa-chevron-down,
+    .fa-caret-up,
+    .fa-caret-down {
+      margin-top: 0.1em;
+    }
+  }
+
+  .filter-toggle {
+
+    .fa-picture-o.fa-2x {
+      font-size: 1.8em;
+      vertical-align: middle;
+    }
+
+    .btn {
+      width: 4em;
+
+      &.active .floating-check {
+          opacity: 1;
+      }
+    }
+  }
+
+  .sort-toggle {
+    .btn {
+      width: 6em;
+    }
+
+    .btn.active {
+      font-weight: bold;
+    }
+  }
+
+  .compound-media {
+    width: 4em;
+    height: 3em;
+
+    & > i {
+      width: auto;
+      height: auto;
+      text-align: left;
+    }
+
+    .compound-map {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+    }
+
+    .fa-globe, .fa-circle {
+      font-size: 2.5em;
+      bottom: 0.25em;
+      left: 0.25em;
+    }
+
+    .fa-circle {
+      color: white;
+    }
+
+    .fa-picture-o {
+      bottom: 0;
+      left: 1.35em;
+      font-size: 1.5em;
+    }
+  }
+
+  .compound-map {
+
+    .fa-map, .fa-map-o {
+      font-size: 1.5em;
+    }
+
+    .auto-dim {
+      height: auto;
+      width: auto;
+      line-height: 1em;
+    }
+
+    .fa-circle {
+      color: white;
+      font-size: 0.5em;
+      top: 0.25em;
+      left: 1.05em;
+    }
+
+    .fa-map-marker, .fa-map-pin {
+      left: 0.45em;
+    }
+  }
+
+  label {
+    padding: 2px 0.5em;
+    font-size: inherit;
+
+    .fa.inline {
+      margin-right: 5px;
+    }
+
+  }
+
+
+  .floating-check,
+  .floating-check:active,
+  .floating-check:hover {
+    // opacity works with transitions. display doesn't
+    opacity: 0; // overwritten in .btn.active.
+    color: white;
+    font-size: 12px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 2em;
+    width: 2em;
+    text-align: right;
+    background: linear-gradient(
+      to top right,
+      transparent 49%,
+      @gray-darker 51%
+    );
+    border-top: 1px solid @gray-darker;
+    border-right: 1px solid @gray-darker;
+    transition: all 0.25s ease;
+    @media (max-width: ((@screen-md + @screen-sm) / 2)) {
+      font-size: 10px;
+    }
+
+  }
+
+}

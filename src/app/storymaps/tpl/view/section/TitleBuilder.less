@@ -1,0 +1,50 @@
+.section-layout-title {
+  .fg-title {
+    outline: none;
+    border: 2px solid transparent;
+
+    &:hover:not(:focus) {
+      border: 2px solid rgba(241, 248, 253, 0.14);
+    }
+  }
+
+  .fg-title[contenteditable=true]:empty {
+    border: 1px dashed #AAA;
+    width: 400px;
+    margin: auto;
+    color: #DDD;
+    text-shadow: 0 0 8px #CCC;
+    border: 2px solid rgba(241, 248, 253, 0.14);
+  }
+
+  .fg-title[contenteditable=true]:not(:focus):empty:before{
+    display: block;
+    content: attr(placeholder);
+  }
+
+  /* customize media-empty invite */
+  .media-empty-add {
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
+
+    .media-empty-image {
+      height: 25px;
+    }
+
+    .media-empty-label {
+      display: inline-block;
+      vertical-align: middle;
+    }
+  }
+
+  .media-cfg-panel {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+
+  &.hide-foreground .fg-title {
+    display: none !important;
+  }
+}

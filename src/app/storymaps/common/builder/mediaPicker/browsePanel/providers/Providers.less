@@ -1,0 +1,101 @@
+@import "../../variables";
+
+@minheight: 500px;
+.mp-browse-panel-containers {
+  flex: 1 0 auto;
+  -webkit-flex: 1 0 auto;
+  position: relative;
+
+  .browse-panel-container {
+    display: flex;
+    box-shadow: 0 0 13px 6px @shadow-gray;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    padding: 10px;
+
+    .column-sidepanel {
+      width: @sidePanelWidth;
+      flex: 0 0 auto;
+      height: 100%; // silly safari
+
+      @media (max-width: @screen-md) {
+        width: @sidePanelSmaller;
+      }
+    }
+
+    .arrow-box {
+      position: relative;
+      background: #fff;
+      border-right: 1px solid @border-gray;
+    }
+    .arrow-box:after, .arrow-box:before {
+      left: 100%;
+      top: 20%;
+      border: solid transparent;
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
+    }
+
+    .arrow-box:after {
+      border-left-color: #fff;
+      border-width: 16px;
+      margin-top: -16px;
+    }
+    .arrow-box:before {
+      border-left-color: @border-gray;
+      border-width: 17px;
+      margin-top: -17px;
+    }
+
+    .column-gallery {
+      overflow-x: auto;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      -webkit-flex-direction: column;
+
+      .row {
+        margin: 0 0 0 10px;
+        // flex: 0 0 auto;
+      }
+
+      .flex-static {
+        flex: 0 0 auto;
+      }
+    }
+  }
+}
+
+@media (max-width: @screen-sm) {
+  .mp-browse-panel-containers {
+    .browse-panel-container {
+      display: flex;
+      flex-direction: column;
+      -webkit-flex-direction: column;
+
+      .column-sidepanel {
+        width: 100%;
+        border-right: none;
+        flex: 0 0 auto;
+        -webkit-flex: 0 0 auto;
+      }
+
+      .arrow-box:after, .arrow-box:before {
+        border: none;
+      }
+
+      .column-gallery {
+        float: none;
+        flex: 1 1 auto;
+
+        .row {
+          margin: 10px 0 0;
+        }
+      }
+    }
+  }
+}

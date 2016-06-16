@@ -1,0 +1,59 @@
+@import "variables";
+
+.media-picker {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .btn.active {
+    box-shadow: none;
+  }
+
+  // search controls in sidepanel AND main browse panel!
+  .search {
+    font-size: inherit;
+    width: 100%;
+    margin: 15px 0;
+
+    * {
+      font-size: inherit;
+    }
+
+    .input-group-addon {
+      background-color: white;
+    }
+
+    .btn.danger:hover,
+    .btn.danger:active,
+    .btn.danger:focus {
+      color: @brand-danger;
+    }
+
+    .form-control {
+      border-right: none;
+      border-left: none;
+      padding: 6px;
+    }
+
+    .input-group-addon {
+      padding: 6px;
+    }
+
+    .form-control:focus,
+    .btn:focus {
+      outline: none;
+      border-color: @btn-info-border;
+      box-shadow: inset 2px 2px 5px @focus-shadow-color, inset -2px -2px 5px @focus-shadow-color;
+    }
+
+    .form-control ~ .input-group-addon {
+      padding: 6px;
+    }
+
+    .form-control + .input-group-addon {
+      border-right: none;
+      border-left: none;
+    }
+
+  }
+}

@@ -1,0 +1,101 @@
+@import "../../variables";
+
+.mp-sidepanel {
+  padding-right: 10px;
+  font-size: 14px;
+
+  .btn.disabled {
+    pointer-events: none !important;
+  }
+
+  .btn-group .btn-default {
+
+    &:hover {
+      color: @brand-primary;
+      background: @btn-default-hover-bg;
+    }
+
+    &.disabled,
+    &.disabled:hover {
+      border-color: @gray;
+      color: @gray-lighter;
+      background: #fff;
+    }
+
+  }
+
+  .btn-default {
+    &.active {
+      background-color: @brand-primary;
+      color: #fff;
+    }
+
+    &.active:hover, &:hover {
+      background-color: darken(@brand-primary, 5%);
+      color: #fff;
+    }
+
+    &.active:active, &:active, &:hover:active {
+      background-color: darken(@brand-primary, 10%);
+      color: #fff;
+    }
+  }
+
+  .license {
+    margin-left: 5px;
+    width: auto;
+    font-size: 14px;
+    display: inline-block;
+  }
+
+  select.form-control {
+    height: 2em;
+    outline-style: solid;
+    padding: 0 6px;
+  }
+
+  // ----- disabled states ----- //
+
+  .form-group.disabled,
+  .form-control[disabled],
+  .input-group.disabled,
+  .input-group.disabled *,
+  .input-group.disabled :active,
+  .input-group.disabled :hover {
+    opacity: 0.7;
+    color: @disabled-gray;
+    border-color: @disabled-gray;
+  }
+
+  select.form-control[disabled] {
+    outline-color: @disabled-gray;
+  }
+
+  .input-group.disabled *,
+  .input-group.disabled :active,
+  .input-group.disabled :hover {
+    background-color: @disabled-bg;
+    cursor: not-allowed;
+  }
+
+  // apparently need these separated. change placeholder color of disabled inputs.
+  .input-group.disabled ::-webkit-input-placeholder {
+    color: @disabled-gray;
+  }
+  .input-group.disabled ::-moz-placeholder {
+    color: @disabled-gray;
+  }
+  .input-group.disabled :-moz-placeholder {
+    color: @disabled-gray;
+  }
+  .input-group.disabled :-ms-input-placeholder {
+    color: @disabled-gray;
+  }
+
+}
+
+@media (max-width: @screen-sm) {
+  .mp-sidepanel {
+    padding-right: 0;
+  }
+}
