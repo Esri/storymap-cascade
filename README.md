@@ -5,8 +5,8 @@ The Story Map Cascade℠ app lets you combine narrative text with maps, images, 
 ![Screenshot](https://cloud.githubusercontent.com/assets/994078/16124248/074ded18-33a3-11e6-8151-0469f4cd412b.png)
 
 [View it live](http://links.esri.com/storymaps/story_map_cascade_overview_1) | 
-[Cascade presentation on Esri Story Maps website](https://storymaps.arcgis.com/en/app-list/cascade/) |
-[Download](http://links.esri.com/storymaps/cascade_template_zip)
+[Download](http://links.esri.com/storymaps/cascade_template_zip) |
+[Cascade page on Esri Story Maps website](https://storymaps.arcgis.com/en/app-list/cascade/)
 
 **Latest release is version 1.0.0**, if you want to be informed of new releases, we recommend you to watch this repository ([see GitHub help](https://help.github.com/articles/watching-repositories)). See the [release page](https://github.com/Esri/story-map-cascade/releases) for release notes.
 
