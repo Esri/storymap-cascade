@@ -218,7 +218,7 @@ The deploy folder now contains the built application that you can deploy to your
 The build script perform code validation through [ESLint](http://eslint.org/), you can disable those validations by editing Gruntfile.js and look for the following comments `/* Comment out to disable code linting */`.
 
 ### Design
-Cascade relies on AMD and Dojo loader [AMD](https://developers.arcgis.com/javascript/3/jshelp/inside_dojo_amd.html) for application structure. Some components in builder use [React](https://facebook.github.io/react/).
+Cascade relies on AMD and Dojo loader [AMD](https://developers.arcgis.com/javascript/3/jshelp/inside_dojo_amd.html) for application structure. Most of the viewer use ES2015 and some builder components use [React](https://facebook.github.io/react/). The build chain is based on Grunt, r.js and Babel.
 
 The application is structured as this:
 
