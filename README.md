@@ -205,12 +205,10 @@ This will create a new `node-modules` folder in your project root with all the t
  * Make accessible the Cascade folder on a web server. Use your favorite server or run one with `grunt server`, this will start a server on port `8080`
  * If using a Portal for ArcGIS instance configure the sharing url `app/config.js` (last property)
  * Use the URL parameter `appid` to specify the web item to be loaded, e.g.: http://localhost:8080/index.html?appid=ABCD (configuring index.html > configOptions.appid is not supported in development mode)
- * Run the following command to install dependencies: `bower install`
  * Run the following command: `grunt dev`
 
 ### How to build application from the source code
   * Open a terminal and navigate to the Cascade folder 
-  * If not already done, run the following command to install dependencies: `bower install`
   * Run the following command: `grunt`
 
 The deploy folder now contains the built application that you can deploy to your web server.
