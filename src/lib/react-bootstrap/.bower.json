@@ -27,5 +27,6 @@
   },
   "_source": "https://github.com/react-bootstrap/react-bootstrap-bower.git",
   "_target": "^0.29.4",
-  "_originalSource": "react-bootstrap"
+  "_originalSource": "react-bootstrap",
+  "_direct": true
 }
