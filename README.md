@@ -5,7 +5,7 @@ The Story Map Cascade℠ app lets you combine narrative text with maps, images, 
 ![Screenshot](https://cloud.githubusercontent.com/assets/994078/16124248/074ded18-33a3-11e6-8151-0469f4cd412b.png)
 
 [View it live](http://links.esri.com/storymaps/story_map_cascade_overview_1) | 
-[Download](http://links.esri.com/storymaps/cascade_template_zip) |
+[Download](http://links.esri.com/storymaps/story_map_cascade_zip) |
 [Cascade page on Esri Story Maps website](https://storymaps.arcgis.com/en/app-list/cascade/)
 
 **Latest release is version 1.0.0**, if you want to be informed of new releases, we recommend you to watch this repository ([see GitHub help](https://help.github.com/articles/watching-repositories)). See the [release page](https://github.com/Esri/story-map-cascade/releases) for release notes.
@@ -35,7 +35,7 @@ Once your story is ready, you have to find its ID in ArcGIS Online. The ID is a 
 
 ![Screenshot](https://cloud.githubusercontent.com/assets/994078/16124454/e26566ba-33a3-11e6-9be1-8af3f9f86113.png)
 
-1. [Download the application](http://links.esri.com/storymaps/cascade_template_zip)
+1. [Download the application](http://links.esri.com/storymaps/story_map_cascade_zip)
 2. Deploy the application on your webserver. See [FAQ](#how-to-deploy-the-application-on-a-web-server) for details
 3. Edit index.html, find the configuration section on line 41 and paste in your application ID
 4. Navigate to index.html (e.g., `http://127.0.0.1/Cascade/index.html`)
@@ -131,7 +131,7 @@ In addition to the configuration offered by the builder, the file `app/config.js
 
 ## Customize the look and feel
 
-Cascade doesn't yet offer a configuration experience to customize the application colors. Most of the look and feel customization can be done using the [regular application download](http://links.esri.com/storymaps/cascade_template_zip) and including the css/html overrides directly into `index.html`. A `style` tag is already present for you in `index.html` (search for `/* CUSTOM CSS RULES */`).
+Cascade doesn't yet offer a configuration experience to customize the application colors. Most of the look and feel customization can be done using the [regular application download](http://links.esri.com/storymaps/story_map_cascade_zip) and including the css/html overrides directly into `index.html`. A `style` tag is already present for you in `index.html` (search for `/* CUSTOM CSS RULES */`).
 
 As the application Javascript and CSS are minified, **we don't recommend that you directely edit those files** (e.g. `viewer-min.css`, `viewer-min.js`, ...). In addition to being hard to edit, this will make application update complex for you.
 
