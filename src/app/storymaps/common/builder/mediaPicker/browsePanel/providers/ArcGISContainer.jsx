@@ -221,7 +221,9 @@ class ArcGISContainer extends React.Component {
 
     this.setState({storyResourceCount: Object.keys(this.storyCache).length});
     if (!idArr.length) {
-      this.refs.Common.handleImageReturn(this.filterAndSortThisStory());
+      if (this.props.provider.searchLocation === constants.searchLocation.STORY) {
+        this.refs.Common.handleImageReturn(this.filterAndSortThisStory());
+      }
       return;
     }
     ArcGISConnector.getItems({idArr}).then(results => {
@@ -294,7 +296,7 @@ class ArcGISContainer extends React.Component {
       ArcGISConnector.getItems(options)
         .then(results => {
           this.handleThisStoryResults(results);
-          if (this.props.provider.searchLocation === 'STORY') {
+          if (this.props.provider.searchLocation === constants.searchLocation.STORY) {
             this.refs.Common.handleImageReturn(this.filterAndSortThisStory());
           }
           resolve();
@@ -302,7 +304,9 @@ class ArcGISContainer extends React.Component {
         .catch((error) => {
           reject(error);
           console.warn('itemFetch failed', error);
-          this.refs.Common.handleImageReturn();
+          if (this.props.provider.searchLocation === constants.searchLocation.STORY) {
+            this.refs.Common.handleImageReturn();
+          }
         });
     });
   }

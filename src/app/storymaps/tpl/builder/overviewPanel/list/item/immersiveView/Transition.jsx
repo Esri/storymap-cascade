@@ -64,6 +64,7 @@ class Transition extends React.Component {
           <div
             ref="target"
             className={transitionClass}
+            title="Choose transition"
             onClick={event => {
               this.togglePopover();
               event.stopPropagation();

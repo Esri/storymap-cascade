@@ -16,7 +16,7 @@
       opacity: 0.4;
 
       &:hover {
-        opacity: 0.6;
+        opacity: 1;
       }
     }
   }
@@ -27,6 +27,14 @@
 
   .transition-hidden {
     visibility: hidden;
+  }
+}
+
+.op-item.organize {
+  .op-transition-container {
+    .op-transition-button {
+      pointer-events: none;
+    }
   }
 }
 

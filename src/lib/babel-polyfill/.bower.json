@@ -27,6 +27,5 @@
   },
   "_source": "https://github.com/nicksrandall/babel-polyfill.git",
   "_target": "^0.0.1",
-  "_originalSource": "babel-polyfill",
-  "_direct": true
+  "_originalSource": "babel-polyfill"
 }

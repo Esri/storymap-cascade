@@ -46,6 +46,10 @@ class Gallery extends React.Component {
       delay: {show: 750, hide: 200},
       template: '<div class="popover remove" role="tooltip"><div class="arrow"></div><div class="popover-content"></div></div>'
     });
+
+    if (thisDomNode.find('.placeholder').length) {
+      thisDomNode.addClass('flex-grow');
+    }
   }
 
   renderItems() {
