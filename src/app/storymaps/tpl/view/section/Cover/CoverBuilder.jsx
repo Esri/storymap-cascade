@@ -44,7 +44,7 @@ export default class CoverBuilder extends Cover {
       .attr('placeholder-line1', 'Welcome ' + userName)
       .attr('placeholder-line2', 'Enter your story title...')
       .on('blur keyup', function(e) {
-        var newTitle = $(e.target).text();
+        var newTitle = $('<div>' + $(e.target).text() + '</div>').text();
 
         if (newTitle != app.Controller.getStoryTitle()) {
           this._section.foreground.title = newTitle;
@@ -54,7 +54,7 @@ export default class CoverBuilder extends Cover {
       }.bind(this))
       .on('paste', function() {
         setTimeout(function() {
-          this._node.find('.cover-title').html(this._node.find('.cover-title').text());
+          this._node.find('.cover-title').html($('<div>' + this._node.find('.cover-title').text() + '</div>').text());
           let newTitle = this._node.find('.cover-title').text();
           this._section.foreground.title = newTitle;
           topic.publish('builder-story-title-update', newTitle);
@@ -73,6 +73,14 @@ export default class CoverBuilder extends Cover {
     this._node.find('.cover-subtitle')
       .attr('contenteditable', true)
       .attr('placeholder', 'Scroll down to get started or enter an optional subtitle')
+      .on('blur keyup', function(e) {
+        var newValue = $('<div>' + $(e.target).text() + '</div>').text();
+
+        if (newValue != this._section.foreground.subtitle) {
+          this._section.foreground.subtitle = newValue;
+          this._onContentChange();
+        }
+      }.bind(this))
       .keydown(function(e) {
         // Do not allow enter key
         if (e.keyCode === 13) {
@@ -81,15 +89,9 @@ export default class CoverBuilder extends Cover {
       })
       .on('paste', function() {
         setTimeout(function() {
-          this._node.find('.cover-subtitle').html(this._node.find('.cover-subtitle').text());
+          this._node.find('.cover-subtitle').html($('<div>' + this._node.find('.cover-subtitle').text() + '</div>').text());
         }.bind(this), 0);
-      }.bind(this))
-      .keydown(function(e) {
-        // Do not allow enter key
-        if (e.keyCode === 13) {
-          return false;
-        }
-      });
+      }.bind(this));
 
     if (this._backgroundMedia.isPlaceholder()) {
       this._node.find('.cover-media-placeholder').addClass('active');
@@ -107,8 +109,8 @@ export default class CoverBuilder extends Cover {
 
   serialize() {
     if (this._node) {
-      this._section.foreground.title = this._node.find('.cover-title').text();
-      this._section.foreground.subtitle = this._node.find('.cover-subtitle').text();
+      this._section.foreground.title = $('<div>' + this._node.find('.cover-title').text() + '</div>').text();
+      this._section.foreground.subtitle = $('<div>' + this._node.find('.cover-subtitle').text() + '</div>').text();
       this._section.background = this._backgroundMedia.serialize();
     }
 

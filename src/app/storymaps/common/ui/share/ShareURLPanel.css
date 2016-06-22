@@ -8,11 +8,15 @@
 	display: inline-block;
 	width: 266px;
 	/*height: 34px;*/
-	text-align: center;
+	text-align: left;
 	font-size: 20px;
 	cursor: text;
-	padding: 0px 0 0 32px;
+	padding: 0px 0 0 38px;
 	line-height: 20px;
+}
+
+body.mobile-view .bitlylink {
+	text-align: center;
 }
 
 .share-url-container.touch .bitlylink {
@@ -39,9 +43,10 @@ body.mobile-view .share-url-container .bitlylink {
     cursor: pointer;
 
 		top: 2px;
+		bottom: 1px;
+
     margin-left: 2px;
     width: 32px;
-    height: 36px;
     padding-top: 5px;
 		padding-left: 4px;
 }

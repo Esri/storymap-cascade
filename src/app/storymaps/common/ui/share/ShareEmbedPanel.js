@@ -76,7 +76,11 @@ define([
       // Copy button
       //
 
-      ZeroClipboard.config({ swfPath: (app.isProduction ? 'resources/lib/' : 'lib') + '/zero-clipboard/ZeroClipboard.swf'  });
+      var swfPath = 'resources/lib/zero-clipboard/ZeroClipboard.swf';
+      if (! app.isProduction) {
+        swfPath = 'lib/zero-clipboard/dist/ZeroClipboard.swf';
+      }
+      ZeroClipboard.config({ swfPath: swfPath  });
       var bitLyCopy = new ZeroClipboard(container.find('.share-btn'));
 
       bitLyCopy.on('copy', function(event) {

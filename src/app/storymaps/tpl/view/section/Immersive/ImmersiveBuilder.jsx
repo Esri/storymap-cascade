@@ -80,7 +80,7 @@ export default class ImmersiveBuilder extends Immersive {
       }.bind(this))
       .on('paste', function() {
         setTimeout(function() {
-          this._node.find('.background-title h2').html(this._node.find('.background-title h2').text());
+          this._node.find('.background-title h2').html($('<div>' + this._node.find('.background-title h2').text()).text());
           this.serialize();
           this._onContentChange();
         }.bind(this), 0);
@@ -226,7 +226,7 @@ export default class ImmersiveBuilder extends Immersive {
       // Title
       if (i === 0) {
         views[0].foreground.title = {
-          value: this._node.find('.background-title h2').text(),
+          value: $('<div>' + this._node.find('.background-title h2').text() + '</div>').text(),
           global: true
         };
       }

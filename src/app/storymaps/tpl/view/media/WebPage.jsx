@@ -8,6 +8,8 @@ import i18n from 'lib-build/i18n!./../../../../resources/tpl/builder/nls/app';
 
 import Deferred from 'dojo/Deferred';
 
+import UIUtils from 'storymaps/tpl/utils/UI';
+
 const PREVIEW_THUMB = 'resources/tpl/builder/icons/media-placeholder/webpage.png';
 const PREVIEW_ICON = 'resources/tpl/builder/icons/immersive-panel/webpage.png';
 
@@ -106,7 +108,7 @@ export default class WebPage extends Media {
 
     let interaction = this._webpage.options.interaction;
 
-    if (app.isMobileView) {
+    if (app.isMobileView || UIUtils.isMobileBrowser()) {
       interaction = 'button';
     }
 

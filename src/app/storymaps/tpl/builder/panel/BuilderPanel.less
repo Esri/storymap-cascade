@@ -130,6 +130,11 @@ body.builder-mode .section-builder-panel {
           opacity: 0.5;
         }
 
+        .btn-share-outer-tooltip {
+          display: flex;
+          flex: 1 1 auto;
+        }
+
         .btn-share-wrapper {
           display: flex;
           align-items: center;
@@ -193,6 +198,19 @@ body.builder-mode .section-builder-panel {
     .tooltip-inner {
       line-height: 1.3;
     }
+
+    &.custom-warning {
+      width: 300px;
+
+      .tooltip-inner {
+        max-width: 300px;
+        background: #196fa6;
+      }
+
+      .tooltip-arrow {
+        border-bottom-color: #196fa6;
+      }
+    }
   }
 
   .tooltip.custom-error {
@@ -203,7 +221,12 @@ body.builder-mode .section-builder-panel {
     .tooltip-inner {
       background: rgba(228, 80, 80, 0.8);
     }
+
+    .tooltip-arrow {
+      border-right-color: rgba(228, 80, 80, 0.8);
+    }
   }
+
 
   /*
    * Overview

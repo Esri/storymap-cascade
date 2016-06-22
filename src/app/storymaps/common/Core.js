@@ -859,6 +859,7 @@ define([
       return;
     }
 
+    /*
     //$("#loadingIndicator").fadeOut();
     $('#loadingMessage').html(
       '<div class="mainMessage">'
@@ -869,6 +870,7 @@ define([
     ).fadeIn('slow', function() {
       $('#loadingMessage').addClass('loaded');
     });
+    */
 
     //app.map && app.map.destroy();
   }

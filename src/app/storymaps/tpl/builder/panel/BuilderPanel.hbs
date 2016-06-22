@@ -15,18 +15,24 @@
     <span class="btn-label">Share</span>
 
     <div class="btn-share-container">
-      <div class="btn-share-wrapper" data-level="private" data-title="Private">
-  			<span class="small-loader"></span>
-  			<i class="share-icon fa fa-user" aria-hidden="true"></i>
-  		</div>
-  		<div class="btn-share-wrapper" data-level="account" data-title="Organization">
-  			<span class="small-loader"></span>
-  			<i class="share-icon fa fa-users" aria-hidden="true"></i>
-  		</div>
-  		<div class="btn-share-wrapper" data-level="public" data-title="Public">
-  			<span class="small-loader"></span>
-  			<i class="share-icon fa fa-globe" aria-hidden="true"></i>
-  		</div>
+      <div class="btn-share-outer-tooltip" data-level="private">
+        <div class="btn-share-wrapper" data-level="private" data-title="Private">
+    			<span class="small-loader"></span>
+    			<i class="share-icon fa fa-user" aria-hidden="true"></i>
+    		</div>
+      </div>
+      <div class="btn-share-outer-tooltip tooltip-enabled" data-level="account" data-title="To ensure this story can be seen by others when shared with your organization, you must also share its maps, scenes, layers, or apps with your organization using the My Content page of ArcGIS.com.">
+        <div class="btn-share-wrapper" data-level="account" data-title="Organization">
+    			<span class="small-loader"></span>
+    			<i class="share-icon fa fa-users" aria-hidden="true"></i>
+    		</div>
+      </div>
+      <div class="btn-share-outer-tooltip tooltip-enabled" data-level="public" data-title="To ensure this story can be seen by others when shared publicly, you must also share its maps, scenes, layers, or apps publicly using the My Content page of ArcGIS.com.">
+        <div class="btn-share-wrapper" data-level="public" data-title="Public">
+    			<span class="small-loader"></span>
+    			<i class="share-icon fa fa-globe" aria-hidden="true"></i>
+    		</div>
+      </div>
     </div>
   </button>
 

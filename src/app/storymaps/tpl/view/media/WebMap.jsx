@@ -20,6 +20,8 @@ import esriConfig from 'esri/config';
 import lang from 'dojo/_base/lang';
 import Deferred from 'dojo/Deferred';
 
+import UIUtils from 'storymaps/tpl/utils/UI';
+
 const PREVIEW_THUMB = 'resources/tpl/builder/icons/media-placeholder/map.png';
 const PREVIEW_ICON = 'resources/tpl/builder/icons/immersive-panel/map.png';
 
@@ -141,7 +143,7 @@ export default class WebMap extends Media {
   _applyInteraction() {
     let interaction = this._webmap.options.interaction;
 
-    if (app.isMobileView) {
+    if (app.isMobileView || UIUtils.isMobileBrowser()) {
       interaction = 'button';
     }
 

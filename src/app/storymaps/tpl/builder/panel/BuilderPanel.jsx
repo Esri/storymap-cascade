@@ -22,13 +22,35 @@ export default class BuilderPanel {
 
     this._overviewPanel = null;
 
+    // Initialize the inner share button tooltip before the outer. Then manually show and hide the outer tooltip when the inner one shows and hides.
+    // That way both show at first
     this._node.find('.btn-share-container .btn-share-wrapper').tooltip({
-      container: '.section-builder-panel'
+      container: '.section-builder-panel',
+      placement: 'top'
     });
 
     this._node.find('.btn-share-container .btn-share-wrapper').on('inserted.bs.tooltip', function() {
       // this class is so we don't have the min-width of 200px for these buttons...
       $(this).data('bs.tooltip').$tip.addClass('share-tooltip');
+    });
+
+    this._node.find('.btn-share-container .btn-share-wrapper').on('show.bs.tooltip', function() {
+      $(this).closest('.btn-share-outer-tooltip.tooltip-enabled').tooltip('show');
+    });
+
+    this._node.find('.btn-share-container .btn-share-wrapper').on('hide.bs.tooltip', function() {
+      $(this).closest('.btn-share-outer-tooltip.tooltip-enabled').tooltip('hide');
+    });
+
+    this._node.find('.btn-share-outer-tooltip.tooltip-enabled').tooltip({
+      placement: 'bottom',
+      container: '.section-builder-panel',
+      trigger: 'manual'
+    });
+
+    this._node.find('.btn-share-outer-tooltip.tooltip-enabled').on('inserted.bs.tooltip', function() {
+      // this class is so we don't have the min-width of 200px for these buttons...
+      $(this).data('bs.tooltip').$tip.addClass('custom-warning');
     });
 
     this._initEvents();
@@ -141,8 +163,8 @@ export default class BuilderPanel {
     }
 
     // TODO: tooltip when org has disabled sharing
-    this._node.find('.btn-share-wrapper[data-level="account"]').toggle(enableOrg);
-    this._node.find('.btn-share-wrapper[data-level="public"]').toggle(enablePub);
+    this._node.find('.btn-share-outer-tooltip[data-level="account"]').toggle(enableOrg);
+    this._node.find('.btn-share-outer-tooltip[data-level="public"]').toggle(enablePub);
 
     this._node.find('.btn-share-wrapper').click(this._onChangeSharing.bind(this));
   }

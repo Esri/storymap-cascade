@@ -51,7 +51,7 @@ export default class TitleBuilder extends Title {
       }.bind(this))
       .on('paste', function() {
         setTimeout(function() {
-          this._node.find('.fg-title').html(this._node.find('.fg-title').text());
+          this._node.find('.fg-title').html($('<div>' + this._node.find('.fg-title').text() + '</div>').text());
           this.serialize();
           this._onContentChange();
         }.bind(this), 0);
@@ -74,7 +74,7 @@ export default class TitleBuilder extends Title {
 
   serialize() {
     this._section.background = this._backgroundMedia.serialize();
-    this._section.foreground.title = this._node.find('.fg-title').text();
+    this._section.foreground.title = $('<div>' + this._node.find('.fg-title').text() + '</div>').text();
 
     return lang.clone(this._section);
   }
