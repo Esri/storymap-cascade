@@ -204,14 +204,15 @@ This will create a new `node-modules` folder in your project root with all the t
 ### How to use the application from the source code
  * Make accessible the Cascade folder on a web server. Use your favorite server or run one with `grunt server`, this will start a server on port `8080`
  * If using a Portal for ArcGIS instance configure the sharing url `app/config.js` (last property)
- * Use the URL parameter `appid` to specify the web item to be loaded, e.g.: http://localhost:8080/index.html?appid=ABCD (configuring index.html > configOptions.appid is not supported in development mode)
  * Run the following command: `grunt dev`
+ * Navigate to index.html using the URL parameter `appid` to specify the web item to be loaded, e.g.: http://localhost:8080/index.html?appid=ABCD (configuring index.html > configOptions.appid is not supported in development mode)
+ * If you want to use a non-public story or the builder you need to configure an `oAuth` ID in `index.html`. Follow the procedure to [add an application](http://doc.arcgis.com/en/arcgis-online/share-maps/add-items.htm#ESRI_SECTION1_55703F1EE9C845C3B07BBD85221FB074) and [register an application](http://doc.arcgis.com/en/arcgis-online/share-maps/add-items.htm#ESRI_SECTION2_20AF85308FD548B5ADBAE28836F66D3F) to get an OAuth application ID. Once you have that application, open `index.html`, locate the `configOptions` section and fill the `oAuthAppId` property.
 
 ### How to build application from the source code
   * Open a terminal and navigate to the Cascade folder 
   * Run the following command: `grunt`
 
-The deploy folder now contains the built application that you can deploy to your web server.
+The deploy folder now contains the built application that you can [deploy to your web server](#instructions).
 
 ### Issues building the application
 
