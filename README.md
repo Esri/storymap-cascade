@@ -169,7 +169,7 @@ require(["dojo/topic"], function(topic) {
   /*
    * Custom Javascript to be executed when a section becomes active
    */
-  topic.subscribe("story-scroll-section", function(cfg){
+  topic.subscribe("story-navgigated-section", function(cfg){
     console.log("The section", cfg.index, "is now active");
   });
 });
