@@ -1,9 +1,13 @@
-<div id="{{id}}" class="builder-notification">
-  <div class="alert alert-warning alert-dismissible" role="alert">
-    {{label}}
-    <button class="btn btn-primary btn-sm btn-undo">{{labelUndo}} (<span class="undo-countdown"></span>)</button>
+<div id="{{id}}" class="builder-notification notification-undo has-notification-btn">
+  <div class="alert alert-dismissible" role="alert">
+    {{{label}}}
+    <button class="btn btn-primary btn-sm btn-undo">{{labelUndo}}</button>
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>
+    <div class="progress"></div>
+    <div class="info-icon">
+      <i class="fa fa-info-circle" aria-hidden="true"></i>
+    </div>
   </div>
 </div>

@@ -1,5 +1,5 @@
-<div id="{{id}}" class="builder-notification">
-  <div class="alert {{type}} alert-dismissible" role="alert">
+<div id="{{id}}" class="builder-notification notification-cancel {{#if displayCancel}}has-notification-btn{{/if}}">
+  <div class="alert alert-dismissible" role="alert">
     {{label}}
     {{#if displayCancel}}
       <button class="btn btn-primary btn-sm btn-cancel">{{labelCancel}}</button>
@@ -7,5 +7,8 @@
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>
+    <div class="info-icon">
+      <i class="fa fa-info-circle" aria-hidden="true"></i>
+    </div>
   </div>
 </div>

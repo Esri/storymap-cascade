@@ -1,0 +1,36 @@
+{
+  "name": "color-thief",
+  "homepage": "http://lokeshdhakar.com/projects/color-thief/",
+  "authors": [
+    "Lokesh Dhakar"
+  ],
+  "description": "Grab the dominant color or color palette from an image.",
+  "main": "src/color-thief.js",
+  "keywords": [
+    "color",
+    "palette",
+    "sampling",
+    "image",
+    "picture",
+    "photo",
+    "canvas"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "version": "2.0.1",
+  "_release": "2.0.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "v2.0.1",
+    "commit": "de968be81645760f54a0358fb3a442f13adf2b38"
+  },
+  "_source": "https://github.com/lokesh/color-thief.git",
+  "_target": "~2.0.1",
+  "_originalSource": "color-thief"
+}

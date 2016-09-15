@@ -1,4 +1,4 @@
-@import "../../variables";
+@import "../../mp-variables";
 
 .mp-sidepanel {
   padding-right: 10px;
@@ -10,7 +10,8 @@
 
   .btn-group .btn-default {
 
-    &:hover {
+    &:hover,
+    &:focus {
       color: @brand-primary;
       background: @btn-default-hover-bg;
     }
@@ -30,12 +31,12 @@
       color: #fff;
     }
 
-    &.active:hover, &:hover {
+    &.active:hover, &:hover, &:focus {
       background-color: darken(@brand-primary, 5%);
       color: #fff;
     }
 
-    &.active:active, &:active, &:hover:active {
+    &.active:active, &:active, &:hover:active, &.active:focus {
       background-color: darken(@brand-primary, 10%);
       color: #fff;
     }
@@ -67,6 +68,14 @@
     border-color: @disabled-gray;
   }
 
+  .input-group.disabled {
+    .input-group-addon,
+    input,
+    input:hover {
+      border-color: transparent;
+    }
+  }
+
   select.form-control[disabled] {
     outline-color: @disabled-gray;
   }
@@ -92,6 +101,21 @@
     color: @disabled-gray;
   }
 
+}
+
+@media (max-width: @screen-sm), (max-height: @screen-short) {
+  .mp-sidepanel {
+    .content-toggle label,
+    .type-toggle label {
+      padding: 0 6px;
+      line-height: 1.5em;
+    }
+    .search {
+      .form-control {
+        height: 2em;
+      }
+    }
+  }
 }
 
 @media (max-width: @screen-sm) {

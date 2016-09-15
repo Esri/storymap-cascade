@@ -8,6 +8,7 @@ import AGOLHeader from '../breadcrumbs/AGOLHeader';
 
 import Gallery from '../gallery/Gallery';
 
+import {} from 'lib-build/less!../sidePanel/SidePanel';
 import i18n from 'lib-build/i18n!../../../../_resources/nls/media';
 var text = i18n.mediaPicker.browsePanel.providers;
 
@@ -40,6 +41,7 @@ class CommonProvider extends React.Component {
       });
       return;
     }
+    userName = userName.trim();
     this.props.connector.getProviderAlbums(userName).then(results => {
       this.onAlbumSuccess(userName, results);
     }).catch(error => {
@@ -149,6 +151,9 @@ class CommonProvider extends React.Component {
   }
 
   getSearchLabel(term) {
+    if (!term) {
+      return null;
+    }
     return text.searchingFor + ' " ' + term + ' "';
   }
 
@@ -156,9 +161,9 @@ class CommonProvider extends React.Component {
     var breadcrumbs = [];
     var providerRef = this.props.provider;
     var textSearchLabel = this.getSearchLabel(providerRef.photoSearchTerm);
-    var secondUserLabel = providerRef.selectedAlbum.id ? providerRef.selectedAlbum.title : this.getSearchLabel(providerRef.userSearchTerm);
+    var secondUserLabel = (providerRef.selectedAlbum && providerRef.selectedAlbum.id) ? providerRef.selectedAlbum.title : this.getSearchLabel(providerRef.userSearchTerm);
 
-    if (providerRef.selectedTab && providerRef.selectedTab === constants.searchType.TEXT) {
+    if (providerRef.selectedTab && (providerRef.selectedTab === constants.searchType.TEXT) || this.props.containerState.provider === constants.providers.UNSPLASH) {
       if (!providerRef.photoSearchTerm) {
         return breadcrumbs;
       }
@@ -179,9 +184,8 @@ class CommonProvider extends React.Component {
         ));
       }
 
-      if (providerRef.imageFetchStatus !== constants.fetchStatus.ERROR) {
+      if (providerRef.imageFetchStatus !== constants.fetchStatus.ERROR && secondUserLabel) {
         if (providerRef.images.length || providerRef.selectedAlbum.id || providerRef.userSearchTerm) {
-          secondUserLabel =
           breadcrumbs.push(new BreadcrumbModel(
             secondUserLabel,
             constants.galleryContent.IMAGES,

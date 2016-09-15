@@ -1,25 +1,41 @@
 .section-layout-title {
-  .fg-title {
-    outline: none;
-    border: 2px solid transparent;
 
-    &:hover:not(:focus) {
-      border: 2px solid rgba(241, 248, 253, 0.14);
+  .foreground {    
+    .title-text {
+      outline: none;
+      border: 2px solid transparent;
+
+      &:hover:not(:focus) {
+        border: 2px solid rgba(241, 248, 253, 0.14);
+      }
+
+      &[contenteditable=true]:empty {
+        border: 1px dashed #AAA;
+        width: 400px;
+        margin: auto;
+        color: #DDD;
+        text-shadow: 0 0 8px #CCC;
+        border: 2px solid rgba(241, 248, 253, 0.14);
+      }
+
+      &[contenteditable=true]:not(:focus):empty:before{
+        display: block;
+        content: attr(placeholder);
+      }
+
+      &.text-dark {
+        &:hover:not(:focus) {
+          border: 2px solid rgba(15,15,15, 0.14);
+        }
+
+        &[contenteditable=true]:empty {
+          border: 1px dashed #666;
+          color: #555;
+          text-shadow: 0 0 8px white;
+          border: 2px solid rgba(15,15,15, 0.14);
+        }
+      }
     }
-  }
-
-  .fg-title[contenteditable=true]:empty {
-    border: 1px dashed #AAA;
-    width: 400px;
-    margin: auto;
-    color: #DDD;
-    text-shadow: 0 0 8px #CCC;
-    border: 2px solid rgba(241, 248, 253, 0.14);
-  }
-
-  .fg-title[contenteditable=true]:not(:focus):empty:before{
-    display: block;
-    content: attr(placeholder);
   }
 
   /* customize media-empty invite */
@@ -40,11 +56,32 @@
 
   .media-cfg-panel {
     position: absolute;
-    bottom: 0;
+    bottom: -225px;
     left: 0;
+
+    .builder-config {
+      background-color: #FFF;
+
+      .builder-config-section {
+        .section-content.horizontal {
+          .config-item[data-type="style"] {
+            margin-bottom: 20px;
+          }
+        }
+      }
+    }
   }
 
-  &.hide-foreground .fg-title {
-    display: none !important;
+
+  .config-panel-active .media-cfg-panel .builder-config {
+    height: 225px;
+  }
+
+  &.media-config-active {
+    z-index: 501;
+
+    .background {
+      overflow: visible;
+    }
   }
 }

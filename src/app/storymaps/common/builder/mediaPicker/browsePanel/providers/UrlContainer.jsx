@@ -36,15 +36,23 @@ class Alert extends React.Component {
 }
 
 class UrlInput extends React.Component {
+  componentDidMount() {
+    var modal = $(ReactDOM.findDOMNode(this)).parents('.modal');
+    modal.on('shown.bs.modal', () => {
+      if (this.props.setFocus) {
+        $(this.refs.textareaInput).focus();
+      }
+    });
+
+  }
+
   componentDidUpdate() {
     if (this.props.setFocus) {
-      if (!$(ReactDOM.findDOMNode(this)).parents('.modal').hasClass('in')) {
-        setTimeout(() => {
-          ReactDOM.findDOMNode(this.refs.textareaInput).focus();
-        }, 500);
-      }
-      else {
-        ReactDOM.findDOMNode(this.refs.textareaInput).focus();
+      const activeEl = document.activeElement;
+      // if someone is navigating by tabbing, don't take the focus off where they are
+      const activeTabIndex = activeEl.tabIndex ? parseInt(activeEl.tabIndex) : 0;
+      if (activeEl !== this.refs.textareaInput && activeTabIndex <= 0) {
+        $(this.refs.textareaInput).focus();
       }
     }
   }

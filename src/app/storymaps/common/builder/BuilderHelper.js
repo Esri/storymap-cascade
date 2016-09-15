@@ -264,7 +264,6 @@ define([
     return this.getPortalURL() + '/home/webscene/viewer.html' + '?webscene=' + websceneId;
   }
 
-  /*
   function getMyStoriesURL() {
     if (app.isPortal) {
       return this.getPortalURL() + '/apps/MyStories/';
@@ -273,7 +272,6 @@ define([
       return '//storymaps.arcgis.com/en/my-stories/';
     }
   }
-  */
 
   return {
     getPortalURL: getPortalURL,
@@ -282,6 +280,7 @@ define([
     getBlankAppJSON: getBlankAppJSON,
     cleanApp: cleanApp,
     getMapViewerLink: getMapViewerLink,
-    getSceneViewerLink: getSceneViewerLink
+    getSceneViewerLink: getSceneViewerLink,
+    getMyStoriesURL: getMyStoriesURL
   };
 });

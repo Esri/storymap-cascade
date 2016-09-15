@@ -2,11 +2,14 @@ import MediumEditor from 'lib/medium-editor/dist/js/medium-editor';
 
 import {} from 'lib-build/css!lib/medium-editor/dist/css/medium-editor';
 import {} from 'lib-build/less!./MediumEditorWrapper';
-import {} from 'lib-build/css!lib/font-awesome/css/font-awesome';
 
 import BlockToolbar from './plugins/blockToolbar/Plugin';
 import BlockAdd from './plugins/blockAdd/Plugin';
 import AnchorPreview from './plugins/AnchorPreview';
+import ColorPicker from './plugins/ColorPicker';
+import Anchor from './plugins/Anchor';
+
+import CommonHelper from 'storymaps/common/utils/CommonHelper';
 
 import Deferred from 'dojo/Deferred';
 
@@ -31,12 +34,14 @@ import Deferred from 'dojo/Deferred';
  * The implementation is 1.b
  */
 
-var _selection = MediumEditor.selection;
+var SELECTION = MediumEditor.selection;
+
+// Default text color - needed to prevent some editor behavior
+var DEFAULT_TEXT_COLOR = 'rgb(76, 76, 76)'; // OR #4c4c4c
 
 export default function(params = {}) {
   var _node = params.node,
       _addMedia = params.addMedia,
-      _splitSection = params.splitSection,
       _style = params.style,
       _addButtons = params.addButtons || [],
       _authorizedMedia = params.authorizedMedia,
@@ -54,10 +59,17 @@ export default function(params = {}) {
     return;
   }
 
-  let placeholder = params.placeholder || 'Continue your story here...';
+  let placeholder = {
+    text: 'Continue your story here...',
+    hideOnClick: false
+  };
+
+  if (params.placeholder === false) {
+    placeholder = false;
+  }
 
    // Buttons in highlighting toolbar
-  const highlightButtons = ['bold', 'italic', 'underline', 'strikethrough', 'anchor' /*, 'orderedlist', 'unorderedlist'*/];
+  const highlightButtons = ['bold', 'italic', 'underline', 'strikethrough', 'anchor' /*, 'orderedlist', 'unorderedlist'*/, 'colorPicker'];
 
   // Buttons in block toolbar
   const blockButtonsFull = ['h1', 'h2', 'quote', 'justifyLeft', 'justifyCenter', 'justifyRight'],
@@ -135,10 +147,10 @@ export default function(params = {}) {
           return resultDeferred;
         }
 
-        app.Controller.addSection({
-          index: params.sectionIndex,
-          type: 'title',
-          media: null
+        app.Controller.splitAndAddSection({
+          section: params.sectionIndex,
+          split: params.blockIndex,
+          type: 'title'
         });
 
         resultDeferred.resolve();
@@ -158,16 +170,10 @@ export default function(params = {}) {
           return resultDeferred;
         }
 
-        if (_splitSection) {
-          _splitSection({
-            blockIndex: params.blockIndex
-          });
-        }
-
-        app.Controller.addSection({
-          index: params.sectionIndex,
-          type: 'immersive',
-          media: null
+        app.Controller.splitAndAddSection({
+          section: params.sectionIndex,
+          split: params.blockIndex,
+          type: 'immersive'
         });
 
         resultDeferred.resolve();
@@ -219,16 +225,11 @@ export default function(params = {}) {
     fileDragging: false,
     diffTop: -20,
     buttonLabels: 'fontawesome',
-
     toolbar: {
       allowMultiParagraphSelection: false,
       buttons: highlightButtons
     },
-
-    placeholder: {
-      text: placeholder,
-      hideOnClick: false
-    },
+    placeholder: placeholder,
     anchor: {
       linkValidation: true,
       placeholderText: 'Enter a link...'
@@ -265,7 +266,9 @@ export default function(params = {}) {
       }),
       'blockAdd': blockAddExtension,
       // Override anchor preview
-      'anchor-preview': new AnchorPreview()
+      'anchor-preview': new AnchorPreview(),
+      'anchor': new Anchor(),
+      'colorPicker': new ColorPicker()
     }
   });
 
@@ -300,15 +303,18 @@ export default function(params = {}) {
   })
   */
 
+  if (params.disableEditing) {
+    _node.attr('contenteditable', false);
+  }
+
   // Prevent focus on some elements
   editor.subscribe('editableKeydown', function(e) {
     var el = $(editor.getSelectedParentElement());
 
     // Prevent backspace on some elements
     if (event.keyCode == 8) {
-
       // If at the start of a block
-      if (_selection.getSelectionRange(document).startOffset === 0) {
+      if (SELECTION.getSelectionRange(document).startOffset === 0) {
         var prevBlock = el.prev();
 
         // Media caption to prevent deleting the media
@@ -321,9 +327,17 @@ export default function(params = {}) {
         }
         // And going to delete the block, focus the caption in previous block
         else if (el.hasClass('.block') || prevBlock.is(mediaElements)) {
+          e.preventDefault();
+          /*
+          // Attempt to merge block, seems ok in most case
           setTimeout(function() {
-            _selection.moveCursor(document, prevBlock.find('.block-caption')[0], 0);
+            SELECTION.moveCursor(document, prevBlock.find('.block-caption')[0], 0);
           }, 0);
+          */
+        }
+        // Prevent backspace on first block when there is no placeholder
+        else if (el.is('p, h1, h2, blockquote') && el.index() == 0 && ! $(editor.elements[0]).data('placeholder')) {
+          e.preventDefault();
         }
 
         setTimeout(function() {
@@ -333,7 +347,7 @@ export default function(params = {}) {
     }
     // Prevent deleting the next block if it match mediaElements
     else if (event.keyCode == 46) {
-      var range = _selection.getSelectionRange(document);
+      var range = SELECTION.getSelectionRange(document);
       var nextBlock = el.next();
 
       if (el.hasClass('block') && nextBlock.is(mediaElements)) {
@@ -344,7 +358,7 @@ export default function(params = {}) {
         // delete whole block
         else if (range.startOffset == 0 && range.endOffset == 0 && range.collapsed == false) {
           setTimeout(function() {
-            _selection.moveCursor(document, nextBlock.find('.block-caption')[0], 0);
+            SELECTION.moveCursor(document, nextBlock.find('.block-caption')[0], 0);
             _editor.options.extensions.blockToolbar.updateToolbar();
           }, 0);
         }
@@ -384,30 +398,39 @@ export default function(params = {}) {
 
   editor.subscribe('editableKeydownEnter', function(e) {
     var blockContent = $(editor.getSelectedParentElement());
-    var range = _selection.getSelectionRange(document);
+    var range = SELECTION.getSelectionRange(document);
 
     // Hide add menu
     blockAddExtension.hide();
 
+    // Insert a new block if hitting enter at the end of a h1/h2/blockquote
     if (blockContent.is('h1') || blockContent.is('h2') || blockContent.is('blockquote')) {
+      // Enter on the first character require this
+      if (blockContent.prev().is(blockElements)) {
+        blockContent.prev().addClass('block');
+      }
+
       if (range.startOffset == range.startContainer.length) {
-        /*
-        // Insert an empty block but focus doesn't works...
+        // Insert an empty block and focus it
         blockContent.after('<p class="block"></p>');
+        MediumEditor.selection.moveCursor(document, blockContent.next()[0], 0);
+
         setTimeout(function() {
-          blockContent.next().focus().click().focus();
-        }, 100);
-        */
+          _editor.options.extensions.blockToolbar.updateToolbar();
+        }, 10);
 
         e.preventDefault();
         return;
       }
     }
 
-    // No line return in media caption
-    // TODO: somehow also require a rule in editableInput
-    // TODO: should properly start a new block
+    // Insert a new block if hitting enter at the end of a caption
     if (blockContent.is('.block-caption')) {
+      if (range.startOffset == range.startContainer.length) {
+        blockContent.parents('.block').eq(0).after('<p class="block"></p>');
+        MediumEditor.selection.moveCursor(document, blockContent.parents('.block').eq(0).next()[0], 0);
+      }
+
       e.preventDefault();
       return;
     }
@@ -420,9 +443,16 @@ export default function(params = {}) {
       if (blockContent.html() == '' && childrens.length == 0) {
         e.preventDefault();
       }
+
+      // The previous block is empty and cursor on first character
+      if ((blockContent.prev().html() == '' || blockContent.prev().html() == '<br>')
+          && range.startOffset === 0) {
+        e.preventDefault();
+      }
+
       // Or the block is visually empty...
       if (childrens.length == 1) {
-        if (childrens[0].tagName.toLowerCase() == 'br') {
+        if (childrens[0].tagName.toLowerCase() == 'br' && ! blockContent.text()) {
           e.preventDefault();
         }
       }
@@ -439,24 +469,19 @@ export default function(params = {}) {
   editor.subscribe('editableInput', function(event, editable) {
     var blockContent = $(editor.getSelectedParentElement());
 
-    // No line return in media caption
-    // TODO: somehow also require a rule in editableKeydownEnter
-    // TODO: should properly start a new block
+    // Do not allow children inside caption
     if (blockContent.is('p') && blockContent.parent().is('.block-caption')) {
-      //var parent = blockContent.parent();
       blockContent.parent().html(blockContent.html());
-      /*
-      // Attempt to position the caret properly
-      setTimeout(function(){
-        _selection.moveCursor(document, parent[0], parent[0].textContent.length);
-      }, 100)
-      */
       return;
     }
 
     // Add block class to all elements that qualify
     if (blockContent.is(blockElements)) {
       blockContent.addClass('block');
+    }
+    // Allow to create h1, h2, blockquote from bold, italic, underline
+    else if (blockContent.is('b, i, u') && blockContent.parent().is(blockElements)) {
+      blockContent.parent().addClass('block');
     }
 
     // Clean up paste from word
@@ -466,20 +491,62 @@ export default function(params = {}) {
       }
     });
 
-    // Delete <br>
-    blockContent.find('br').remove();
-
-    // Delete empty div, get created after h1/h2
-    $(editable).children('div:not(.block)').remove();
-
     onContentChange();
   });
 
   // Prevent the editor from creating span when merging blocks
+  // But keep span with a color as that's what the editor use for the text color
+  // Need to check if some other properties are not defined. Sometimes the editor use those
+  //   instead of b,u,i,strike tags. It seems to always happen once
+  //   you have at least a span with a color in a paragraph
   var el = $(editor.elements[0]);
   el.on('input', function() {
-    el.children('p').children('span[style]').each(function() {
+    // A <p>,<h1>,... may be created without block class when changing block using block toolbar
+    //  especially if the caret is on a span
+    // Would be best for performance to somehow only do this in blockToolbar
+    el.children('p:not(.block), h1:not(.block), h2:not(.block), blockquote:not(.block)').addClass('block');
+
+    el.children('p, h1, h2, blockquote').children('span[style]').each(function() {
+      if ((! this.style.fontWeight && ! this.style.fontStyle && ! this.style.textDecoration)
+          && ! this.style.color
+          || this.style.color == 'inherit'
+          || this.style.color == DEFAULT_TEXT_COLOR) {
+        $(this).contents().unwrap();
+      }
+    });
+
+    // Prevent pressing enter twice rapidely to wrap caption content inside a paragraph
+    el.find('.block-caption').find('p').each(function() {
       $(this).contents().unwrap();
+    });
+
+    // Specific to block-caption
+    setTimeout(function() {
+      el.find('.block-caption').children('span[style]').each(function() {
+        if ((! this.style.fontWeight && ! this.style.fontStyle && ! this.style.textDecoration)
+            && ! this.style.color
+            || this.style.color == 'inherit'
+            || this.style.color == DEFAULT_TEXT_COLOR) {
+          $(this).contents().unwrap();
+        }
+      });
+    }, 50);
+
+    // Prevent invalid block when creating h1/h2/blockquote from empty block through block toolbar
+    el.children('h1:not(.block), h2:not(.block), blockquote:not(.block)').children('p:empty').each(function() {
+      var ghost = $(this),
+          parent = ghost.parent();
+
+      parent.addClass('block');
+      ghost.replaceWith('<br>');
+
+      var newEl = parent.children();
+
+      editor.selectElement(newEl[0]);
+
+      setTimeout(function() {
+        newEl.click();
+      }, 50);
     });
   });
 
@@ -567,9 +634,9 @@ export default function(params = {}) {
     _editor.elements[0].focus();
   };
 
-  function onContentChange() {
+  var onContentChange = CommonHelper.throttle(function() {
     if (_onChangeCallback) {
       _onChangeCallback();
     }
-  }
+  }, 500);
 }

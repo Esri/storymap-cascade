@@ -1,10 +1,10 @@
-@import "../../variables";
+@import "../../mp-variables";
 
 .agol-header {
 
   height: 2.5em;
   text-align: right;
-  padding-right: 40px;
+  padding-right: 20px;
   margin-bottom: 10px;
 
   @media (max-width: @screen-md) {
@@ -17,18 +17,20 @@
     padding-right: 0;
   }
 
+  @media (max-width: @screen-sm) {
+    margin-top: 10px;
+    margin-bottom: 0;
+  }
+
 
   .filter-toggle .btn,
   .sort-toggle .btn {
-    border: 1px solid @gray-lighter;
+    border: 1px solid @gray-darker;
     line-height: 2em;
-    color: @gray;
+    // color: @gray-darker;
 
     &.active {
-      color: @gray-darker;
-      border-color: @gray-darker;
       box-shadow: inset 1px 1px 0 @gray-darker, inset -1px -1px 0 @gray-darker;
-      font-weight: bold;
     }
   }
 
@@ -87,10 +89,6 @@
   .sort-toggle {
     .btn {
       width: 6em;
-    }
-
-    .btn.active {
-      font-weight: bold;
     }
   }
 

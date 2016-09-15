@@ -139,11 +139,16 @@ export default class Video extends Media {
       var isMuted = this._video.options.audio == 'muted',
           volume = isMuted ? 0 : 1;
 
-      if (this._video.source == 'vimeo') {
-        this._videoPlayer.api('setVolume', volume);
+      try {
+        if (this._video.source == 'vimeo') {
+          this._videoPlayer.api('setVolume', volume);
+        }
+        else {
+          this._videoPlayer.setVolume(volume * 100);
+        }
       }
-      else {
-        this._videoPlayer.setVolume(volume * 100);
+      catch (e) {
+        console.error(e);
       }
     }
 
@@ -159,8 +164,14 @@ export default class Video extends Media {
     }
 
     this._isLoaded = true;
-
     this._isBuilderAdd = params.isBuilderAdd;
+
+    if (this._cache[this.id]) {
+      this._videoPlayer = this._cache[this.id].videoPlayer;
+      // TODO: need a more robust system like maps
+      this._isVideoLoaded = true;
+      return this._loadDeferred;
+    }
 
     // https://developers.google.com/youtube/iframe_api_reference
     // https://developer.vimeo.com/player/js-api
@@ -216,7 +227,12 @@ export default class Video extends Media {
 
       this._videoPlayer = $f(newMedia[0]); // eslint-disable-line no-undef
 
-      this._videoPlayer.addEvent('ready', this._onVimeoPlayerReady.bind(this));
+      try {
+        this._videoPlayer.addEvent('ready', this._onVimeoPlayerReady.bind(this));
+      }
+      catch (e) {
+        console.error(e);
+      }
     }
     else if (this._video.source == 'youtube') {
       this._videoPlayer = new window.YT.Player(this._node.find('.video-player[data-id=' + this.id + ']')[0], {
@@ -230,11 +246,20 @@ export default class Video extends Media {
         },
         events: {
           onReady: function(e) {
-            this._onYoutubePlayerReady(e, this._video.id);
+            try {
+              this._onYoutubePlayerReady(e, this._video.id);
+            }
+            catch (e) {
+              console.error(e);
+            }
           }.bind(this)
         }
       });
     }
+
+    this._cache[this.id] = {
+      videoPlayer: this._videoPlayer
+    };
 
     return this._loadDeferred;
   }
@@ -333,7 +358,6 @@ export default class Video extends Media {
           }
         }
       }
-
     }
     catch (e) {
       console.error(e);

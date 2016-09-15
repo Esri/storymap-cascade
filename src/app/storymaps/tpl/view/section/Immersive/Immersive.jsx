@@ -47,7 +47,7 @@ export default class Immersive {
     this._mediaCache = {};
   }
 
-  render() {
+  render(params) {
     var views = this._section.views,
         options = this._section.options;
 
@@ -105,7 +105,7 @@ export default class Immersive {
     // Title and credits
     //
 
-    if (views.length && views[0].foreground.title) {
+    if (views.length && views[0].foreground.title && views[0].foreground.title.value) {
       title = views[0].foreground.title.value;
     }
 
@@ -163,9 +163,11 @@ export default class Immersive {
       classes: ['section', 'section-immersive'].concat(config).join(' '),
       viewsCount: this._nbViews + 1,
       title: title,
+      showTitle: app.isInBuilder || title,
       credits: credits,
       background: background,
-      foreground: foreground
+      foreground: foreground,
+      titleConfigPanel: app.isInBuilder && params ? params.titleConfigPanel : null
     });
   }
 
@@ -218,6 +220,19 @@ export default class Immersive {
 
     // Update the webmap so they know if they have layers to swipe
     this._computeWebMapsSwipeLayers();
+
+    this._applyTitleConfig();
+  }
+
+  _applyTitleConfig() {
+    // read the value and apply that.
+    if (this._section.views.length && this._section.views[0].foreground && this._section.views[0].foreground.title) {
+      let style = this._section.views[0].foreground.title.style;
+      let textNode = this._node.find('.background-title-wrapper h2');
+      let backgroundNode = this._node.find('.background-title-wrapper');
+
+      SectionCommon.applyTitleStyle(style, textNode, backgroundNode);
+    }
   }
 
   onScroll(params) {
@@ -242,6 +257,27 @@ export default class Immersive {
           isActive: false
         });
       }
+
+      if (this._medias[0]) {
+        this._medias[0].getNode().nextAll().removeClass('active');
+        this._medias[0].getNode().addClass('active');
+        this._medias[0].performAction({
+          isActive: false,
+          transition: this._transitions[0],
+          isNewView: true,
+          viewIndex: 0,
+          visibilityProgress: 0,
+          scrollPositionSection: 0,
+          scrollPositionView: 0,
+          performBuilderInit: false
+        });
+      }
+
+      if (this._panels[0]) {
+        this._panels[0].updatePosition(params);
+      }
+
+      this._node.toggleClass('hide-title hide-credits', true);
 
       this._currentViewIndex = -1;
       this._previousMedia = null;
@@ -301,17 +337,33 @@ export default class Immersive {
     mediaUpdate.visibilityProgress = Math.min(mediaUpdate.visibilityProgress, 1);
     */
 
-    // Refresh media when changing views except for webmap because of swipe
-    // TODO: target more precisely if swipe is on
-    // TODO: should perform after setting the active one?
-    if (mediaUpdate.isNewView || (currentMedia.type == 'webmap' && ! this._isNavigatingAway)) {
+    // Compute if the media performing the transition to next view himself
+    var mediaPerformTransition = false;
+    if (params.status == 'current') {
+      var transition = this._transitions[viewIndex - 1],
+          previousMedia = this._medias[viewIndex - 2];
+
+      mediaPerformTransition = this._isTransitionDoneByMedia(transition, currentMedia, previousMedia);
+    }
+
+    // Media usually only need update when changing view
+    var mediaNeedUpdate = mediaUpdate.isNewView;
+    // Except if it's a webmap that has a swipe transition managed by the map
+    if (! mediaNeedUpdate && currentMedia.type == 'webmap' && ! this._isNavigatingAway) {
+      mediaNeedUpdate = mediaPerformTransition;
+    }
+
+    // Refresh media only when needed
+    if (mediaNeedUpdate) {
       currentMedia.performAction(mediaUpdate);
     }
 
     if (params.status == 'current') {
-      var transition = this._transitions[viewIndex - 1],
-          previousMedia = this._medias[viewIndex - 2],
-          shouldPerformTransition = ! this._isTransitionDoneByMedia(transition, currentMedia, previousMedia);
+      /*
+       * Title/credits
+       */
+
+      this._node.toggleClass('hide-title hide-credits', false);
 
       /*
        * Background
@@ -325,7 +377,7 @@ export default class Immersive {
 
         // TODO: for all media type
         // this._previousMedia is the previously visited view background (can be backward or fwd)
-        if (this._previousMedia && this._previousMedia.type == 'video') {
+        if (this._previousMedia && this._previousMedia.type == 'video' && ! this._previousMedia.isSameMedia(currentMedia)) {
           this._previousMedia.performAction({
             isActive: false
           });
@@ -361,7 +413,7 @@ export default class Immersive {
 
       if (! this._isNavigatingAway) {
         if (transition == 'swipe-vertical' || transition == 'swipe-horizontal') {
-          if (shouldPerformTransition) {
+          if (! mediaPerformTransition) {
             var swipePosition = null,
                 mediaWidth = app.display.windowWidth,
                 mediaHeight = app.display.windowHeight;
@@ -593,7 +645,8 @@ export default class Immersive {
       }
       // Duplicate and non consecutive section
       // Only the transition from the first occurence of the media is authorized
-      else if (transitionInfo.isDuplicate && transitionInfo.firstOccurenceTransition) {
+      // Except for image where all transition are authorized (images are always duplicated)
+      else if (transitionInfo.isDuplicate && transitionInfo.firstOccurenceTransition && this._medias[i].type != 'image') {
         //this._transitions[i] = transitionInfo.firstOccurenceTransition;
         // Temporary workaround
         this._transitions[i] = 'none';

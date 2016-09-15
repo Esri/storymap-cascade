@@ -129,7 +129,7 @@ export default class WebPage extends Media {
     var resultDeferred = new Deferred();
 
     if (! this._nodeMedia || this._isLoaded) {
-      resultDeferred.reject();
+      //resultDeferred.reject();
       return resultDeferred;
     }
 

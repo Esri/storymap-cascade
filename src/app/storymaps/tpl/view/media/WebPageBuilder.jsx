@@ -29,8 +29,7 @@ export default class WebPageBuilder extends WebPage {
     }
 
     new BuilderConfig({
-      containerPanel: this._node.find('.media-cfg-panel'),
-      containerInvite: this._node.find('.media-cfg-invite'),
+      containerMedia: this._node,
       tabs: tabs,
       media: this._webpage,
       onChange: this._onConfigChange.bind(this),
@@ -42,6 +41,8 @@ export default class WebPageBuilder extends WebPage {
       }.bind(this),
       closeBtnStyle: this._placement == 'background' ? 'light' : 'standard'
     });
+
+    this.initBuilderUI();
   }
 
   serialize() {

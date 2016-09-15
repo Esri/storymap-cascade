@@ -1,11 +1,12 @@
-@import "variables";
+@import "mp-variables";
 
 .media-picker {
   height: 100%;
   display: flex;
   flex-direction: column;
 
-  .btn.active {
+  .btn.active,
+  .btn:active {
     box-shadow: none;
   }
 
@@ -14,13 +15,16 @@
     font-size: inherit;
     width: 100%;
     margin: 15px 0;
+    border: 1px solid @gray;
 
     * {
       font-size: inherit;
     }
 
     .input-group-addon {
+      position: relative;
       background-color: white;
+      border: 1px solid transparent;
     }
 
     .btn.danger:hover,
@@ -29,30 +33,25 @@
       color: @brand-danger;
     }
 
-    .form-control {
-      border-right: none;
-      border-left: none;
+    .form-control, .input-group-addon {
       padding: 6px;
     }
 
-    .input-group-addon {
-      padding: 6px;
+    .form-control:not(:focus), .btn:not(:focus) {
+      border-color: transparent;
+      z-index: 1;
     }
 
-    .form-control:focus,
+    // duplicate focus of text input
     .btn:focus {
       outline: none;
       border-color: @btn-info-border;
-      box-shadow: inset 2px 2px 5px @focus-shadow-color, inset -2px -2px 5px @focus-shadow-color;
+      box-shadow: inset 0 1px 2px rgba(0,0,0,.075), 0 0 5px @focus-shadow-color;
+      z-index: 3;
     }
 
     .form-control ~ .input-group-addon {
       padding: 6px;
-    }
-
-    .form-control + .input-group-addon {
-      border-right: none;
-      border-left: none;
     }
 
   }

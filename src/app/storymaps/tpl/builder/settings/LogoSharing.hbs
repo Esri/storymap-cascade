@@ -4,9 +4,9 @@
     <div class="hc-row">
       <div class="hc-item-container" style="background: {{background}};">
         <img src="{{settings.logo.url}}" class="hc-logo{{#unless settings.logo.enabled}} hidden{{/unless}}">
-        <div class="hc-logo-button{{#if settings.logo.enabled}} hidden{{/if}} btn btn-primary">{{strings.logoButton}}</div>
+        <div class="hc-logo-button{{#if settings.logo.enabled}} hidden{{/if}} btn btn-primary">{{useEsriLogoString}}</div>
         <div class="hc-action-icon-underlay">
-          <i class="hc-action-icon hc-settings fa fa-cog"></i>
+          <i class="hc-action-icon hc-settings fa fa-pencil"></i>
           <i class="hc-action-icon hc-remove fa fa-trash{{#unless settings.logo.enabled}} hidden{{/unless}}"></i>
         </div>
       </div>

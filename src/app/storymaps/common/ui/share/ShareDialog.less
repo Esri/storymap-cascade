@@ -1,0 +1,25 @@
+@import '../../common-variables';
+
+.shareDialog .embed-title {
+	color: @brand-primary;
+}
+
+.shareDialog .share-btn {
+    background: @state-info-bg;
+    color: @brand-primary;
+    cursor: pointer;
+}
+
+.shareDialog .share-btn:hover,
+.shareDialog .share-btn.zeroclipboard-is-hover {
+	background: @btn-info-bg;
+}
+
+.shareDialog .share-btn:active,
+.shareDialog .share-btn.zeroclipboard-is-active {
+  background: darken(@btn-info-bg, 5%);
+}
+
+.shareDialog .share-status {
+	color: @brand-success;
+}

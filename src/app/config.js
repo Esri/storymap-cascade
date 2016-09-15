@@ -1,23 +1,11 @@
 app.cfg = {
   HEADER_SOCIAL: {
-    facebook: true,
-    twitter: true,
     bitly: {
-      enable: true,
       login: 'esristorymaps',
       key: 'R_14fc9f92e48f7c78c21db32bd01f7014'
     }
   },
-  HEADER: {
-    logo: {
-      url: 'resources/tpl/viewer/icons/esri-logo-both.png',
-      target: 'http://www.esri.com'
-    },
-    link: {
-      title: 'A Story Map',
-      url: 'http://storymaps.arcgis.com/'
-    }
-  },
+
   TIMEOUT_VIEWER_LOAD: 5000,
 
   TPL_NAME: 'Story Map Cascade',
@@ -52,7 +40,9 @@ app.cfg = {
     ]
   },
   BUILDER_LINKS: {
-    picasaHelp: 'http://links.esri.com/storymaps/google-photos-help'
+    picasaHelp: 'http://links.esri.com/storymaps/google-photos-help',
+    unsplashHome: 'https://unsplash.com/',
+    unsplashLicense: 'https://creativecommons.org/publicdomain/zero/1.0/'
   },
   // Edit those to set a custom sharing or proxy URL
   // You have to edit those only if your webmap is deployed on Portal for ArcGIS instance and if you are not deploying the template on the Portal webserver

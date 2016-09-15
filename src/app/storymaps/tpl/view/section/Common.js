@@ -231,6 +231,11 @@ function(
               foundMediaIndexes.push(index);
             }
           }
+          else if (media.type == 'image') {
+            if (media.id == mediaSearchedInfos.id) {
+              foundMediaIndexes.push(index);
+            }
+          }
         }
       });
 
@@ -264,6 +269,43 @@ function(
         'image-block'
       );
       */
+    },
+
+    applyTitleStyle: function(style, textNode, backgroundNode) {
+      if (style) {
+        if (style.background) {
+          if (style.background === 'light') {
+            backgroundNode.addClass('background-light');
+            backgroundNode.removeClass('background-dark');
+          }
+          else {
+            backgroundNode.addClass('background-dark');
+            backgroundNode.removeClass('background-light');
+          }
+        }
+        else {
+          backgroundNode.removeClass('background-dark');
+          backgroundNode.removeClass('background-light');
+        }
+
+        if (style.text) {
+          if (style.text === 'light') {
+            textNode.addClass('text-light');
+            textNode.removeClass('text-dark');
+          }
+          else {
+            textNode.addClass('text-dark');
+            textNode.removeClass('text-light');
+          }
+        }
+
+        if (style.shadow) {
+          textNode.addClass('text-shadow');
+        }
+        else {
+          textNode.removeClass('text-shadow');
+        }
+      }
     }
   };
 });

@@ -146,7 +146,8 @@ var FlickrConnector = (function() {
           response.push(Object.assign({
             name: photo.title || '',
             description: photo.description ? (photo.description._content || '') : '',
-            picUrl: photo.url_l || photo.url_m || getPhotoURL(photo, 'b'),
+            getPicUrl: getPhotoUrlOptions, // this allows us to get larger photos than _b (1024px longest side)
+            picUrl: getPhotoURLFromSearchResults(photo), // this is a fallback now
             lat: photo.latitude || '',
             lng: photo.longitude || '',
             height: photo.height_l || photo.height_m,
@@ -163,7 +164,49 @@ var FlickrConnector = (function() {
     });
   };
 
-  var getPhotoURL = function(photo, size) {
+  var getPhotoUrlOptions = function(photo) {
+    return new Promise((resolve) => {
+      const fallback = {
+        url: photo.picUrl,
+        width: photo.width,
+        height: photo.height
+      };
+      request('flickr.photos.getSizes', {photo_id: photo.id})
+        .done(result => {
+          if (result.stat !== 'ok' || !result.sizes || !result.sizes.size || !result.sizes.size.length) {
+            resolve(fallback);
+            return;
+          }
+          resolve(parsePhotoUrlOptions(result.sizes.size, fallback));
+        })
+        .fail((xhr, status, err) => {
+          console.warn('failed to get sizes from flickr', err);
+          resolve(fallback);
+        });
+    });
+  };
+
+  // flickr url choices, found here: https://www.flickr.com/services/api/misc.urls.html
+  // getSizes choices, found here: https://www.flickr.com/services/api/flickr.photos.getSizes.html
+  // just return all sizes, as formatted arr of {width, height, url}
+  var parsePhotoUrlOptions = function(sizesArr, fallback) {
+    let formattedSizes = sizesArr.map(sizeObj => {
+      return {
+        width: parseInt(sizeObj.width),
+        height: parseInt(sizeObj.height),
+        url: sizeObj.source
+      };
+    });
+    return Object.assign({}, fallback, {
+      sizes: formattedSizes
+    });
+  };
+
+  var getPhotoURLFromSearchResults = function(photo) {
+    return photo.url_l || photo.url_m || getPhotoURLFromSize(photo, 'b');
+  };
+
+  var getPhotoURLFromSize = function(photo, size) {
     return 'http://farm' + photo.farm + '.static.flickr.com/'
       + photo.server + '/' + photo.id + '_' + photo.secret
       + '_' + size + '.jpg';
@@ -189,7 +232,7 @@ var FlickrConnector = (function() {
       suffix = 'l';
     }
     else {
-      return {thumbUrl: getPhotoURL(photo, 'm')};
+      return {thumbUrl: getPhotoURLFromSize(photo, 'm')};
     }
     return {
       thumbUrl: photo['url_' + suffix],

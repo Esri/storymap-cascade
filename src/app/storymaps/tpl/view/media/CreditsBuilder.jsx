@@ -124,7 +124,7 @@ export default class CreditsBuilder extends Credits {
         else {
           $(this).addClass('cr-link');
         }
-        
+
         let urlTrimmedValue = CommonHelper.prependURLHTTP(trimmedValue);
         $(this).data('link', urlTrimmedValue);
       }
@@ -242,6 +242,14 @@ export default class CreditsBuilder extends Credits {
         }
         // but don't allow enter to make a newline in the credits.
         event.preventDefault();
+      }
+
+      // Prevent ctrl + B/I/U or ctrl + b/i/u
+      if(event.ctrlKey || event.metaKey) {
+        var key = event.keyCode;
+        if (key == 66 || key == 98 || key == 73 || key == 105 || key == 85 || key == 117) {
+          return false;
+        }
       }
     });
 

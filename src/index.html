@@ -45,8 +45,9 @@
       var configOptions = {
         // Enter an application ID created through the Cascade builder
         appid: "",
-        // Optionally to secure Cascade's access, use an OAuth application ID (example: 6gyOg377fLUhUk6f)
-        // User will need to sign-in to access the viewer even if your application is public
+        // Optionally, to secure Cascade's access, if the story item is private or to use the builder
+        //    configure an ArcGIS OAuth application ID (example: 6gyOg377fLUhUk6f)
+        // When specified, sign-in is mandatory even if your story is public
         oAuthAppId: "",
         // Optionally, to use the appid URL parameter, configure authorizedOwners to reference
         //    members whose stories can be viewed by this storytelling app.
@@ -68,8 +69,9 @@
 
     <script type="text/javascript">
       var app = {
-        version: '1.0.2',
-        pathJSAPI: '//js.arcgis.com/3.17/'
+        version: '1.1.1',
+        pathJSAPI3: '//js.arcgis.com/3.18/',
+        pathJSAPI4: '//js.arcgis.com/4.1/'
       };
     </script>
   </head>

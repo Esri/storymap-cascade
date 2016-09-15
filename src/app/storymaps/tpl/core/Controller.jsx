@@ -17,7 +17,11 @@
 import lang from 'dojo/_base/lang';
 import topic from 'dojo/topic';
 
+import i18n from 'lib-build/i18n!./../../../resources/tpl/builder/nls/app';
+
 import Media from 'storymaps-react/tpl/view/media/Media';
+
+let storyMap = 'Story Map';
 
 const DEFAULT_HEADER_SETTINGS = {
   logo: {
@@ -27,7 +31,7 @@ const DEFAULT_HEADER_SETTINGS = {
   },
   link: {
     url: 'https://storymaps.arcgis.com',
-    title: 'A Story Map'
+    title: i18n.builder.header.defaultTagline.replace(/\${STORY_MAP}/g, storyMap)
   },
   social: {
     enabled: true
@@ -108,6 +112,23 @@ export default class Controller {
         sectionsLength = sections.length;
 
     app.data.errorWebGL = false;
+
+    // Merge consecutive sequence sections
+    // This always run in viewer and builder before the story is parsed
+    // It's a V1 legacy, it was too easy to create that kind of situation
+    // As this is an extra loop, could consider merging that with next loop
+    // Or performing this only if the story has not been edited since V1 (see version tracked in item data)
+    let prevSectionType = '';
+    for (let i = sections.length - 1; i >= 0 ; i--) {
+      let section = sections[i];
+
+      if (section.type == 'sequence' && prevSectionType == 'sequence') {
+        section.foreground.blocks = section.foreground.blocks.concat(sections[i + 1].foreground.blocks);
+        sections.splice(i + 1, 1);
+      }
+
+      prevSectionType = section.type;
+    }
 
     //
     // Add the story to the dom
@@ -369,21 +390,21 @@ export default class Controller {
             scrollTop: newScrollPos
           },
           {
-            done: function() {
-              //if (params.disableEvents) {
-              this.toggleScrollEvents(true);
-              // So that stuff get updated once at destination
-              // Just updating the position doesn't work for the last section if it's not tall enough to fill the height
-              // That update method should be integrated into the Controller and keep MainView for catching Scroll Events
-              // TODO
-              app.ui.update({
-                forceUpdate: true
-              });
-              resolve(params.index);
-              //}
-            }.bind(this)
+            duration: params.animateSpeed || 400
           }
-        );
+        ).promise().then(function() {
+          //if (params.disableEvents) {
+          this.toggleScrollEvents(true);
+          // So that stuff get updated once at destination
+          // Just updating the position doesn't work for the last section if it's not tall enough to fill the height
+          // That update method should be integrated into the Controller and keep MainView for catching Scroll Events
+          // TODO
+          app.ui.update({
+            forceUpdate: true
+          });
+          resolve(params.index);
+          //}
+        }.bind(this));
       }
       else {
         document.body.scrollTop = newScrollPos;

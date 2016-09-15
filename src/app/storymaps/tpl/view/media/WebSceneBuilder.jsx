@@ -24,6 +24,8 @@ export default class WebSceneBuilder extends WebScene {
     if (! params.delayBuilderInit) {
       this._initConfigPanel();
     }
+
+    this.initBuilderUI();
   }
 
   performAction(params) {
@@ -73,8 +75,7 @@ export default class WebSceneBuilder extends WebScene {
     }
 
     new BuilderConfig({
-      containerPanel: this._node.find('.media-cfg-panel'),
-      containerInvite: this._node.find('.media-cfg-invite'),
+      containerMedia: this._node,
       tabs: tabs,
       media: this._webscene,
       onChange: this._onConfigChange.bind(this),

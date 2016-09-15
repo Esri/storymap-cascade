@@ -88,7 +88,7 @@ function defineDojoConfig() {
       },
       {
         name: 'esri4',
-        location: '//js.arcgis.com/4.0/esri'
+        location: app.pathJSAPI4 + 'esri'
       }
     ],
     aliases: [
@@ -114,8 +114,8 @@ app.indexCfg = configOptions; // eslint-disable-line no-undef
 
 app.isInBuilder = !! app.isInBuilder;
 
-loadCSS(app.pathJSAPI + 'esri/css/esri.css', true);
-loadCSS(app.pathJSAPI + 'dijit/themes/claro/claro.css', true);
+loadCSS(app.pathJSAPI3 + 'esri/css/esri.css', true);
+loadCSS(app.pathJSAPI3 + 'dijit/themes/claro/claro.css', true);
 
 if (app.isProduction) {
   if (app.isInBuilder) {
@@ -146,7 +146,7 @@ else {
   window.dojoConfig.aliases.push(['Handlebars', 'lib-build/hbs/handlebars.js']);
 }
 
-loadJS(app.pathJSAPI + 'init.js', true);
+loadJS(app.pathJSAPI3 + 'init.js', true);
 loadJS('app/config.js');
 
 if (app.isProduction) {

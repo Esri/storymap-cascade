@@ -26,6 +26,10 @@ export default class WebMapBuilder extends WebMap {
     if (! params.delayBuilderInit) {
       this._initConfigPanel();
     }
+
+    this.initBuilderUI();
+
+    this._node.find('.media-media').attr('data-builder-invite', 'Update the map to tell your story, click the checkmark to save the changes');
   }
 
   performAction(params = {}) {
@@ -56,7 +60,12 @@ export default class WebMapBuilder extends WebMap {
 
     this._configTabWebMap = new BuilderConfigTabWebMap({
       map: this._cache[this.id],
-      layerListNode: this._node.find('.layer-list-container')
+      layerListNode: this._node.find('.layer-list-container'),
+      onOpen: () => {
+        this.performAction({
+          forceSetExtent: true
+        });
+      }
     });
 
     for(let tab of this._builderConfigurationTabs) {
@@ -76,8 +85,7 @@ export default class WebMapBuilder extends WebMap {
     }
 
     new BuilderConfig({
-      containerPanel: this._node.find('.media-cfg-panel'),
-      containerInvite: this._node.find('.media-cfg-invite'),
+      containerMedia: this._node,
       tabs: tabs,
       media: this._webmap,
       onChange: this._onConfigChange.bind(this),
@@ -86,15 +94,6 @@ export default class WebMapBuilder extends WebMap {
         // TODO: this could be in BuilderConfig
         this._node.toggleClass('builder-config-open');
         this._onToggleMediaConfig(this);
-
-        // Reset extent has user may have move the map prior opening
-        // User cannot modify any other properties outside of map config
-        // TODO: would be good tha tall media have a nice way to implement such pattern
-        if (this._node.hasClass('builder-config-open')) {
-          this.performAction({
-            forceSetExtent: true
-          });
-        }
       }.bind(this),
       closeBtnStyle: this._placement == 'background' ? 'light' : 'standard'
     });

@@ -214,6 +214,10 @@ export default class WebMap extends Media {
     var resultDeferred = new Deferred();
     var map = this._cache[this.id] ? this._cache[this.id].map : null;
 
+    if (params.isActive === false && ! params.isNewView) {
+      return;
+    }
+
     if (! map) {
       resultDeferred.reject();
       return resultDeferred;
@@ -267,7 +271,6 @@ export default class WebMap extends Media {
       }
       else {
         // Initial extent
-        //extent = map._params.extent;
         extent = this._getWebMapExtentFromItemExtent(
           this._cache[this.id].itemInfo.item.extent
         );
@@ -279,18 +282,33 @@ export default class WebMap extends Media {
 
         hasChangedExtent = true;
 
-        map.setExtent(extent, false).then(
-          function() {
-            if (viewInfo.popup) {
-              this._applyPopupConfiguration(map, viewInfo.popup);
+        var setExtent = function(extent) {
+          map.setExtent(extent, false).then(
+            function() {
+              if (viewInfo.popup) {
+                this._applyPopupConfiguration(map, viewInfo.popup);
+              }
+
+              resultDeferred.resolve();
+            }.bind(this),
+            function() {
+              resultDeferred.resolve();
+            }
+          );
+        }.bind(this);
+
+        if(map.spatialReference.wkid == extent.spatialReference.wkid) {
+          setExtent(extent);
+        }
+        else {
+          esriConfig.defaults.geometryService.project([extent], map.spatialReference, function(features) {
+            if(! features || ! features[0]) {
+              return;
             }
 
-            resultDeferred.resolve();
-          }.bind(this),
-          function() {
-            resultDeferred.resolve();
-          }
-        );
+            setExtent(features[0]);
+          }.bind(this));
+        }
       }
     }
     else {
@@ -436,6 +454,8 @@ export default class WebMap extends Media {
       options.mapOptions.extent = new Extent(this._webmap.extent);
     }
 
+    this._node.addClass('media-is-loading');
+
     // Prevent mouse wheel while map is partialy loaded
     $(mapElem).css('pointer-events', 'none');
 
@@ -444,12 +464,15 @@ export default class WebMap extends Media {
 
       console.log('createMap ok', response);
 
-      this._node.find('.media-loading').hide();
+      this._node
+        .removeClass('media-is-loading')
+        .find('.media-loading').hide();
 
       //response.map.disableMapNavigation();
       // Prevent mouse wheel while map is partialy loaded
       $(mapElem).css('pointer-events', '');
       map.disableScrollWheelZoom();
+      map.disableKeyboardNavigation();
 
       map.reposition();
       map.resize();
@@ -771,6 +794,7 @@ export default class WebMap extends Media {
     }
 
     query.objectIds = [popupCfg.fieldValue];
+    //query.where = popupCfg.fieldName + ' = ' + popupCfg.fieldValue;
 
     // Feature Service
     if (! layer._collection) {
@@ -800,6 +824,7 @@ export default class WebMap extends Media {
     }
 
     query.objectIds = [popupCfg.fieldValue];
+    //query.where = popupCfg.fieldName + ' = ' + popupCfg.fieldValue;
     query.returnGeometry = true;
     query.outFields = ['*']; // popupCfg.fieldName ?
     query.outSpatialReference = map.spatialReference;

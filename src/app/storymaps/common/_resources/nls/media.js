@@ -4,8 +4,8 @@ define({
       browseToggle: {
         arcGIS: "ArcGIS",
         flickr: "Flickr",
-        googlePhotos: "Google Photos",
-        facebook: "Facebook",
+        googlePhotos: "Google+",
+        unsplash: "Unsplash",
         urls: "Link to Content",
         urls_short: "Link",
         // the keys for contentType should match constants.contentType
@@ -30,18 +30,27 @@ define({
           noItemsInThisStory: "No content from ArcGIS has been added to this story yet.",
           limitReached: "Showing 100 items. If you didn't find what you need, try a keyword search.",
           galleryItems: {
+            uploadError: "Sorry, this item failed to upload",
+          },
+          agol: {
             remove1: "Delete this unused image from your ArcGIS account.",
             remove2: "(You'll need to upload it again if you decide to use it later.)",
-            modified: "Modified", // context: "Modified 3/18/16"
-            uploaded: "Uploaded", // context: "Uploaded 3/18/16"
-            by: "by" // context: "Webmap by John Smith"
+            removeFailed: "Remove this inaccessible image from this list.",
+            modified: "Modified ${date}", // context: "Modified 3/18/16"
+            uploaded: "Uploaded ${date}", // context: "Uploaded 3/18/16"
+            contentByAuthor: "${contentType} by ${author}" // context: "Webmap by John Smith".
           },
           googlePhotos: {
-            searchAndBrowse: "Browse photos on Picasa or Google Photos"
+            searchAndBrowse: "Browse photos on Picasa or Google+"
           },
           flickr: {
             photostream: "Photostream",
             searchAndBrowse: "Search and browse photos on Flickr"
+          },
+          unsplash: {
+            searchAndBrowse: "Search photos on Unsplash",
+            photoBy: "Photo by ${username}", // username to be supplied by app
+            userLink: "Go to ${username}'s Unsplash page"
           },
           urlContent: {
             uploadHeaders: {
@@ -71,11 +80,11 @@ define({
               generic: "Something went wrong with the address entered. Please try again.",
               imageOnly: [
                 "You must use an image in this part of the story.",
-                 "Please provide a link to an image (.jpg, .png, .gif), or choose an image from ArcGIS, Flickr, or Google Photos."
+                 "Please provide a link to an image (.jpg, .png, .gif), or choose an image from ArcGIS, Flickr, or Google+."
               ],
               imageAndVideo: [
                 "You must use an image or video in this part of the story.",
-                "Please provide a link to an image (.jpg, .png, .gif) or a video on YouTube or Vimeo, or choose an image from ArcGIS, Flickr, or Google Photos."
+                "Please provide a link to an image (.jpg, .png, .gif) or a video on YouTube or Vimeo, or choose an image from ArcGIS, Flickr, or Google+."
               ],
               badFormat: 'The link to the ${media-type} you are trying to add is formatted incorrectly.',
               inaccessible: 'The ${media-type} you are trying to add is missing or not accessible.',
@@ -91,12 +100,19 @@ define({
         sidePanel: {
           googlePhotos: {
             brand1: "Picasa",
-            brand2: "Google Photos",
+            brand2: "Google+",
             placeholder: "Email or Picasa/Google+ ID",
-            helpText: "You can add photos uploaded to ${brand1} or ${brand2} to your story. If you are using Google Photos, ${helpLinkText} to use your photos.",
-            helpLinkText: "follow these steps",
+            helpText: "You can add photos uploaded to ${brand1} or ${brand2} to your story. ${helpLinkText} about using images stored in your Google account in your stories.",
+            helpLinkText: "Learn more",
             cannotFindUser: "Cannot find user", // Context: "Cannot find user 'johnsmith'."
             tryAgain: "Please try again."
+          },
+          unsplash: {
+            placeholder: "Search for photos",
+            brand: "Unsplash",
+            aboutText: "${brand} is a curated collection of free, high-quality photos.",
+            copyrightText: "All photos published on ${brand} are licensed under ${copyrightLinkText}, which means you can copy, modify, distribute and use the photos for free (including for commercial purposes) without asking permission from, or providing attribution to, the photographer or Unsplash.",
+            copyrightLinkText: "Creative Commons Zero"
           },
           flickr: {
             // tabs for search type
@@ -135,10 +151,12 @@ define({
             },
             createContent: {
               or: "OR",
-              dragAndDrop: "Drop an image here",
-              uploadImage: "Browse for an image",
+              dragAndDrop: "Drop image(s) here",
+              uploadImage: "Browse for image(s)",
               agolInfo: "Images will be stored in your ArcGIS account and accessible inside your story.",
-              saveBeforeUpload: "Once you save this story, you can upload images to ArcGIS here."
+              saveBeforeUpload: "Once you save this story, you can upload images to ArcGIS here.",
+              fileTypes: "Supported file types:",
+              listSeparator: ","
             },
             filterAndSort: {
               webmap: "Web Map",
@@ -146,6 +164,7 @@ define({
               image: "Image",
               date: "Date",
               title: "Title",
+              views: "Views",
               search: "Search by keyword or ID"
             }
           }

@@ -10,7 +10,8 @@ var AnchorPreview = MediumEditor.extensions.anchorPreview.extend({
   getTemplate: function() {
     return '<div class="medium-editor-toolbar-anchor-preview" id="medium-editor-toolbar-anchor-preview">' +
       '    <a class="medium-editor-toolbar-anchor-preview-inner" target="_blank"></a>' +
-      '    <i class="fa fa-pencil edit-btn" aria-hidden="true"></i>' +
+      '    <i class="fa fa-trash-o delete-btn" aria-hidden="true" title="Delete"></i>' +
+      '    <i class="fa fa-pencil edit-btn" aria-hidden="true" title="Edit"></i>' +
       '</div>';
   },
   handleClick: function(event) {
@@ -18,9 +19,21 @@ var AnchorPreview = MediumEditor.extensions.anchorPreview.extend({
         activeAnchor = this.activeAnchor;
 
     if (anchorExtension && activeAnchor) {
+      // Add a custom class to the edit toolbar for style
+      $(anchorExtension.form).parent().addClass('medium-editor-toolbar-anchor-sm');
 
+      // Delete
+      if (event.target.classList.contains('delete-btn')) {
+        MediumEditor.selection.selectNode(this.activeAnchor, document);
+
+        anchorExtension.execAction('unlink');
+        event.preventDefault();
+      }
+
+      // Edit
       if (event.target.classList.contains('edit-btn')) {
-        this.base.selectElement(this.activeAnchor);
+        MediumEditor.selection.selectNode(this.activeAnchor, document);
+
         event.preventDefault();
 
         // Using setTimeout + delay because:
@@ -29,7 +42,7 @@ var AnchorPreview = MediumEditor.extensions.anchorPreview.extend({
 
           if (activeAnchor) {
             var opts = {
-              url: activeAnchor.attributes.href.value,
+              value: activeAnchor.attributes.href.value,
               target: activeAnchor.getAttribute('target'),
               buttonClass: activeAnchor.getAttribute('class')
             };

@@ -1,6 +1,7 @@
-@import "../../variables";
+@import "../../mp-variables";
 
 @minheight: 500px;
+
 .mp-browse-panel-containers {
   flex: 1 0 auto;
   -webkit-flex: 1 0 auto;
@@ -8,19 +9,19 @@
 
   .browse-panel-container {
     display: flex;
-    box-shadow: 0 0 13px 6px @shadow-gray;
+    box-shadow: 0 -8px 13px -3px @shadow-gray;
     position: absolute;
     height: 100%;
     width: 100%;
     padding: 10px;
 
     .column-sidepanel {
-      width: @sidePanelWidth;
+      width: @mp-sidepanel-width;
       flex: 0 0 auto;
       height: 100%; // silly safari
 
       @media (max-width: @screen-md) {
-        width: @sidePanelSmaller;
+        width: @mp-sidepanel-width-sm;
       }
     }
 
@@ -83,6 +84,7 @@
 
       .column-sidepanel {
         width: 100%;
+        height: auto;
         border-right: none;
         flex: 0 0 auto;
         -webkit-flex: 0 0 auto;

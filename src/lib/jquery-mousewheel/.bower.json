@@ -22,6 +22,6 @@
     "commit": "67289b6b2aa0066d7d78a5807f520387135ffb22"
   },
   "_source": "https://github.com/jquery/jquery-mousewheel.git",
-  "_target": "^3.1.13",
+  "_target": "~3.1.13",
   "_originalSource": "jquery-mousewheel"
 }

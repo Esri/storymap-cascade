@@ -49,12 +49,15 @@ class FilterToggle extends React.Component {
   render() {
     return (
       <label
-        className={'btn' + (this.props.checked ? ' active' : '')}
+        className={'btn btn-clear' + (this.props.checked ? ' active' : '')}
+        tabIndex="4"
         htmlFor={this.props.id}
+        onKeyPress={this.props.onClick} // keyboard navigation
         onClick={this.props.onClick} >
         {this.getIconSpan()}
         <span className="fa fa-check floating-check" />
         <input
+          tabIndex="-1"
           onChange={this.props.onClick}
           checked={this.props.checked}
           type="checkbox"
@@ -69,6 +72,12 @@ class FilterToggle extends React.Component {
 class FilterToggles extends React.Component {
 
   thisOnClick(evt) {
+    if (evt.charCode + 0 === evt.charCode) {
+      if (evt.charCode !== 13) {
+        return;
+      }
+      $(evt.currentTarget).toggleClass('active');
+    }
     var activeToggles = $(evt.currentTarget.parentElement).find('.active input');
     if (!activeToggles.length) {
       this.props.onKeyPress([]);
@@ -98,6 +107,12 @@ class FilterToggles extends React.Component {
         break;
       case constants.contentType.IMAGE:
         iconClass = 'picture-o fa-2x';
+        break;
+      case constants.contentType.VIDEO:
+        iconClass = 'video-camera fa-2x';
+        break;
+      case constants.contentType.AUDIO:
+        iconClass = 'volume-up fa-2x';
         break;
       default:
         console.warn('unknown toggle type', contentType);
@@ -178,8 +193,10 @@ class SortToggle extends React.Component {
   render() {
     return (
       <label
-        className={'btn' + (this.props.checked ? ' active' : '')}
+        className={'btn btn-clear' + (this.props.checked ? ' active' : '')}
+        tabIndex="5"
         htmlFor={this.props.id}
+        onKeyPress={this.props.onClick}
         onClick={this.props.onClick} >
         {this.getSortIcon()}
         <span className="btn-label">{this.props.label}</span>
@@ -197,6 +214,10 @@ class SortToggle extends React.Component {
 
 class SortToggles extends React.Component {
   thisOnClick(evt, sortField, sortOrder) {
+    if ((evt.charCode + 0 === evt.charCode) && evt.charCode !== 13) {
+      return;
+    }
+
     if (sortField === this.props.sortField) {
       var newSortOrder = this.switchSortOrder(sortOrder);
       this.props.onKeyPress.sortOrderChange(newSortOrder, sortField);

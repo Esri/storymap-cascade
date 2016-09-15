@@ -32,7 +32,6 @@
     font-size: 28px;
     line-height: 28px;
     color: #000;
-    border-radius: 30px;
 
     /*
      * Use a background with svg for the line and + symbol (text and background)
@@ -76,6 +75,7 @@
   width: 100%;
   height: 100%;
   pointer-events: none;
+  background-color: #FFF;
 
   -ms-transform: translateZ(0);
   -webkit-transform: translateZ(0);
@@ -90,6 +90,33 @@
 .foreground {
   position: relative;
   padding-bottom: 45px;
+}
+
+.foreground, .background-title {
+  .text-background {
+    &.background-dark, &.background-light {
+      padding: 10px 30px;
+    }
+
+    &.background-dark {
+      background-color: rgba(0,0,0,0.75);
+    }
+
+    &.background-light {
+      background-color: rgba(255,255,255,0.75);
+    }
+  }
+
+  .title-text {
+    &.text-dark {
+      color: black;
+      text-shadow: 0 0 8px rgba(255,255,255,0.95);
+    }
+
+    &:not(.text-shadow) {
+      text-shadow: none;
+    }
+  }
 }
 
 /*
@@ -122,4 +149,16 @@
 
 body.mobile-view .hide-mobile {
   display: none;
+}
+
+body.mobile-view {
+  .section {
+    .foreground {
+      .text-background {
+        &.background-dark, &.background-light {
+          padding: 10px 20px;
+        }
+      }
+    }
+  }
 }

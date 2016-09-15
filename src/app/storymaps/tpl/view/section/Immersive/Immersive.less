@@ -110,9 +110,13 @@ todo: for image only?
   opacity: 0;
   pointer-events: none;
 
-  h2 {
+  .background-title-wrapper {
     display: inline-block;
-    pointer-events: all;
+    position: relative;
+  }
+
+  h2 {
+    pointer-events: auto;
     font-size: 36px;
     line-height: 50px;
   }
@@ -212,8 +216,20 @@ body.builder-mode .section-immersive .blocks {
 }
 
 body.mobile-view .background-title h2 {
-  font-size: 1.6em;
+  font-size: 1.4em;
   line-height: 120%;
+}
+
+body.mobile-view {
+  .section {
+    .background-title {
+      .text-background {
+        &.background-dark, &.background-light {
+          padding: 10px;
+        }
+      }
+    }
+  }
 }
 
 .section-immersive {

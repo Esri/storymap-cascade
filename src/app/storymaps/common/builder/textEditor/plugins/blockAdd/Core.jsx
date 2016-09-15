@@ -42,6 +42,7 @@ export default class Core {
   // Called when the editor content change
   addBlockEvents() {
     this.getEditorBlocks()
+      .removeClass('show-add-invite')
       .off('mousemove')
       .off('mouseleave')
       .mousemove(
@@ -161,6 +162,8 @@ export default class Core {
       }
     }
 
+    this.hideMenuAndInvite();
+
     if (targetIsAddBlock) {
       if (this._menu.hasClass('active')) {
         if (this._menu.data('block-index') == target.index()) {
@@ -200,9 +203,6 @@ export default class Core {
         }, 150);
       }
     }
-    else {
-      this.hideMenuAndInvite();
-    }
   }
 
   hideMenuAndInvite() {
@@ -223,6 +223,8 @@ export default class Core {
         sectionIndex: sectionIndex,
         blockIndex: targetEl.index()
       }).then(function(content) {
+        let node = null;
+
         // Adding a new section
         if (! content) {
           this.hideMenuAndInvite();
@@ -236,9 +238,25 @@ export default class Core {
 
         // Focus text block and display block toolbar
         if (name == 'text') {
-          var node = targetEl.next();
+          node = targetEl.next();
           this._editor.selectElement(node[0]);
-          node.click();
+
+          setTimeout(function() {
+            node.click();
+          }, 50);
+        }
+
+        // First sequence of the story
+        if (targetEl.hasClass('block-placeholder')) {
+          targetEl.remove();
+          this._editorNode.attr('contentEditable', 'true');
+
+          if (node) {
+            this._editor.selectElement(node[0]);
+            setTimeout(function() {
+              node.click();
+            }, 50);
+          }
         }
       }.bind(this), function() {
         // this catches the cancelled or rejected deferred

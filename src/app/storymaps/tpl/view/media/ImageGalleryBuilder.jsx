@@ -34,7 +34,11 @@ export default class ImageGalleryBuilder extends ImageGallery {
 
   getPreviewThumbnail() {
     if (this._images.images && this._images.images.length) {
-      return this._images.images[0].url;
+      let img = this._images.images[0];
+      if (img.previewThumb) {
+        return Media.addToken(img.previewThumb);
+      }
+      return Media.addToken(img.url);
     }
 
     return null;
@@ -62,6 +66,8 @@ export default class ImageGalleryBuilder extends ImageGallery {
   }
 
   _openMediaPickerForIndex(index) {
+    // TODO: edit - need to change data model to store image source
+
     app.builder.mediaPicker.open({
       mode: 'add',
       authorizedMedia: ['image']

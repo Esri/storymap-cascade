@@ -3,7 +3,9 @@ import {} from 'lib-build/less!./ImageBuilder';
 
 import BuilderConfig from './builder/Panel';
 import BuilderConfigTabSizeImage from './builder/TabSizeImage';
+import BuilderConfigTabBackground from './builder/TabBackground';
 import BuilderConfigTabManageImage from './builder/TabManageImage';
+import BuilderConfigTabSectionAppearance from './builder/TabSectionAppearance';
 
 import CancelNotification from '../../builder/notification/Cancel';
 
@@ -31,8 +33,16 @@ export default class ImageBuilder extends Image {
         if (tab == 'size') {
           tabs.push(new BuilderConfigTabSizeImage());
         }
-        else if (tab == 'appearance') {
-          //
+        else if (tab == 'section-appearance') {
+          tabs.push(new BuilderConfigTabSectionAppearance({
+            sectionOptions: params.foregroundOptions,
+            onSectionChange: params.applySectionConfig
+          }));
+        }
+        else if (tab == 'background') {
+          tabs.push(new BuilderConfigTabBackground({
+            sectionType: params.sectionType
+          }));
         }
         else if (tab == 'manage') {
           tabs.push(new BuilderConfigTabManageImage({
@@ -42,8 +52,7 @@ export default class ImageBuilder extends Image {
       }
 
       new BuilderConfig({
-        containerPanel: this._node.find('.media-cfg-panel'),
-        containerInvite: this._node.find('.media-cfg-invite'),
+        containerMedia: this._node,
         tabs: tabs,
         media: this._image,
         onChange: this._onConfigChange.bind(this),
@@ -64,6 +73,8 @@ export default class ImageBuilder extends Image {
         title: i18n.builder.imageGallery.addImage
       });
     }
+
+    this.initBuilderUI();
   }
 
   serialize() {
@@ -111,6 +122,13 @@ export default class ImageBuilder extends Image {
   _onUploadSuccess(image) {
     this._image.url = image.url;
     this._url = image.url;
+    if (image.thumbUrl) {
+      this._image.thumbUrl = image.thumbUrl;
+      this.previewThumb = image.thumbUrl;
+    }
+    if (this._image.dataUrl) {
+      this._image.dataUrl = null;
+    }
 
     if (this._uploadNotification) {
       this._uploadNotification.update({
@@ -120,7 +138,9 @@ export default class ImageBuilder extends Image {
     }
 
     this._isLoaded = false;
-    this.load();
+
+    // Preload the image so that there is no flashing
+    this.preload().then(this.load.bind(this));
 
     topic.publish('builder-media-update');
     this._node.find('.img-gallery-invite').removeClass('disabled');

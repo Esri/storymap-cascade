@@ -153,7 +153,7 @@ export default class Core {
     // This could be chained when medium-editor 5.15.2 is released
     // https://github.com/yabwe/medium-editor/pull/1046
     this._plugin.on(document, 'click', this.updateToolbar.bind(this));
-    this._plugin.on(document, 'keyup', this.updateToolbar.bind(this));
+    this._plugin.on(document, 'keyup', this.updateToolbarKeyboard.bind(this));
     this._plugin.on(this._button, 'click', this.toggleToolbar.bind(this));
 
     var buttons = this._blockToolbar.getElementsByClassName('block-button');
@@ -219,18 +219,21 @@ export default class Core {
     this._button.style.left = `${position.left}px`;
     this._button.style.top = `${position.top}px`;
 
-    this._blockToolbar.style.top = `${position.top - 48}px`;
+    this._blockToolbar.style.top = `${position.top - 42}px`;
     this._blockToolbar.style.left = `${position.left - 10}px`;
   }
 
   updateToolbar(e) {
-    var target = $(e.target);
+    var target = $(e.target),
+        $editor = $(this._editor.elements[0]);
 
     if (! this._editorNode.has(target).length && ! this._actionPendingRefresh) {
       // Might have clicked on placeholder?
       if (! (target.is(this._editor.elements[0])
-          && $(this._editor.elements[0]).find('.block').length == 1
-          && $(this._editor.elements[0]).find('.block').eq(0).html() == '')) {
+          && $editor.find('.block').length == 1
+          && $editor.find('.block').eq(0).html() == '')
+          && ! target.parents('.block-toolbar-button').length) {
+        this.hideToolbarAndButton();
         return;
       }
     }
@@ -238,7 +241,26 @@ export default class Core {
     this.updateToolbarForElement(this._editor.getSelectedParentElement());
   }
 
+  updateToolbarKeyboard(e) {
+    var keyCode = e.keyCode;
+
+    if (! this._editorNode.is(e.target) && ! this._editorNode.has(e.target).length) {
+      return;
+    }
+
+    // backspace, delete
+    // enter
+    // arrows
+    if (keyCode == 8 || keyCode == 46
+        || keyCode == 13
+        || keyCode == 37 || keyCode == 38 || keyCode == 39 || keyCode == 40) {
+      this.updateToolbarForElement(this._editor.getSelectedParentElement());
+    }
+  }
+
   updateToolbarForElement(el) {
+    var $el = $(el);
+
     if (this._highlightToolbar && this._highlightToolbar.multipleBlockElementsSelected()) {
       this.hideToolbarAndButton();
       return;
@@ -249,7 +271,7 @@ export default class Core {
       return;
     }
 
-    if ($(el).hasClass('block-caption')) {
+    if ($el.hasClass('block-caption') || $el.parents('.block-media').length) {
       this.hideToolbarAndButton();
       return;
     }
@@ -320,7 +342,17 @@ export default class Core {
       var isActive = false;
 
       if (this._plugin.getQueryStateMethods()[name] == 'ALREADY_APLLIED') {
-        isActive = this._buttonsClasses[name].isAlreadyApplied(this.getSelectedElement());
+        let el = $(this.getSelectedElement());
+
+        // Formatted text in h1, h2 and blockquote
+        if (el.is('b, i, u, span') && el.parent().is('h1, h2, blockquote')) {
+          el = el.parent()[0];
+        }
+        else {
+          el = el[0];
+        }
+
+        isActive = this._buttonsClasses[name].isAlreadyApplied(el);
       }
       else {
         isActive = this._editor.queryCommandState(name);

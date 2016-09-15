@@ -14,18 +14,8 @@ export default class Cancel extends Notification {
   }
 
   render() {
-    var type = 'alert-info';
-
-    if (this._type == 'success') {
-      type = 'alert-success';
-    }
-    else if (this._type == 'error') {
-      type = 'alert-danger';
-    }
-
     return viewTpl({
       id: this._id,
-      type: type,
       label: this._label,
       displayCancel: this._type == 'start',
       labelCancel: 'Cancel' // TODO
@@ -47,7 +37,11 @@ export default class Cancel extends Notification {
 
     if (this._type != 'start') {
       setTimeout(function() {
-        this._node.remove();
+        this._node.fadeOut({
+          complete: function() {
+            this._node.remove();
+          }.bind(this)});
+
         this._resultDeferred.reject();
       }.bind(this), delay);
     }

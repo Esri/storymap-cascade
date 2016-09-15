@@ -27,9 +27,9 @@ define([
   'storymaps/tpl/utils/UI',
 
   'storymaps-react/tpl/view/ui/Header',
+  'storymaps-react/tpl/view/ui/Autoplay',
 
   'lib/calcite-bootstrap/js/bootstrap.min',
-  'lib-build/css!storymaps/common/Core',
   'lib-build/css!storymaps/common/utils/SocialSharing',
 
   'esri/arcgis/utils',
@@ -52,9 +52,9 @@ define([
   UIUtils,
 
   Header,
+  Autoplay,
 
   bootstrapJS,
-  commonCss,
   socialSharingCss,
 
   arcgisUtils,
@@ -396,7 +396,7 @@ define([
     // Resize event
     //
 
-    var optimizedResize = throttle(function() {
+    var optimizedResize = CommonHelper.throttle(function() {
       onResize();
     }, 50);
 
@@ -559,6 +559,25 @@ define([
     //$('.section-layout-title .fg-title').fitText();
 
     //
+    // Autoplay
+    //
+
+    // Autoplay in viewer mode
+    if (! app.isInBuilder && CommonHelper.getUrlParams().autoplay !== undefined && CommonHelper.getUrlParams().autoplay !== 'false') {
+      app.ui.autoplay = new Autoplay();
+
+      // Start when app is ready
+      topic.subscribe('tpl-ready', function() {
+        if (! $('body').hasClass('mobile-view')) {
+          $('.section-layout-cover .scroll-invite').hide();
+          app.ui.header.disableShareButtonAutoplay();
+          
+          app.ui.autoplay.start();
+        }
+      });
+    }
+
+    //
     // Display the app
     //
 
@@ -567,32 +586,11 @@ define([
     hideLoadingOverlay();
   }
 
-  function throttle(fn, threshhold, scope) {
-    threshhold || (threshhold = 250);
-    var last,
-        deferTimer;
-
-    return function() {
-      var context = scope || this;
-
-      var now = +new Date,
-          args = arguments;
-      if (last && now < last + threshhold) {
-        // hold on to it
-        clearTimeout(deferTimer);
-        deferTimer = setTimeout(function() {
-          last = now;
-          fn.apply(context, args);
-        }, threshhold);
-      }
-      else {
-        last = now;
-        fn.apply(context, args);
-      }
-    };
-  }
-
   function onResize() {
+    // This does not dictate much as the switch between mobile view
+    //   is only done when story is initializing
+    var isSmall = app.display.browserWidth < 768;
+
     computeDisplayInfos();
 
     _header.resize();
@@ -605,12 +603,15 @@ define([
 
     // Disable builder on small screens
     if (app.isInBuilder) {
-      var isSmall = app.display.browserWidth < 768;
-
       $('body').toggleClass('error modal-open', isSmall);
       $('#loadingOverlay').toggleClass('error', isSmall);
       $('#fatalError').toggle(isSmall);
       $('.progressjs-container').toggle(! isSmall);
+    }
+
+    // Stop autoplay in mobile view
+    if (app.ui.autoplay && isSmall) {
+      app.ui.autoplay.stop();
     }
   }
 

@@ -76,13 +76,15 @@ export default class Title {
 
   postCreate(sectionContainer) {
     this._node = sectionContainer;
-
     this._backgroundMedia.postCreate({
       container: sectionContainer,
       mediaIcon: 'image',
       onConfigAction: app.isInBuilder ? this._onMediaConfigAction.bind(this) : null,
       onToggleMediaConfig: app.isInBuilder ? this._onToggleMediaConfig.bind(this) : null,
-      builderConfigurationTabs: this.MEDIA_BUILDER_TABS_BACKGROUND
+      builderConfigurationTabs: this.MEDIA_BUILDER_TABS_BACKGROUND,
+      foregroundOptions: this._section.foreground.options,
+      applySectionConfig: app.isInBuilder ? this._applySectionConfig.bind(this) : null,
+      sectionType: 'title'
     });
 
     /*
@@ -102,6 +104,18 @@ export default class Title {
       }
     }.bind(this));
     */
+
+    this._applyConfig();
+  }
+
+  _applyConfig() {    
+    if (this._section.foreground && this._section.foreground.options) {
+      let style = this._section.foreground.options.titleStyle;
+      let textNode = this._node.find('.title-text');
+      let backgroundNode = this._node.find('.text-background');
+
+      SectionCommon.applyTitleStyle(style, textNode, backgroundNode);
+    }
   }
 
   onScroll(params) {

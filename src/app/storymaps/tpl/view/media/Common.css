@@ -8,10 +8,11 @@
   position: relative;
 }
 
-/* to avoid issue with map popup
- * TODO: why is that needed? */
 .media-media {
+  /* to avoid issue with map popup
+   * TODO: why is that needed? */
   line-height: normal;
+  background-color: #FFF;
 }
 
 body.mobile-view .block-media {
@@ -51,7 +52,7 @@ body.mobile-view .block-media {
   width: 100%;
   text-align: center;
   padding-top: 5px;
-  margin-top: 0 !important;
+  margin-top: 5px !important;
 }
 
 body.mobile-view .block-caption {
@@ -67,33 +68,6 @@ body.builder-mode .block-caption:not(:focus):empty:before {
   content: attr(data-placeholder);
   font-style: italic;
   color: #999;
-}
-
-.background .caption {
- position: absolute;
- top: 650px;
- left: 40px;
- background-color: rgba(255,255,255,.6);
- border-radius: 0 2px 2px 0;
- padding: 15px 20px;
- width: 300px;
- font-size: 1.1em;
- line-height: 150%;
-}
-
-body.mobile .background .caption,
-body.touch .background .caption {
-  left: 0px;
-  margin-left: auto;
-  margin-right: auto;
-  top: inherit !important;
-  bottom: 50px;
-  width: 90%;
-  right: 0;
-
-  font-size: 1.0em;
-  line-height: 145%;
-  color: #373737;
 }
 
 /*
@@ -150,33 +124,53 @@ body.touch .background .caption {
 }
 
 /*
-body.mobile-view .section:not(.events-mobile-central) .interaction-container{
-  display: none;
-}
+ * Builder 'Appearance invite'
+ */
 
-.events-mobile-central .interaction-container {
-  opacity: 0.3;
+.appearance-invite::before {
+  content: '';
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  border: 2px dashed #005e95;
+  z-index: 9;
   pointer-events: none;
-  top: 20px;
-  left: 50%;
-  right: auto;
-  bottom: auto;
-  margin-left: -60px;
 }
 
-.events-mobile-central.active .interaction-container {
-  opacity: 1;
-  pointer-events: auto;
+.appearance-invite::after {
+  content: attr(data-builder-invite);
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background-color: #005e95;
+  padding: 2px 5px;
+  color: #FFF;
+  pointer-events: none;
+  z-index: 8;
+  font-family: 'open_sans', sans-serif;
+  z-index: 9999;
 }
 
-.events-mobile-central .btn {
-  width: 130px;
+.background .appearance-invite::before {
+  top: 50px;
+  bottom: 187px;
 }
 
-.events-mobile-central .background:not(.enable-events) .webpage {
-  opacity: .3;
+.block .appearance-invite::after {
+  left: 75px;
+  padding-left: 10px;
 }
-*/
+
+.background .appearance-invite::after {
+  top: inherit;
+  bottom: 187px;
+}
+
+.media-is-loading .media-cfg-invite {
+  display: none !important;
+}
 
 /*
  * Background
@@ -219,4 +213,46 @@ body.builder-mode .builder-ui {
 
 .builder-config-open .block-caption {
   display: none;
+}
+
+/*
+ * Delete menu for builder
+ */
+
+.media-delete {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 2;
+  opacity: 0;
+  font-size: 24px;
+  color: #000;
+}
+
+.media-delete-background {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 0;
+  height: 0;
+  border-left: 70px solid transparent;
+  border-right: 0 solid transparent;
+  border-top: 70px solid rgba(232, 232, 232, 1);
+  border-bottom: 0 solid rgba(232, 232, 232, 1);
+}
+
+.media-delete-icon {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.media-delete-icon:hover {
+  opacity: 1.0;
+}
+
+.block-media:hover .media-delete {
+  opacity: 1;
 }

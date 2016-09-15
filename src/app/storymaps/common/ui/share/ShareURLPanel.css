@@ -21,7 +21,7 @@ body.mobile-view .bitlylink {
 
 .share-url-container.touch .bitlylink {
 	width: 230px;
-	padding: 6px 0;
+	padding: 6px 0 6px 4px;
 }
 
 body.mobile-view .share-url-container .bitlylink {
@@ -38,9 +38,7 @@ body.mobile-view .share-url-container .bitlylink {
     display: block;
     position: absolute;
     font-size: 1.6em;
-    background: #E1F0FB;
-    color: #396e8b;
-    cursor: pointer;
+  /* colors in sharedialog less file as .share-btn */
 
 		top: 2px;
 		bottom: 1px;
@@ -51,10 +49,6 @@ body.mobile-view .share-url-container .bitlylink {
 		padding-left: 4px;
 }
 
-.share-url-container .share-btn:hover {
-	background: #d4ebfd;
-}
-
 .share-url-container.touch .share-clipboard {
 	display: none;
 }
@@ -63,7 +57,7 @@ body.mobile-view .share-url-container .bitlylink {
 	height: 0;
 	font-weight: bold;
 	font-size: 1.2rem;
-	color: #66aa67;
+  /* colors in sharedialog less file as .share-btn */
 	text-align: left;
 }
 

@@ -93,6 +93,20 @@ body.builder-mode .section-layout-cover .wrapper {
   text-shadow: 0 0 8px rgba(0, 0, 0, 0.95);
 }
 
+.section-layout-cover {
+  .foreground {
+    .text-background {
+      padding: 0 50px;
+      max-width: 100%;
+
+      &.background-dark, &.background-light {
+        padding: 20px 50px;
+        min-width: 300px;
+      }
+    }
+  }
+}
+
 .foo {
   position: relative;
   display: flex;
@@ -115,8 +129,6 @@ body.builder-mode .section-layout-cover .wrapper {
   max-width: 100%;
   overflow-wrap: break-word;
   word-wrap: break-word;
-  padding-left: 50px;
-  padding-right: 50px;
 }
 
 /*.section-layout-cover .foreground h1, .section-layout-cover .foreground h2 {
@@ -304,13 +316,23 @@ body.mobile-view .section-layout-cover .cover-subtitle {
    margin-top: 10px;
 }
 
-body.mobile-view .section-layout-cover .cover-title, body.mobile-view .section-layout-cover .cover-subtitle {
-  padding-left: 10px;
-  padding-right: 10px;
-}
-
 body.mobile-view .section-layout-cover .author-info {
   bottom: 70px;
+}
+
+body.mobile-view {
+  .section-layout-cover {
+    .foreground {
+      .text-background {
+        padding: 0 10px;
+
+        &.background-dark, &.background-light {
+          min-width: 140px;
+          padding: 10px 20px;
+        }
+      }
+    }
+  }
 }
 
 /*
@@ -358,6 +380,7 @@ body.mobile-view .section-layout-cover .cover-credits-right {
 
 .cover-media-placeholder {
   display: none;
+  z-index: 1;
 }
 
 .title-error-container {
@@ -371,7 +394,7 @@ body.mobile-view .section-layout-cover .cover-credits-right {
 .title-error-message {
   display: inline-block;
   cursor: default;
-  background: rgba(228,80,80, 0.8);
+  background: fade(@sm-brand-danger, 80%);
   font-size: 18px;
   padding: 10px 20px;
   line-height: 1.3;

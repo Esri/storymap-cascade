@@ -7,7 +7,7 @@ import viewTpl from 'lib-build/hbars!./TabWebScene';
 
 export default class TabWebScene extends TabArcGIS {
   constructor(params) {
-    super();
+    super(params);
 
     this.scene = params.scene;
   }
@@ -36,7 +36,7 @@ export default class TabWebScene extends TabArcGIS {
 
       // append options to the dropdown
       // the first one will be the "home view"
-      slidesDropdown.append(`<option class="config-item" data-type="slides" value="-1">${i18n.builder.mediaConfig.homeView}</option>`);
+      slidesDropdown.append(`<option class="config-item" data-type="slides" value="-1">${i18n.builder.mediaConfig.appearance.homeView}</option>`);
 
       for (let i = 0; i < slides.length; i++) {
         slidesDropdown.append(`<option class="config-item" data-type="slides" value="${i}">${slides[i].title.text}</option>`);
@@ -85,6 +85,8 @@ export default class TabWebScene extends TabArcGIS {
   }
 
   render() {
-    return viewTpl({});
+    return viewTpl({
+      strings: i18n.builder.mediaConfig.appearance
+    });
   }
 }

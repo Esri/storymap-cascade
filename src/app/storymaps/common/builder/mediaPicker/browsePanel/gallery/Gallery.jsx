@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Helper from '../../utils/Helper';
 import GalleryItem from './GalleryItem';
 import {} from 'lib-build/less!./Gallery';
 import constants from '../../constants';
@@ -46,43 +47,27 @@ class Gallery extends React.Component {
       delay: {show: 750, hide: 200},
       template: '<div class="popover remove" role="tooltip"><div class="arrow"></div><div class="popover-content"></div></div>'
     });
+    $('.mp-gallery .external-link[data-toggle="popover"]').popover({
+      container: thisDomNode,
+      delay: {show: 750, hide: 200},
+      template: '<div class="popover external-link" role="tooltip"><div class="arrow"></div><div class="popover-content"></div></div>'
+    });
 
-    if (thisDomNode.find('.placeholder').length) {
-      thisDomNode.addClass('flex-grow');
+    // scroll to the top of the container if there are no items
+    // (this happens not only when there are actually no items to display,
+    // but also right before there's a new set of items to display)
+    if (!this.props.items || !this.props.items.length) {
+      if (typeof thisDomNode.scrollTop === 'function') {
+        thisDomNode.scrollTop(0);
+      }
+      else {
+        thisDomNode.scrollTop = 0;
+      }
     }
   }
 
   renderItems() {
-    // albums displayed and loading, or images displayed and loading.
-    if ((this.props.displayedContent === constants.galleryContent.ALBUMS && this.props.providerProps.albumFetchStatus === constants.fetchStatus.FETCHING) ||
-        (this.props.displayedContent === constants.galleryContent.IMAGES && this.props.providerProps.imageFetchStatus === constants.fetchStatus.FETCHING) ||
-        (this.props.displayedContent === constants.galleryContent.AGOL && this.props.providerProps.imageFetchStatus === constants.fetchStatus.FETCHING)) {
-      return (
-        <Spinner />
-      );
-    }
-
-    // image loading success but not images found.
     if (!this.props.items || !this.props.items.length) {
-      if (this.props.displayedContent === constants.galleryContent.IMAGES && this.props.providerProps.imageFetchStatus === constants.fetchStatus.SUCCESS) {
-        return (
-          <Alert text={text.providers.noPhotosFound}/>
-        );
-      }
-      if (this.props.displayedContent === constants.galleryContent.AGOL && this.props.providerProps.imageFetchStatus === constants.fetchStatus.SUCCESS) {
-        if (this.props.providerProps.searchLocation === constants.searchLocation.STORY && !this.props.containerState.storyResourceCount) {
-          return (
-            <Alert text={text.providers.noItemsInThisStory}/>
-          );
-        }
-        return (
-          <Alert text={text.providers.noItemsFound}/>
-        );
-      }
-      let walker;
-      if ((walker = this.props) && (walker = walker.containerState) && (walker = walker.provider)) {
-        return <Placeholder text={text.providers[walker].searchAndBrowse || ''} />;
-      }
       return null;
     }
 
@@ -112,11 +97,69 @@ class Gallery extends React.Component {
     );
   }
 
+  getSpinner() {
+    // albums displayed and loading, or images displayed and loading.
+    if ((this.props.displayedContent === constants.galleryContent.ALBUMS && this.props.providerProps.albumFetchStatus === constants.fetchStatus.FETCHING) ||
+        (this.props.displayedContent === constants.galleryContent.IMAGES && this.props.providerProps.imageFetchStatus === constants.fetchStatus.FETCHING) ||
+        (this.props.displayedContent === constants.galleryContent.AGOL && this.props.providerProps.imageFetchStatus === constants.fetchStatus.FETCHING)) {
+      return (
+        <Spinner />
+      );
+    }
+    return null;
+  }
+
+  getAlert() {
+    if (this.props.items && this.props.items.length) {
+      return null;
+    }
+    // image loading success but not images found.
+    if (this.props.displayedContent === constants.galleryContent.IMAGES && this.props.providerProps.imageFetchStatus === constants.fetchStatus.SUCCESS) {
+      return (
+        <Alert text={text.providers.noPhotosFound}/>
+      );
+    }
+    if (this.props.displayedContent === constants.galleryContent.AGOL && this.props.providerProps.imageFetchStatus === constants.fetchStatus.SUCCESS) {
+      if (this.props.providerProps.searchLocation === constants.searchLocation.STORY && !this.props.containerState.storyResourceCount) {
+        return (
+          <Alert text={text.providers.noItemsInThisStory}/>
+        );
+      }
+      return (
+        <Alert text={text.providers.noItemsFound}/>
+      );
+    }
+    return null;
+  }
+
+  getPlaceholder() {
+    if (this.props.items && this.props.items.length) {
+      return null;
+    }
+    if (this.props && this.props.containerState && this.props.containerState.provider) {
+      return (
+        <Placeholder text={text.providers[this.props.containerState.provider].searchAndBrowse || ''} />
+      );
+    }
+    return null;
+  }
+
   render() {
+    // get these items first, because we need to add .centered and
+    // possibly .flex-grow to mp-gallery.
+    const spinner = this.getSpinner();
+    const alert = this.getAlert();
+    const placeholder = (alert || spinner) ? null : this.getPlaceholder();
+    const hasItems = !spinner && !alert && !placeholder;
+    const galleryClasses = Helper.classnames(['row', 'mp-gallery', {
+      'centered': !hasItems,
+      'flex-grow': placeholder
+    }]);
     return (
-      <div className="row mp-gallery">
-        {this.renderItems()}
-        {this.renderLimit()}
+      <div className={galleryClasses}>
+        {spinner || alert || placeholder}
+        {hasItems ? this.renderItems() : null}
+        {hasItems ? this.renderLimit() : null}
       </div>
     );
   }

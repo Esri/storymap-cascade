@@ -1,20 +1,21 @@
 import React from 'react';
 import List from './list/List';
 
+import i18n from 'lib-build/i18n!./../../../../resources/tpl/builder/nls/app';
+
 import {} from 'lib-build/less!./Panel';
 
-var i18nText = {
-  organize: 'Organize',
-  done: 'Done'
-};
-
 function Panel(props) {
-  var text = props.organize ? i18nText.done : i18nText.organize;
+  var text = props.organize ? i18n.builder.builderPanel.done : i18n.builder.builderPanel.organize;
   var iconClass = 'icon glyphicon';
   var panelClass = 'op-panel';
 
   if (props.orientation === 'horizontal') {
     panelClass += ' op-style-horizontal';
+  }
+
+  if (props.organize) {
+    panelClass += ' organize';
   }
 
   if (props.organize) {
@@ -35,8 +36,10 @@ function Panel(props) {
           }
           props.toggleOrganize();
         }}>
-        <span className={iconClass}></span>
-        {props.orientation === 'horizontal' ? null : text}
+        <div className="organize-toggle-wrapper">
+          <span className={iconClass}></span>
+          {props.orientation === 'horizontal' ? null : text}
+        </div>
       </div>
     </div>
   );

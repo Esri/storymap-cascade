@@ -131,7 +131,7 @@ export default class Sequence {
         }
       });*/
 
-      if (this._isLoaded) {
+      if (! this._isLoaded) {
         $.each(this._blocks, function(i, block) {
           block.load();
         });

@@ -14,7 +14,7 @@ var commonMembers = {
 };
 
 var flickrMembers = {
-  selectedTab: constants.searchType.USER,
+  selectedTab: constants.searchType.TEXT,
   selectedUser: '',
   userSearchTerm: '',
   userLicense: constants.flickrLicenseStrings.ANY, // possibly in google photos as well
@@ -32,6 +32,10 @@ var agolMembers = {
   sortOrder: constants.sortOrder.DESC
 };
 
+var unsplashMembers = {
+  photoSearchTerm: ''
+};
+
 var urlMembers = {
 
 };
@@ -39,6 +43,7 @@ var urlMembers = {
 var flickrState = Object.assign({}, commonMembers, flickrMembers);
 var googlePhotosState = Object.assign({}, commonMembers, googlePhotosMembers);
 var agolState = Object.assign({}, commonMembers, agolMembers);
+var unsplashState = Object.assign({}, commonMembers, unsplashMembers);
 var urlState = Object.assign({}, commonMembers, urlMembers);
 
 function flickr(state = flickrState, action) {
@@ -73,6 +78,21 @@ function googlePhotos(state = googlePhotosState, action) {
     return state;
   }
   return generic(state, action);
+}
+
+function unsplash(state = unsplashState, action) {
+  if (!checkProvider(action, constants.providers.UNSPLASH)) {
+    return state;
+  }
+  var stateProp, actionProp;
+  switch (action.type) {
+    case types.UPDATE_PHOTO_SEARCH_TERM:
+      stateProp = 'photoSearchTerm', actionProp = 'term';
+      break;
+    default:
+      return generic(state, action);
+  }
+  return Object.assign({}, state, {[stateProp]: action.value[actionProp]});
 }
 
 function agol(state = agolState, action) {
@@ -148,5 +168,6 @@ export default combineReducers({
   flickr,
   googlePhotos,
   agol,
+  unsplash,
   urlContent
 });

@@ -17,7 +17,7 @@ export default class TitleBuilder extends Title {
       buttons: ['sequence', 'title', 'immersive']
     });
 
-    this.MEDIA_BUILDER_TABS_BACKGROUND = ['manage'];
+    this.MEDIA_BUILDER_TABS_BACKGROUND = ['section-appearance', 'background', 'manage'];
   }
 
   render() {
@@ -28,7 +28,11 @@ export default class TitleBuilder extends Title {
     // Creating a new section
     if (! this._section.background) {
       this._section.background = this._initialMedia || { type: 'empty', empty: 'empty' };
-      this._section.foreground = { title: '', credits: ''};
+      this._section.foreground = { title: '', credits: '', options: {}};
+    }
+
+    if (!this._section.foreground.options) {
+      this._section.foreground.options = {};
     }
 
     return super.render();
@@ -63,6 +67,14 @@ export default class TitleBuilder extends Title {
           //document.execCommand('insertHTML', false, '<br><br>');
           return false;
         }
+
+        // Prevent ctrl + B/I/U or ctrl + b/i/u
+        if(e.ctrlKey || e.metaKey) {
+          var key = e.keyCode;
+          if (key == 66 || key == 98 || key == 73 || key == 105 || key == 85 || key == 117) {
+            return false;
+          }
+        }
       });
   }
 
@@ -91,7 +103,36 @@ export default class TitleBuilder extends Title {
   }
 
   _onToggleMediaConfig() {
-    this._node.toggleClass('hide-foreground');
+    let activeClass = 'media-config-active';
+    let configPanelActive = this._backgroundMedia.isConfigActive();
+    const MEDIA_CONFIG_HEIGHT = 225;
+
+    if (configPanelActive) {
+      this._node.addClass(activeClass);
+
+      // Scroll the page if there isn't enough room for the config panel
+      let sectionNode = this._node[0];
+      let sectionBBOX = sectionNode.getBoundingClientRect();
+      let scrollOffset = 0;
+
+      let mediaConfigHeight = MEDIA_CONFIG_HEIGHT;
+      let bottomWithMediaConfig = sectionBBOX.bottom + mediaConfigHeight;
+
+      if (bottomWithMediaConfig > app.display.windowHeight) {
+        scrollOffset = app.display.windowHeight - bottomWithMediaConfig;
+      }
+
+      if (scrollOffset) {
+        var currentScroll = document.body.scrollTop || document.documentElement.scrollTop;
+
+        $('html,body').animate({
+          scrollTop: currentScroll - scrollOffset + 50
+        }, 150);
+      }
+    }
+    else {
+      this._node.removeClass(activeClass);
+    }
   }
 
   _onMediaConfigAction(params = {}) {
@@ -100,8 +141,11 @@ export default class TitleBuilder extends Title {
     }
 
     if (params.action == 'swap') {
+      var mediaIsEmpty = params.media.serialize().type == 'empty';
+
       app.builder.mediaPicker.open({
-        mode: 'add',
+        mode: mediaIsEmpty ? 'add' : 'edit',
+        media: mediaIsEmpty ? null : params.media.serialize(),
         authorizedMedia: ['image']
       }).then(
         function(newMedia) {
@@ -113,6 +157,11 @@ export default class TitleBuilder extends Title {
       );
     }
 
+    this._onContentChange();
+  }
+
+  _applySectionConfig() {
+    this._applyConfig();
     this._onContentChange();
   }
 
@@ -131,7 +180,10 @@ export default class TitleBuilder extends Title {
       container: this._node,
       onConfigAction: app.isInBuilder ? this._onMediaConfigAction.bind(this) : null,
       onToggleMediaConfig: app.isInBuilder ? this._onToggleMediaConfig.bind(this) : null,
-      builderConfigurationTabs: this.MEDIA_BUILDER_TABS_BACKGROUND
+      builderConfigurationTabs: this.MEDIA_BUILDER_TABS_BACKGROUND,
+      foregroundOptions: this._section.foreground.options,
+      applySectionConfig: app.isInBuilder ? this._applySectionConfig.bind(this) : null,
+      sectionType: 'title'
     });
 
     // TODO: this may be an issue if picking a map/scene already present
@@ -144,6 +196,6 @@ export default class TitleBuilder extends Title {
     media.destroy();
 
     this._backgroundMedia = newMedia;
-    this._onContentChange();
+    this._applySectionConfig();
   }
 }

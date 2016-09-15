@@ -131,7 +131,7 @@ export default class Panel {
         visibility: 'hidden'
       });
       this._node.css({
-        transform: 'translateY(' + panelPos + 'px)',
+        transform: 'translateY(' + parseInt(panelPos) + 'px)',
         opacity: panelOpa,
         visibility: 'visible'
       });

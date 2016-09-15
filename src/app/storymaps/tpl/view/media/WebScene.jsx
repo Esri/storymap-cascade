@@ -11,8 +11,12 @@ import i18n from 'lib-build/i18n!./../../../../resources/tpl/builder/nls/app';
 
 import UIUtils from 'storymaps/tpl/utils/UI';
 
+import IdentityManager from 'esri/IdentityManager';
+
 const PREVIEW_THUMB = 'resources/tpl/builder/icons/media-placeholder/scene.png';
 const PREVIEW_ICON = 'resources/tpl/builder/icons/immersive-panel/scene.png';
+
+var NEED_PORTAL_INIT = true;
 
 export default class WebScene extends Media {
 
@@ -159,9 +163,14 @@ export default class WebScene extends Media {
 
     console.log('scene: ' + this.id);
 
+    this._node.addClass('media-is-loading');
+
+    var userCredentials = IdentityManager.toJson();
+
     // For some reason if the require is not done there, it won't load...
     require([
       'esri4/config',
+      'esri4/core/urlUtils',
       'esri4/identity/IdentityManager',
       'esri4/identity/OAuthInfo',
       'esri4/portal/Portal',
@@ -173,6 +182,7 @@ export default class WebScene extends Media {
     ],
     function(
       esriConfig,
+      urlUtils,
       esriId,
       OAuthInfo,
       Portal,
@@ -181,7 +191,59 @@ export default class WebScene extends Media {
       WebScene,
       watchUtils
     ) {
+      var portalUrl = app.indexCfg.sharingurl.split('/sharing/')[0];
+      esriConfig.portalUrl = portalUrl;
+
+      // Proxy rules
+      esriConfig.request.proxyUrl = location.protocol + app.indexCfg.proxyurl;
+
+      if (app.cfg.PROXY_RULES && app.cfg.PROXY_RULES.length) {
+        $.each(app.cfg.PROXY_RULES, function(i, rule) {
+          if (rule && rule.urlPrefix && rule.proxyUrl) {
+            urlUtils.addProxyRule(rule);
+          }
+        });
+      }
+
+      if (NEED_PORTAL_INIT) {
+        if (app.indexCfg.oAuthAppId) {
+          var info = new OAuthInfo({
+            appId: app.indexCfg.oAuthAppId,
+            popup: false,
+            portalUrl: 'https:' + portalUrl
+          });
+
+          esriId.registerOAuthInfos([info]);
+
+          esriId.checkSignInStatus('https:' + app.indexCfg.sharingurl.split('/sharing/')[0] + '/sharing').then(
+            loadStep2.bind(this),
+            function() {
+              console.error('Error during oAuth process for web scene');
+              loadStep2.bind(this)();
+            }.bind(this)
+          );
+        }
+        else {
+          // initialize also add a serverInfo with www.arcgis.com
+          //esriId.initialize(userCredentials);
+
+          for(let info of userCredentials.credentials) {
+            esriId.registerToken(info);
+          }
+
+          loadStep2.bind(this)();
+        }
+
+        NEED_PORTAL_INIT = false;
+      }
+      else {
+        loadStep2.bind(this)();
+      }
+
+      // Web Scene loading
       function loadStep2() {
+        console.log('web scene IdentityManager:', esriId);
+
         var scene = new WebScene({
           portalItem: new PortalItem({
             id: this.id
@@ -204,6 +266,7 @@ export default class WebScene extends Media {
 
           view.ui.move('zoom', 'bottom-right');
           view.ui.move('compass', 'bottom-right');
+          view.ui.remove('navigation-toggle');
 
           this._node.find('.media-loading').hide();
         }.bind(this));
@@ -232,32 +295,10 @@ export default class WebScene extends Media {
         }
 
         // The event is only registered once for all views in immersive
-        this._node.find('.interaction-container').click(this._onEnableButtonClick.bind(this));
+        this._node
+          .removeClass('media-is-loading')
+          .find('.interaction-container').click(this._onEnableButtonClick.bind(this));
       }
-
-      var portalUrl = app.indexCfg.sharingurl.split('/sharing/')[0];
-
-      esriConfig.portalUrl = portalUrl;
-
-      var info = new OAuthInfo({
-        appId: app.indexCfg.oAuthAppId,
-        popup: false,
-        portalUrl: 'https:' + portalUrl
-      });
-
-      esriId.registerOAuthInfos([info]);
-
-      esriId.checkSignInStatus(info.portalUrl + '/sharing').then(
-        /*
-        function() {
-          var portal = new Portal();
-          portal.authMode = 'immediate';
-          portal.load().then(loadStep2.bind(this));
-        }.bind(this),
-        */
-        loadStep2.bind(this),
-        loadStep2.bind(this)
-      );
     }.bind(this));
   }
 

@@ -33,6 +33,9 @@ class Item extends React.Component {
     if (this.props.organize) {
       className += ' organize';
     }
+    if (this.props.item.style == 'simple-text') {
+      className += ' style-simple-text';
+    }
 
     return (
       <div

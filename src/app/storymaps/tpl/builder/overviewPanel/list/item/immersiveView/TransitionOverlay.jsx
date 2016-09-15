@@ -1,16 +1,14 @@
 import React from 'react';
 import { Popover, OverlayTrigger, Tooltip } from 'react-bootstrap';
 
+import i18n from 'lib-build/i18n!./../../../../../../../resources/tpl/builder/nls/app';
+
 import {} from 'lib-build/less!./TransitionOverlay';
 
 function TransitionOverlay(props) {
 
-  var i18nText = {
-    transition: 'Transition'
-  };
-
   var renderInnerOption = function(transition) {
-    var className = 'item';
+    var className = 'item btn-gray';
     var selectedIcon = null;
 
     if (!transition.enabled) {
@@ -50,9 +48,10 @@ function TransitionOverlay(props) {
         // disable and show tooltip.
         return (
           <OverlayTrigger
+            placement="left"
             key={transition.id}
             overlay={
-              <Tooltip id={'transition-tooltip-' + props.itemID + '-' + transition.id} placement="right">
+              <Tooltip id={'transition-tooltip-' + props.itemID + '-' + transition.id}>
                 {transition.tooltip}
               </Tooltip>
             }>
@@ -72,7 +71,7 @@ function TransitionOverlay(props) {
       id={'transition-popover-' + props.itemID}
       placement="top"
     >
-      <h6 className="title">{i18nText.transition}</h6>
+      <h6 className="title">{i18n.builder.immersiveViewPanel.transition}</h6>
       <ul className="list">
         {renderOptions()}
       </ul>

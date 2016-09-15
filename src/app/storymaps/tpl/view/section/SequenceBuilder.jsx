@@ -29,14 +29,12 @@ export default class SequenceBuilder extends Sequence {
         },
         foreground: {
           blocks: [
-
             {
               type: 'text',
               text: {
                 value: '<p class="block"></p>'
               }
             }
-
           ]
         }
       };
@@ -52,9 +50,13 @@ export default class SequenceBuilder extends Sequence {
       node: this._node.find('.foreground'),
       addMedia: this.addMedia.bind(this),
       addButtons: ['text', 'arcgis', 'media', 'title', 'immersive'],
-      splitSection: this.splitSection.bind(this),
       style: 'full',
-      placeholder: node.index() == 1 ? 'Your Cascade story starts here!' : null,
+      placeholder: node.index() != 1,
+      disableEditing: node.index() == 1
+        && this._section.foreground.blocks
+        && this._section.foreground.blocks.length == 1
+        && this._section.foreground.blocks[0].type == 'text'
+        && this._section.foreground.blocks[0].text.value.match(/block-placeholder/),
       onChange: this._onContentChange.bind(this)
     });
   }
@@ -158,7 +160,7 @@ export default class SequenceBuilder extends Sequence {
     // TODO: this may be an issue if picking a map/scene already present
     newMedia.load();
 
-    this._blocks.splice(this._blocks.indexOf(media), 0, newMedia);
+    this._blocks.splice(this._blocks.indexOf(media), 1, newMedia);
 
     this._onContentChange();
   }
@@ -174,7 +176,8 @@ export default class SequenceBuilder extends Sequence {
     }
     else if (params.action == 'swap') {
       app.builder.mediaPicker.open({
-        mode: 'add'
+        mode: 'edit',
+        media: params.media.serialize()
       }).then(
         function(newMedia) {
           this._onEditMedia(params.media, newMedia);
@@ -238,14 +241,6 @@ export default class SequenceBuilder extends Sequence {
     this._onContentChange();
   }
 
-  splitSection(params = {}) {
-    if (params.blockIndex === undefined) {
-      return;
-    }
-
-    console.log('Split section:', params.blockIndex);
-  }
-
   getPreviewThumbnail() {
     for (var block of this._blocks) {
       if (block.type != 'text') {
@@ -263,10 +258,13 @@ export default class SequenceBuilder extends Sequence {
   getPreviewText() {
     var text = '';
 
-    if (this._section.foreground.blocks) {
-      if (this._section.foreground.blocks.length) {
-        if (this._section.foreground.blocks[0].type == 'text') {
-          text = $(this._section.foreground.blocks[0].text.value).text();
+    if (this._section.foreground.blocks && this._section.foreground.blocks.length) {
+      for (var block of this._section.foreground.blocks) {
+        if (block.type == 'text') {
+          text = $(block.text.value).text();
+          if (text) {
+            break;
+          }
         }
       }
     }
@@ -313,6 +311,33 @@ export default class SequenceBuilder extends Sequence {
     //  be worthwile to optimize
     // TODO: optimize
     return lang.clone(this._section);
+  }
+
+  // TODO: generic empty method in Section.jsx
+  requireSplitAt(startBlock) {
+    return startBlock < this.serialize().foreground.blocks.length - 1;
+  }
+
+  // TODO: generic empty method in Section.jsx
+  serializePartially(startBlock, endBlock) {
+    var json = this.serialize();
+
+    if (endBlock === undefined) {
+      endBlock = json.foreground.blocks.length;
+    }
+
+    json.foreground.blocks = json.foreground.blocks.slice(startBlock, endBlock);
+
+    return json;
+  }
+
+  mergeAndSerialize(followingSection) {
+    var json1 = this.serialize();
+    var json2 = followingSection.serialize();
+
+    json1.foreground.blocks = json1.foreground.blocks.concat(json2.foreground.blocks);
+
+    return json1;
   }
 
   setBookmark(bookmark) {

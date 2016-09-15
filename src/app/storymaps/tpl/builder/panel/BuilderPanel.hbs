@@ -3,32 +3,32 @@
 
   <button class="btn btn-settings">
     <i class="fa fa-cogs" aria-hidden="true"></i>
-    <span class="btn-label">Settings</span>
+    <span class="btn-label">{{commonStrings.buttonSettings}}</span>
   </button>
   <div class="beta-feedback">
-    <a href="http://links.esri.com/storymaps/cascade-beta-feedback" target="_blank">Beta feedback</a>
+    <a href="http://links.esri.com/storymaps/cascade-beta-feedback" target="_blank">{{strings.betaFeedback}}</a>
     <i class="beta-tooltip fa fa-info-circle" aria-hidden="true"></i>
   </div>
 
   <button class="btn btn-share">
     <i class="fa fa-share" aria-hidden="true"></i>
-    <span class="btn-label">Share</span>
+    <span class="btn-label">{{commonStrings.buttonShare}}</span>
 
     <div class="btn-share-container">
       <div class="btn-share-outer-tooltip" data-level="private">
-        <div class="btn-share-wrapper" data-level="private" data-title="Private">
+        <div class="btn-share-wrapper" data-level="private" data-title="{{sharingLevelStrings.btnPrivate}}">
     			<span class="small-loader"></span>
     			<i class="share-icon fa fa-user" aria-hidden="true"></i>
     		</div>
       </div>
-      <div class="btn-share-outer-tooltip tooltip-enabled" data-level="account" data-title="To ensure this story can be seen by others when shared with your organization, you must also share its maps, scenes, layers, or apps with your organization using the My Content page of ArcGIS.com.">
-        <div class="btn-share-wrapper" data-level="account" data-title="Organization">
+      <div class="btn-share-outer-tooltip tooltip-enabled" data-level="account" data-title="{{organizationWarning}}">
+        <div class="btn-share-wrapper" data-level="account" data-title="{{sharingLevelStrings.btnOrg}}">
     			<span class="small-loader"></span>
     			<i class="share-icon fa fa-users" aria-hidden="true"></i>
     		</div>
       </div>
-      <div class="btn-share-outer-tooltip tooltip-enabled" data-level="public" data-title="To ensure this story can be seen by others when shared publicly, you must also share its maps, scenes, layers, or apps publicly using the My Content page of ArcGIS.com.">
-        <div class="btn-share-wrapper" data-level="public" data-title="Public">
+      <div class="btn-share-outer-tooltip tooltip-enabled" data-level="public" data-title="{{publicWarning}}">
+        <div class="btn-share-wrapper" data-level="public" data-title="{{sharingLevelStrings.btnPublic}}">
     			<span class="small-loader"></span>
     			<i class="share-icon fa fa-globe" aria-hidden="true"></i>
     		</div>
@@ -38,10 +38,16 @@
 
   <button class="btn btn-preview">
     <i class="fa fa-eye" aria-hidden="true"></i>
-    <span class="btn-label">View story</span>
+    <span class="btn-label">{{commonStrings.buttonPreview}}</span>
   </button>
 
-  <button id="save-button" class="btn btn-save" data-toggle="tooltip" data-placement="top" data-title="There was an error saving your story.">
+  <button class="btn btn-check">
+    <i class="fa fa-heartbeat" aria-hidden="true"></i>
+    <span class="btn-label">{{commonStrings.buttonCheck}}</span>
+    <i class="check-tooltip fa fa-info-circle" aria-hidden="true" style="font-size: 14px;"></i>
+  </button>
+
+  <button id="save-button" class="btn btn-save" data-toggle="tooltip" data-placement="top" data-title="{{strings.saveError}}">
     <i class="btn-save-icon fa fa-floppy-o" aria-hidden="true"></i>
     <span class="btn-save-loader small-loader"></span>
     <span class="btn-save-success glyphicon glyphicon-ok"></span>

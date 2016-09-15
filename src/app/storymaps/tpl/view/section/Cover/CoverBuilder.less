@@ -1,3 +1,5 @@
+@import '../../../core/Variables';
+
 .section-layout-cover {
   font-family: 'open_sans', sans-serif;
 
@@ -12,11 +14,7 @@
 
   .cover-title,
   .cover-subtitle {
-    outline: none;    
-
-    &:hover:not(:focus):not(.title-error) {
-      border: 2px solid rgba(241, 248, 253, 0.14);
-    }
+    outline: none;
   }
 
   /*
@@ -25,28 +23,24 @@
 
    .cover-title[contenteditable=true]:empty {
      font-size: 45px;
-     line-height: 57px;
-     color: #DADADA;
+     line-height: 117px;
      margin: auto;
-     width: 90%;
-
-     border: 2px solid rgba(241, 248, 253, 0.14);
    }
 
   .cover-title[contenteditable=true]:not(:focus):empty:before {
     display: block;
-    content: attr(placeholder-line1) '\a' attr(placeholder-line2);
+    content: attr(placeholder);
     white-space: pre;
   }
 
   .cover-title[contenteditable=true]:focus {
     font-size: 7em;
-    line-height: 115px;
+    line-height: 117px;
   }
 
   .cover-title.title-error {
-    border: 2px solid rgba(228, 80, 80, 1.0);
-    box-shadow: 0 0 6px 2px rgba(228, 80, 80, 0.6) inset;
+    border: 2px solid @sm-brand-danger;
+    box-shadow: 0 0 6px 2px fade(@sm-brand-danger, 60%) inset;
   }
 
   /*
@@ -106,13 +100,45 @@
   .cover-subtitle[contenteditable=true]:empty {
      font-size: 18px;
      line-height: 32px;
-     color: #d4d4d4;
-     width: 90%;
    }
 
   .cover-subtitle[contenteditable=true]:not(:focus):empty:before{
     display: block;
     content: attr(placeholder);
+  }
+
+  .foreground {
+    .text-background {
+      min-width: 95%;      
+    }
+
+    .title-text {
+      &:hover:not(:focus):not(.title-error) {
+        border: 2px solid rgba(241, 248, 253, 0.14);
+      }
+
+      &[contenteditable=true]:empty {
+        color: #DDD;
+
+        &.cover-title {
+          border: 2px solid rgba(241, 248, 253, 0.14);
+        }
+      }
+
+      &.text-dark {
+        &:hover:not(:focus):not(.title-error) {
+          border: 2px solid rgba(15,15,15, 0.14);
+        }
+
+        &[contenteditable=true]:empty {
+          color: #555;
+
+          &.cover-title {
+            border: 2px solid rgba(15,15,15, 0.14);
+          }
+        }
+      }
+    }
   }
 
   /*

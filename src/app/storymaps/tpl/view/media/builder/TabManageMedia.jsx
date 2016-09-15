@@ -3,17 +3,21 @@ import Tab from './Tab';
 import viewTpl from 'lib-build/hbars!./TabManageMedia';
 //import {} from 'lib-build/less!./TabSize';
 
+import i18n from 'lib-build/i18n!./../../../../../resources/tpl/builder/nls/app';
+
 export default class TabManageMedia extends Tab {
   constructor(params) {
     super(params);
 
-    this.title = 'Manage';
+    this.title = i18n.builder.mediaConfig.tabs.manage;
     this.type = 'manage';
     this.icon = 'fa-wrench';
   }
 
   render() {
-    return viewTpl({});
+    return viewTpl({
+      strings: i18n.builder.mediaConfig.manage
+    });
   }
 
   postCreate(params) {

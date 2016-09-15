@@ -1,7 +1,12 @@
 import viewTpl from 'lib-build/hbars!./BuilderPanel';
 import {} from 'lib-build/less!./BuilderPanel';
 
+import commonCoreI18n from 'lib-build/i18n!./../../../common/_resources/nls/core';
+import builderI18n from 'lib-build/i18n!./../../../../resources/tpl/builder/nls/app';
+import viewerI18n from 'lib-build/i18n!./../../../../resources/tpl/viewer/nls/app';
+
 import OverviewPanel from '../overviewPanel/OverviewPanel';
+import BuilderHelper from 'storymaps/common/builder/BuilderHelper';
 import topic from 'dojo/topic';
 
 export default class BuilderPanel {
@@ -16,8 +21,16 @@ export default class BuilderPanel {
       return;
     }
 
+    let publicWarning = builderI18n.builder.builderPanel.publicWarning;
+    let organizationWarning = builderI18n.builder.builderPanel.organizationWarning;
+
     this._node.html(viewTpl({
-      btnSave: i18n.viewer.common.save
+      btnSave: viewerI18n.viewer.common.save,
+      commonStrings: commonCoreI18n.commonCore.builderPanel,
+      sharingLevelStrings: commonCoreI18n.commonCore.share,
+      strings: builderI18n.builder.builderPanel,
+      publicWarning: publicWarning,
+      organizationWarning: organizationWarning
     }));
 
     this._overviewPanel = null;
@@ -50,7 +63,7 @@ export default class BuilderPanel {
 
     this._node.find('.btn-share-outer-tooltip.tooltip-enabled').on('inserted.bs.tooltip', function() {
       // this class is so we don't have the min-width of 200px for these buttons...
-      $(this).data('bs.tooltip').$tip.addClass('custom-warning');
+      $(this).data('bs.tooltip').$tip.addClass('custom-warning tooltip-bright');
     });
 
     this._initEvents();
@@ -65,12 +78,25 @@ export default class BuilderPanel {
 
     this._node.find('.btn-settings').click(this._onSettings.bind(this));
     this._node.find('.btn-preview').click(this._onPreview.bind(this));
+    this._node.find('.btn-check').click(this._onCheck.bind(this));
     this._node.find('.btn-save').click(this._onSave.bind(this));
 
+    let appName = 'Story Map Cascade';
+    let betaNoteString = builderI18n.builder.builderPanel.betaNote.replace(/\${APP_NAME}/g, appName);
+
     this._node.find('.beta-tooltip').tooltip({
-      title: 'Story Map Cascade is in beta. Please let us know what you think or if something is not working as you expected.',
+      title: betaNoteString,
       placement: 'bottom',
       container: '.section-builder-panel'
+    });
+
+    this._node.find('.check-tooltip').tooltip({
+      title: 'Click here to visit My Stories on the Story Maps website to diagnose and fix issues such as broken links or sharing errors.'
+        + '<br /><br />'
+        + 'Once My Stories opens in a new tab, you can find your story and click it to check for errors.',
+      placement: 'top',
+      container: '.section-builder-panel',
+      html: true
     });
   }
 
@@ -78,6 +104,7 @@ export default class BuilderPanel {
     this._initShareButtons();
     this._updateShareButtons();
     this._updatePreviewButton();
+    this._updateCheckButton();
     this._updateOverview();
   }
 
@@ -94,7 +121,7 @@ export default class BuilderPanel {
 
     if (! storyTitle) {
       buttons.tooltip({
-        title: 'Add a title for your story on the cover to save',
+        title: builderI18n.builder.builderPanel.addTitleNote,
         placement: 'right',
         container: '.section-builder-panel'
       });
@@ -109,7 +136,9 @@ export default class BuilderPanel {
       }
     }
 
+    this._updateShareButtons();
     this._updatePreviewButton();
+    this._updateCheckButton();
   }
 
   //
@@ -194,7 +223,11 @@ export default class BuilderPanel {
   }
 
   _updateShareButtons() {
-    var sharingLevel = 'private';
+    var sharingLevel = 'private',
+        isCreated = !! app.data.appItem.item.id,
+        shareBtn = this._node.find('.btn-share');
+
+    shareBtn.toggleClass('disabled', ! isCreated);
 
     this._node.find('.btn-share-wrapper').removeClass('sharing');
 
@@ -221,9 +254,9 @@ export default class BuilderPanel {
 
     previewBtn.toggleClass('disabled', ! isCreated);
 
-    if (! isShared) {
+    if (isCreated && ! isShared) {
       previewBtn.tooltip({
-        title: 'Your story isn\'t shared, only you can see it',
+        title: builderI18n.builder.builderPanel.notSharedNote,
         placement: 'right',
         container: '.section-builder-panel'
       });
@@ -239,7 +272,29 @@ export default class BuilderPanel {
     }
 
     window.open(
-      app.Controller.getStoryURL(),
+      app.Controller.getStoryURL() + '&preview',
+      '_blank'
+    );
+  }
+
+  //
+  // Check
+  //
+
+  _updateCheckButton() {
+    var isCreated = !! app.data.appItem.item.id,
+        checkBtn = this._node.find('.btn-check');
+
+    checkBtn.toggleClass('disabled', ! isCreated);
+  }
+
+  _onCheck(e) {
+    if ($(e.currentTarget).hasClass('disabled')) {
+      return;
+    }
+
+    window.open(
+      BuilderHelper.getMyStoriesURL(),
       '_blank'
     );
   }
@@ -252,7 +307,7 @@ export default class BuilderPanel {
     var saveBtn = this._node.find('.btn-save'),
         title = app.Controller.getStoryTitle();
 
-    saveBtn.toggleClass('btn-primary', !! (title && app.builder.pendingChanges));
+    saveBtn.toggleClass('btn-bright', !! (title && app.builder.pendingChanges));
   }
 
   _onSave(e) {
@@ -266,7 +321,7 @@ export default class BuilderPanel {
       .removeClass('saved')
       .addClass('saving disabled');
 
-    btn.find('.btn-save-label').html(i18n.commonCore.builderPanel.buttonSaving);
+    btn.find('.btn-save-label').html(commonCoreI18n.commonCore.builderPanel.buttonSaving);
 
     this._saveApp();
   }
@@ -277,19 +332,20 @@ export default class BuilderPanel {
     this._node.find('.btn-save')
       .removeClass('saving disabled')
       .addClass('saved');
-    this._node.find('.btn-save-label').html(i18n.commonCore.builderPanel.buttonSaved);
+    this._node.find('.btn-save-label').html(commonCoreI18n.commonCore.builderPanel.buttonSaved);
 
     this._node.find('.btn-save[data-toggle="tooltip"]').tooltip('destroy');
 
     setTimeout(() => {
       this._node.find('.btn-save')
         .removeClass('saved')
-        .find('.btn-save-label').html(i18n.viewer.common.save);
+        .find('.btn-save-label').html(viewerI18n.viewer.common.save);
     }, 3500);
 
     this._updateSaveButtonStatus();
     this._updateShareButtons();
     this._updatePreviewButton();
+    this._updateCheckButton();
   }
 
   saveFailed() {
@@ -298,7 +354,7 @@ export default class BuilderPanel {
     this._node.find('.btn-save')
       .removeClass('saving')
       .addClass('error');
-    this._node.find('.btn-save-label').html(i18n.commonCore.builderPanel.buttonError);
+    this._node.find('.btn-save-label').html(commonCoreI18n.commonCore.builderPanel.buttonError);
 
     this._node.find('.btn-save[data-toggle="tooltip"]').tooltip({
       trigger: 'manual',
@@ -308,14 +364,14 @@ export default class BuilderPanel {
 
     this._node.find('.btn-save[data-toggle="tooltip"]').on('inserted.bs.tooltip', function() {
       // selectively style only this tooltip by giving it a class
-      $(this).data('bs.tooltip').$tip.addClass('custom-error');
+      $(this).data('bs.tooltip').$tip.addClass('tooltip-danger');
     });
     this._node.find('.btn-save[data-toggle="tooltip"]').tooltip('show');
 
     setTimeout(() => {
       this._node.find('.btn-save')
         .removeClass('error disabled')
-        .find('.btn-save-label').html(i18n.viewer.common.save);
+        .find('.btn-save-label').html(viewerI18n.viewer.common.save);
     }, 3500);
   }
 

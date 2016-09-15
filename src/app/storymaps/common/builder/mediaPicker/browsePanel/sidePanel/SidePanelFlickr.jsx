@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {} from 'lib-build/less!./SidePanel';
 import {} from 'lib-build/less!./SidePanelFlickr';
 import constants from '../../constants';
 import i18n from 'lib-build/i18n!../../../../_resources/nls/media';
@@ -25,20 +24,7 @@ class TypeToggle extends React.Component {
     return (
       <div className="type-toggle btn-group" data-toggle="buttons">
         <label
-          className={'btn btn-default' + (this.isSelected('USER') ? ' active' : '')}
-          htmlFor="flickr-user"
-          onClick={(evt) => this.thisOnClick(evt)}>{text.searchType.account}
-          <input
-            onChange={(evt) => this.thisOnClick(evt)}
-            type="radio"
-            name="searchType"
-            id="flickr-user"
-            value={constants.searchType.USER}
-            checked={this.isSelected('USER')} />
-        </label>
-
-        <label
-          className={'btn btn-default' + (this.isSelected('TEXT') ? ' active' : '')}
+          className={'btn btn-gray' + (this.isSelected('TEXT') ? ' active' : '')}
           htmlFor="flickr-text"
           onClick={(evt) => this.thisOnClick(evt)}>{text.searchType.text}
           <input
@@ -49,21 +35,40 @@ class TypeToggle extends React.Component {
             id="flickr-text"
             checked={this.isSelected('TEXT')} />
         </label>
+
+        <label
+          className={'btn btn-gray' + (this.isSelected('USER') ? ' active' : '')}
+          htmlFor="flickr-user"
+          onClick={(evt) => this.thisOnClick(evt)}>{text.searchType.account}
+          <input
+            onChange={(evt) => this.thisOnClick(evt)}
+            type="radio"
+            name="searchType"
+            id="flickr-user"
+            value={constants.searchType.USER}
+            checked={this.isSelected('USER')} />
+        </label>
       </div>
     );
   }
 }
 
 class SearchInput extends React.Component {
+  componentDidMount() {
+    var modal = $(ReactDOM.findDOMNode(this)).parents('.modal');
+    modal.on('shown.bs.modal', () => {
+      if (this.props.setFocus) {
+        $(this.refs.textInput).focus();
+      }
+    });
+  }
   componentDidUpdate() {
     if (this.props.setFocus) {
-      if (!$(ReactDOM.findDOMNode(this)).parents('.modal').hasClass('in')) {
-        setTimeout(() => {
-          ReactDOM.findDOMNode(this.refs.textInput).focus();
-        }, 500);
-      }
-      else {
-        ReactDOM.findDOMNode(this.refs.textInput).focus();
+      const activeEl = document.activeElement;
+      // if someone is navigating by tabbing, don't take the focus off where they are
+      const activeTabIndex = activeEl.tabIndex ? parseInt(activeEl.tabIndex) : 0;
+      if (activeEl !== this.refs.textInput && activeTabIndex <= 0) {
+        $(this.refs.textInput).focus();
       }
     }
   }
@@ -141,7 +146,7 @@ class LicenseSearch extends React.Component {
 
   render() {
     return (
-      <div className={'form-group' + (this.props.disabled ? ' disabled' : '')}>
+      <div className={'license-group form-group' + (this.props.disabled ? ' disabled' : '')}>
         <label htmlFor={this.props.searchType + '-license'}>License: </label>
         <select
           id={this.props.searchType + '-license'}
@@ -282,11 +287,11 @@ class SidePanelFlickr extends React.Component {
     var textDisplay = this.props.providerProps.selectedTab === constants.searchType.TEXT ? true : false;
 
     // tried doing this in flickrContainer file, but depended on either actions that were happening in common or on redux state.
-    var disableUserTextSearch = (!this.props.providerProps.userName || this.props.providerProps.userName.toLowerCase() !== this.props.containerState.userNameInputValue.toLowerCase());
+    var disableUserTextSearch = (!this.props.providerProps.userName || this.props.providerProps.userName.trim().toLowerCase() !== this.props.containerState.userNameInputValue.trim().toLowerCase());
     var disableUserLicenseSearch = disableUserTextSearch || (this.props.providerProps.userSearchTerm === '' || this.props.providerProps.userSearchTerm !== this.props.containerState.userTextInputValue);
 
     return (
-      <div className="mp-sidepanel">
+      <div className="mp-sidepanel flickr">
         <TypeToggle
           selectedTab={this.props.providerProps.selectedTab}
           onChange={this.props.onKeyPress.searchType} />

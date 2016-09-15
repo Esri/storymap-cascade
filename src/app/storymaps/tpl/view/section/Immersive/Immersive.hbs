@@ -1,5 +1,12 @@
 <div class="{{classes}}" data-views="{{viewsCount}}">
-  <div class="background-title"><h2>{{title}}</h2></div>
+  {{#if showTitle}}
+    <div class="background-title">
+      <div class="background-title-wrapper text-background">
+        <h2 class="text-shadow title-text">{{title}}</h2>
+        {{{titleConfigPanel}}}
+      </div>
+    </div>
+  {{/if}}
   <div class="background-credits">{{credits}}</div>
   <div class="background-filler"></div>
 

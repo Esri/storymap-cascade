@@ -16,11 +16,12 @@
 
 define([
   'lib-build/css!lib/calcite-bootstrap/css/calcite-bootstrap-open.min',
-  'lib-build/css!./ui/bootstrap-override',
+  'lib-build/less!./ui/bootstrap-override',
 
   'lib-build/css!../../lib/font-awesome/css/font-awesome',
 
   'lib-build/css!./Core',
+  'lib-build/less!./Core',
 
   'esri/map',
   'esri/arcgis/Portal',
@@ -42,6 +43,7 @@ define([
   'dojo/on',
   'dojo/_base/lang',
   'dojo/_base/array',
+  'dojo/_base/kernel',
   'dojo/Deferred',
   'dojo/DeferredList',
   'dojo/query',
@@ -54,6 +56,7 @@ define([
   fontAwesomeCss,
 
   viewCss,
+  viewLess,
 
   Map,
   arcgisPortal,
@@ -73,6 +76,7 @@ define([
   on,
   lang,
   array,
+  kernel,
   Deferred,
   DeferredList,
   query,
@@ -195,6 +199,22 @@ define([
       return;
     }
 
+    on(IdentityManager, 'dialog-create', function() {
+      if (app.isLoading) {
+        initError('invalidConfignoOAuth');
+      }
+    });
+
+    // Remove preview from the URL
+    topic.subscribe('tpl-ready', function() {
+      var urlParams = document.location.search;
+      if (urlParams) {
+        urlParams = urlParams.replace('&preview', '');
+      }
+
+      window.history.replaceState({}, '', 'index.html' + urlParams + document.location.hash);
+    });
+
     // Prepare an error message in builder for small screens
     if (app.isInBuilder) {
       // Touch device
@@ -294,9 +314,6 @@ define([
       }
     });
 
-    // Basic styling in case something isn't public
-    on(IdentityManager, 'dialog-create', styleIdentityManager);
-
     topic.subscribe('CORE_UPDATE_EXTENT', setMapExtent);
 
     // Load the Portal
@@ -344,6 +361,8 @@ define([
     var appId = CommonHelper.getAppID(isProd()),
         webmapId = CommonHelper.getWebmapID(isProd()),
         supportWebmapPreviewAGOL = !! (app.appCfg ? app.appCfg.supportWebmapPreviewAGOL : true);
+
+    //if (app.isInBuilder )
 
     // Load using static config file
     var configName = app.indexCfg.story || CommonHelper.getUrlParams().story;
@@ -560,8 +579,6 @@ define([
   function portalLogin() {
     var resultDeferred = new Deferred();
 
-    on(IdentityManager, 'dialog-create', styleIdentityManagerForBuilder);
-
     app.portal.signIn().then(
       function() {
 
@@ -761,59 +778,7 @@ define([
     return ! app.isInBuilder && (
       (! isProd() && !! CommonHelper.getAppID(isProd()))
       || isProd() && app.userCanEdit)
-      && ! _urlParams.preview;
-  }
-
-  //
-  // Login in dev environnement
-  //
-
-  function styleIdentityManager() {
-    // Override for bootstrap conflicts
-    $('.esriSignInDialog td label').siblings('br').css('display', 'none');
-    $('.esriSignInDialog .dijitDialogPaneContentArea div:nth(1)').css('display', 'none');
-    $('.esriSignInDialog .dijitReset.dijitInputInner').css('padding', '0px');
-    $('.esriSignInDialog .dijitReset.dijitInputInner').css('margin-bottom', '0px');
-    $('.esriSignInDialog .dijitReset.dijitInputInner').css('border', 'none');
-    $('.esriSignInDialog .dijitReset.dijitInputInner').css('border-radius', '0px');
-    $('.esriSignInDialog .dijitReset.dijitInputInner').css('-webkit-border-radius', '0px');
-    $('.esriSignInDialog .dijitReset.dijitInputInner').css('-moz-border-radius', '0px');
-    $('.esriSignInDialog .dijitReset.dijitInputInner').css('box-shadow', 'none');
-    $('.esriSignInDialog .dijitReset.dijitInputInner').css('-webkit-box-shadow', 'none');
-    $('.esriSignInDialog .dijitReset.dijitInputInner').css('-moz-box-shadow', 'none');
-    $('.esriSignInDialog .dijitReset.dijitValidationContainer').css('display', 'none');
-    $('.esriSignInDialog .esriErrorMsg').css('margin-top', '10px');
-
-    // Edit title
-    $('.esriSignInDialog').find('.dijitDialogTitleBar').find('.dijitDialogTitle').first().html(i18n.viewer.signin.title);
-
-    // If safe hide default message and setup a more friendly text
-    if (IdentityManager._arcgisUrl) {
-      $('.esriSignInDialog').find('.dijitDialogPaneContentArea:first-child').find(':first-child').first().css('display', 'none');
-      $('.esriSignInDialog').find('.dijitDialogPaneContentArea:first-child').find(':first-child').first().after('<div id=\'dijitDialogPaneContentAreaLoginText\'>' + i18n.viewer.signin.explainViewer.replace('%PORTAL_LINK%', '<a href=\'http://' + IdentityManager._arcgisUrl + '\' title=\'' + IdentityManager._arcgisUrl + '\' target=\'_blank\'>' + IdentityManager._arcgisUrl + '</a>') + '</div>');
-    }
-  }
-
-  function styleIdentityManagerForBuilder() {
-    // Setup a more friendly text
-    if (IdentityManager._arcgisUrl) {
-      $('.esriSignInDialog').find('#dijitDialogPaneContentAreaLoginText').html(i18n.viewer.signin.explainBuilder.replace('%PORTAL_LINK%', '<a href=\'http://' + IdentityManager._arcgisUrl + '\' title=\'' + IdentityManager._arcgisUrl + '\' target=\'_blank\'>' + IdentityManager._arcgisUrl + '</a>'));
-    }
-  }
-
-  function prepareAppForWebmapReload() {
-    // TODO
-    //$("#mainMap_root").remove();
-
-    $('#header').css('display', 'inherit');
-    $('.mobileView').css('display', 'inherit');
-    $('#fatalError').css('display', 'none');
-    $('#loadingOverlay').css('top', '0px');
-
-    //app.ui.loadingIndicator.start();
-
-    //app.ui.loadingIndicator.setMessage(i18n.viewer.loading.step2);
-    startLoadingTimeout();
+      && (_urlParams.preview === undefined || _urlParams.preview == 'false');
   }
 
   function redirectToSignIn() {
@@ -876,6 +841,7 @@ define([
   }
 
   function initLocalization() {
+    document.documentElement.lang = kernel.locale;
     query('#fatalError .error-title')[0].innerHTML = i18n.viewer.errors.boxTitle;
   }
 
@@ -951,7 +917,6 @@ define([
 
     cleanLoadingTimeout: cleanLoadingTimeout,
     initError: initError,
-    prepareAppForWebmapReload: prepareAppForWebmapReload,
     replaceInitErrorMessage: replaceInitErrorMessage,
     portalLogin: portalLogin
   };

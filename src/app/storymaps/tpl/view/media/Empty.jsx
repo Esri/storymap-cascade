@@ -1,5 +1,7 @@
 import Media from './Media';
 
+import i18n from 'lib-build/i18n!./../../../../resources/tpl/builder/nls/app';
+
 import {} from 'lib-build/less!./Empty';
 import viewTpl from 'lib-build/hbars!./Empty';
 
@@ -33,7 +35,7 @@ export default class Empty extends Media {
     else {
       return viewTpl({
         id: this._domID,
-        label: 'Add media'
+        label: i18n.builder.immersiveViewPanel.addMedia
       });
     }
 

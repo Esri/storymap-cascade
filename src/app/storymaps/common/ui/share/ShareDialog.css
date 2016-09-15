@@ -16,7 +16,7 @@ body.mobile-view .shareDialog {
 }
 
 body.mobile-view .shareDialog .modal-body {
-	padding 0 20px;
+	padding: 0 20px;
 }
 
 .shareDialog .modal-logo {
@@ -35,7 +35,7 @@ body.mobile-view .shareDialog .modal-body {
 
 .shareDialog .embed-title {
 	font-size: 1.3em;
-	color: #4B8BC9;
+  /* color in .less file */
 	margin: 0px 0 5px 0;
 }
 
@@ -82,7 +82,6 @@ body.mobile-view .shareDialog .share-embed-container {
 	padding-top: 17px;
 }
 
-
 body.mobile-view .shareDialog .share-url-social {
 	flex-direction: column;
 	margin-bottom: 0;
@@ -96,4 +95,9 @@ body.mobile-view .shareDialog .share-url-social {
 	.shareDialog .modal-dialog {
 		margin-top: 0;
 	}
+}
+
+.shareDialog .autoplay-notification {
+	color: #3c763d;
+	font-weight: bold;
 }

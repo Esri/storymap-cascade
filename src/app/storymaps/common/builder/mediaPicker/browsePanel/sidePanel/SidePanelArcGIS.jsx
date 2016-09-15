@@ -1,8 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Helper from '../../utils/Helper';
-import PhotoUploader from './PhotoUploader';
-import {} from 'lib-build/less!./SidePanel';
+import FileUploader from './FileUploader/FileUploader';
 import {} from 'lib-build/less!./SidePanelArcGIS';
 import constants from '../../constants';
 import i18n from 'lib-build/i18n!../../../../_resources/nls/media';
@@ -10,15 +9,21 @@ import i18n from 'lib-build/i18n!../../../../_resources/nls/media';
 var text = i18n.mediaPicker.browsePanel.sidePanel.agol;
 
 class SearchInput extends React.Component {
+  componentDidMount() {
+    var modal = $(ReactDOM.findDOMNode(this)).parents('.modal');
+    modal.on('shown.bs.modal', () => {
+      if (this.props.setFocus) {
+        $(this.refs.textInput).focus();
+      }
+    });
+  }
   componentDidUpdate() {
     if (this.props.setFocus) {
-      if (!$(ReactDOM.findDOMNode(this)).parents('.modal').hasClass('in')) {
-        setTimeout(() => {
-          ReactDOM.findDOMNode(this.refs.textInput).focus();
-        }, 500);
-      }
-      else {
-        ReactDOM.findDOMNode(this.refs.textInput).focus();
+      const activeEl = document.activeElement;
+      // if someone is navigating by tabbing, don't take the focus off where they are
+      const activeTabIndex = activeEl.tabIndex ? parseInt(activeEl.tabIndex) : 0;
+      if (activeEl !== this.refs.textInput && activeTabIndex <= 0) {
+        $(this.refs.textInput).focus();
       }
     }
   }
@@ -31,7 +36,7 @@ class SearchInput extends React.Component {
         </div>
         <input
           ref="textInput"
-          tabIndex="1"
+          tabIndex="2"
           type="text"
           disabled={this.props.disabled}
           value={this.props.value}
@@ -40,7 +45,7 @@ class SearchInput extends React.Component {
           onChange={this.props.onChange}
           onKeyPress={this.props.onKeyPress} />
         <div
-          tabIndex={this.props.disabled ? null : (this.props.value ? '1' : null)}
+          tabIndex={this.props.disabled ? null : (this.props.value ? '2' : null)}
           className="btn danger input-group-addon"
           style={this.props.value ? null : {display: 'none'}}
           onClick={this.props.value ? (evt) => this.props.onClear(Object.assign({}, evt, {charCode: 13})) : null}
@@ -49,7 +54,7 @@ class SearchInput extends React.Component {
           <span className="fa fa-remove" />
         </div>
         <div
-          tabIndex={this.props.disabled ? null : '1'}
+          tabIndex={this.props.disabled ? null : '2'}
           className="btn input-group-addon"
           onKeyPress={this.props.onKeyPress}
           // treat click like enter
@@ -64,7 +69,7 @@ class SearchInput extends React.Component {
 
 class LocationToggle extends React.Component {
   render() {
-    const labelClasses = Helper.classnames(['btn', 'btn-default', {
+    const labelClasses = Helper.classnames(['btn', 'btn-gray', {
       'col-xs-3': this.props.toggleCount === 4,
       'col-xs-4': this.props.toggleCount === 3,
       'active': this.props.checked,
@@ -73,8 +78,10 @@ class LocationToggle extends React.Component {
 
     return (
       <label
+        tabIndex={this.props.isDisabled ? null : '1'}
         className={labelClasses}
         htmlFor={this.props.id}
+        onKeyPress={this.props.onClick}
         onClick={this.props.onClick} >
         <span className="btn-label">{this.props.label}</span>
         <input
@@ -93,7 +100,7 @@ class LocationToggle extends React.Component {
 class LocationToggles extends React.Component {
 
   thisOnClick(evt, val) {
-    if (val === this.props.searchLocation || $(evt.target).closest('.btn.disabled').length) {
+    if (val === this.props.searchLocation || $(evt.target).closest('.btn.disabled').length || (evt.charCode && evt.charCode !== 13)) {
       return;
     }
     this.props.onChange({type: val});
@@ -188,7 +195,7 @@ class SidePanelArcGIS extends React.Component {
 
   render() {
     return (
-      <div className="mp-sidepanel">
+      <div className="mp-sidepanel agol">
         <LocationToggles
           availableContentTypes={this.props.containerState.availableContentTypes}
           portalIsOrg={this.props.containerState.portalIsOrg}
@@ -213,9 +220,11 @@ class SidePanelArcGIS extends React.Component {
             text="Create a New Map..." />
         <Divider />
         */}
-        <PhotoUploader
+        <FileUploader
+          authorizedMedia={this.props.containerState.authorizedMedia}
+          availableContentTypes={this.props.containerState.availableContentTypes}
           appId={this.props.containerState.appId}
-          onPhotoUpload={this.props.onKeyPress.photoUploadComplete}
+          fileUploadFunctions={this.props.onKeyPress.fileUploadFunctions}
         />
       </div>
     );

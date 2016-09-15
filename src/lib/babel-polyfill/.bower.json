@@ -26,6 +26,6 @@
     "commit": "cc7578292b8fac19919c46d8d82982a9418c8c19"
   },
   "_source": "https://github.com/nicksrandall/babel-polyfill.git",
-  "_target": "^0.0.1",
+  "_target": "~0.0.1",
   "_originalSource": "babel-polyfill"
 }

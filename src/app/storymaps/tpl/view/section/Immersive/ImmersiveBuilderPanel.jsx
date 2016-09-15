@@ -1,30 +1,33 @@
 import {} from 'lib-build/less!./ImmersiveBuilderPanel';
+
+import i18n from 'lib-build/i18n!./../../../../../resources/tpl/builder/nls/app';
+
 import OverviewPanel from 'storymaps-react/tpl/builder/overviewPanel/OverviewPanel';
 
 const TRANSITIONS = {
   'fade-fast': {
     id: 'fade-fast',
-    label: 'Fade',
+    label: i18n.builder.immersiveViewPanel.fade,
     icon: 'resources/tpl/builder/icons/immersive-panel/FadeFast.png'
   },
   'fade-slow': {
     id: 'fade-slow',
-    label: 'Fade slow',
+    label: i18n.builder.immersiveViewPanel.fadeSlow,
     icon: 'resources/tpl/builder/icons/immersive-panel/Fade.png'
   },
   'swipe-vertical': {
     id: 'swipe-vertical',
-    label: 'Swipe Vertical',
+    label: i18n.builder.immersiveViewPanel.swipeVertical,
     icon: 'resources/tpl/builder/icons/immersive-panel/SwipeVertical.png'
   },
   'swipe-horizontal': {
     id: 'swipe-horizontal',
-    label: 'Swipe Horizontal',
+    label: i18n.builder.immersiveViewPanel.swipeHorizontal,
     icon: 'resources/tpl/builder/icons/immersive-panel/SwipeHorizontal.png'
   },
   none: {
     id: 'none',
-    label: 'None',
+    label: i18n.builder.immersiveViewPanel.none,
     icon: 'resources/tpl/builder/icons/immersive-panel/None.png'
   }
 };
@@ -170,10 +173,10 @@ export default class ImmersiveBuilderPanel {
     // -> disable all options except if the transition is listed in config.duplicateConsecutiveTransitions
     //    This is currently for webmap to allow swipe depending on the two medias config
     if (config.isDuplicateConsecutive) {
-      let disabledTooltip = 'Not available when consecutive views use the same media',
-          disabledTooltipMap = 'To use this transition the visible layers in both views must be different and the other map properties must be the same',
-          disabledTooltipMapTmp = 'Not available when consecutive views use the same map',
-          disabledTooltipMapTmp2 = 'Not available in beta',
+      let disabledTooltip = i18n.builder.immersiveViewPanel.disabledConsecutiveSameMedia,
+          disabledTooltipMap = i18n.builder.immersiveViewPanel.disabledTooltipMap,
+          disabledTooltipMapTmp = i18n.builder.immersiveViewPanel.disabledConsecutiveSameMap,
+          disabledTooltipMapTmp2 = i18n.builder.immersiveViewPanel.disabledNotInBeta,
           disabledTransitions = ['fade-fast', 'fade-slow', 'swipe-vertical', 'swipe-horizontal'];
 
       for (let name of disabledTransitions) {
@@ -214,11 +217,12 @@ export default class ImmersiveBuilderPanel {
     }
     // Duplicate and non consecutive section
     // Only the transition from the first occurence of the media is authorized
-    else if (config.isDuplicate && config.firstOccurenceTransition) {
+    // Except for image where all transition are authorized (images are always duplicated)
+    else if (config.isDuplicate && config.firstOccurenceTransition && config.mediaType != 'image') {
       //let disabledTooltip = 'Not available as the first occurence is using a different transition';
 
       // Temporary workaround
-      let disabledTooltip = 'Not available as there is another occurence of this media that is non consecutive';
+      let disabledTooltip = i18n.builder.immersiveViewPanel.disabledNonConsecutive;
       config.firstOccurenceTransition = 'none';
 
       for (let name in TRANSITIONS) {

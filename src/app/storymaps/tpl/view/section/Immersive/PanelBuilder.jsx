@@ -153,6 +153,13 @@ export default class PanelBuilder extends Panel {
         this._node.data('opacity-tmp', '');
       }
     }
+
+    // Close media config
+    if (this._configPanelIsOpen && this._configPanelMedia) {
+      this._configPanelMedia.closeConfigPanel();
+      this._configPanelIsOpen = false;
+      this._configPanelMedia = null;
+    }
   }
 
   onOptionChange(e) {
@@ -278,7 +285,7 @@ export default class PanelBuilder extends Panel {
         scrollOffset = 0;
 
     // Closing the media config
-    if (! mediaCfg.hasClass('active')) {
+    if (! media.getNode().hasClass('config-panel-active')) {
       mediaCfg.css('top', '');
       this._configPanelIsOpen = false;
       this._configPanelMedia = null;
@@ -336,7 +343,7 @@ export default class PanelBuilder extends Panel {
     // TODO: this may be an issue if picking a map/scene already present
     newMedia.load();
 
-    this._blocks.splice(this._blocks.indexOf(media), 0, newMedia);
+    this._blocks.splice(this._blocks.indexOf(media), 1, newMedia);
   }
 
   _onMediaConfigAction(params = {}) {
@@ -350,7 +357,8 @@ export default class PanelBuilder extends Panel {
     }
     else if (params.action == 'swap') {
       app.builder.mediaPicker.open({
-        mode: 'add',
+        mode: 'edit',
+        media: params.media.serialize(),
         authorizedMedia: ['image', 'video', 'webpage']
       }).then(
         function(newMedia) {
@@ -365,10 +373,20 @@ export default class PanelBuilder extends Panel {
   }
 
   getPreviewText() {
+    var text = '';
+
     if (this._blocksJSON && this._blocksJSON.length) {
-      return $(this._blocksJSON[0].text.value).text();
+      for (var block of this._blocksJSON) {
+        if (block.type == 'text') {
+          text = $(block.text.value).text();
+          if (text) {
+            break;
+          }
+        }
+      }
     }
-    return '';
+
+    return text;
   }
 
   //

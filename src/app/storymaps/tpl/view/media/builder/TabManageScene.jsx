@@ -4,11 +4,13 @@ import viewTpl from 'lib-build/hbars!./TabManageScene';
 
 import BuilderHelper from 'storymaps/common/builder/BuilderHelper';
 
+import i18n from 'lib-build/i18n!./../../../../../resources/tpl/builder/nls/app';
+
 export default class TabManageScene extends Tab {
   constructor(params = {}) {
     super(params);
 
-    this.title = 'Manage';
+    this.title = i18n.builder.mediaConfig.tabs.manage;
     this.type = 'manage';
     this.icon = 'fa-wrench';
 
@@ -17,7 +19,9 @@ export default class TabManageScene extends Tab {
   }
 
   render() {
-    return viewTpl({});
+    return viewTpl({
+      strings: i18n.builder.mediaConfig.manage
+    });
   }
 
   postCreate(params) {

@@ -21,6 +21,11 @@ var browseToggles = [{
   media: 'images',
   inlineIcon: 'fa-google'
 }, {
+  type: 'unsplash',
+  title: text.unsplash,
+  media: 'images',
+  inlineIcon: 'fa-camera'
+}, {
   type: 'urlContent',
   title: text.urls,
   shortTitle: text.urls_short,

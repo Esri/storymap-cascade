@@ -74,7 +74,13 @@ export default class AddMenu {
     let targetPosition = e.currentTarget.getBoundingClientRect();
 
     if (e.clientY - 15 < targetPosition.top) {
-      this.show();
+      var cssDisplay = window.getComputedStyle(
+        this._container.parent('.section')[0], ':before'
+      ).getPropertyValue('display');
+
+      if (cssDisplay == 'block') {
+        this.show();
+      }
     }
   }
 
@@ -109,9 +115,14 @@ export default class AddMenu {
       newSectionIndex--;
     }
 
+    var type = target.data('button');
+
     app.Controller.addSection({
-      type: target.data('button'),
-      index: newSectionIndex
+      type: type,
+      index: newSectionIndex,
+      navigation: type != 'title',
+      animateSpeed: 800,
+      ensureFullyVisible: type == 'title'
     });
   }
 }

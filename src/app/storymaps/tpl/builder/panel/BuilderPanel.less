@@ -35,7 +35,7 @@ body.builder-mode .section-builder-panel {
   }
 
   .btn:focus:not(:hover) {
-    color: inherit !important;
+    color: inherit;
   }
 
   /*
@@ -71,7 +71,7 @@ body.builder-mode .section-builder-panel {
       }
 
       &.error {
-        color: #a94442;
+        color: @sm-danger-text;
 
         .btn-save-error {
           display: inline-block;
@@ -86,12 +86,6 @@ body.builder-mode .section-builder-panel {
         }
       }
 
-      &.btn-primary {
-        background-color: #107dc3 !important;
-        border-color: #0d6ead !important;
-        color: #FFF !important;
-      }
-
       .btn-save-label {
         margin-left: 2px;
       }
@@ -104,6 +98,10 @@ body.builder-mode .section-builder-panel {
     .btn-share {
       position: relative;
       cursor: default;
+
+      &.disabled {
+        cursor: not-allowed;
+      }
 
       &:hover {
         color: inherit !important;
@@ -143,7 +141,7 @@ body.builder-mode .section-builder-panel {
           height: 30px;
           flex: 1 1 auto;
           text-align: center;
-          color: #396e8b;
+          color: @link-color;
           border-right: 1px solid #C1CCD2;
           cursor: pointer;
 
@@ -152,11 +150,11 @@ body.builder-mode .section-builder-panel {
           }
 
           &:hover {
-            color: #428bca;
+            color: @link-hover-color;
           }
 
           &.active {
-            background: #396e8b;
+            background: @link-color;
             color: white;
           }
 
@@ -204,29 +202,9 @@ body.builder-mode .section-builder-panel {
 
       .tooltip-inner {
         max-width: 300px;
-        background: #196fa6;
-      }
-
-      .tooltip-arrow {
-        border-bottom-color: #196fa6;
       }
     }
   }
-
-  .tooltip.custom-error {
-    &.in {
-      opacity: 1;
-    }
-
-    .tooltip-inner {
-      background: rgba(228, 80, 80, 0.8);
-    }
-
-    .tooltip-arrow {
-      border-right-color: rgba(228, 80, 80, 0.8);
-    }
-  }
-
 
   /*
    * Overview

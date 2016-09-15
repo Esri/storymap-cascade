@@ -2,17 +2,21 @@ import Tab from './Tab';
 
 import viewTpl from 'lib-build/hbars!./TabWebPage';
 
+import i18n from 'lib-build/i18n!./../../../../../resources/tpl/builder/nls/app';
+
 export default class TabWebPage extends Tab {
   constructor() {
     super();
 
-    this.title = 'Appearance';
+    this.title = i18n.builder.mediaConfig.tabs.appearance;
     this.type = 'appearance';
     this.icon = 'fa-sliders';
   }
 
   render() {
-    return viewTpl({});
+    return viewTpl({
+      strings: i18n.builder.mediaConfig.appearance
+    });
   }
 
   postCreate(params) {

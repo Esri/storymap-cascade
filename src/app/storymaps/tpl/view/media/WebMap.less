@@ -51,6 +51,16 @@
   bottom: 90px;
 }
 
+/* popup always active even when map container is disabled */
+.esriPopup {
+  pointer-events: all;
+}
+
+/* drop the close button if interaction-disabled except if config panel is open */
+.interaction-disabled:not(.builder-config-open) .esriPopup .titleButton.close {
+  display: none;
+}
+
 .esriPopup .titleButton.close {
 	opacity: 1.0 !important;
 }
@@ -100,4 +110,8 @@
 
 body.mobile-view .block-type-webmap.block-size-small .block-media {
   padding-top: 50%;
+}
+
+body.mobile-view .block-type-webmap .interaction-container {
+  bottom: 30px;
 }

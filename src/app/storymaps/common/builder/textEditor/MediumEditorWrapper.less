@@ -25,7 +25,12 @@
 // theme rules
 .medium-toolbar-arrow-under:after {
   top: @medium-editor-button-size;
-  border-color: @medium-editor-bgcolor transparent transparent transparent;
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAAMCAYAAACA0IaCAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABZ0RVh0Q3JlYXRpb24gVGltZQAwNy8yOS8xNizKUXAAAAAcdEVYdFNvZnR3YXJlAEFkb2JlIEZpcmV3b3JrcyBDUzbovLKMAAABVElEQVQokZ3Qz0oCURTH8e8VJ4NIJcJdfxaDA7MZNV2LPkAa1KJ2vlbQK/gOQQ8QtAsKWkTiHcaUMahrnDZ3ZBhUqgPDXGbO78O5BxEByBljbuQfZYy5BnLWQQFOEATlOI6Hf4HiOB4GQVAGHOuQA7aBiuu6vtb69jeQ1vrOdV0fqNh8LpmsAOwDVc/zOqPR6H4TNB6PHzzP6wBVmysACnvXPLALHAB13/dPtdaPq6AwDJ9rtVoPqNv+XSAvIiSYSoGHQKPVap1NJpOXNDSdTl/b7fY50LB9RZtTSywFOrbhCDjpdrsXs9nsTURkPp+HvV7vCmja/8Vk8UsjOWTAEnAMNPv9/mUURU+DwWAAtOz3UhYSETteqpRSyZV3gDKwZxf8CbwDEfABGMmE82RKREQptbABgAWwBXwB8TqI5eJWVGpCx76/AbMO2oilwOQRO/jawA95E2er1dRzagAAAABJRU5ErkJggg==') !important;
+  width: 19px !important;
+  height: 12px !important;
+  margin-left: -9px !important;
+  border: none !important;
+  border-style: none !important;
 }
 
 .medium-toolbar-arrow-over:before {
@@ -38,9 +43,10 @@
 
 .medium-editor-toolbar {
   background-color: @medium-editor-bgcolor;
-  -webkit-box-shadow: 5px 5px 10px 0 rgba(0,0,0,0.75);
-  -moz-box-shadow: 5px 5px 10px 0 rgba(0,0,0,0.75);
-  box-shadow: 5px 5px 10px 0 rgba(0,0,0,0.75);
+  -webkit-box-shadow: 0px 0px 8px 0 rgba(0,0,0,0.8);
+  -moz-box-shadow: 0px 0px 8px 0 rgba(0,0,0,0.8);
+  box-shadow: 0px 0px 8px 0 rgba(0,0,0,0.8);
+  border-radius: 2px;
 
   li {
     padding: 0;
@@ -53,7 +59,7 @@
 
 /* so get the style in block toolbar */
 .medium-editor-action {
-  width: 42px;
+  width: 36px;
   height: @medium-editor-button-size;
   border: none;
   /*border-right: 1px solid #CCC;*/
@@ -111,7 +117,7 @@
 
 .medium-editor-toolbar-anchor-preview {
   background: #FFF;
-  box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 8px 0 rgba(0,0,0,0.8);
 
   a {
     color: #000;

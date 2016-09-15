@@ -1,3 +1,5 @@
+@import "../../core/Variables.less";
+
 .bookmarks {
   display: flex;
   list-style-type: none;
@@ -26,16 +28,16 @@
   .bookmark {
     cursor: pointer;
     margin-left: 12px;
-    color: #CECECE;
+    color: @gray-lighter;
     border-bottom: 3px solid transparent;
     font-size: 14px;
 
     &:hover {
-      border-bottom-color: #007ac2;
+      border-bottom-color: @btn-info-border;
     }
 
     &.active {
-      border-bottom-color: #007ac2;
+      border-bottom-color: @btn-info-border;
       color: #FFF;
     }
   }
@@ -44,19 +46,18 @@
     margin-left: 12px;
     cursor: pointer;
 
-    &:not(.active) {
-      .dropdown-toggle {
-        color: #CECECE;
-
-        &:hover {
-          color: #73BAFF;
-        }
+    .dropdown-toggle {
+      color: @gray-lighter;
+      &:hover {
+        color: @btn-info-border;
+        text-decoration: none;
       }
     }
 
-    .dropdown-toggle {
+    &.active .dropdown-toggle {
+      color: @btn-info-border;
       &:hover {
-        text-decoration: none;
+        color: darken(@btn-info-border, 5%);
       }
     }
 
@@ -73,11 +74,11 @@
       padding-left: 10px;
 
       &:hover {
-        border-left-color: #007ac2;
+        border-left-color: @btn-info-border;
       }
 
       &.active {
-        border-left-color: #007ac2;
+        border-left-color: @btn-info-border;
       }
     }
   }

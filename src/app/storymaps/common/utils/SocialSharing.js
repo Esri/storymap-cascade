@@ -1,7 +1,9 @@
 define([
-  'dojo/Deferred'
+  'dojo/Deferred',
+  'esri/urlUtils'
 ], function(
-  Deferred
+  Deferred,
+  urlUtils
 ) {
   return {
     shareFacebook: function(title, subtitle, optionalImageURL, url) {
@@ -67,7 +69,7 @@ define([
             'https://api-ssl.bitly.com/v3/shorten?callback=?'
           ],
           bitlyUrl = location.protocol == 'http:' ? bitlyUrls[0] : bitlyUrls[1],
-          targetUrl = this.cleanURL(url || document.location.href, true),
+          targetUrl = url || document.location.href,
           resultDeferred = new Deferred();
 
       $.getJSON(
@@ -91,17 +93,34 @@ define([
       return resultDeferred;
     },
     cleanURL: function(url, noEncoding) {
-      // If sharing in builder mode the link will always open the viewer
-      // TODO clean, should get all url parameters, filter edit and rebuild URL
-      url = url.replace(/\?edit(=.*)*&/, '?');
-      url = url.replace(/\&edit(=.*)*/, '');
-      url = url.replace(/\?edit/, '');
+      var urlParams = urlUtils.urlToObject(url);
+      var newUrl = urlParams.path;
 
-      // Filter out locale URL
-      url = url.replace(/\?locale(=[a-zA-Z\-]+)+&/, '?');
-      url = url.replace(/\&locale(=[a-zA-Z\-]+)+/, '');
+      if (urlParams.query) {
+        delete urlParams.query.edit;
+        delete urlParams.query.locale;
+        delete urlParams.query.folderId;
+        delete urlParams.query.webmap;
+        delete urlParams.query.autoplay;
 
-      return noEncoding ? url : encodeURIComponent(url);
+        $.each(Object.keys(urlParams.query), function(i, k) {
+          if (i === 0) {
+            newUrl += '?';
+          }
+          else {
+            newUrl += '&';
+          }
+
+          if (urlParams.query[k] !== undefined && urlParams.query[k] !== '') {
+            newUrl += k + '=' + urlParams.query[k];
+          }
+          else {
+            newUrl += k;
+          }
+        });
+      }
+
+      return noEncoding ? newUrl : encodeURIComponent(newUrl);
     }
   };
 });

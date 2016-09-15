@@ -232,6 +232,10 @@ class SettingsPopup {
 
   attachSelectLogoEvents() {
     this.container.find('.hc-action-icon.hc-settings').on('click', () => {
+
+      //var existingCustomConfig = this.data.settings.logo.url && this.data.settings.logo.url != this.esriLogoUrl;
+      // TODO: how store the source so that if user pick an image from Flickr the URL is not displayed in webpage?
+
       app.builder.mediaPicker.open({
         mode: 'add',
         authorizedMedia: ['image']
@@ -266,6 +270,7 @@ class SettingsPopup {
                 }.bind(this), 2000);
               }.bind(this),
               function() {
+                let esriName = 'Esri';
                 // Remove the logo
                 this.container.find('.hc-action-icon.hc-remove').click();
                 this.container.find('.btn.apply').removeClass('disabled');
@@ -273,7 +278,7 @@ class SettingsPopup {
                 this.container.find('.hc-logo-upload-msg')
                   .removeClass('alert-warning')
                   .addClass('alert-danger')
-                  .html(i18n.builder.headerConfig.logoSharing.logoUploadError);
+                  .html(i18n.builder.headerConfig.logoSharing.logoUploadError.replace(/\${ESRI}/g, esriName));
 
                 setTimeout(function() {
                   this.container.find('.hc-logo-upload-msg').removeClass('alert-danger');
@@ -334,11 +339,14 @@ class SettingsPopup {
         return Object.assign({}, item, { disabled: item.status === 'disabled' });
       });
 
+      let esriName = 'Esri';
+
       let logoSharingData = lang.clone({
         settings: this.data.settings,
         background: this.data.context.headerBackground,
         maxCharacters: logoSharingMaxCharacters,
         strings: i18n.builder.headerConfig.logoSharing,
+        useEsriLogoString: i18n.builder.headerConfig.logoSharing.logoButton.replace(/\${ESRI}/g, esriName),
         emptyTagline: !this.data.settings.link.title
       });
 

@@ -3,14 +3,24 @@ export default {
     GOOGLE_PHOTOS: 'googlePhotos',
     FLICKR: 'flickr',
     ARCGIS: 'arcgis',
-    URL: 'urlContent'
+    URL: 'urlContent',
+    UNSPLASH: 'unsplash'
   },
   contentType: {
     IMAGE: 'image',
     VIDEO: 'video',
+    // AUDIO: 'audio',
     WEBPAGE: 'webpage',
     WEBMAP: 'webmap',
     WEBSCENE: 'webscene'
+  },
+  // supported agol upload types that fit within the content types above.
+  // http://mediawikidev.esri.com/index.php/Manage_item_resource_files
+  // Yes, you need a dot in front of the extension
+  uploadFileExtensions: {
+    // VIDEO: ['.mp4'],
+    // AUDIO: ['.mp3'],
+    IMAGE: ['.png', '.jpeg', '.jpg', '.gif', '.bmp']
   },
   fetchStatus: {
     NOT_FETCHED: 'NOT_FETCHED',
@@ -48,7 +58,8 @@ export default {
   },
   sortField: {
     DATE: 'modified',
-    TITLE: 'title'
+    TITLE: 'title',
+    VIEWS: 'numViews'
   },
   sortOrder: {
     ASC: 'asc',
@@ -77,14 +88,16 @@ export default {
     maxWidth: 1500,
     maxHeight: 1000,
     maxFileSize: 10000000 // 10Mb in bytes.
-  }
+  },
+  blankBackground: 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'
 };
 
 /* FLICKR LICENSES BELOW. For more info, including links to license text:
 https://www.flickr.com/services/api/explore/flickr.photos.licenses.getInfo
 
 appears you cannot just search for "All Rights Reserved" because
-the search for 0 also returns 10. :\
+the search for 0 is treated like there's no license parameter (like license=false).
+(I think).
 
 [{ "id": 0, "name": "All Rights Reserved", "url": "" },
   { "id": 4, "name": "Attribution License"},

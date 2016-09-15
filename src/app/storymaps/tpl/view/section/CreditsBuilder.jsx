@@ -1,6 +1,8 @@
 import Credits from './Credits';
 import AddMenu from './builder/AddMenu';
 
+import i18n from 'lib-build/i18n!./../../../../resources/tpl/builder/nls/app';
+
 import {} from 'lib-build/less!./CreditsBuilder';
 import MediumEditorWrapper from 'storymaps-react/common/builder/textEditor/MediumEditorWrapper';
 import lang from 'dojo/_base/lang';
@@ -89,7 +91,7 @@ export default class CreditsBuilder extends Credits {
         style: 'compact',
         addButtons: null,
         authorizedMedia: [],
-        placeholder: 'Enter an optional introduction to your credits section...'
+        placeholder: i18n.builder.credits.introductionPlaceholder
       });
     }
   }

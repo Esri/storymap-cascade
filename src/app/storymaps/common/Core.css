@@ -69,37 +69,37 @@
 */
 
 /*
- * Lora
+ * Droid
  */
 
 @font-face {
-  font-family: 'lora';
-  src: url('_resources/fonts/lora-regular-webfont.woff2') format('woff2'),
-       url('_resources/fonts/lora-regular-webfont.woff') format('woff');
+  font-family: 'droid_serif';
+  src: url('_resources/fonts/droidserif-regular-webfont.woff2') format('woff2'),
+       url('_resources/fonts/droidserif-regular-webfont.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-    font-family: 'lora';
-    src: url('_resources/fonts/lora-bold-webfont.woff2') format('woff2'),
-         url('_resources/fonts/lora-bold-webfont.woff') format('woff');
+    font-family: 'droid_serif';
+    src: url('_resources/fonts/droidserif-bold-webfont.woff2') format('woff2'),
+         url('_resources/fonts/droidserif-bold-webfont.woff') format('woff');
     font-weight: bold;
     font-style: normal;
 }
 
 @font-face {
-  font-family: 'lora';
-  src: url('_resources/fonts/lora-italic-webfont.woff2') format('woff2'),
-       url('_resources/fonts/lora-italic-webfont.woff') format('woff');
+  font-family: 'droid_serif';
+  src: url('_resources/fonts/droidserif-italic-webfont.woff2') format('woff2'),
+       url('_resources/fonts/droidserif-italic-webfont.woff') format('woff');
   font-weight: normal;
   font-style: italic;
 }
 
 @font-face {
-  font-family: 'lora';
-  src: url('_resources/fonts/lora-bolditalic-webfont.woff2') format('woff2'),
-       url('_resources/fonts/lora-bolditalic-webfont.woff') format('woff');
+  font-family: 'droid_serif';
+  src: url('_resources/fonts/droidserif-bolditalic-webfont.woff2') format('woff2'),
+       url('_resources/fonts/droidserif-bolditalic-webfont.woff') format('woff');
   font-weight: bold;
   font-style: italic;
 }
@@ -128,9 +128,8 @@
   display: inline-block;
   width: 20px;
   height: 20px;
-  background: url(../../../resources/tpl/viewer/icons/loading-light.gif);
+  background: url(../../../resources/tpl/viewer/icons/loading-light.gif) no-repeat;
   background-size: 17px 20px;
-  background-repeat: no-repeat;
   vertical-align: -5px;
   margin-right: 2px;
 }
@@ -172,7 +171,7 @@
 	max-width: 490px;
 	min-height: 85px;
 	background-color: white;
-	border: 2px solid #428BC9;
+  /* border color in Core.less */
 	padding:0px;
 	margin-left: auto;
 	margin-right: auto;

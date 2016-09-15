@@ -29,7 +29,8 @@ define([
             height: '480px'
           }
         ],
-        _url = null;
+        _url = null,
+        _urlBackup = null;
 
     container.append(viewTpl({ }));
 
@@ -39,6 +40,7 @@ define([
 
     this.present = function(url) {
       _url = url;
+      _urlBackup = url;
 
       container.find('.embed-explain').html(i18n.viewer.shareFromCommon.embedExplain);
       container.find('.embed-lbl-size').html(i18n.viewer.shareFromCommon.size);
@@ -49,6 +51,19 @@ define([
       container.find('.share-embed-wrapper').toggleClass('touch', !! has('touch'));
       container.find('.share-clipboard').attr('title', i18n.viewer.shareFromCommon.copy);
       container.find('.share-status').html(i18n.viewer.shareFromCommon.copied);
+    };
+
+    this.setAutoplay = function(isAutoplay) {
+      var url = _urlBackup;
+
+      if (isAutoplay) {
+        url += url.match(/\?/) ? '&' : '?';
+        url += 'autoplay';
+      }
+
+      _url = url;
+      
+      container.find('.embed-sizes a').eq(0).click();
     };
 
     function buildEmbedSizeList() {

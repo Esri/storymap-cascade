@@ -8,7 +8,7 @@ import esriRequest from 'esri/request';
 var text = i18n.mediaPicker.browsePanel.sidePanel.agol;
 
 var ArcGISConnector = (function() {
-  var _portal, _appItem, _appId, _portalUser, _next;
+  var _portal, _appItem, _appId, _portalUser/*, _next*/;
 
   var defaultParams = {
     num: 100
@@ -69,6 +69,14 @@ var ArcGISConnector = (function() {
     return _portalUser;
   };
 
+  var getOwner = function() {
+    if (!_appItem) {
+      console.warn('no app owner');
+      return;
+    }
+    return _appItem.item.owner;
+  };
+
   var checkSignin = function() {
     var promise = new Promise((resolve, reject) => {
       if (!app.portal) {
@@ -104,6 +112,12 @@ var ArcGISConnector = (function() {
       let q;
       if (options.idArr) {
         q = buildIdQuery(options.idArr);
+        if (options.contentTypes) {
+          let tempContentTypes = buildTypeQ(options.contentTypes);
+          if (tempContentTypes) {
+            q += ' ' + tempContentTypes.join(' ');
+          }
+        }
       }
       else {
         options.contentTypesArr = buildTypeQ(options.contentTypes);
@@ -127,26 +141,32 @@ var ArcGISConnector = (function() {
     });
   };
 
+  var getResourcesUrl = function() {
+    return Helper.stripTrailingSlash((_portal || getPortal()).portalUrl) + '/content/items/' + _appId + '/resources/';
+
+  };
+
   var getStoryResources = function(options, resolve, reject) {
     if (!_appId && !getAppId()) {
       resolve();
       return;
     }
-    const resourcesUrl = Helper.stripTrailingSlash((_portal || getPortal()).portalUrl) + '/content/items/' + _appId + '/resources/';
+    const resourcesUrl = getResourcesUrl();
 
     esriRequest({
       url: resourcesUrl,
       handleAs: 'json',
       content: {
+        num: 1000,
         f: 'json'
       }
-    }).then(response => handleResourceReturn(response, resourcesUrl, resolve),
+    }).then(response => handleResourceReturn(response, resolve),
            err => handleQueryError(err, reject));
 
   };
 
-  var handleResourceReturn = function(response, resourcesUrl, resolve) {
-    var results = formatResources(response.resources, resourcesUrl);
+  var handleResourceReturn = function(response, resolve) {
+    var results = formatResources(response.resources);
     resolve(results);
   };
 
@@ -157,7 +177,7 @@ var ArcGISConnector = (function() {
 
   var handleQueryReturn = function(response, resolve) {
     var results = formatResults(response.results);
-    _next = response.nextQueryParams;
+    // _next = response.nextQueryParams;
     resolve(results);
   };
 
@@ -165,17 +185,36 @@ var ArcGISConnector = (function() {
     reject(err);
   };
 
-  var uploadResources = function(formdata) {
+  var getFormDataFromFileDetails = function(fileDetails) {
+    let formdata = new FormData();
+    formdata.append('f', 'json');
+    addToFormData(formdata, fileDetails);
+
+    return formdata;
+
+  };
+
+  var addToFormData = function(formdata, fileDetails) {
+    formdata.append('file', fileDetails.file, fileDetails.processedFileName);
+    if (fileDetails.thumb) {
+      formdata.append('thumb', fileDetails.thumb, fileDetails.thumbName);
+    }
+  };
+
+  var uploadSingleResource = function(fileDetails) {
     return new Promise((resolve, reject) => {
       if (!_appId && !getAppId()) {
         reject();
         return;
       }
+
+      let formdata = getFormDataFromFileDetails(fileDetails);
+
       const portalUrl = Helper.stripTrailingSlash((_portal || getPortal()).portalUrl);
-      const username = (_portalUser || getUser()).username;
+      const owner = getOwner();
       const folder = (_appItem || getAppItem()).item.ownerFolder;
 
-      const uploadUrl = portalUrl + '/content/users/' + username + (folder ? '/' + folder : '') + '/items/' + _appId + '/addResources';
+      const uploadUrl = portalUrl + '/content/users/' + owner + (folder ? '/' + folder : '') + '/items/' + _appId + '/addResources';
 
       esriRequest({
         url: uploadUrl,
@@ -185,12 +224,16 @@ var ArcGISConnector = (function() {
         usePost: true
       }).then(result => {
         if (result.success) {
-          const baseAttachmentUrl = portalUrl + '/content/items/' + _appId + '/resources/';
-          resolve(Object.assign(result, { baseAttachmentUrl }));
+          const resourcesUrl = getResourcesUrl();
+          const picUrl = resourcesUrl + encodeURIComponent(fileDetails.processedFileName);
+          const thumbUrl = fileDetails.thumb ? resourcesUrl + encodeURIComponent(fileDetails.thumbName) : null;
+          resolve(Object.assign(result, {picUrl, thumbUrl}));
         }
         else {
           reject(result);
         }
+      }, err => {
+        reject(err);
       });
     });
 
@@ -203,10 +246,10 @@ var ArcGISConnector = (function() {
         return;
       }
       const portalUrl = Helper.stripTrailingSlash((_portal || getPortal()).portalUrl);
-      const username = (_portalUser || getUser()).username;
+      const owner = getOwner();
       const folder = (_appItem || getAppItem()).item.ownerFolder;
 
-      const removeUrl = portalUrl + '/content/users/' + username + (folder ? '/' + folder : '') + '/items/' + _appId + '/removeResources';
+      const removeUrl = portalUrl + '/content/users/' + owner + (folder ? '/' + folder : '') + '/items/' + _appId + '/removeResources';
 
       esriRequest({
         url: removeUrl,
@@ -222,8 +265,12 @@ var ArcGISConnector = (function() {
           resolve();
         }
         else {
+          console.warn('removeResources .then !result.success', result);
           reject(result);
         }
+      }, (err) => {
+        console.warn('removeResources errback', err);
+        reject(err);
       });
       if (item.thumbFile && item.thumbFile !== item.fileName) {
         esriRequest({
@@ -239,6 +286,8 @@ var ArcGISConnector = (function() {
           if (!result || !result.success) {
             console.warn('unsuccessful deletion of thumbnail file');
           }
+        }, err => {
+          console.warn('unsuccessful deletion of thumbnail file', err);
         });
 
       }
@@ -246,7 +295,8 @@ var ArcGISConnector = (function() {
 
   };
 
-  var formatResources = function(resources, resourcesUrl) {
+  var formatResources = function(resources) {
+    const resourcesUrl = getResourcesUrl();
     var returnArr = [];
 
     resources.forEach((resource) => {
@@ -262,22 +312,29 @@ var ArcGISConnector = (function() {
       let nameSplit = r.split('__');
       let endSplit = nameSplit.slice(-1)[0].split('.');
       let fileExt = endSplit.slice(-1)[0];
-      let thumbFile = findThumbUrl(r, resources);
+      const type = getResourceType(fileExt);
+      // skip the unsupported resource types
+      if (!type) {
+        return;
+      }
 
+      let thumbFile = findThumbUrl(r, resources);
+      let thumbUrl = Helper.stripTrailingSlash(resourcesUrl) + '/' + encodeURIComponent(thumbFile);
+      let tokenizedThumbUrl = thumbUrl + '?token=' + _portalUser.credential.token;
       let name = (nameSplit.length === 1) ? nameSplit[0] : (nameSplit.slice(0, -1).join('__') + '.' + fileExt);
       // TODO: what to do with files that don't have datestamps in their titles?
-      let modified = endSplit[0].match(/^[0-9]{13}$/) ? new Date(parseInt(endSplit[0])) : null;
-      let thumbUrl = Helper.stripTrailingSlash(resourcesUrl) + '/' + encodeURIComponent(thumbFile) + '?token=' + _portalUser.credential.token;
+      let modified = endSplit[0].match(/^[0-9]{13}$/) ? new Date(parseInt(endSplit[0])) : '';
 
       returnArr.push({
         name,
         modified,
         thumbUrl,
+        tokenizedThumbUrl,
         thumbFile,
+        type,
         picUrl: Helper.stripTrailingSlash(resourcesUrl) + '/' + r,
         displayName: text.filterAndSort.image,
         id: r, // these need unique ids for react gallery item array
-        type: constants.contentType.IMAGE,
         fileName: r,
         title: name,
         fromResources: true
@@ -287,7 +344,8 @@ var ArcGISConnector = (function() {
   };
 
   var findThumbUrl = function(originalResourceName, allResources) {
-    const originalNameWithoutExtension = originalResourceName.substr(0, originalResourceName.lastIndexOf('.'));
+    const lastDot = originalResourceName.lastIndexOf('.');
+    const originalNameWithoutExtension = lastDot >= 0 ? originalResourceName.substr(0, lastDot) : originalResourceName;
     let thumbFile = allResources.find(resource => {
       const r = resource.resource;
       // skip the non-thumb files
@@ -309,7 +367,7 @@ var ArcGISConnector = (function() {
         name: result.title,
         title: result.title,
         id: result.id,
-        agolType: result.type,
+        agolType: result.type, // used by gallery item to identify agol items
         type: standardizeItemType(result.type),
         displayName: result.displayName,
         owner: result.owner,
@@ -317,6 +375,22 @@ var ArcGISConnector = (function() {
         snippet: result.snippet
       }, getThumbUrlOptions(result));
     });
+  };
+
+  var getResourceType = function(fileExt) {
+    if (!fileExt) {
+      return false;
+    }
+    fileExt = '.' + fileExt.toLowerCase();
+    for (let key in constants.contentType) {
+      if (constants.uploadFileExtensions[key]) {
+        if (constants.uploadFileExtensions[key].indexOf(fileExt) >= 0) {
+          return constants.contentType[key];
+        }
+      }
+    }
+    return false;
+
   };
 
   var standardizeItemType = function(agolType) {
@@ -328,6 +402,7 @@ var ArcGISConnector = (function() {
       case constants.agolContentType.IMAGE:
         return constants.contentType.IMAGE;
       default:
+        console.warn('no type found for', agolType);
         return 'agh, whats this???';
     }
 
@@ -342,10 +417,10 @@ var ArcGISConnector = (function() {
         return {};
       }
       switch (item.type) {
-        case 'Web Scene':
+        case constants.agolContentType.WEBSCENE:
           thumbUrl = baseUrl + '/scene.png';
           break;
-        case 'Web Map':
+        case constants.agolContentType.WEBMAP:
         default:
           thumbUrl = baseUrl + '/desktopapp.png';
       }
@@ -355,16 +430,6 @@ var ArcGISConnector = (function() {
       thumbHeight: 133,
       thumbWidth: 200
     };
-  };
-
-  var getNext = function() {
-    return new Promise((resolve, reject) => {
-      if (!_next || _next.start < 0) {
-        resolve(null);
-        return;
-      }
-      queryItems(_next, resolve, reject);
-    });
   };
 
   var buildIdQuery = function(ids) {
@@ -438,15 +503,15 @@ var ArcGISConnector = (function() {
   return {
     checkSignin,
     getItems,
-    getNext,
     getPortal,
     getAppItem,
     getAppId,
     getAppIdPromise,
     getUser,
-    uploadResources,
-    removeResources
+    uploadSingleResource,
+    removeResources,
+    formatResources
   };
 }());
-
+window.Connector = ArcGISConnector;
 export { ArcGISConnector };

@@ -1,0 +1,129 @@
+@import "../../../core/Variables";
+
+.immersive-title-config-wrapper {
+  .builder-config-panel-btn {
+    text-shadow: none;
+    pointer-events: auto;
+    top: -8px;
+    right: -26px;
+    display: block;
+    position: absolute;
+    width: 26px;
+    height: 26px;
+    color: #000;
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #FFF;
+    border-radius: 15px;
+    z-index: 10;
+
+    &:hover {
+      opacity: 0.9;
+    }
+
+    &.title-config-close {
+      top: -13px;
+      right: -13px;
+      background-color: @link-color;
+    }
+
+    .builder-invite-open {
+      display: block;
+      margin-top: 3px;
+    }
+
+    .builder-invite-close {
+      margin-top: 3px;
+      color: #FFF;
+    }
+  }
+
+  .builder-config-panel {
+    font-family: 'open_sans', sans-serif;
+    display: none;
+    text-shadow: none;
+    background-color: rgb(200,200,200);
+    text-align: center;
+    padding: 10px 20px 20px;
+    position: relative;
+
+    &.active {
+      display: inline-block;
+
+      .title-config-open {
+        display: none;
+      }
+
+      .title-config-close {
+        display: block;
+      }
+    }
+
+    .options-container {
+      flex-direction: column;
+    }
+
+    .column-label {
+      font-size: 16px;
+      line-height: 24px;
+      color: #000;
+      margin-bottom: 5px;
+    }
+
+    .panel-scrolling-theme,
+    .panel-config-row, {
+      display: flex;
+    }
+
+    .panel-scrolling-theme {
+      flex: 1;
+      justify-content: center;
+    }
+
+    .panel-column {
+      display: flex;
+      width: 100%;
+    }
+
+    .panel-cfg-item {
+      flex: 1;
+
+      &:nth-child(n+2) {
+        margin-left: 35px;
+      }
+
+      .active {
+        cursor: default;
+      }
+
+      .panel-cfg-item-wrapper {
+        position: relative;
+        display: inline-block;
+        cursor: pointer;
+        pointer-events: auto;
+
+        &:hover {
+          opacity: 0.8;
+        }
+
+        &:before {
+          display: none;
+          position: absolute;
+          right: -9px;
+          top: -11px;
+          font-size: 1.2em;
+          color: @brand-primary;
+          text-shadow: -1px 0px 2px rgba(255, 255, 255, 1);
+        }
+
+        &.active:before {
+          display: block;
+        }
+
+        .panel-cfg-item-icon {
+          pointer-events: none;
+        }
+      }
+    }
+  }
+}

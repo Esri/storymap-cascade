@@ -1,5 +1,6 @@
 import Immersive from './Immersive';
 import ImmersiveBuilderPanel from './ImmersiveBuilderPanel';
+import ImmersiveTitleConfig from './ImmersiveTitleConfig';
 import SectionCommon from 'storymaps/tpl/view/section/Common';
 import UndoNotification from 'storymaps-react/tpl/builder/notification/Undo';
 import AddMenu from '../builder/AddMenu';
@@ -13,7 +14,7 @@ export default class ImmersiveBuilder extends Immersive {
   constructor(section, media) {
     super(section);
 
-    this.MEDIA_BUILDER_TABS_BACKGROUND = ['appearance', 'manage'];
+    this.MEDIA_BUILDER_TABS_BACKGROUND = ['appearance', 'background', 'manage'];
     this.MEDIA_BUILDER_TABS_PANEL = ['appearance', 'manage'];
 
     this._latestOnScrollParams = null;
@@ -22,6 +23,9 @@ export default class ImmersiveBuilder extends Immersive {
     this._builderPanelNode = null;
 
     this._initialMedia = media;
+    this._titleConfig = new ImmersiveTitleConfig({
+      applyConfigCallback: this._onTitleConfigChange.bind(this)
+    });
 
     this._addMenu = new AddMenu({
       buttons: ['sequence', 'title', 'immersive']
@@ -46,7 +50,9 @@ export default class ImmersiveBuilder extends Immersive {
       }];
     }
 
-    return super.render();
+    return super.render({
+      titleConfigPanel: this._titleConfig.render()
+    });
   }
 
   postCreate(node) {
@@ -92,6 +98,14 @@ export default class ImmersiveBuilder extends Immersive {
           //document.execCommand('insertHTML', false, '<br><br>');
           return false;
         }
+
+        // Prevent ctrl + B/I/U or ctrl + b/i/u
+        if(e.ctrlKey || e.metaKey) {
+          var key = e.keyCode;
+          if (key == 66 || key == 98 || key == 73 || key == 105 || key == 85 || key == 117) {
+            return false;
+          }
+        }
       });
 
     //
@@ -101,6 +115,15 @@ export default class ImmersiveBuilder extends Immersive {
     this._addMenu.postCreate({
       container: this._node.find('.builder-section-add-menu'),
       sectionContainer: this._node
+    });
+
+    this._titleConfig.postCreate({
+      container: this._node.find('.background-title-wrapper .builder-config-panel-wrapper'),
+      sectionOptions: this._section.views[0].foreground ? this._section.views[0].foreground.title : null
+    });
+
+    this._node.find('.background-title-wrapper .builder-config-panel-btn').on('click', event => {
+      this._titleConfig.toggleBuilderPanel($(event.currentTarget));
     });
 
     this._updateBuilderPanel();
@@ -121,6 +144,11 @@ export default class ImmersiveBuilder extends Immersive {
     this._onContentChange();
   }
 
+  _onTitleConfigChange() {
+    this._onContentChange();
+    this.update();
+  }
+
   onScroll(params) {
     this._latestOnScrollParams = params;
     this._currentScrollPosition = params.currentSectionScroll;
@@ -137,6 +165,7 @@ export default class ImmersiveBuilder extends Immersive {
         let media = this._medias[this._currentViewIndex - 1];
         if (media) {
           this._node.toggleClass('hide-foreground', media.isConfigActive());
+          this._node.find('.media-media').removeClass('appearance-invite');
         }
       }
     }
@@ -227,7 +256,8 @@ export default class ImmersiveBuilder extends Immersive {
       if (i === 0) {
         views[0].foreground.title = {
           value: $('<div>' + this._node.find('.background-title h2').text() + '</div>').text(),
-          global: true
+          global: true,
+          style: this._titleConfig.getStyle()
         };
       }
     }
@@ -286,8 +316,11 @@ export default class ImmersiveBuilder extends Immersive {
     }
 
     if (params.action == 'swap') {
+      var mediaIsEmpty = params.media.serialize().type == 'empty';
+
       app.builder.mediaPicker.open({
-        mode: 'add'
+        mode: mediaIsEmpty ? 'add' : 'edit',
+        media: mediaIsEmpty ? null : params.media.serialize()
       }).then(
         function(newMedia) {
           if (params.media.type != 'empty') {
@@ -602,6 +635,8 @@ export default class ImmersiveBuilder extends Immersive {
   _duplicateView(index) {
     console.log('duplicateView:', index);
 
+    let transition = this._transitions[index];
+
     //
     // Media
     //
@@ -614,9 +649,13 @@ export default class ImmersiveBuilder extends Immersive {
 
     var isMediaAlreadyLoaded = this.isMediaAlreadyLoaded(newMedia.serialize());
     if (! isMediaAlreadyLoaded) {
+      if (newMedia.type == 'image') {
+        transition = 'none';
+      }
+
       this._medias[index].getNode().after(SectionCommon.renderBackground({
         media: newMedia,
-        transition: this._transitions[index]
+        transition: transition
       }));
     }
 
@@ -658,7 +697,7 @@ export default class ImmersiveBuilder extends Immersive {
     // Transition
     //
 
-    this._transitions.splice(index + 1, 0, this._transitions[index]);
+    this._transitions.splice(index + 1, 0, transition);
 
     //
     // Navigate to the new view
@@ -691,11 +730,13 @@ export default class ImmersiveBuilder extends Immersive {
   _updateTransition(index, transitionType) {
     console.log('updateTransition:', index, transitionType);
 
-    this._applyViewTransition({
-      media: this._medias[index],
-      prevTransition: this._transitions[index],
-      newTransition: transitionType
-    });
+    if (this._currentViewIndex - 1 == index) {
+      this._applyViewTransition({
+        media: this._medias[index],
+        prevTransition: this._transitions[index],
+        newTransition: transitionType
+      });
+    }
 
     this._transitions[index] = transitionType;
 

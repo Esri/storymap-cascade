@@ -1,4 +1,4 @@
-@import "../../variables";
+@import "../../mp-variables";
 
 @imgHeight: 100px; // also needs to be changed in constants.jsx
 @albumHeight: 150px;
@@ -15,32 +15,63 @@
     position: relative;
     display: inline-block;
 
-    .remove {
+    .small-loader {
+      position: absolute;
+      left: 0;
+      top: 20%;
+      width: 100%;
+      background-position: center;
+    }
+
+    .floating-btn {
       line-height: 1em;
       position: absolute;
+      display: none;
+      cursor: pointer;
+    }
+
+    .remove {
       top: -8px;
       right: -8px;
       padding: 5px;
       margin: 1px;
       background: @brand-danger;
       color: white;
-      display: none;
     }
 
-    &:hover .remove {
+    .external-link {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background-size: contain;
+      top: -12px;
+      right: -10px;
+    }
+
+    &:hover .floating-btn {
       display: block;
+    }
+
+    .floating-btn:hover {
+      box-shadow: 0 0 2px 1px @shadow-gray;
     }
 
     .remove:hover {
       background: darken(@brand-danger, 5%);
-      box-shadow: 0 0 2px 1px @shadow-gray;
     }
 
   }
 
   &.unused {
+    &.loading {
+      .title, img {
+        opacity: 0.4;
+      }
+    }
+
     .title, img {
-      opacity: 0.5; // also change popover-content in Gallery
+      transition: opacity 0.5s ease;
+      opacity: 0.6; // also change popover-content in Gallery
     }
 
     img {
@@ -48,6 +79,21 @@
       padding: 4px;
     }
 
+  }
+
+  .load-error {
+    border: 1px dashed @shadow-gray;
+    padding: 4px;
+    cursor: default;
+    height: @imgHeight;
+
+    .alert {
+      margin-bottom: 0;
+      height: 100%;
+      padding: 10px;
+      overflow: hidden;
+      line-height: 1.5em;
+    }
   }
 
   img {

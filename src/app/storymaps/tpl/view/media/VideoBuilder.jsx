@@ -5,6 +5,7 @@ import BuilderConfig from './builder/Panel';
 import BuilderConfigTabSizeImage from './builder/TabSizeImage';
 import BuilderConfigTabVideo from './builder/TabVideo';
 import BuilderConfigTabManageMedia from './builder/TabManageMedia';
+import BuilderConfigTabSectionAppearance from './builder/TabSectionAppearance';
 
 import lang from 'dojo/_base/lang';
 
@@ -35,6 +36,12 @@ export default class VideoBuilder extends Video {
           tabs.push(new BuilderConfigTabVideo());
         }
       }
+      else if (tab == 'section-appearance') {
+        tabs.push(new BuilderConfigTabSectionAppearance({
+          sectionOptions: params.foregroundOptions,
+          onSectionChange: params.applySectionConfig
+        }));
+      }
       else if (tab == 'manage') {
         tabs.push(new BuilderConfigTabManageMedia({
           hideRemove: this._placement == 'background'
@@ -43,8 +50,7 @@ export default class VideoBuilder extends Video {
     }
 
     new BuilderConfig({
-      containerPanel: this._node.find('.media-cfg-panel'),
-      containerInvite: this._node.find('.media-cfg-invite'),
+      containerMedia: this._node,
       tabs: tabs,
       media: this._video,
       onChange: this._onConfigChange.bind(this),
@@ -54,6 +60,8 @@ export default class VideoBuilder extends Video {
       }.bind(this),
       closeBtnStyle: this._placement == 'background' ? 'light' : 'standard'
     });
+
+    this.initBuilderUI();
   }
 
   serialize() {

@@ -1,6 +1,10 @@
 import UIUtils from 'storymaps/tpl/utils/UI';
 import CommonHelper from 'storymaps/common/utils/CommonHelper';
 import topic from 'dojo/topic';
+import IdentityManager from 'esri/IdentityManager';
+
+import errorTpl from 'lib-build/hbars!./MediaError';
+import {} from 'lib-build/less!./MediaError';
 
 export default class Media {
 
@@ -64,6 +68,10 @@ export default class Media {
     return this.previewIcon;
   }
 
+  isSameMedia(media) {
+    return this.id == media.id;
+  }
+
   _applyConfig(options) {
     if (this._placement == 'block') {
       options.size = options.size || 'medium';
@@ -83,6 +91,12 @@ export default class Media {
 
     btn.toggleClass('enabled');
     this._node.toggleClass('interaction-enabled');
+  }
+
+  showLoadingError() {
+    this._node
+      .append(errorTpl({}))
+      .addClass('has-loading-error bg-danger');
   }
 
   getArcGISContent() {
@@ -156,6 +170,9 @@ export default class Media {
     if (app.portal && app.portal.getPortalUser()) {
       token = app.portal.getPortalUser().credential.token;
     }
+    else if (IdentityManager.findCredential(document.location.origin)) {
+      token = IdentityManager.findCredential(document.location.origin).token;
+    }
     else {
       token = CommonHelper.getCookieToken();
     }
@@ -165,6 +182,87 @@ export default class Media {
     }
 
     return url;
+  }
+
+  static findCropDistance(item, container, offsetRatio) {
+    let containerWidth = container.width();
+    let containerHeight = container.height();
+    let containerAspectRatio = containerWidth / containerHeight;
+    let itemAspectRatio = item.width / item.height;
+    let transferBy = {
+      x: 0,
+      y: 0
+    };
+    let amountToMove = 0;
+
+    // transfer the item over...
+    // if the item's width-height ratio is less than the target element (target is wider), height is cropped and width fills (so we don't want to change the x-offset).
+    let shouldPanX = itemAspectRatio > containerAspectRatio;
+    let shouldPanY = itemAspectRatio < containerAspectRatio;
+
+    if (shouldPanY) {
+      // transfer it by that much (so it's in top left), then do it by the center
+      // the item is as wide as the container, as tall as container * aspectRatio...
+      let itemTargetHeight = containerWidth / itemAspectRatio;
+      amountToMove = this.getDimensionAmount(itemTargetHeight, containerHeight, offsetRatio.y);
+
+      transferBy.x = 0;
+      transferBy.y = amountToMove;
+    }
+    // if it's greater (target is taller), height fills and width is cropped (so we won't want to change y-offset).
+    else if (shouldPanX) {
+      let itemTargetWidth = containerHeight * itemAspectRatio;
+      amountToMove = this.getDimensionAmount(itemTargetWidth, containerWidth, offsetRatio.x);
+
+      transferBy.x = amountToMove;
+      transferBy.y = 0;
+    }
+    // if it's the same, we don't want to offset at all.
+    else {
+      transferBy.x = 0;
+      transferBy.y = 0;
+    }
+
+    return transferBy;
+  }
+
+  static getDimensionAmount(itemTargetDimension, containerDimension, offsetRatio) {
+    // find the focus point on the target item, in pixels
+    let focusPoint = itemTargetDimension * offsetRatio;
+    // to have that point centered, you'd have to translate the item by the amount here:
+    let amountToMove = (focusPoint - (containerDimension / 2)) * -1;
+
+    // but if centering it would make the item translate "into" the container so it's not all showing, have it move to the near edge only.
+    if (amountToMove > 0) {
+      amountToMove = 0;
+    }
+    // conversely, if centering would make the item translate "through" the container so far that some of it would not be showing, have it move so it's translated through only to the far edge (and no more).
+    else if ((itemTargetDimension - (amountToMove * -1)) < containerDimension) {
+      amountToMove = (itemTargetDimension - containerDimension) * -1;
+    }
+    return amountToMove;
+  }
+
+  static getTargetDimensions(rawItemDimensions, containerDimensions) {
+    let itemDimensions = {
+      width: 0,
+      height: 0
+    };
+    let rawItemAspectRatio = rawItemDimensions.width / rawItemDimensions.height;
+    let containerAspectRatio = containerDimensions.width / containerDimensions.height;
+
+    if (rawItemAspectRatio > containerAspectRatio) {
+      // it's wider, so the height is the same
+      itemDimensions.height = containerDimensions.height;
+      itemDimensions.width = containerDimensions.height * rawItemAspectRatio;
+    }
+    else {
+      // it's taller, so the widths are the same..
+      itemDimensions.width = containerDimensions.width;
+      itemDimensions.height = containerDimensions.width / rawItemAspectRatio;
+    }
+
+    return itemDimensions;
   }
 
   resize() {
@@ -187,12 +285,21 @@ export default class Media {
     return [];
   }
 
+  initBuilderUI() {
+    if (this._placement == 'block') {
+      this._node.find('.media-delete').html('<div class="media-delete-background"></div><i class="media-delete-icon config-icon fa fa-trash-o"></i>');
+      this._node.find('.media-delete-icon').click(function() {
+        this._onAction('remove');
+      }.bind(this));
+    }
+  }
+
   isConfigActive() {
-    return this._node.find('.media-cfg-panel').hasClass('active');
+    return this._node.hasClass('config-panel-active');
   }
 
   closeConfigPanel() {
-    this._node.find('.media-cfg-invite, .media-cfg-panel').removeClass('active');
+    this._node.removeClass('config-panel-active');
   }
 
   destroy() {

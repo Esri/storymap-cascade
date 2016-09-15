@@ -1,6 +1,8 @@
 import SectionCommon from 'storymaps/tpl/view/section/Common';
 import UIUtils from 'storymaps/tpl/utils/UI';
 
+import i18n from 'lib-build/i18n!./../../../../../resources/tpl/builder/nls/app';
+
 import CoverStyleFactory from 'storymaps/tpl/view/section/Cover/CoverStyleFactory';
 
 import viewTpl from 'lib-build/hbars!./Cover';
@@ -32,9 +34,10 @@ export default class Cover {
       }),
       title: this._section.foreground.title,
       subtitle: this._section.foreground.subtitle,
+      showSubtitle: this._section.foreground.subtitle || app.isInBuilder,
       creditsLeft: this._section.foreground['credits-left'],
       creditsRight: this._section.foreground['credits-right'],
-      mediaPlaceholder: 'Add your image or video'
+      strings: i18n.builder.cover
     });
   }
 
@@ -46,6 +49,8 @@ export default class Cover {
       onToggleMediaConfig: app.isInBuilder ? this._onToggleMediaConfig.bind(this) : null,
       onConfigAction: app.isInBuilder ? this._onMediaConfigAction.bind(this) : null,
       builderConfigurationTabs: this.MEDIA_BUILDER_TABS_BACKGROUND,
+      foregroundOptions: this._section.foreground.options,
+      applySectionConfig: app.isInBuilder ? this._applySectionConfig.bind(this) : null,
       // TODO: for video, need to goes away
       sectionType: 'cover'
     });
@@ -56,6 +61,18 @@ export default class Cover {
         animate: true
       });
     });
+
+    this._applyConfig();
+  }
+
+  _applyConfig() {    
+    if (this._section.foreground && this._section.foreground.options) {
+      let style = this._section.foreground.options.titleStyle;
+      let textNode = this._node.find('.foreground .title-text');
+      let backgroundNode = this._node.find('.foreground .text-background');
+
+      SectionCommon.applyTitleStyle(style, textNode, backgroundNode);
+    }
   }
 
   onScroll(params) {

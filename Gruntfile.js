@@ -57,11 +57,11 @@
 
             /* React */
             'storymaps-react': '../../build/app/storymaps/',
-            react: '../lib/react/react',
-            'react-dom': '../lib/react/react-dom',
+            react: '../lib/react/react.min',
+            'react-dom': '../lib/react/react-dom.min',
             redux: '../lib/redux/index',
             'react-redux': '../lib/react-redux/index',
-            'react-bootstrap': '../lib/react-bootstrap/react-bootstrap',
+            'react-bootstrap': '../lib/react-bootstrap/react-bootstrap.min',
 
             /* Build chain dependencies */
             'lib-build': '../lib-build/',
@@ -355,6 +355,44 @@
               return dest + src + '.js';
             }
           }]
+        },
+        'calcite-vars': {
+          options: {
+            process: function(content) {
+              return content.replace(/\$/g, '@') // change sass $ vars to less @ vars
+                      .replace(/ !default/g, '') // get rid of sass !default
+                      .replace(/Calcite-Highlight-Blue-350/, 'Calcite_Highlight_Blue_350') // fix calcite vars
+                      .replace(/Calcite_Highlight-Blue/, 'Calcite_Highlight_Blue') // more calcite :(
+                      // replace fade-in or fade_in(color, 0-1) with fade(color, 0-100%)
+                      .replace(/(fade-in\(|fade_in\().+?\.[0-9]+\s*\)/g, function(fadeStr) {
+                        // find the 0-1 decimal at the end of the fade_in function
+                        var decimal = fadeStr.slice(fadeStr.lastIndexOf('.'), fadeStr.lastIndexOf(')'));
+                        var percent = Math.round(parseFloat(decimal) * 100) + '%';
+                        return 'fadein' + fadeStr.slice(fadeStr.indexOf('('), fadeStr.indexOf(',') + 1) + ' ' + percent + ')';
+                      })
+                      // replace rgba(#hex, 0-1) with fade(#hex, 0-100%)
+                      .replace(/rgba\(#(?:[0-9a-fA-F]{3}){1,2},\s*0*\.[0-9]+\s*\)/g, function(rgbaStr) {
+                        var decimal = rgbaStr.slice(rgbaStr.lastIndexOf('.'), rgbaStr.lastIndexOf(')'));
+                        var percent = Math.round(parseFloat(decimal) * 100) + '%';
+                        return 'fade' + rgbaStr.slice(rgbaStr.indexOf('('), rgbaStr.indexOf(',') + 1) + ' ' + percent + ')';
+                      });
+            }
+          },
+          files: [{
+            expand: true,
+            cwd: 'src/lib/calcite-bootstrap/sass/calcite/',
+            src: ['_variables.scss',
+                  '_colors-default.scss'
+            ],
+            dest: 'src/app/storymaps/common/_resources/styles/calcite/',
+            rename: function(dest, src) {
+              var fileName = src.slice(src.lastIndexOf('/') + 1, src.lastIndexOf('.'));
+              if (fileName.charAt(0) === '_') {
+                fileName = fileName.slice(1);
+              }
+              return dest + fileName + '.less';
+            }
+          }]
         }
       },
 
@@ -552,6 +590,7 @@
       'copy:fonts2',
       'copy:fonts3',
       'copy:youtube',
+      'copy:calcite-vars',
 
       //
       // React components
@@ -616,6 +655,7 @@
       'copy:fonts2',
       'copy:fonts3',
       'copy:youtube',
+      'copy:calcite-vars',
 
       'copy:less-in-react',
       'copy:hbs-in-react',

@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {} from 'lib-build/less!./SidePanel';
 import {} from 'lib-build/less!./SidePanelGooglePhotos';
 import i18n from 'lib-build/i18n!../../../../_resources/nls/media';
 
@@ -22,15 +21,23 @@ class UserSearchAlert extends React.Component {
 }
 
 class SearchInput extends React.Component {
+  componentDidMount() {
+    var modal = $(ReactDOM.findDOMNode(this)).parents('.modal');
+    modal.on('shown.bs.modal', () => {
+      if (this.props.setFocus) {
+        $(this.refs.textInput).focus();
+      }
+    });
+
+  }
+
   componentDidUpdate() {
     if (this.props.setFocus) {
-      if (!$(ReactDOM.findDOMNode(this)).parents('.modal').hasClass('in')) {
-        setTimeout(() => {
-          ReactDOM.findDOMNode(this.refs.textInput).focus();
-        }, 500);
-      }
-      else {
-        ReactDOM.findDOMNode(this.refs.textInput).focus();
+      const activeEl = document.activeElement;
+      // if someone is navigating by tabbing, don't take the focus off where they are
+      const activeTabIndex = activeEl.tabIndex ? parseInt(activeEl.tabIndex) : 0;
+      if (activeEl !== this.refs.textInput && activeTabIndex <= 0) {
+        $(this.refs.textInput).focus();
       }
     }
   }
@@ -108,7 +115,7 @@ class SidePanelGooglePhotos extends React.Component {
     var msgDisplay = this.props.containerState.userErrorType !== '';
 
     return (
-      <div className="mp-sidepanel">
+      <div className="mp-sidepanel google">
         <SearchInput
           icon="picture-o"
           placeholder={text.placeholder}
@@ -116,6 +123,7 @@ class SidePanelGooglePhotos extends React.Component {
           onChange={this.props.onChange}
           onKeyPress={this.props.onKeyPress}
           onClear={this.props.onClear}
+          setFocus={this.props.containerState.focusInput}
         />
         <UserSearchAlert
           display={msgDisplay}

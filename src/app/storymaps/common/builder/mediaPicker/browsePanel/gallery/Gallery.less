@@ -1,4 +1,4 @@
-@import "../../variables";
+@import "../../mp-variables";
 
 .mp-gallery {
   padding: 10px 20px;
@@ -6,16 +6,21 @@
   display: flex;
   -webkit-flex-wrap: wrap;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
   max-width: 100%;
   overflow-y: auto;
+
+  &.centered {
+    justify-content: center;
+  }
 
   .alert {
     text-align: center;
 
     &.limit-reached {
       padding: 5px 10px;
-      margin: 1em 0;
+      margin: 1em auto; // changed because flex align is now left
+      width: 100%; // changed because this was lining up in order with items
     }
   }
 
@@ -33,10 +38,15 @@
     background-size: contain;
   }
 
-  .popover.remove .popover-content {
+  .popover.remove .popover-content,
+  .popover.external-link .popover-content {
     padding: 0 3px;
     font-size: 12px;
     color: @gray-darker;
+  }
+
+  .popover.external-link {
+    max-width: 100%; // keep all content on one line.
   }
 
   .popover-content {
@@ -51,7 +61,7 @@
   }
 
   .popover-content .unused {
-    opacity: 0.5;
+    opacity: 0.6;
   }
 
 

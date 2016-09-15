@@ -1,6 +1,7 @@
+@import '../../../core/Variables';
+
 .media-cfg-invite {
-  visibility: hidden;
-  opacity: 0;
+  opacity: 0.6;
 
   font-size: 40px;
   background-color: #FFF;
@@ -25,6 +26,8 @@
 
   .builder-invite-close {
     display: none;
+    color: #FFF;
+    opacity: 0.85;
   }
 
   .builder-invite-background {
@@ -37,23 +40,28 @@
 
     border-left: 0px solid transparent;
     border-right: 100px solid transparent;
-    border-top: 0px solid rgba(232, 232, 232, 0.65);
-    border-bottom: 100px solid rgba(232, 232, 232, 0.65);
+    border-top: 0px solid rgba(232, 232, 232, 1);
+    border-bottom: 100px solid rgba(232, 232, 232, 1);
 
     cursor: pointer !important;
   }
+}
 
-  &.active {
-    visibility: visible !important;
-    opacity: 1 ! important;
+.config-panel-active .media-cfg-invite {
+  visibility: visible !important;
+  opacity: 1 ! important;
 
-    .builder-invite-open {
-      display: none;
-    }
+  .builder-invite-open {
+    display: none;
+  }
 
-    .builder-invite-close {
-      display: block;
-    }
+  .builder-invite-close {
+    display: block;
+  }
+
+  .builder-invite-background {
+    border-top: 0px solid @link-color;
+    border-bottom: 100px solid @link-color;
   }
 }
 
@@ -61,6 +69,7 @@
   display: block;
   width: 100%;
   font-family: 'open_sans', sans-serif;
+  text-shadow: initial;
 
   .builder-config {
     display: flex;
@@ -72,47 +81,16 @@
 
     background-color: rgba(255, 255, 255, 0.9);
     z-index: 99;
+    box-shadow: 0px 0px 6px rgba(0,0,0,0.6);
 
     height: 0;
 
-    /*
-    -webkit-transition: min-height 1s;
-    -moz-transition: min-height 1s;
-    -ms-transition: min-height 1s;
-    -o-transition: min-height 1s;
-    transition: min-height 1s;
-    */
-
-    &::after {
-      content: '';
-      position: absolute;
-      bottom: -10px;
-      left: 0;
-      right: 0;
-      z-index: 0;
-      height: 10px;
-      background: linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0) 100%);
-    }
-
-    /*
-    &::before {
-      content: '';
-      position: absolute;
-      top: -10px;
-      left: 0;
-      right: 0;
-      z-index: 0;
-      height: 10px;
-      background: linear-gradient(to top, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0) 100%);
-    }
-    */
-
     .config-main {
-      flex: 0 1 1000px;
+      flex: 0 1 @screen-md;
       max-width: 90%;
       display: flex;
 
-      @media (max-width: 1000px) {
+      @media (max-width: @screen-md) {
         max-width: 100%;
       }
     }
@@ -135,20 +113,14 @@
         display: flex;
         font-size: 18px;
         align-items: center;
-        color: #AAA;
         cursor: pointer;
         padding: 12px 20px 12px 0;
         /* Above the close button */
-        z-index: 9999;
+        z-index: 1002;
         border-top: 1px solid transparent;
         border-bottom: 1px solid transparent;
 
-        &:hover {
-          color: #777;
-        }
-
         &.selected {
-          color: black;
           border-top-color: #E8E8E8;
           border-bottom-color: #E8E8E8;
         }
@@ -189,6 +161,17 @@
       display: flex;
       padding: 20px;
       color: #444;
+
+      &.placement-config {
+        padding: 12px 20px;
+
+        * {
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          user-select: none;
+        }
+      }
     }
 
     .builder-active-tab {
@@ -197,14 +180,23 @@
       flex: 1 0 0;
     }
   }
+}
 
-  &.active {
-    .builder-config {
-      visibility: visible;
-      opacity: 1;
-      min-height: 175px;
-      height: inherit;
+@media (max-width: 1420px) {
+  .section-layout-cover, .section-immersive .background {
+    .media-cfg-panel .builder-config .config-main {
+      padding-left: 80px;
+      max-width: 100%;
     }
+  }
+}
+
+.config-panel-active .media-cfg-panel {
+  .builder-config {
+    visibility: visible;
+    opacity: 1;
+    min-height: 175px;
+    height: inherit;
   }
 }
 
@@ -220,4 +212,12 @@
 .background .media-cfg-invite {
   visibility: visible !important;
   opacity: 1 ! important;
+}
+
+/*
+ * Hide the media caption
+ */
+
+.config-panel-active .block-caption {
+  display: none;
 }

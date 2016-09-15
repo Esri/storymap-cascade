@@ -32,4 +32,23 @@
   &.selected {
     border-color: @selected-border-color;
   }
+
+  &.style-simple-text {
+    pointer-events: none;
+
+    .op-item-main {
+      background-color: transparent;
+
+      .text-overlay {
+        background: initial;
+        color: #FFF;
+
+        p {
+          font-size: 17px;
+          max-height: none;
+          -webkit-line-clamp: initial;
+        }
+      }
+    }
+  }
 }

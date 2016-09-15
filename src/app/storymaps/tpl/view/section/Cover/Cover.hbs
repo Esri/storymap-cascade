@@ -6,17 +6,21 @@
     <div class="foreground">
       <div class="foo">
         <div class="title-error-container hidden">
-          <div class="title-error-message">Save failed, you already have an item with this title</div>
+          <div class="title-error-message">{{strings.saveError}}</div>
         </div>
-        <h1 class="cover-title">{{title}}</h1>
-        <!--<span class="cover-title-mock-cursor"></span>-->
-        <h2 class="cover-subtitle">{{subtitle}}</h2>
+        <div class="text-background">
+          <h1 class="cover-title title-text text-shadow">{{title}}</h1>
+          <!--<span class="cover-title-mock-cursor"></span>-->
+          {{#if showSubtitle}}
+            <h2 class="cover-subtitle title-text text-shadow">{{subtitle}}</h2>            
+          {{/if}}
+        </div>
       </div>
 
       <div class="cover-media-placeholder">
         <div class="cover-media-placeholder-wrapper">
           <i class="fa fa-picture-o ph-icon-media" aria-hidden="true"></i>
-          <div class="cover-media-placeholder-label">{{mediaPlaceholder}}</div>
+          <div class="cover-media-placeholder-label">{{strings.mediaPlaceholder}}</div>
         </div>
       </div>
     </div>

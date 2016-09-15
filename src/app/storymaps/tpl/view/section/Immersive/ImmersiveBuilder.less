@@ -1,3 +1,5 @@
+@import "../../../core/Variables";
+
 .background-title h2 {
   outline: none;
   border: 2px solid transparent;
@@ -9,12 +11,39 @@
   margin: auto;
   color: #AAA;
   text-shadow: 0 0 8px rgba(0, 0, 0, 0.95);
-  border: 2px solid rgba(241, 248, 253, 0.94);
 }
 
 .background-title h2[contenteditable=true]:not(:focus):empty:before{
   display: block;
   content: attr(placeholder);
+}
+
+.section-immersive {
+  .background-title {
+    padding: 0 25px;
+  }
+
+  .title-text {
+    &:hover:not(:focus) {
+      border: 2px solid rgba(241, 248, 253, 0.5);
+    }
+
+    &[contenteditable=true]:empty {
+      color: #AAA;
+      border: 2px solid rgba(241, 248, 253, 0.5);
+    }
+
+    &.text-dark {
+      &:hover:not(:focus) {
+        border: 2px solid rgba(15,15,15, 0.5);
+      }
+
+      &[contenteditable=true]:empty {
+        color: #555;
+        border: 2px solid rgba(15,15,15, 0.5);
+      }
+    }
+  }
 }
 
 body.builder-mode .section-immersive .blocks {

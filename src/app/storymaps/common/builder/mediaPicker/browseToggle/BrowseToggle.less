@@ -1,7 +1,7 @@
-@import "../variables";
+@import "../mp-variables";
 
 @title-height: 24px;
-@title-height-lg: 20px;
+@title-height-lg: 19px;
 @title-height-md: 18px;
 @title-height-sm: 15px;
 
@@ -15,7 +15,6 @@
 
 @toggles-height: @title-height + @arrow-size + 8;
 @toggles-height-sm: @title-height-sm + @arrow-size + 8;
-
 
 .mp-header {
   z-index: 2;
@@ -51,7 +50,6 @@
 
   }
 
-
   .mp-browse-toggles {
     display: flex;
     height: @toggles-height;
@@ -59,7 +57,7 @@
     flex: 0 0 auto;
 
     .browse-toggle {
-      min-width: 20%;
+      min-width: 15%;
       color: @gray-darker;
       cursor: pointer;
       height: 100%;
@@ -67,7 +65,7 @@
       font-family: "Open Sans", sans-serif;
       font-weight: 400;
       flex: auto;
-      padding: 0 15px;
+      padding: 0 10px;
 
       .provider-logo {
         height: @title-height;
@@ -84,8 +82,13 @@
         font-size: @title-height;
       }
 
+      .inline-title {
+        margin-top: -1px;
+      }
+
       .inline-title .fa {
-        margin-right: 0.5em;
+        margin-right: 10px;
+        font-size: @fontsize - 2;
       }
 
       &.selected {
@@ -133,12 +136,17 @@
           font-size: @fontsize-lg;
 
           .provider-logo {
+            margin-top: 4px;
             height: @title-height-lg;
           }
 
           .longer-title.title-text,
           .longer-title .title-text {
             font-size: @fontsize-lg - 4;
+          }
+
+          .inline-title .fa {
+            font-size: @fontsize-lg - 2;
           }
         }
 
@@ -151,15 +159,23 @@
     @media (max-width: @screen-md) {
       & {
         .browse-toggle {
+          min-width: 16%;
           font-size: @fontsize-md;
+          padding: 0 8px;
 
           .provider-logo {
+            margin-top: 5px;
             height: @title-height-md;
           }
 
           .longer-title.title-text,
           .longer-title .title-text {
             font-size: @fontsize-md - 4;
+          }
+
+          .inline-title .fa {
+            margin-right: 8px;
+            font-size: @fontsize-md - 2;
           }
 
         }
@@ -174,11 +190,10 @@
         height: @toggles-height-sm;
 
         .browse-toggle {
-          min-width: 21%;
-          padding: 0 8px;
           font-size: @fontsize-sm;
 
           .provider-logo {
+            margin-top: 5px;
             height: @title-height-sm;
           }
 
@@ -189,6 +204,7 @@
 
           .inline-title .fa {
             margin-right: 6px;
+            font-size: @fontsize-sm - 2;
           }
 
           &.selected:before,

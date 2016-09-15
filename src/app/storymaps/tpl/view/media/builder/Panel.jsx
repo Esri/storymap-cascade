@@ -3,18 +3,23 @@ import {} from 'lib-build/less!./Panel';
 import viewInvite from 'lib-build/hbars!./PanelInvite';
 import viewConfig from 'lib-build/hbars!./PanelConfig';
 
+var ACTIVE_CLASS = 'config-panel-active';
+
 export default class BuilderConfig {
 
   constructor(params) {
     params = params || {};
 
-    if (! params.containerInvite || ! params.containerPanel || ! params.tabs
+    if (! params.containerMedia
+        || ! params.tabs
         || ! params.media || ! params.onChange || ! params.onAction) {
       return;
     }
 
-    this._nodeInvite = params.containerInvite;
-    this._nodePanel = params.containerPanel;
+    this._nodeMedia = params.containerMedia;
+    this._nodeInvite = this._nodeMedia.find('.media-cfg-invite');
+    this._nodePanel = this._nodeMedia.find('.media-cfg-panel');
+
     this._tabs = params.tabs;
     this._media = params.media;
     this._onChange = params.onChange;
@@ -32,13 +37,9 @@ export default class BuilderConfig {
   //
 
   _init() {
-    this._nodeInvite
-      .removeClass('active')
-      .html(viewInvite({}));
-
-    this._nodePanel
-      .removeClass('active')
-      .html(viewConfig({}));
+    this._nodeMedia.removeClass(ACTIVE_CLASS);
+    this._nodeInvite.html(viewInvite({}));
+    this._nodePanel.html(viewConfig({}));
 
     // Open/close button
     this._nodeInvite
@@ -50,7 +51,7 @@ export default class BuilderConfig {
     for (let i = 0; i < this._tabs.length; i++) {
       let tab = this._tabs[i];
       tabsContainer.append(
-        `<li class="tab${i === 0 ? ' selected' : ''}" data-tab="${tab.type}">` +
+        `<li class="tab btn-clear lighter${i === 0 ? ' selected' : ''}" data-tab="${tab.type}">` +
           `<span class="config-tab-icon fa ${tab.icon}"></span>` +
           `${tab.title}` +
         '</li>'
@@ -98,12 +99,8 @@ export default class BuilderConfig {
   }
 
   _toggleConfigPanel(e) {
-    let inviteButton = this._nodeInvite;
-    let configPanel = this._nodePanel;
-    let activeClass = 'active';
-
     // if shutting, destroy the active panel as well
-    if (configPanel.hasClass(activeClass)) {
+    if (this._nodeMedia.hasClass(ACTIVE_CLASS)) {
       // when used for background media, only the x allow to close close
       if (this._closeBtnStyle == 'light' && $(e.target).hasClass('builder-invite-background')) {
         return;
@@ -114,6 +111,9 @@ export default class BuilderConfig {
       let tabType = tabNode.data('tab');
       let openTab = this._tabs.find(tab => tabType === tab.type);
 
+      // before the panel is destoyed, we may want to make data model changes...
+      openTab && openTab.beforePanelDestroy();
+      
       openTab && this.destroyTab(openTab);
     }
     else {
@@ -126,8 +126,7 @@ export default class BuilderConfig {
       //this._onChange();
     }
 
-    configPanel.toggleClass(activeClass);
-    inviteButton.toggleClass(activeClass);
+    this._nodeMedia.toggleClass(ACTIVE_CLASS);
 
     if (this._onToggle) {
       this._onToggle();

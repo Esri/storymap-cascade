@@ -59,3 +59,8 @@
     }
   }
 }
+
+/* do not display "(+) section button" after Sequential */
+.section-layout-sequence + .section::before {
+  display: none !important;
+}

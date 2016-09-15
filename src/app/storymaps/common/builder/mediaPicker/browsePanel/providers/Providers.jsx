@@ -3,6 +3,7 @@ import React from 'react';
 import GooglePhotosContainer from './GooglePhotosContainer';
 import FlickrContainer from './FlickrContainer';
 import ArcGISContainer from './ArcGISContainer';
+import UnsplashContainer from './UnsplashContainer';
 import UrlContainer from './UrlContainer';
 
 import constants from '../../constants';
@@ -50,6 +51,11 @@ class Providers extends React.Component {
           openFocus={this.openFocus(constants.providers.ARCGIS)}
           appId={this.props.params ? this.props.params.appid : null}
           thisStory={this.props.params ? this.props.params.arcgisThisStory : null}
+          authorizedMedia={this.props.params ? this.props.params.authorizedMedia : []}
+        />
+        <UnsplashContainer
+          display={this.displayTab(constants.providers.UNSPLASH)}
+          openFocus={this.openFocus(constants.providers.UNSPLASH)}
           authorizedMedia={this.props.params ? this.props.params.authorizedMedia : []}
         />
         <UrlContainer

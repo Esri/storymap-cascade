@@ -1,0 +1,59 @@
+<div class="builder-config-section">
+  <div class="section-content vertical-list fit-fill">
+    <div class="section-content two-pane" data-mode="fill">
+      <div class="content-pane">
+        <p class="config-label overview-label">{{strings.mostImportantPart}}</p>
+        <span class="crop-info fa fa-info-circle" data-toggle="tooltip" data-placement="top" title="{{#if isImmersive}}{{strings.cropExplanationImmersive}}{{else}}{{strings.cropExplanation}}{{/if}}"></span>
+      </div>
+      <div class="content-pane overview-thumbnail-pane{{#if isSafari}} safari-specific{{/if}}">
+        <img class="overview-thumbnail" src=""/>
+        <div class="overview-dot"></div>
+      </div>
+    </div>
+    <div class="section-content vertical-list" data-mode="fit">
+      <h4 class="title">{{strings.color}}</h4>
+      <div class="section-content fit-content-container">
+        <div class="content-pane fit-content">
+          <ul class="fit-palette"></ul>
+        </div>
+        <div class="content-pane fit-content">
+          <div class="fit-color-picker not-alone">
+            <div class="color-picker-icons">
+              <i class="fit-brush fa fa-paint-brush"></i>
+              <i class="fit-down-arrow fa fa-chevron-down"></i>
+            </div>
+            <span class="fit-color-picker-color"></span>
+          </div>
+          <div class="fit-color-picker-color"></div>
+        </div>
+        <div class="content-pane fit-loading">
+          <span class="fit-loading-icon large-loader"></span>
+        </div>
+      </div>
+    </div>
+    {{#if isImmersive}}
+    <div class="section-content crop-check">
+      <label class="check"><input class="fit-fill" type="checkbox" value="fit"> {{strings.noCrop}}</label>
+    </div>
+    {{/if}}
+  </div>
+</div>
+<div class="builder-config-section larger preview-config-section">
+  <ul class="section-content horizontal preview-section">
+    <li class="config-item preview-item horizontal">
+      <h4 class="responsive-preview-title">{{strings.previews}}</h4>
+      <div class="responsive-frame-container">
+        <div class="responsive-backing backing-horizontal"></div>
+        <div class="responsive-preview preview-horizontal{{#if isTitle}} preview-title{{/if}}"></div>
+        <img class="responsive-frame frame-horizontal" src="resources/tpl/builder/icons/media-config/previewLandscape.png" />
+      </div>
+    </li>
+    <li class="config-item preview-item">
+      <div class="responsive-frame-container">
+        <div class="responsive-backing backing-vertical"></div>
+        <div class="responsive-preview preview-vertical{{#if isTitle}} preview-title{{/if}}"></div>
+        <img class="responsive-frame frame-vertical" src="resources/tpl/builder/icons/media-config/previewPortrait.png" />
+      </div>
+    </li>
+  </ul>
+</div>

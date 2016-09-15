@@ -18,10 +18,6 @@ const dataURItoBlob = function dataURItoBlob(dataURI) {
   return new Blob([ia], {type: mimeString});
 };
 
-const getRandomId = function getRandomId() {
-  return Math.random().toString(36).substr(2, 9);
-};
-
 const classnames = function classnames() {
   let classes = '';
   const hasOwn = {}.hasOwnProperty;
@@ -63,6 +59,5 @@ const stripTrailingSlash = function(str) {
 export default {
   classnames,
   dataURItoBlob,
-  getRandomId,
   stripTrailingSlash
 };

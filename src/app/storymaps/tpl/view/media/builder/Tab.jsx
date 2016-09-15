@@ -1,10 +1,13 @@
 export default class Tab {
-  constructor(params) {
+  constructor(params = {}) {
     this.title = '';
     this.selectedClass = 'selected';
 
     this._isActive = false;
     this._options = params;
+    this._sectionOptions = params.sectionOptions;
+    this._onSectionChange = params.onSectionChange;
+    this._onOpen = params.onOpen;
   }
 
   onChange() {
@@ -16,6 +19,10 @@ export default class Tab {
       return;
     }
 
+    if (this._onOpen) {
+      this._onOpen();
+    }
+
     this._isActive = true;
 
     this._node = params.container;
@@ -23,6 +30,10 @@ export default class Tab {
     this._onChange = params.onChange;
     this._onAction = params.onAction;
     this._rootNode = params.rootNode;
+  }
+
+  beforePanelDestroy() {
+
   }
 
   destroy() {
@@ -37,5 +48,10 @@ export default class Tab {
   setMedia(name, value) {
     this._media[name] = value;
     this.onChange();
+  }
+
+  setSectionConfig(name, value) {
+    this._sectionOptions[name] = value;
+    this._onSectionChange();
   }
 }

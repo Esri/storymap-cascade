@@ -17,9 +17,12 @@ body.builder-mode .section:nth-child(2).section-layout-sequence .foreground {
   padding-bottom: 55px;
 }
 
-.section-layout-sequence .medium-editor-placeholder .block::after {
+.section-layout-sequence .medium-editor-placeholder .block:nth-child(1)::after {
   opacity: 1;
-  margin-top: 30px;
   transition: none;
   -webkit-transition: none;
+}
+
+.section-layout-sequence .medium-editor-placeholder .block:nth-child(2)::after {
+  display: none;
 }

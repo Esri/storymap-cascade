@@ -1,4 +1,4 @@
-# Story Map Cascade
+﻿# Story Map Cascade
 
 The Story Map Cascade℠ app lets you combine narrative text with maps, images, and multimedia content in an engaging, full-screen scrolling experience. In a Cascade story, sections containing text and in-line media can be interspersed with "immersive" sections that fill the screen with your maps, 3D scenes, images, and videos. Cascade is ideal for making compelling, in-depth stories that are very easy for people to navigate.
 
@@ -8,7 +8,7 @@ The Story Map Cascade℠ app lets you combine narrative text with maps, images, 
 [Download](http://links.esri.com/storymaps/story_map_cascade_zip) |
 [Cascade page on Esri Story Maps website](https://storymaps.arcgis.com/en/app-list/cascade/)
 
-**Latest release is version 1.0.3**, if you want to be informed of new releases, we recommend you to watch this repository ([see GitHub help](https://help.github.com/articles/watching-repositories)). See the [release page](https://github.com/Esri/story-map-cascade/releases) for release notes.
+**Latest release is version 1.1.1**, if you want to be informed of new releases, we recommend you to watch this repository ([see GitHub help](https://help.github.com/articles/watching-repositories)). See the [release page](https://github.com/Esri/story-map-cascade/releases) for release notes.
 
 ## Help content
 
@@ -100,7 +100,7 @@ The Cascade data are stored in a Web Application Item in ArcGIS Online or Portal
 The image and videos that you include in your story using the builder are not copied in ArcGIS Online except if you upload them through the ArcGIS option. You have to make sure that those medias that are stored on other services are and will remain accessible to your audience.
 
 #### Can I deploy Cascade on Portal for ArcGIS?
-Cascade will be included with Portal starting at 10.5. The application is not supported with earlier version but it works with some of the most recent version.
+Cascade is not included in Portal for ArcGIS. We are planning to include it in Portal for ArcGIS 10.5.1.
 
 #### Can I use the builder with the downloadable?
 Yes, when the story is configured with an application ID, adding the URL parameter 'edit' will open the builder. You will be prompted for user authentication.

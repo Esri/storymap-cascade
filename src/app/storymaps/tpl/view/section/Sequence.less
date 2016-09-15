@@ -1,3 +1,5 @@
+@import '../../core/Variables';
+
 .section-layout-sequence {
   overflow: hidden;
   padding-top: 0;
@@ -38,7 +40,7 @@
 }
 
 .section-layout-sequence blockquote {
-  font-family: 'lora', serif;
+  font-family: 'droid_serif', serif;
   font-size: 24px;
   line-height: 30px;
   text-align: left;
@@ -148,7 +150,7 @@ body.mobile-view .section-layout-sequence {
 .section-layout-sequence.sequence-2 .block {
   width: 90%;
   margin-left: 5%;
-  background-color: rgba(255, 0, 0, 0.5);
+  background-color: fade(@sm-brand-danger, 80%);
   border-radius: 4px;
   color: #FFF;
   padding: 15px;

@@ -1,5 +1,7 @@
 import {} from 'lib-build/less!./Header';
 
+import i18n from 'lib-build/i18n!./../../../../resources/tpl/builder/nls/app';
+
 import CommonHelper from 'storymaps/common/utils/CommonHelper';
 
 import Media from 'storymaps-react/tpl/view/media/Media';
@@ -64,7 +66,7 @@ export default class Header {
     let shareContainer = this._node.find('.share-btn-container[data-toggle="tooltip"]');
 
     shareContainer.tooltip({
-      title: 'This is not available until you share the story',
+      title: i18n.builder.header.sharingNotAvailable,
       placement: 'auto left'
     });
 
@@ -83,6 +85,7 @@ export default class Header {
         isPrivate = false;
       }
     }
+
     let socialShareButton = this._node.find('.share-btn');
     let shareContainer = this._node.find('.share-btn-container[data-toggle="tooltip"]');
 
@@ -95,6 +98,20 @@ export default class Header {
       socialShareButton.removeClass('share-disabled');
       shareContainer.tooltip('disable');
     }
+  }
+
+  disableShareButtonAutoplay() {
+    let socialShareButton = this._node.find('.share-btn');
+    let shareContainer = this._node.find('.share-btn-container[data-toggle="tooltip"]');
+
+    socialShareButton.addClass('share-disabled');
+    shareContainer
+      .tooltip('destroy')
+      .tooltip({
+        title: window.i18n.viewer.headerFromCommon.tooltipAutoplayDisabled,
+        trigger: 'hover',
+        placement: 'left'
+      });
   }
 
   setLogo(container, headerCfg) {
@@ -114,6 +131,7 @@ export default class Header {
         let imageNode = container.find('.logoImg');
 
         imageNode.on('error', () => {
+          imageNode.hide();
           reject();
         });
 
@@ -180,7 +198,7 @@ export default class Header {
 
   showEditButton() {
     this._node.find('.header-edit-button')
-      .html('<i class="header-edit-icon fa fa-pencil"></i>Edit<span aria-hidden="true" class="header-edit-close">×</span>')
+      .html('<i class="header-edit-icon fa fa-pencil"></i>' + i18n.builder.header.edit + '<span aria-hidden="true" class="header-edit-close">×</span>')
       .show()
       .off('click')
       .click(CommonHelper.switchToBuilder);

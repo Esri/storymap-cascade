@@ -123,6 +123,7 @@ function(
         || (this.getPortalUser() != null && appItem && this.getPortalUser() == appItem.owner)
         // Admin privilege
         || (portalUser && portalUser.privileges && $.inArray('portal:admin:updateItems', portalUser.privileges) > -1)
+        || (appItem && appItem.itemControl == 'admin')
         // Group with shared ownership
         || (appItem && appItem.itemControl == 'update');
     },
@@ -141,6 +142,30 @@ function(
       }
 
       return url;
+    },
+    throttle: function(fn, threshhold, scope) {
+      threshhold || (threshhold = 250);
+      var last,
+          deferTimer;
+
+      return function() {
+        var context = scope || this;
+
+        var now = +new Date,
+            args = arguments;
+        if (last && now < last + threshhold) {
+          // hold on to it
+          clearTimeout(deferTimer);
+          deferTimer = setTimeout(function() {
+            last = now;
+            fn.apply(context, args);
+          }, threshhold);
+        }
+        else {
+          last = now;
+          fn.apply(context, args);
+        }
+      };
     }
   };
 });

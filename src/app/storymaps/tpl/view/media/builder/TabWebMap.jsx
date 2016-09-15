@@ -2,12 +2,14 @@ import TabArcGIS from './TabArcGIS';
 import LayerList from 'esri/dijit/LayerList';
 import ArcgisUtils from 'esri/arcgis/utils';
 
+import i18n from 'lib-build/i18n!./../../../../../resources/tpl/builder/nls/app';
+
 import viewTpl from 'lib-build/hbars!./TabWebMap';
 //import {} from 'lib-build/less!./TabSize';
 
 export default class TabWebMap extends TabArcGIS {
   constructor(params) {
-    super();
+    super(params);
 
     this.map = params.map;
     this.layerList = null;
@@ -15,6 +17,7 @@ export default class TabWebMap extends TabArcGIS {
     this._layerListNode = params.layerListNode;
     this._eventExtent = null;
     this._eventPopup = null;
+    this._eventPopup2 = null;
     this._ignoreNextExtentChangeEvent = false;
     this._isFirstOpening = true;
 
@@ -74,6 +77,18 @@ export default class TabWebMap extends TabArcGIS {
         }
       }.bind(this));
     }
+
+    if (! this._eventPopup2) {
+      this._eventPopup2 = $(this.map.map.infoWindow.domNode).find('.titleButton.close').click(function() {
+        if (! this._isActive) {
+          return;
+        }
+
+        let popupButton = this._node.find('.config-item[data-type="reset"][data-value="popup"]');
+        popupButton.addClass('disabled');
+        this.setMedia('popup', null);
+      }.bind(this));
+    }
   }
 
   detachEvents() {
@@ -85,6 +100,11 @@ export default class TabWebMap extends TabArcGIS {
     if (this._eventPopup) {
       this._eventPopup.remove();
       this._eventPopup = null;
+    }
+
+    if (this._eventPopup2) {
+      this._eventPopup2.remove();
+      this._eventPopup2 = null;
     }
   }
 
@@ -204,13 +224,7 @@ export default class TabWebMap extends TabArcGIS {
   }
 
   postCreate(params) {
-    if (params.container.parents('.section-immersive').length) {
-      this._ignoreNextExtentChangeEvent = true;
-    }
-    else {
-      this._ignoreNextExtentChangeEvent = ! this._isFirstOpening;
-    }
-
+    this._ignoreNextExtentChangeEvent = true;
     this._isFirstOpening = false;
 
     super.postCreate(params);
@@ -254,6 +268,8 @@ export default class TabWebMap extends TabArcGIS {
     this._updateLocationReset();
 
     this.attachEvents();
+
+    $(this.map.map.container).addClass('appearance-invite');
   }
 
   _updateLocationReset() {
@@ -271,10 +287,14 @@ export default class TabWebMap extends TabArcGIS {
       this.layerList.destroy();
       this.layerList = null;
     }
+
+    $(this.map.map.container).removeClass('appearance-invite');
   }
 
   render() {
-    return viewTpl({});
+    return viewTpl({
+      strings: i18n.builder.mediaConfig.appearance
+    });
   }
 
   getSelectedFeatureInfo() {
@@ -305,7 +325,7 @@ export default class TabWebMap extends TabArcGIS {
 
     if (layer && fields && !objectIdFields.length) {
       objectIdFields = $.grep(fields, field => {
-        return field.name === 'OBJECTID' || field.name === 'FID';
+        return field.name === 'OBJECTID' || field.name === 'FID' || field.name === 'objectId';
       });
 
       if (!objectIdFields.length) {

@@ -15,10 +15,17 @@ class GooglePhotosContainer extends React.Component {
     this.state = {
       searchValue: '',
       userErrorType: '',
+      focusInput: false,
       provider: constants.providers.GOOGLE_PHOTOS
     };
 
     this.onChange = this.onChange.bind(this);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      focusInput: (nextProps.display && !this.props.display) || nextProps.openFocus
+    });
   }
 
   onChange(event) {
@@ -30,7 +37,7 @@ class GooglePhotosContainer extends React.Component {
 
   onClear(evt) {
     if (evt.charCode === 13) {
-      this.setState({searchValue: true});
+      this.setState({searchValue: true, focusInput: true});
       this.onChange({target: {value: ''}});
       // need setTimeout because textKeypress reads this.state,
       // which hasn't happened if you call this.textKeypress

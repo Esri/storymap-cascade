@@ -14,10 +14,11 @@
 	font-size: 90%;
 	padding-left: 36px;
 	cursor: text;
+	text-align: left !important;
 }
 
 .share-embed-container .share-embed-wrapper.touch .embedTextarea {
-	padding-left: 2px;
+	padding-left: 4px;
 }
 
 .dj_ios .shareDialog .share-embed-container .share-embed-wrapper.touch .embedTextarea {
@@ -32,19 +33,13 @@
     display: block;
     position: absolute;
     font-size: 1.6em;
-    background: #E1F0FB;
-    color: #396e8b;
-    cursor: pointer;
+  /* colors in sharedialog less file as .share-btn */
     top: 1px;
     left: 1px;
     bottom: 1px;
     width: 32px;
     padding-top: 26px;
     padding-left: 4px;
-}
-
-.share-embed-container .share-btn:hover {
-	background: #d4ebfd;
 }
 
 .share-embed-container .share-embed-wrapper.touch .share-clipboard {
@@ -54,12 +49,16 @@
 .share-embed-container .share-status-wrapper {
 	height: 14px;
 	font-weight: bold;
-	font-size: 1.2rem;
-	color: #66aa67;
+  font-size: 1.2rem;
+  /* colors in sharedialog less file as .share-btn */
 	text-align: left;
 	margin-left: 2px;
 }
 
 .share-embed-container .share-status {
 	display: none;
+}
+
+.dropdown-menu.embed-sizes li a {
+  cursor: pointer;
 }

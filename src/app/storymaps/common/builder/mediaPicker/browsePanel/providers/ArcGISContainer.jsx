@@ -9,6 +9,9 @@ import Common from './Common';
 import SidePanelArcGIS from '../sidePanel/SidePanelArcGIS';
 import { ArcGISConnector } from '../../connectors/ArcGIS';
 
+import i18n from 'lib-build/i18n!../../../../_resources/nls/media';
+var text = i18n.mediaPicker.browsePanel.providers.agol;
+
 class ArcGISContainer extends React.Component {
   constructor() {
     super();
@@ -22,9 +25,9 @@ class ArcGISContainer extends React.Component {
       portalName: '',
       focusInput: false,
       storyResourceCount: 0,
-      availableContentTypes: [],
-      selectedContentTypes: [],
-      disableGISContent: true
+      availableContentTypes: [], // this is location-specific
+      authorizedMedia: [], // this is just a duplicate of provider.authorizedMedia
+      selectedContentTypes: []
     };
 
     this.storyCache = {};
@@ -42,7 +45,13 @@ class ArcGISContainer extends React.Component {
       selectedContentTypesChange: this.selectedContentTypesChange.bind(this),
       sortFieldChange: this.sortFieldChange.bind(this),
       sortOrderChange: this.sortOrderChange.bind(this),
-      photoUploadComplete: this.photoUploadComplete.bind(this),
+      fileUploadFunctions: {
+        multiStart: this.multiFileUploadStart.bind(this),
+        singleProgress: this.singleFileUploadProgress.bind(this),
+        singleComplete: this.singleFileUploadComplete.bind(this),
+        singleFailure: this.singleFileUploadError.bind(this),
+        allComplete: this.allFileUploadsComplete.bind(this)
+      },
       onItemDelete: this.onItemDelete.bind(this)
     };
   }
@@ -67,27 +76,29 @@ class ArcGISContainer extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    let availMedia = this.constructAvailContentTypes(nextProps.authorizedMedia, nextProps.provider.searchLocation);
-    const gisContentDisabled = (nextProps.authorizedMedia.indexOf(constants.contentType.WEBMAP) < 0 && nextProps.authorizedMedia.indexOf(constants.contentType.WEBSCENE) < 0);
-    const authMediaChanged = !this.compareArrays(nextProps.authorizedMedia, this.props.authorizedMedia);
+    // availMedia depends on authorized media + search location.
+    let availMedia = this.constructLocationSpecificContentTypes(nextProps.authorizedMedia, nextProps.provider.searchLocation);
 
     let newState = {
       availableContentTypes: availMedia,
-      disableGISContent: gisContentDisabled,
+      authorizedMedia: nextProps.authorizedMedia,
       focusInput: (nextProps.display && !this.props.display) || nextProps.openFocus
     };
 
+    const authMediaChanged = !this.compareArrays(nextProps.authorizedMedia, this.props.authorizedMedia);
     if (authMediaChanged) {
       let fetchOptions = {};
-      if (gisContentDisabled) {
-        availMedia = this.constructAvailContentTypes(nextProps.authorizedMedia, constants.searchLocation.STORY);
+      // since all AGOL locations except ThisStory only contain GIS content, if no GIS content is authorized,
+      // we force the user directly to ThisStory.
+      if (this.isGisContentDisabled(nextProps)) {
+        availMedia = this.constructLocationSpecificContentTypes(nextProps.authorizedMedia, constants.searchLocation.STORY);
         this.props.updateSearchLocation({type: constants.searchLocation.STORY});
         Object.assign(fetchOptions, {searchLocation: constants.searchLocation.STORY});
       }
       Object.assign(fetchOptions, {contentTypes: availMedia});
       newState.selectedContentTypes = availMedia;
 
-      this.itemFetch(fetchOptions);
+      this.fetchIfNotStory(fetchOptions);
     }
     else if (!this.compareArrays(availMedia, this.state.availableContentTypes)) {
       const unselectedTypes = availMedia.filter((media) => {
@@ -103,7 +114,16 @@ class ArcGISContainer extends React.Component {
     if (nextProps.appId && !this.state.appId) {
       this.setState({appId: nextProps.appId});
     }
-    else if (nextProps.thisStory === this.props.thisStory || !nextProps.thisStory) {
+    else if (!nextProps.thisStory) {
+      return;
+    }
+    else if (nextProps.thisStory === this.props.thisStory) {
+      if (nextProps.provider.searchLocation === constants.searchLocation.STORY) {
+        const filteredAndSorted = this.filterAndSortThisStory({contentType: newState.selectedContentTypes || this.state.selectedContentTypes});
+        if (!this.compareArrays(filteredAndSorted, nextProps.provider.images)) {
+          this.handleImageReturn(filteredAndSorted);
+        }
+      }
       return;
     }
     this.buildThisStoryCache(nextProps.thisStory, nextProps.appId);
@@ -113,23 +133,30 @@ class ArcGISContainer extends React.Component {
     if (arr1.length !== arr2.length) {
       return false;
     }
-    arr1.sort();
-    arr2.sort();
-    return arr1.every((d, i) => {
-      return arr2[i] === d;
+    let copy1 = arr1.slice(0).sort();
+    let copy2 = arr2.slice(0).sort();
+    return copy1.every((d, i) => {
+      return copy2[i] === d;
     });
   }
 
-  constructAvailContentTypes(authMedia, searchLoc) {
+  constructLocationSpecificContentTypes(authMedia, searchLoc) {
     let availMedia = [];
+    const isStory = searchLoc === constants.searchLocation.STORY;
     if (authMedia.indexOf(constants.contentType.WEBMAP) >= 0) {
       availMedia.push(constants.contentType.WEBMAP);
     }
     if (authMedia.indexOf(constants.contentType.WEBSCENE) >= 0) {
       availMedia.push(constants.contentType.WEBSCENE);
     }
-    if (authMedia.indexOf(constants.contentType.IMAGE) >= 0 && searchLoc === constants.searchLocation.STORY) {
+    if (authMedia.indexOf(constants.contentType.IMAGE) >= 0 && isStory && constants.uploadFileExtensions.IMAGE) {
       availMedia.unshift(constants.contentType.IMAGE);
+    }
+    if (authMedia.indexOf(constants.contentType.AUDIO) >= 0 && isStory && constants.uploadFileExtensions.AUDIO) {
+      availMedia.unshift(constants.contentType.AUDIO);
+    }
+    if (authMedia.indexOf(constants.contentType.VIDEO) >= 0 && isStory && constants.uploadFileExtensions.VIDEO) {
+      availMedia.unshift(constants.contentType.VIDEO);
     }
     return availMedia;
   }
@@ -169,7 +196,7 @@ class ArcGISContainer extends React.Component {
   textSubmit() {
     var term = this.state.textInputValue.trim();
     this.props.updateSearchTerm({term: term});
-    this.itemFetch({searchStr: term});
+    this.fetchIfNotStory({searchStr: term});
   }
 
   buildSearchOptionsFromReduxState() {
@@ -222,14 +249,60 @@ class ArcGISContainer extends React.Component {
     this.setState({storyResourceCount: Object.keys(this.storyCache).length});
     if (!idArr.length) {
       if (this.props.provider.searchLocation === constants.searchLocation.STORY) {
-        this.refs.Common.handleImageReturn(this.filterAndSortThisStory());
+        this.handleImageReturn(this.filterAndSortThisStory());
       }
       return;
     }
     ArcGISConnector.getItems({idArr}).then(results => {
       this.processThisStoryResults(results);
     });
+  }
 
+  handleImageReturn(results) {
+    if (results && results.length) {
+      this.moreFormattingForItems(results);
+    }
+    this.props.updateImageFetchStatus({fetchStatus: constants.fetchStatus.SUCCESS});
+    this.props.updateImages({images: results});
+  }
+
+  moreFormattingForItems(results) {
+    // add some more formatting to results...
+    results.forEach(result => {
+      result.hoverText = this.getItemHoverText(result);
+      if (result.hasOwnProperty('usedInStory')) {
+        result.getItemDeleteText = this.getItemDeleteText;
+      }
+    });
+  }
+
+  getItemHoverText(item) {
+    var mod = item.modified;
+    var dateStr = (mod && mod.toLocaleDateString) ? mod.toLocaleDateString() : (mod ? mod : '');
+    if (dateStr) {
+      if (item.agolType) {
+        dateStr = text.modified.replace('${date}', dateStr);
+      }
+      else {
+        dateStr = text.uploaded.replace('${date}', dateStr);
+      }
+    }
+    var titleStr = '<span class="item-popover-title">' + (item.name || item.title) + '</span><br>';
+    var typeAndOwnerStr = item.owner ? text.contentByAuthor.replace('${contentType}', item.displayName).replace('${author}', item.owner) : item.displayName;
+    var typeOnlyStr = item.displayName;
+    var snippetStr = item.snippet ? '<br><br>' + item.snippet : '';
+
+    return {
+      typeAndOwner: titleStr + typeAndOwnerStr + '<br>' + dateStr + snippetStr,
+      typeOnly: titleStr + typeOnlyStr + '<br>' + dateStr + snippetStr
+    };
+  }
+
+  getItemDeleteText(item) {
+    if (item.error) {
+      return text.removeFailed;
+    }
+    return text.remove1 + ' ' + text.remove2;
   }
 
   processThisStoryResults(results) {
@@ -247,19 +320,30 @@ class ArcGISContainer extends React.Component {
   }
 
   beforeItemFetch() {
-    this.props.updateImageFetchStatus({
-      fetchStatus: constants.fetchStatus.FETCHING
-    });
-    this.props.updateImages({
-      images: []
-    });
+    this.props.updateImageFetchStatus({fetchStatus: constants.fetchStatus.FETCHING});
+    this.props.updateImages({images: []});
+  }
+
+  fetchIfNotStory(options) {
+    var searchParams = Object.assign({}, this.buildSearchOptionsFromReduxState(), options);
+    if (searchParams.searchLocation !== constants.searchLocation.STORY || this.isItemId(searchParams.searchStr)) {
+      this.itemFetch(options);
+    }
+    else {
+      this.beforeItemFetch();
+      this.handleImageReturn(this.filterAndSortThisStory(options));
+    }
+  }
+
+  isGisContentDisabled(target) {
+    target = target || this.props;
+    return (target.authorizedMedia.indexOf(constants.contentType.WEBMAP) < 0 && target.authorizedMedia.indexOf(constants.contentType.WEBSCENE) < 0);
   }
 
   itemFetch(options) {
-    const gisContentDisabled = (this.props.authorizedMedia.indexOf(constants.contentType.WEBMAP) < 0 && this.props.authorizedMedia.indexOf(constants.contentType.WEBSCENE) < 0);
     this.beforeItemFetch();
     var searchParams = Object.assign({}, this.buildSearchOptionsFromReduxState(), options);
-    if (searchParams.searchStr && searchParams.searchStr.match(/^[A-Fa-f0-9]{32}$/) && !gisContentDisabled) {
+    if (searchParams.searchStr && this.isItemId(searchParams.searchStr) && !this.isGisContentDisabled()) {
       Object.assign(searchParams, {idArr: [searchParams.searchStr], searchLocation: constants.searchLocation.AGOL});
       this.props.updateSearchLocation({type: constants.searchLocation.AGOL});
     }
@@ -269,10 +353,10 @@ class ArcGISContainer extends React.Component {
     }
     else {
       ArcGISConnector.getItems(searchParams)
-        .then(results => this.refs.Common.handleImageReturn(results))
+        .then(results => this.handleImageReturn(results))
         .catch((error) => {
           console.warn('itemFetch failed', error);
-          this.refs.Common.handleImageReturn();
+          this.handleImageReturn();
         });
     }
   }
@@ -282,12 +366,17 @@ class ArcGISContainer extends React.Component {
       .then((/*results*/) => {
         if (this.storyCache[item.fileName]) {
           delete this.storyCache[item.fileName];
-          this.refs.Common.handleImageReturn(this.filterAndSortThisStory());
+          this.handleImageReturn(this.filterAndSortThisStory());
         }
         $(ReactDOM.findDOMNode(this)).find('.popover').popover('hide');
       })
       .catch(results => {
         console.warn('deletion failed from container', results);
+        if (this.storyCache[item.fileName]) {
+          delete this.storyCache[item.fileName];
+          this.handleImageReturn(this.filterAndSortThisStory());
+        }
+        $(ReactDOM.findDOMNode(this)).find('.popover').popover('hide');
       });
   }
 
@@ -296,16 +385,13 @@ class ArcGISContainer extends React.Component {
       ArcGISConnector.getItems(options)
         .then(results => {
           this.handleThisStoryResults(results);
-          if (this.props.provider.searchLocation === constants.searchLocation.STORY) {
-            this.refs.Common.handleImageReturn(this.filterAndSortThisStory());
-          }
           resolve();
         })
         .catch((error) => {
           reject(error);
           console.warn('itemFetch failed', error);
           if (this.props.provider.searchLocation === constants.searchLocation.STORY) {
-            this.refs.Common.handleImageReturn();
+            this.handleImageReturn();
           }
         });
     });
@@ -313,27 +399,48 @@ class ArcGISContainer extends React.Component {
 
   handleThisStoryResults(results) {
     if (!results) {
+      this.handleImageReturn(this.filterAndSortThisStory());
       return;
     }
     results.forEach((resource) => {
-      if (!this.storyCache[resource.fileName]) {
+      const target = this.storyCache[resource.fileName];
+      if (!target || (target.isTemp && resource.isTemp) || resource.error) {
         this.storyCache[resource.fileName] = Object.assign(resource, {usedInStory: false});
       }
+      else if (target.isTemp) {
+        this.storyCache[resource.fileName] = Object.assign(resource, {isTemp: false, usedInStory: false});
+      }
+      else if (target.thumbFile !== resource.thumbFile && resource.thumbUrl) {
+        this.storyCache[resource.fileName].thumbFile = resource.thumbFile;
+        this.storyCache[resource.fileName].thumbUrl = resource.thumbUrl;
+        target.dataUrl = null;
+      }
+      else if (target.dataUrl && target.thumbFile === resource.thumbFile && target.thumbUrl) {
+        target.dataUrl = null;
+      }
     });
+    if (this.props.provider.searchLocation === constants.searchLocation.STORY) {
+      this.handleImageReturn(this.filterAndSortThisStory());
+    }
   }
 
-  filterAndSortThisStory() {
+  filterAndSortThisStory(options) {
     let filtered = [];
-    const providerRef = this.props.provider;
+    const updatedProps = Object.assign({}, {
+      sortField: this.props.provider.sortField,
+      sortOrder: this.props.provider.sortOrder,
+      searchStr: this.props.provider.searchStr,
+      contentTypes: this.state.selectedContentTypes
+    }, options);
     for (let key in this.storyCache) {
       let resource = this.storyCache[key];
-      if (this.state.selectedContentTypes.indexOf(resource.type) >= 0) {
-        if (!providerRef.searchStr || this.clientSideSearch(resource, providerRef.searchStr)) {
+      if (updatedProps.contentTypes.indexOf(resource.type) >= 0) {
+        if (!updatedProps.searchStr || this.clientSideSearch(resource, updatedProps.searchStr)) {
           filtered.push(resource);
         }
       }
     }
-    return this.sortThisStory(filtered);
+    return this.sortThisStory(filtered, updatedProps);
   }
 
   clientSideSearch(resource, searchStr) {
@@ -346,9 +453,9 @@ class ArcGISContainer extends React.Component {
 
   }
 
-  sortThisStory(filtered) {
-    var sortField = this.props.provider.sortField;
-    var sortOrder = (sortField === constants.sortField.DATE) ? this.state.dateSortOrder : this.state.titleSortOrder;
+  sortThisStory(filtered, updatedProps) {
+    var sortField = updatedProps.sortField;
+    var sortOrder = updatedProps.sortOrder;
     return filtered.sort(function(a, b) {
       let compare1 = (sortOrder === constants.sortOrder.DESC) ? a[sortField] : b[sortField];
       if (compare1.toLowerCase) {
@@ -371,23 +478,29 @@ class ArcGISContainer extends React.Component {
 
   searchLocSubmit(typeObj) {
     this.props.updateSearchLocation(typeObj);
-    this.itemFetch({searchLocation: typeObj.type});
+    if (typeObj.type !== constants.searchLocation.AGOL && this.isItemId(this.props.provider.searchStr)) {
+      this.textClear({charCode: 13});
+      this.itemFetch({searchLocation: typeObj.type, searchStr: ''});
+    }
+    else {
+      this.itemFetch({searchLocation: typeObj.type});
+    }
   }
 
   selectedContentTypesChange(types) {
     this.setState({selectedContentTypes: types});
     if (!types.length) {
-      this.refs.Common.handleImageReturn([]);
+      this.handleImageReturn([]);
     }
     else {
-      this.itemFetch({contentTypes: types});
+      this.fetchIfNotStory({contentTypes: types});
     }
   }
 
   sortFieldChange(field, order) {
     this.props.updateSortField({field: field});
     this.props.updateSortOrder({order: order});
-    this.itemFetch({
+    this.fetchIfNotStory({
       sortField: field,
       sortOrder: order
     });
@@ -399,11 +512,90 @@ class ArcGISContainer extends React.Component {
     this.setState({
       [stateField]: order
     });
-    this.itemFetch({sortOrder: order});
+    this.fetchIfNotStory({sortOrder: order});
+  }
+
+  multiFileUploadStart() {
+    this.beforeItemFetch();
+    // got tired of typing constants.searchLocation. :|
+    const STORY = constants.searchLocation.STORY;
+    $('.popover').popover('hide');
+    // clear search input
+    this.textClear({charCode: 13});
+    // clear item type filter (not enough to just add IMAGE type back,
+    // since eventually we'll support audio and video upload)
+    let availMedia = this.constructLocationSpecificContentTypes(this.props.authorizedMedia, STORY);
+    this.setState({selectedContentTypes: availMedia});
+
+    this.props.updateSortField({field: constants.sortField.DATE});
+    this.props.updateSortOrder({order: constants.sortOrder.DESC});
+
+    if (this.props.provider.searchLocation !== STORY) {
+      this.props.updateSearchLocation({type: STORY});
+      this.thisStoryFetch({
+        searchLocation: STORY,
+        sortField: constants.sortField.DATE,
+        sortOrder: constants.sortOrder.DESC
+      });
+    }
+    else {
+      this.handleImageReturn(this.filterAndSortThisStory({
+        sortField: constants.sortField.DATE,
+        sortOrder: constants.sortOrder.DESC
+      }));
+    }
+  }
+
+  singleFileUploadProgress(fileDetails) {
+    if (fileDetails) {
+      this.updateResourcesClientSide(fileDetails, {isTemp: true});
+    }
+  }
+
+  singleFileUploadError(fileDetails) {
+    console.warn('singleFileUploadError', fileDetails);
+    if (fileDetails) {
+      if ($(ReactDOM.findDOMNode(this)).parents('.modal').hasClass('in')) {
+        this.multiFileUploadStart();
+      }
+      this.updateResourcesClientSide(fileDetails, {error: true});
+    }
+  }
+
+  updateResourcesClientSide(fileDetails, moreDetails) {
+    let formatted = ArcGISConnector.formatResources([Object.assign(fileDetails, {resource: fileDetails.processedFileName})]);
+    if (!formatted || !formatted.length) {
+      console.warn('bad file format', fileDetails);
+      return;
+    }
+    var combined = Object.assign(formatted[0], moreDetails, {dataUrl: fileDetails.dataUrl});
+    this.updateSingleResourceClientSide(combined);
+  }
+
+  updateSingleResourceClientSide(fileDetails) {
+    let fileName = fileDetails.fileName;
+    let moreOptions = {usedInStory: false};
+
+    if (!fileDetails.isTemp) {
+      Object.assign(moreOptions, {isTemp: false});
+    }
+
+    this.storyCache[fileName] = Object.assign(fileDetails, moreOptions);
+
+    if (this.props.provider.searchLocation === constants.searchLocation.STORY) {
+      this.handleImageReturn(this.filterAndSortThisStory());
+    }
+
+  }
+
+  singleFileUploadComplete(fileDetails) {
+    if (fileDetails) {
+      this.updateResourcesClientSide(fileDetails, {isTemp: false});
+    }
   }
 
   // pull again from /resources and record updates.
-  photoUploadComplete() {
+  allFileUploadsComplete() {
     this.thisStoryFetch({searchLocation: constants.searchLocation.STORY});
   }
 
@@ -411,6 +603,10 @@ class ArcGISContainer extends React.Component {
     evt.stopPropagation();
     evt.preventDefault();
     this.itemDelete(item);
+  }
+
+  isItemId(str) {
+    return str.match(/^[A-Fa-f0-9]{32}$/);
   }
 
   render() {

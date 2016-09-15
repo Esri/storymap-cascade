@@ -1,6 +1,8 @@
 import Cover from './Cover';
 import {} from 'lib-build/less!./CoverBuilder';
 
+import i18n from 'lib-build/i18n!./../../../../../resources/tpl/builder/nls/app';
+
 import SectionCommon from 'storymaps/tpl/view/section/Common';
 import topic from 'dojo/topic';
 
@@ -11,7 +13,7 @@ export default class CoverBuilder extends Cover {
   constructor(section) {
     super(section);
 
-    this.MEDIA_BUILDER_TABS_BACKGROUND = ['appearance', 'manage'];
+    this.MEDIA_BUILDER_TABS_BACKGROUND = ['section-appearance', 'background', 'manage'];
   }
 
   render() {
@@ -27,6 +29,10 @@ export default class CoverBuilder extends Cover {
       };
     }
 
+    if (!this._section.foreground.options) {
+      this._section.foreground.options = {};
+    }
+
     return super.render();
   }
 
@@ -37,12 +43,9 @@ export default class CoverBuilder extends Cover {
     // Title/subtitle inline editing
     //
 
-    var userName = app.portal.getPortalUser().firstName || '';
-
     this._node.find('.cover-title')
       .attr('contenteditable', true)
-      .attr('placeholder-line1', 'Welcome ' + userName)
-      .attr('placeholder-line2', 'Enter your story title...')
+      .attr('placeholder', i18n.builder.cover.titlePrompt)
       .on('blur keyup', function(e) {
         var newTitle = $('<div>' + $(e.target).text() + '</div>').text();
 
@@ -66,13 +69,22 @@ export default class CoverBuilder extends Cover {
         if (e.keyCode === 13) {
           return false;
         }
+
+        // Prevent ctrl + B/I/U or ctrl + b/i/u
+        if(e.ctrlKey || e.metaKey) {
+          var key = e.keyCode;
+          if (key == 66 || key == 98 || key == 73 || key == 105 || key == 85 || key == 117) {
+            return false;
+          }
+        }
+
         this._node.find('.cover-title').removeClass('title-error');
         this._node.find('.title-error-container').addClass('hidden');
       });
 
     this._node.find('.cover-subtitle')
       .attr('contenteditable', true)
-      .attr('placeholder', 'Scroll down to get started or enter an optional subtitle')
+      .attr('placeholder', i18n.builder.cover.subtitlePrompt)
       .on('blur keyup', function(e) {
         var newValue = $('<div>' + $(e.target).text() + '</div>').text();
 
@@ -85,6 +97,14 @@ export default class CoverBuilder extends Cover {
         // Do not allow enter key
         if (e.keyCode === 13) {
           return false;
+        }
+
+        // Prevent ctrl + B/I/U or ctrl + b/i/u
+        if(e.ctrlKey || e.metaKey) {
+          var key = e.keyCode;
+          if (key == 66 || key == 98 || key == 73 || key == 105 || key == 85 || key == 117) {
+            return false;
+          }
         }
       })
       .on('paste', function() {
@@ -165,7 +185,8 @@ export default class CoverBuilder extends Cover {
 
     if (params.action == 'swap') {
       app.builder.mediaPicker.open({
-        mode: 'add',
+        mode: 'edit',
+        media: params.media.serialize(),
         authorizedMedia: ['image', 'video']
       }).then(
         function(newMedia) {
@@ -178,6 +199,11 @@ export default class CoverBuilder extends Cover {
       );
     }
 
+    this._onContentChange();
+  }
+
+  _applySectionConfig() {
+    this._applyConfig();
     this._onContentChange();
   }
 
@@ -197,6 +223,8 @@ export default class CoverBuilder extends Cover {
       onConfigAction: app.isInBuilder ? this._onMediaConfigAction.bind(this) : null,
       onToggleMediaConfig: app.isInBuilder ? this._onToggleMediaConfig.bind(this) : null,
       builderConfigurationTabs: this.MEDIA_BUILDER_TABS_BACKGROUND,
+      foregroundOptions: this._section.foreground.options,
+      applySectionConfig: app.isInBuilder ? this._applySectionConfig.bind(this) : null,
       // TODO: for video, need to goes away
       sectionType: 'cover'
     });
@@ -209,26 +237,24 @@ export default class CoverBuilder extends Cover {
     media.destroy();
 
     this._backgroundMedia = newMedia;
+
+    this._applySectionConfig();
   }
 
   _getCoverPlaceholderImage() {
     var images = [
-      'AngelaBenito.jpg',
       'EandNPhotographies.jpg',
       'ErolAhmed.jpg',
       'FrancesGunn.jpg',
       'JeremyThomas.jpg',
       'JonathanBean.jpg',
-      'LukasBudimaier.jpg',
       'NASA.jpg',
       'PatrickFore.jpg',
       'PatrickTomasso.jpg',
       'PhilippeWuyts.jpg',
       'SamuelScrimshaw.jpg',
       'SujanSundareswaran.jpg',
-      'SusanneFeldt.jpg',
-      'VladimirKudinov.jpg',
-      'WilsonLau.jpg'
+      'SusanneFeldt.jpg'
     ];
 
     var image = images[Math.floor(Math.random() * images.length)];

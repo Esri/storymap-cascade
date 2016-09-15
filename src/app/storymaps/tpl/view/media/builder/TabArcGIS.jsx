@@ -1,10 +1,12 @@
 import Tab from './Tab';
 
-export default class TabArcGIS extends Tab {
-  constructor() {
-    super();
+import i18n from 'lib-build/i18n!./../../../../../resources/tpl/builder/nls/app';
 
-    this.title = 'Appearance';
+export default class TabArcGIS extends Tab {
+  constructor(params) {
+    super(params);
+
+    this.title = i18n.builder.mediaConfig.tabs.appearance;
     this.type = 'appearance';
     this.icon = 'fa-sliders';
   }

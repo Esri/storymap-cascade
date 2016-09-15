@@ -1,9 +1,5 @@
 @import './Variables';
-
-.organize-gradient-vertical {
-  background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0.4) 30%,rgba(0,0,0,1) 100%);
-  background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.4) 30%, rgba(0,0,0,1) 100%);
-}
+@import '../../../common/Core';
 
 .organize-gradient-horizontal {
   background: -webkit-linear-gradient(left, rgba(0,0,0,0) 0%,rgba(0,0,0,0.4) 30%,rgba(0,0,0,1) 100%);
@@ -24,44 +20,69 @@
     align-items: center;
     padding: 8px;
     font-size: @organize-icon-size;
-    opacity: 0.9;
-    .organize-gradient-vertical;
+    text-align: center;
 
-    &:hover {
-      opacity: 1;
-    }
+    .organize-toggle-wrapper {
+      display: inline-block;
+      opacity: 0.9;
 
-    .icon {
-      margin-right: 10px;
-    }
-  }
-}
-
-.op-style-horizontal.op-panel {
-  flex-direction: row;
-  height: 100%;
-  flex: 1 1 auto;
-
-  .organize-toggle {
-    .organize-gradient-horizontal;
-
-    .icon {
-      margin-right: 0;
-
-      &.organize {
-        transform: rotate(90deg);
+      &:hover {
+        opacity: 1;
       }
     }
   }
 
-  &:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 10px;
-    background: -webkit-linear-gradient(top, rgba(0,0,0,1) 0%,rgba(0,0,0,0) 100%);
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
+  &:not(.op-style-horizontal) {
+    .organize-toggle-wrapper {
+      padding: 8px;
+      background-color: buttonface;
+      color: #000;
+      font-size: 16px;
+      border-radius: 2px;
+
+      .icon {
+        margin-right: 10px;
+      }
+    }
+  }
+
+  &.op-style-horizontal {
+    .organize-toggle-wrapper {
+      padding: 4px;
+      border-radius: 2px;
+    }
+  }
+
+  &.organize {
+    .organize-toggle-wrapper {
+      .btn-bright;
+    }
+  }
+
+  &.op-style-horizontal {
+    flex-direction: row;
+    height: 100%;
+    flex: 1 1 auto;
+
+    .organize-toggle {
+      .organize-gradient-horizontal;
+
+      .icon {
+        &.organize {
+          transform: rotate(90deg);
+        }
+      }
+    }
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 10px;
+      background: -webkit-linear-gradient(top, rgba(0,0,0,1) 0%,rgba(0,0,0,0) 100%);
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
+    }
   }
 }

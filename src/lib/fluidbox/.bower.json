@@ -39,6 +39,6 @@
     "commit": "5728dbd8a014098ebfbb1905ff6f2f0d68928745"
   },
   "_source": "https://github.com/terrymun/Fluidbox.git",
-  "_target": "^2.0.3",
+  "_target": "~2.0.3",
   "_originalSource": "fluidbox"
 }

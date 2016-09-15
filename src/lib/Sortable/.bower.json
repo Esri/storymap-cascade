@@ -37,6 +37,6 @@
     "commit": "d86937c8bca017f948aad04eb02dcaddfbb60ffa"
   },
   "_source": "https://github.com/RubaXa/Sortable.git",
-  "_target": "^1.4.2",
+  "_target": "~1.4.2",
   "_originalSource": "angular-ng-sortablejs"
 }

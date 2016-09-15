@@ -10,6 +10,7 @@ define({
 				buttonSettings: "Settings",
 				buttonHelp: "Help",
 				buttonPreview: "View story",
+				buttonCheck: "Check story",
 				tooltipFirstSave: "This isn't available until you save.",
 				tooltipNotShared: "This isn't available until you share.",
 				tooltipNotShared2: "Your story isn't shared, only you can access it.",

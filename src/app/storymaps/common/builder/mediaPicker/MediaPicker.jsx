@@ -15,9 +15,11 @@ import Deferred from 'dojo/Deferred';
 var store = createStore(reducer, window.devToolsExtension ? window.devToolsExtension() : {});
 var _resultDeferred;
 
+/*
 export default function configureStore() {
   return store;
 }
+*/
 
 // The event is fired in GalleryItem.jsx and end the media picking workflow
 topic.subscribe('MEDIA-PICKER-SELECTION', function(selection) {

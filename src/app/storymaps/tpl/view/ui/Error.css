@@ -19,6 +19,6 @@
   height: 145px;
   padding: 20px;
   background-color: rgba(0,0,0,.85);
-  color: #C00;
+  color: #C00; /* this seems to not be used. if it were, change file to .less and color to @sm-danger-text. */
   line-height: 33px;
 }
