@@ -3,9 +3,11 @@
   {{{background}}}
 
   <div class="foreground">
-    <div class="text-background">
-      <h1 class="fg-title title-text text-shadow">{{title}}</h1>
-    </div>
+    {{#if showTitle}}
+      <div class="text-background">
+        <h1 class="fg-title title-text text-shadow">{{title}}</h1>
+      </div>
+    {{/if}}
   </div>
 
   <div class="fg-credits">{{credits}}</div>

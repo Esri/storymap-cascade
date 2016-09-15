@@ -70,6 +70,7 @@ export default class Title {
         media: this._backgroundMedia
       }),
       title: foreground.title,
+      showTitle: app.isInBuilder || foreground.title,
       credits: foreground.credits
     });
   }
@@ -108,7 +109,7 @@ export default class Title {
     this._applyConfig();
   }
 
-  _applyConfig() {    
+  _applyConfig() {
     if (this._section.foreground && this._section.foreground.options) {
       let style = this._section.foreground.options.titleStyle;
       let textNode = this._node.find('.title-text');
