@@ -3,6 +3,38 @@ import ColorPickerWrapper from 'storymaps-react/common/builder/ColorPicker';
 
 var SELECTION = MediumEditor.selection;
 
+// Helpers function to save/restore editor selection
+// We are bypassing those as it was creating issues when defining
+//   a color for the first word of a paragraph following a media
+//   (only when inserted in the same session)
+
+function saveSelection() {
+  if (window.getSelection) {
+    var sel = window.getSelection();
+    if (sel.getRangeAt && sel.rangeCount) {
+      return sel.getRangeAt(0);
+    }
+  }
+  else if (document.selection && document.selection.createRange) {
+    return document.selection.createRange();
+  }
+
+  return null;
+}
+
+function restoreSelection(range) {
+  if (range) {
+    if (window.getSelection) {
+      var sel = window.getSelection();
+      sel.removeAllRanges();
+      sel.addRange(range);
+    }
+    else if (document.selection && range.select) {
+      range.select();
+    }
+  }
+}
+
 const ColorPicker = MediumEditor.extensions.button.extend({
   name: 'colorPicker',
   action: 'applyForeColor',
@@ -18,6 +50,10 @@ const ColorPicker = MediumEditor.extensions.button.extend({
       showPalette: true,
       onShowCallback: this.onShow.bind(this),
       onChangeCallback: this.onChange.bind(this),
+      // Also listening to move because change is not fired the second time
+      //  editor is open and you pick the same color
+      //  even if you have set the color through set :/
+      onMoveCallback: this.onChange.bind(this),
       onHideCallback: this.onHide.bind(this),
       showAlpha: true,
       showClear: true
@@ -28,7 +64,8 @@ const ColorPicker = MediumEditor.extensions.button.extend({
 
   handleClick: function() {
     // Keep track of the current text selection
-    this._selectedText = this.base.exportSelection();
+    //this._selectedText = this.base.exportSelection();
+    this._selectedText = saveSelection();
 
     // Update color picker with text color
     var selectedTextColor = $(this.base.getSelectedParentElement()).css('color');
@@ -45,7 +82,8 @@ const ColorPicker = MediumEditor.extensions.button.extend({
 
   onHide: function(color) {
     // Restore selection
-    this.base.importSelection(this._selectedText);
+    //this.base.importSelection(this._selectedText);
+    restoreSelection(this._selectedText);
 
     if (this._colorSelected) {
       this.document.execCommand('styleWithCSS', false, true);

@@ -171,16 +171,17 @@ export default class ImageGalleryBuilder extends ImageGallery {
 
   addRemoveEvent() {
     this._node.find('.ig-remove').off('click').on('click', event => {
-      if (this._images.images.length == 2) {
+      // find which item it is that you should remove...
+      let itemNode = $(event.currentTarget).closest('.image-gallery-item');
+      let index = itemNode.data('index');
+
+      this._images.images.splice(index, 1);
+
+      if (this._images.images.length == 1) {
         this._onAction('image-gallery-to-image');
         return;
       }
 
-      let itemNode = $(event.currentTarget).closest('.image-gallery-item');
-      // find which item it is that you should remove...
-      let index = itemNode.data('index');
-
-      this._images.images.splice(index, 1);
       this._update();
     });
   }

@@ -177,8 +177,9 @@ export default class Sequence {
   }
 
   resize(/*params*/) {
-    // TODO: how to resize foreground blocks?
-    //_backgroundMedia.resize(params);
+    for (let block of this._blocks) {
+      block.resize && block.resize();
+    }
   }
 
   getArcGISContent() {

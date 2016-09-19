@@ -96,6 +96,14 @@ export default class ImageGallery extends Media {
     //
   }
 
+  resize() {
+    this._calculateImageHeights();
+
+    this._node.find('.image-gallery-item-wrapper').each(function(i, el) {
+      $(el).css('height', this._images.images[i].adjustedHeight);
+    }.bind(this));
+  }
+
   _update() {
     this._node.html(this._render(false));
     this._isLoaded = false;
@@ -103,7 +111,7 @@ export default class ImageGallery extends Media {
   }
 
   _calculateImageHeights() {
-    let isMobile = app.display.windowWidth < 768;
+    let isMobile = window.innerWidth <= 768;
 
     let spaceBetweenImage = 15;
     // total image gutter space

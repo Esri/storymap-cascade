@@ -501,10 +501,6 @@ export default function(params = {}) {
   //   you have at least a span with a color in a paragraph
   var el = $(editor.elements[0]);
   el.on('input', function() {
-    // A <p>,<h1>,... may be created without block class when changing block using block toolbar
-    //  especially if the caret is on a span
-    // Would be best for performance to somehow only do this in blockToolbar
-    el.children('p:not(.block), h1:not(.block), h2:not(.block), blockquote:not(.block)').addClass('block');
 
     el.children('p, h1, h2, blockquote').children('span[style]').each(function() {
       if ((! this.style.fontWeight && ! this.style.fontStyle && ! this.style.textDecoration)
@@ -548,6 +544,11 @@ export default function(params = {}) {
         newEl.click();
       }, 50);
     });
+
+    // A <p>,<h1>,... may be created without block class when changing block using block toolbar
+    //  especially if the caret is on a span
+    // Would be best for performance to somehow only do this in blockToolbar
+    el.children('p:not(.block), h1:not(.block), h2:not(.block), blockquote:not(.block)').addClass('block');
   });
 
   editor.subscribe('editablePaste', function() {
