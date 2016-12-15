@@ -244,7 +244,7 @@ The application is structured as follows:
 | **src/app/storymaps/tpl/view/section/**					| Cover, Sequence, Immersive and Title sections 										|
 | **src/app/storymaps/tpl/view/ui/**						| Header										|
 | src/app/storymaps/tpl/utils/						| Utils											|
-| src/app/storymaps/common/issue-checker/ | Issue checking utility (finds errors in story) |
+| src/app/storymaps/issue-checker/ | Issue checking utility (finds errors in story) |
 |src/lib/									| Dependencies (included in the final app)														|
 | src/lib-build/								| Dependencies used by the build (not included in final app)									|
 | src/resources/								| Static resources																				|
