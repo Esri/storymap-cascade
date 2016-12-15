@@ -8,7 +8,7 @@ The Story Map Cascade℠ app lets you combine narrative text with maps, images, 
 [Download](http://links.esri.com/storymaps/story_map_cascade_zip) |
 [Cascade page on Esri Story Maps website](https://storymaps.arcgis.com/en/app-list/cascade/)
 
-**Latest release is version 1.2.0**, if you want to be informed of new releases, we recommend you to watch this repository ([see GitHub help](https://help.github.com/articles/watching-repositories)). See the [release page](https://github.com/Esri/story-map-cascade/releases) for release notes.
+**Latest release is version 1.2.0**, if you want to be informed of new releases, we recommend you watch this repository ([see GitHub help](https://help.github.com/articles/watching-repositories)). See the [release page](https://github.com/Esri/story-map-cascade/releases) for release notes.
 
 ## Help content
 
@@ -59,13 +59,13 @@ When you contact us, don't hesitate to include a link to your application to mak
 
 ## FAQ
 
-For more answers, please see the [Story Map website FAQ page](https://storymaps.arcgis.com/en/faq/) it includes a section about [Cascade](https://storymaps.arcgis.com/en/faq/#category10).
+For more answers, please see the [Story Map website FAQ page](https://storymaps.arcgis.com/en/faq/); it includes a section about [Cascade](https://storymaps.arcgis.com/en/faq/#category10).
 
 ### What are the supported browsers?
 Cascade stories are supported on Internet Explorer 11 and above, Chrome, Firefox, Safari and the most recent tablet and smartphone devices.
 During the beta period, Cascade authoring is only supported on Chrome and Safari on a desktop computer. We are working on supporting more browsers.
 
-We actively test the application in all major browsers but if you experience difficulties especially with the builder, we recommend that you use [Chrome](https://www.google.com/intl/en_us/chrome/browser/).
+We actively test the application in all major browsers but if you experience difficulties, especially with the builder, we recommend that you use [Chrome](https://www.google.com/intl/en_us/chrome/browser/).
 
 ### Tips for your content
 
@@ -88,7 +88,7 @@ When the story is hosted on your web server, by default an authentication dialog
 If you are using secured services but don't want users to have to authenticate, you can use a proxy to store the username/password to be used, see [Working with Proxy Services](https://developers.arcgis.com/authentication/working-with-proxies/#selfhosted-proxy-service), and add a proxy rules to specify what services need to use the proxy by editing `PROXY_RULES` in `app/config.js`.
 
 ### Deployment
-Deploying a Cascade require to use ArcGIS Online or Portal for ArcGIS. The Cascade content have to be created using the Cascade builder and will live in a Web Application Item.
+Deploying a Cascade story requires use of ArcGIS Online or Portal for ArcGIS. The Cascade content must be created using the Cascade builder and will live in a Web Application Item.
 
 #### Can I use the template without ArcGIS Online or Portal for ArcGIS?
 This is not a supported use case at that time. Please let us know if you are interested by such a scenario.
@@ -97,7 +97,7 @@ Cascade rely heavily on the Portal for ArcGIS API but it is doable to modify the
 #### Where is the data stored?
 The Cascade data are stored in a Web Application Item in ArcGIS Online or Portal for ArcGIS. This include the narrative content, reference to the webmap(s), webscene(s), picture(s), video(s), web page(s) and the settings.
 
-The image and videos that you include in your story using the builder are not copied in ArcGIS Online except if you upload them through the ArcGIS option. You have to make sure that those medias that are stored on other services are and will remain accessible to your audience.
+The image and videos that you include in your story using the builder are not copied in ArcGIS Online unless you upload them through the ArcGIS option. You have to make sure that those medias that are stored on other services are and will remain accessible to your audience.
 
 #### Can I deploy Cascade on Portal for ArcGIS?
 Cascade is not included in Portal for ArcGIS. We are planning to include it in Portal for ArcGIS 10.5.1.
@@ -106,12 +106,12 @@ Cascade is not included in Portal for ArcGIS. We are planning to include it in P
 Yes, when the story is configured with an application ID, adding the URL parameter 'edit' will open the builder. You will be prompted for user authentication.
 
 #### How to deploy the application on a web server?
-If you are not familiar with web servers here is three solutions:
+If you are not familiar with web servers here are three solutions:
  * Use a free hosting service like [Dropbox](https://www.dropbox.com), you may have to [configure Dropbox to enable webpage hosting](https://www.dropbox.com/enable_public_folder)
- * Use the web server that comes with your server Operating System. On Windows this is Internet Information Services (IIS), if you have a `C:\inetpub\wwwroot` folder on your computer, you should be able to access it's content using `http://localhost`
+ * Use the web server that comes with your server Operating System. On Windows this is Internet Information Services (IIS), if you have a `C:\inetpub\wwwroot` folder on your computer, you should be able to access its content using `http://localhost`
  * On Windows or Mac OS, use a simple web server like [Mongoose](https://code.google.com/p/mongoose/) (not recommended for production)
 
-If you are experiencing some rendering issues like improper symbol appearing instead of icons, you will have an extra configuration to perform. Some servers require to configure a new mime type to be able to serve Cascade fonts correctly. See the following links for more information:
+If you are experiencing some rendering issues like improper symbols appearing instead of icons, you will have an extra configuration to perform. Some servers require to configure a new mime type to be able to serve Cascade fonts correctly. See the following links for more information:
 
  * [IIS Mime types](http://codingstill.com/2013/01/set-mime-types-for-web-fonts-in-iis/)
  * [Properly serve webfonts](http://blog.symbolset.com/properly-serve-webfonts)
@@ -120,14 +120,14 @@ If you are experiencing some rendering issues like improper symbol appearing ins
 Yes.
 If you have customized the application and deployed it on your server, you don't need to copy it multiple times, edit index.html and paste a different application ID for each story you want to publish.
 
-Instead edit `index.html`, locate the `configOptions` section and fill the `authorizedOwners` property with the ArcGIS Online or Portal for ArcGIS login of the owner(s) of the story you want to use. This make possible for the application to display any of stories created by the specified user(s) through an URL parameter.
+Instead edit `index.html`, locate the `configOptions` section and fill the `authorizedOwners` property with the ArcGIS Online or Portal for ArcGIS login of the owner(s) of the story you want to use. This makes it possible for the application to display any of stories created by the specified user(s) through an URL parameter.
 
 Example of the same application displaying two stories:
  * http://myserver.com/Cascade/index.html?appid=c7ad1a55de0247a68454a76f251225a4
  * http://myserver.com/Cascade/index.html?appid=c7ad1a55de0247a68454a76f251225a5
 
 ## Configuration
-In addition to the configuration offered by the builder, the file `app/config.js` provide various additional settings. This is for example the place where you can override some settings like the list of Geocoder services to be used (changes override ArcGIS Online or your Organization default settings). See the documentation provided in that file for more details.
+In addition to the configuration offered by the builder, the file `app/config.js` provides various additional settings. This is for example the place where you can override some settings like the list of Geocoder services to be used (changes override ArcGIS Online or your Organization default settings). See the documentation provided in that file for more details.
 
 ## Customize the look and feel
 
@@ -141,13 +141,13 @@ The easiest way to find the id or path of a DOM element that you want to customi
 
 ## Developer guide
 
-This developer guide is intended for developers that wants to modify the behavior or add new functionalities to the Cascade application.
+This developer guide is intended for developers that want to modify the behavior or add new functionalities to the Cascade application.
 It requires knowledge of HTML, Javascript and CSS languages.
 
 For more infomation about using and customizing Esri's Storytelling Apps follow the [Story Maps Developers' Corner](https://developerscorner.storymaps.arcgis.com).
 
 ### Application life cycle
-Cascade fires events that allow customization with lose integration. This mean that you don't need to understand the application internals to implement simple extension.
+Cascade fires events that allow customization with loose integration. This mean that you don't need to understand the application internals to implement simple extensions.
 
 To try those events, look in the file `src/app/custom-scripts.js`.
 
@@ -218,12 +218,12 @@ The deploy folder now contains the built application that you can [deploy to you
 
 ### Issues building the application
 
-The build script perform code validation through [ESLint](http://eslint.org/), you can disable those validations by editing Gruntfile.js and look for the following comments `/* Comment out to disable code linting */`.
+The build script performs code validation through [ESLint](http://eslint.org/), you can disable those validations by editing Gruntfile.js and look for the following comments `/* Comment out to disable code linting */`.
 
 ### Design
-Cascade relies on AMD and Dojo loader [AMD](https://developers.arcgis.com/javascript/3/jshelp/inside_dojo_amd.html) for application structure. Most of the viewer use ES2015 and some builder components use [React](https://facebook.github.io/react/). The build chain is based on Grunt, r.js and Babel.
+Cascade relies on AMD and Dojo loader [AMD](https://developers.arcgis.com/javascript/3/jshelp/inside_dojo_amd.html) for application structure. Most of the viewer uses ES2015 and some builder components use [React](https://facebook.github.io/react/). The build chain is based on Grunt, r.js and Babel.
 
-The application is structured as this:
+The application is structured as follows:
 
 | Path          			                  	| Contains																						|
 | ---------------------------------------------	|  -------------------------------------------------------------------------------------------- |
@@ -244,7 +244,8 @@ The application is structured as this:
 | **src/app/storymaps/tpl/view/section/**					| Cover, Sequence, Immersive and Title sections 										|
 | **src/app/storymaps/tpl/view/ui/**						| Header										|
 | src/app/storymaps/tpl/utils/						| Utils											|
-| src/lib/									| Dependencies (included in the final app)														|
+| src/app/storymaps/common/issue-checker/ | Issue checking utility (finds errors in story) |
+|src/lib/									| Dependencies (included in the final app)														|
 | src/lib-build/								| Dependencies used by the build (not included in final app)									|
 | src/resources/								| Static resources																				|
 
@@ -288,7 +289,7 @@ limitations under the License.
 
 A copy of the license is available in the repository's [LICENSE.txt](LICENSE.txt) file.
 
-Some open-source components of this project are licensed under other License terms, see `src/lib/` folder for respective licence files.
+Some open-source components of this project are licensed under other License terms, see `src/lib/` folder for respective license files.
 
 | Library               | License   |
 | --------------------- | --------- |
