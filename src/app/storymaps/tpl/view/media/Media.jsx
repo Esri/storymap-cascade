@@ -6,6 +6,8 @@ import IdentityManager from 'esri/IdentityManager';
 import errorTpl from 'lib-build/hbars!./MediaError';
 import {} from 'lib-build/less!./MediaError';
 
+import i18n from 'lib-build/i18n!resources/tpl/viewer/nls/app';
+
 export default class Media {
 
   constructor(params = {}) {
@@ -14,6 +16,10 @@ export default class Media {
 
     this.previewThumb = params.previewThumb;
     this.previewIcon = params.previewIcon;
+    this.scanResults = {
+      hasErrors: false,
+      hasWarnings: false
+    };
 
     /*
      * Cache store media resources to optimize performance when a media can be reused
@@ -93,10 +99,57 @@ export default class Media {
     this._node.toggleClass('interaction-enabled');
   }
 
-  showLoadingError() {
-    this._node
-      .append(errorTpl({}))
-      .addClass('has-loading-error bg-danger');
+  mapErrors(scanResult) {
+    if (scanResult && scanResult.errors && scanResult.errors.length) {
+      return scanResult.errors.map(errObj => {
+        return errObj.id;
+      });
+    }
+    return false;
+  }
+
+  setError(options = {}) {
+    Object.assign(this.scanResults, options.scanResult, {hasErrors: true}, {unfixable: options.unfixable || false});
+    if (options.msg) {
+      this.errorMessage = options.msg;
+    }
+    else {
+      options.msg = this.errorMessage;
+    }
+    this.updateErrorUI(options);
+  }
+
+  removeError(options = {}) {
+    Object.assign(this.scanResults, options.scanResult, {hasErrors: false});
+    this.errorMessage = null;
+    this.updateErrorUI();
+  }
+
+  updateErrorUI(options = {}) {
+    // toggleClass needs actual boolean, not truthy/falsy
+    let hasError = this.scanResults.hasErrors;
+    let minimizeInViewer = options.minimizeInViewer || false;
+    let showError = options.showLoadingError || false;
+    let errorTarget, msgTarget;
+    if (options.galleryIndex || options.galleryIndex === 0) {
+      errorTarget = this._node.find('.image-gallery-item[data-index="' + options.galleryIndex + '"]');
+      msgTarget = errorTarget.find('.image-gallery-item-wrapper');
+    }
+    else {
+      errorTarget = this._node.find('.block-media,.background')
+                         .addBack('.block-media,.background');
+      msgTarget = errorTarget;
+    }
+    errorTarget.toggleClass('error', hasError)
+          .toggleClass('minimize-on-viewer', minimizeInViewer)
+          .toggleClass('show-loading-error', showError);
+    msgTarget.find('.loading-error').remove();
+    if (hasError) {
+      this.errorMessage = options.msg || this.errorMessage || i18n.viewer.media.loadingError;
+      msgTarget.append(errorTpl({
+        message: this.errorMessage
+      }));
+    }
   }
 
   getArcGISContent() {
@@ -323,6 +376,14 @@ export default class Media {
         media: this,
         newMedia: newMedia
       });
+    }
+
+    if (action == 'arcgis-edit') {
+      this._openEditor();
+    }
+
+    if (action === 'remove') {
+      topic.publish('builder-should-check-story');
     }
 
     this._onConfigChange();

@@ -8,6 +8,12 @@ import BuilderConfigTabManageMedia from './builder/TabManageMedia';
 import BuilderConfigTabSectionAppearance from './builder/TabSectionAppearance';
 
 import lang from 'dojo/_base/lang';
+import topic from 'dojo/topic';
+
+import issues from '../../builder/Issues';
+import i18n from 'lib-build/i18n!resources/tpl/builder/nls/app';
+
+const text = i18n.builder.mediaErrors;
 
 export default class VideoBuilder extends Video {
 
@@ -62,6 +68,40 @@ export default class VideoBuilder extends Video {
     });
 
     this.initBuilderUI();
+
+    // we subscribe to the scan change for this SPECIFIC video only (hence the scan/video/videoID pattern).
+    topic.subscribe('scan/videos/' + this._video.url, lang.hitch(this, this.checkErrors));
+  }
+
+  checkErrors(scanResult) {
+    // update the map UI based on the scan results
+
+    const errorIds = this.mapErrors(scanResult);
+    if (!errorIds) {
+      this.removeError();
+      return;
+    }
+
+    const unfixableOptions = this.isUnfixableError(errorIds);
+    if (unfixableOptions) {
+      this.setError(unfixableOptions);
+      return;
+    }
+
+    // TODO: something different here?
+    this.setError({errors: scanResult.errors});
+
+  }
+
+  isUnfixableError(errorIds) {
+    if (errorIds.indexOf(issues.videos.inaccessible) >= 0) {
+      return {
+        msg: text.placeholders.inaccessible.replace('${media-type}', text.mediaTypes.video),
+        showLoadingError: true,
+        unfixable: true
+      };
+    }
+    return false;
   }
 
   serialize() {

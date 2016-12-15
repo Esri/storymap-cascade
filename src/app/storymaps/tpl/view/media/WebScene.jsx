@@ -7,7 +7,7 @@ import viewBackground from 'lib-build/hbars!./WebSceneBackground';
 import viewBlockError from 'lib-build/hbars!./WebSceneBlockError';
 import viewBackgroundError from 'lib-build/hbars!./WebSceneBackgroundError';
 
-import i18n from 'lib-build/i18n!./../../../../resources/tpl/builder/nls/app';
+import i18n from 'lib-build/i18n!resources/tpl/viewer/nls/app';
 
 import UIUtils from 'storymaps/tpl/utils/UI';
 
@@ -70,12 +70,15 @@ export default class WebScene extends Media {
       if (this._isSupported) {
         output += viewBackground({
           id: this._domID,
-          websceneId: this.id
+          websceneId: this.id,
+          labelExploreStart: i18n.viewer.media.exploreMap,
+          labelExploreStop: i18n.viewer.media.exploreStop
         });
       }
       else {
         output += viewBackgroundError({
-          id: this._domID
+          id: this._domID,
+          message: i18n.viewer.media.sceneNotSupported
         });
       }
     }
@@ -85,13 +88,16 @@ export default class WebScene extends Media {
           id: this._domID,
           websceneId: this.id,
           caption: this._webscene.caption,
-          placeholder: i18n.builder.media.captionPlaceholder,
-          captionEditable: app.isInBuilder
+          placeholder: i18n.viewer.media.captionPlaceholder,
+          captionEditable: app.isInBuilder,
+          labelExploreStart: i18n.viewer.media.exploreMap,
+          labelExploreStop: i18n.viewer.media.exploreStop
         });
       }
       else {
         output += viewBlockError({
-          id: this._domID
+          id: this._domID,
+          message: i18n.viewer.media.sceneNotSupported
         });
       }
     }
@@ -249,6 +255,16 @@ export default class WebScene extends Media {
             id: this.id
           })
         });
+
+        // catch a failed scene
+        scene.otherwise(function() {
+          if (app.builder) {
+            this.setError({unfixable: true, showLoadingError: true});
+          }
+          else {
+            this.setError({minimizeInViewer: true});
+          }
+        }.bind(this));
 
         var view = new SceneView({
           map: scene,

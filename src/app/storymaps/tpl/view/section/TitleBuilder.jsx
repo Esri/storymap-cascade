@@ -1,5 +1,6 @@
 import Title from './Title';
 import {} from 'lib-build/less!./TitleBuilder';
+import i18n from 'lib-build/i18n!resources/tpl/builder/nls/app';
 
 import SectionCommon from 'storymaps/tpl/view/section/Common';
 import AddMenu from './builder/AddMenu';
@@ -16,6 +17,10 @@ export default class TitleBuilder extends Title {
     this._addMenu = new AddMenu({
       buttons: ['sequence', 'title', 'immersive']
     });
+    this.scanResults = {
+      hasErrors: false,
+      hasWarnings: false
+    };
 
     this.MEDIA_BUILDER_TABS_BACKGROUND = ['section-appearance', 'background', 'manage'];
   }
@@ -28,11 +33,32 @@ export default class TitleBuilder extends Title {
     // Creating a new section
     if (! this._section.background) {
       this._section.background = this._initialMedia || { type: 'empty', empty: 'empty' };
-      this._section.foreground = { title: '', credits: '', options: {}};
+      this._section.foreground = { title: '', credits: '', options: {
+        titleStyle: {
+          shadow: false,
+          text: 'dark',
+          background: 'light'
+        }
+      }};
     }
 
     if (!this._section.foreground.options) {
-      this._section.foreground.options = {};
+      this._section.foreground.options = {
+        titleStyle: {
+          shadow: false,
+          text: 'dark',
+          background: 'light'
+        }
+      };
+    }
+
+    // if the all has been saved, but title style wasn't specified previously
+    if (!this._section.foreground.options.titleStyle) {
+      this._section.foreground.options.titleStyle = {
+        shadow: true,
+        text: 'light',
+        background: null
+      };
     }
 
     return super.render();
@@ -48,7 +74,7 @@ export default class TitleBuilder extends Title {
 
     this._node.find('.fg-title')
       .attr('contenteditable', true)
-      .attr('placeholder', 'Enter a title...')
+      .attr('placeholder', i18n.builder.title.placeholder)
       .on('blur keyup', function() {
         this.serialize();
         this._onContentChange();
@@ -196,6 +222,16 @@ export default class TitleBuilder extends Title {
     media.destroy();
 
     this._backgroundMedia = newMedia;
+
+    SectionCommon.checkMedia(newMediaJSON);
     this._applySectionConfig();
+  }
+
+  getScanResults() {
+    return this.scanResults;
+  }
+
+  setScanResults(hasErrors, hasWarnings) {
+    Object.assign(this.scanResults, {hasErrors}, {hasWarnings});
   }
 }

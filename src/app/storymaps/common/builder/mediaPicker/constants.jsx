@@ -85,8 +85,9 @@ export default {
   },
   // for agol photo attaching
   photoSettings: {
-    maxWidth: 1500,
-    maxHeight: 1000,
+    maxWidth: 1920,
+    quality: 0.8,
+    idealFileSize: 500000, // 500k
     maxFileSize: 10000000 // 10Mb in bytes.
   },
   blankBackground: 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'

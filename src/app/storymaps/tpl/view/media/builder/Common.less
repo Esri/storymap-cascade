@@ -7,6 +7,10 @@
   flex-direction: column;
   text-align: center;
 
+  @media (max-width: @screen-md) {
+    padding: 0 10px;
+  }
+
   &.centered {
     justify-content: center;
   }
@@ -381,6 +385,28 @@
       }
     }
   }
+}
+
+// this probably isn't the best place for this,
+// but it's the same style for webmap and webscene...
+.webmap-name,
+.webscene-name {
+  width: 96%;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #ccc;
+  margin: 0 10px 15px;
+  font-size: 1.5em;
+  flex: 0 0 auto;
+
+  @media (max-width: @screen-md) {
+    font-size: 1.2em;
+  }
+}
+
+// screwy stuff happening with flex layout in webmap-name,
+// but not webscene, so adjusting...
+.webscene-name {
+  padding-bottom: 15px;
 }
 
 .overview-thumbnail {

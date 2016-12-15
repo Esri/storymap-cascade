@@ -54,9 +54,11 @@
             'put-selector': 'empty:', // Used by SelectMapWidget
 
             lib: '../lib/',
+            commonResources: 'storymaps/common/_resources/',
 
             /* React */
             'storymaps-react': '../../build/app/storymaps/',
+            'issue-checker': '../../build/app/storymaps/issue-checker',
             react: '../lib/react/react.min',
             'react-dom': '../lib/react/react-dom.min',
             redux: '../lib/redux/index',
@@ -219,7 +221,7 @@
           files: [{
             expand: true,
             cwd: 'src',
-            src: ['app/main-app.js', 'app/main-config.js'],
+            src: ['app/main-app.js', 'app/main-config.js', 'app/custom-scripts.js'],
             dest: 'deploy/'
           }]
         },
@@ -272,14 +274,6 @@
         jsapioptim: {
           files: [{
             src: ['jsapi-optim-modules-viewer.txt', 'jsapi-optim-modules-builder.txt'],
-            dest: 'deploy/'
-          }]
-        },
-        stories: {
-          files: [{
-            expand: true,
-            cwd: 'src',
-            src: ['stories/**'],
             dest: 'deploy/'
           }]
         },
@@ -496,7 +490,7 @@
 
       watch: {
         jsx: {
-          files: ['src/app/**/*.jsx'],
+          files: ['src/app/**/*.jsx', 'src/app/storymaps/issue-checker/**/*.js'],
           tasks: [/*'eslint',*/ 'newer:babel'],
           options: {
             livereload: true
@@ -546,7 +540,9 @@
         target: [
           'src/app/storymaps/**/*.js',
           'src/app/storymaps/**/*.jsx',
-          '!src/app/storymaps/common/_resources/**/*.js'
+          '!src/app/storymaps/common/_resources/**/*.js',
+          // ignore the issue-checker as well as it is an external repo
+          '!src/app/storymaps/issue-checker/**/*.js'
         ]
       },
 
@@ -557,13 +553,22 @@
           sourceMaps: true
         },
         dev: {
-          files: [{
-            expand: true,
-            cwd: 'src/',
-            src: ['app/storymaps/**/*.jsx'],
-            dest: 'build/',
-            ext: '.js'
-          }]
+          files: [
+            {
+              expand: true,
+              cwd: 'src/',
+              src: ['app/storymaps/**/*.jsx'],
+              dest: 'build/',
+              ext: '.js'
+            },
+            {
+              expand: true,
+              cwd: 'src/app/storymaps/issue-checker/src/',
+              src: ['./**/*.js'],
+              dest: 'build/app/storymaps/issue-checker/',
+              ext: '.js'
+            }
+          ]
         }
       }
     });
@@ -625,8 +630,6 @@
       'copy:config',
       'copy:resources',
       'copy:commonResources',
-
-      'copy:stories', // TODO
 
       // Copy libs resources
       'copy:libsResources',

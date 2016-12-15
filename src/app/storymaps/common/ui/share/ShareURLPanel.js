@@ -3,13 +3,13 @@ define([
   'lib-build/css!./ShareURLPanel',
   '../../utils/SocialSharing',
   'dojo/has',
-  'lib/zero-clipboard/dist/ZeroClipboard'
+  'lib/clipboard/dist/clipboard'
 ], function(
   viewTpl,
   viewCss,
   SocialSharing,
   has,
-  ZeroClipboard
+  Clipboard
 ) {
   return function ShareURLPanel(container) {
     container.append(viewTpl({ }));
@@ -49,9 +49,10 @@ define([
 
     function buildShortLink(url) {
       _linkField.val(url);
-      container.find('.btn-bitlylink-open').attr('href', url);
+      container.find('.btn-bitlylink-open').attr('href', url + '&preview');
 
       SocialSharing.requestBitly(url).then(function(shortURL) {
+        container.find('.share-btn').data('clipboardText', shortURL);
         _linkField.val(shortURL).select();
       });
 
@@ -59,16 +60,13 @@ define([
       // Copy button
       //
 
-      var swfPath = 'resources/lib/zero-clipboard/ZeroClipboard.swf';
-      if (! app.isProduction) {
-        swfPath = 'lib/zero-clipboard/dist/ZeroClipboard.swf';
-      }
-      ZeroClipboard.config({ swfPath: swfPath  });
-      var bitLyCopy = new ZeroClipboard(container.find('.share-btn'));
+      var clipboard = new Clipboard(container.find('.share-btn')[0], {
+        text: function(trigger) {
+          return $(trigger).data('clipboardText');
+        }
+      });
 
-      bitLyCopy.on('copy', function(event) {
-        var clipboard = event.clipboardData;
-        clipboard.setData('text/plain', container.find('.bitlylink').val());
+      clipboard.on('success', function() {
         container.find('.share-btn').removeClass('glyphicon-copy').addClass('glyphicon-ok');
         container.find('.share-status').show();
         container.find('.bitlylink')[0].selectionStart = container.find('.bitlylink')[0].selectionEnd = -1;

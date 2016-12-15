@@ -1,7 +1,7 @@
 import Cover from './Cover';
 import {} from 'lib-build/less!./CoverBuilder';
 
-import i18n from 'lib-build/i18n!./../../../../../resources/tpl/builder/nls/app';
+import i18n from 'lib-build/i18n!resources/tpl/builder/nls/app';
 
 import SectionCommon from 'storymaps/tpl/view/section/Common';
 import topic from 'dojo/topic';
@@ -12,6 +12,11 @@ export default class CoverBuilder extends Cover {
 
   constructor(section) {
     super(section);
+
+    this.scanResults = {
+      hasErrors: false,
+      hasWarnings: false
+    };
 
     this.MEDIA_BUILDER_TABS_BACKGROUND = ['section-appearance', 'background', 'manage'];
   }
@@ -29,8 +34,24 @@ export default class CoverBuilder extends Cover {
       };
     }
 
+    // if the app hasn't been saved yet
     if (!this._section.foreground.options) {
-      this._section.foreground.options = {};
+      this._section.foreground.options = {
+        titleStyle: {
+          shadow: false,
+          text: 'dark',
+          background: 'light'
+        }
+      };
+    }
+
+    // if the all has been saved, but title style wasn't specified prior
+    if (!this._section.foreground.options.titleStyle) {
+      this._section.foreground.options.titleStyle = {
+        shadow: true,
+        text: 'light',
+        background: null
+      };
     }
 
     return super.render();
@@ -238,27 +259,38 @@ export default class CoverBuilder extends Cover {
 
     this._backgroundMedia = newMedia;
 
+    SectionCommon.checkMedia(newMediaJSON);
     this._applySectionConfig();
   }
 
   _getCoverPlaceholderImage() {
     var images = [
-      'EandNPhotographies.jpg',
-      'ErolAhmed.jpg',
-      'FrancesGunn.jpg',
-      'JeremyThomas.jpg',
-      'JonathanBean.jpg',
-      'NASA.jpg',
-      'PatrickFore.jpg',
-      'PatrickTomasso.jpg',
-      'PhilippeWuyts.jpg',
-      'SamuelScrimshaw.jpg',
-      'SujanSundareswaran.jpg',
-      'SusanneFeldt.jpg'
+      'AndrewNeel.jpg',
+      'AustinD.jpg',
+      'BlakeRichardVerdoorn.jpg',
+      'ChristianNielsen.jpg',
+      'DariuszSankowski.jpg',
+      'JamieHagan.jpg',
+      'JarrenSimmons.jpg',
+      'JOHNTOWNER.jpg',
+      'KamalJ.jpg',
+      'KoushikC.jpg',
+      'KristoferSelbekk.jpg',
+      'SteveRichey.jpg',
+      'YuxXiang.jpg',
+      'ZbysiuRodak.jpg'
     ];
 
     var image = images[Math.floor(Math.random() * images.length)];
 
     return 'resources/tpl/viewer/cover-placeholder/' + image;
+  }
+
+  getScanResults() {
+    return this.scanResults;
+  }
+
+  setScanResults(hasErrors, hasWarnings) {
+    Object.assign(this.scanResults, {hasErrors}, {hasWarnings});
   }
 }

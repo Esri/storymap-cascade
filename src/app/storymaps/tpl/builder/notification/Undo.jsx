@@ -19,7 +19,8 @@ export default class Undo extends Notification {
     return viewTpl({
       id: this._id,
       label: this._label,
-      labelUndo: 'Undo' // TODO
+      labelUndo: i18n.builder.notification.undo,
+      labelClose: i18n.builder.notification.close
     });
   }
 
@@ -66,7 +67,7 @@ export default class Undo extends Notification {
       if (this._clearFollowingsAfterUndo) {
         this._node.nextAll().remove();
       }
-      
+
       this._node.remove();
       this._resultDeferred.resolve();
     }.bind(this));

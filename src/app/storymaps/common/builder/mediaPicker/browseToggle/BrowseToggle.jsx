@@ -3,7 +3,7 @@ import Helper from '../utils/Helper';
 import {} from 'lib-build/less!./BrowseToggle';
 import {} from 'lib-build/css!./BrowseToggle';
 import constants from '../constants';
-import i18n from 'lib-build/i18n!../../../_resources/nls/media';
+import i18n from 'lib-build/i18n!commonResources/nls/media';
 var text = i18n.mediaPicker.browseToggle;
 
 class BrowseToggle extends React.Component {
@@ -79,49 +79,68 @@ class BrowseToggle extends React.Component {
 }
 
 class AuthMediaHeader extends React.Component {
-  findText(typeConstant) {
-    let typeKey = Object.keys(constants.contentType).find((key) => {
-      return constants.contentType[key] === typeConstant;
-    });
-    return text.contentType[typeKey];
+
+  getInfoSpan(msg) {
+    return (
+      <span className="mp-type-details info">
+        <i className="fa fa-info-circle" />
+        <span>{msg}</span>
+      </span>
+    );
   }
 
-  getMediaList(mediaCount) {
-    if (!mediaCount) {
-      return;
+  getErrorSpan(err) {
+    return (
+      <span className="mp-type-error error">
+        <i className="fa fa-warning" />
+        <span>{err}</span>
+      </span>
+    );
+  }
+
+  getMediaList(authMedia) {
+    if (!authMedia || !authMedia.length) {
+      return this.getErrorSpan(text.contentType.error);
     }
 
-    return this.props.authorizedMedia.map((media, i) => {
-      let suffix = '';
-      if (i === mediaCount - 1) {
-        suffix = '.';
-      }
-      else if (i === mediaCount - 2) {
-        suffix = ' ' + text.contentType.OR + ' ';
-      }
-      else if (i < mediaCount - 2) {
-        suffix = text.contentType.listSeparator + ' ';
-      }
-      return this.findText(media) + suffix;
-    }).join('');
+    // some shortcuts
+    let IMAGE = constants.contentType.IMAGE;
+    let VIDEO = constants.contentType.VIDEO;
+    let WEBPAGE = constants.contentType.WEBPAGE;
+
+    switch (authMedia.length) {
+      case 1:
+        if (authMedia.indexOf(IMAGE) >= 0) {
+          return this.getInfoSpan(text.contentType.imageOnly);
+        }
+        return this.getErrorSpan('only one authorized media, but it wasnt image!');
+      case 2:
+        if (authMedia.indexOf(IMAGE) >= 0 && authMedia.indexOf(VIDEO) >= 0) {
+          return this.getInfoSpan(text.contentType.imageAndVideo);
+        }
+        return this.getErrorSpan('two authorized media, but it wasnt image/video!');
+      case 3:
+        if (authMedia.indexOf(IMAGE) >= 0 && authMedia.indexOf(VIDEO) >= 0 && authMedia.indexOf(WEBPAGE) >= 0) {
+          return this.getInfoSpan(text.contentType.imageVideoWebpage);
+        }
+        return this.getErrorSpan('three authorized media, but it wasnt image/video/webpage!');
+      default:
+        return this.getErrorSpan('more than three but less than all authorized media... ?');
+    }
   }
 
   render() {
-    const mediaCount = this.props.authorizedMedia ? this.props.authorizedMedia.length : null;
-    if (mediaCount === Object.keys(constants.contentType).length) {
+    // shortcut
+    const authMedia = this.props.authorizedMedia;
+    // if there are as many authorizedMedia types as total allowed media types,
+    // don't display anything. get out of here.
+    if (authMedia && authMedia.length && authMedia.length === Object.keys(constants.contentType).length) {
       return null;
     }
+
     return (
       <div className="mp-type-message" >
-        <span className="mp-type-details info" style={{display: mediaCount ? 'inline' : 'none'}}>
-          <span className="fa fa-info-circle" />
-          <span>{text.contentType.starter}</span>
-          <span>{this.getMediaList(mediaCount)}</span>
-        </span>
-        <span className="mp-type-error error" style={{display: mediaCount ? 'none' : 'inline'}}>
-          <span className="fa fa-warning" />
-          <span>{text.contentType.error}</span>
-        </span>
+        {this.getMediaList(authMedia)}
       </div>
     );
   }

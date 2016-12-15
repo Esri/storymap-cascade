@@ -57,24 +57,15 @@ define([
     _builderView = builderView;
     //_settingsPopup = new SettingsPopup($('#settingsPopup'));
 
-    console.log('common.builder.Builder - init');
-
     var urlParams = CommonHelper.getUrlParams();
 
     app.builder.isDirectCreation = urlParams.fromScratch != null || urlParams.fromscratch != null;
     app.builder.isGalleryCreation = urlParams.fromGallery != null;
     app.builder.isDirectCreationFirstSave = app.builder.isDirectCreation;
 
-    // TODO
-    if (false && ! CommonHelper.getAppID(_core.isProd()) && ! app.builder.isDirectCreation) { // eslint-disable-line
+    if (! CommonHelper.getAppID(_core.isProd()) && ! app.builder.isDirectCreation) {
       console.error('common.builder.Builder - abort builder initialization, no appid supplied');
       return;
-    }
-    else if (app.builder.isDirectCreation) {
-      console.log('common.builder.Builder - Builder start in direct creation mode');
-    }
-    else if (app.builder.isGalleryCreation) {
-      console.log('common.builder.Builder - Builder start in gallery creation mode');
     }
 
     $('body').addClass('builder-mode');
@@ -95,12 +86,6 @@ define([
     app.builder.builderPanel = _builderPanel;
 
     _saveErrorPopupSocial = new SaveErrorPopupSocial($('#saveErrorPopupSocial'));
-
-    // TODO
-    //_settingsPopup.init(_builderView);
-    //_settingsPopup.initLocalization();
-
-    //topic.subscribe('BUILDER_INCREMENT_COUNTER', _builderPanel.incrementSaveCounter);
 
     // My Stories
     //topic.subscribe('BUILDER-MY-STORIES-CHECK', MyStoriesWrapper.scanStory);
@@ -274,7 +259,11 @@ define([
         });
 
         BuilderHelper.saveApp(false).then(function() {
-          console.log('common.builder.Builder - saveAppFromScratch - appid:', response.id);
+
+          // if we have just saved for the first time, we need to now hydrate the issue-checker with the appId and url so it can check premium content.
+          if (app.builder.isDirectCreationFirstSave) {
+            _builderView.onFirstAppSave();
+          }
 
           app.builder.isDirectCreationFirstSave = false;
 
@@ -308,25 +297,16 @@ define([
       sharingLevel = 'private';
     }
 
-    // Find items to share - only if they aren't already shared to the proper level
-    var targetItems = [app.data.appItem.item.id];
-
-    BuilderHelper.shareItems(targetItems.join(','), sharingLevel).then(function(response) {
-      var success = response
-        && response.results
-        && response.results.length == targetItems.length;
-
-      if (success) {
-        $.each(response.results, function(i, result) {
-          if (! result.success) {
-            success = false;
-          }
-        });
-
+    _builderView.shareApp(sharingLevel).then(function(response) {
+      app.data.appItem.item.access = response.sharingLevel;
+      resultDeferred.resolve();
+      _builderView.scanApp();
+    }, function(result) {
+      if (result.appShared) {
         app.data.appItem.item.access = sharingLevel;
       }
-
-      resultDeferred.resolve();
+      resultDeferred.reject(result);
+      _builderView.scanApp();
     });
 
     return resultDeferred;
@@ -337,9 +317,6 @@ define([
   //
 
   function saveAppSuccess() {
-    app.mystories = app.mystories || { };
-    app.mystories.isChecking = true;
-
     app.isWebMapCreation = false;
 
     app.builder.pendingChanges = 0;
@@ -347,18 +324,14 @@ define([
     _builderPanel.saveSucceeded();
     //app.data.updateAfterSave();
 
-    // Initialize My Stories
     if (app.builder.isGalleryCreation || app.builder.isDirectCreationFirstSave) {
       app.builder.isDirectCreationFirstSave = false;
       app.builder.isGalleryCreation = false;
-      // Delay a little to be sure the share dialog will be open when the scan will be done
-      //setTimeout(window.myStoriesInit, 200);
     }
-    // else {
-    //   MyStoriesWrapper.scanStory();
-    // }
 
     //_builderPanel.updateSharingStatus();
+
+    _builderView.scanApp();
   }
 
   function saveAppFailed(source, error) {

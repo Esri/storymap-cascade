@@ -1,11 +1,16 @@
 import MediumEditor from 'lib/medium-editor/dist/js/medium-editor';
 
+import i18n from 'lib-build/i18n!commonResources/nls/texteditor';
+
 import {} from 'lib-build/less!./Anchor';
 
 var SELECTION = MediumEditor.selection;
 
 var Anchor = MediumEditor.extensions.anchor.extend({
   name: 'anchor',
+  aria: '',
+  placeholderText: i18n.textEditor.link.invite,
+  linkValidation: true,
   init: function() {
     MediumEditor.extensions.anchor.prototype.init.call(this);
   },

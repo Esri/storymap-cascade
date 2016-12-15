@@ -120,6 +120,11 @@
         border-top: 1px solid transparent;
         border-bottom: 1px solid transparent;
 
+        @media (max-width: @screen-md) {
+          padding: 6px 10px 6px 0;
+          font-size: 16px;
+        }
+
         &.selected {
           border-top-color: #E8E8E8;
           border-bottom-color: #E8E8E8;
@@ -135,6 +140,11 @@
           border-top: 15px solid transparent;
           border-left: 15px solid white;
           z-index: 2;
+
+          @media (max-width: @screen-md) {
+            right: -10px;
+            border-width: 10px;
+          }
         }
 
         &.selected:before {
@@ -147,6 +157,11 @@
           border-top: 17px solid transparent;
           border-left: 17px solid #CCC;
           z-index: 1;
+
+          @media (max-width: @screen-md) {
+            right: -12px;
+            border-width: 12px;
+          }
         }
 
         .config-tab-icon {
@@ -161,6 +176,10 @@
       display: flex;
       padding: 20px;
       color: #444;
+
+      @media (max-width: @screen-md) {
+        padding: 15px 10px;
+      }
 
       &.placement-config {
         padding: 12px 20px;
@@ -180,6 +199,15 @@
       flex: 1 0 0;
     }
   }
+
+  .tooltip.in {
+    opacity: 1;
+  }
+
+  .tooltip-inner {
+    box-shadow: 0 0 2px 0 white;
+  }
+
 }
 
 @media (max-width: 1420px) {

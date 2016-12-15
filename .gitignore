@@ -196,7 +196,7 @@ $RECYCLE.BIN/
 # Packages
 *.egg
 *.egg-info
-#dist/
+dist/
 build/
 eggs/
 parts/
@@ -230,3 +230,4 @@ pip-log.txt
 
 sftp-config.json
 sftp-config-alt.json
+.sublimelinterrc

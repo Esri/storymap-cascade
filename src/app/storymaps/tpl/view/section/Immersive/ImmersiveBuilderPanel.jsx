@@ -1,6 +1,6 @@
 import {} from 'lib-build/less!./ImmersiveBuilderPanel';
 
-import i18n from 'lib-build/i18n!./../../../../../resources/tpl/builder/nls/app';
+import i18n from 'lib-build/i18n!resources/tpl/builder/nls/app';
 
 import OverviewPanel from 'storymaps-react/tpl/builder/overviewPanel/OverviewPanel';
 
@@ -135,13 +135,23 @@ export default class ImmersiveBuilderPanel {
       let media = this._medias[i],
           panel = this._panels[i],
           transition = this._transitions[i],
-          transitionInfo = transitionsInfos[i];
+          transitionInfo = transitionsInfos[i],
+          scanResultsArr = [media.scanResults];
+
+      // need to preserve these as pointers to properties
+      // because they're going to change. can't compute true booleans here.
+      panel._blocks.forEach(block => {
+        if (block.scanResults) {
+          scanResultsArr.push(block.scanResults);
+        }
+      });
 
       overview.push({
         id: panel.id,
         type: 'thumbnail',
         icon: media.getPreviewIcon(),
         transition: transition,
+        mediaType: media.type,
         transitions: this._getTransition({
           index: i,
           mediaType: media.type,
@@ -155,7 +165,8 @@ export default class ImmersiveBuilderPanel {
         hasDelete: true,
         hasHide: true,
         hasDuplicate: true,
-        hasOrganize: true
+        hasOrganize: true,
+        scanResults: scanResultsArr
       });
     }
 

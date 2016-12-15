@@ -3,7 +3,7 @@ import Tab from './Tab';
 import viewTpl from 'lib-build/hbars!./TabSectionAppearance';
 import {} from 'lib-build/less!./Common';
 
-import i18n from 'lib-build/i18n!./../../../../../resources/tpl/builder/nls/app';
+import i18n from 'lib-build/i18n!resources/tpl/builder/nls/app';
 
 export default class TabSectionAppearance extends Tab {
   constructor(params) {
@@ -45,7 +45,7 @@ export default class TabSectionAppearance extends Tab {
     let titleStyle = this._sectionOptions.titleStyle;
 
     if (!titleStyle) {
-      return 'shadow-light';
+      return 'background-light';
     }
 
     if (titleStyle.background) {

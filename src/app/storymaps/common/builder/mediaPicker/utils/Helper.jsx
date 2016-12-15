@@ -49,6 +49,16 @@ const classnames = function classnames() {
   return classes.substr(1);
 };
 
+const unescapeBrands = function(target) {
+  return target.replace(/\$\{(.*?)}/g, function(brand) {
+    return brand.slice(2, -1);
+  });
+};
+
+const mixinString = function(target, generic, replacement) {
+  return target.replace('${' + generic + '}', replacement);
+};
+
 const stripTrailingSlash = function(str) {
   if (str.substr(-1) === '/') {
     return str.substr(0, str.length - 1);
@@ -59,5 +69,7 @@ const stripTrailingSlash = function(str) {
 export default {
   classnames,
   dataURItoBlob,
-  stripTrailingSlash
+  stripTrailingSlash,
+  unescapeBrands,
+  mixinString
 };

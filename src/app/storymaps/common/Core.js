@@ -94,8 +94,6 @@ define([
   //
 
   function init(mainView, builder) {
-    console.log('common.core.Core - init', builder);
-
     _mainView = mainView;
     _builder = builder;
 
@@ -179,22 +177,26 @@ define([
     });
 
     if (app.isInBuilder && (has('ie') || has('trident') || has('ff'))) {
-      $('#fatalError .error-title').html('Sorry!');
-      $('#fatalError .error-msg').html('Story Map Cascade is in beta and its builder is supported only in <a href="https://www.google.com/chrome/" target="_blank">Chrome</a> and <a href="https://www.apple.com/safari/" target="_blank">Safari</a>. Cascade stories that you create and share will work on those browsers and Internet Explorer 11+ and Firefox.');
+      $('#fatalError .error-title').html(i18n.viewer.errors.sorry);
+      $('#fatalError .error-msg').html(i18n.viewer.errors.builderSupport1.replace('${CHROME}', '<a href="https://www.google.com/chrome/" target="_blank">Chrome</a>').replace('${SAFARI}', '<a href="https://www.apple.com/safari/" target="_blank">Safari</a>'));
       $('#fatalError').show();
       return;
     }
 
     if (app.isInBuilder && has('ipad')) {
-      $('#fatalError .error-title').html('Sorry!');
-      $('#fatalError .error-msg').html('Story Map Cascade is in beta and its builder is not supported on iPad. Cascade stories that you create and share will work on iPad.');
+      $('#fatalError .error-title').html(i18n.viewer.errors.sorry);
+      $('#fatalError .error-msg').html(i18n.viewer.errors.builderSupport2);
       $('#fatalError').show();
       return;
     }
 
     if (has('ie') < 11) {
-      $('#fatalError .error-title').html('Sorry!');
-      $('#fatalError .error-msg').html('This story is not supported in Internet Explorer before version 11. <a href="http://browsehappy.com/" target="_blank">Please update your browser</a>');
+      $('#fatalError .error-title').html(i18n.viewer.errors.sorry);
+      $('#fatalError .error-msg').html(
+        i18n.viewer.errors.noViewerIE
+          .replace('${VERSION}', 11)
+          .replace('${UPGRADE}', '<a href="http://browsehappy.com/" target="_blank">' + i18n.viewer.errors.upgradeBrowser + '</a>')
+      );
       $('#fatalError').show();
       return;
     }
@@ -254,11 +256,20 @@ define([
       }
 
       if (appLocation != -1) {
-        // Get the portal instance name
-        var instance = location.pathname.substr(0,appLocation);
+        var extraParams = CommonHelper.getUrlParams();
+        // if there's the sharinghost URL parameter, we'll use that for the sharingUrl and the proxyUrl
+        // (used for testing stories from other tiers, like testing a production story while on devext), otherwise we'll use the instance as usual.
+        if (extraParams.sharinghost) {
+          app.indexCfg.sharingurl = extraParams.sharinghost;
+          app.indexCfg.proxyurl = extraParams.sharinghost.split('/content/')[0] + '/proxy';
+        }
+        else {
+          // Get the portal instance name
+          var instance = location.pathname.substr(0,appLocation);
 
-        app.indexCfg.sharingurl = '//' + location.host + instance + '/sharing/content/items';
-        app.indexCfg.proxyurl = '//' + location.host + instance + '/sharing/proxy';
+          app.indexCfg.sharingurl = '//' + location.host + instance + '/sharing/content/items';
+          app.indexCfg.proxyurl = '//' + location.host + instance + '/sharing/proxy';
+        }
       }
       else {
         app.indexCfg.sharingurl = app.cfg.DEFAULT_SHARING_URL;
@@ -344,8 +355,13 @@ define([
             }
           },
           function() {
-            // Not signed-in, redirecting to OAuth sign-in page
-            IdentityManager.getCredential(info.portalUrl);
+            // Not signed-in, redirecting to OAuth sign-in page if builder
+            if (!builder) {
+              initStep2();
+            }
+            else {
+              portalLogin().then(initStep2);
+            }
           }
         );
       }
@@ -356,8 +372,6 @@ define([
   }
 
   function initStep2() {
-    console.log('common.core.Core - initStep2');
-
     var appId = CommonHelper.getAppID(isProd()),
         webmapId = CommonHelper.getWebmapID(isProd()),
         supportWebmapPreviewAGOL = !! (app.appCfg ? app.appCfg.supportWebmapPreviewAGOL : true);
@@ -398,7 +412,7 @@ define([
     }
 
     // Direct creation and not signed-in
-    if (app.isInBuilder && _builder.isDirectCreation && isProd() && ! (CommonHelper.getPortalUser() || app.portal.getPortalUser())) {
+    if (app.isInBuilder && _builder.isDirectCreation && isProd() && CommonHelper.isArcGISHosted() && ! (CommonHelper.getPortalUser() || app.portal.getPortalUser())) {
       redirectToSignIn();
       return;
     }
@@ -427,8 +441,6 @@ define([
   }
 
   function loadWebMappingApp(appId) {
-    console.log('common.core.Core - loadWebMappingApp - appId:', appId);
-
     var forceLogin = _urlParams.forceLogin !== undefined;
 
     // If forceLogin parameter in URL OR builder
@@ -613,8 +625,6 @@ define([
   }
 
   function webMapInitCallback(/*response*/) {
-    console.log('common.core.Core - webMapInitCallback');
-
     console.error('FATAL ERROR');
     return;
     /*
@@ -648,8 +658,6 @@ define([
   }
 
   function appInitComplete() {
-    console.log('common.core.Core - initApp');
-
     if (_mainView.isStoryBlank() && app.isInBuilder) {
       app.builder.appInitComplete();
       _mainView.appInitComplete();
@@ -851,8 +859,6 @@ define([
   }
 
   function definePortalConfig() {
-    console.log('common.core.Core - parsePortalConfig');
-
     if (! app.portal) {
       return;
     }

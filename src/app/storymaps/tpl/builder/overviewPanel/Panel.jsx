@@ -1,7 +1,7 @@
 import React from 'react';
 import List from './list/List';
 
-import i18n from 'lib-build/i18n!./../../../../resources/tpl/builder/nls/app';
+import i18n from 'lib-build/i18n!resources/tpl/builder/nls/app';
 
 import {} from 'lib-build/less!./Panel';
 
@@ -25,6 +25,24 @@ function Panel(props) {
     iconClass += ' glyphicon-sort organize';
   }
 
+  let showOverviewText = function() {
+    if (props.orientation === 'horizontal' && props.items && props.items.length) {
+      let onlyEmptyItem = props.items.length === 1 && props.items[0].mediaType === 'empty';
+
+      if (onlyEmptyItem) {
+        return (
+          <div className="overview-orientation">
+            <div className="overview-orientation-text">
+              {i18n.builder.immersiveViewPanel.invite}
+            </div>
+          </div>
+        );
+      }
+    }
+
+    return null;
+  };
+
   return (
     <div className={panelClass}>
       <List {...props} />
@@ -41,6 +59,7 @@ function Panel(props) {
           {props.orientation === 'horizontal' ? null : text}
         </div>
       </div>
+      {showOverviewText()}
     </div>
   );
 }

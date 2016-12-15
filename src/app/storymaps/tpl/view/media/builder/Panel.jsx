@@ -48,15 +48,23 @@ export default class BuilderConfig {
 
     // List of tabs
     var tabsContainer = this._nodePanel.find('.builder-tabs');
-    for (let i = 0; i < this._tabs.length; i++) {
-      let tab = this._tabs[i];
+    var hasIssuesTab = this._tabs.some(function(tab) {
+      return (tab.type.indexOf('issues') >= 0);
+    });
+
+    this._tabs.forEach(function(tab, i) {
+      let errorSpan = '';
+      if (tab.type.indexOf('issues') >= 0 || (tab.type === 'manage') && !hasIssuesTab) {
+        errorSpan = '<span class="border-error"></span>';
+      }
       tabsContainer.append(
         `<li class="tab btn-clear lighter${i === 0 ? ' selected' : ''}" data-tab="${tab.type}">` +
+          errorSpan +
           `<span class="config-tab-icon fa ${tab.icon}"></span>` +
           `${tab.title}` +
         '</li>'
       );
-    }
+    });
 
     // set one as selected.
     // attach onclick events
@@ -113,11 +121,23 @@ export default class BuilderConfig {
 
       // before the panel is destoyed, we may want to make data model changes...
       openTab && openTab.beforePanelDestroy();
-      
+
       openTab && this.destroyTab(openTab);
     }
     else {
       let tabNode = this._nodePanel.find('.builder-tabs .tab.' + this.selectedClass);
+
+      if (this._nodeMedia.hasClass('error') || this._nodeMedia.find('.error').length) {
+        var switchToTab = this._nodePanel.find('[data-tab="issues"]');
+        if (!switchToTab.length) {
+          switchToTab = this._nodePanel.find('[data-tab="manage"]');
+        }
+        if (switchToTab.length) {
+          tabNode.removeClass(this.selectedClass);
+          tabNode = switchToTab.addClass(this.selectedClass);
+        }
+      }
+
       let tabType = tabNode.data('tab');
       let openTab = this._tabs.find(tab => tabType === tab.type);
 

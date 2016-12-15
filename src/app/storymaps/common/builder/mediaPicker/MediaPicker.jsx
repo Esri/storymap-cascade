@@ -41,8 +41,7 @@ class MediaPicker extends React.Component {
 
   open(params) {
     _resultDeferred = new Deferred();
-
-    console.log('init media picker', params);
+    
     this.render(Object.assign(params, {justOpened: true}));
 
     _resultDeferred.then(() => {

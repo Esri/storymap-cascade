@@ -2,6 +2,7 @@ import MediumEditor from 'lib/medium-editor/dist/js/medium-editor';
 
 import {} from 'lib-build/css!lib/medium-editor/dist/css/medium-editor';
 import {} from 'lib-build/less!./MediumEditorWrapper';
+import i18n from 'lib-build/i18n!commonResources/nls/texteditor';
 
 import BlockToolbar from './plugins/blockToolbar/Plugin';
 import BlockAdd from './plugins/blockAdd/Plugin';
@@ -60,7 +61,7 @@ export default function(params = {}) {
   }
 
   let placeholder = {
-    text: 'Continue your story here...',
+    text: i18n.textEditor.placeholder.continueStory,
     hideOnClick: false
   };
 
@@ -69,7 +70,32 @@ export default function(params = {}) {
   }
 
    // Buttons in highlighting toolbar
-  const highlightButtons = ['bold', 'italic', 'underline', 'strikethrough', 'anchor' /*, 'orderedlist', 'unorderedlist'*/, 'colorPicker'];
+  const highlightButtons = [
+    {
+      name: 'bold',
+      aria: ''
+    },
+    {
+      name: 'italic',
+      aria: ''
+    },
+    {
+      name: 'underline',
+      aria: ''
+    },
+    {
+      name: 'strikethrough',
+      aria: ''
+    },
+    {
+      name: 'anchor',
+      aria: ''
+    },
+    {
+      name: 'colorPicker',
+      aria: ''
+    }
+  ];
 
   // Buttons in block toolbar
   const blockButtonsFull = ['h1', 'h2', 'quote', 'justifyLeft', 'justifyCenter', 'justifyRight'],
@@ -91,7 +117,7 @@ export default function(params = {}) {
   const addButtons = {
     text: {
       icon: 'resources/tpl/builder/icons/text-editor/Text.png',
-      label: 'Text',
+      label: i18n.textEditor.blockAdd.text,
       action: function() {
         var resultDeferred = new Deferred();
 
@@ -104,7 +130,7 @@ export default function(params = {}) {
     },
     media: {
       icon: 'resources/tpl/builder/icons/text-editor/Media.png',
-      label: 'Media',
+      label: i18n.textEditor.blockAdd.media,
       action: function(params) {
         var resultDeferred = new Deferred();
 
@@ -120,8 +146,6 @@ export default function(params = {}) {
           authorizedMedia: _authorizedMedia
         }).then(
           function(selection) {
-            console.log('selected media:', selection);
-
             var html = _addMedia({
               media: selection,
               blockIndex: params.blockIndex
@@ -138,7 +162,7 @@ export default function(params = {}) {
     },
     title: {
       icon: 'resources/tpl/builder/icons/text-editor/Title.png',
-      label: 'Title',
+      label: i18n.textEditor.blockAdd.title,
       action: function(params = {}) {
         var resultDeferred = new Deferred();
 
@@ -159,9 +183,9 @@ export default function(params = {}) {
       }
     },
     immersive: {
-      icon: 'resources/tpl/builder/icons/text-editor/Immersive.gif',
+      icon: 'resources/tpl/builder/icons/text-editor/Immersive.png',
       //iconHover: 'resources/tpl/builder/icons/text-editor/Immersive-hover.gif',
-      label: 'Immersive',
+      label: i18n.textEditor.blockAdd.immersive,
       action: function(params = {}) {
         var resultDeferred = new Deferred();
 
@@ -230,10 +254,6 @@ export default function(params = {}) {
       buttons: highlightButtons
     },
     placeholder: placeholder,
-    anchor: {
-      linkValidation: true,
-      placeholderText: 'Enter a link...'
-    },
     paste: {
       // This configuration force only plain text
       forcePlainText: true,

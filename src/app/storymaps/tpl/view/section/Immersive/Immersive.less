@@ -1,50 +1,9 @@
 @import "../../../core/Variables";
 
-/*
-.section-immersive .foreground {
-  bottom: 150px !important;
-  .imm-panel {
-    margin-top: 0;
-
-    .blocksWrapper {
-      margin-top: 450px !important;
-    }
-  }
-
-  .imm-panel:nth-child(1) {
-    .blocksWrapper {
-      margin-top: -50px !important;
-    }
-  }
-}
-*/
-
-body:not(.builder-mode) .section-immersive.layout-scroll-full .foreground {
-
-  .imm-panel .blocksWrapper {
-    margin-top: 180px;
-  }
-
-  .imm-panel:nth-child(1) .blocksWrapper {
-    margin-top: inherit;
-  }
-}
-
 /* todo: this need some more love, something isn't right... */
 .section-immersive .foreground {
   padding: 0 !important;
   bottom: 0 !important;
-
-  .imm-panel .blocksWrapper {
-    pointer-events: all !important;
-    margin-top: 20px;
-  }
-
-  /*
-  .imm-panel:nth-child(1) .blocksWrapper {
-    margin-top: -125px;
-  }
-  */
 }
 
 .section-immersive .background:not(.active) {
@@ -224,6 +183,7 @@ body.mobile-view {
   .section {
     .background-title {
       .text-background {
+        max-width: 100%;
         &.background-dark, &.background-light {
           padding: 10px;
         }

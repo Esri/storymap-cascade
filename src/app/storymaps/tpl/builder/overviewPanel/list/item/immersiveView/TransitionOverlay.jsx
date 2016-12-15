@@ -1,7 +1,7 @@
 import React from 'react';
 import { Popover, OverlayTrigger, Tooltip } from 'react-bootstrap';
 
-import i18n from 'lib-build/i18n!./../../../../../../../resources/tpl/builder/nls/app';
+import i18n from 'lib-build/i18n!resources/tpl/builder/nls/app';
 
 import {} from 'lib-build/less!./TransitionOverlay';
 
@@ -65,9 +65,15 @@ function TransitionOverlay(props) {
     });
   };
 
+  // remove the props that shouldn't be passed through.
+  let thruProps = Object.assign({}, props);
+  delete thruProps.transitions;
+  delete thruProps.transition;
+  delete thruProps.onItemClick;
+
   return (
     <Popover
-      {...props}
+      {...thruProps}
       id={'transition-popover-' + props.itemID}
       placement="top"
     >

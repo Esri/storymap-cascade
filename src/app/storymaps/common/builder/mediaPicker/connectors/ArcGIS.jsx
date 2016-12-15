@@ -1,6 +1,6 @@
 // import $ from 'jquery';
 // import config from '../config';
-import i18n from 'lib-build/i18n!../../../_resources/nls/media';
+import i18n from 'lib-build/i18n!commonResources/nls/media';
 import constants from '../constants';
 import Helper from '../utils/Helper';
 import esriRequest from 'esri/request';
@@ -8,7 +8,7 @@ import esriRequest from 'esri/request';
 var text = i18n.mediaPicker.browsePanel.sidePanel.agol;
 
 var ArcGISConnector = (function() {
-  var _portal, _appItem, _appId, _portalUser/*, _next*/;
+  var _portal, _appItem, _appId, _portalUser, _sharingUrl;
 
   var defaultParams = {
     num: 100
@@ -29,6 +29,14 @@ var ArcGISConnector = (function() {
   var getPortal = function() {
     _portal = app.portal;
     return _portal;
+  };
+
+  var getSharingUrl = function() {
+    const portal = (_portal || getPortal());
+
+    _sharingUrl = '//' + portal.portalHostname.replace(/\//g, '') + '/sharing/rest';
+
+    return _sharingUrl;
   };
 
   var getAppItem = function() {
@@ -142,8 +150,7 @@ var ArcGISConnector = (function() {
   };
 
   var getResourcesUrl = function() {
-    return Helper.stripTrailingSlash((_portal || getPortal()).portalUrl) + '/content/items/' + _appId + '/resources/';
-
+    return (_sharingUrl || getSharingUrl()) + '/content/items/' + _appId + '/resources/';
   };
 
   var getStoryResources = function(options, resolve, reject) {
@@ -210,7 +217,7 @@ var ArcGISConnector = (function() {
 
       let formdata = getFormDataFromFileDetails(fileDetails);
 
-      const portalUrl = Helper.stripTrailingSlash((_portal || getPortal()).portalUrl);
+      const portalUrl = _sharingUrl || getSharingUrl();
       const owner = getOwner();
       const folder = (_appItem || getAppItem()).item.ownerFolder;
 
@@ -245,7 +252,7 @@ var ArcGISConnector = (function() {
         reject();
         return;
       }
-      const portalUrl = Helper.stripTrailingSlash((_portal || getPortal()).portalUrl);
+      const portalUrl = _sharingUrl || getSharingUrl();
       const owner = getOwner();
       const folder = (_appItem || getAppItem()).item.ownerFolder;
 
@@ -513,5 +520,5 @@ var ArcGISConnector = (function() {
     formatResources
   };
 }());
-window.Connector = ArcGISConnector;
+
 export { ArcGISConnector };

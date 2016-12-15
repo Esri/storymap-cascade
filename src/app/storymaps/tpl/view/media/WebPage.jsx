@@ -4,7 +4,7 @@ import {} from 'lib-build/less!./WebPage';
 import viewBlock from 'lib-build/hbars!./WebPageBlock';
 import viewBackground from 'lib-build/hbars!./WebPageBackground';
 
-import i18n from 'lib-build/i18n!./../../../../resources/tpl/builder/nls/app';
+import i18n from 'lib-build/i18n!resources/tpl/viewer/nls/app';
 
 import Deferred from 'dojo/Deferred';
 
@@ -55,8 +55,10 @@ export default class WebPage extends Media {
         id: this._domID,
         url: this._url,
         caption: this._webpage.caption,
-        placeholder: i18n.builder.media.captionPlaceholder,
-        captionEditable: app.isInBuilder
+        placeholder: i18n.viewer.media.captionPlaceholder,
+        captionEditable: app.isInBuilder,
+        labelExploreStart: i18n.viewer.media.explore,
+        labelExploreStop: i18n.viewer.media.exploreStop
       });
     }
     else if (context.placement == 'background') {
@@ -75,7 +77,9 @@ export default class WebPage extends Media {
       output += viewBackground({
         id: this._domID,
         url: this._url,
-        classes: 'webpage-container' + optClass
+        classes: 'webpage-container' + optClass,
+        labelExploreStart: i18n.viewer.media.explore,
+        labelExploreStop: i18n.viewer.media.exploreStop
       });
     }
 

@@ -51,6 +51,20 @@ body.builder-mode .section-builder-panel {
       text-align: left;
     }
 
+    .btn.not-clickable {
+      cursor: default;
+
+      &:hover {
+        color: inherit !important;
+      }
+
+      &:focus {
+        outline: none;
+        box-shadow: none;
+        color: inherit !important;
+      }
+    }
+
     .btn-save {
       .btn-save-loader,
       .btn-save-success,
@@ -61,12 +75,14 @@ body.builder-mode .section-builder-panel {
       &.saving {
         .btn-save-loader {
           display: inline-block;
+          margin-left: 1px;
         }
       }
 
       &.saved {
         .btn-save-success {
           display: inline-block;
+          margin-left: 7px;
         }
       }
 
@@ -87,30 +103,26 @@ body.builder-mode .section-builder-panel {
       }
 
       .btn-save-label {
-        margin-left: 2px;
+        margin-left: 10px;
       }
     }
 
+    // ----- Settings ----- //
+
+    .btn-settings {
+      .btn-settings-label {
+        margin-left: 15px;
+      }
+    }
     /*
      * Share
      */
 
     .btn-share {
       position: relative;
-      cursor: default;
 
       &.disabled {
         cursor: not-allowed;
-      }
-
-      &:hover {
-        color: inherit !important;
-      }
-
-      &:focus {
-        outline: none;
-        box-shadow: none;
-        color: inherit !important;
       }
 
       .btn-share-container {
@@ -177,6 +189,81 @@ body.builder-mode .section-builder-panel {
           }
         }
       }
+
+      .btn-share-label {
+        margin-left: 12px;
+      }
+    }
+
+    // ----- preview ----- //
+
+    .btn-preview {
+      .btn-preview-label {
+        margin-left: 12px;
+      }
+    }
+    // ----- story health ----- //
+
+    .btn-check {
+      cursor: default;
+
+      .checking-icon-wrapper,
+      .issue-icon-wrapper,
+      .no-issues-icon-wrapper {
+        display: none;
+      }
+
+      .super {
+        font-size: 0.7em;
+        vertical-align: super;
+        margin-left: -4px;
+        font-weight: bold;
+      }
+
+      .tooltip {
+        min-width: 0 !important;
+      }
+
+      .issue-icon-wrapper {
+        color: @sm-danger-text;
+      }
+
+      .fa-check {
+        color: @brand-success;
+      }
+
+      .btn-check-label {
+        position: absolute;
+        left: 50px;
+      }
+
+      .check-tooltip,
+      .my-stories-link {
+        cursor: pointer;
+        margin-left: 6px;
+        color: #666;
+        font-size: 14px
+      }
+      // visibility changing
+
+      &.checking {
+        .checking-icon-wrapper {
+          display: inline-block;
+        }
+      }
+
+      &.errors {
+        .issue-icon-wrapper {
+          display: inline-block;
+        }
+      }
+
+      &.no-issues {
+        .no-issues-icon-wrapper {
+          display: inline-block;
+        }
+      }
+
     }
   }
 

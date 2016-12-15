@@ -3,7 +3,7 @@ import Tab from './Tab';
 import viewTpl from 'lib-build/hbars!./TabSize';
 import {} from 'lib-build/less!./Common';
 
-import i18n from 'lib-build/i18n!./../../../../../resources/tpl/builder/nls/app';
+import i18n from 'lib-build/i18n!resources/tpl/builder/nls/app';
 
 export default class TabSize extends Tab {
   constructor() {

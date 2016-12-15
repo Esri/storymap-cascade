@@ -3,8 +3,9 @@ import Tab from './Tab';
 import viewTpl from 'lib-build/hbars!./TabManageScene';
 
 import BuilderHelper from 'storymaps/common/builder/BuilderHelper';
+import {} from 'lib-build/less!./Common';
 
-import i18n from 'lib-build/i18n!./../../../../../resources/tpl/builder/nls/app';
+import i18n from 'lib-build/i18n!resources/tpl/builder/nls/app';
 
 export default class TabManageScene extends Tab {
   constructor(params = {}) {
@@ -13,13 +14,26 @@ export default class TabManageScene extends Tab {
     this.title = i18n.builder.mediaConfig.tabs.manage;
     this.type = 'manage';
     this.icon = 'fa-wrench';
+    this.sceneName = params.sceneName;
 
     this._mediaType = params.mediaType;
     this._mediaId = params.mediaId;
   }
 
+  setSceneName(sceneName) {
+    this.sceneName = sceneName;
+    if (this._node) {
+      this.updateSceneName();
+    }
+  }
+
+  updateSceneName() {
+    this._node.find('.webscene-name').text(this.sceneName);
+  }
+
   render() {
     return viewTpl({
+      sceneName: this.sceneName,
       strings: i18n.builder.mediaConfig.manage
     });
   }

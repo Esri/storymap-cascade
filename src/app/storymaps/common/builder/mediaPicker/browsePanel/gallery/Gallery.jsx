@@ -4,7 +4,7 @@ import Helper from '../../utils/Helper';
 import GalleryItem from './GalleryItem';
 import {} from 'lib-build/less!./Gallery';
 import constants from '../../constants';
-import i18n from 'lib-build/i18n!../../../../_resources/nls/media';
+import i18n from 'lib-build/i18n!commonResources/nls/media';
 var text = i18n.mediaPicker.browsePanel;
 
 function Spinner() {
@@ -132,13 +132,24 @@ class Gallery extends React.Component {
     return null;
   }
 
+  getPlaceholderText() {
+    let target = text.providers[this.props.containerState.provider].searchAndBrowse;
+    if (!target) {
+      return '';
+    }
+    return target.replace(/\$\{(.*?)}/g, function(brand) {
+      return brand.slice(2, -1);
+    });
+
+  }
+
   getPlaceholder() {
     if (this.props.items && this.props.items.length) {
       return null;
     }
     if (this.props && this.props.containerState && this.props.containerState.provider) {
       return (
-        <Placeholder text={text.providers[this.props.containerState.provider].searchAndBrowse || ''} />
+        <Placeholder text={this.getPlaceholderText()} />
       );
     }
     return null;

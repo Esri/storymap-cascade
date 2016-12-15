@@ -8,10 +8,11 @@ import viewTpl from 'lib-build/hbars!./Panel';
 const BUILDER_PANEL_HEIGHT = 125;
 
 export default class Panel {
-  constructor(panel) {
+  constructor(panel, transition) {
     this.id = UIUtils.getUID();
     this.layout = panel.layout;
 
+    this._viewTransition = transition;
     this._settings = panel.settings;
     this._blocksJSON = panel.blocks;
     this._blocks = null;
@@ -69,6 +70,8 @@ export default class Panel {
       classes.push('placement-' + this._settings['position-x']);
       classes.push('size-' + this._settings.size);
     }
+
+    classes.push('view-transition-' + this._viewTransition);
 
     return classes.join(' ');
   }

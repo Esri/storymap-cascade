@@ -4,11 +4,11 @@ The Story Map Cascade℠ app lets you combine narrative text with maps, images, 
 
 ![Screenshot](https://cloud.githubusercontent.com/assets/994078/16124248/074ded18-33a3-11e6-8151-0469f4cd412b.png)
 
-[View it live](http://links.esri.com/storymaps/story_map_cascade_overview_1) | 
+[View it live](http://links.esri.com/storymaps/story_map_cascade_overview_1) |
 [Download](http://links.esri.com/storymaps/story_map_cascade_zip) |
 [Cascade page on Esri Story Maps website](https://storymaps.arcgis.com/en/app-list/cascade/)
 
-**Latest release is version 1.1.3**, if you want to be informed of new releases, we recommend you to watch this repository ([see GitHub help](https://help.github.com/articles/watching-repositories)). See the [release page](https://github.com/Esri/story-map-cascade/releases) for release notes.
+**Latest release is version 1.2.0**, if you want to be informed of new releases, we recommend you to watch this repository ([see GitHub help](https://help.github.com/articles/watching-repositories)). See the [release page](https://github.com/Esri/story-map-cascade/releases) for release notes.
 
 ## Help content
 
@@ -74,12 +74,12 @@ We have a series of blog posts coming, stay tuned!
 ### Security
 
 #### Can I keep my story private?
-Yes, the regular ArcGIS Online security model applies. 
-By default your story is private, you can share it through Cascade builder or ArcGIS Online. 
-When you share your story, it is your responsibility to make sure that all the resources of your story (webmaps, webscenes, images, videos) are accessible to your audience.
+Yes, the regular ArcGIS Online security model applies.
+By default your story is private, you can share it through Cascade builder or ArcGIS Online.
+When you share your story through the Cascade builder, its maps and layers will also be shared if you own them or have privileges to share them. You will still need to make sure webscenes and embedded apps are accessible to your audience when you share, as they are not shared automatically with the story.
 
 #### Can I use private web map or layer?
-Yes. 
+Yes.
 
 When the story is hosted in ArcGIS Online or Portal for ArcGIS, users that don't have access to the story or a webmap used in the story will be redirected to the ArcGIS Online sign-in page. It is not possible to display an authentication dialog in the application when it's hosted in ArcGIS Online.
 
@@ -91,7 +91,7 @@ If you are using secured services but don't want users to have to authenticate, 
 Deploying a Cascade require to use ArcGIS Online or Portal for ArcGIS. The Cascade content have to be created using the Cascade builder and will live in a Web Application Item.
 
 #### Can I use the template without ArcGIS Online or Portal for ArcGIS?
-This is not a supported use case at that time. Please let us know if you are interested by such a scenario. 
+This is not a supported use case at that time. Please let us know if you are interested by such a scenario.
 Cascade rely heavily on the Portal for ArcGIS API but it is doable to modify the application to support other scenarios.
 
 #### Where is the data stored?
@@ -117,8 +117,8 @@ If you are experiencing some rendering issues like improper symbol appearing ins
  * [Properly serve webfonts](http://blog.symbolset.com/properly-serve-webfonts)
 
 #### Can I use a single deployment of Cascade for multiple stories?
-Yes. 
-If you have customized the application and deployed it on your server, you don't need to copy it multiple times, edit index.html and paste a different application ID for each story you want to publish. 
+Yes.
+If you have customized the application and deployed it on your server, you don't need to copy it multiple times, edit index.html and paste a different application ID for each story you want to publish.
 
 Instead edit `index.html`, locate the `configOptions` section and fill the `authorizedOwners` property with the ArcGIS Online or Portal for ArcGIS login of the owner(s) of the story you want to use. This make possible for the application to display any of stories created by the specified user(s) through an URL parameter.
 
@@ -127,7 +127,7 @@ Example of the same application displaying two stories:
  * http://myserver.com/Cascade/index.html?appid=c7ad1a55de0247a68454a76f251225a5
 
 ## Configuration
-In addition to the configuration offered by the builder, the file `app/config.js` provide various additional settings. This is for example the place where you can override some settings like the list of Geocoder services to be used (changes override ArcGIS Online or your Organization default settings). See the documentation provided in that file for more details. 
+In addition to the configuration offered by the builder, the file `app/config.js` provide various additional settings. This is for example the place where you can override some settings like the list of Geocoder services to be used (changes override ArcGIS Online or your Organization default settings). See the documentation provided in that file for more details.
 
 ## Customize the look and feel
 
@@ -141,7 +141,7 @@ The easiest way to find the id or path of a DOM element that you want to customi
 
 ## Developer guide
 
-This developer guide is intended for developers that wants to modify the behavior or add new functionalities to the Cascade application. 
+This developer guide is intended for developers that wants to modify the behavior or add new functionalities to the Cascade application.
 It requires knowledge of HTML, Javascript and CSS languages.
 
 For more infomation about using and customizing Esri's Storytelling Apps follow the [Story Maps Developers' Corner](https://developerscorner.storymaps.arcgis.com).
@@ -149,29 +149,31 @@ For more infomation about using and customizing Esri's Storytelling Apps follow 
 ### Application life cycle
 Cascade fires events that allow customization with lose integration. This mean that you don't need to understand the application internals to implement simple extension.
 
-To try those events, look for the `Custom Javascript` block at the far end of index.html.
+To try those events, look in the file `src/app/custom-scripts.js`.
 
 ```
 ...
-require(["dojo/topic"], function(topic) {
+require(['dojo/topic'], function(topic) {
   /*
    * Custom Javascript to be executed while the application is initializing goes here
    */
 
   // The application is ready
-  topic.subscribe("tpl-ready", function(){
+  topic.subscribe('tpl-ready', function() {
     /*
      * Custom Javascript to be executed when the application is ready goes here
      */
-    console.log('Cascade is ready');
+
+    // console.log('Cascade is ready');
   });
 
   /*
    * Custom Javascript to be executed when a section becomes active
    */
-  topic.subscribe("story-navgigated-section", function(cfg){
-    console.log("The section", cfg.index, "is now active");
+  topic.subscribe('story-navigated-section', function(/*cfg*/) {
+     // console.log('The section', cfg.index, 'is now active');
   });
+
 });
 ...
 ```
@@ -209,7 +211,7 @@ This will create a new `node-modules` folder in your project root with all the t
  * If you want to use a non-public story or the builder you need to configure an `oAuth` ID in `index.html`. Follow the following procedure to [add and register an application](http://doc.arcgis.com/en/arcgis-online/share-maps/add-items.htm#ESRI_SECTION1_0D1B620254F745AE84F394289F8AF44B) to get an OAuth application ID. Once you have that application, open `index.html`, locate the `configOptions` section and fill the `oAuthAppId` property.
 
 ### How to build application from the source code
-  * Open a terminal and navigate to the Cascade folder 
+  * Open a terminal and navigate to the Cascade folder
   * Run the following command: `grunt`
 
 The deploy folder now contains the built application that you can [deploy to your web server](#instructions).
@@ -299,7 +301,7 @@ Some open-source components of this project are licensed under other License ter
 | Fluidbox              | MIT       |
 | Froogaloop            | N/A       |
 | youtube-api           | N/A       |
-| ZeroClipboard         | MIT       |
+| Clipboard.js          | MIT       |
 | ProgressJS            | MIT       |
 | FastClick             | MIT       |
 | Font Awesome          | SIL/MIT   |

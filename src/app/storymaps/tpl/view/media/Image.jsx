@@ -1,10 +1,11 @@
 import Media from './Media';
+import CommonHelper from 'storymaps/common/utils/CommonHelper';
 
 import {} from 'lib-build/less!./Image';
 import viewBlock from 'lib-build/hbars!./ImageBlock';
 import viewBackground from 'lib-build/hbars!./ImageBackground';
 
-import i18n from 'lib-build/i18n!./../../../../resources/tpl/builder/nls/app';
+import i18n from 'lib-build/i18n!resources/tpl/viewer/nls/app';
 
 import UIUtils from 'storymaps/tpl/utils/UI';
 import Deferred from 'dojo/Deferred';
@@ -19,13 +20,26 @@ const BLOCK_HEIGHT_FOR_CAPTION = 200;
 export default class Image extends Media {
 
   constructor(image) {
+    // fix sharing url on image constructor...
+    const needsFixing = CommonHelper.uploadedImageNeedsFixing(image.url);
+    if (needsFixing) {
+      image.url = CommonHelper.fixUploadedImageUrl(image.url);
+      if (image.thumbUrl) {
+        image.thumbUrl = CommonHelper.fixUploadedImageUrl(image.thumbUrl);
+      }
+    }
+
     // sizes is an array of objects with {height, width, url}.
     if (image.sizes && image.sizes.length) {
-      const screenWidth = window.screen.width;
+      const screenWidth = $('body').width() || window.screen.width;
 
       // sort sizes arr by longestSide, with largest first.
       image.sizes.forEach((sizeObj) => {
         sizeObj.longestSide = Math.max(sizeObj.width, sizeObj.height);
+        // do this here while we're already iterating through the sizes
+        if (needsFixing) {
+          sizeObj.url = CommonHelper.fixUploadedImageUrl(sizeObj.url);
+        }
       });
       image.sizes.sort((a, b) => {
         if (b.longestSide === a.longestSide) {
@@ -133,7 +147,7 @@ export default class Image extends Media {
         classes: ['block', 'image'].concat(options).join(' '),
         padding: style.padding,
         caption: this._image.caption,
-        placeholder: i18n.builder.media.captionPlaceholder,
+        placeholder: i18n.viewer.media.captionPlaceholder,
         captionEditable: app.isInBuilder
       });
     }
@@ -241,9 +255,21 @@ export default class Image extends Media {
         width: width,
         height: height
       });
+      // if app isn't in builder mode, and the
+      // image has, in fact, loaded, take off the error
+      if (!app.builder) {
+        this.removeError();
+      }
     }.bind(this);
 
-    im.onerror = this.showLoadingError.bind(this);
+    im.onerror = function() {
+      if (app.builder) {
+        this.setError({showLoadingError: true});
+      }
+      else {
+        this.setError({minimizeInViewer: true});
+      }
+    }.bind(this);
 
     im.src = Media.addToken(this._url);
 

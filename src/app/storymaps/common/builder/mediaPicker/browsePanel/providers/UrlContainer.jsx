@@ -5,9 +5,10 @@ import * as actions from '../actions';
 import {} from 'lib-build/less!./UrlContainer';
 import topic from 'dojo/topic';
 import { URLConnector } from '../../connectors/UrlContent';
+import Helper from '../../utils/Helper';
 
 import constants from '../../constants';
-import i18n from 'lib-build/i18n!../../../../_resources/nls/media';
+import i18n from 'lib-build/i18n!commonResources/nls/media';
 
 var text = i18n.mediaPicker.browsePanel.providers.urlContent;
 
@@ -133,6 +134,40 @@ class UrlContainer extends React.Component {
         hasError: false
       });
     }
+    if (nextProps.currentMedia) {
+      const media = nextProps.currentMedia[nextProps.currentMedia.type];
+      const appId = app.data.appItem.item.id;
+      switch (nextProps.currentMedia.type) {
+        case 'webpage':
+          Object.assign(newState, {
+            textInputValue: nextProps.currentMedia.webpage.url.replace(/^\/\//, '')
+          });
+          break;
+        case 'image': {
+          // TODO: not sure this is sufficient to catch all images that don't come
+          // from services, and exclude the ones that do.
+          if (media.url && (media.source === 'url' || !media.thumbUrl) && (!appId || !media.url.match(appId + '/resources'))) {
+            Object.assign(newState, {
+              textInputValue: media.url.replace(/^\/\//, '')
+            });
+          }
+          break;
+        }
+        case 'video': {
+          if (media.url) {
+            Object.assign(newState, {
+              textInputValue: media.url.replace(/^\/\//, '')
+            });
+          }
+          else {
+            console.warn('video fell through because no url');
+          }
+          break;
+        }
+        default:
+          console.warn('currentMedia state fell through', nextProps.currentMedia);
+      }
+    }
     this.setState(newState);
   }
 
@@ -224,9 +259,19 @@ class UrlContainer extends React.Component {
         this.publishSelection({type: 'webpage', url: addr});
       }
       else {
+        var errorTextArr = [];
+        if (this.state.contentTypeDescriptor === 'imageOnly') {
+          errorTextArr.push(Helper.unescapeBrands(text.uploadErrors.imageOnly1), Helper.unescapeBrands(text.uploadErrors.imageOnly2));
+        }
+        else if (this.state.contentTypeDescriptor === 'imageAndVideo') {
+          errorTextArr.push(Helper.unescapeBrands(text.uploadErrors.imageAndVideo1), Helper.unescapeBrands(text.uploadErrors.imageAndVideo2));
+        }
+        else {
+          errorTextArr.push(Helper.unescapeBrands(text.uploadErrors.generic));
+        }
         this.setState({
           hasError: true,
-          errorText: text.uploadErrors[this.state.contentTypeDescriptor]
+          errorText: errorTextArr
         });
       }
     }).catch((error) => {
@@ -313,66 +358,28 @@ class UrlContainer extends React.Component {
     return this.props.authorizedMedia.includes(constants.contentType[mediaType]);
   }
 
-  getSingleMediaTypeText(arr, mediaType) {
-    if (this.checkSingleMediaType(mediaType) && text.linkText[mediaType]) {
-      if (Array.isArray(text.linkText[mediaType])) {
-        text.linkText[mediaType].forEach(str => {
-          arr.push(str);
-        });
-      }
-      else {
-        arr.push(text.linkText[mediaType]);
-      }
-    }
-  }
-
-  getMediaListStr(arr) {
-    if (!arr || !arr.length) {
-      return;
-    }
-    const arrLength = arr.length;
-    return arr.map((str, i) => {
-      let suffix = '';
-      if (i === arrLength - 1) {
-        suffix = '.';
-      }
-      else if (i === arrLength - 2) {
-        suffix = ' ' + text.linkText.OR + ' ';
-      }
-      else if (i < arrLength - 2) {
-        suffix = text.linkText.listSeparator + ' ';
-      }
-      return str + suffix;
-    }).join('');
-  }
-
   getHelpText() {
-    let mediaTypesList = [];
-    this.getSingleMediaTypeText(mediaTypesList, 'IMAGE');
-    this.getSingleMediaTypeText(mediaTypesList, 'VIDEO');
-    this.getSingleMediaTypeText(mediaTypesList, 'WEBPAGE');
+    const imageAllowed = this.checkSingleMediaType('IMAGE');
+    const videoAllowed = this.checkSingleMediaType('VIDEO');
+    const webpageAllowed = this.checkSingleMediaType('WEBPAGE');
 
     let divArr = [];
 
-    let listStr = '';
-    if (mediaTypesList.length > 0) {
-      listStr = this.getMediaListStr(mediaTypesList);
+    if (imageAllowed && videoAllowed && webpageAllowed) {
+      divArr.push(<div key="link-text-1">{Helper.unescapeBrands(text.linkText.imageVideoWebpage1)}</div>);
+      divArr.push(<div key="link-text-2">{Helper.unescapeBrands(text.linkText.imageVideoWebpage2)}</div>);
     }
-
-    let starterStr = text.linkText.starter + ' ';
-    if (this.checkSingleMediaType('VIDEO')) {
-      starterStr += text.linkText.hasVideo;
-      divArr.push(<div key="link-text-starter">{starterStr}</div>);
-      if (listStr) {
-        divArr.push(<div key="link-text-list">{text.linkText.listStarterWithAlso + ' ' + listStr}</div>);
-      }
+    else if (imageAllowed && videoAllowed) {
+      divArr.push(<div key="link-text-1">{Helper.unescapeBrands(text.linkText.imageAndVideo1)}</div>);
+      divArr.push(<div key="link-text-2">{Helper.unescapeBrands(text.linkText.imageAndVideo2)}</div>);
+    }
+    else if (imageAllowed) {
+      divArr.push(<div key="link-text-1">{Helper.unescapeBrands(text.linkText.imageOnly)}</div>);
     }
     else {
-      if (!listStr) {
-        return [<div key="link-text-ender">{text.linkText.ender}</div>];
-      }
-      divArr.push(<div key="link-text-starter">{starterStr + ' ' + text.linkText.listStarterWithoutAlso + ' ' + listStr}</div>);
+      divArr.push(<div key="link-text-1">NO RECOGNIZABLE CONTENT TYPES</div>);
     }
+
     divArr.push(<div key="link-text-ender">{text.linkText.ender}</div>);
 
     return divArr;

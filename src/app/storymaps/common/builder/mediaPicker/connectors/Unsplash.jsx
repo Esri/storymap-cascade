@@ -1,6 +1,6 @@
 import $ from 'jquery';
 import config from '../config';
-import i18n from 'lib-build/i18n!../../../_resources/nls/media';
+import i18n from 'lib-build/i18n!commonResources/nls/media';
 import constants from '../constants';
 
 var text = i18n.mediaPicker.browsePanel.providers.unsplash;
@@ -59,7 +59,11 @@ var UnsplashConnector = (function() {
   };
 
   var replaceUsername = function(str, username) {
-    return str.replace('${username}', username);
+    let returnStr = str.replace('${username}', username);
+    return returnStr.replace(/\$\{(.*?)}/g, function(brand) {
+      return brand.slice(2, -1);
+    });
+
   };
 
   var formatPhoto = function(photo) {

@@ -11,6 +11,10 @@ export default class SequenceBuilder extends Sequence {
   constructor(section) {
     super(section);
     this._editor = null;
+    this.scanResults = {
+      hasErrors: false,
+      hasWarnings: false
+    };
 
     this.MEDIA_BUILDER_TABS = ['size', 'appearance', 'manage'];
   }
@@ -106,6 +110,9 @@ export default class SequenceBuilder extends Sequence {
         }, 150);
       }
 
+      // do an issue check -- this needs to be before onContentChange for uploaded images so they don't have their deferred object removed
+      SectionCommon.checkMedia(params.media);
+
       this._onContentChange();
     }.bind(this), 50);
 
@@ -162,6 +169,8 @@ export default class SequenceBuilder extends Sequence {
 
     this._blocks.splice(this._blocks.indexOf(media), 1, newMedia);
 
+    // this needs to come before onContentChange because serializing removes the deferred property we need.
+    SectionCommon.checkMedia(newMediaJSON);
     this._onContentChange();
   }
 
@@ -345,5 +354,13 @@ export default class SequenceBuilder extends Sequence {
       enabled: bookmark.status == 'visible',
       title: bookmark.bookmark
     };
+  }
+
+  getScanResults() {
+    return this.scanResults;
+  }
+
+  setScanResults(hasErrors, hasWarnings) {
+    Object.assign(this.scanResults, {hasErrors}, {hasWarnings});
   }
 }

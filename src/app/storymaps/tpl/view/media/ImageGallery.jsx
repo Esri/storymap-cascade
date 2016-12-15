@@ -1,9 +1,10 @@
 import Media from './Media';
+import CommonHelper from 'storymaps/common/utils/CommonHelper';
 
 import {} from 'lib-build/less!./ImageGallery';
 import viewTpl from 'lib-build/hbars!./ImageGallery';
 
-import i18n from 'lib-build/i18n!./../../../../resources/tpl/builder/nls/app';
+import i18n from 'lib-build/i18n!resources/tpl/viewer/nls/app';
 
 import {} from 'lib/jquery/dist/jquery.min';
 import {} from 'lib/fluidbox/dist/js/jquery.fluidbox.min';
@@ -14,6 +15,17 @@ import lang from 'dojo/_base/lang';
 export default class ImageGallery extends Media {
 
   constructor(images) {
+    // fix sharing url on image constructor...
+    images.images.forEach(image => {
+      const needsFixing = CommonHelper.uploadedImageNeedsFixing(image.url);
+      if (needsFixing) {
+        image.url = CommonHelper.fixUploadedImageUrl(image.url);
+        if (image.thumbUrl) {
+          image.thumbUrl = CommonHelper.fixUploadedImageUrl(image.thumbUrl);
+        }
+      }
+    });
+
     super({
       type: 'image-gallery',
       id: null,
@@ -53,7 +65,9 @@ export default class ImageGallery extends Media {
 
     this._isLoaded = true;
 
-    this._node.find('.image-gallery-item').each(function() {
+    var self = this;
+
+    this._node.find('.image-gallery-item').each(function(i) {
       var node = $(this),
           imgHidden = node.find('.image-gallery-img-hidden'),
           img = node.find('.image-gallery-img'),
@@ -86,6 +100,15 @@ export default class ImageGallery extends Media {
 
       im.onload = function() {
         node.find('.media-loading').hide();
+      }.bind(this);
+
+      im.onerror = function() {
+        if (app.builder) {
+          self.setError({showLoadingError: true, galleryIndex: i});
+        }
+        else {
+          self.setError({minimizeInViewer: true, galleryIndex: i});
+        }
       }.bind(this);
 
       im.src = node.data('src');
@@ -152,7 +175,7 @@ export default class ImageGallery extends Media {
     let template = viewTpl({
       images: this._addTokens(this._images.images),
       caption: this._images.caption,
-      placeholder: i18n.builder.media.captionPlaceholder,
+      placeholder: i18n.viewer.media.captionPlaceholder,
       captionEditable: app.isInBuilder
     });
 

@@ -118,39 +118,6 @@ define([
     );
   }
 
-  function shareItems(items, sharing) {
-    var portalUrl = getPortalURL(),
-        uid = IdentityManager.findCredential(portalUrl).userId,
-        token = IdentityManager.findCredential(portalUrl).token;
-
-    var params = {
-      f: 'json',
-      token: token,
-      items: items,
-      groups: '',
-      everyone: false,
-      account: false
-    };
-
-    if (sharing == 'public') {
-      params.everyone = true;
-    }
-    else if (sharing == 'account') {
-      params.account = true;
-    }
-
-    return esriRequest(
-      {
-        url: portalUrl + '/sharing/content/users/' + uid + '/shareItems',
-        handleAs: 'json',
-        content: params
-      },
-      {
-        usePost: true
-      }
-    );
-  }
-
   function cleanApp() {
     if (! app.portal) {
       console.error('Fatal error - not signed in');
@@ -276,7 +243,6 @@ define([
   return {
     getPortalURL: getPortalURL,
     saveApp: saveApp,
-    shareItems: shareItems,
     getBlankAppJSON: getBlankAppJSON,
     cleanApp: cleanApp,
     getMapViewerLink: getMapViewerLink,

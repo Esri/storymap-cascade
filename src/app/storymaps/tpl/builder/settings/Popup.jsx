@@ -5,7 +5,7 @@ import logoSharingTpl from 'lib-build/hbars!./LogoSharing';
 import bookmarkTpl from 'lib-build/hbars!./Bookmark';
 import CommonHelper from 'storymaps/common/utils/CommonHelper';
 
-import i18n from 'lib-build/i18n!./../../../../resources/tpl/builder/nls/app';
+import i18n from 'lib-build/i18n!resources/tpl/builder/nls/app';
 
 import {} from 'lib-build/less!./Popup';
 import lang from 'dojo/_base/lang';
@@ -323,14 +323,14 @@ class SettingsPopup {
       this.resolve = resolve;
       this.reject = reject;
 
-      let bookmarkMaxCharacters = 20;
-      let logoSharingMaxCharacters = 30;
+      const BOOKMARK_MAX_CHARACTERS = 20;
+      const TAGLINE_MAX_CHARACTERS = 50;
 
       this.data = $.extend(true, {}, data);
 
       this.data.settings.bookmarks = this.data.settings.bookmarks.map(item => {
         // truncate the bookmark value as well
-        item.bookmark = item.bookmark.substr(0, bookmarkMaxCharacters);
+        item.bookmark = item.bookmark.substr(0, BOOKMARK_MAX_CHARACTERS);
         return item;
       });
 
@@ -344,7 +344,7 @@ class SettingsPopup {
       let logoSharingData = lang.clone({
         settings: this.data.settings,
         background: this.data.context.headerBackground,
-        maxCharacters: logoSharingMaxCharacters,
+        maxCharacters: TAGLINE_MAX_CHARACTERS,
         strings: i18n.builder.headerConfig.logoSharing,
         useEsriLogoString: i18n.builder.headerConfig.logoSharing.logoButton.replace(/\${ESRI}/g, esriName),
         emptyTagline: !this.data.settings.link.title
@@ -354,7 +354,7 @@ class SettingsPopup {
 
       let bookmarkData = {
         bookmarks: bookmarkUI,
-        maxCharacters: bookmarkMaxCharacters,
+        maxCharacters: BOOKMARK_MAX_CHARACTERS,
         strings: i18n.builder.headerConfig.bookmarks
       };
 

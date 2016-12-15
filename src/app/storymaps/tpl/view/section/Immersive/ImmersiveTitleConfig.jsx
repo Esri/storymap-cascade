@@ -1,5 +1,5 @@
 import viewTpl from 'lib-build/hbars!./ImmersiveTitleConfig';
-import i18n from 'lib-build/i18n!./../../../../../resources/tpl/builder/nls/app';
+import i18n from 'lib-build/i18n!resources/tpl/builder/nls/app';
 
 import {} from 'lib-build/less!./ImmersiveTitleConfig';
 
@@ -9,7 +9,7 @@ export default class ImmersiveTitleConfig {
     this._sectionOptions = null;
     this._configPanel = null;
     this.applyConfig = params ? params.applyConfigCallback : null;
-    this._style = null;
+    this._style = params ? params.style : null;
   }
 
   render() {
@@ -49,7 +49,7 @@ export default class ImmersiveTitleConfig {
       styleItems.removeClass(selectedClass);
       target.addClass(selectedClass);
 
-      this._style = value;
+      this.setStyle(value);
 
       if (typeof this.applyConfig === 'function') {
         this.applyConfig();
@@ -88,6 +88,10 @@ export default class ImmersiveTitleConfig {
 
   getStyle() {
     return this._style;
+  }
+
+  setStyle(style) {
+    this._style = style;
   }
 
   toggleBuilderPanel(target) {

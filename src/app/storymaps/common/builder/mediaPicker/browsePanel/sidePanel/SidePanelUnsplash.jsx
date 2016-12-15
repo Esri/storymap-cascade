@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {} from 'lib-build/less!./SidePanelUnsplash';
-import i18n from 'lib-build/i18n!../../../../_resources/nls/media';
+import i18n from 'lib-build/i18n!commonResources/nls/media';
 
 var text = i18n.mediaPicker.browsePanel.sidePanel.unsplash;
 

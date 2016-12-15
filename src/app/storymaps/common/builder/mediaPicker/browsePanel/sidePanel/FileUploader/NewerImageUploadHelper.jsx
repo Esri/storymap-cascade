@@ -58,19 +58,20 @@ const handleGifFile = function(file, isSingle) {
 const handleImageFile = function(origFile, isSingle) {
   return new Promise((resolve, reject) => {
     createNewImage(origFile).then((img) => {
-      let canvas = createNewCanvas(img, 'photo');
+      let canvas = createNewCanvas(img, {width: constants.photoSettings.maxWidth});
       let file = origFile;
       let canvasDataUrl;
-      if (!validateFileSize(origFile) || !validateDimensions(img)) {
-        canvasDataUrl = canvas.toDataURL();
+      if (!checkIdealFileSize(origFile) || !validateDimensions(img)) {
+        canvasDataUrl = canvas.toDataURL(origFile.type, constants.photoSettings.quality);
         file = dataURItoBlob(canvasDataUrl);
         if (!validateFileSize(file)) {
           reject({reason: 'compressed filesize'});
           return;
         }
       }
-      let thumbCanvas = createNewCanvas(img, 'thumb');
-      let thumbDataUrl = thumbCanvas.toDataURL();
+      const thumbHeight = Math.max(constants.galleryContent.IMG_HEIGHT, constants.galleryContent.ALBUM_HEIGHT);
+      let thumbCanvas = createNewCanvas(img, {height: thumbHeight});
+      let thumbDataUrl = thumbCanvas.toDataURL(origFile.type, constants.photoSettings.quality);
       let thumb = dataURItoBlob(thumbDataUrl);
       let dataUrl = isSingle ? canvasDataUrl : thumbDataUrl;
       resolveWithData({canvas, file, dataUrl, thumb}, resolve);
@@ -96,9 +97,12 @@ const validateFileSize = function(fileOrBlob) {
   return fileOrBlob.size <= constants.photoSettings.maxFileSize;
 };
 
+const checkIdealFileSize = function(file) {
+  return file.size <= constants.photoSettings.idealFileSize;
+};
+
 const validateDimensions = function(imgOrCanvas) {
-  return (imgOrCanvas.width <= constants.photoSettings.maxWidth &&
-          imgOrCanvas.height <= constants.photoSettings.maxHeight);
+  return (imgOrCanvas.width <= constants.photoSettings.maxWidth);
 };
 
 const createNewImage = function(file) {
@@ -124,9 +128,9 @@ const createNewImage = function(file) {
   });
 };
 
-const createNewCanvas = function(img, size) {
-  var dims = getPhotoSize(img, size);
-  var canvas = document.createElement('canvas');
+const createNewCanvas = function(img, sizeOptions) {
+  let dims = getPhotoSize(img, sizeOptions);
+  let canvas = document.createElement('canvas');
   canvas.width = dims.width;
   canvas.height = dims.height;
   canvas.getContext('2d').drawImage(img, 0, 0, img.width, img.height, 0, 0, dims.width, dims.height);
@@ -134,30 +138,24 @@ const createNewCanvas = function(img, size) {
   return canvas;
 };
 
-const getPhotoSize = function(img, type) {
-  let height, width;
-  if (validateDimensions(img) && type === 'photo') {
-    height = img.height;
-    width = img.width;
-  }
-  else {
-    const imgRatio = img.width / img.height;
-    if (type === 'thumb') {
-      height = Math.max(constants.galleryContent.IMG_HEIGHT, constants.galleryContent.ALBUM_HEIGHT);
+const getPhotoSize = function(img, sizeOptions) {
+  let height = img.height;
+  let width = img.width;
+  if (!validateDimensions(img, sizeOptions)) {
+    let imgRatio = width / height;
+    if (sizeOptions.width) {
+      width = sizeOptions.width;
+      height = width / imgRatio;
+    }
+    else if (sizeOptions.height) {
+      height = sizeOptions.height;
       width = imgRatio * height;
     }
     else {
-      let maxRatio = constants.photoSettings.maxWidth / constants.photoSettings.maxHeight;
-      if (imgRatio < maxRatio && maxRatio > 1) {
-        height = constants.photoSettings.maxHeight;
-        width = imgRatio * height;
-      }
-      else {
-        width = constants.photoSettings.maxWidth;
-        height = width / imgRatio;
-      }
+      console.warn('sizeOptions dont include width or height', sizeOptions);
     }
   }
+
   return {
     height: Math.round(height),
     width: Math.round(width)

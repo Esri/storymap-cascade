@@ -22,7 +22,7 @@ function(
   ];
 
   return {
-    createInstance: function(panelJSON, callbacks) {
+    createInstance: function(panelJSON, transition, callbacks) {
 
       if (! panelJSON) {
         var newPanelJSON = {
@@ -31,13 +31,13 @@ function(
           'blocks': DEFAULT_BLOCKS
         };
 
-        return new Panel(newPanelJSON, callbacks);
+        return new Panel(newPanelJSON, transition, callbacks);
       }
       else {
-        return new Panel(panelJSON, callbacks);
+        return new Panel(panelJSON, transition, callbacks);
       }
     },
-    duplicateWithoutContent: function(panelJSON, callbacks) {
+    duplicateWithoutContent: function(panelJSON, transition, callbacks) {
       var newPanelJSON = {};
 
       if (panelJSON) {
@@ -52,7 +52,7 @@ function(
         };
       }
 
-      return new Panel(newPanelJSON, callbacks);
+      return new Panel(newPanelJSON, transition, callbacks);
     }
   };
 });

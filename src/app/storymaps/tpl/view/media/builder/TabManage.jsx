@@ -1,8 +1,9 @@
 import Tab from './Tab';
 
 import viewTpl from 'lib-build/hbars!./TabManage';
+import {} from 'lib-build/less!./Common';
 
-import i18n from 'lib-build/i18n!./../../../../../resources/tpl/builder/nls/app';
+import i18n from 'lib-build/i18n!resources/tpl/builder/nls/app';
 
 import BuilderHelper from 'storymaps/common/builder/BuilderHelper';
 
@@ -13,13 +14,26 @@ export default class TabManage extends Tab {
     this.title = i18n.builder.mediaConfig.tabs.manage;
     this.type = 'manage';
     this.icon = 'fa-wrench';
+    this.mapName = params.mapName;
 
     this._mediaType = params.mediaType;
     this._mediaId = params.mediaId;
   }
 
+  setMapName(mapName) {
+    this.mapName = mapName;
+    if (this._node) {
+      this.updateMapName();
+    }
+  }
+
+  updateMapName() {
+    this._node.find('.webmap-name').text(this.mapName);
+  }
+
   render() {
     return viewTpl({
+      mapName: this.mapName,
       strings: i18n.builder.mediaConfig.manage
     });
   }
@@ -56,6 +70,9 @@ export default class TabManage extends Tab {
           BuilderHelper.getMapViewerLink(this._mediaId),
           '_blank'
         );
+
+        // TODO: comment this out when have map viewer
+        // this._onAction('arcgis-edit');
       }
       else if (this._mediaType == 'webscene') {
         window.open(

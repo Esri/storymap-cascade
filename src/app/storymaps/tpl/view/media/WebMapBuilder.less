@@ -13,11 +13,7 @@
 
   z-index: 2;
   text-align: left;
-  pointer-events: none;
-
-  .esriLayerList {
-    pointer-events: all;
-  }
+  pointer-events: all;
 }
 
 .block-type-webmap:not(.block-size-small) .layer-list-container {
@@ -32,4 +28,6 @@
 
 .background .layer-list-container {
   top: 50px;
+  bottom: 330px;
+  max-height: calc(~"100% - 380px");
 }

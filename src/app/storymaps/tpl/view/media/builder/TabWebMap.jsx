@@ -2,10 +2,9 @@ import TabArcGIS from './TabArcGIS';
 import LayerList from 'esri/dijit/LayerList';
 import ArcgisUtils from 'esri/arcgis/utils';
 
-import i18n from 'lib-build/i18n!./../../../../../resources/tpl/builder/nls/app';
+import i18n from 'lib-build/i18n!resources/tpl/builder/nls/app';
 
 import viewTpl from 'lib-build/hbars!./TabWebMap';
-//import {} from 'lib-build/less!./TabSize';
 
 export default class TabWebMap extends TabArcGIS {
   constructor(params) {
@@ -269,7 +268,9 @@ export default class TabWebMap extends TabArcGIS {
 
     this.attachEvents();
 
-    $(this.map.map.container).addClass('appearance-invite');
+    if (this.map) {
+      $(this.map.map.container).addClass('appearance-invite');
+    }
   }
 
   _updateLocationReset() {
@@ -288,7 +289,9 @@ export default class TabWebMap extends TabArcGIS {
       this.layerList = null;
     }
 
-    $(this.map.map.container).removeClass('appearance-invite');
+    if (this.map) {
+      $(this.map.map.container).removeClass('appearance-invite');
+    }
   }
 
   render() {

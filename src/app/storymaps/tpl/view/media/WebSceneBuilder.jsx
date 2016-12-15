@@ -6,6 +6,12 @@ import BuilderConfigTabManageScene from './builder/TabManageScene';
 import BuilderConfigTabWebScene from './builder/TabWebScene';
 
 import lang from 'dojo/_base/lang';
+import topic from 'dojo/topic';
+
+import issues from '../../builder/Issues';
+import i18n from 'lib-build/i18n!resources/tpl/builder/nls/app';
+
+const text = i18n.builder.mediaErrors;
 
 export default class WebSceneBuilder extends WebScene {
 
@@ -13,6 +19,7 @@ export default class WebSceneBuilder extends WebScene {
     super(webscene);
 
     this._configTabWebScene = null;
+    this._configTabManageScene = null;
     this._onToggleMediaConfig = null;
   }
 
@@ -25,7 +32,52 @@ export default class WebSceneBuilder extends WebScene {
       this._initConfigPanel();
     }
 
+    // listen to when THIS SPECIFIC map gets scanned
+    topic.subscribe('scan/scenes/' + this._webscene.id, lang.hitch(this, this.checkErrors));
+
     this.initBuilderUI();
+
+  }
+
+  checkErrors(scanResult) {
+    // update the map UI based on the scan results
+
+    const errorIds = this.mapErrors(scanResult);
+    if (!errorIds) {
+      this.removeError();
+      return;
+    }
+
+    const unfixableOptions = this.isUnfixableError(errorIds);
+    if (unfixableOptions) {
+      this.setError(unfixableOptions);
+      return;
+    }
+
+    // TODO: something different here?
+    this.setError({errors: scanResult.errors});
+
+  }
+
+  isUnfixableError(errorIds) {
+    let msg, unfixable = false;
+    if (errorIds.indexOf(issues.scenes.deleted) >= 0) {
+      msg = text.placeholders.deleted.replace('${media-type}', text.mediaTypes.webscene);
+      unfixable = true;
+    }
+    else if (errorIds.indexOf(issues.scenes.inaccessible) >= 0) {
+      msg = text.placeholders.inaccessible.replace('${media-type}', text.mediaTypes.webscene);
+      unfixable = true;
+    }
+    else if (errorIds.indexOf(issues.scenes.unauthorized) >= 0) {
+      msg = text.placeholders.unauthorized.replace('${media-type}', text.mediaTypes.webscene);
+      unfixable = true;
+    }
+    if (unfixable) {
+      return {msg, unfixable, showLoadingError: true};
+    }
+    return false;
+
   }
 
   performAction(params) {
@@ -66,11 +118,14 @@ export default class WebSceneBuilder extends WebScene {
         tabs.push(this._configTabWebScene);
       }
       else if (tab == 'manage') {
-        tabs.push(new BuilderConfigTabManageScene({
+        let sceneName = this.getSceneName(this._cache[this.id]);
+        this._configTabManageScene = new BuilderConfigTabManageScene({
           hideRemove: this._placement == 'background',
           mediaType: 'webscene',
-          mediaId: this.id
-        }));
+          mediaId: this.id,
+          sceneName
+        });
+        tabs.push(this._configTabManageScene);
       }
     }
 
@@ -89,9 +144,44 @@ export default class WebSceneBuilder extends WebScene {
     });
   }
 
+  getSceneName(sceneObj) {
+    const sceneItem = this.getSceneItem(sceneObj);
+    if (!sceneItem) {
+      return '';
+    }
+    return sceneItem.title || sceneItem.name;
+  }
+
+  getSceneItem(sceneObj) {
+    return sceneObj && sceneObj.scene && sceneObj.scene.portalItem;
+  }
+
+  findAndSetSceneName(sceneObj) {
+    const sceneItem = this.getSceneItem(sceneObj);
+    if (!sceneItem) {
+      return;
+    }
+    let sceneTitle;
+    if (sceneItem.loaded) {
+      sceneTitle = sceneItem.title || sceneItem.name;
+      this._configTabManageScene && this._configTabManageScene.setSceneName(sceneTitle);
+      return sceneTitle;
+    }
+    else {
+      sceneItem.then(() => {
+        sceneTitle = sceneItem.title || sceneItem.name;
+        this._configTabManageScene && this._configTabManageScene.setSceneName(sceneTitle);
+      });
+    }
+
+  }
+
   _onWebSceneLoaded() {
     this._initConfigPanel();
     this._configTabWebScene.setScene(this._cache[this.id]);
+    if (this._configTabManageScene) {
+      this.findAndSetSceneName(this._cache[this.id]);
+    }
   }
 
   _onConfigChange() {

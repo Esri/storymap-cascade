@@ -9,7 +9,7 @@ import Common from './Common';
 import SidePanelArcGIS from '../sidePanel/SidePanelArcGIS';
 import { ArcGISConnector } from '../../connectors/ArcGIS';
 
-import i18n from 'lib-build/i18n!../../../../_resources/nls/media';
+import i18n from 'lib-build/i18n!commonResources/nls/media';
 var text = i18n.mediaPicker.browsePanel.providers.agol;
 
 class ArcGISContainer extends React.Component {

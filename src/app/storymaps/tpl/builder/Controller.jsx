@@ -17,9 +17,13 @@
 import ControllerCore from '../core/Controller';
 import topic from 'dojo/topic';
 
-import i18n from 'lib-build/i18n!./../../../resources/tpl/builder/nls/app';
+import i18n from 'lib-build/i18n!resources/tpl/builder/nls/app';
 
+import NormalizeHelper from 'issue-checker/helpers/NormalizeHelper';
 import UndoNotification from './notification/Undo';
+
+import Issues from './Issues';
+import Actions from './Actions';
 
 topic.subscribe('builder-section-update', function() {
   ControllerBuilder.storyChange();
@@ -65,45 +69,6 @@ export default class ControllerBuilder extends ControllerCore {
 
   static onScroll(params) {
     super.onScroll(params);
-
-    /*
-    var currentSection = app.display.sections[this._currentSectionIndex],
-        nextSection = app.display.sections[this._currentSectionIndex + 1];
-
-    if (! currentSection) {
-      return;
-    }
-    */
-
-    // TODO
-    /*
-    $('.builder-section-add-menu').removeClass('active');
-
-    if (currentSection.type != 'sequence') {
-      if (! nextSection) {
-        console.log('Need bottom of story menu');
-      }
-      else if (nextSection.type != 'sequence') {
-        var nextSectionTop = nextSection.top,
-            scrollTop = params.scrollTop,
-            needAddMenu = scrollTop + (app.display.windowHeight * 0.9) > nextSectionTop;
-
-        nextSection.node.find('.builder-section-add-menu').toggleClass('active', needAddMenu);
-      }
-    }
-    */
-
-    /*
-    console.log(this._isNavigatingAway, this._currentViewScrollPosition, this._currentViewScrollPosition >= app.display.sectionHeight / 2)
-    if (this._isNavigatingAway && this._currentViewScrollPosition >= app.display.sectionHeight / 2) {
-      this._node.next().find('.builder-imm-after-menu')
-        .addClass('active')
-        .css('top', app.display.windowHeight - this._currentViewScrollPosition);
-    }
-    else {
-      this._node.next().find('.builder-imm-after-menu').removeClass('active');
-    }
-    */
   }
 
   static openSettings() {
@@ -192,18 +157,211 @@ export default class ControllerBuilder extends ControllerCore {
     }
   }
 
-  static serializeStory() {
+  static serializeStory(includeSectionID) {
     var story = [];
 
     for (let section of this._sections) {
       var sectionJSON = section.serialize();
 
       if (sectionJSON) {
+        if (includeSectionID) {
+          // add the section's ID on to the JSON.
+          sectionJSON.id = section.id;
+        }
         story.push(sectionJSON);
       }
     }
 
     return story;
+  }
+
+  static reportScanResults(results, issueSections) {
+    // update each section's scanresults, then broadcast all the results.
+    for (let section of this._sections) {
+      if (issueSections.errorSections.indexOf(section.id) !== -1) {
+        section.setScanResults(true, false);
+      }
+      else {
+        section.setScanResults(false, false);
+      }
+    }
+
+    this._broadcastScanResults(results);
+  }
+
+  static _broadcastScanResults(results) {
+    topic.publish('check-app-complete', results);
+
+    // scan each media type
+    for (let mediaType in results.media) {
+      if (results.media.hasOwnProperty(mediaType)) {
+        this._broadcastMediaResults(results, mediaType);
+      }
+    }
+  }
+
+  static _broadcastMediaResults(results, mediaType) {
+    let items = NormalizeHelper.getAllItems(results.media[mediaType]);
+
+    for (let item of items) {
+      if (!item) {
+        return;
+      }
+
+      // find the issues
+      let itemResult = null;
+
+      if (mediaType === 'maps' || mediaType === 'scenes') {
+        itemResult = {
+          layers: this._extractLayerInfo(item.layers, results),
+          details: item.details,
+          errors: this._findMapSceneIssues(item, results, 'errors')
+        };
+      }
+      else if (mediaType === 'images' || mediaType === 'videos') {
+        itemResult = {
+          errors: this._findMediaIssues(item.errors, results.errors)
+        };
+      }
+      // layers are reported as part of maps and scenes, and webpages/audio aren't scanned, so skip them.
+      else {
+        return;
+      }
+
+      // publish the result!
+      topic.publish(`scan/${mediaType}/${item.id}`, itemResult);
+    }
+  }
+
+  static _extractLayerInfo(layerIDs, results) {
+    let finalLayers = [];
+    // loop thru these.
+    for (let layerID of layerIDs) {
+      // Get the layer
+      let layer = results.media.layers.byId[layerID];
+      // If layer exists,
+      if (layer) {
+        // add its id and details to that panel.
+        finalLayers.push({
+          id: layer.id,
+          details: layer.details
+        });
+      }
+    }
+
+    return finalLayers;
+  }
+
+  static _findMediaIssues(itemIssues, appIssues) {
+    let issues = [];
+
+    // add the issues from the media
+    for (let issueID of itemIssues) {
+      let issue = appIssues.byId[issueID];
+
+      issues.push({
+        id: issue.id,
+        actions: issue.actions
+      });
+    }
+
+    return issues;
+  }
+
+  static _findMapSceneIssues(item, results, severity) {
+    let issues = [];
+
+    for (let issueID of item[severity]) {
+      let issue = results[severity].byId[issueID];
+
+      issues.push({
+        id: issue.id,
+        actions: issue.actions,
+        mediaType: item.mediaType,
+        layers: []
+      });
+    }
+    // we'll report layer issues with their containing map/scene, so find them
+    let layerIssues = this._findLayerIssues(item.layers, results[severity], results.media.layers, severity);
+    // and add them on as well
+    issues = issues.concat(layerIssues);
+    // finally, if maps/scenes and layers both have sharing level issues, we'll combine them
+    this._combineSharingIssues(issues);
+
+    return issues;
+  }
+
+  static _findLayerIssues(layerIDs, appIssues, appLayers, severity) {
+    let issues = [];
+    // loop over the layers, adding the issues for each layer.
+    for (let layerID of layerIDs) {
+      let layer = appLayers.byId[layerID];
+
+      for (let issueID of layer[severity]) {
+        let issue = appIssues.byId[issueID];
+        // see if this layer issue already exists (the scope amongst layers within the map/scene)
+        let existingIssue = issues.find(issueItem => issueItem.id === issue.id);
+
+        if (existingIssue) {
+          // if it's an existing issue, we'll just add this layer to it (we already have the issue ID, the actions, and the media type).
+          existingIssue.layers.push({
+            id: layer.id,
+            details: layer.details
+          });
+        }
+        // otherwise we'll make a new issue.
+        else {
+          issues.push({
+            id: issue.id,
+            actions: issue.actions,
+            mediaType: layer.mediaType,
+            layers: [
+              {
+                id: layer.id,
+                details: layer.details
+              }
+            ]
+          });
+        }
+      }
+    }
+
+    return issues;
+  }
+
+  static _combineSharingIssues(issues) {
+    // see if both map and layer sharing issues exist...
+    let layerUnsharedIndex = issues.findIndex(issueItem => issueItem.id === Issues.layers.unshared);
+    let mapUnsharedIndex = issues.findIndex(issueItem => issueItem.id === Issues.maps.unshared);
+
+    if (layerUnsharedIndex !== -1 && mapUnsharedIndex !== -1) {
+      // if so, take the details from both, and create a new, "combined" one.
+      let layerIssue = issues[layerUnsharedIndex];
+      let combinedIssue = {
+        // since it deals with both maps and layers, we'll call the id 'content/*'
+        id: Issues.content.unshared,
+        // update the ID on the actions as well (if the action is to share).
+        actions: layerIssue.actions.map(action => {
+          return {
+            fix: action.fix,
+            id: Actions.content.share
+          };
+        }),
+        // and the media type will signify both maps/scenes and layers are involved
+        mediaType: 'content',
+        layers: layerIssue.layers
+      };
+
+      // stick the combined issue before the map issue (so it shows up in the same position as the map one did)
+      issues.splice(mapUnsharedIndex, 0, combinedIssue);
+
+      // and remove the map and layer issues.
+      let newMapUnsharedIndex = issues.findIndex(issueItem => issueItem.id === Issues.maps.unshared);
+      issues.splice(newMapUnsharedIndex, 1);
+
+      let newLayerUnsharedIndex = issues.findIndex(issueItem => issueItem.id === Issues.layers.unshared);
+      issues.splice(newLayerUnsharedIndex, 1);
+    }
   }
 
   static getStoryOverview() {
@@ -233,7 +391,8 @@ export default class ControllerBuilder extends ControllerCore {
           hasDelete: false,
           hasHide: false,
           hasDuplicate: false,
-          hasOrganize: false
+          hasOrganize: false,
+          scanResults: section.getScanResults()
         });
       }
       else if (type == 'credits') {
@@ -244,7 +403,8 @@ export default class ControllerBuilder extends ControllerCore {
           hasDelete: true,
           hasHide: true,
           hasDuplicate: false,
-          hasOrganize: false
+          hasOrganize: false,
+          scanResults: section.getScanResults()
         });
       }
       else if (type == 'title') {
@@ -258,7 +418,8 @@ export default class ControllerBuilder extends ControllerCore {
           hasDelete: ! onlyOneSectionInStory,
           hasHide: true,
           hasDuplicate: true,
-          hasOrganize: true
+          hasOrganize: true,
+          scanResults: section.getScanResults()
         });
       }
       else if (type == 'sequence') {
@@ -273,11 +434,12 @@ export default class ControllerBuilder extends ControllerCore {
           style: storyIsEmpty ? 'simple-text' : 'thumbnail',
           size: 'tall',
           thumbnail: section.getPreviewThumbnail(),
-          text: storyIsEmpty ? 'As you build your story, the sections will appear here.' : section.getPreviewText(),
+          text: storyIsEmpty ? i18n.builder.builderPanel.invite : section.getPreviewText(),
           hasDelete: ! onlyOneSectionInStory,
           hasHide: true,
           hasDuplicate: ! storyIsEmpty,
-          hasOrganize: ! onlyOneSectionInStory
+          hasOrganize: ! onlyOneSectionInStory,
+          scanResults: section.getScanResults()
         });
       }
       else {
@@ -292,7 +454,8 @@ export default class ControllerBuilder extends ControllerCore {
           hasDelete: ! onlyOneSectionInStory,
           hasHide: true,
           hasDuplicate: true,
-          hasOrganize: true
+          hasOrganize: true,
+          scanResults: section.getScanResults()
         });
       }
     }
@@ -306,8 +469,6 @@ export default class ControllerBuilder extends ControllerCore {
    *  - add the section defined by p.section if specified (JSON)
    */
   static addSection(p) {
-    console.log('addSection:', p);
-
     if (! p || ! (p.type || p.section)) {
       return;
     }
@@ -395,8 +556,6 @@ export default class ControllerBuilder extends ControllerCore {
   }
 
   static splitAndAddSection(p) {
-    console.log('splitAndAddSection:', p);
-
     if (! p || ! p.type) {
       return;
     }
@@ -472,8 +631,6 @@ export default class ControllerBuilder extends ControllerCore {
   }
 
   static deleteSection(p) {
-    console.log('deleteSection:', p);
-
     if (! p || ! p.index) {
       return;
     }
@@ -509,6 +666,8 @@ export default class ControllerBuilder extends ControllerCore {
     }
 
     topic.publish('builder-section-update');
+    // do an issue check
+    topic.publish('builder-should-check-story');
 
     if (p.navigation !== false || mergeData.hasMerged) {
       window.requestAnimationFrame(function() {
@@ -533,7 +692,7 @@ export default class ControllerBuilder extends ControllerCore {
     if (p.undo !== false) {
       var undoNotification = new UndoNotification({
         container: this._container.find('.section').eq(p.index + 1),
-        label: 'You deleted a section', // TODO
+        label: i18n.builder.controller.sectionDelete,
         clearFollowingsAfterUndo: true
       });
 
@@ -549,8 +708,6 @@ export default class ControllerBuilder extends ControllerCore {
   }
 
   static duplicateSection(p) {
-    console.log('duplicateSection:', p);
-
     if (! p || ! p.index) {
       return;
     }
@@ -574,6 +731,8 @@ export default class ControllerBuilder extends ControllerCore {
     });
 
     topic.publish('builder-section-update');
+    // do an issue check
+    topic.publish('builder-should-check-story');
   }
 
   static getSectionsIndexesByIds(sectionsIds) {
@@ -598,8 +757,6 @@ export default class ControllerBuilder extends ControllerCore {
    *
    */
   static organizeSections(sectionIndexes, isUndo) {
-    console.log('organizeSections:', sectionIndexes);
-
     //
     // Check if the specified new order require a change
     //
@@ -666,7 +823,7 @@ export default class ControllerBuilder extends ControllerCore {
     // Merge eventual consecutive sequence sections
     let mergeData = this._mergeConsecutiveSequenceSections(newCurrentSection);
 
-    let undoLabel = 'You organized the sections';
+    let undoLabel = i18n.builder.controller.sectionOrganize;
     if (mergeData.hasMerged) {
       newCurrentSectionIndex = mergeData.newCurrentSectionIndex;
 
@@ -758,6 +915,8 @@ export default class ControllerBuilder extends ControllerCore {
     }.bind(this));
 
     topic.publish('builder-section-update');
+    // do an issue check
+    topic.publish('builder-should-check-story');
 
     if (this._currentSectionIndex != currentIndexBackup) {
       window.requestAnimationFrame(function() {

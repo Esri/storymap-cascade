@@ -4,6 +4,7 @@ import AddMenu from './AddMenu';
 
 import viewTpl from 'lib-build/hbars!./CreditsPlaceholder';
 import {} from 'lib-build/less!./CreditsPlaceholder';
+import i18n from 'lib-build/i18n!resources/tpl/builder/nls/app';
 
 export default class CreditsPlaceholder {
   constructor() {
@@ -11,6 +12,11 @@ export default class CreditsPlaceholder {
     this.id = UIUtils.getUID();
 
     this._node = null;
+
+    this.scanResults = {
+      hasErrors: false,
+      hasWarnings: false
+    };
 
     this._addMenu = new AddMenu({
       buttons: ['sequence', 'title', 'immersive']
@@ -26,7 +32,8 @@ export default class CreditsPlaceholder {
             value: '#777'
           }
         })
-      })
+      }),
+      invite: i18n.builder.credits.sectionInvite
     });
   }
 
@@ -66,5 +73,13 @@ export default class CreditsPlaceholder {
       type: 'credits',
       index: this._node.index()
     });
+  }
+
+  getScanResults() {
+    return this.scanResults;
+  }
+
+  setScanResults(hasErrors, hasWarnings) {
+    Object.assign(this.scanResults, {hasErrors}, {hasWarnings});
   }
 }

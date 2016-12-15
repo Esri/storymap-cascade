@@ -10,8 +10,8 @@ var AnchorPreview = MediumEditor.extensions.anchorPreview.extend({
   getTemplate: function() {
     return '<div class="medium-editor-toolbar-anchor-preview" id="medium-editor-toolbar-anchor-preview">' +
       '    <a class="medium-editor-toolbar-anchor-preview-inner" target="_blank"></a>' +
-      '    <i class="fa fa-trash-o delete-btn" aria-hidden="true" title="Delete"></i>' +
-      '    <i class="fa fa-pencil edit-btn" aria-hidden="true" title="Edit"></i>' +
+      '    <i class="fa fa-trash-o delete-btn" aria-hidden="true"></i>' +
+      '    <i class="fa fa-pencil edit-btn" aria-hidden="true"></i>' +
       '</div>';
   },
   handleClick: function(event) {

@@ -3,7 +3,7 @@ import constants from './../../constants';
 import Helper from '../../utils/Helper';
 import {} from 'lib-build/less!./GalleryItem';
 import topic from 'dojo/topic';
-import i18n from 'lib-build/i18n!../../../../_resources/nls/media';
+import i18n from 'lib-build/i18n!commonResources/nls/media';
 var text = i18n.mediaPicker.browsePanel.providers.galleryItems;
 
 class GalleryItemDiv extends React.Component {

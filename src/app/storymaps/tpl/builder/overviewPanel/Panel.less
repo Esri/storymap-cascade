@@ -1,5 +1,6 @@
 @import './Variables';
 @import '../../../common/Core';
+@import '../../../tpl/core/Variables';
 
 .organize-gradient-horizontal {
   background: -webkit-linear-gradient(left, rgba(0,0,0,0) 0%,rgba(0,0,0,0.4) 30%,rgba(0,0,0,1) 100%);
@@ -10,6 +11,33 @@
   display: flex;
   flex: 1;
   flex-direction: column;
+
+  .overview-orientation {
+    width: 320px;
+    position: absolute;
+    top: 0;
+    left: 200px;
+    height: 100%;
+    color: white;
+    padding: 10px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .overview-orientation-text {
+      font-size: 18px;
+      line-height: 1.4;
+      font-family: @font-family-sans-serif;
+    }
+
+    @media(max-width: 900px) {
+      width: 270px;
+
+      .overview-orientation-text {
+        font-size: 16px;
+      }
+    }
+  }
 
   .organize-toggle {
     display: flex;

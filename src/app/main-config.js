@@ -1,4 +1,6 @@
 function loadJS(url, isExternal) {
+  var script = document.createElement('script');
+
   if (isExternal) {
     url = document.location.protocol == 'file:' ? 'http:' + url : url;
   }
@@ -6,8 +8,9 @@ function loadJS(url, isExternal) {
     url += '?v=' + app.version + (!app.isProduction ? '&_=' + new Date().getTime() : '');
   }
 
-  // jshint -W060
-  document.write('<script language=\'javascript\' type=\'text/javascript\' src=\'' + url + '\'><\/script>');
+  script.src = url;
+  script.async = false;
+  document.body.appendChild(script);
 }
 
 function loadCSS(url, isExternal) {
@@ -55,6 +58,9 @@ function defineDojoConfig() {
     isDebug: false,
     useDeferredInstrumentation: true,
     /*cacheBust: ! app.isProduction,*/
+    has: {
+      'dojo-preload-i18n-Api': false
+    },
     packages: [
       {
         name: 'storymaps',
@@ -63,6 +69,10 @@ function defineDojoConfig() {
       {
         name: 'storymaps-react',
         location: path3 + 'build/app/storymaps'
+      },
+      {
+        name: 'issue-checker',
+        location: path3 + 'build/app/storymaps/issue-checker'
       },
       {
         name: 'lib',
@@ -108,6 +118,10 @@ app.isProduction = false;
 
 defineDojoConfig();
 window.dojoConfig.locale = 'en';
+
+if (location.search.match(/locale=([\w\-]+)/)) {
+  window.dojoConfig.locale = RegExp.$1;
+}
 
 app.isInBuilder = getUrlVar('edit') || getUrlVar('fromScratch') || getUrlVar('fromscratch');
 app.indexCfg = configOptions; // eslint-disable-line no-undef
@@ -188,3 +202,5 @@ if (window.location.href.toLowerCase().indexOf('storymaps.esri.com') >= 0) {
     s.parentNode.insertBefore(ga, s);
   })();
 }
+
+loadJS('app/custom-scripts.js');

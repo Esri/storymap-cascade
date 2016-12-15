@@ -44,56 +44,6 @@
   }
 
   /*
-  would be what you want, placeholder disapear on click but creates other issues
-  .cover-title[contenteditable=true]:focus:before {
-    display: none;
-  }
-  */
-
-  /*
-
-  TODO: Attempt to get a blinking cursor when the field is not selected
-  Should probably just make it red when there is no title
-
-  .cover-title::before {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    border-left: 1px solid #A00;
-    animation: blink 1s infinite;
-    -webkit-animation: blink 1s infinite;
-  }
-
-  .cover-title-mock-cursor {
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: none;
-
-    width: 1px;
-    height: 49px;
-    border-left: 1px solid #A00;
-
-    animation: blink 1s infinite;
-    -webkit-animation: blink 1s infinite;
-  }
-
-  .cover-title[contenteditable=true]:empty ~ .cover-title-mock-cursor {
-    display: block;
-  }
-
-  .cover-title[contenteditable=true]:focus ~ .cover-title-mock-cursor {
-    display: none;
-  }
-
-  @-webkit-keyframes blink {
-    0%, 49.9%, 100%   { opacity: 0; }
-    50%, 99.9% { opacity: 1; }
-  }
-  */
-
-  /*
    * Subtitle
    */
 
@@ -109,7 +59,7 @@
 
   .foreground {
     .text-background {
-      min-width: 95%;      
+      min-width: 90%;
     }
 
     .title-text {

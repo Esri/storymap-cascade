@@ -2,7 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {} from 'lib-build/less!./SidePanelFlickr';
 import constants from '../../constants';
-import i18n from 'lib-build/i18n!../../../../_resources/nls/media';
+import i18n from 'lib-build/i18n!commonResources/nls/media';
+import Helper from '../../utils/Helper';
 
 var text = i18n.mediaPicker.browsePanel.sidePanel.flickr;
 
@@ -26,7 +27,7 @@ class TypeToggle extends React.Component {
         <label
           className={'btn btn-gray' + (this.isSelected('TEXT') ? ' active' : '')}
           htmlFor="flickr-text"
-          onClick={(evt) => this.thisOnClick(evt)}>{text.searchType.text}
+          onClick={(evt) => this.thisOnClick(evt)}>{this.props.textLabel}
           <input
             onChange={(evt) => this.thisOnClick(evt)}
             type="radio"
@@ -39,7 +40,7 @@ class TypeToggle extends React.Component {
         <label
           className={'btn btn-gray' + (this.isSelected('USER') ? ' active' : '')}
           htmlFor="flickr-user"
-          onClick={(evt) => this.thisOnClick(evt)}>{text.searchType.account}
+          onClick={(evt) => this.thisOnClick(evt)}>{this.props.userLabel}
           <input
             onChange={(evt) => this.thisOnClick(evt)}
             type="radio"
@@ -171,31 +172,51 @@ class UserSearchAlert extends React.Component {
     switch (this.props.status) {
       case constants.userFetchError.NO_USER:
       case constants.userFetchError.ERROR:
-        msg = text.errors.cannotFindUser + ' ' + this.props.triedUser + '. ';
+        msg = Helper.mixinString(text.errors.cannotFindUser, 'username', this.props.triedUser);
         break;
       case constants.userFetchError.NO_PHOTOS:
-        msg = this.props.triedUser + ' ' + text.errors.noUserPhotos + ' ';
+        msg = Helper.mixinString(text.errors.noUserPhotos, 'username', this.props.triedUser);
         break;
       default:
-        msg = text.errors.generalUserError + ' ' + this.props.triedUser + '.';
+        msg = Helper.mixinString(text.errors.generalUserError, 'username', this.props.triedUser);
     }
     var altUser = this.props.altUsername;
     if (this.props.altNSID) {
       altUser += ' (' + this.props.altNSID + ')';
     }
-    var altDisplay = {
-      display: this.props.altUsername ? 'inline' : 'none'
-    };
+
+    if (this.props.altUsername) {
+      let splitArr = text.errors.didYouMean.split(/\$\{(.+?)\}/);
+      let divArr = splitArr.map((str, i) => {
+        const reactKey = 'didyoumean-' + i;
+        let spanStr = str;
+        if (str === 'username') {
+          return (
+            <a key={reactKey}
+               href="#"
+               className="alert-link"
+               onClick={this.props.tryDifferentUser}>
+               {altUser}
+            </a>
+          );
+        }
+        return (
+          <span key={reactKey}>{spanStr}</span>
+        );
+      });
+
+      return (
+        <div className="alert alert-danger" role="alert" style={style}>
+          <span>{msg}&nbsp;</span>
+          <div style={{display: 'inline'}}>
+            {divArr}
+          </div>
+        </div>
+      );
+    }
     return (
       <div className="alert alert-danger" role="alert" style={style}>
-        <span>{msg}</span>
-        <div style={altDisplay}>
-          <span>{text.errors.didYouMean}&nbsp;</span>
-          <a href="#" className="alert-link" onClick={this.props.tryDifferentUser}>
-            {altUser}
-          </a>
-          ?
-        </div>
+        <span>{msg}&nbsp;</span>
       </div>
     );
   }
@@ -293,6 +314,8 @@ class SidePanelFlickr extends React.Component {
     return (
       <div className="mp-sidepanel flickr">
         <TypeToggle
+          textLabel={Helper.unescapeBrands(text.searchType.text)}
+          userLabel={Helper.unescapeBrands(text.searchType.account)}
           selectedTab={this.props.providerProps.selectedTab}
           onChange={this.props.onKeyPress.searchType} />
         <UserSearch

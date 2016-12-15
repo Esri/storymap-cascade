@@ -8,6 +8,7 @@ import topic from 'dojo/topic';
 import lang from 'dojo/_base/lang';
 
 import {} from 'lib-build/less!./ImmersiveBuilder';
+import i18n from 'lib-build/i18n!resources/tpl/builder/nls/app';
 
 export default class ImmersiveBuilder extends Immersive {
 
@@ -23,9 +24,11 @@ export default class ImmersiveBuilder extends Immersive {
     this._builderPanelNode = null;
 
     this._initialMedia = media;
-    this._titleConfig = new ImmersiveTitleConfig({
-      applyConfigCallback: this._onTitleConfigChange.bind(this)
-    });
+    this._titleConfig = null;
+    this.scanResults = {
+      hasErrors: false,
+      hasWarnings: false
+    };
 
     this._addMenu = new AddMenu({
       buttons: ['sequence', 'title', 'immersive']
@@ -34,21 +37,43 @@ export default class ImmersiveBuilder extends Immersive {
 
   render() {
     var views = this._section.views;
+    var defaultTransition = 'fade-fast';
 
     // Creating a new section
     if (! views || ! views.length) {
       var media = this._initialMedia || { type: 'empty', empty: 'empty' };
 
       this._section.views = [{
-        transition: 'fade-fast',
+        transition: defaultTransition,
         background: SectionCommon.initMedia(media).serialize(),
         foreground: {
           panels: [
-            app.ui.ImmersivePanelFactory.createInstance().serialize()
-          ]
+            app.ui.ImmersivePanelFactory.createInstance(null, defaultTransition).serialize()
+          ],
+          title: {
+            style: {
+              shadow: false,
+              text: 'dark',
+              background: 'light'
+            }
+          }
         }
       }];
     }
+
+    // if there's an existing view but without a title style
+    if (!this._section.views[0].foreground.title.style) {
+      this._section.views[0].foreground.title.style = {
+        shadow: true,
+        text: 'light',
+        background: null
+      };
+    }
+
+    this._titleConfig = new ImmersiveTitleConfig({
+      applyConfigCallback: this._onTitleConfigChange.bind(this),
+      style: this._section.views[0].foreground && this._section.views[0].foreground.title ? this._section.views[0].foreground.title.style : null
+    });
 
     return super.render({
       titleConfigPanel: this._titleConfig.render()
@@ -79,7 +104,7 @@ export default class ImmersiveBuilder extends Immersive {
 
     this._node.find('.background-title h2')
       .attr('contenteditable', true)
-      .attr('placeholder', 'Enter a title...')
+      .attr('placeholder', i18n.builder.title.placeholder)
       .on('blur keyup', function() {
         this.serialize();
         this._onContentChange();
@@ -376,6 +401,9 @@ export default class ImmersiveBuilder extends Immersive {
 
     this._medias[mediaIndex] = newMedia;
 
+    // do an issue check -- do this before this.update()
+    SectionCommon.checkMedia(newMediaJSON);
+
     this.update();
     newMedia.getNode().addClass('active');
   }
@@ -431,6 +459,7 @@ export default class ImmersiveBuilder extends Immersive {
 
     var panel = app.ui.ImmersivePanelFactory.duplicateWithoutContent(
       this._panels[index] ? this._panels[index].serialize() : null,
+      defaultTransition,
       {
         onUpdateLayout: this.onUpdatePanelLayout.bind(this),
         onChange: this._onContentChange.bind(this)
@@ -522,6 +551,7 @@ export default class ImmersiveBuilder extends Immersive {
 
     panel = app.ui.ImmersivePanelFactory.createInstance(
       panel,
+      transition,
       {
         onUpdateLayout: this.onUpdatePanelLayout.bind(this),
         onChange: this._onContentChange.bind(this)
@@ -545,6 +575,9 @@ export default class ImmersiveBuilder extends Immersive {
     //
     // Navigate to the new view
     //
+
+    // do an issue check
+    SectionCommon.checkMedia(params.media);
 
     this.update();
     this.navigateToViewByIndex({
@@ -576,6 +609,9 @@ export default class ImmersiveBuilder extends Immersive {
     this._panels.splice(index, 1);
     this._medias.splice(index, 1);
     this._transitions.splice(index, 1);
+
+    // do an issue check
+    topic.publish('builder-should-check-story');
 
     this.update();
 
@@ -676,6 +712,7 @@ export default class ImmersiveBuilder extends Immersive {
 
     var newPanel = app.ui.ImmersivePanelFactory.duplicateWithoutContent(
       this._panels[index].serialize(),
+      transition,
       {
         onUpdateLayout: this.onUpdatePanelLayout.bind(this),
         onChange: this._onContentChange.bind(this)
@@ -698,6 +735,9 @@ export default class ImmersiveBuilder extends Immersive {
     //
 
     this._transitions.splice(index + 1, 0, transition);
+
+    // do an issue check
+    topic.publish('builder-should-check-story');
 
     //
     // Navigate to the new view
@@ -729,6 +769,13 @@ export default class ImmersiveBuilder extends Immersive {
 
   _updateTransition(index, transitionType) {
     console.log('updateTransition:', index, transitionType);
+
+    // change the class name of the panel that correlates to the transition type
+    if (this._transitions[index] && transitionType) {
+      let panelClassPrefix = 'view-transition-';
+      this._node.find('.imm-panel').eq(index).removeClass(panelClassPrefix + this._transitions[index])
+        .addClass(panelClassPrefix + transitionType);
+    }
 
     if (this._currentViewIndex - 1 == index) {
       this._applyViewTransition({
@@ -867,7 +914,7 @@ export default class ImmersiveBuilder extends Immersive {
     if (showUndo) {
       var undoNotification = new UndoNotification({
         container: this._node,
-        label: 'You organized the views', // TODO
+        label: i18n.builder.controller.immersiveOrganize,
         positionTop: 70
       });
 
@@ -919,5 +966,13 @@ export default class ImmersiveBuilder extends Immersive {
     }
 
     return viewsIndexes;
+  }
+
+  getScanResults() {
+    return this.scanResults;
+  }
+
+  setScanResults(hasErrors, hasWarnings) {
+    Object.assign(this.scanResults, {hasErrors}, {hasWarnings});
   }
 }

@@ -1,6 +1,6 @@
 import $ from 'jquery';
 import config from '../config';
-import i18n from 'lib-build/i18n!../../../_resources/nls/media';
+import i18n from 'lib-build/i18n!commonResources/nls/media';
 import constants from '../constants';
 
 var text = i18n.mediaPicker.browsePanel.providers.flickr;
@@ -164,6 +164,46 @@ var FlickrConnector = (function() {
     });
   };
 
+  var checkPhotoByUrl = function(url) {
+    return new Promise((resolve, reject) => {
+      var photo_id = getPhotoIdFromUrl(url);
+
+      request('flickr.photos.getSizes', {photo_id})
+        .done(result => {
+          if (!checkSizesResponse(result)) {
+            reject({reason: 'no photo or no sizes', result});
+            return;
+          }
+          if (!findUrlInSizes(url, result.sizes.size)) {
+            reject({reason: 'matching url not found in flickr.getSizes result'});
+            return;
+          }
+          resolve(result);
+        })
+        .fail((xhr, status, err) => {
+          console.debug('fail', xhr, status, err);
+          reject({reason: 'getSizes call failed', status, err});
+        });
+    });
+  };
+
+  var getPhotoIdFromUrl = function(url) {
+    var lastSlash = url.lastIndexOf('/');
+    var firstUnderscore = url.indexOf('_', lastSlash);
+    return url.slice(lastSlash + 1, firstUnderscore);
+  };
+
+  var findUrlInSizes = function(url, sizesArr) {
+    var noProtocolUrl = url.replace(/^https?:/, '').replace(/^\/\//, '');
+    return sizesArr.some(function(sizeObj) {
+      return sizeObj.source && sizeObj.source.indexOf(noProtocolUrl) >= 0;
+    });
+  };
+
+  var checkSizesResponse = function(response) {
+    return response.stat === 'ok' && response.sizes && response.sizes.size && response.sizes.size.length;
+  };
+
   var getPhotoUrlOptions = function(photo) {
     return new Promise((resolve) => {
       const fallback = {
@@ -173,7 +213,7 @@ var FlickrConnector = (function() {
       };
       request('flickr.photos.getSizes', {photo_id: photo.id})
         .done(result => {
-          if (result.stat !== 'ok' || !result.sizes || !result.sizes.size || !result.sizes.size.length) {
+          if (!checkSizesResponse(result)) {
             resolve(fallback);
             return;
           }
@@ -307,7 +347,8 @@ var FlickrConnector = (function() {
   return {
     getProviderAlbums: getProviderAlbums,
     getItemsInAlbum: getPicturesInSet,
-    photoSearch: searchPhotos
+    photoSearch: searchPhotos,
+    checkPhotoByUrl: checkPhotoByUrl
   };
 }());
 

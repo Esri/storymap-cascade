@@ -1,5 +1,6 @@
 import Image from './Image';
 import {} from 'lib-build/less!./ImageBuilder';
+import i18n from 'lib-build/i18n!resources/tpl/builder/nls/app';
 
 import BuilderConfig from './builder/Panel';
 import BuilderConfigTabSizeImage from './builder/TabSizeImage';
@@ -11,6 +12,10 @@ import CancelNotification from '../../builder/notification/Cancel';
 
 import lang from 'dojo/_base/lang';
 import topic from 'dojo/topic';
+
+import issues from '../../builder/Issues';
+
+const text = i18n.builder;
 
 export default class ImageBuilder extends Image {
   constructor(image) {
@@ -70,11 +75,46 @@ export default class ImageBuilder extends Image {
 
       this._node.find('.img-gallery-add').tooltip({
         container: 'body',
-        title: i18n.builder.imageGallery.addImage
+        title: text.imageGallery.addImage
       });
     }
 
+    // we subscribe to the scan change for this SPECIFIC image only (hence the scan/image/imageID pattern).
+    topic.subscribe('scan/images/' + this._image.url, lang.hitch(this, this.checkErrors));
+
     this.initBuilderUI();
+  }
+
+  checkErrors(scanResult) {
+    // update the map UI based on the scan results
+
+    const errorIds = this.mapErrors(scanResult);
+    if (!errorIds) {
+      this.removeError();
+      return;
+    }
+
+    const unfixableOptions = this.isUnfixableError(errorIds);
+    if (unfixableOptions) {
+      this.setError(unfixableOptions);
+      return;
+    }
+
+    // TODO: something different here?
+    this.setError({errors: scanResult.errors});
+
+  }
+
+  isUnfixableError(errorIds) {
+    var errorText = text.mediaErrors;
+    if (errorIds.indexOf(issues.images.inaccessible) >= 0) {
+      return {
+        msg: errorText.placeholders.inaccessible.replace('${media-type}', errorText.mediaTypes.image),
+        unfixable: true,
+        showLoadingError: true
+      };
+    }
+    return false;
   }
 
   serialize() {
@@ -104,7 +144,7 @@ export default class ImageBuilder extends Image {
   _onUploadStart() {
     this._uploadNotification = new CancelNotification({
       container: this._node.parents('.section').eq(0),
-      label: 'Image upload in progress...' // TODO
+      label: text.media.imageUpload
     });
 
     this._node.find('.img-gallery-invite').addClass('disabled');
@@ -133,7 +173,7 @@ export default class ImageBuilder extends Image {
     if (this._uploadNotification) {
       this._uploadNotification.update({
         type: 'success',
-        label: 'Image uploaded successfully'
+        label: text.media.imageUploadSuccess
       });
     }
 
@@ -150,7 +190,7 @@ export default class ImageBuilder extends Image {
     if (this._uploadNotification) {
       this._uploadNotification.update({
         type: 'error',
-        label: 'Image upload failed'
+        label: text.media.imageUploadFail
       });
     }
 

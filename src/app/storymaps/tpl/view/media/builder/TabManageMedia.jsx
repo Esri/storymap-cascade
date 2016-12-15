@@ -3,7 +3,7 @@ import Tab from './Tab';
 import viewTpl from 'lib-build/hbars!./TabManageMedia';
 //import {} from 'lib-build/less!./TabSize';
 
-import i18n from 'lib-build/i18n!./../../../../../resources/tpl/builder/nls/app';
+import i18n from 'lib-build/i18n!resources/tpl/builder/nls/app';
 
 export default class TabManageMedia extends Tab {
   constructor(params) {

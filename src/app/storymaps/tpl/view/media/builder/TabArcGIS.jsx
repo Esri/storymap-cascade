@@ -1,6 +1,6 @@
 import Tab from './Tab';
 
-import i18n from 'lib-build/i18n!./../../../../../resources/tpl/builder/nls/app';
+import i18n from 'lib-build/i18n!resources/tpl/builder/nls/app';
 
 export default class TabArcGIS extends Tab {
   constructor(params) {

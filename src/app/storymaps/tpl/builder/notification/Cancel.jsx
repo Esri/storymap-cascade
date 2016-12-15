@@ -2,6 +2,7 @@ import Notification from './Notification';
 
 import viewTpl from 'lib-build/hbars!./Cancel';
 import {} from 'lib-build/less!./Cancel';
+import i18n from 'lib-build/i18n!resources/tpl/builder/nls/app';
 
 const DEFAULT_DELAY = 5000;
 
@@ -18,7 +19,8 @@ export default class Cancel extends Notification {
       id: this._id,
       label: this._label,
       displayCancel: this._type == 'start',
-      labelCancel: 'Cancel' // TODO
+      labelCancel: i18n.builder.notification.cancel,
+      labelClose: i18n.builder.notification.close
     });
   }
 

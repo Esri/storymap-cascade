@@ -143,6 +143,7 @@ export default class Immersive {
       if (panelJSON) {
         var panel = app.ui.ImmersivePanelFactory.createInstance(
           panelJSON,
+          view.transition,
           {
             onUpdateLayout: app.isInBuilder ? this.onUpdatePanelLayout.bind(this) : null,
             onChange: app.isInBuilder ? this._onContentChange.bind(this) : null
@@ -425,7 +426,7 @@ export default class Immersive {
             if (transition == 'swipe-vertical') {
               /* todo: should be more so that the cut is not right above scroll-full panel
                  but this require to have the media visible outside of it's view */
-              //mediaHeight -= 20;
+              // mediaHeight -= 20;
 
               swipePosition = mediaHeight - this._currentViewScrollPosition;
 
@@ -444,8 +445,15 @@ export default class Immersive {
                 .toggleClass('trans-horizontal', false)
                 .addClass('active');
             }
-            else if(transition == 'swipe-horizontal') {
-              swipePosition = mediaWidth - (this._currentViewScrollPosition / mediaHeight) * mediaWidth;
+            else if (transition == 'swipe-horizontal') {
+              let swipeRatio = this._currentViewScrollPosition / mediaHeight;
+              // if the swiped media is "almost all the way" swiped, round so it's swiped all the way.
+              if (swipeRatio >= 0.97) {
+                swipePosition = 0;
+              }
+              else {
+                swipePosition = mediaWidth - swipeRatio * mediaWidth;
+              }
 
               currentMedia.getNode().css(
                 'clip',

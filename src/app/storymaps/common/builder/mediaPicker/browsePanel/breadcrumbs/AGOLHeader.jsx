@@ -1,6 +1,6 @@
 import React from 'react';
 import constants from '../../constants';
-import i18n from 'lib-build/i18n!../../../../_resources/nls/media';
+import i18n from 'lib-build/i18n!commonResources/nls/media';
 import {} from 'lib-build/less!./AGOLHeader';
 
 var text = i18n.mediaPicker.browsePanel.sidePanel.agol;
@@ -52,6 +52,7 @@ class FilterToggle extends React.Component {
         className={'btn btn-clear' + (this.props.checked ? ' active' : '')}
         tabIndex="4"
         htmlFor={this.props.id}
+        title={this.props.label}
         onKeyPress={this.props.onClick} // keyboard navigation
         onClick={this.props.onClick} >
         {this.getIconSpan()}
@@ -195,6 +196,7 @@ class SortToggle extends React.Component {
       <label
         className={'btn btn-clear' + (this.props.checked ? ' active' : '')}
         tabIndex="5"
+        title={this.props.hoverText}
         htmlFor={this.props.id}
         onKeyPress={this.props.onClick}
         onClick={this.props.onClick} >
@@ -247,6 +249,7 @@ class SortToggles extends React.Component {
           checked={this.isSelected('DATE')}
           order={this.props.sortOrder.date}
           label={text.filterAndSort.date}
+          hoverText={text.filterAndSort.sortByDate}
         />
         <SortToggle
           id="title-sort"
@@ -255,6 +258,7 @@ class SortToggles extends React.Component {
           checked={this.isSelected('TITLE')}
           order={this.props.sortOrder.title}
           label={text.filterAndSort.title}
+          hoverText={text.filterAndSort.sortByTitle}
         />
       </div>
     );

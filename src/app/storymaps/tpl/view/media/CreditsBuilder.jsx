@@ -2,13 +2,14 @@ import Credits from './Credits';
 import CommonHelper from 'storymaps/common/utils/CommonHelper';
 
 import viewTpl from 'lib-build/hbars!./CreditsItemBuilder';
-import i18n from 'lib-build/i18n!./../../../../resources/tpl/builder/nls/app';
+import i18n from 'lib-build/i18n!resources/tpl/builder/nls/app';
 import lang from 'dojo/_base/lang';
 
 export default class CreditsBuilder extends Credits {
   constructor(credits) {
     super(credits);
 
+    this._onContentChange = null;
     // builder variable
   }
 
@@ -96,7 +97,12 @@ export default class CreditsBuilder extends Credits {
             trigger.popover('hide');
           }
         }, 50);
+        self._onContentChange();
         self.validate(element, trigger);
+      });
+
+      popover.$tip && popover.$tip.find('.credit-link').on('keyup', () => {
+        self._onContentChange();
       });
 
       popover.$tip && popover.$tip.find('.credit-link').on('paste', event => {
@@ -177,6 +183,7 @@ export default class CreditsBuilder extends Credits {
       itemContainer.after(this.renderEmptyCredit());
       // and then add its events
       this.addEvents(itemContainer.next('.cr-item'));
+      this._onContentChange();
     });
 
     element.find('.cr-item-remove').on('click', event => {
@@ -196,6 +203,7 @@ export default class CreditsBuilder extends Credits {
         // and add an event to it (it is the "last" child there -- should be the only child there)
         this.addEvents(creditsListNode.children(':last'));
       }
+      this._onContentChange();
     });
 
     element.find('.cr-item-input').on('keyup', event => {
@@ -228,6 +236,7 @@ export default class CreditsBuilder extends Credits {
           parent.addClass('cr-incomplete');
         }
       }
+      this._onContentChange();
     });
 
     // if hit enter on a filled-out row, put in a new credit row beneath it.
@@ -266,6 +275,7 @@ export default class CreditsBuilder extends Credits {
       let target = $(event.currentTarget);
 
       this.validate(element, target);
+      this._onContentChange();
     });
   }
 
@@ -301,6 +311,7 @@ export default class CreditsBuilder extends Credits {
 
   postCreate(params) {
     super.postCreate(params);
+    this._onContentChange = params.onContentChange;
 
     this.addEvents(this._node.find('.cr-item'));
   }

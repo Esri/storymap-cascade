@@ -5,13 +5,14 @@ import MediumEditorWrapper from 'storymaps-react/common/builder/textEditor/Mediu
 
 import {} from 'lib-build/less!./PanelBuilder';
 import viewTpl from 'lib-build/hbars!./PanelBuilder';
+import i18n from 'lib-build/i18n!resources/tpl/builder/nls/app';
 
 import topic from 'dojo/topic';
 import lang from 'dojo/_base/lang';
 
 export default class PanelBuilder extends Panel {
-  constructor(panel, callbacks) {
-    super(panel);
+  constructor(panel, transition, callbacks) {
+    super(panel, transition);
 
     this._callbacks = callbacks;
     this._editor = null;
@@ -38,7 +39,9 @@ export default class PanelBuilder extends Panel {
     this.updateBuilderEditorPlacementRules();
 
     // Add Builder UI
-    this._node.find('.panel-cfg').html(viewTpl({}));
+    this._node.find('.panel-cfg').html(viewTpl({
+      labels: i18n.builder.immersive.panelConfig
+    }));
 
     // Register the minimum events
     this._node.find('.blocks').click(this.onPanelClick.bind(this));
@@ -269,6 +272,8 @@ export default class PanelBuilder extends Panel {
         builderConfigurationTabs: this._mediaConfigurationTabs
       });
       block.load();
+
+      SectionCommon.checkMedia(params.media);
     }.bind(this), 50);
 
     return block.render({
@@ -344,6 +349,9 @@ export default class PanelBuilder extends Panel {
     newMedia.load();
 
     this._blocks.splice(this._blocks.indexOf(media), 1, newMedia);
+
+    // do an issue check
+    SectionCommon.checkMedia(newMediaJSON);
   }
 
   _onMediaConfigAction(params = {}) {

@@ -1,6 +1,6 @@
 import Media from './Media';
 
-import i18n from 'lib-build/i18n!./../../../../resources/tpl/builder/nls/app';
+import i18n from 'lib-build/i18n!resources/tpl/builder/nls/app';
 
 import {} from 'lib-build/less!./Empty';
 import viewTpl from 'lib-build/hbars!./Empty';

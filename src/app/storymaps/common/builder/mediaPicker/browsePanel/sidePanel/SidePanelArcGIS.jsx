@@ -4,7 +4,7 @@ import Helper from '../../utils/Helper';
 import FileUploader from './FileUploader/FileUploader';
 import {} from 'lib-build/less!./SidePanelArcGIS';
 import constants from '../../constants';
-import i18n from 'lib-build/i18n!../../../../_resources/nls/media';
+import i18n from 'lib-build/i18n!commonResources/nls/media';
 
 var text = i18n.mediaPicker.browsePanel.sidePanel.agol;
 
@@ -127,7 +127,7 @@ class LocationToggles extends React.Component {
         toggleCount={4}
         isDisabled={this.isDisabled()}
         onClick={(evt) => this.thisOnClick(evt, constants.searchLocation.ORG)}
-        label={this.props.portalName + ' ' + text.searchLocation.myOrg}
+        label={Helper.mixinString(text.searchLocation.myOrg, 'orgname', this.props.portalName)}
         value={constants.searchLocation.ORG}
         checked={this.isSelected('ORG')}
       />

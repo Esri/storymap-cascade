@@ -5,7 +5,7 @@ import Helper from '../../../utils/Helper';
 import 'lib/resample-hermite/hermite';
 import 'lib/loader/dist/loader';
 import {} from 'lib-build/less!./FileUploader';
-import i18n from 'lib-build/i18n!../../../../../_resources/nls/media';
+import i18n from 'lib-build/i18n!commonResources/nls/media';
 import topic from 'dojo/topic';
 import constants from '../../../constants';
 import ImageUploadHelper from './NewerImageUploadHelper';
@@ -417,7 +417,8 @@ export default class FileUploader extends React.Component {
   }
 
   getFileTypesText() {
-    return this.state.uploadExtensions.join(text.createContent.listSeparator + ' ');
+    // TODO: when more file types are supported, need to decide between help texts.
+    return text.createContent.fileTypesImage;
   }
 
   forceClickInput(evt) {
@@ -472,7 +473,6 @@ export default class FileUploader extends React.Component {
         <div className={fileExtClasses}>
           <span className="fa fa-file-o info" />
           <span className="fa fa-exclamation-triangle danger" />
-          <span>{text.createContent.fileTypes} </span>
           <span> {this.getFileTypesText()}</span>
         </div>
         <div className="info-footer">

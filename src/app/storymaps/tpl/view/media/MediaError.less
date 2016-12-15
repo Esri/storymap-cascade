@@ -1,35 +1,232 @@
 @import '../../core/Variables';
 
+// there are five places media can show up:
+// sequential block and immersive panel block are both .block-media
+// cover is .section-layout-cover .background
+// title is .section-layout-title .background
+// immersive is .section-immersive .background
+
+
 .loading-error {
   position: absolute;
-  top: 10%;
-  left: 0;
-  right: 0;
-  text-align: center;
+  left: 20px;
   font-family: 'open_sans', sans-serif;
+  color: @gray;
+  font-size: 16px;
+  z-index: 2;
+  line-height: 1.4em;
+  text-align: left;
+  display: none;
 
-  .loading-error-wrapper {
-    display: inline-block;
-    padding: 10px;
-    font-size: 25px;
-    background-color: darken(@state-danger-bg, 5%);
-    border-radius: 2px;
-    color: @sm-danger-text;
+  .fa {
+    margin-right: 5px;
   }
 }
 
-.has-loading-error {
-  background-color: @state-danger-bg !important;
+// both viewer and editor error formatting
+.background.error,
+.block-media.error,
+.image-gallery-item.error {
+  background: #f9f9f9;
 
   .media-loading {
-    display: none !important;
+    display: none;
   }
 
-  .image-container {
-    min-height: 180px;
+}
+
+.image-gallery-item.error {
+  padding-left: 0 !important; // sorry for all the !importants.
+  margin-left: 15px;
+}
+
+// just viewer (minimize error in sequence and panel)
+body:not(.builder-mode) {
+
+  .loading-error {
+    display: block;
+  }
+
+  .block-media.error.minimize-on-viewer,
+  .image-gallery-item.error.minimize-on-viewer {
+    height: auto;
+    padding-top: 0;
+
+    .loading-error {
+      position: static;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      padding: 2px 10px;
+    }
+
+    .image-container,
+    .media-media,
+    .image-gallery-item-wrapper a {
+      display: none;
+    }
+
+  }
+
+  // minimize width of block-media error in sequential section
+  // (large images collapse to small width)
+  .section-layout-sequence {
+    .block-media.error {
+      width: 40%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  .block-media.error:not(.minimize-on-viewer) {
+    .loading-error {
+      top: 20px;
+    }
+  }
+
+}
+
+
+// formatting for errors in background
+// (cover, immersive, title)
+.background.error {
+  .loading-error {
+    top: 100px;
   }
 }
 
-.section-immersive .background .loading-error {
-  top: 25%;
+// formatting for errors in title
+.section-layout-title .background.error {
+  .loading-error {
+    top: 20px;
+  }
+}
+
+// only builder error formatting
+
+.builder-mode {
+
+  // all error types (sequential, cover, title, immersive, panels, image galleries)
+  .block-media.error,
+  .background.error,
+  .image-gallery-item.error {
+    border-left: 10px solid @sm-danger-text;
+
+    &, .map {
+      background: #eee;
+    }
+
+    .loading-error {
+      width: auto;
+      color: @sm-danger-text;
+    }
+
+    &.show-loading-error {
+      .loading-error {
+        display: block;
+      }
+    }
+
+    .scene ~ .loading-error {
+      left: 60px;
+    }
+
+    .builder-invite-background {
+      border-bottom-color: @sm-danger-text;
+    }
+
+    .ig-media-swap {
+
+      .ig-action-icon {
+        color: white !important;
+      }
+
+      .ig-background {
+        border-bottom-color: @sm-danger-text !important; // this already has *six* class selectors elsewhere :\
+      }
+    }
+
+    .video ~ .media-cfg-invite .builder-invite-background {
+      background-color: @sm-danger-text !important; // it already had important elsewhere
+    }
+
+    .builder-invite-open {
+      color: white;
+    }
+
+    // put a border on the "Manage" and "Issues" tabs and
+    // adjust the padding of the other tabs to preserve alignment
+    // in .block-media, the .media-cfg-panel is a sibling, but in
+    // .background.error, the .media-cfg-panel is a descendent.
+    & ~ .media-cfg-panel,
+    .media-cfg-panel {
+      .tab {
+        padding-left: 5px;
+
+        .border-error {
+          top: -1px;
+          bottom: 0;
+          width: 5px;
+          background: @sm-danger-text;
+          position: absolute;
+          left: -5px;
+        }
+      }
+    }
+  }
+
+  // just sequential and panel errors
+  .block-media.error {
+    height: auto;
+    border-left-color: fade(@sm-danger-text, 80%);
+
+    &:hover {
+      border-left-color: @sm-danger-text;
+    }
+
+    .loading-error {
+      top: 20px;
+    }
+
+    // if the image has an error on it, but it was a short image,
+    // you need this much height to get to the edit and delete buttons
+    // and to notice you've got a problem in the first place
+    .image-container {
+      display: block;
+      min-height: 180px;
+    }
+
+    .media-cfg-invite {
+      opacity: 0.85;
+    }
+  }
+
+  // keep opacity of left border on config panel open
+  // (above it's just on hover, but the config panel is
+  // below the image, so hover won't work here)
+  .block.config-panel-active .block-media.error {
+    border-left-color: @sm-danger-text;
+  }
+
+  // just image galleries
+  .image-gallery-item.error {
+    .loading-error {
+      top: 20px;
+      max-width: 100%;
+    }
+
+    .image-gallery-item-wrapper {
+      height: 100% !important; // height is dynamically appended to each img
+      width: 100%;
+      min-height: 100px; // if there's no unbroken images in the gallery
+    }
+
+    a {
+      display: none;
+    }
+  }
+}
+
+.op-item-main.error {
+  border-left: 10px solid @sm-danger-text;
 }

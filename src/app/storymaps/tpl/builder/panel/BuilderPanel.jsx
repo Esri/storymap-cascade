@@ -1,9 +1,9 @@
 import viewTpl from 'lib-build/hbars!./BuilderPanel';
 import {} from 'lib-build/less!./BuilderPanel';
 
-import commonCoreI18n from 'lib-build/i18n!./../../../common/_resources/nls/core';
-import builderI18n from 'lib-build/i18n!./../../../../resources/tpl/builder/nls/app';
-import viewerI18n from 'lib-build/i18n!./../../../../resources/tpl/viewer/nls/app';
+import commonCoreI18n from 'lib-build/i18n!commonResources/nls/core';
+import builderI18n from 'lib-build/i18n!resources/tpl/builder/nls/app';
+import viewerI18n from 'lib-build/i18n!resources/tpl/viewer/nls/app';
 
 import OverviewPanel from '../overviewPanel/OverviewPanel';
 import BuilderHelper from 'storymaps/common/builder/BuilderHelper';
@@ -75,10 +75,12 @@ export default class BuilderPanel {
     topic.subscribe('story-navigated-section', this._onSectionNavigate.bind(this));
     topic.subscribe('builder-story-title-update', this._updateStoryTitle.bind(this));
     topic.subscribe('builder-story-update', this._updateSaveButtonStatus.bind(this));
+    topic.subscribe('check-app-started', this._onStoryCheckStarted.bind(this));
+    topic.subscribe('check-app-complete', this._onStoryCheckComplete.bind(this));
 
     this._node.find('.btn-settings').click(this._onSettings.bind(this));
     this._node.find('.btn-preview').click(this._onPreview.bind(this));
-    this._node.find('.btn-check').click(this._onCheck.bind(this));
+    this._node.find('.my-stories-link').click(this._onCheck.bind(this));
     this._node.find('.btn-save').click(this._onSave.bind(this));
 
     let appName = 'Story Map Cascade';
@@ -91,12 +93,13 @@ export default class BuilderPanel {
     });
 
     this._node.find('.check-tooltip').tooltip({
-      title: 'Click here to visit My Stories on the Story Maps website to diagnose and fix issues such as broken links or sharing errors.'
-        + '<br /><br />'
-        + 'Once My Stories opens in a new tab, you can find your story and click it to check for errors.',
-      placement: 'top',
-      container: '.section-builder-panel',
-      html: true
+      title: i18n.builder.builderPanel.mystoriestooltip,
+      placement: 'right',
+      container: '.section-builder-panel'
+    });
+
+    this._node.find('.my-stories-link').tooltip({
+      container: '.btn-check'
     });
   }
 
@@ -105,6 +108,16 @@ export default class BuilderPanel {
     this._updateShareButtons();
     this._updatePreviewButton();
     this._updateCheckButton();
+    this._updateOverview();
+  }
+
+  _onStoryCheckStarted() {
+    //
+    this._updateIssueStatusButton(null, false);
+  }
+
+  _onStoryCheckComplete(results) {
+    this._updateIssueStatusButton(results, true);
     this._updateOverview();
   }
 
@@ -217,15 +230,19 @@ export default class BuilderPanel {
         app.Controller.renderHeader();
       }.bind(this),
       function() {
-        //
-      }
+        this._updateShareButtons();
+        this._updatePreviewButton();
+
+        // Update status of Share dialog > sharing buttons
+        app.Controller.renderHeader();
+      }.bind(this)
     );
   }
 
   _updateShareButtons() {
-    var sharingLevel = 'private',
-        isCreated = !! app.data.appItem.item.id,
-        shareBtn = this._node.find('.btn-share');
+    var sharingLevel = 'private';
+    var isCreated = !! app.data.appItem.item.id;
+    var shareBtn = this._node.find('.btn-share');
 
     shareBtn.toggleClass('disabled', ! isCreated);
 
@@ -233,6 +250,11 @@ export default class BuilderPanel {
 
     if (app.data.appItem.item && app.data.appItem.item.access && app.Controller.getStoryTitle()) {
       sharingLevel = app.data.appItem.item.access;
+
+      // if a story is shared privately and in a group, we'll consider it shared privately.
+      if (sharingLevel === 'shared') {
+        sharingLevel = 'private';
+      }
 
       this._node.find('.btn-share-container').removeClass('disabled');
       this._node.find('.btn-share-wrapper[data-level=' + sharingLevel + ']').addClass('active');
@@ -376,6 +398,34 @@ export default class BuilderPanel {
   }
 
   //
+  // Issue status button
+  //
+  _updateIssueStatusButton(status, checkComplete) {
+    let btn = this._node.find('.btn-check');
+    btn.removeClass('checking no-issues errors');
+
+    if (checkComplete) {
+      if (status.errors.allItems.length) {
+        btn.addClass('errors');
+        let errorCount = 0;
+        Object.keys(status.errors.byId).forEach(function(errorId) {
+          let media = status.errors.byId[errorId].media;
+          if (media && media.length) {
+            errorCount += media.length;
+          }
+        });
+        this._node.find('.issue-count').text(errorCount);
+      }
+      else {
+        btn.addClass('no-issues');
+      }
+    }
+    else {
+      btn.addClass('checking');
+    }
+  }
+
+  //
   // Overview
   //
 
@@ -402,7 +452,6 @@ export default class BuilderPanel {
     this._overviewPanel = new OverviewPanel(this._node.find('.overview')[0], 'vertical', storyOverview, {
       selectItem: function(sectionId) {
         var sectionIndex = app.Controller.getSectionById(sectionId);
-        console.log('selectItem:', sectionIndex);
         app.Controller.navigateToSection({
           index: sectionIndex,
           animate: false
@@ -411,20 +460,16 @@ export default class BuilderPanel {
 
       duplicateItem: function(sectionId) {
         var sectionIndex = app.Controller.getSectionById(sectionId);
-        console.log('duplicateItem:', sectionIndex);
 
         app.Controller.duplicateSection({
           index: sectionIndex
         });
       },
-      toggleHidden: function(sectionId) {
-        var sectionIndex = app.Controller.getSectionById(sectionId);
-        console.log('toggleHidden:', sectionIndex);
-        console.log('TODO NOT IMPLEMENTED');
+      toggleHidden: function() {
+        //
       },
       deleteItem: function(sectionId) {
         var sectionIndex = app.Controller.getSectionById(sectionId);
-        console.log('deleteItem:', sectionIndex);
         app.Controller.deleteSection({
           index: sectionIndex
         });
@@ -432,7 +477,6 @@ export default class BuilderPanel {
 
       organize: function(sectionsIds) {
         var sectionsIndexes = app.Controller.getSectionsIndexesByIds(sectionsIds);
-        console.log('organize:', sectionsIds, sectionsIndexes);
 
         app.Controller.organizeSections(sectionsIndexes);
       }

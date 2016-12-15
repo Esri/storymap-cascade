@@ -22,13 +22,17 @@ define([
   'storymaps/common/builder/mediaPicker/MediaPickerPopup',
   'storymaps-react/tpl/builder/settings/Popup',
 
+  'storymaps-react/tpl/builder/AppParser',
   'storymaps/common/utils/CommonHelper',
   'storymaps/common/builder/BuilderHelper',
+  'issue-checker/helpers/NormalizeHelper',
+  'issue-checker/IssueChecker',
 
   // Utils
   'dojo/Deferred',
   'dojo/topic',
   'dojo/_base/lang',
+  'esri/IdentityManager',
   'lib/color-thief/dist/color-thief.min'
 ], function(
   viewTpl,
@@ -37,14 +41,18 @@ define([
 
   MediaPickerPopup,
   SettingsPopup,
+  AppParser,
 
   CommonHelper,
   BuilderHelper,
+  NormalizeHelper,
+  IssueChecker,
 
   // Utils
   Deferred,
   topic,
-  lang
+  lang,
+  IdentityManager
 ) {
   var STORY_SHELL = {
     config: {
@@ -64,7 +72,7 @@ define([
       header: { }
     },
     template: {
-      name: app.cfg.TPL_ID,
+      name: app.cfg.TPL_NAME,
       createdWith: app.version,
       editedWith: app.version,
       dataVersion: '1.0.0'
@@ -75,8 +83,9 @@ define([
   return function BuilderView(Core, Builder) {
     $('#builder-views').append(viewTpl({ }));
 
-    var _settingsPopup = null, // eslint-disable-line no-unused-vars
-        _mediaPicker = null;
+    var _settingsPopup = null; // eslint-disable-line no-unused-vars
+    var _mediaPicker = null;
+    var _issueChecker = null;
 
     this.init = function() {
       app.builder.pendingChanges = 0;
@@ -105,7 +114,24 @@ define([
       topic.subscribe('tpl-ready', function() {
         updateCreditsPlaceholderVisibility();
         topic.publish('builder-story-title-update', app.Controller.getStoryTitle());
-      });
+
+        var portalUrl = BuilderHelper.getPortalURL();
+        var appItem = lang.clone(app.data.appItem.item);
+
+        // init the issue checker here.
+        // only send truthy appId and appUrl params if the app has been saved before.
+        _issueChecker = new IssueChecker({
+          owner: appItem.owner || IdentityManager.findCredential(portalUrl).userId,
+          portal: app.portal,
+          appId: app.builder.isDirectCreationFirstSave ? null : app.data.appItem.item.id,
+          appUrl: app.builder.isDirectCreationFirstSave ? null : app.data.appItem.item.url
+        });
+        this.scanApp();
+
+        topic.subscribe('builder-should-check-story', function() {
+          this.scanApp();
+        }.bind(this));
+      }.bind(this));
     };
 
     this.appInitComplete = function() {
@@ -171,8 +197,8 @@ define([
         app.builder.mediaPicker.open({
           mode: 'add'
         }).then(
-          function(selection) {
-            console.log('selected media:', selection);
+          function() {
+            //
           },
           function() {
             //
@@ -186,10 +212,10 @@ define([
     };
 
     this.saveApp = function() {
-      var storyData = Controller.serializeStory();
-
+      var storyData = Controller.serializeStory(false);
       app.data.title = app.Controller.getStoryTitle();
       app.data.appItem.data.values.sections = storyData;
+      app.data.appItem.data.values.template.editedWith = app.version;
 
       Builder.saveApp();
     };
@@ -204,6 +230,16 @@ define([
       }
     };
 
+    this.shareApp = function(sharingLevel) {
+      var data = this.getScanData();
+
+      return _issueChecker.share({
+        appID: app.data.appItem.item.id,
+        sharingLevel: sharingLevel,
+        media: data.mediaIDs
+      });
+    };
+
     /*jshint -W098 */
     this.resize = function() {
       // On Firefox and share dialog is displayed
@@ -212,6 +248,200 @@ define([
         _sharePopup.updateMyStoriesPosition();
       }
       */
+    };
+
+    this.onFirstAppSave = function() {
+      _issueChecker.onFirstAppSave({
+        appId: app.data.appItem.item.id,
+        appUrl: app.data.appItem.item.url
+      });
+    };
+
+    this.scanApp = function() {
+      topic.publish('check-app-started');
+
+      var scanData = this.getScanData();
+
+      return _issueChecker.check({
+        media: scanData.mediaIDs,
+        appAccess: app.data.appItem.item.access
+      })
+      .then(function(scanResults) {
+        // add the story-specific context (for now, just the sections it's in) on each one.
+        this.addAppContext(scanResults.media, scanData.media);
+        // add the fix methods on, instead of just the strings.
+        this.addFixMethods(scanResults);
+
+        var issueSections = this.compileIssueSections(scanResults.media);
+
+        app.Controller.reportScanResults(scanResults, issueSections);
+      }.bind(this));
+    };
+
+    this.getScanData = function() {
+      var serializedStory = Controller.serializeStory(true);
+      var media = AppParser.getMedia(serializedStory);
+      var mediaIDs = this.getMediaIDs(media);
+
+      return {
+        mediaIDs: mediaIDs,
+        media: media
+      };
+    };
+
+    this.getMediaIDs = function(media) {
+      // for each one, put it in its right place.
+      var mediaIDs = {
+        mapIDs: media.maps.allItems,
+        sceneIDs: media.scenes.allItems,
+        imageIDs: media.images.allItems,
+        videoIDs: media.videos.allItems
+      };
+
+      return mediaIDs;
+    };
+
+    this.addAppContext = function(resultsMedia, contextMedia) {
+      // basically, for each media, do a lookup and add on the sections.
+      // similar: for each... hasOwnProp... (if not layers)
+      // loop it up.
+      for (var mediaType in resultsMedia) {
+        // if the media type exists on both the serialized and scanned results, we'll match it up (this excludes layers, which are scanned but not serialized).
+        if (resultsMedia.hasOwnProperty(mediaType) && contextMedia.hasOwnProperty(mediaType)) {
+          this.addAppContextByMedia(resultsMedia[mediaType], contextMedia[mediaType]);
+        }
+      }
+    };
+
+    this.addAppContextByMedia = function(media, contextMedia) {
+      // but you have the ID, so you could swap it for that.
+      var mediaItems = NormalizeHelper.getAllItems(media);
+      // for each media item, get the context (for now, just sections) off of the contextMedia.
+      for (var i = 0; i < mediaItems.length; i++) {
+        var resultItem = mediaItems[i];
+        var contextItem = contextMedia.byId[resultItem.id];
+
+        resultItem.sections = [];
+        // make sure the item is in the context media (it should be) and has the sections property
+        if (contextItem && contextItem.sections) {
+          resultItem.sections = contextItem.sections;
+        }
+      }
+    };
+
+    this.addFixMethods = function(results) {
+      var errors = NormalizeHelper.getAllItems(results.errors);
+
+      for (var i = 0; i < errors.length; i++) {
+        this.addFixMethodsByIssue(errors[i]);
+      }
+    };
+
+    this.addFixMethodsByIssue = function(issue) {
+      var action = null;
+
+      for (var j = 0; j < issue.actions.length; j++) {
+        action = issue.actions[j];
+
+        // the new action has the actual "fix" callback method
+        var newAction = {
+          id: action,
+          fix: this.getFixFunction(action)
+        };
+
+        issue.actions[j] = newAction;
+      }
+    };
+
+    /*
+    Returns a generic "fix" function that performs a fix.
+    */
+    this.getFixFunction = function(actionType) {
+      return function(options) {
+        return _issueChecker.fix({
+          action: actionType,
+          items: options.items,
+          details: options.details
+        })
+        .then(function(fixResults) {
+          // call a scan, then after that's done, THEN return the results.
+          return this.scanApp()
+          .then(function() {
+            return fixResults;
+          });
+        }.bind(this), function(unfixedResults) {
+          // if the fix wasn't totally successful, scan and then return the resuls.
+          return this.scanApp()
+          .then(function() {
+            return unfixedResults;
+          });
+        }.bind(this));
+      }.bind(this);
+    };
+
+    this.compileIssueSections = function(resultsMedia) {
+      var issueSections = {
+        errorSections: []
+      };
+
+      for (var mediaItem in resultsMedia) {
+        if (resultsMedia.hasOwnProperty(mediaItem)) {
+          if (mediaItem === 'layers') {
+            this.compileIssueSectionsByLayer(resultsMedia[mediaItem], resultsMedia, issueSections.errorSections, 'errors');
+          }
+          else {
+            this.compileIssueSectionsByMedia(resultsMedia[mediaItem], issueSections.errorSections, 'errors');
+          }
+        }
+      }
+
+      return issueSections;
+    };
+
+    this.compileIssueSectionsByLayer = function(layers, media, sections, severity) {
+      var layerItems = NormalizeHelper.getAllItems(layers);
+
+      for (var i = 0; i < layerItems.length; i++) {
+        var layer = layerItems[i];
+
+        // see if there are issues with the layer.
+        if (layer[severity].length) {
+          // if so, get the maps and scenes that this layer is a part of, and (conditionally) add their sections on.
+          // start with maps
+          if (layer.maps && layer.maps.length) {
+            for (var j = 0; j < layer.maps.length; j++) {
+              var mapID = layer.maps[j];
+              var map = media.maps.byId[mapID];
+
+              this.addIssueSections(map.sections, sections);
+            }
+          }
+        }
+      }
+    };
+
+    this.compileIssueSectionsByMedia = function(media, sections, severity) {
+      var mediaItems = NormalizeHelper.getAllItems(media);
+
+      for (var i = 0; i < mediaItems.length; i++) {
+        var item = mediaItems[i];
+
+        if (item[severity].length) {
+          // push onto sections if not there.
+          this.addIssueSections(item.sections, sections);
+        }
+      }
+    };
+
+    this.addIssueSections = function(itemSections, issueSections) {
+      // for the sections on the item, if it doesn't already exist on the issuesSections, add it to it.
+      for (var j = 0; j < itemSections.length; j++) {
+        var section = itemSections[j];
+
+        if (issueSections.indexOf(section) === -1) {
+          issueSections.push(section);
+        }
+      }
     };
 
     function onSectionUpdate() {

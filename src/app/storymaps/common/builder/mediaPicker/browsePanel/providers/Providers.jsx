@@ -62,6 +62,7 @@ class Providers extends React.Component {
           display={this.displayTab(constants.providers.URL)}
           openFocus={this.openFocus(constants.providers.URL)}
           authorizedMedia={this.props.params ? this.props.params.authorizedMedia : []}
+          currentMedia={this.props.params ? this.props.params.media : null}
         />
       </div>
     );

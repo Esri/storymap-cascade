@@ -1,28 +1,29 @@
 import { connect } from 'react-redux';
 import BrowseToggles from './BrowseToggle';
 import * as actions from './../actions';
-import i18n from 'lib-build/i18n!../../../_resources/nls/media';
+import i18n from 'lib-build/i18n!commonResources/nls/media';
 
 var text = i18n.mediaPicker.browseToggle;
 
+// not using brand translations.
 var browseToggles = [{
   type: 'arcgis',
-  title: text.arcGIS,
+  title: 'ArcGIS',
   media: 'geo',
   fullLogo: true
 }, {
   type: 'flickr',
-  title: text.flickr,
+  title: 'Flickr',
   media: 'images',
   inlineIcon: 'fa-flickr'
 }, {
   type: 'googlePhotos',
-  title: text.googlePhotos,
+  title: 'Google+',
   media: 'images',
   inlineIcon: 'fa-google'
 }, {
   type: 'unsplash',
-  title: text.unsplash,
+  title: 'Unsplash',
   media: 'images',
   inlineIcon: 'fa-camera'
 }, {

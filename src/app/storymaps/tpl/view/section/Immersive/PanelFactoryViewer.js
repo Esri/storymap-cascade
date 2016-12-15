@@ -5,8 +5,8 @@ function(
   Panel
 ) {
   return {
-    createInstance: function(panelJSON) {
-      return new Panel(panelJSON);
+    createInstance: function(panelJSON, transition) {
+      return new Panel(panelJSON, transition);
 
       /*
       var layout = panelJSON.layout,

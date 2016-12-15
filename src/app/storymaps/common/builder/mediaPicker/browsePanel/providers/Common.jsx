@@ -9,7 +9,7 @@ import AGOLHeader from '../breadcrumbs/AGOLHeader';
 import Gallery from '../gallery/Gallery';
 
 import {} from 'lib-build/less!../sidePanel/SidePanel';
-import i18n from 'lib-build/i18n!../../../../_resources/nls/media';
+import i18n from 'lib-build/i18n!commonResources/nls/media';
 var text = i18n.mediaPicker.browsePanel.providers;
 
 class CommonProvider extends React.Component {
@@ -150,25 +150,27 @@ class CommonProvider extends React.Component {
     }
   }
 
-  getSearchLabel(term) {
+  getSearchLabel(term, fetchStatus) {
     if (!term) {
       return null;
     }
-    return text.searchingFor + ' " ' + term + ' "';
+    if (fetchStatus === constants.fetchStatus.SUCCESS) {
+      return text.searchedFor.replace('${searchterm}', term);
+    }
+    return text.searchingFor.replace('${searchterm}', term);
   }
 
   getBreadcrumbs() {
     var breadcrumbs = [];
     var providerRef = this.props.provider;
-    var textSearchLabel = this.getSearchLabel(providerRef.photoSearchTerm);
-    var secondUserLabel = (providerRef.selectedAlbum && providerRef.selectedAlbum.id) ? providerRef.selectedAlbum.title : this.getSearchLabel(providerRef.userSearchTerm);
+    var secondUserLabel = (providerRef.selectedAlbum && providerRef.selectedAlbum.id) ? providerRef.selectedAlbum.title : this.getSearchLabel(providerRef.userSearchTerm, providerRef.imageFetchStatus);
 
     if (providerRef.selectedTab && (providerRef.selectedTab === constants.searchType.TEXT) || this.props.containerState.provider === constants.providers.UNSPLASH) {
       if (!providerRef.photoSearchTerm) {
         return breadcrumbs;
       }
       breadcrumbs.push(new BreadcrumbModel(
-        textSearchLabel,
+        this.getSearchLabel(providerRef.photoSearchTerm, providerRef.imageFetchStatus),
         constants.galleryContent.IMAGES,
         providerRef.displayedContent
       ));
@@ -178,7 +180,7 @@ class CommonProvider extends React.Component {
     if (providerRef.albumFetchStatus !== constants.fetchStatus.ERROR) {
       if (providerRef.albums.length) {
         breadcrumbs.push(new BreadcrumbModel(
-          text.albumsOf + ' ' + providerRef.userName,
+          text.albumsOf.replace('${username}', providerRef.userName),
           constants.galleryContent.ALBUMS,
           providerRef.displayedContent
         ));

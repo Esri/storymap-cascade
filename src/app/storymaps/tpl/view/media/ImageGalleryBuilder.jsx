@@ -1,6 +1,6 @@
 import Media from './Media';
 import ImageGallery from './ImageGallery';
-import i18n from 'lib-build/i18n!./../../../../resources/tpl/builder/nls/app';
+import i18n from 'lib-build/i18n!resources/tpl/builder/nls/app';
 
 import CancelNotification from '../../builder/notification/Cancel';
 
@@ -27,6 +27,13 @@ export default class ImageGalleryBuilder extends ImageGallery {
       if (secondImage.dataUrl && secondImage.uploadDeferred) {
         this._addImageAtIndex(secondImage, 1);
       }
+      else {
+        const appId = app.data.appItem.item.id;
+        if (appId && secondImage.url && secondImage.url.match(appId + '/resources')) {
+          this._addImageAtIndex(secondImage, 1);
+        }
+      }
+
     }
 
     this._updateTooltip();
@@ -123,6 +130,9 @@ export default class ImageGalleryBuilder extends ImageGallery {
 
         this._update();
       }
+
+      // do an issue check
+      topic.publish('builder-should-check-story');
     };
 
     image.src = Media.addToken(url);
@@ -130,7 +140,7 @@ export default class ImageGalleryBuilder extends ImageGallery {
 
   _onUploadStart(index) {
     this._uploadNotification = new CancelNotification({
-      label: 'Image upload in progress...' // TODO
+      label: i18n.builder.media.imageUpload
     });
 
     this._uploadNotification.display().then(
@@ -148,7 +158,7 @@ export default class ImageGalleryBuilder extends ImageGallery {
     if (this._uploadNotification) {
       this._uploadNotification.update({
         type: 'success',
-        label: 'Image uploaded successfully'
+        label: i18n.builder.media.imageUploadSuccess
       });
     }
 
@@ -160,7 +170,7 @@ export default class ImageGalleryBuilder extends ImageGallery {
     if (this._uploadNotification) {
       this._uploadNotification.update({
         type: 'error',
-        label: 'Image upload failed'
+        label: i18n.builder.media.imageUploadFail
       });
     }
 
@@ -180,6 +190,10 @@ export default class ImageGalleryBuilder extends ImageGallery {
       if (this._images.images.length == 1) {
         this._onAction('image-gallery-to-image');
         return;
+      }
+      else {
+        // do an issue check (we do it for image-gallery-to-image where it's called later on)
+        topic.publish('builder-should-check-story');
       }
 
       this._update();

@@ -17,7 +17,7 @@
 import lang from 'dojo/_base/lang';
 import topic from 'dojo/topic';
 
-import i18n from 'lib-build/i18n!./../../../resources/tpl/builder/nls/app';
+import i18n from 'lib-build/i18n!resources/tpl/viewer/nls/app';
 
 import Media from 'storymaps-react/tpl/view/media/Media';
 
@@ -31,7 +31,7 @@ const DEFAULT_HEADER_SETTINGS = {
   },
   link: {
     url: 'https://storymaps.arcgis.com',
-    title: i18n.builder.header.defaultTagline.replace(/\${STORY_MAP}/g, storyMap)
+    title: i18n.viewer.headerFromCommon.defaultTagline.replace(/\${STORY_MAP}/g, storyMap)
   },
   social: {
     enabled: true
@@ -276,8 +276,6 @@ export default class Controller {
 
     // If changing section
     if (params.currentSectionIndex != this._currentSectionIndex) {
-      console.log('Scroll to section ', params.currentSectionIndex);
-
       // Activate new section
       params.$currentSection.addClass('active');
 
@@ -320,9 +318,7 @@ export default class Controller {
 
     $.each(params.visibleSections, function(i, sectionIndex) {
       var section = this._sections[sectionIndex],
-          sectionTop = app.display.sections[sectionIndex].top;
-
-      //console.log('Visible  section ' + sectionIndex);
+          sectionTop = app.display.sections[sectionIndex].top;      
 
       // Skip current section that already got one event sent
       if (sectionIndex == params.currentSectionIndex) {
@@ -454,7 +450,15 @@ export default class Controller {
             {
               type: 'text',
               text: {
-                value: '<div class="block"><table><tr><td style="padding-bottom: 10px;"><img src="resources/tpl/viewer/icons/warning-mobile-smartphone.png" /></td><td style="padding-bottom: 10px; padding-left: 13px;">You\'ve read the mobile version of this story. For the full version, with richer media elements try it out on a desktop computer.</td></tr><tr><td colspan="2" style="padding-top: 10px; border-top: 1px solid white; text-align: center;"><a class="btn btn-warning-email" style="background-color: white; color: rgba(255, 0, 0, 0.7);" href="' + storyWarningBtn + '"><img src="resources/tpl/viewer/icons/warning-mobile-laptop.png" style="margin-right: 5px;"/>Email a link to this story</a></td></tr></table></div>'
+                value: '<div class="block"><table><tr>'
+                + '<td style="padding-bottom: 10px;">'
+                + ' <img src="resources/tpl/viewer/icons/warning-mobile-smartphone.png" /></td>'
+                + '<td style="padding-bottom: 10px; padding-left: 13px;">'
+                + i18n.viewer.mobileWarning.message1
+                + '</td></tr><tr>'
+                + '<td colspan="2" style="padding-top: 10px; border-top: 1px solid white; text-align: center;"><a class="btn btn-warning-email" style="background-color: white; color: rgba(255, 0, 0, 0.7);" href="' + storyWarningBtn + '"><img src="resources/tpl/viewer/icons/warning-mobile-laptop.png" style="margin-right: 5px;"/>'
+                + i18n.viewer.mobileWarning.email
+                + '</a></td></tr></table></div>'
               }
             }
           ]

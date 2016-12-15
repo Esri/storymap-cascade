@@ -42,7 +42,17 @@ app.cfg = {
   BUILDER_LINKS: {
     picasaHelp: 'http://links.esri.com/storymaps/google-photos-help',
     unsplashHome: 'https://unsplash.com/',
-    unsplashLicense: 'https://creativecommons.org/publicdomain/zero/1.0/'
+    unsplashLicense: 'https://creativecommons.org/publicdomain/zero/1.0/',
+    issueHelps: {
+      unshared: 'http://links.esri.com/storymaps/cascade-issue-share',
+      othersUnshared: 'http://links.esri.com/storymaps/cascade-issue-edit-map',
+      subscriptionContent: 'http://links.esri.com/storymaps/cascade-issue-subscriber',
+      premiumContent: 'http://links.esri.com/storymaps/cascade-issue-premium',
+      secureContent: 'http://links.esri.com/storymaps/cascade-issue-secure',
+      deleted: 'http://links.esri.com/storymaps/cascade-issue-edit-map',
+      inaccessible: 'http://links.esri.com/storymaps/cascade-issue-edit-map',
+      unauthorized: 'http://links.esri.com/storymaps/cascade-issue-edit-map'
+    },
   },
   // Edit those to set a custom sharing or proxy URL
   // You have to edit those only if your webmap is deployed on Portal for ArcGIS instance and if you are not deploying the template on the Portal webserver

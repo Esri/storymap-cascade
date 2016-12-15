@@ -1,55 +1,153 @@
+@import '../../core/Variables';
+
 .image-gallery {
   .image-gallery-item {
-    .builder-ui.hidden {
-      display: none;
-    }
-    .builder-ui.ig-item {
-      display: flex;
-      justify-content: space-between;
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      z-index: 999;
-      background: rgba(0,0,0,0.7);
-    }
-
-    .builder-ui.ig-add {
-      display: none;
-      cursor: pointer;
-      position: absolute;
-      right: -45px;
-      width: 40px;
-      height: 40px;
-      top: 50%;
-      transform: translateY(-50%);
-      z-index: 999;
-      border: 2px solid black;
-      border-radius: 20px;
-      opacity: 0.7;
-
-      &:hover {
-        opacity: 1;
-
-        .ig-add-icon {
-          color: black;
-        }
+    .builder-ui {
+      &.hidden {
+        display: none;
       }
 
-      &.disabled {
-        cursor: default;
-        border-color: #666;
+      &.ig-item {
+        position: absolute;
+        left: 0;
+        right: 0;
+        z-index: 999;
 
-        &:hover {
-          opacity: 0.7;
-        }
-
-        .ig-add-icon {
-          color: #666;
+        .ig-background {
+          position: absolute;
+          width: 0;
+          height: 0;
+          z-index: 1000;
+          cursor: pointer !important;
         }
 
         .ig-action-icon {
+          z-index: 1001;
+          position: absolute;
+          cursor: pointer;
+          font-size: 24px;
+          opacity: 0.7;
+          color: #000;
+
+          &:hover {
+            opacity: 1;
+          }
+        }
+
+        &.ig-media-swap {
+          bottom: 0;
+
+          .ig-background {
+            left: 0;
+            bottom: 0;
+            border-right: 75px solid transparent;
+            border-left: 0px solid transparent;
+            border-top: 0px solid #e8e8e8;
+            border-bottom: 75px solid #e8e8e8;
+          }
+
+          .ig-action-icon {
+            font-size: 28px;
+            left: 11px;
+            bottom: 7px;
+          }
+
+          @media(max-width: @screen-md) {
+            .ig-background {
+              border-right: 50px solid transparent;
+              border-left: 0px solid transparent;
+              border-top: 0px solid #e8e8e8;
+              border-bottom: 50px solid #e8e8e8;
+            }
+
+            .ig-action-icon {
+              font-size: 21px;
+              left: 6px;
+              bottom: 5px;
+            }
+          }
+        }
+
+        &.ig-media-delete {
+          top: 0;
+
+          .ig-background {
+            right: 0;
+            top: 0;
+
+            border-left: 75px solid transparent;
+            border-right: 0 solid transparent;
+            border-top: 75px solid #e8e8e8;
+            border-bottom: 0 solid #e8e8e8;
+          }
+
+          .ig-action-icon {
+            right: 12px;
+            top: 9px;
+          }
+
+          @media(max-width: @screen-md) {
+            .ig-background {
+              border-left: 50px solid transparent;
+              border-right: 0 solid transparent;
+              border-top: 50px solid #e8e8e8;
+              border-bottom: 0 solid #e8e8e8;
+            }
+
+            .ig-action-icon {
+              font-size: 19px;
+              right: 7px;
+              top: 5px;
+            }
+          }
+        }
+      }
+
+      &.ig-add {
+        display: none;
+        cursor: pointer;
+        position: absolute;
+        right: -45px;
+        width: 40px;
+        height: 40px;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 999;
+        border: 2px solid black;
+        border-radius: 20px;
+        opacity: 0.7;
+
+        .ig-action-icon {
+          cursor: pointer;
+          font-size: 24px;
+          padding: 10px;
+          opacity: 0.9;
+          color: black;
+          padding: 0;
+          top: -1px;
+          left: 1px;
+
+          &:hover {
+            color: black;
+          }
+        }
+
+        &:hover {
+          opacity: 1;
+        }
+
+        &.disabled {
           cursor: default;
+          border-color: #666;
+
+          &:hover {
+            opacity: 0.7;
+          }
+
+          .ig-action-icon {
+            cursor: default;
+            color: #666;
+          }
         }
       }
     }
@@ -59,25 +157,6 @@
         display: flex;
         align-items: center;
         justify-content: center;
-      }
-    }
-
-    .ig-action-icon {
-      color: white;
-      cursor: pointer;
-      font-size: 24px;
-      padding: 10px;
-      opacity: 0.9;
-
-      &:hover {
-        opacity: 1;
-      }
-
-      &.ig-add-icon {
-        color: black;
-        padding: 0;
-        top: -1px;
-        left: 1px;
       }
     }
   }

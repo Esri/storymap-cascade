@@ -5,7 +5,7 @@ import viewBlock from 'lib-build/hbars!./VideoBlock';
 import viewBackground from 'lib-build/hbars!./VideoBackground';
 import viewVideoVimeo from 'lib-build/hbars!./VideoVimeo';
 
-import i18n from 'lib-build/i18n!./../../../../resources/tpl/builder/nls/app';
+import i18n from 'lib-build/i18n!resources/tpl/viewer/nls/app';
 
 import Deferred from 'dojo/Deferred';
 
@@ -86,7 +86,7 @@ export default class Video extends Media {
         domId: this._domID,
         videoId: this.id,
         caption: this._video.caption,
-        placeholder: i18n.builder.media.captionPlaceholder,
+        placeholder: i18n.viewer.media.captionPlaceholder,
         captionEditable: app.isInBuilder
       });
     }
@@ -251,6 +251,14 @@ export default class Video extends Media {
             }
             catch (e) {
               console.error(e);
+            }
+          }.bind(this),
+          onError: function() {
+            if (app.builder) {
+              this.setError({showLoadingError: true});
+            }
+            else {
+              this.setError();
             }
           }.bind(this)
         }

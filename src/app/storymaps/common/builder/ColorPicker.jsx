@@ -1,6 +1,7 @@
 import {} from 'lib/spectrum/spectrum';
 import {} from 'lib-build/css!lib/spectrum/spectrum';
 import {} from 'lib-build/less!./ColorPicker';
+import i18n from 'lib-build/i18n!commonResources/nls/texteditor';
 
 export default class ColorPicker {
   static initPicker(options) {
@@ -28,7 +29,9 @@ export default class ColorPicker {
       preferredFormat: 'hex3',
       appendTo: options.appendTo || 'body',
       palette: options.palette || defaultPalette,
-      clearText: 'Clear color',
+      chooseText: i18n.textEditor.color.choose,
+      cancelText: i18n.textEditor.color.cancel,
+      clearText: i18n.textEditor.color.clear,
       show: function(color) {
         if (options.onShowCallback) {
           options.onShowCallback(color ? color.toRgbString() : null);

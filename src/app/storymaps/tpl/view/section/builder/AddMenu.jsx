@@ -1,22 +1,23 @@
 import {} from 'lib-build/less!./AddMenu';
 import viewTpl from 'lib-build/hbars!./AddMenu';
+import i18n from 'lib-build/i18n!resources/tpl/builder/nls/app';
 
 const BUTTONS = {
   sequence: {
     name: 'sequence',
-    icon: 'resources/tpl/builder/icons/text-editor/Text.png',
-    label: 'Sequential'
+    icon: 'resources/tpl/builder/icons/text-editor/Narrative.png',
+    label: i18n.builder.sections.sequence
   },
   title: {
     name: 'title',
     icon: 'resources/tpl/builder/icons/text-editor/Title.png',
-    label: 'Title'
+    label: i18n.builder.sections.title
   },
   immersive: {
     name: 'immersive',
-    icon: 'resources/tpl/builder/icons/text-editor/Immersive.gif',
+    icon: 'resources/tpl/builder/icons/text-editor/Immersive.png',
     //iconHover: 'resources/tpl/builder/icons/text-editor/Immersive-hover.gif',
-    label: 'Immersive'
+    label: i18n.builder.sections.immersive
   }
 };
 

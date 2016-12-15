@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {} from 'lib-build/less!./SidePanelGooglePhotos';
-import i18n from 'lib-build/i18n!../../../../_resources/nls/media';
+import Helper from '../../utils/Helper';
+import i18n from 'lib-build/i18n!commonResources/nls/media';
 
 var text = i18n.mediaPicker.browsePanel.sidePanel.googlePhotos;
 
@@ -10,7 +11,7 @@ class UserSearchAlert extends React.Component {
     var style = {
       display: this.props.display ? 'block' : 'none'
     };
-    var msg = text.cannotFindUser + ' ' + this.props.triedUser + '. ' + text.tryAgain;
+    var msg = Helper.mixinString(text.cannotFindUser, 'username', this.props.triedUser);
 
     return (
       <div className="alert alert-danger" role="alert" style={style}>
@@ -92,17 +93,14 @@ class SidePanelGooglePhotos extends React.Component {
     return splitArr.map((str, i) => {
       const reactKey = 'googlehelp-' + i;
       let spanStr = str;
-      if (text[str]) {
-        spanStr = text[str];
-      }
-      if (str.indexOf('brand') === 0) {
-        return (
-          <span key={reactKey}><strong>{spanStr}</strong></span>
-        );
-      }
       if (str === 'helpLinkText') {
         return (
-          <a key={reactKey} href={app.cfg.BUILDER_LINKS.picasaHelp} target="_blank"><strong>{spanStr}</strong></a>
+          <a key={reactKey} href={app.cfg.BUILDER_LINKS.picasaHelp} target="_blank"><strong>{text.helpLinkText}</strong></a>
+        );
+      }
+      if (str === 'Picasa' || str === 'Google+') {
+        return (
+          <span key={reactKey}><strong>{spanStr}</strong></span>
         );
       }
       return (
@@ -113,12 +111,13 @@ class SidePanelGooglePhotos extends React.Component {
 
   render() {
     var msgDisplay = this.props.containerState.userErrorType !== '';
+    var placeholder = Helper.unescapeBrands(text.placeholder);
 
     return (
       <div className="mp-sidepanel google">
         <SearchInput
           icon="picture-o"
-          placeholder={text.placeholder}
+          placeholder={placeholder}
           value={this.props.containerState.searchValue}
           onChange={this.props.onChange}
           onKeyPress={this.props.onKeyPress}

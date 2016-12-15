@@ -1,6 +1,6 @@
 import {} from 'lib-build/less!./Header';
 
-import i18n from 'lib-build/i18n!./../../../../resources/tpl/builder/nls/app';
+import i18n from 'lib-build/i18n!resources/tpl/builder/nls/app';
 
 import CommonHelper from 'storymaps/common/utils/CommonHelper';
 
@@ -122,6 +122,15 @@ export default class Header {
         reject();
       }
       else {
+        // fix uploaded images
+        if (CommonHelper.uploadedImageNeedsFixing(headerCfg.logoURL)) {
+          // fix current cfg object
+          headerCfg.logoURL = CommonHelper.fixUploadedImageUrl(headerCfg.logoURL);
+          // also fix data in appItem
+          let logoShortcut = app.data.appItem.data.values.settings.header.logo;
+          logoShortcut.url = CommonHelper.fixUploadedImageUrl(logoShortcut.url);
+        }
+
         container.find('.logoLink').css('cursor', headerCfg.logoTarget ? 'pointer' : 'default');
 
         if (headerCfg.logoTarget) {

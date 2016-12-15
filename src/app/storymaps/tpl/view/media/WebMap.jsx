@@ -4,7 +4,7 @@ import {} from 'lib-build/less!./WebMap';
 import viewBlock from 'lib-build/hbars!./WebMapBlock';
 import viewBackground from 'lib-build/hbars!./WebMapBackground';
 
-import i18n from 'lib-build/i18n!./../../../../resources/tpl/builder/nls/app';
+import i18n from 'lib-build/i18n!resources/tpl/viewer/nls/app';
 
 import MapCommand from 'storymaps/tpl/view/media/arcgis/WebMapCommand';
 
@@ -74,7 +74,6 @@ export default class WebMap extends Media {
     var output = '';
 
     if (! this._webmap || ! context) {
-      console.log('Could not render webmap in section');
       return output;
     }
 
@@ -96,13 +95,17 @@ export default class WebMap extends Media {
         classes: classes.join(' '),
         options: options,
         caption: this._webmap.caption,
-        placeholder: i18n.builder.media.captionPlaceholder,
-        captionEditable: app.isInBuilder
+        placeholder: i18n.viewer.media.captionPlaceholder,
+        captionEditable: app.isInBuilder,
+        labelExploreStart: i18n.viewer.media.exploreMap,
+        labelExploreStop: i18n.viewer.media.exploreStop
       });
     }
     else {
       output += viewBackground({
-        webmapId: this.id
+        webmapId: this.id,
+        labelExploreStart: i18n.viewer.media.exploreMap,
+        labelExploreStop: i18n.viewer.media.exploreStop
       });
     }
 
@@ -438,8 +441,6 @@ export default class WebMap extends Media {
   }
 
   loadMap(mapElem, resultDeferred) {
-    console.log('Loading map');
-
     var options = {
       mapOptions: {
         smartNavigation: false
@@ -461,8 +462,6 @@ export default class WebMap extends Media {
 
     arcgisUtils.createMap(this.id, mapElem, options).then(lang.hitch(this, function(response) {
       var map = response.map;
-
-      console.log('createMap ok', response);
 
       this._node
         .removeClass('media-is-loading')
@@ -507,7 +506,20 @@ export default class WebMap extends Media {
       this._cache[this.id].lastLayersApplied = null;
 
       this._applyConfig();
-    }));
+    }), (err) => {
+      console.warn('on loading webmap ' + this.id + ', err', err);
+      this._node
+        .removeClass('media-is-loading')
+        .find('.media-loading').hide();
+      if (app.builder) {
+        this.setError({
+          showLoadingError: true
+        });
+      }
+      else {
+        this.setError({minimizeInViewer: true});
+      }
+    });
   }
 
   postLoad() {
@@ -647,30 +659,37 @@ export default class WebMap extends Media {
 
     for (let layer of difference) {
       let layerId = JSON.parse(layer).id,
-          layerNode = this._cache[this.id].map.getLayer(layerId)._div,
-          isSVGLayer = false;
+          lyr = this._cache[this.id].map.getLayer(layerId);
+      // sometimes webmaps are configured in cascade to hide a layer
+      // and then that layer is removed from the original webmap
+      // so now the map won't have that layer. that's why we need to
+      // check to make sure we actually have a layer here. we che that here.
+      // maybe we should clean up the section json somewhere else in
+      // these instances.
+      if (lyr) {
+        let layerNode = lyr._div,
+            isSVGLayer = false;
 
-      // A graphics Layer drawned as SVG
-      // Those behave a little differently as there is only one swippeable
-      //   container for all of them in the map
-      // So those are only initialized once
-      if (layerNode.rawNode) {
-        if (! isFirstSVGLayer) {
-          continue;
+        // A Graphics Layer drawn as SVG
+        // behaves a little differently as there is only one swipeable
+        // container for all of them in the map
+        // So those are only initialized once
+        if (layerNode && layerNode.rawNode) {
+          if (!isFirstSVGLayer) {
+            continue;
+          }
+
+          layerNode = $(layerNode.rawNode).parent()[0];
+          isSVGLayer = true;
+          isFirstSVGLayer = false;
         }
 
-        layerNode = $(layerNode.rawNode).parent()[0];
-        isSVGLayer = true;
-        isFirstSVGLayer = false;
+        this._swipeLayersNodes.push({
+          node: $(layerNode),
+          isSVGLayer: isSVGLayer
+        });
       }
-
-      this._swipeLayersNodes.push({
-        node: $(layerNode),
-        isSVGLayer: isSVGLayer
-      });
     }
-
-    console.log('**', this._swipeLayersNodes);
   }
 
   // serialize needed for getAuthorizedTransitionsWith

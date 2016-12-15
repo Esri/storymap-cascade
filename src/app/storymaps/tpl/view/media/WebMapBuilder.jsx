@@ -5,8 +5,17 @@ import BuilderConfig from './builder/Panel';
 import BuilderConfigTabSize from './builder/TabSize';
 import BuilderConfigTabManage from './builder/TabManage';
 import BuilderConfigTabWebMap from './builder/TabWebMap';
+import BuilderConfigTabIssues from './builder/TabIssues';
+
+import MapEditor from './WebMapEditor';
 
 import lang from 'dojo/_base/lang';
+import topic from 'dojo/topic';
+
+import issues from '../../builder/Issues';
+import i18n from 'lib-build/i18n!resources/tpl/builder/nls/app';
+
+const text = i18n.builder.mediaErrors;
 
 export default class WebMapBuilder extends WebMap {
 
@@ -14,6 +23,8 @@ export default class WebMapBuilder extends WebMap {
     super(webmap);
 
     this._configTabWebMap = null;
+    this._configTabIssues = null;
+    this._configTabManage = null;
     this._isMultiViewSection = false;
     this._onToggleMediaConfig = null;
   }
@@ -27,9 +38,62 @@ export default class WebMapBuilder extends WebMap {
       this._initConfigPanel();
     }
 
+    // listen to when THIS SPECIFIC map gets scanned
+    topic.subscribe('scan/maps/' + this._webmap.id, lang.hitch(this, this.checkErrors));
+
     this.initBuilderUI();
 
     this._node.find('.media-media').attr('data-builder-invite', 'Update the map to tell your story, click the checkmark to save the changes');
+  }
+
+  checkErrors(scanResult) {
+    // update the map UI based on the scan results
+
+    this.errorIds = this.mapErrors(scanResult);
+    if (!this.errorIds) {
+      this.removeError(scanResult);
+    }
+    else {
+      const unfixableOptions = this.isUnfixableError(this.errorIds);
+      if (unfixableOptions) {
+        this.setError(unfixableOptions);
+      }
+      else {
+        this.setError({
+          scanResult: scanResult,
+          errors: scanResult.errors
+        });
+      }
+    }
+    if (this.builderConfig && this._node.hasClass('builder-config-open') && this._configTabIssues && this.errorIds) {
+      this._configTabIssues.errorIds = this.errorIds;
+      this.builderConfig.renderTab(this._configTabIssues);
+    }
+    else {
+      this._initConfigPanel();
+    }
+
+  }
+
+  isUnfixableError(errorIds = []) {
+    let msg = '';
+    if (errorIds.indexOf(issues.maps.deleted) >= 0) {
+      msg = text.placeholders.deleted.replace('${media-type}', text.mediaTypes.webmap);
+    }
+    else if (errorIds.indexOf(issues.maps.inaccessible) >= 0) {
+      msg = text.placeholders.inaccessible.replace('${media-type}', text.mediaTypes.webmap);
+    }
+    else if (errorIds.indexOf(issues.maps.unauthorized) >= 0) {
+      msg = text.placeholders.unauthorized.replace('${media-type}', text.mediaTypes.webmap);
+    }
+    else {
+      return false;
+    }
+    return {
+      unfixable: true,
+      showLoadingError: true,
+      msg
+    };
   }
 
   performAction(params = {}) {
@@ -62,9 +126,11 @@ export default class WebMapBuilder extends WebMap {
       map: this._cache[this.id],
       layerListNode: this._node.find('.layer-list-container'),
       onOpen: () => {
-        this.performAction({
-          forceSetExtent: true
-        });
+        if (this.map) {
+          this.performAction({
+            forceSetExtent: true
+          });
+        }
       }
     });
 
@@ -76,15 +142,27 @@ export default class WebMapBuilder extends WebMap {
         tabs.push(this._configTabWebMap);
       }
       else if (tab == 'manage') {
-        tabs.push(new BuilderConfigTabManage({
+        let mapName = this.getMapName(this._cache[this.id]);
+        this._configTabManage = new BuilderConfigTabManage({
           hideRemove: this._placement == 'background',
           mediaType: 'webmap',
-          mediaId: this.id
-        }));
+          mediaId: this.id,
+          mapName
+        });
+        tabs.push(this._configTabManage);
       }
     }
 
-    new BuilderConfig({
+    if (this.scanResults && this.scanResults.hasErrors && !this.scanResults.unfixable) {
+      this._configTabIssues = new BuilderConfigTabIssues({
+        map: this._cache[this.id],
+        scanResults: this.scanResults,
+        errorIds: this.errorIds
+      });
+      tabs.push(this._configTabIssues);
+    }
+
+    this.builderConfig = new BuilderConfig({
       containerMedia: this._node,
       tabs: tabs,
       media: this._webmap,
@@ -103,6 +181,39 @@ export default class WebMapBuilder extends WebMap {
     if (this._configTabWebMap) {
       this._configTabWebMap.setMap(this._cache[this.id]);
     }
+    if (this._configTabIssues) {
+      this._configTabIssues.setMap(this._cache[this.id]);
+    }
+    if (this._configTabManage) {
+      let mapName = this.getMapName(this._cache[this.id]);
+      this._configTabManage.setMapName(mapName);
+    }
+  }
+
+  getMapName(mapObj) {
+    if (!mapObj) {
+      return '';
+    }
+    const mapItem = mapObj.itemInfo && mapObj.itemInfo.item;
+    if (!mapItem) {
+      return '';
+    }
+    return mapItem.title || mapItem.name;
+  }
+
+  _openEditor() {
+    // TODO: add a container to the media to load the editor
+    //   or perhaps flip the media to a new media that will only handle the editing?
+    var mapEditor = new MapEditor({
+      container: $('#mapEditPopup')
+    });
+
+    mapEditor.present({
+      id: this.id
+      // TODO
+      // newMap: true,
+      // title: app.builder.getAddEditEntryTitle()
+    });
   }
 
   _onConfigChange() {

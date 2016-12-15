@@ -1,6 +1,6 @@
 import TabArcGIS from './TabArcGIS';
 
-import i18n from 'lib-build/i18n!./../../../../../resources/tpl/builder/nls/app';
+import i18n from 'lib-build/i18n!resources/tpl/builder/nls/app';
 
 import viewTpl from 'lib-build/hbars!./TabWebScene';
 //import {} from 'lib-build/less!./TabSize';

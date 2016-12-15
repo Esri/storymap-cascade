@@ -114,7 +114,6 @@ define([
   );
 
   function init(core) {
-    console.log('App loaded');
     _core = core;
     return true;
   }
@@ -205,11 +204,10 @@ define([
     // Header
     //
 
-    // TODO not sure what this is doing
     var headerCompact = false;
 
     if (scrollTop <= app.display.windowHeight) {
-      var newPos = app.display.windowHeight - scrollTop /*- app.display.headerHeight*/ - /* help header animation */ 50;
+      var newPos = app.display.windowHeight - scrollTop - 50;
 
       if (newPos < 40) {
         newPos = 0;
@@ -441,12 +439,7 @@ define([
       var working = false;
 
       var scrollAction = function() {
-        var performance = window.performance;
-        var t0 = performance.now();
-
         updateUI();
-
-        console.log('onScroll took', performance.now() - t0);
 
         working = false;
       };
@@ -571,7 +564,7 @@ define([
         if (! $('body').hasClass('mobile-view')) {
           $('.section-layout-cover .scroll-invite').hide();
           app.ui.header.disableShareButtonAutoplay();
-          
+
           app.ui.autoplay.start();
         }
       });

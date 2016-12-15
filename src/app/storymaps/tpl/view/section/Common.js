@@ -1,78 +1,12 @@
 define([
   '../../utils/UI',
+  'dojo/topic',
   'lib-build/less!./Common'
 ],
 function(
-  UIUtils
+  UIUtils,
+  topic
 ) {
-
-  /*
-  function resizeSnapSection2(sectionIndex, sectionTop)
-  {
-    var posY = sectionTop.toString().slice(-2),
-        sectionPos = sectionIndex + 1;
-
-      console.log(sectionIndex, sectionTop, posY);
-
-    if (posY > 50) {
-      posY -= 50;
-    }
-
-    posY -= 33;
-
-    if (posY < 0) {
-      posY = 0;
-    }
-
-    // TODO: should use an ID for builder
-    UIUtils.addCSSRule(
-      '.section:nth-child(' + sectionPos + ').active .background { top: ' + posY + 'px; }',
-      'section-bg-' + sectionPos
-    );
-
-    // TODO
-    if ($(this).hasClass('section-layout-snap-click-action')) {
-      UIUtils.addCSSRule(
-        '.section:nth-child(' + sectionPos + ').active .foreground { top: ' + posY + 'px; }',
-        'section-fg-' + sectionPos
-      );
-    }
-  }
-  */
-
-  /*
-  function resizeSnapSection(sectionNode)
-  {
-    var sectionIndex = sectionNode.index() + 1,
-        posY = parseInt(sectionNode.position().top).toString().slice(-2);
-
-    console.log(sectionIndex, sectionNode.position().top, posY);
-
-    if (posY > 50) {
-      posY -= 50;
-    }
-
-    posY -= 37;
-
-    if (posY < 0) {
-      posY = 0;
-    }
-
-    UIUtils.addCSSRule(
-      '.section:nth-child(' + sectionIndex + ').active .background { top: ' + posY + 'px; }',
-      'section-bg-' + sectionIndex
-    );
-
-    // TODO
-    if ($(this).hasClass('section-layout-snap-click-action')) {
-      UIUtils.addCSSRule(
-        '.section:nth-child(' + sectionIndex + ').active .foreground { top: ' + posY + 'px; }',
-        'section-fg-' + sectionIndex
-      );
-    }
-  }
-  */
-
   return {
     initMedia: function(media, mediaCache) {
       return app.ui.MediaFactory.createInstance(media, mediaCache);
@@ -271,40 +205,76 @@ function(
       */
     },
 
-    applyTitleStyle: function(style, textNode, backgroundNode) {
-      if (style) {
-        if (style.background) {
-          if (style.background === 'light') {
-            backgroundNode.addClass('background-light');
-            backgroundNode.removeClass('background-dark');
-          }
-          else {
-            backgroundNode.addClass('background-dark');
-            backgroundNode.removeClass('background-light');
-          }
+    _applyTitleBackground: function(style, backgroundNode) {
+      if (style.background) {
+        if (style.background === 'light') {
+          backgroundNode.addClass('background-light');
+          backgroundNode.removeClass('background-dark');
         }
         else {
-          backgroundNode.removeClass('background-dark');
+          backgroundNode.addClass('background-dark');
           backgroundNode.removeClass('background-light');
         }
+      }
+      else {
+        backgroundNode.removeClass('background-dark');
+        backgroundNode.removeClass('background-light');
+      }
+    },
 
-        if (style.text) {
-          if (style.text === 'light') {
-            textNode.addClass('text-light');
-            textNode.removeClass('text-dark');
-          }
-          else {
-            textNode.addClass('text-dark');
-            textNode.removeClass('text-light');
-          }
-        }
-
-        if (style.shadow) {
-          textNode.addClass('text-shadow');
+    _applyTitleText: function(style, textNode) {
+      if (style.text) {
+        if (style.text === 'light') {
+          textNode.addClass('text-light');
+          textNode.removeClass('text-dark');
         }
         else {
-          textNode.removeClass('text-shadow');
+          textNode.addClass('text-dark');
+          textNode.removeClass('text-light');
         }
+      }
+    },
+
+    _applyTextShadow: function(style, textNode) {
+      if (style.shadow) {
+        textNode.addClass('text-shadow');
+      }
+      else {
+        textNode.removeClass('text-shadow');
+      }
+    },
+
+    applyTitleStyle: function(style, textNode, backgroundNode) {
+      if (style) {
+        this._applyTitleBackground(style, backgroundNode);
+        this._applyTitleText(style, textNode);
+        this._applyTextShadow(style, textNode);
+      }
+      else {
+        textNode.addClass('text-shadow');
+      }
+    },
+
+    checkMedia: function(item) {
+      if (item.type === 'image-gallery') {
+        return;
+      }
+
+      if (item.type === 'image' && item.image.uploadDeferred) {
+        item.image.uploadDeferred.then(
+          function() {
+            // do an issue check
+            topic.publish('builder-should-check-story');
+          }.bind(this),
+          function() {
+            // do an issue check
+            topic.publish('builder-should-check-story');
+          }.bind(this)
+        );
+      }
+      else {
+        // do an issue check
+        topic.publish('builder-should-check-story');
       }
     }
   };

@@ -140,9 +140,42 @@ function(
       if (! /^(https?:\/\/)|^(\/\/)/i.test(url)) {
         return 'http://' + url;
       }
-
       return url;
     },
+
+    uploadedImageNeedsFixing: function(url) {
+      if (!url || !app.portal || !app.portal.url) {
+        return false;
+      }
+      // fix sharing url on image constructor...
+      const appItem = app.data && app.data.appItem;
+      if (!appItem) {
+        return false;
+      }
+      const appId = appItem.item.id;
+      if (!appId) {
+        return false;
+      }
+
+      const createdVersion = appItem.data.values.template.createdWith;
+      const editedVersion = appItem.data.values.template.editedWith;
+      const needsFixing = (createdVersion.match(/^1.[0|1]/) && editedVersion.match(/^1.[0|1]/));
+      if (needsFixing && url.match(appId + '/resources')) {
+        return true;
+      }
+      return false;
+
+    },
+
+    fixUploadedImageUrl: function(url) {
+      const specificPortalUrl = url.replace(/^(https?:\/\/)|^(\/\/)/, '').split(/\//)[0];
+      const genericPortalUrl = app.portal.portalHostname;
+      if (!specificPortalUrl || !genericPortalUrl) {
+        return url;
+      }
+      return url.replace(specificPortalUrl, genericPortalUrl);
+    },
+
     throttle: function(fn, threshhold, scope) {
       threshhold || (threshhold = 250);
       var last,

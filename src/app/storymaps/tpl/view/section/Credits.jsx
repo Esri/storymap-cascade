@@ -46,7 +46,7 @@ export default class Credits {
         let blockOutput = '<div class="blocks">' + blockRenderer.output + '</div>';
         creditsOutput += blockOutput;
       }
-      else if (panel.type === 'credits') {        
+      else if (panel.type === 'credits') {
         let credits = SectionCommon.initMedia(panel, null);
 
         this._panels.push({
@@ -82,7 +82,8 @@ export default class Credits {
       }
       else if (panel.type === 'credits') {
         panel.credits.postCreate({
-          container: sectionContainer
+          container: sectionContainer,
+          onContentChange: app.isInBuilder ? this._onContentChange.bind(this) : null
         });
       }
     }

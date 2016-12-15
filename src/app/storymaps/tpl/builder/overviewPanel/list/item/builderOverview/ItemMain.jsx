@@ -7,6 +7,9 @@ import {} from 'lib-build/less!./ItemMain';
 
 function ItemMain(props) {
   var mainClassName = 'op-item-main builder-overview ' + props.item.size;
+  if (props.item.scanResults && props.item.scanResults.hasErrors) {
+    mainClassName += ' error';
+  }
 
   var renderInnerContent = function() {
     if (props.item.showTitleBar) {
