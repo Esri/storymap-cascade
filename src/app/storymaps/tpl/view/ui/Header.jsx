@@ -33,7 +33,6 @@ export default class Header {
 
   render(params = {}) {
     var {logo, link, social, title} = params;
-
     var socialCfg = {
       logoEnabled: logo.enabled,
       logoURL: Media.addToken(logo.url),
@@ -51,10 +50,24 @@ export default class Header {
 
     this._node.find('.title').html(title);
 
+    this._node.find('.title').off('click').on('click', function() {
+      app.Controller.navigateToSection({
+        index: 0,
+        animate: false
+      });
+    });
+
     this._node.find('.share-btn')
       .off('click')
       .click(this._onShareBtnClick.bind(this))
-      .toggleClass('active', !! social.enabled);
+      .toggleClass('active', !! social.enabled)
+      .off('keypress')
+      .on('keypress', function(evt) {
+        console.debug('hello keypress');
+        if (evt.keyCode === 13 && !!social.enabled) {
+          this._onShareBtnClick();
+        }
+      }.bind(this));
 
     this._progressBar.start();
     this._bookmarks.render(params.bookmarks);
@@ -133,8 +146,13 @@ export default class Header {
 
         container.find('.logoLink').css('cursor', headerCfg.logoTarget ? 'pointer' : 'default');
 
+        // if there's no logo link, we shouldn't allow clicking on the logo to link out to something (in this case, the same page we're on).
         if (headerCfg.logoTarget) {
           container.find('.logoLink').attr('href', headerCfg.logoTarget);
+          container.find('.logoLink').removeClass('logoLink-disabled');
+        }
+        else {
+          container.find('.logoLink').addClass('logoLink-disabled');
         }
 
         let imageNode = container.find('.logoImg');
@@ -155,7 +173,7 @@ export default class Header {
 
   setLink(container, headerCfg) {
     if (headerCfg.linkURL && headerCfg.linkText) {
-      container.find('.linkContainer').html('<a href="' + headerCfg.linkURL + '" class="link" target="_blank" tabindex="-1">' + headerCfg.linkText + '</a>');
+      container.find('.linkContainer').html('<a href="' + headerCfg.linkURL + '" class="link" target="_blank">' + headerCfg.linkText + '</a>');
     }
     else {
       container.find('.linkContainer').html(headerCfg.linkText);

@@ -29,6 +29,8 @@ define({
         logoSharing: {
           logo: "Logo",
           logoButton: "Use ${ESRI} Logo",
+          useOrgLogo: "Use my organization's logo",
+          useOrgLogoHelp: "Use the logo provided by your administrator",
           logoLink: "Logo link",
           logoUploadProgress: "Logo upload in progress",
           logoUploadSuccess: "Logo uploaded successfully",
@@ -42,8 +44,8 @@ define({
       builderPanel: {
         coverLabel: "Cover",
         creditsLabel: "Credits",
-        betaFeedback: "Beta feedback",
-        betaNote: "${APP_NAME} is in beta. Please let us know what you think or if something is not working as you expected.",
+        betaFeedback: "Feedback",
+        betaNote: "Please let us know what you think about ${APP_NAME} or if something is not working as you expected.",
         notSharedNote: "Your story isn't shared, only you can see it",
         organizationWarning: "To ensure this story can be viewed by others you must also share its scenes, scene layers, and embedded apps with your organization. Maps and map layers are shared automatically.",
         publicWarning: "To ensure this story can be viewed by others you must also share its scenes, scene layers, and embedded apps publicly. Maps and map layers are shared automatically.",
@@ -65,7 +67,7 @@ define({
         disabledConsecutiveSameMedia: "Not available when consecutive views use the same media",
         disabledTooltipMap: "To use this transition the visible layers in both views must be different and the other map properties must be the same",
         disabledConsecutiveSameMap: "Not available when consecutive views use the same map",
-        disabledNotInBeta: "Not available in beta",
+        disabledNotInBeta: "Not available when consecutive views use the same map",
         disabledNonConsecutive: "Not available as there is another occurence of this media that is non consecutive",
         addMedia: "Add media",
         invite: "As you build your immersive section, the views will appear here..."
@@ -101,7 +103,8 @@ define({
           interactionEnabled: "Interaction Enabled",
           interactionAside: "*Touch devices will show an interaction button.",
           slide: "Slide",
-          noSlides: "No slides available."
+          noSlides: "No slides available.",
+          mapExtentPrompt: "Update the map to tell your story, click the checkmark to save the changes"
         },
         sectionAppearance: {
           layout: "Layout",
@@ -122,8 +125,9 @@ define({
         }
       },
       imageGallery: {
-        reachedLimit: "Only four images are allowed in a row. To start a new row, add another image below.",
-        addImage: "Add another image to this row"
+        addImage: "Add another image",
+        moveBackward: "Move backward",
+        moveForward: "Move forward"
       },
       cover: {
         titlePrompt: "Enter your story title...",
@@ -162,7 +166,8 @@ define({
       controller: {
         sectionOrganize: "You organized the sections",
         immersiveOrganize: "You organized the views",
-        sectionDelete: "You deleted a section"
+        sectionDelete: "You deleted a section",
+        viewDelete: "You deleted a view"
       },
       notification: {
         cancel: "Cancel",
@@ -269,6 +274,7 @@ define({
   "fi": 1,
   "fr": 1,
   "he": 1,
+  "hi": 1,
   "hr": 1,
   "id": 1,
   "it": 1,

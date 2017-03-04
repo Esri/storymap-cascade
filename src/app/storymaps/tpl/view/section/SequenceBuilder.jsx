@@ -48,7 +48,7 @@ export default class SequenceBuilder extends Sequence {
   }
 
   postCreate(node) {
-    super.postCreate(node);
+    let promises = super.postCreate(node);
 
     this._editor = new MediumEditorWrapper({
       node: this._node.find('.foreground'),
@@ -63,6 +63,8 @@ export default class SequenceBuilder extends Sequence {
         && this._section.foreground.blocks[0].text.value.match(/block-placeholder/),
       onChange: this._onContentChange.bind(this)
     });
+
+    return promises;
   }
 
   focus() {
@@ -157,13 +159,24 @@ export default class SequenceBuilder extends Sequence {
     // Delete actual background
     media.getNode().remove();
 
-    newMedia.postCreate({
+    let createResults = newMedia.postCreate({
       container: this._node,
       onToggleMediaConfig: app.isInBuilder ? this._onToggleMediaConfig.bind(this) : null,
       onConfigAction: app.isInBuilder ? this._onMediaConfigAction.bind(this) : null,
       builderConfigurationTabs: this.MEDIA_BUILDER_TABS
     });
 
+    if (createResults && createResults.isAsync) {
+      createResults.promise.then(() => {
+        this._onEditedContentMounted(newMedia, media, newMediaJSON);
+      });
+    }
+    else {
+      this._onEditedContentMounted(newMedia, media, newMediaJSON);
+    }
+  }
+
+  _onEditedContentMounted(newMedia, media, newMediaJSON) {
     // TODO: this may be an issue if picking a map/scene already present
     newMedia.load();
 
@@ -231,7 +244,8 @@ export default class SequenceBuilder extends Sequence {
       );
     }
     else if (params.action == 'image-gallery-to-image') {
-      var firstImage = params.media.serialize()['image-gallery'].images[0];
+      let serializedMedia = params.media.serialize()['image-gallery'];
+      var firstImage = serializedMedia.images[0];
 
       this._onEditMedia(
         params.media,
@@ -241,7 +255,7 @@ export default class SequenceBuilder extends Sequence {
             url: firstImage.url,
             width: firstImage.width,
             height: firstImage.height,
-            caption: firstImage.caption
+            caption: serializedMedia.caption
           }
         }
       );

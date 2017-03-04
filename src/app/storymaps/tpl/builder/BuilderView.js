@@ -54,32 +54,6 @@ define([
   lang,
   IdentityManager
 ) {
-  var STORY_SHELL = {
-    config: {
-      author: {
-        name: ''
-      }
-    },
-    settings: {
-      /*
-      theme: {
-        colors: {
-          id: 'black-over-white-1',
-          'text-main': '#000',
-          'background-main': '#FFF'
-        }
-      },*/
-      header: { }
-    },
-    template: {
-      name: app.cfg.TPL_NAME,
-      createdWith: app.version,
-      editedWith: app.version,
-      dataVersion: '1.0.0'
-    },
-    sections: [ ]
-  };
-
   return function BuilderView(Core, Builder) {
     $('#builder-views').append(viewTpl({ }));
 
@@ -496,6 +470,32 @@ define([
     }
 
     function getBlankAppDataJSON(params) {
+      var STORY_SHELL = {
+        config: {
+          author: {
+            name: ''
+          }
+        },
+        settings: {
+          /*
+          theme: {
+            colors: {
+              id: 'black-over-white-1',
+              'text-main': '#000',
+              'background-main': '#FFF'
+            }
+          },*/
+          header: app.Controller.SHARED_STYLE_HEADER_SETTINGS || {}
+        },
+        template: {
+          name: app.cfg.TPL_NAME,
+          createdWith: app.version,
+          editedWith: app.version,
+          dataVersion: '1.0.0'
+        },
+        sections: [ ]
+      };
+
       var story = lang.clone(STORY_SHELL);
 
       //story.config.author.name = app.portal.getPortalUser().fullName;

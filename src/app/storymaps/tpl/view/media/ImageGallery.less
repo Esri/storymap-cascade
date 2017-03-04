@@ -4,79 +4,8 @@
   width: 80%;
   margin: auto;
   margin-top: 30px;
-
-  .image-gallery-wrapper {
-    display: flex;
-
-    .image-gallery-item {
-      flex: 1;
-      padding-left: 15px;
-
-      &:nth-child(1) {
-        padding-left: 0;
-      }
-
-      .image-gallery-item-wrapper {
-        position: relative;
-        display: inline-block;
-
-        .image-gallery-img-hidden {
-          width: 100%;
-        }
-
-        /*
-        .image-gallery-img {
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-
-          background-size: contain;
-          background-repeat: no-repeat;
-          background-position: 50% 50%;
-        }
-        */
-
-        /*
-        .image-gallery-img-hidden {
-          opacity: 0;
-        }
-        */
-      }
-    }
-  }
 }
 
-/*
- * Responsive
- */
-
-@media (max-width: @screen-sm) {
-  .image-gallery {
-    .image-gallery-wrapper {
-      flex-wrap: wrap;
-      justify-content: space-around;
-
-      .image-gallery-item {
-        flex: 0 0 50%;
-
-        &:nth-child(2n+1) {
-          padding-left: 0;
-        }
-
-        &:nth-child(n+3) {
-          margin-top: 15px;
-        }
-      }
-    }
-  }
-}
-
-/*
- * Maximize
- */
-
-.fluidbox--opened .fluidbox__ghost {
-  margin-left: @builder-panel-width / 2;
+body.mobile-view .image-gallery {
+  width: 100%;
 }

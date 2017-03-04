@@ -101,3 +101,9 @@ body.mobile-view .shareDialog .share-url-social {
 	color: #3c763d;
 	font-weight: bold;
 }
+
+/* better tabbing to button */
+.shareDialog .btn-default:focus {
+    background-color: #005e95;
+    color: #fff;
+}

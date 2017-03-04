@@ -22,7 +22,7 @@ export default class CoverBuilder extends Cover {
   }
 
   render() {
-    // Creating a new section
+    // Building the cover for the first time...
     if (! this._section.background) {
       this._section.layout = 'cover-1';
       this._section.background = {
@@ -32,10 +32,8 @@ export default class CoverBuilder extends Cover {
           isPlaceholder: true
         }
       };
-    }
 
-    // if the app hasn't been saved yet
-    if (!this._section.foreground.options) {
+      // building the cover for the first time
       this._section.foreground.options = {
         titleStyle: {
           shadow: false,
@@ -43,6 +41,11 @@ export default class CoverBuilder extends Cover {
           background: 'light'
         }
       };
+    }
+
+    // if built before we had foreground options, make it an object
+    if (!this._section.foreground.options) {
+      this._section.foreground.options = {};
     }
 
     // if the all has been saved, but title style wasn't specified prior
@@ -278,7 +281,25 @@ export default class CoverBuilder extends Cover {
       'KristoferSelbekk.jpg',
       'SteveRichey.jpg',
       'YuxXiang.jpg',
-      'ZbysiuRodak.jpg'
+      'ZbysiuRodak.jpg',
+      '14828.jpg',
+      '24241.jpg',
+      '24963.jpg',
+      '57688.jpg',
+      '93092.jpg',
+      '123972.jpg',
+      '124325.jpg',
+      '134977.jpg',
+      '136526.jpg',
+      '152227.jpg',
+      '154060.jpg',
+      '162286.jpg',
+      '173199.jpg',
+      '182304.jpg',
+      '183942.jpg',
+      '196539.jpg',
+      '198863.jpg',
+      '207956.jpg'
     ];
 
     var image = images[Math.floor(Math.random() * images.length)];

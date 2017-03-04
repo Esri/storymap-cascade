@@ -20,23 +20,9 @@ import topic from 'dojo/topic';
 import i18n from 'lib-build/i18n!resources/tpl/viewer/nls/app';
 
 import Media from 'storymaps-react/tpl/view/media/Media';
+import WebSceneCache from 'storymaps-react/tpl/core/WebSceneCache';
 
 let storyMap = 'Story Map';
-
-const DEFAULT_HEADER_SETTINGS = {
-  logo: {
-    enabled: true,
-    url: 'resources/tpl/viewer/icons/esri-logo.png',
-    link: 'https://www.esri.com'
-  },
-  link: {
-    url: 'https://storymaps.arcgis.com',
-    title: i18n.viewer.headerFromCommon.defaultTagline.replace(/\${STORY_MAP}/g, storyMap)
-  },
-  social: {
-    enabled: true
-  }
-};
 
 export default class Controller {
 
@@ -81,12 +67,56 @@ export default class Controller {
   }
 
   static get DEFAULT_HEADER_SETTINGS() {
+    const DEFAULT_HEADER_SETTINGS = {
+      logo: {
+        enabled: true,
+        url: 'resources/tpl/viewer/icons/esri-logo.png',
+        link: 'https://www.esri.com'
+      },
+      link: {
+        url: 'https://storymaps.arcgis.com',
+        title: i18n.viewer.headerFromCommon.defaultTagline.replace(/\${STORY_MAP}/g, storyMap)
+      },
+      social: {
+        enabled: true
+      }
+    };
+
     return DEFAULT_HEADER_SETTINGS;
   }
 
+  static get SHARED_STYLE_HEADER_SETTINGS() {
+    if (!app.portal.isOrganization) {
+      return null;
+    }
+
+    let orgLogo = lang.getObject('portal.portalProperties.sharedTheme.logo.small', false, app);
+
+    if (!orgLogo) {
+      return null;
+    }
+
+    const SHARED_STYLE_HEADER_SETTINGS = {
+      logo: {
+        enabled: true,
+        url: orgLogo,
+        link: ''
+      },
+      link: {
+        url: 'https://storymaps.arcgis.com',
+        title: i18n.viewer.headerFromCommon.defaultTagline.replace(/\${STORY_MAP}/g, storyMap)
+      },
+      social: {
+        enabled: true
+      }
+    };
+
+    return SHARED_STYLE_HEADER_SETTINGS;
+  }
+
   static renderHeader() {
-    var appItem = app.data.appItem,
-        headerSettings = appItem ? appItem.data.values.settings.header : null;
+    let appItem = app.data.appItem;
+    let headerSettings = appItem ? appItem.data.values.settings.header : null;
 
     if (! headerSettings || ! headerSettings.logo || ! headerSettings.link) {
       headerSettings = Controller.DEFAULT_HEADER_SETTINGS;
@@ -103,6 +133,7 @@ export default class Controller {
 
   static renderStory(config, sections) {
     this._sections = [];
+    this._webSceneCache = new WebSceneCache();
     this._currentSection = null;
     this._$currentSection = null;
     this._currentSectionIndex = null;
@@ -112,6 +143,7 @@ export default class Controller {
         sectionsLength = sections.length;
 
     app.data.errorWebGL = false;
+    app.data.errorVideoMobile = false;
 
     // Merge consecutive sequence sections
     // This always run in viewer and builder before the story is parsed
@@ -175,7 +207,7 @@ export default class Controller {
       // If there has been and error with WebGL
       // If rendering the section before credits
       // Or the last section if no credits
-      if (app.data.errorWebGL) {
+      if (app.data.errorWebGL || app.data.errorVideoMobile) {
         if (
               (app.isInBuilder && (
                 index == sectionsLength - 3 && sections[index + 1].type == 'credits-placeholder'
@@ -186,8 +218,17 @@ export default class Controller {
                 || index == sectionsLength - 1 && section.type != 'credits'
             ))
         ) {
+          let errorType = '';
+
+          if (app.data.errorWebGL) {
+            errorType = 'WEBGL';
+          }
+          else if (app.data.errorVideoMobile) {
+            errorType = 'VIDEO_MOBILE';
+          }
+
           var errorSection = this.getErrorSection({
-            type: app.data.errorWebGL ? 'WEBGL' : ''
+            type: errorType
           });
 
           if (errorSection) {
@@ -210,9 +251,17 @@ export default class Controller {
     // Primary goal is for everyone to have a reference to it's DOM container
     //
 
+    let asyncResults = [];
+
     $('.section').each(function(i, node) {
-      this._sections[i].postCreate($(node));
+      let sectionResults = this._sections[i].postCreate($(node));
+
+      if (Array.isArray(sectionResults)) {
+        asyncResults = asyncResults.concat(sectionResults);
+      }
     }.bind(this));
+
+    return Promise.all(asyncResults);
   }
 
   static getBookmarks() {
@@ -271,7 +320,8 @@ export default class Controller {
     newSection.onScroll(lang.mixin(params, {
       status: 'current',
       viewportTop: params.scrollTop - sectionTop,
-      viewportBottom: params.scrollTop + app.display.sectionHeight - sectionTop
+      viewportBottom: params.scrollTop + app.display.sectionHeight - sectionTop,
+      webSceneCache: this._webSceneCache
     }));
 
     // If changing section
@@ -318,7 +368,7 @@ export default class Controller {
 
     $.each(params.visibleSections, function(i, sectionIndex) {
       var section = this._sections[sectionIndex],
-          sectionTop = app.display.sections[sectionIndex].top;      
+          sectionTop = app.display.sections[sectionIndex].top;
 
       // Skip current section that already got one event sent
       if (sectionIndex == params.currentSectionIndex) {
@@ -328,7 +378,8 @@ export default class Controller {
       section.onScroll(lang.mixin(params, {
         status: 'visible',
         viewportTop: params.scrollTop - sectionTop,
-        viewportBottom: params.scrollTop + app.display.sectionHeight - sectionTop
+        viewportBottom: params.scrollTop + app.display.sectionHeight - sectionTop,
+        webSceneCache: this._webSceneCache
       }));
     }.bind(this));
 
@@ -343,7 +394,9 @@ export default class Controller {
 
   static onResize(params) {
     for (let section of this._sections) {
-      section.resize(params);
+      section.resize(lang.mixin(params, {
+        webSceneCache: this._webSceneCache
+      }));
     }
   }
 
@@ -433,7 +486,7 @@ export default class Controller {
 
     var errorSection = null;
 
-    if (params.type == 'WEBGL') {
+    if (params.type === 'WEBGL' || params.type === 'VIDEO_MOBILE') {
       var storyWarningBtn = 'mailto:?to=&subject=Check%20out%20this%20story&body=' + document.location.href;
 
       errorSection = app.ui.SectionFactory.createInstance({

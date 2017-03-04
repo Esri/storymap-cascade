@@ -132,8 +132,10 @@ export default class Media {
     let showError = options.showLoadingError || false;
     let errorTarget, msgTarget;
     if (options.galleryIndex || options.galleryIndex === 0) {
-      errorTarget = this._node.find('.image-gallery-item[data-index="' + options.galleryIndex + '"]');
-      msgTarget = errorTarget.find('.image-gallery-item-wrapper');
+      let imageGalleryNode = this._node.find('.ug-thumb-wrapper').eq(options.galleryIndex);
+
+      errorTarget = imageGalleryNode;
+      msgTarget = imageGalleryNode;
     }
     else {
       errorTarget = this._node.find('.block-media,.background')

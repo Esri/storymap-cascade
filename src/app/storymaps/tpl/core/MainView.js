@@ -21,6 +21,8 @@ define([
   'lib-build/less!./MainView',
   'lib-build/css!../view/media/Common',
 
+  'lib-build/i18n!resources/tpl/viewer/nls/app',
+
   'storymaps-react/tpl/core/Controller',
   'storymaps/common/Core',
   'storymaps/common/utils/CommonHelper',
@@ -45,6 +47,8 @@ define([
 
   viewCss,
   mediasCss,
+
+  i18n,
 
   Controller,
   Core,
@@ -131,24 +135,26 @@ define([
       $('body').addClass('touch');
     }
 
-    app.Controller.renderStory(config, sections);
-    app.Controller.renderHeader();
+    app.Controller.renderStory(config, sections)
+    .then(function() {
+      app.Controller.renderHeader();
 
-    displayApp();
+      displayApp();
 
-    // Update display infos
-    setTimeout(function() {
-      computeDisplayInfos();
-    }, 100);
+      // Update display infos
+      setTimeout(function() {
+        computeDisplayInfos();
+      }, 100);
 
-    // To makes safari happy
-    setTimeout(function() {
-      computeDisplayInfos();
-    }, 300);
+      // To makes safari happy
+      setTimeout(function() {
+        computeDisplayInfos();
+      }, 300);
 
-    setTimeout(function() {
-      computeDisplayInfos();
-    }, 500);
+      setTimeout(function() {
+        computeDisplayInfos();
+      }, 500);
+    });
   }
 
   /*
@@ -171,6 +177,9 @@ define([
       return;
     }
 
+    // scrolling up or down, and how much? Positive value is scrolling down, negative is scrolling up.
+    var scrollDifference = scrollTop - _currentScrollTop;
+
     _currentScrollTop = scrollTop;
 
     var sectionsDisplayInfos = getActiveAndVisibleSections(scrollTop, scrollTop + app.display.windowHeight),
@@ -192,6 +201,7 @@ define([
     app.Controller.onScroll({
       currentSectionIndex: currentSectionIndex,
       scrollTop: scrollTop,
+      scrollDifference: scrollDifference,
       windowWidth: app.display.windowWidth,
       windowHeight: app.display.windowHeight,
       $currentSection: $currentSection,
@@ -254,7 +264,8 @@ define([
         visibleSections = [],
         sectionTop = 0,
         sectionIndex = 0,
-        sectionBottom = null;
+        sectionBottom = null,
+        visibleViewportTop = viewportTop + 50;
 
     for (var i = 0; i < nbSections; i++) {
       sectionTop = sections[i].top;
@@ -262,7 +273,7 @@ define([
       sectionBottom = sections[i + 1] ? sections[i + 1].top : -1;
 
       // The active section is the section that is before the section not visible
-      if (sectionTop > viewportTop + 50) {
+      if (sectionTop > visibleViewportTop) {
         if (! activeSection) {
           activeSection = {
             index: sectionIndex,
@@ -281,10 +292,12 @@ define([
         };
       }
 
-      if (viewportTop >= sectionTop && viewportTop < sectionBottom) {
+      // if section starts above the screen, but ends in the screen
+      if (visibleViewportTop >= sectionTop && visibleViewportTop < sectionBottom) {
         visibleSections.push(sectionIndex + 1);
       }
-      else if (viewportBottom > sectionTop && viewportTop < sectionTop) {
+      // else if section starts in the screen
+      else if (viewportBottom > sectionTop && visibleViewportTop < sectionTop) {
         visibleSections.push(sectionIndex + 1);
       }
     }
@@ -401,6 +414,8 @@ define([
     $(window)
       .resize(optimizedResize)
       .trigger('resize');
+
+    topic.subscribe('media-dynamic-resize', onResize);
 
     //
     // Scroll event
@@ -631,8 +646,6 @@ define([
   //
 
   function hideLoadingOverlay() {
-    $('#loadingIndicator').css('margin-left', '-25px');
-
     setTimeout(function() {
       $('#loadingIndicator, #loadingMessage').addClass('fadeOut').fadeOut(300);
       $('#loadingOverlay').fadeOut(600);
@@ -644,7 +657,7 @@ define([
    */
   function getConfig(configName) {
     if (! configName) {
-      alert('No configuration specified in index.html > configOptions.story');
+      alert(i18n.viewer.errors.noConfigName);
     }
 
     $.ajax({
@@ -657,11 +670,11 @@ define([
           initStory(data.config, data.settings, data.sections);
         }
         else {
-          alert('The specified configuration couldn\'t be loaded because of a JSON syntax error.');
+          alert(i18n.viewer.errors.configFormatError);
         }
       },
       function() {
-        alert('The specified configuration hasn\'t been found or couldn\'t be loaded because of a JSON syntax error.');
+        alert(i18n.viewer.errors.configNotFound);
       }
     );
   }

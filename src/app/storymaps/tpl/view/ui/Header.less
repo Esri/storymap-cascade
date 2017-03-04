@@ -64,6 +64,10 @@ body.builder-mode .story-header {
   -webkit-transition: background 1s ease-in;
   -o-transition: background 1s ease-in;
   transition: background 1s ease-in;
+
+  &.logoLink-disabled {
+    pointer-events: none;
+  }
 }
 
 .story-header .logoImg {
@@ -96,6 +100,7 @@ body.builder-mode .story-header {
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
+  cursor: pointer;
 }
 
 .story-header.compact .title {

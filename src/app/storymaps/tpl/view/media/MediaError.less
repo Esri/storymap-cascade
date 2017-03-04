@@ -26,7 +26,7 @@
 // both viewer and editor error formatting
 .background.error,
 .block-media.error,
-.image-gallery-item.error {
+.ug-thumb-wrapper.error {
   background: #f9f9f9;
 
   .media-loading {
@@ -35,9 +35,13 @@
 
 }
 
-.image-gallery-item.error {
+.ug-thumb-wrapper.error {
   padding-left: 0 !important; // sorry for all the !importants.
   margin-left: 15px;
+
+  img {
+    display: none;
+  }
 }
 
 // just viewer (minimize error in sequence and panel)
@@ -48,7 +52,7 @@ body:not(.builder-mode) {
   }
 
   .block-media.error.minimize-on-viewer,
-  .image-gallery-item.error.minimize-on-viewer {
+  .ug-thumb-wrapper.error.minimize-on-viewer {
     height: auto;
     padding-top: 0;
 
@@ -61,8 +65,7 @@ body:not(.builder-mode) {
     }
 
     .image-container,
-    .media-media,
-    .image-gallery-item-wrapper a {
+    .media-media {
       display: none;
     }
 
@@ -109,7 +112,7 @@ body:not(.builder-mode) {
   // all error types (sequential, cover, title, immersive, panels, image galleries)
   .block-media.error,
   .background.error,
-  .image-gallery-item.error {
+  .ug-thumb-wrapper.error {
     border-left: 10px solid @sm-danger-text;
 
     &, .map {
@@ -209,20 +212,10 @@ body:not(.builder-mode) {
   }
 
   // just image galleries
-  .image-gallery-item.error {
+  .ug-thumb-wrapper.error {
     .loading-error {
       top: 20px;
       max-width: 100%;
-    }
-
-    .image-gallery-item-wrapper {
-      height: 100% !important; // height is dynamically appended to each img
-      width: 100%;
-      min-height: 100px; // if there's no unbroken images in the gallery
-    }
-
-    a {
-      display: none;
     }
   }
 }

@@ -43,7 +43,7 @@ export default class WebMapBuilder extends WebMap {
 
     this.initBuilderUI();
 
-    this._node.find('.media-media').attr('data-builder-invite', 'Update the map to tell your story, click the checkmark to save the changes');
+    this._node.find('.media-media').attr('data-builder-invite', i18n.builder.mediaConfig.appearance.mapExtentPrompt);
   }
 
   checkErrors(scanResult) {
@@ -70,6 +70,7 @@ export default class WebMapBuilder extends WebMap {
       this.builderConfig.renderTab(this._configTabIssues);
     }
     else {
+      this._destroyConfigPanel();
       this._initConfigPanel();
     }
 
@@ -118,6 +119,17 @@ export default class WebMapBuilder extends WebMap {
   //
   // Private
   //
+
+  _destroyConfigPanel() {
+    if (this.builderConfig && this.builderConfig._tabs) {
+      var activeTab = this.builderConfig._tabs.find(function(tab) {
+        return tab._isActive;
+      });
+      if (activeTab) {
+        this.builderConfig.destroyTab(activeTab);
+      }
+    }
+  }
 
   _initConfigPanel() {
     let tabs = [];

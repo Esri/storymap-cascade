@@ -1,37 +1,10 @@
-<div class="image-gallery-wrapper" contenteditable="false">
+<div id="{{imageGalleryID}}" class="image-gallery-wrapper" contenteditable="false">
   {{#each images}}
-    {{#if dataUrl}}
-      <div class="image-gallery-item" data-src="{{dataUrl}}" data-index="{{@index}}">
-    {{else}}
-      <div class="image-gallery-item" data-src="{{url}}" data-index="{{@index}}">
-    {{/if}}
-      <div class="image-gallery-item-wrapper" style="height: {{adjustedHeight}}px;">
-        <div class="media-loading">
-          <span class="large-loader"></span>
-        </div>
-
-        {{#if dataUrl}}
-          <a href="{{dataUrl}}" class="image-gallery-image-link" data-disable-preview="true" contenteditable="false">
-        {{else}}
-          <a href="{{url}}" class="image-gallery-image-link" data-disable-preview="true" contenteditable="false">
-        {{/if}}
-
-          <img class="image-gallery-img-hidden" />
-        </a>
-        <!--<div class="image-gallery-img"></div>-->
-        <div class="builder-ui hidden ig-item ig-media-swap">
-          <div class="ig-background"></div>
-          <i class="ig-action-icon ig-settings fa fa-pencil"></i>
-        </div>
-        <div class="builder-ui hidden ig-item ig-media-delete">
-          <div class="ig-background"></div>
-          <i class="ig-action-icon ig-remove fa fa-trash-o"></i>
-        </div>
-        <div class="builder-ui ig-add" data-toggle="tooltip">
-          <span class="ig-action-icon ig-add-icon glyphicon glyphicon-plus"></span>
-        </div>
-      </div>
-    </div>
+    <img alt="" src="{{url}}" data-index="{{@index}}" data-image="{{url}}" data-description="" data-width="{{width}}" data-height="{{height}}"/>
   {{/each}}
 </div>
+<div class="builder-ui ig-add" data-toggle="tooltip">
+  <span class="ig-action-icon ig-add-icon glyphicon glyphicon-plus"></span>
+</div>
+<div class="builder-ui ig-temp-placeholder"></div>
 <div class="block-caption" data-placeholder="{{placeholder}}" contenteditable="{{captionEditable}}">{{{caption}}}</div>

@@ -1,3 +1,4 @@
+/* eslint quotes: ["error", "double"] */
 define({
   root: ({
     textEditor: {
@@ -5,8 +6,11 @@ define({
         continueStory: "Continue your story here..."
       },
       blockAdd: {
-        text: "Text",        media: "Media",
-        title: "Title Section",        immersive: "Immersive Section"      },
+        text: "Text",
+        media: "Media",
+        title: "Title Section",
+        immersive: "Immersive Section"
+      },
       link: {
         invite: "Paste or type a link..."
       },
@@ -28,6 +32,7 @@ define({
   "fi": 1,
   "fr": 1,
   "he": 1,
+  "hi": 1,
   "hr": 1,
   "id": 1,
   "it": 1,

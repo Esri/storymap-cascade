@@ -42,7 +42,8 @@ app.cfg = {
   BUILDER_LINKS: {
     picasaHelp: 'http://links.esri.com/storymaps/google-photos-help',
     unsplashHome: 'https://unsplash.com/',
-    unsplashLicense: 'https://creativecommons.org/publicdomain/zero/1.0/',
+    cc0License: 'https://creativecommons.org/publicdomain/zero/1.0/',
+    unsplashLicense: 'https://unsplash.com/license',
     issueHelps: {
       unshared: 'http://links.esri.com/storymaps/cascade-issue-share',
       othersUnshared: 'http://links.esri.com/storymaps/cascade-issue-edit-map',
@@ -51,7 +52,8 @@ app.cfg = {
       secureContent: 'http://links.esri.com/storymaps/cascade-issue-secure',
       deleted: 'http://links.esri.com/storymaps/cascade-issue-edit-map',
       inaccessible: 'http://links.esri.com/storymaps/cascade-issue-edit-map',
-      unauthorized: 'http://links.esri.com/storymaps/cascade-issue-edit-map'
+      unauthorized: 'http://links.esri.com/storymaps/cascade-issue-edit-map',
+      mixedContent: 'http://links.esri.com/storymaps/blogs_mixed_content/'
     },
   },
   // Edit those to set a custom sharing or proxy URL

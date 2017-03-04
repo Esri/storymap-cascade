@@ -124,6 +124,10 @@ body {
   color: darken(@link-color, 10%);
 }
 
-.btn-naked:active {
+.btn-naked:active, .btn-naked:focus {
   color: darken(@link-color, 20%);
+}
+
+.btn-naked:focus {
+  outline: 1px solid darken(@link-color, 20%) !important;
 }

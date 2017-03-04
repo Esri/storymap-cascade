@@ -191,7 +191,7 @@ export default class WebMapEditor {
     console.error(message);
 
     this._node.find('.error-container').removeClass('hide');
-    this._node.find('.error-msg').html('Fatal error, the map editor cannot be loaded' + '<br />' + message);
+    this._node.find('.error-msg').html(i18n.commonWebmap.editor.loadFail + '<br />' + message);
     this._node.find('.loading-container').addClass('hide');
     this._node.find('.webmap-builder-container').addClass('hide');
   }

@@ -171,7 +171,7 @@ export default class WebMap extends Media {
    *   This let the section knows when loading is complete so postLoad()
   *    can be called for each view
    */
-  load() {
+  load(params = {}) {
     var resultDeferred = new Deferred();
 
     if (! this._node || this._isLoaded) {
@@ -182,7 +182,8 @@ export default class WebMap extends Media {
 
     this.loadMap(
       this._node.find('.map')[0],
-      resultDeferred
+      resultDeferred,
+      params
     );
 
     return resultDeferred;
@@ -440,7 +441,7 @@ export default class WebMap extends Media {
     }
   }
 
-  loadMap(mapElem, resultDeferred) {
+  loadMap(mapElem, resultDeferred, params) {
     var options = {
       mapOptions: {
         smartNavigation: false
@@ -476,6 +477,8 @@ export default class WebMap extends Media {
       map.reposition();
       map.resize();
 
+      $(mapElem).find('.esriAttribution ~ div, .esriSimpleSlider div').attr('tabindex', '-1');
+
       this._cache[this.id] = response;
 
       if (app.isInBuilder) {
@@ -501,6 +504,10 @@ export default class WebMap extends Media {
         this._zoomToBrowserLocation.bind(this),
         false
       );
+
+      if (params && params.isUniqueInSection === false) {
+        this.hideHomeButton();
+      }
 
       this._cache[this.id].lastExtentApplied = null;
       this._cache[this.id].lastLayersApplied = null;
@@ -786,7 +793,14 @@ export default class WebMap extends Media {
       map.infoWindow.clearFeatures();
 
       if (layer) {
-        this._applyPopupConfigurationStep2(map, popupCfg);
+        if (layer.updating) {
+          layer.on('update-end', () => {
+            this._applyPopupConfigurationStep2(map, popupCfg);
+          });
+        }
+        else {
+          this._applyPopupConfigurationStep2(map, popupCfg);
+        }
       }
       // TODO
       else if (layer2) {
@@ -881,6 +895,18 @@ export default class WebMap extends Media {
     // Center the map is the geometry isn't visible
     if (! map.extent.contains(center)) {
       map.centerAt(center);
+    }
+  }
+
+  hideHomeButton() {
+    if (this._cache[this.id] && this._cache[this.id].mapCommand) {
+      this._cache[this.id].mapCommand.hideHomeButton();
+    }
+  }
+
+  showHomeButton() {
+    if (this._cache[this.id] && this._cache[this.id].mapCommand) {
+      this._cache[this.id].mapCommand.showHomeButton();
     }
   }
 }

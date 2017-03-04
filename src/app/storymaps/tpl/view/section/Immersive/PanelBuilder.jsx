@@ -282,8 +282,6 @@ export default class PanelBuilder extends Panel {
   }
 
   _onToggleMediaConfig(media) {
-    console.log('Immersive > toggle media config', media);
-
     let mediaCfg = media.getNode().find('.media-cfg-panel'),
         mediaNode = media.getNode()[0],
         mediaBBOX = mediaNode.getBoundingClientRect(),

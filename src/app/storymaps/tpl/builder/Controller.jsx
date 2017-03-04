@@ -16,6 +16,7 @@
 
 import ControllerCore from '../core/Controller';
 import topic from 'dojo/topic';
+import lang from 'dojo/_base/lang';
 
 import i18n from 'lib-build/i18n!resources/tpl/builder/nls/app';
 
@@ -64,7 +65,7 @@ export default class ControllerBuilder extends ControllerCore {
       type: 'credits-placeholder'
     }));
 
-    super.renderStory(config, sections);
+    return super.renderStory(config, sections);
   }
 
   static onScroll(params) {
@@ -72,24 +73,38 @@ export default class ControllerBuilder extends ControllerCore {
   }
 
   static openSettings() {
-    var headerSettings = app.data.appItem.data.values.settings.header;
+    let headerSettings = app.data.appItem.data.values.settings.header;
 
     if (! headerSettings || ! headerSettings.logo || ! headerSettings.link) {
       headerSettings = ControllerCore.DEFAULT_HEADER_SETTINGS;
     }
 
-    var settingsPopupParams = {
+    let orgLogo = app.portal.isOrganization && lang.getObject('portal.portalProperties.sharedTheme.logo.small', false, app);
+    let useOrgLogo = orgLogo === headerSettings.logo.url;
+
+    let settingsPopupParams = {
       context: {
         headerBackground: '#000'
       },
       settings: Object.assign(
         {},
         headerSettings,
-        { bookmarks: this.getBookmarksBuilder() }
+        {
+          bookmarks: this.getBookmarksBuilder()
+        },
+        {
+          orgLogoSettings: {
+            hasOrgLogo: orgLogo ? true : false,
+            useOrgLogo: useOrgLogo,
+            orgLogo: orgLogo
+          }
+        }
       )
     };
 
-    app.builder.settingsPopup.open(settingsPopupParams).then(
+    app.builder.settingsPopup.open({
+      settings: settingsPopupParams
+    }).then(
       function(settings) {
 
         // Persist header

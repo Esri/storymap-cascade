@@ -387,13 +387,16 @@ class UrlContainer extends React.Component {
   }
 
   render() {
+    var placeholder = text.placeholder.replace(/\$\{(.*?)}/g, function(str) {
+      return str.slice(2, -1);
+    });
     return (
       <div
         style={this.props.display ? null : {display: 'none'}}
         className="browse-panel-container url-container" >
         <div className="help-title">{this.getUploadHeader()}</div>
         <UrlInput
-          placeholder={text.placeholder}
+          placeholder={placeholder}
           value={this.state.textInputValue}
           setFocus={this.state.focusInput}
           onKeyPress={this.textKeypress.bind(this)}

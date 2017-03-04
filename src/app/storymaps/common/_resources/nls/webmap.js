@@ -1,3 +1,4 @@
+/* eslint quotes: ["error", "double"] */
 define({
   root: ({
     commonWebmap: {
@@ -16,6 +17,7 @@ define({
         errorDuplicate: "You already have a map with that title",
         errorCreate: "Unable to create map. Please try again.",
         errorSave: "Unable to save map. Please try again.",
+        loadFail: "Fatal error, the map editor cannot be loaded",
         notavailable1: "Sorry, creating or editing a map is not supported in Firefox due to a technical limitation. You may want to build your story using a different web browser or use the following workaround.",
         notavailable2: "Sorry, creating or editing a map is not supported since the story map application is not hosted in ${PRODUCT}. Please contact your ArcGIS administrator for more information.",
         notavailable3: "Sorry, creating or editing a map is not supported on this version of Portal for ArcGIS (requires 10.4 or later). Please contact your ArcGIS administrator for more information.",
@@ -26,7 +28,7 @@ define({
         close: "Close",
         save: "Save",
         yes: "Yes",
-				no: "No"
+        no: "No"
       }
     }
   }),
@@ -41,6 +43,7 @@ define({
   "fi": 1,
   "fr": 1,
   "he": 1,
+  "hi": 1,
   "hr": 1,
   "id": 1,
   "it": 1,

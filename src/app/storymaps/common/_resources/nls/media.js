@@ -59,7 +59,14 @@ define({
               imageVideoWebpage2: "You can also link directly to photos, web pages, or web applications.",
               ender: "When possible, use secure (https) links."
             },
-            placeholder: "https://... or http://... or <iframe>",
+            embedProtocol: {
+              embedProtocolLabel: "Load page over a secure connection (https)",
+              embedProtocolWarning1: "If this page does not load in your story, it can't be embedded for web security reasons.",
+              embedProtocolWarning2: "If this page does not load in your story, uncheck this option and try again. If the page still does not load, it can't be embedded for web security reasons.",
+              embedProtocolWarning3: "As an alternative, add a link in your narrative to open the page in a new browser tab. ${linkText}",
+              linkText: "Learn More."
+            },
+            placeholder: "${https://}... or ${http://}... or ${<iframe>}",
             uploadErrors: {
               generic: "Something went wrong with the address entered. Please try again.",
               imageOnly1: "You must use an image in this part of the story.",
@@ -87,8 +94,8 @@ define({
           unsplash: {
             placeholder: "Search for photos",
             aboutText: "${Unsplash} is a curated collection of free, high-quality photos.",
-            copyrightText: "All photos published on ${Unsplash} are licensed under ${copyrightLinkText}, which means you can copy, modify, distribute and use the photos for free (including for commercial purposes) without asking permission from, or providing attribution to, the photographer or ${Unsplash}.",
-            copyrightLinkText: "Creative Commons Zero"
+            copyrightText: "All photos published on ${Unsplash} are licensed under the ${CC0} License. Find more information ${moreInfoLink}.",
+            moreInfoLink: "here"
           },
           flickr: {
             searchType: {
@@ -107,6 +114,7 @@ define({
               generalUserError: "Something went wrong when searching for user ${username}."
             },
             licenses: {
+              licenseLabel: "License: ",
               public: "Public Domain",
               commercial: "OK for Commercial Use",
               nonCommercial: "OK for Non-Commercial Use",
@@ -156,6 +164,7 @@ define({
   "fi": 1,
   "fr": 1,
   "he": 1,
+  "hi": 1,
   "hr": 1,
   "id": 1,
   "it": 1,

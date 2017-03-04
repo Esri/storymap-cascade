@@ -17,7 +17,6 @@ export default class TabWebMap extends TabArcGIS {
     this._eventExtent = null;
     this._eventPopup = null;
     this._eventPopup2 = null;
-    this._ignoreNextExtentChangeEvent = false;
     this._isFirstOpening = true;
 
     //this.addMapEvents = this.addMapEvents.bind(this);
@@ -48,14 +47,8 @@ export default class TabWebMap extends TabArcGIS {
           return;
         }
 
-        if (! this._ignoreNextExtentChangeEvent) {
-          this._ignoreNextExtentChangeEvent = true;
-          this.setMedia('extent', event.extent.toJson());
-          this._updateLocationReset();
-        }
-        else {
-          this._ignoreNextExtentChangeEvent = false;
-        }
+        this.setMedia('extent', event.extent.toJson());
+        this._updateLocationReset();
       }.bind(this));
     }
 
@@ -223,7 +216,6 @@ export default class TabWebMap extends TabArcGIS {
   }
 
   postCreate(params) {
-    this._ignoreNextExtentChangeEvent = true;
     this._isFirstOpening = false;
 
     super.postCreate(params);
@@ -259,8 +251,6 @@ export default class TabWebMap extends TabArcGIS {
       this.layerList = null;
 
       layersButton.addClass(disabledClass);
-
-      this._ignoreNextExtentChangeEvent = true;
       this.setMedia('layers', []);
     });
 

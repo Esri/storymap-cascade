@@ -2,14 +2,14 @@
 	<div class="embed-explain"></div>
 
 	<div class="share-embed-wrapper">
-		<div class="share-btn glyphicon glyphicon-copy" data-clipboard-text=""></div>
-		<textarea class="form-control embedTextarea" readonly="true"></textarea>
+		<div class="share-btn glyphicon glyphicon-copy" data-clipboard-text="" tabindex="0" aria-label="Copy embed code"></div>
+		<textarea class="form-control embedTextarea" readonly="true" tabindex="0" aria-label="Embed code"></textarea>
 	</div>
 	<div class="share-status-wrapper"><span class="share-status"></span></div>
 
 	<div>
-		<span class="embed-lbl-size"></span>
-		<div class="btn-group">
+		<span id="embed-lbl" class="embed-lbl-size"></span>
+		<div class="btn-group" aria-labelled-by="embed-lbl">
 			<button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown">
 				<span class="embed-sizes-btn"></span>&nbsp;<span class="caret"></span>
 			</button>

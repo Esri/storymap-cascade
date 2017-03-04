@@ -8,7 +8,7 @@ The Story Map Cascade℠ app lets you combine narrative text with maps, images, 
 [Download](http://links.esri.com/storymaps/story_map_cascade_zip) |
 [Cascade page on Esri Story Maps website](https://storymaps.arcgis.com/en/app-list/cascade/)
 
-**Latest release is version 1.2.0**, if you want to be informed of new releases, we recommend you watch this repository ([see GitHub help](https://help.github.com/articles/watching-repositories)). See the [release page](https://github.com/Esri/story-map-cascade/releases) for release notes.
+**Latest release is version 1.3.2**, if you want to be informed of new releases, we recommend you watch this repository ([see GitHub help](https://help.github.com/articles/watching-repositories)). See the [release page](https://github.com/Esri/story-map-cascade/releases) for release notes.
 
 ## Help content
 
@@ -37,7 +37,7 @@ Once your story is ready, you have to find its ID in ArcGIS Online. The ID is a 
 
 1. [Download the application](http://links.esri.com/storymaps/story_map_cascade_zip)
 2. Deploy the application on your webserver. See [FAQ](#how-to-deploy-the-application-on-a-web-server) for details
-3. Edit index.html, find the configuration section on line 41 and paste in your application ID
+3. Edit index.html, find the configuration section on line 47 and paste in your application ID
 4. Navigate to index.html (e.g., `http://127.0.0.1/Cascade/index.html`)
 
 Enjoy!
@@ -312,6 +312,8 @@ Some open-source components of this project are licensed under other License ter
 | Hermite-resize        | MIT       |
 | Babel Polyfill        | MIT       |
 | jquery-mousewheel     | MIT       |
+
+Additionally, The Unite Gallery open-source library is located at `src/app/storymaps/common/utils/UniteGallery.js`. It is licensed MIT; those portions modified by the Story Maps team are licensed Apache 2.0 with the rest of this project.
 
 
 [](Esri Tags: Storytelling Cascade ArcGIS-Online Template)

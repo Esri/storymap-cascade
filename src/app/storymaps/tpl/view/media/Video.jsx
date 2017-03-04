@@ -3,7 +3,10 @@ import Media from './Media';
 import {} from 'lib-build/less!./Video';
 import viewBlock from 'lib-build/hbars!./VideoBlock';
 import viewBackground from 'lib-build/hbars!./VideoBackground';
+import viewBackgroundError from 'lib-build/hbars!./VideoBackgroundError';
+import viewBackgroundErrorDetailed from 'lib-build/hbars!./VideoBackgroundErrorDetailed';
 import viewVideoVimeo from 'lib-build/hbars!./VideoVimeo';
+import UIUtils from 'storymaps/tpl/utils/UI';
 
 import i18n from 'lib-build/i18n!resources/tpl/viewer/nls/app';
 
@@ -59,6 +62,7 @@ export default class Video extends Media {
     this._loadDeferred = null;
     this._isVideoLoaded = false;
     this._pendingAction = null;
+    this._isSupported = true;
 
     // If video has just been added in builder
     // TODO: section have to declare the default behavior for the media
@@ -91,10 +95,28 @@ export default class Video extends Media {
       });
     }
     else if (this._placement == 'background') {
-      output += viewBackground({
-        domId: this._domID,
-        videoId: this.id
-      });
+      if (UIUtils.isMobileBrowser()) {
+        this._isSupported = false;
+        app.data.errorVideoMobile = true;
+
+        if (params.sectionType === 'immersive') {
+          output += viewBackgroundErrorDetailed({
+            domId: this._domID,
+            message: i18n.viewer.media.loadingError
+          });
+        }
+        else {
+          output += viewBackgroundError({
+            domId: this._domID
+          });
+        }
+      }
+      else {
+        output += viewBackground({
+          domId: this._domID,
+          videoId: this.id
+        });
+      }
     }
 
     return output;
@@ -113,7 +135,12 @@ export default class Video extends Media {
       this._node = params.container.find('#' + this._domID);
     }
     else {
-      this._node = params.container.find('.video[data-id="' + this.id + '"]').parent().parent();
+      if (!this._isSupported) {
+        this._node = params.container.find('#' + this._domID).parent();
+      }
+      else {
+        this._node = params.container.find('.video[data-id="' + this.id + '"]').parent().parent();
+      }
     }
 
     this._nodeMedia = this._node.find('.video-player');
@@ -127,6 +154,10 @@ export default class Video extends Media {
 
   _applyConfig() {
     var options = this._video.options;
+
+    if (!this._isSupported) {
+      return;
+    }
 
     // Test
     if (typeof options == 'string') {
@@ -158,7 +189,7 @@ export default class Video extends Media {
   load(params = {}) {
     this._loadDeferred = new Deferred();
 
-    if (this._isLoaded) {
+    if (this._isLoaded || !this._isSupported) {
       this._loadDeferred.resolve();
       return this._loadDeferred;
     }
@@ -184,7 +215,7 @@ export default class Video extends Media {
     }
     else if (this._video.options && this._video.options.ui == 'simple') {
       opt = '1';
-      controls = '<div class="player-controls"><button class="play">play/pause</button>&nbsp;&nbsp;&nbsp;<button class="mute">mute/unmute</button></div>';
+      controls = '<div class="player-controls"><button class="play">' + i18n.viewer.media.videoPlayPause + '</button>&nbsp;&nbsp;&nbsp;<button class="mute">' + i18n.viewer.media.videoMuteUnmute + '</button></div>';
     }
 
     if (this._source == 'vimeo') {
@@ -284,7 +315,7 @@ export default class Video extends Media {
   }
 
   performAction(params) {
-    if (! this._videoPlayer) {
+    if (! this._videoPlayer || !this._isSupported) {
       return;
     }
 
@@ -463,7 +494,7 @@ export default class Video extends Media {
       windowHeight: app.display.windowHeight
     };
 
-    if (! this._nodeMedia) {
+    if (! this._nodeMedia || !this._isSupported) {
       return;
     }
 

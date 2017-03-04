@@ -1,0 +1,22 @@
+<div class="builder-ui hidden ig-item ig-media-swap">
+  <div class="ig-background"></div>
+  <i class="ig-action-icon ig-settings fa fa-pencil"></i>
+</div>
+{{#unless itemProperties.isFirst}}
+<div class="builder-ui hidden ig-item ig-move ig-direction-backward" data-toggle="tooltip">
+  <div class="ig-background">
+    <i class="ig-action-icon ig-move-backward fa fa-arrow-left"></i>
+  </div>
+</div>
+{{/unless}}
+{{#unless itemProperties.isLast}}
+<div class="builder-ui hidden ig-item ig-move ig-direction-forward" data-toggle="tooltip">
+  <div class="ig-background">
+    <i class="ig-action-icon ig-move-forward fa fa-arrow-right"></i>
+  </div>
+</div>
+{{/unless}}
+<div class="builder-ui hidden ig-item ig-media-delete">
+  <div class="ig-background"></div>
+  <i class="ig-action-icon ig-remove fa fa-trash-o"></i>
+</div>

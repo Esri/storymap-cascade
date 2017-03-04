@@ -44,6 +44,7 @@ export default class Panel {
     }
 
     this._node = params.container.find('#' + this.id);
+    this._node.parent().find('.imm-panel').attr('role', 'complementary');
 
     for (let block of this._blocks) {
       block.postCreate({

@@ -117,7 +117,6 @@ function defineDojoConfig() {
 app.isProduction = false;
 
 defineDojoConfig();
-window.dojoConfig.locale = 'en';
 
 if (location.search.match(/locale=([\w\-]+)/)) {
   window.dojoConfig.locale = RegExp.$1;
@@ -148,7 +147,7 @@ if (navigator.appName.indexOf('Internet Explorer') != -1) {
 
   if (badBrowser) {
     document.querySelector('#fatalError .error-title').innerHTML = 'Sorry!';
-    document.querySelector('#fatalError .error-msg').innerHTML = 'This story is not supported in Internet Explorer before version 10. <a href="http://browsehappy.com/" target="_blank">Please update your browser</a>';
+    document.querySelector('#fatalError .error-msg').innerHTML = 'This story is not supported in Internet Explorer before version 11. <a href="http://browsehappy.com/" target="_blank">Please update your browser</a>';
     document.querySelector('#fatalError').style.display = 'block';
   }
 }

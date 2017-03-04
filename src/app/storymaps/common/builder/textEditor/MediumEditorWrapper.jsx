@@ -335,28 +335,15 @@ export default function(params = {}) {
     if (event.keyCode == 8) {
       // If at the start of a block
       if (SELECTION.getSelectionRange(document).startOffset === 0) {
-        var prevBlock = el.prev();
-
-        // Media caption to prevent deleting the media
+        // If a caption
         if (el.is('.block-caption')) {
-          e.preventDefault();
+          // if you're trying to hit delete an already-empty caption, we will prevent you. Otherwise caption text can be deleted.
+          if (SELECTION.getSelectionRange(document).endOffset === 0) {
+            e.preventDefault();
+          }
         }
         // Inside a media
         else if (el.is(mediaElements) || el.parents('.block').eq(0).is(mediaElements)) {
-          e.preventDefault();
-        }
-        // And going to delete the block, focus the caption in previous block
-        else if (el.hasClass('.block') || prevBlock.is(mediaElements)) {
-          e.preventDefault();
-          /*
-          // Attempt to merge block, seems ok in most case
-          setTimeout(function() {
-            SELECTION.moveCursor(document, prevBlock.find('.block-caption')[0], 0);
-          }, 0);
-          */
-        }
-        // Prevent backspace on first block when there is no placeholder
-        else if (el.is('p, h1, h2, blockquote') && el.index() == 0 && ! $(editor.elements[0]).data('placeholder')) {
           e.preventDefault();
         }
 

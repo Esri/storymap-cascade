@@ -109,6 +109,8 @@ class AuthMediaHeader extends React.Component {
     let WEBPAGE = constants.contentType.WEBPAGE;
 
     switch (authMedia.length) {
+      // the untranslated strings here are fatal errors, where the authMedia array doesn't
+      // match what the app is prepared to handle.
       case 1:
         if (authMedia.indexOf(IMAGE) >= 0) {
           return this.getInfoSpan(text.contentType.imageOnly);

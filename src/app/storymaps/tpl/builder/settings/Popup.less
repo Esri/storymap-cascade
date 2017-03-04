@@ -63,6 +63,16 @@
             border-top: 1px solid #EEE;
         }
     }
+
+    .tooltip {
+      &.in {
+        opacity: 1;
+      }
+
+      .tooltip-inner {
+        box-shadow: 0 0 2px 0 white;
+      }
+    }
 }
 
 ul.hc-container {
@@ -220,6 +230,27 @@ input.hc-checkbox {
   &.alert-warning,
   &.alert-danger {
     display: block;
+  }
+}
+
+.org-logo-row {
+  .hc-check-label {
+    flex: 0 1 auto;
+  }
+
+  .org-logo-checkbox {
+    flex: 1 0 auto;
+  }
+
+  .hc-check-label-text {
+    width: auto;
+    display: inline-block;
+    line-height: 1.4;
+  }
+
+  .org-logo-tooltip {
+    flex: 0 0 auto;
+    margin-left: 8px;
   }
 }
 

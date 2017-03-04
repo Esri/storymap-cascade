@@ -82,7 +82,13 @@ class SidePanelUnsplash extends React.Component {
   }
 
   processCopyrightSpan(str, spanStr, reactKey) {
-    if (str === 'copyrightLinkText') {
+    if (str === 'CC0') {
+      return (
+        // turns out CC0 is brand name, so no translation.
+        <a key={reactKey} href={app.cfg.BUILDER_LINKS.cc0License} target="_blank"><strong>Creative Commons Zero</strong></a>
+      );
+    }
+    else if (str === 'moreInfoLink') {
       return (
         <a key={reactKey} href={app.cfg.BUILDER_LINKS.unsplashLicense} target="_blank"><strong>{spanStr}</strong></a>
       );

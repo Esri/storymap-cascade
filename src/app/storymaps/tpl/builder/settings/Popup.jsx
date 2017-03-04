@@ -15,7 +15,8 @@ class SettingsPopup {
     this.container = options.container;
     this.data = null;
     this.esriLogoUrl = 'resources/tpl/viewer/icons/esri-logo.png';
-    this.esriLogoLink = 'https://storymaps.arcgis.com';
+    this.esriLogoLink = 'https://www.esri.com';
+    this.backupLogoUrl = this.esriLogoUrl; // by default the backup can be the default.
 
     this.reject = null;
     this.resolve = null;
@@ -160,9 +161,47 @@ class SettingsPopup {
     this.attachUseEsriLogoEvents();
     this.attachSelectLogoEvents();
     this.attachToggleTaglineLinkEvents();
+    this.attachUseOrgLogoEvents();
+
+    this.container.find('.org-logo-tooltip').tooltip();
 
     this.container.find('.hc-logo-upload-msg')
       .removeClass('alert-success alert-warning alert-danger');
+  }
+
+  attachUseOrgLogoEvents() {
+    let checkbox = this.container.find('.hc-checkbox.org-logo-checkbox');
+
+    checkbox.on('click', event => {
+      let target = $(event.currentTarget);
+      let logoLinkNode = this.container.find('.hc-text-input.logo-link');
+      let logoValue = '';
+
+      if (target.is(':checked')) {
+        // set the backup logo URL to whatever was set before you checked to use the org
+        this.backupLogoUrl = this.data.settings.logo.url;
+
+        logoValue = this.data.settings.orgLogoSettings.orgLogo;
+        this.container.find('.hc-logo').attr('src', logoValue);
+        this.enableLogo();
+
+        if (CommonHelper.isDefaultLogoLink(logoLinkNode.val())) {
+          logoLinkNode.val('');
+        }
+      }
+      else {
+        // restore whatever value you had before checking the box
+        logoValue = Media.addToken(this.backupLogoUrl);
+
+        this.container.find('.hc-logo').attr('src', logoValue);
+
+        if (logoValue === this.esriLogoUrl) {
+          logoLinkNode.val(this.esriLogoLink);
+        }
+      }
+
+      this.data.settings.logo.url = logoValue;
+    });
   }
 
   attachToggleTaglineLinkEvents() {
@@ -225,6 +264,9 @@ class SettingsPopup {
       this.container.find('.hc-text-input.logo-link').attr('disabled', '');
 
       this.container.find('.hc-logo').attr('src', '');
+
+      // if the "use org logo" checkbox was filled, disable it as well.
+      this.container.find('.hc-checkbox.org-logo-checkbox').prop('checked', false);
 
       target.addClass(hiddenClass);
     });
@@ -292,6 +334,8 @@ class SettingsPopup {
 
           this.container.find('.hc-logo').attr('src', Media.addToken(url));
           this.enableLogo();
+          // uncheck the "use org logo" checkbox.
+          this.container.find('.hc-checkbox.org-logo-checkbox').prop('checked', false);
         }
       }, () => {
         //
@@ -318,7 +362,7 @@ class SettingsPopup {
     });
   }
 
-  open(data) {
+  open(options) {
     return new Promise((resolve, reject) => {
       this.resolve = resolve;
       this.reject = reject;
@@ -326,7 +370,7 @@ class SettingsPopup {
       const BOOKMARK_MAX_CHARACTERS = 20;
       const TAGLINE_MAX_CHARACTERS = 50;
 
-      this.data = $.extend(true, {}, data);
+      this.data = $.extend(true, {}, options.settings);
 
       this.data.settings.bookmarks = this.data.settings.bookmarks.map(item => {
         // truncate the bookmark value as well
@@ -340,6 +384,10 @@ class SettingsPopup {
       });
 
       let esriName = 'Esri';
+
+      if (this.data.settings.orgLogoSettings.useOrgLogo && CommonHelper.isDefaultLogoLink(this.data.settings.logo.link)) {
+        this.data.settings.logo.link = '';
+      }
 
       let logoSharingData = lang.clone({
         settings: this.data.settings,

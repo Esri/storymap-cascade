@@ -79,6 +79,14 @@ function(
       $('.mapCommandLocation', map.container).toggleClass('hidden', ! enable);
     };
 
+    this.hideHomeButton = function() {
+      homeButton.toggleClass('hidden', true);
+    };
+
+    this.showHomeButton = function() {
+      homeButton.toggleClass('hidden', false);
+    };
+
     function toggleLoadingStatus(start) {
       if(start) {
         $(map.container).find('.mapCommandHomeBtn').addClass('loading');

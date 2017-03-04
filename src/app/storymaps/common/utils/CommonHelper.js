@@ -49,6 +49,9 @@ function(
       // App is hosted if the URL contains /apps/XYZ/ or /home/XYZ/ or /arcgis/apps/
       return (/(\/)([a-zA-Z0-9]+(\/))*(apps\/|home\/)([a-zA-Z0-9\-\_]+\/)/).test(document.location.pathname);
     },
+    isDefaultLogoLink: function(link) {
+      return (/\/\/www\.esri\.com$/i).test(link);
+    },
     getAppID: function(isProd) {
       var urlParams = this.getUrlParams();
 

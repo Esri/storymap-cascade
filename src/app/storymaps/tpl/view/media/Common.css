@@ -30,6 +30,7 @@ body.mobile-view .block-media {
   width: 100%;
   height: 100%;
   background-color: #EEE;
+  z-index: 1;
 }
 
 .media-loading .large-loader {
@@ -134,7 +135,7 @@ body.builder-mode .block-caption:not(:focus):empty:before {
   left: 0px;
   right: 0px;
   bottom: 0px;
-  border: 2px dashed #005e95;
+  border: 4px dashed #005e95;
   z-index: 9;
   pointer-events: none;
 }
@@ -155,7 +156,7 @@ body.builder-mode .block-caption:not(:focus):empty:before {
 
 .background .appearance-invite::before {
   top: 50px;
-  bottom: 187px;
+  bottom: 182px;
 }
 
 .block .appearance-invite::after {
@@ -165,7 +166,7 @@ body.builder-mode .block-caption:not(:focus):empty:before {
 
 .background .appearance-invite::after {
   top: inherit;
-  bottom: 187px;
+  bottom: 182px;
 }
 
 .media-is-loading .media-cfg-invite {
@@ -191,13 +192,39 @@ body.builder-mode .block-caption:not(:focus):empty:before {
  */
 
 .media-error {
-  background-color: rgba(255, 0, 0, 0.5);
   border-radius: 4px;
-  color: #FFF;
+  text-align: center;
+  font-family: 'open_sans', sans-serif;
+  color: #959595;
+  font-size: 16px;
+  line-height: 1.4em;
   padding: 15px;
   width: 90%;
   margin-left: 5%;
+  background: #DDD;
 }
+
+.background .media-error {
+  margin: auto;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  padding: 0;
+}
+
+.background .media-error .media-error-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin-left: 0;
+  padding: 15px;
+  width: 100%;
+}
+
 
 /*
  * Hide all builder UI in viewer

@@ -12,6 +12,15 @@
       </div>
     </div>
     <div class="hc-logo-upload-msg alert" role="alert"></div>
+    {{#if settings.orgLogoSettings.hasOrgLogo}}
+      <div class="hc-row org-logo-row">
+        <label class="hc-check-label">
+          <input type="checkbox" class="hc-checkbox org-logo-checkbox" {{#if settings.orgLogoSettings.useOrgLogo}}checked{{/if}}>
+          <span class="hc-check-label-text">{{strings.useOrgLogo}}</span>
+        </label>
+        <i class="org-logo-tooltip fa fa-info-circle" aria-hidden="true" data-title="{{strings.useOrgLogoHelp}}"></i>
+      </div>
+    {{/if}}
   </div>
   <div class="hc-item">
     <div class="hc-row item-title">{{strings.logoLink}}</div>

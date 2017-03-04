@@ -43,13 +43,7 @@ export default class TitleBuilder extends Title {
     }
 
     if (!this._section.foreground.options) {
-      this._section.foreground.options = {
-        titleStyle: {
-          shadow: false,
-          text: 'dark',
-          background: 'light'
-        }
-      };
+      this._section.foreground.options = {};
     }
 
     // if the all has been saved, but title style wasn't specified previously

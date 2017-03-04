@@ -185,7 +185,6 @@ export default class WebSceneBuilder extends WebScene {
   }
 
   _onConfigChange() {
-    console.log('onConfigChange: ', this._webscene);
     this._applyConfig();
     super._onConfigChange();
   }

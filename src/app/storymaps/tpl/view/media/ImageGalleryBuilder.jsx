@@ -9,34 +9,35 @@ import {} from 'lib-build/less!./ImageGalleryBuilder';
 import lang from 'dojo/_base/lang';
 import topic from 'dojo/topic';
 
+import issues from '../../builder/Issues';
+
 export default class ImageGalleryBuilder extends ImageGallery {
 
   constructor(images) {
     super(images);
-
-    this.MAX_NUMBER_IMAGES = 4;
   }
 
   postCreate(params) {
-    super.postCreate(params);
+    let createResults = super.postCreate(params);
 
-    // Creating with an ArcGIS Upload
-    if (this._images.images.length == 2) {
-      var secondImage = this._images.images[1];
+    createResults.promise.then(() => {
+      // Creating with an ArcGIS Upload
+      if (this._images.images.length == 2) {
+        var secondImage = this._images.images[1];
 
-      if (secondImage.dataUrl && secondImage.uploadDeferred) {
-        this._addImageAtIndex(secondImage, 1);
-      }
-      else {
-        const appId = app.data.appItem.item.id;
-        if (appId && secondImage.url && secondImage.url.match(appId + '/resources')) {
+        if (secondImage.dataUrl && secondImage.uploadDeferred) {
           this._addImageAtIndex(secondImage, 1);
         }
+        else {
+          const appId = app.data.appItem.item.id;
+          if (appId && secondImage.url && secondImage.url.match(appId + '/resources')) {
+            this._addImageAtIndex(secondImage, 1);
+          }
+        }
       }
+    });
 
-    }
-
-    this._updateTooltip();
+    return createResults;
   }
 
   getPreviewThumbnail() {
@@ -53,8 +54,8 @@ export default class ImageGalleryBuilder extends ImageGallery {
 
   addEditEvent() {
     this._node.find('.ig-settings').off('click').on('click', event => {
-      let itemNode = $(event.currentTarget).closest('.image-gallery-item');
-      let index = itemNode.data('index');
+      let itemNode = $(event.currentTarget).closest('.ug-thumb-wrapper');
+      let index = itemNode.index();
 
       this._openMediaPickerForIndex(index);
     });
@@ -105,7 +106,6 @@ export default class ImageGalleryBuilder extends ImageGallery {
         url: url,
         dataUrl: image.dataUrl
       };
-      this._update();
 
       this._onUploadStart(index);
     }
@@ -130,9 +130,6 @@ export default class ImageGalleryBuilder extends ImageGallery {
 
         this._update();
       }
-
-      // do an issue check
-      topic.publish('builder-should-check-story');
     };
 
     image.src = Media.addToken(url);
@@ -182,8 +179,8 @@ export default class ImageGalleryBuilder extends ImageGallery {
   addRemoveEvent() {
     this._node.find('.ig-remove').off('click').on('click', event => {
       // find which item it is that you should remove...
-      let itemNode = $(event.currentTarget).closest('.image-gallery-item');
-      let index = itemNode.data('index');
+      let itemNode = $(event.currentTarget).closest('.ug-thumb-wrapper');
+      let index = itemNode.index();
 
       this._images.images.splice(index, 1);
 
@@ -191,60 +188,191 @@ export default class ImageGalleryBuilder extends ImageGallery {
         this._onAction('image-gallery-to-image');
         return;
       }
-      else {
-        // do an issue check (we do it for image-gallery-to-image where it's called later on)
-        topic.publish('builder-should-check-story');
-      }
+
+      this._update();
+    });
+  }
+
+  addReorderEvent() {
+    // move backward
+    this._node.find('.ig-move-backward').on('click', event => {
+      $(event.currentTarget).closest('.ig-move').tooltip('hide');
+
+      let itemNode = $(event.currentTarget).closest('.ug-thumb-wrapper');
+      let index = itemNode.index();
+
+      let tempValue = this._images.images[index];
+      this._images.images[index] = this._images.images[index - 1];
+      this._images.images[index - 1] = tempValue;
+
+      this._update();
+    });
+
+    // move forward
+    this._node.find('.ig-move-forward').on('click', event => {
+      $(event.currentTarget).closest('.ig-move').tooltip('hide');
+
+      let itemNode = $(event.currentTarget).closest('.ug-thumb-wrapper');
+      let index = itemNode.index();
+
+      let tempValue = this._images.images[index];
+      this._images.images[index] = this._images.images[index + 1];
+      this._images.images[index + 1] = tempValue;
 
       this._update();
     });
   }
 
   _update() {
-    super._update();
-    this._updateTooltip();
+    topic.publish('builder-media-update');
+
+    const FADE_DURATION = 400;
+    let imageGalleryNode = this._node.find('.image-gallery-wrapper');
+
+    this._fadeOutGallery(imageGalleryNode);
+
+    window.setTimeout(() => {
+      let galleryHeight = imageGalleryNode.outerHeight();
+
+      // destroy the gallery
+      this._destroyGallery();
+
+      // inject the HTML of the new one
+      this._injectNewGallery(galleryHeight);
+      let newImageGalleryNode = this._node.find('.image-gallery-wrapper');
+      let placeholder = this._node.find('.ig-temp-placeholder');
+
+      // load the new gallery
+      this._isLoaded = false;
+      let loadPromise = this.load();
+      loadPromise && loadPromise.then(() => {
+        this._fadeInGallery(newImageGalleryNode, placeholder);
+      });
+    }, FADE_DURATION);
   }
 
-  _updateTooltip() {
-    let addButton = this._node.find('.ig-add');
-    // disable the plus button and show a tooltip if the max limit for the image gallery has been reached.
-    if (this._images.images.length === this.MAX_NUMBER_IMAGES) {
-      addButton.addClass('disabled');
-      addButton.tooltip({
-        container: 'body',
-        title: i18n.builder.imageGallery.reachedLimit
-      });
-    }
-    else {
-      addButton.removeClass('disabled');
-      addButton.tooltip({
-        container: 'body',
-        title: i18n.builder.imageGallery.addImage
-      });
+  _fadeOutGallery(node) {
+    node.removeClass('show-me');
+    node.addClass('hide-me');
+  }
+
+  _injectNewGallery(galleryHeight) {
+    // add the new html
+    this._node.html(this._render(false));
+    let newImageGalleryNode = this._node.find('.image-gallery-wrapper');
+
+    // hide the image gallery
+    newImageGalleryNode.css('display', 'none');
+    newImageGalleryNode.css('opacity', 0);
+
+    let placeholder = this._node.find('.ig-temp-placeholder');
+
+    // make the placeholder's height the same as the old gallery's to reduce jank
+    placeholder.height(galleryHeight);
+    placeholder.css('display', 'block');
+  }
+
+  _fadeInGallery(node, placeholder) {
+    topic.publish('builder-should-check-story');
+
+    node.css('display', 'block');
+    placeholder.css('display', 'none');
+
+    node.removeClass('hide-me');
+    node.addClass('show-me');
+  }
+
+  _destroyGallery() {
+    this._node.find('.ug-thumb-wrapper .ig-move.ig-direction-backward').tooltip('destroy');
+    this._node.find('.ug-thumb-wrapper .ig-move.ig-direction-forward').tooltip('destroy');
+    this._node.find('.ig-add').tooltip('destroy');
+
+    if (this._gallery) {
+      this._gallery.destroy();
     }
   }
 
-  load() {
-    super.load();
+  _addBuilderEvents() {
+    this.addRemoveEvent();
+    this.addEditEvent();
+    this.addAddEvent();
+    this.addReorderEvent();
 
-    this._node.find('.image-gallery-image-link').on('click', () => {
-      this._node.find('.builder-ui.ig-item').addClass('hidden');
+    this._node.find('.ug-thumb-wrapper .ig-move.ig-direction-backward').tooltip({
+      container: 'body',
+      title: i18n.builder.imageGallery.moveBackward
     });
 
-    this._node.find('.image-gallery-item-wrapper').hover(event => {
-      // if caused by hovering over the add button, disregard.
-      if ($(event.target).closest('.ig-add').length) {
-        return;
-      }
+    this._node.find('.ug-thumb-wrapper .ig-move.ig-direction-forward').tooltip({
+      container: 'body',
+      title: i18n.builder.imageGallery.moveForward
+    });
 
+    this._node.find('.ug-thumb-wrapper').hover(event => {
       $(event.currentTarget).find('.builder-ui.ig-item').removeClass('hidden');
     }, event => {
       $(event.currentTarget).find('.builder-ui.ig-item').addClass('hidden');
     });
+  }
 
-    this.addRemoveEvent();
-    this.addEditEvent();
-    this.addAddEvent();
+  load() {
+    return super.load();
+  }
+
+  _onGalleryLoaded() {
+    super._onGalleryLoaded();
+
+    let addButton = this._node.find('.ig-add');
+
+    addButton.removeClass('disabled');
+    addButton.tooltip({
+      container: 'body',
+      title: i18n.builder.imageGallery.addImage
+    });
+
+    this._addBuilderEvents();
+
+    for (let image of this._images.images) {
+      topic.subscribe('scan/images/' + image.url, (scanResult) => {
+        let index = this._images.images.findIndex(item => {
+          return item.url === image.url;
+        });
+
+        this.checkErrors(scanResult, index);
+      });
+    }
+  }
+
+  checkErrors(scanResult, index) {
+    // update the map UI based on the scan results
+    const errorIds = this.mapErrors(scanResult);
+    if (!errorIds) {
+      this.removeError();
+      return;
+    }
+
+    const unfixableOptions = this.isUnfixableError(errorIds, index);
+    if (unfixableOptions) {
+      this.setError(unfixableOptions);
+      return;
+    }
+
+    // TODO: something different here?
+    this.setError({errors: scanResult.errors});
+
+  }
+
+  isUnfixableError(errorIds, index) {
+    var errorText = i18n.builder.mediaErrors;
+    if (errorIds.indexOf(issues.images.inaccessible) >= 0) {
+      return {
+        msg: errorText.placeholders.inaccessible.replace('${media-type}', errorText.mediaTypes.image),
+        unfixable: true,
+        showLoadingError: true,
+        galleryIndex: index
+      };
+    }
+    return false;
   }
 
   serialize() {

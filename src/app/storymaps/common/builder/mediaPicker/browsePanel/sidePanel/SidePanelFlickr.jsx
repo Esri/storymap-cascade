@@ -148,7 +148,7 @@ class LicenseSearch extends React.Component {
   render() {
     return (
       <div className={'license-group form-group' + (this.props.disabled ? ' disabled' : '')}>
-        <label htmlFor={this.props.searchType + '-license'}>License: </label>
+        <label htmlFor={this.props.searchType + '-license'}>{text.licenses.licenseLabel}</label>
         <select
           id={this.props.searchType + '-license'}
           onChange={this.props.onChange}

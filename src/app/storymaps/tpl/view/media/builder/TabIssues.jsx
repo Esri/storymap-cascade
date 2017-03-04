@@ -141,9 +141,9 @@ export default class TabIssues extends Tab {
         helpLink = helpLinks.secureContent;
       }
       else {
-        banner = 'Something has gone wrong';
-        description = 'Something has gone wrong';
-        tooltip = 'Something has gone wrong';
+        banner = text.summaries.uncaught;
+        description = text.descriptions.uncaught;
+        tooltip = text.tooltips.uncaught;
         button = text.fixButtons.edit;
         helpLink = helpLinks.edit;
       }

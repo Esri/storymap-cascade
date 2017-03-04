@@ -31,8 +31,13 @@ export default class WebScene extends Media {
     this._webscene = webscene;
 
     this._placement = null;
+    this._isLoaded = false;
 
     this._isSupported = UIUtils.hasWebGL() && ! UIUtils.isMobileBrowser();
+
+    this._stopMousewheel = event => {
+      event.stopImmediatePropagation();
+    };
 
     if (! this._isSupported) {
       app.data.errorWebGL = true;
@@ -47,6 +52,8 @@ export default class WebScene extends Media {
     if (this._webscene.slide === undefined) {
       this._webscene.slide = -1;
     }
+
+    this._fourApiLoaded = this._loadFourApi();
   }
 
   render(context) {
@@ -105,6 +112,10 @@ export default class WebScene extends Media {
     return output;
   }
 
+  setLoaded(isLoaded) {
+    this._isLoaded = isLoaded;
+  }
+
   _applyConfig() {
     var options = this._webscene.options;
 
@@ -150,7 +161,12 @@ export default class WebScene extends Media {
       this._node = params.container.find('#' + this._domID);
     }
     else {
-      this._node = params.container.find('.scene[data-id="' + this.id + '"]').parent();
+      if (!this._isSupported) {
+        this._node = params.container.find('#' + this._domID).parent();
+      }
+      else {
+        this._node = params.container.find('.scene[data-id="' + this.id + '"]').parent();
+      }
     }
 
     this._applyConfig();
@@ -160,72 +176,84 @@ export default class WebScene extends Media {
     return this._node;
   }
 
+  _loadFourApi() {
+    return new Promise(resolve => {
+      require([
+        'esri4/config',
+        'esri4/core/urlUtils',
+        'esri4/identity/IdentityManager',
+        'esri4/identity/OAuthInfo',
+        'esri4/views/SceneView',
+        'esri4/portal/PortalItem',
+        'esri4/WebScene',
+        'esri4/core/watchUtils',
+        'lib-build/css!esri4/css/main.css'
+      ],
+      function(
+        esriConfig,
+        urlUtils,
+        esriId,
+        OAuthInfo,
+        SceneView,
+        PortalItem,
+        WebScene,
+        watchUtils
+      ) {
+        this._esriConfig = esriConfig;
+        this._urlUtils = urlUtils;
+        this._esriId = esriId;
+        this._OAuthInfo = OAuthInfo;
+        this._SceneView = SceneView;
+        this._PortalItem = PortalItem;
+        this._AGOLWebScene = WebScene;
+        this._watchUtils = watchUtils;
+
+        resolve();
+      }.bind(this));
+    });
+  }
+
   load() {
     if (! this._node || this._isLoaded || ! this._isSupported) {
       return;
     }
 
-    this._isLoaded = true;
-
-    console.log('scene: ' + this.id);
+    this.setLoaded(true);
 
     this._node.addClass('media-is-loading');
 
-    var userCredentials = IdentityManager.toJson();
+    let userCredentials = IdentityManager.toJson();
 
-    // For some reason if the require is not done there, it won't load...
-    require([
-      'esri4/config',
-      'esri4/core/urlUtils',
-      'esri4/identity/IdentityManager',
-      'esri4/identity/OAuthInfo',
-      'esri4/portal/Portal',
-      'esri4/views/SceneView',
-      'esri4/portal/PortalItem',
-      'esri4/WebScene',
-      'esri4/core/watchUtils',
-      'lib-build/css!esri4/css/main.css'
-    ],
-    function(
-      esriConfig,
-      urlUtils,
-      esriId,
-      OAuthInfo,
-      Portal,
-      SceneView,
-      PortalItem,
-      WebScene,
-      watchUtils
-    ) {
-      var portalUrl = app.indexCfg.sharingurl.split('/sharing/')[0];
-      esriConfig.portalUrl = portalUrl;
+    this._fourApiLoaded.then(() => {
+      let portalUrl = app.indexCfg.sharingurl.split('/sharing/')[0];
+      this._esriConfig.portalUrl = portalUrl;
 
       // Proxy rules
-      esriConfig.request.proxyUrl = location.protocol + app.indexCfg.proxyurl;
+      this._esriConfig.request.proxyUrl = location.protocol + app.indexCfg.proxyurl;
 
       if (app.cfg.PROXY_RULES && app.cfg.PROXY_RULES.length) {
         $.each(app.cfg.PROXY_RULES, function(i, rule) {
           if (rule && rule.urlPrefix && rule.proxyUrl) {
-            urlUtils.addProxyRule(rule);
+            this._urlUtils.addProxyRule(rule);
           }
         });
       }
 
       if (NEED_PORTAL_INIT) {
         if (app.indexCfg.oAuthAppId) {
-          var info = new OAuthInfo({
+          let info = new this._OAuthInfo({
             appId: app.indexCfg.oAuthAppId,
             popup: false,
             portalUrl: 'https:' + portalUrl
           });
 
-          esriId.registerOAuthInfos([info]);
+          this._esriId.registerOAuthInfos([info]);
 
-          esriId.checkSignInStatus('https:' + app.indexCfg.sharingurl.split('/sharing/')[0] + '/sharing').then(
-            loadStep2.bind(this),
+          this._esriId.checkSignInStatus('https:' + app.indexCfg.sharingurl.split('/sharing/')[0] + '/sharing').then(
+            this._loadStep2.bind(this),
             function() {
               console.error('Error during oAuth process for web scene');
-              loadStep2.bind(this)();
+              this._loadStep2.bind(this)();
             }.bind(this)
           );
         }
@@ -233,92 +261,92 @@ export default class WebScene extends Media {
           // initialize also add a serverInfo with www.arcgis.com
           //esriId.initialize(userCredentials);
 
-          for(let info of userCredentials.credentials) {
-            esriId.registerToken(info);
+          for (let info of userCredentials.credentials) {
+            this._esriId.registerToken(info);
           }
 
-          loadStep2.bind(this)();
+          this._loadStep2.bind(this)();
         }
 
         NEED_PORTAL_INIT = false;
       }
       else {
-        loadStep2.bind(this)();
+        this._loadStep2.bind(this)();
       }
-
-      // Web Scene loading
-      function loadStep2() {
-        console.log('web scene IdentityManager:', esriId);
-
-        var scene = new WebScene({
-          portalItem: new PortalItem({
-            id: this.id
-          })
-        });
-
-        // catch a failed scene
-        scene.otherwise(function() {
-          if (app.builder) {
-            this.setError({unfixable: true, showLoadingError: true});
-          }
-          else {
-            this.setError({minimizeInViewer: true});
-          }
-        }.bind(this));
-
-        var view = new SceneView({
-          map: scene,
-          container: this._node.find('.scene')[0]
-        });
-
-        // Store in the section cache
-        this._cache[this.id] = {
-          scene: scene,
-          view: view
-        };
-
-        view.then(function() {
-          this._cache[this.id].initialViewpoint = view.viewpoint;
-
-          view.ui.move('zoom', 'bottom-right');
-          view.ui.move('compass', 'bottom-right');
-          view.ui.remove('navigation-toggle');
-
-          this._node.find('.media-loading').hide();
-        }.bind(this));
-
-        // Disable wheel
-        view.surface.addEventListener('wheel', function(event) {
-          event.stopImmediatePropagation();
-        }, true);
-
-        // Apply the slide
-        if (this._webscene.slide !== undefined && this._webscene.slide !== -1) {
-          watchUtils.init(scene, 'presentation.slides', function(slides) {
-            if (slides && slides.items && slides.items.length) {
-              slides.items[this._webscene.slide].applyTo(view);
-            }
-
-            if (app.isInBuilder) {
-              this._onWebSceneLoaded();
-            }
-          }.bind(this));
-        }
-        else {
-          if (app.isInBuilder) {
-            this._onWebSceneLoaded();
-          }
-        }
-
-        // The event is only registered once for all views in immersive
-        this._node
-          .removeClass('media-is-loading')
-          .find('.interaction-container').click(this._onEnableButtonClick.bind(this));
-      }
-    }.bind(this));
+    });
   }
 
-  performAction() {
+  // Web Scene loading
+  _loadStep2() {
+    let scene = new this._AGOLWebScene({
+      portalItem: new this._PortalItem({
+        id: this.id
+      })
+    });
+
+    // catch a failed scene
+    scene.otherwise(function() {
+      if (app.builder) {
+        this.setError({unfixable: true, showLoadingError: true});
+      }
+      else {
+        this.setError({minimizeInViewer: true});
+      }
+    }.bind(this));
+
+    let view = new this._SceneView({
+      map: scene,
+      container: this._node.find('.scene')[0]
+    });
+
+    // Store in the section cache
+    this._cache[this.id] = {
+      scene: scene,
+      view: view
+    };
+
+    view.then(function() {
+      this._cache[this.id].initialViewpoint = view.viewpoint;
+
+      view.ui.move('zoom', 'bottom-right');
+      view.ui.move('compass', 'bottom-right');
+      view.ui.remove('navigation-toggle');
+
+      this._node.find('.media-loading').hide();
+    }.bind(this));
+
+    // Disable wheel
+    view.surface.addEventListener('wheel', this._stopMousewheel, true);
+
+    // Apply the slide
+    if (this._webscene.slide !== undefined && this._webscene.slide !== -1) {
+      this._watchUtils.init(scene, 'presentation.slides', function(slides) {
+        if (slides && slides.items && slides.items.length) {
+          view.then(() => {
+            slides.items[this._webscene.slide].applyTo(view, {
+              animate: false
+            });
+          });
+        }
+
+        if (app.isInBuilder) {
+          this._onWebSceneLoaded();
+        }
+      }.bind(this));
+    }
+    else {
+      if (app.isInBuilder) {
+        this._onWebSceneLoaded();
+      }
+    }
+
+    // The event is only registered once for all views in immersive
+    this._node
+      .removeClass('media-is-loading')
+      .find('.interaction-container').click(this._onEnableButtonClick.bind(this));
+  }
+
+  performAction(params) {
     var media = this._cache[this.id],
         scene = media ? media.scene : null,
         view = media ? media.view : null;
@@ -327,18 +355,30 @@ export default class WebScene extends Media {
       return;
     }
 
-    console.log('performAction', this._webscene.slide);
-
     if (this._webscene.slide === -1) {
       if (this._cache[this.id].initialViewpoint) {
         view.goTo(this._cache[this.id].initialViewpoint);
       }
     }
     else if (this._webscene.slide !== undefined && this._webscene.slide <= scene.presentation.slides.items.length) {
-      scene.presentation.slides.items[this._webscene.slide].applyTo(view);
+      scene.presentation.slides.items[this._webscene.slide].applyTo(view, {
+        animate: params.animate === false ? false : true
+      });
     }
 
     this._applyInteraction();
+  }
+
+  unload() {
+    if (this._cache[this.id] && this._cache[this.id].view) {
+      this._cache[this.id].view.surface.removeEventListener('wheel', this._stopMousewheel, true);
+      this._cache[this.id].view.destroy();
+
+      this._cache[this.id] = null;
+    }
+
+    this.setLoaded(false);
+    this._node.find('.media-loading').show();
   }
 
   resize() {

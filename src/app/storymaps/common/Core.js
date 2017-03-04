@@ -176,9 +176,10 @@ define([
       loadingTimeout: null
     });
 
-    if (app.isInBuilder && (has('ie') || has('trident') || has('ff'))) {
+    if (app.isInBuilder && (has('ie') || has('trident') || has('ff') || has('edge'))) {
       $('#fatalError .error-title').html(i18n.viewer.errors.sorry);
-      $('#fatalError .error-msg').html(i18n.viewer.errors.builderSupport1.replace('${CHROME}', '<a href="https://www.google.com/chrome/" target="_blank">Chrome</a>').replace('${SAFARI}', '<a href="https://www.apple.com/safari/" target="_blank">Safari</a>'));
+//      $('#fatalError .error-msg').html(i18n.viewer.errors.builderSupport3.replace('${CHROME}', '<a href="https://www.google.com/chrome/" target="_blank">Chrome</a>').replace('${SAFARI}', '<a href="https://www.apple.com/safari/" target="_blank">Safari</a>'));
+      $('#fatalError .error-msg').html(i18n.viewer.errors.builderSupport4.replace('${CHROME}', '<a href="https://www.google.com/chrome/" target="_blank">Chrome</a>').replace('${SAFARI}', '<a href="https://www.apple.com/safari/" target="_blank">Safari</a>').replace('${ESRI-SUPPORT}', '<a href="https://support.esri.com" target="_blank">Esri Support</a>').replace('${FIREFOX-BUILDER}', '<a href="http://links.esri.com/storymaps/vote-for-cascade-builder-on-firefox" target="_blank">Firefox</a>').replace('${IE-BUILDER}', '<a href="http://links.esri.com/storymaps/vote-for-cascade-builder-on-ie" target="_blank">IE</a>'));
       $('#fatalError').show();
       return;
     }
@@ -246,6 +247,12 @@ define([
 
     startLoadingTimeout();
 
+    var extraParams = CommonHelper.getUrlParams();
+    if (extraParams.sharinghost) {
+      app.indexCfg.sharingurl = extraParams.sharinghost;
+      app.indexCfg.proxyurl = extraParams.sharinghost.split('/content/')[0] + '/proxy';
+    }
+
     // Sharing URL
     if (! app.indexCfg.sharingurl) {
       // Determine if hosted or on a Portal
@@ -256,20 +263,11 @@ define([
       }
 
       if (appLocation != -1) {
-        var extraParams = CommonHelper.getUrlParams();
-        // if there's the sharinghost URL parameter, we'll use that for the sharingUrl and the proxyUrl
-        // (used for testing stories from other tiers, like testing a production story while on devext), otherwise we'll use the instance as usual.
-        if (extraParams.sharinghost) {
-          app.indexCfg.sharingurl = extraParams.sharinghost;
-          app.indexCfg.proxyurl = extraParams.sharinghost.split('/content/')[0] + '/proxy';
-        }
-        else {
-          // Get the portal instance name
-          var instance = location.pathname.substr(0,appLocation);
+        // Get the portal instance name
+        var instance = location.pathname.substr(0,appLocation);
 
-          app.indexCfg.sharingurl = '//' + location.host + instance + '/sharing/content/items';
-          app.indexCfg.proxyurl = '//' + location.host + instance + '/sharing/proxy';
-        }
+        app.indexCfg.sharingurl = '//' + location.host + instance + '/sharing/content/items';
+        app.indexCfg.proxyurl = '//' + location.host + instance + '/sharing/proxy';
       }
       else {
         app.indexCfg.sharingurl = app.cfg.DEFAULT_SHARING_URL;
@@ -694,9 +692,6 @@ define([
   function initError(error, message, noDisplay) {
     var errorMsg = i18n.viewer.errors[error];
 
-    cleanLoadingTimeout();
-    $('#loadingIndicator').hide();
-
     errorMsg = errorMsg.replace(/{TPL_NAME}/g, app.cfg.TPL_NAME);
 
     if (error == 'notAuthorized' && app.indexCfg.oAuthAppId) {
@@ -721,6 +716,9 @@ define([
     $('#fatalError .error-msg').html(errorMsg);
 
     if (! noDisplay) {
+      cleanLoadingTimeout();
+      $('#loadingIndicator').hide();
+
       $('#fatalError').show();
     }
   }

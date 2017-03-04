@@ -66,6 +66,14 @@ define([
         }
       });
 
+      // add "enter" as a way to trigger copy
+      container.find('.share-btn').off('keypress')
+        .on('keypress', function(evt) {
+          if (evt.keyCode === 13) {
+            $(this).trigger('click');
+          }
+        });
+
       clipboard.on('success', function() {
         container.find('.share-btn').removeClass('glyphicon-copy').addClass('glyphicon-ok');
         container.find('.share-status').show();

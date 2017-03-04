@@ -1,5 +1,6 @@
 import SectionCommon from 'storymaps/tpl/view/section/Common';
 import UIUtils from 'storymaps/tpl/utils/UI';
+import Viewport from 'storymaps-react/tpl/utils/Viewport';
 
 import viewTpl from 'lib-build/hbars!./Immersive';
 import {} from 'lib-build/less!./Immersive';
@@ -128,7 +129,8 @@ export default class Immersive {
       if (! isMediaAlreadyLoaded) {
         background += SectionCommon.renderBackground({
           media: media,
-          transition: view.transition
+          transition: view.transition,
+          sectionType: 'immersive'
         });
       }
 
@@ -240,6 +242,7 @@ export default class Immersive {
     var viewIndex = parseInt(params.currentSectionScroll / app.display.windowHeight, 10) + 1;
 
     this._isNavigatingAway = viewIndex > this._nbViews;
+
     this._currentViewScrollPosition = params.currentSectionScroll % app.display.windowHeight;
 
     // Bound viewIndex to handle navigating away
@@ -255,13 +258,19 @@ export default class Immersive {
 
       for (let media of this._medias) {
         media.performAction({
-          isActive: false
+          isActive: false,
+          animate: false
         });
       }
 
       if (this._medias[0]) {
-        this._medias[0].getNode().nextAll().removeClass('active');
+        // only make all the views non-active if we're scrolling up and away from section, not down and away.
+        if (this._currentViewIndex === 1) {
+          this._medias[0].getNode().nextAll().removeClass('active');
+        }
+
         this._medias[0].getNode().addClass('active');
+
         this._medias[0].performAction({
           isActive: false,
           transition: this._transitions[0],
@@ -270,7 +279,8 @@ export default class Immersive {
           visibilityProgress: 0,
           scrollPositionSection: 0,
           scrollPositionView: 0,
-          performBuilderInit: false
+          performBuilderInit: false,
+          animate: false
         });
       }
 
@@ -296,12 +306,33 @@ export default class Immersive {
       this._isLoaded = true;
 
       this.loadMedias();
+      this._loadWebScenes({
+        cache: params.webSceneCache,
+        currentMedia: currentMedia,
+        viewIndex: viewIndex,
+        isPreload: true,
+        scrollDifference: params.scrollDifference
+      });
 
       for (let panel of this._panels) {
         panel.load();
       }
 
       this._node.find('.background').eq(0).addClass('active');
+    }
+
+    let oldViewIndex = this._currentViewIndex;
+
+    if (params.status === 'visible' || params.status === 'current') {
+      this._currentViewIndex = viewIndex;
+
+      this._loadWebScenes({
+        cache: params.webSceneCache,
+        currentMedia: currentMedia,
+        viewIndex: viewIndex,
+        isPreload: false,
+        scrollDifference: params.scrollDifference
+      });
     }
 
     // visible was creation a conflict with video when navigating away
@@ -313,30 +344,17 @@ export default class Immersive {
     var mediaUpdate = {
       isActive: params.status == 'current',
       transition: this._transitions[viewIndex - 1],
-      // TODO: remove or make more explicit what this will do?
-      isNewView: this._currentViewIndex != viewIndex,
+      // If switching views OR if the immersive section is now the active section but wasn't before
+      // The latter check is important for 1st view -- otherwise the viewIndex will say "1" and the old view index is "1" so it won't consider it new.
+      isNewView: oldViewIndex != viewIndex || !this._isActive && params.status === 'current',
       viewIndex: viewIndex,
       visibilityProgress: 1,
       scrollPositionSection: params.currentSectionScroll,
       scrollPositionView: this._currentViewScrollPosition,
-      performBuilderInit: this._currentViewIndex != viewIndex
+      performBuilderInit: oldViewIndex != viewIndex || !this._isActive && params.status === 'current'
     };
 
-    this._currentViewIndex = viewIndex;
-
-    /*
-    if (params.status == 'visible' && viewIndex == 1) {
-      mediaUpdate.visibilityProgress = Math.round((params.viewportBottom - app.display.sectionHeight / 2) / app.display.sectionHeight * 100) / 100 * 1;
-    } else if (isNavigatingAway) {
-      mediaUpdate.visibilityProgress = 1 - Math.round((params.currentSectionScroll + 90) % app.display.sectionHeight / app.display.sectionHeight * 100) / 100 * 2.5;
-      if (mediaUpdate.visibilityProgress > 0.6) {
-        mediaUpdate.visibilityProgress = 0;
-      }
-    }
-
-    mediaUpdate.visibilityProgress = Math.max(mediaUpdate.visibilityProgress, 0);
-    mediaUpdate.visibilityProgress = Math.min(mediaUpdate.visibilityProgress, 1);
-    */
+    this._isActive = true;
 
     // Compute if the media performing the transition to next view himself
     var mediaPerformTransition = false;
@@ -385,27 +403,6 @@ export default class Immersive {
         }
 
         this._previousMedia = currentMedia;
-
-        /*
-        if (transition == 'swipe-vertical' || transition == 'swipe-horizontal') {
-          if (previousMedia) {
-            previousMedia.getNode().addClass('active');
-          }
-        }
-        */
-
-        /*
-        var nextMedia = this._medias[viewIndex];
-        if (nextMedia) {
-          var nextMediaTransition = this._transitions[viewIndex];
-          if (nextMediaTransition == 'swipe-vertical' || nextMediaTransition == 'swipe-horizontal') {
-            var prepareForNextTransition = ! this._isTransitionDoneByMedia(nextMediaTransition, currentMedia, nextMedia);
-            if (prepareForNextTransition) {
-              nextMedia.getNode().addClass('active');
-            }
-          }
-        }
-        */
       }
 
       /*
@@ -509,6 +506,75 @@ export default class Immersive {
     }
   }
 
+  _loadWebScenes(params) {
+    if (app.data.errorWebGL) {
+      return;
+    }
+
+    let addIfFull = !params.isPreload;
+    let sceneViews = this._medias.filter(item => {
+      return item.type === 'webscene';
+    });
+
+    for (let sceneView of sceneViews) {
+      // if not already loaded, and if it's the currently-"active" view, add it to the cache.
+      if (!sceneView._isLoaded) {
+        let beforeCurrentMedia = this._medias[params.viewIndex - 2];
+        let afterCurrentMedia = this._medias[params.viewIndex];
+        let PIXEL_TOLERANCE = 750;
+
+        let addParams = {
+          item: sceneView,
+          sectionType: 'immersive',
+          canRemove: () => {
+            return this._canRemoveWebScene(sceneView);
+          },
+          viewIndex: params.viewIndex - 1
+        };
+
+        if (params.isPreload) {
+          let itemIndex = this._medias.findIndex(item => {
+            // could have 2 items with the same ID, but there are no duplicate DOM instances
+            return item.id === sceneView.id && item._node === sceneView._node;
+          });
+
+          addParams.viewIndex = itemIndex;
+          params.cache.add(addParams, addIfFull);
+        }
+
+        else if (params.currentMedia === sceneView) {
+          params.cache.add(addParams, addIfFull);
+        }
+        // if it's before the currently-active view, load it as well (necessary for swipes b/c view before active view is also visible)
+        else if (beforeCurrentMedia === sceneView) {
+          addParams.viewIndex = params.viewIndex - 2;
+          params.cache.add(addParams, addIfFull);
+        }
+
+        else if (params.scrollDifference >= 0 && afterCurrentMedia === sceneView) {
+          // if within 750px and going down/resizing...
+          let distanceFromNextView = app.display.windowHeight - this._currentViewScrollPosition;
+
+          if (distanceFromNextView <= PIXEL_TOLERANCE) {
+            addParams.viewIndex = params.viewIndex;
+            params.cache.add(addParams, addIfFull);
+          }
+        }
+      }
+    }
+  }
+
+  _canRemoveWebScene(scene) {
+    // if not the active section (if not in viewport and not the active section, or the one right before it)
+    let inViewport = Viewport.isInViewport(this._node);
+    if (inViewport && (this._medias[this._currentViewIndex - 1] === scene || this._medias[this._currentViewIndex - 2] === scene)) {
+      return false;
+    }
+    else {
+      return true;
+    }
+  }
+
   loadMedias() {
     var arcgisContent = [];
 
@@ -516,7 +582,7 @@ export default class Immersive {
       let alreadyLoaded = false;
 
       // TODO should use getIndexes like others...
-      if (media.type == 'webmap' || media.type == 'webscene') {
+      if (media.type == 'webmap') {
         if (arcgisContent.indexOf(media.id) > -1) {
           alreadyLoaded = true;
         }
@@ -525,20 +591,33 @@ export default class Immersive {
         }
       }
 
-      if (! alreadyLoaded) {
-        var loadDeferred = media.load();
-
-        if (loadDeferred) {
-          // TODO: is that necessary or can use media.id?
-          loadDeferred.then(function(id) {
-            for (let media of this._medias) {
-              if (media.id == id) {
-                media.postLoad();
-              }
-            }
-          }.bind(this));
-        }
+      if (! alreadyLoaded && media.type !== 'webscene') {
+        this.loadMediaItem(media);
       }
+    }
+  }
+
+  loadMediaItem(media) {
+    let loadDeferred = null;
+
+    if (media.type === 'webmap') {
+      loadDeferred = media.load({
+        isUniqueInSection: this.isMediaUniqueInSection(media.serialize())
+      });
+    }
+    else {
+      loadDeferred = media.load();
+    }
+
+    if (loadDeferred) {
+      // TODO: is that necessary or can use media.id?
+      loadDeferred.then(function(id) {
+        for (let media of this._medias) {
+          if (media.id == id) {
+            media.postLoad();
+          }
+        }
+      }.bind(this));
     }
   }
 
@@ -584,6 +663,14 @@ export default class Immersive {
     for (let media of this._medias) {
       media.resize(params);
     }
+
+    this._loadWebScenes({
+      cache: params.webSceneCache,
+      currentMedia: this._medias[this._currentViewIndex - 1],
+      viewIndex: this._currentViewIndex,
+      isPreload: false,
+      scrollDifference: 0
+    });
   }
 
   getBookmark() {

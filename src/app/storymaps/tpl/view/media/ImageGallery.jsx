@@ -3,14 +3,16 @@ import CommonHelper from 'storymaps/common/utils/CommonHelper';
 
 import {} from 'lib-build/less!./ImageGallery';
 import viewTpl from 'lib-build/hbars!./ImageGallery';
+import actionOverlayTpl from 'lib-build/hbars!./ImageGalleryActionOverlays';
 
 import i18n from 'lib-build/i18n!resources/tpl/viewer/nls/app';
+import i18nBuilder from 'lib-build/i18n!resources/tpl/builder/nls/app';
 
 import {} from 'lib/jquery/dist/jquery.min';
-import {} from 'lib/fluidbox/dist/js/jquery.fluidbox.min';
-import {} from 'lib-build/css!lib/fluidbox/dist/css/fluidbox.min';
+import {} from 'storymaps/common/utils/UniteGallery';
 
 import lang from 'dojo/_base/lang';
+import topic from 'dojo/topic';
 
 export default class ImageGallery extends Media {
 
@@ -35,6 +37,8 @@ export default class ImageGallery extends Media {
 
     this._images = images;
     this._placement = null;
+    this._gallery = null;
+    this._isLoaded = false;
   }
 
   render(context) {
@@ -56,6 +60,94 @@ export default class ImageGallery extends Media {
     }
 
     this._node = params.container.find('#' + this._domID);
+
+    let galleryPromise = this._initGallery();
+
+    return {
+      isAsync: true,
+      promise: galleryPromise
+    };
+  }
+
+  _initGallery() {
+    let baseRowHeight = 200;
+    let baseGutterWidth = 5;
+
+    if (app.display.windowWidth < 768) {
+      baseRowHeight = 110;
+    }
+    else {
+      if (this._images.images.length <= 4) {
+        baseGutterWidth = 15;
+      }
+    }
+
+    this._gallery = this._node.find('.image-gallery-wrapper').unitegallery({
+      gallery_theme: 'tiles',
+      gallery_control_keyboard: false,
+      tiles_type: 'justified',
+      theme_preloading_height: 0,
+      tile_enable_action: false,
+      tile_enable_overlay: false,
+      tiles_justified_row_height: baseRowHeight,
+      tiles_justified_space_between: baseGutterWidth
+    });
+
+    this._isLoaded = true;
+
+    return new Promise(resolve => {
+      this._gallery.on('load', () => {
+        this._onGalleryLoaded();
+        resolve();
+      });
+
+      this._gallery.on('resize', () => {
+        topic.publish('media-dynamic-resize');
+      });
+    });
+  }
+
+  _onGalleryLoaded() {
+    let imageWrappers = this._node.find('.ug-thumb-wrapper');
+
+    let self = this;
+    imageWrappers.each(function(index) {
+      let itemProperties = {
+        isFirst: false,
+        isLast: false
+      };
+
+      if (index === 0) {
+        itemProperties.isFirst = true;
+      }
+      else if (index === self._images.images.length - 1) {
+        itemProperties.isLast = true;
+      }
+
+      $(this).append(actionOverlayTpl({
+        itemProperties: itemProperties
+      }));
+    });
+
+    if (!app.isInBuilder) {
+      for (let i = 0; i < this._images.images.length; i++) {
+        let image = this._images.images[i];
+        let testImage = new window.Image();
+
+        testImage.onerror = () => {
+          let errorText = i18nBuilder.builder.mediaErrors;
+
+          this.setError({
+            msg: errorText.placeholders.inaccessible.replace('${media-type}', errorText.mediaTypes.image),
+            unfixable: true,
+            minimizeInViewer: true,
+            galleryIndex: i
+          });
+        };
+
+        testImage.src = Media.addToken(image.url);
+      }
+    }
   }
 
   load() {
@@ -63,56 +155,7 @@ export default class ImageGallery extends Media {
       return;
     }
 
-    this._isLoaded = true;
-
-    var self = this;
-
-    this._node.find('.image-gallery-item').each(function(i) {
-      var node = $(this),
-          imgHidden = node.find('.image-gallery-img-hidden'),
-          img = node.find('.image-gallery-img'),
-          fluidbox = imgHidden.parent();
-
-      imgHidden.attr('src', node.data('src'));
-      img.css('backgroundImage', 'url("' + node.data('src') + '"');
-
-      //
-      // Image maximize
-      //
-
-      var onImageMaximized = function() {
-        fluidbox.trigger('close.fluidbox');
-        $(window).off('scroll', onImageMaximized);
-      };
-
-      fluidbox
-        .on('openend.fluidbox', function() {
-          $(window).scroll(onImageMaximized);
-        })
-        .fluidbox({
-          maxWidth: app.display.windowWidth
-        });
-
-      //
-      // Loading indicator
-      //
-      var im = new window.Image();
-
-      im.onload = function() {
-        node.find('.media-loading').hide();
-      }.bind(this);
-
-      im.onerror = function() {
-        if (app.builder) {
-          self.setError({showLoadingError: true, galleryIndex: i});
-        }
-        else {
-          self.setError({minimizeInViewer: true, galleryIndex: i});
-        }
-      }.bind(this);
-
-      im.src = node.data('src');
-    });
+    return this._initGallery();
   }
 
   performAction() {
@@ -120,63 +163,17 @@ export default class ImageGallery extends Media {
   }
 
   resize() {
-    this._calculateImageHeights();
-
-    this._node.find('.image-gallery-item-wrapper').each(function(i, el) {
-      $(el).css('height', this._images.images[i].adjustedHeight);
-    }.bind(this));
-  }
-
-  _update() {
-    this._node.html(this._render(false));
-    this._isLoaded = false;
-    this.load();
-  }
-
-  _calculateImageHeights() {
-    let isMobile = window.innerWidth <= 768;
-
-    let spaceBetweenImage = 15;
-    // total image gutter space
-    let spaceBetweenImages = spaceBetweenImage * (this._images.images.length - 1);
-    // width allowed for block
-    let blockWidth = app.display.windowWidth * (isMobile ? 0.9 : 0.8);
-    // width for images is that minus what's needed for image gutters
-    let widthForImages = blockWidth - spaceBetweenImages;
-
-    // if mobile, each image gets 50% of the width (minus a padding of course)
-    let widthForMobileImage = (blockWidth - spaceBetweenImage) / 2;
-
-    let widthForDesktopImage = widthForImages / this._images.images.length;
-    // each one gets an equal amount of width to use
-    let widthForEachImage = isMobile ? widthForMobileImage : widthForDesktopImage;
-
-    for (let i = 0; i < this._images.images.length; i++) {
-      let image = this._images.images[i];
-      let imageHeight = 0;
-      let imageRatio = image.width / image.height;
-      // the adjusted height is based on the width it can take in the gallery
-      // if the image natural width is less than the width allotted for it, use its natural height
-
-      if (image.width < widthForEachImage) {
-        imageHeight = image.height;
-      }
-      else {
-        imageHeight = Math.round(widthForEachImage / imageRatio);
-      }
-      image.adjustedHeight = imageHeight;
-    }
+    //
   }
 
   _render(initialRender) {
-
-    this._calculateImageHeights();
 
     let template = viewTpl({
       images: this._addTokens(this._images.images),
       caption: this._images.caption,
       placeholder: i18n.viewer.media.captionPlaceholder,
-      captionEditable: app.isInBuilder
+      captionEditable: app.isInBuilder,
+      imageGalleryID: 'image-gallery' + this._domID
     });
 
     // if initial render, set the wrapper div and the height with the template. If not, just set the height and the template.

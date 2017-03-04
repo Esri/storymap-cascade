@@ -541,8 +541,9 @@
           'src/app/storymaps/**/*.js',
           'src/app/storymaps/**/*.jsx',
           '!src/app/storymaps/common/_resources/**/*.js',
+          '!src/app/storymaps/common/utils/UniteGallery.js',
           // ignore the issue-checker as well as it is an external repo
-          '!src/app/storymaps/issue-checker/**/*.js'
+          '!src/app/storymaps/issue-checker/**/*.js',
         ]
       },
 

@@ -16,7 +16,6 @@ Special thanks to the following stellar folks who has helped majorly in making F
 - [@jaechick](https://github.com/jaechick) for creating the LESS file for Fluidbox stylesheet, even though the LESS file is removed from the project as the stylesheet is now being preprocessed by SASS.
 - [@_mattbailey](https://twitter.com/_mattbailey) for his [awesome guide towards integrating Grunt into a project](http://mattbailey.io/a-beginners-guide-to-grunt-redux/). This has made building Fluidbox a lot easier.
 - [@DJDavid98](https://github.com/DJDavid98) for enabling proper parsing of backgorund image URLs. Note that the URL provided still has to be [RFC3986](http://www.ietf.org/rfc/rfc3986.txt)-compliant.
-- [@Gaya](https://github.com/Gaya) for fixing the blurry image issue on OS X / macOS.
 
 In addition, a shoutout to:
 
@@ -144,15 +143,15 @@ The list of public methods supported by Fluidbox v2.x is as follow:
 
 | Method              | Version | Description |
 |---------------------|---------|-------------|
-| `open`              | &ge;2.0     | Triggers the programmatic opening of Fluidbox. |
-| `close`             | &ge;2.0     | Triggers the programatic closing of Fluidbox. |
-| `compute`           | &ge;2.0     | Triggers (re)computing and positioning of Fluidbox instance. Useful when you are altering the size of the thumbnail (such as DOM manipulation). Remember that the window resize event, which might change the thumbnail dimensions, is listened automatically for you. |
-| `destroy`           | &ge;2.0     | Destroys the Fluidbox instance and reinserts the original DOM node. |
-| `bindEvents`        | &ge;2.0     | Binds the one and only click event. |
-| `bindListeners`     | &ge;2.0     | Binds listeners so that Fluidbox listens to public methods called by the `.trigger()` method. |
-| `unbind`            | &ge;2.0     | Unbinds the click events and all other listeners associated with Fluidbox function. |
-| `reposition`        | &ge;2.0     | Repositions the ghost element, useful when Fluidbox is not opened, but the thumbnail dimensions are changed. |
-| `getMetadata`       | &ge;2.0     | **Getter function**. It returns all the metadata associated with the Fluidbox instance, and does not return the original jQuery object, and is therefore not suitable for chaining. | 
+| `open`              | 2.0     | Triggers the programmatic opening of Fluidbox. |
+| `close`             | 2.0     | Triggers the programatic closing of Fluidbox. |
+| `compute`           | 2.0     | Triggers (re)computing and positioning of Fluidbox instance. Useful when you are altering the size of the thumbnail (such as DOM manipulation). Remember that the window resize event, which might change the thumbnail dimensions, is listened automatically for you. |
+| `destroy`           | 2.0     | Destroys the Fluidbox instance and reinserts the original DOM node. |
+| `bindEvents`        | 2.0     | Binds the one and only click event. |
+| `bindListeners`     | 2.0     | Binds listeners so that Fluidbox listens to public methods called by the `.trigger()` method. |
+| `unbind`            | 2.0     | Unbinds the click events and all other listeners associated with Fluidbox function. |
+| `reposition`        | 2.0     | Repositions the ghost element, useful when Fluidbox is not opened, but the thumbnail dimensions are changed. |
+| `getMetadata`       | 2.0     | **Getter function**. It returns all the metadata associated with the Fluidbox instance, and does not return the original jQuery object, and is therefore not suitable for chaining. | 
 
 ### Custom events
 Fluidbox will trigger several distinct namescpaced events depending on the state of the current (and only) instance of Fluidbox. You should use `.on()` to listen to the event being triggered, and can add your own custom callbacks if necessary, for example:
@@ -170,19 +169,19 @@ $(selector)
 .fluidbox();
 ```
 
-The list of custom events supported by Fluidbox is as follow. Remember that the events are namespaced:
+The list of custom events supported by Fluidbox v2.x is as follow. Remember that the events are namespaced:
 
 | Event              | Version | Description |
 |--------------------|---------|-------------|
-| `openstart.fluidbox`        | &ge;1.4.1   | Fired when a click event is registered from a Fluidbox instance that triggers its opening. This is called **after** the linked image has been successfully loaded. |
-| `openend.fluidbox`          | &ge;1.4.1   | Fired when the `transitionend` event is fired (with appropriate vendors supported). This happens when Fluidbox has been scaled to its final size (determined by `viewportScale`, see [configuration](#configuration)). The timing between `openstart` and `openend` are dictated by the `transition-duration` settings in `fluidbox.css`, or any overrides that you have implemented that targets the class `.fluidbox-ghost`. |
-| `closestart.fluidbox`       | &ge;1.4.1   | Fired when a click event is registered from a Fluidbox instance that triggers its closing. |
-| `closeend.fluidbox`         | &ge;1.4.1   | Fired when the `transitionend` event is fired (with appropriate vendors supported). This happens when Fluidbox has been scaled back to its original thumbnail size on the page. The timing between `closestart` and `closeend` are dictated by the `transition-duration` settings in `fluidbox.css`, or any overrides that you have implemented that targets the class `.fluidbox-ghost`. |
-| `computeend.fluidbox` or `recomputeend.fluidbox`     | &ge;1.4.2   | Fired when the Fluidbox ghost element, or the active Fluidbox on display, is recomputed due to layout changes not dependent on the `$(window).resize()` event. This is triggered manually by the custom trigger `recompute` ([see usage instructions](#custom-triggers)). |
-| `imageloaddone.fluidbox`    | &ge;1.4.3   | Fired when the target/linked image is successfully loaded. Synonymous with `delayloaddone` if `immediateOpen` option is set to `true`. |
-| `imageloadfail.fluidbox`    | &ge;1.4.3   | Fired when the target/linked image fails to load. |
-| `thumbloaddone.fluidbox`    | &ge;1.4.3   | Fired when the thumbnail has been loaded. Will only happen once, when `.fluidbox()` is first applied to the element. |
-| `thumbloadfail.fluidbox`    | &ge;1.4.3   | Fired when the thumbnail fails to load. Will only happen once, when `.fluidbox()` is first applied to the element. |
+| `openstart.fluidbox`        | 1.4.1   | Fired when a click event is registered from a Fluidbox instance that triggers its opening. This is called **after** the linked image has been successfully loaded. |
+| `openend.fluidbox`          | 1.4.1   | Fired when the `transitionend` event is fired (with appropriate vendors supported). This happens when Fluidbox has been scaled to its final size (determined by `viewportScale`, see [configuration](#configuration)). The timing between `openstart` and `openend` are dictated by the `transition-duration` settings in `fluidbox.css`, or any overrides that you have implemented that targets the class `.fluidbox-ghost`. |
+| `closestart.fluidbox`       | 1.4.1   | Fired when a click event is registered from a Fluidbox instance that triggers its closing. |
+| `closeend.fluidbox`         | 1.4.1   | Fired when the `transitionend` event is fired (with appropriate vendors supported). This happens when Fluidbox has been scaled back to its original thumbnail size on the page. The timing between `closestart` and `closeend` are dictated by the `transition-duration` settings in `fluidbox.css`, or any overrides that you have implemented that targets the class `.fluidbox-ghost`. |
+| `computeend.fluidbox` or `recomputeend.fluidbox`     | 1.4.2   | Fired when the Fluidbox ghost element, or the active Fluidbox on display, is recomputed due to layout changes not dependent on the `$(window).resize()` event. This is triggered manually by the custom trigger `recompute` ([see usage instructions](#custom-triggers)). |
+| `imageloaddone.fluidbox`    | 1.4.3   | Fired when the target/linked image is successfully loaded. Synonymous with `delayloaddone` if `immediateOpen` option is set to `true`. |
+| `imageloadfail.fluidbox`    | 1.4.3   | Fired when the target/linked image fails to load. |
+| `thumbloaddone.fluidbox`    | 1.4.3   | Fired when the thumbnail has been loaded. Will only happen once, when `.fluidbox()` is first applied to the element. |
+| `thumbloadfail.fluidbox`    | 1.4.3   | Fired when the thumbnail fails to load. Will only happen once, when `.fluidbox()` is first applied to the element. |
 
 There are custom events that were introduced in v1.4.x but are now deprecated because they serve redundant functions:
 
@@ -292,7 +291,7 @@ The full list of Fluidbox configurations:
 
 ## Developer notes
 ### Building with Grunt
-Fluidbox is built using [Grunt](http://gruntjs.com) and [NodeJS](https://nodejs.org/). If you are new to this, kindly refer to [Matt Bailey's excellent guide on setting up Grunt](http://mattbailey.io/a-beginners-guide-to-grunt-redux/). To build Fluidbox, you will need to run `npm install` and install the following dependencies:
+Fluidbox is built using [Grunt](http://gruntjs.com) and [NodeJS](https://nodejs.org/). If you are new to this, kindly refer to [Matt Bailey's excellent guide on setting up Grunt](http://mattbailey.io/a-beginners-guide-to-grunt-redux/). To build Fluidbox, you will need to install the following dependencies:
 
 | Grunt dependency | Comment |
 |------------------|---------|
@@ -308,15 +307,27 @@ Fluidbox is built using [Grunt](http://gruntjs.com) and [NodeJS](https://nodejs.
 | [grunt-contrib-watch](https://www.npmjs.com/package/grunt-contrib-watch) | Allows you to build on the fly using `$ grunt watch` by watching for file changes, so that you don't have to run `$ grunt` at the project root all the time manually. |
 | [grunt-postcss](https://www.npmjs.com/package/grunt-postcss) | Uses PostCSS to dynamically add prefixes and handle minification thereafter. | 
 
-The main tasks are `grunt` or `grunt prod`, which minifies everything and makes it ready for produciton, and `grunt dev` which instead creates a build for testing and development.
+Quick and dirty: here's how to install the Grunt dependencies listed above:
+
+```shell
+$ npm install grunt --save-dev
+$ npm install time-grunt --save
+$ npm install load-grunt-config --save-dev
+$ npm install grunt-concurrent --save-dev
+$ npm install grunt-contrib-clean --save-dev
+$ npm install grunt-sass --save-dev
+$ npm install grunt-contrib-uglify --save-dev
+$ npm install grunt-contrib-jshint --save-dev
+$ npm install jshint-stylish --save
+$ npm install grunt-contrib-watch --save-dev
+$ npm install grunt-postcss --save-dev
+$ npm install grunt-postcss autoprefixer cssnano
+```
 
 #### Configuration
 The configuration for each Grunt task can be found in their respecitve `.js` files in the `/grunt` folder.
 
 ## Known Issues
-### Blurry images in Safari
-Fluidbox might render the expanded image in a way that appears to be blurry in OS X / macOS Safari. A fix has been implemented as of v2.0.4 ([#178](https://github.com/terrymun/Fluidbox/pull/178), [issue #168](https://github.com/terrymun/Fluidbox/issues/168)).
-
 ### Transition of CSS3 transform in Safari
 For inexplicable reason(s), Safari no longer transition CSS transformations (the `scale` component especially) after the first time the Fluidbox has been opened. A simple workaround would be enabling the `immediateOpen` option (i.e. `immediateOpen: true`) when initializing Fluidbox.
 

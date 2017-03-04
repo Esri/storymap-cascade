@@ -118,7 +118,8 @@ function(
       }
 
       output += params.media.render({
-        placement: 'background'
+        placement: 'background',
+        sectionType: params.sectionType
       });
 
       if (! params.noBackgroundTag) {

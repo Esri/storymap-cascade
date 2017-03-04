@@ -165,6 +165,7 @@ export default class ImmersiveBuilder extends Immersive {
     }
 
     super.update();
+    this._updateMapHomeButtons();
     this._updateBuilderPanel();
     this._onContentChange();
   }
@@ -367,8 +368,6 @@ export default class ImmersiveBuilder extends Immersive {
 
   // TODO: deprecate for _onToggleMediaConfig ???
   _onEditMedia(media, newMediaJSON) {
-    console.log(media, newMediaJSON);
-
     var mediaIndex = this._medias.indexOf(media),
         newMedia = SectionCommon.initMedia(newMediaJSON, this._mediaCache);
 
@@ -393,19 +392,31 @@ export default class ImmersiveBuilder extends Immersive {
 
     if (! isMediaAlreadyLoaded) {
       newMedia.load({
-        isBuilderAdd: true
+        isBuilderAdd: true,
+        isUniqueInSection: true
       });
     }
 
-    media.destroy();
-
     this._medias[mediaIndex] = newMedia;
+
+    // see if the node is used by another media in this immersive... if so, don't destroy it.
+    let firstMatchIndex = this._medias.findIndex(item => {
+      return item.getNode().is(media.getNode());
+    });
+
+    // if there was no match found, remove the DOM node.
+    if (firstMatchIndex === -1) {
+      media.destroy();
+    }
 
     // do an issue check -- do this before this.update()
     SectionCommon.checkMedia(newMediaJSON);
 
     this.update();
+    // make the view active
     newMedia.getNode().addClass('active');
+    // if the view is a reused one from earlier, make sure it's still shown (make any views after that un-active).
+    newMedia.getNode().nextAll().removeClass('active');
   }
 
   //
@@ -413,8 +424,6 @@ export default class ImmersiveBuilder extends Immersive {
   //
 
   _selectView(index) {
-    console.log('selectView:', index);
-
     if (index != this._currentViewIndex - 1) {
       this.navigateToViewByIndex({
         index: index,
@@ -424,8 +433,6 @@ export default class ImmersiveBuilder extends Immersive {
   }
 
   _addEmptyView(index) {
-    console.log('addEmptyView:', index);
-
     let defaultTransition = 'fade-fast';
 
     //
@@ -508,8 +515,6 @@ export default class ImmersiveBuilder extends Immersive {
   }
 
   _addView(params = {}) {
-    console.log('addView:', params);
-
     var index = params.index,
         media = params.media,
         panel = params.panel,
@@ -524,15 +529,24 @@ export default class ImmersiveBuilder extends Immersive {
     //
 
     media = SectionCommon.initMedia(media, this._mediaCache);
-    this._medias.splice(index, 0, media);
 
     var isMediaAlreadyLoaded = this.isMediaAlreadyLoaded(media.serialize());
     if (! isMediaAlreadyLoaded) {
-      this._medias[index - 1].getNode().after(SectionCommon.renderBackground({
-        media: media,
-        transition: transition
-      }));
+      if (index === 0) {
+        this._medias[0].getNode().before(SectionCommon.renderBackground({
+          media: media,
+          transition: transition
+        }));
+      }
+      else {
+        this._medias[index - 1].getNode().after(SectionCommon.renderBackground({
+          media: media,
+          transition: transition
+        }));
+      }
     }
+
+    this._medias.splice(index, 0, media);
 
     media.postCreate({
       container: this._node,
@@ -544,6 +558,10 @@ export default class ImmersiveBuilder extends Immersive {
       // TODO: for video, need to goes away
       sectionType: 'immersive'
     });
+
+    if (!isMediaAlreadyLoaded) {
+      this.loadMediaItem(media);
+    }
 
     //
     // Panel
@@ -558,7 +576,14 @@ export default class ImmersiveBuilder extends Immersive {
       }
     );
     this._panels.splice(index, 0, panel);
-    this._node.find('.foreground .imm-panel').eq(index - 1).after(panel.render());
+
+    if (index === 0) {
+      this._node.find('.foreground .imm-panel').eq(0).before(panel.render());
+    }
+    else {
+      this._node.find('.foreground .imm-panel').eq(index - 1).after(panel.render());
+    }
+
     // TODO: should work like this (TODO: also do the same for media)
     //panel.postCreate(this._node.find('.foreground .imm-panel').eq(index + 1));
     panel.postCreate({
@@ -566,11 +591,13 @@ export default class ImmersiveBuilder extends Immersive {
       mediaConfigurationTabs: this.MEDIA_BUILDER_TABS_PANEL
     });
 
+    panel.load();
+
     //
     // Transition
     //
 
-    this._transitions.splice(index + 1, 0, transition);
+    this._transitions.splice(index, 0, transition);
 
     //
     // Navigate to the new view
@@ -580,15 +607,19 @@ export default class ImmersiveBuilder extends Immersive {
     SectionCommon.checkMedia(params.media);
 
     this.update();
+
+    // if the first view, make the views after it un-active.
+    if (index === 0) {
+      this._medias[0].getNode().nextAll().removeClass('active');
+    }
+
     this.navigateToViewByIndex({
-      index: index + 1,
+      index: index,
       animate: false
     });
   }
 
   _deleteView(index) {
-    console.log('deleteView:', index);
-
     if (this._medias.length === 1) {
       app.Controller.deleteActiveSection();
       return;
@@ -654,7 +685,7 @@ export default class ImmersiveBuilder extends Immersive {
 
     var undoNotification = new UndoNotification({
       container: this._node,
-      label: 'You deleted a view', // TODO
+      label: i18n.builder.controller.viewDelete,
       positionTop: 70
     });
 
@@ -669,8 +700,6 @@ export default class ImmersiveBuilder extends Immersive {
   }
 
   _duplicateView(index) {
-    console.log('duplicateView:', index);
-
     let transition = this._transitions[index];
 
     //
@@ -763,13 +792,25 @@ export default class ImmersiveBuilder extends Immersive {
     }
   }
 
+  _updateMapHomeButtons() {
+    // we need to hide the home button if the map is reused in the section
+    for (let media of this._medias) {
+      if (media.type === 'webmap') {
+        if (this.isMediaUniqueInSection(media.serialize())) {
+          media.showHomeButton();
+        }
+        else {
+          media.hideHomeButton();
+        }
+      }
+    }
+  }
+
   //
   // Transition
   //
 
   _updateTransition(index, transitionType) {
-    console.log('updateTransition:', index, transitionType);
-
     // change the class name of the panel that correlates to the transition type
     if (this._transitions[index] && transitionType) {
       let panelClassPrefix = 'view-transition-';
@@ -836,8 +877,6 @@ export default class ImmersiveBuilder extends Immersive {
   }
 
   _organizeByIndexes(viewIndexes, showUndo) {
-    console.log('Organize:', viewIndexes);
-
     //
     // Check if the specified new order require a change
     //

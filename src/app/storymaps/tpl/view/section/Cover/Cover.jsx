@@ -65,14 +65,16 @@ export default class Cover {
     this._applyConfig();
   }
 
-  _applyConfig() {    
-    if (this._section.foreground && this._section.foreground.options) {
-      let style = this._section.foreground.options.titleStyle;
-      let textNode = this._node.find('.foreground .title-text');
-      let backgroundNode = this._node.find('.foreground .text-background');
+  _applyConfig() {
+    let textNode = this._node.find('.foreground .title-text');
+    let backgroundNode = this._node.find('.foreground .text-background');
+    let style = null;
 
-      SectionCommon.applyTitleStyle(style, textNode, backgroundNode);
+    if (this._section.foreground && this._section.foreground.options) {
+      style = this._section.foreground.options.titleStyle;
     }
+
+    SectionCommon.applyTitleStyle(style, textNode, backgroundNode);
   }
 
   onScroll(params) {
