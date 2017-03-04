@@ -63,7 +63,7 @@ For more answers, please see the [Story Map website FAQ page](https://storymaps.
 
 ### What are the supported browsers?
 Cascade stories are supported on Internet Explorer 11 and above, Chrome, Firefox, Safari and the most recent tablet and smartphone devices.
-During the beta period, Cascade authoring is only supported on Chrome and Safari on a desktop computer. We are working on supporting more browsers.
+Cascade authoring is only supported on Chrome and Safari on a desktop computer. We are working on supporting more browsers.
 
 We actively test the application in all major browsers but if you experience difficulties, especially with the builder, we recommend that you use [Chrome](https://www.google.com/intl/en_us/chrome/browser/).
 
