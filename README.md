@@ -106,8 +106,7 @@ Cascade is not included in Portal for ArcGIS. We are planning to include it in P
 Yes, when the story is configured with an application ID, adding the URL parameter 'edit' will open the builder. You will be prompted for user authentication.
 
 #### How to deploy the application on a web server?
-If you are not familiar with web servers here are three solutions:
- * Use a free hosting service like [Dropbox](https://www.dropbox.com), you may have to [configure Dropbox to enable webpage hosting](https://www.dropbox.com/enable_public_folder)
+If you are not familiar with web servers, here are some solutions:
  * Use the web server that comes with your server Operating System. On Windows this is Internet Information Services (IIS), if you have a `C:\inetpub\wwwroot` folder on your computer, you should be able to access its content using `http://localhost`
  * On Windows or Mac OS, use a simple web server like [Mongoose](https://code.google.com/p/mongoose/) (not recommended for production)
 
