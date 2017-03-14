@@ -252,6 +252,8 @@ export default class TabWebMap extends TabArcGIS {
 
       layersButton.addClass(disabledClass);
       this.setMedia('layers', []);
+
+      this.initLayerList();
     });
 
     this._updateLocationReset();

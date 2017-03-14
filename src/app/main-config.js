@@ -61,6 +61,11 @@ function defineDojoConfig() {
     has: {
       'dojo-preload-i18n-Api': false
     },
+    map: {
+      'esri4/core/workers/JobProxy': {
+        'dojo/dojo.js': '../4.3/dojo/dojo.js'
+      }
+    },
     packages: [
       {
         name: 'storymaps',

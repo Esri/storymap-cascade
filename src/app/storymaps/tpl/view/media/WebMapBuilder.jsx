@@ -99,6 +99,7 @@ export default class WebMapBuilder extends WebMap {
 
   performAction(params = {}) {
     if (params.performBuilderInit) {
+      this._destroyConfigPanel();
       this._initConfigPanel();
     }
 
@@ -230,11 +231,6 @@ export default class WebMapBuilder extends WebMap {
 
   _onConfigChange() {
     this._applyConfig();
-
-    if (! this._webmap.layers || this._webmap.layers.length == 0) {
-      this._configTabWebMap.initLayerList();
-    }
-
     super._onConfigChange();
   }
 }

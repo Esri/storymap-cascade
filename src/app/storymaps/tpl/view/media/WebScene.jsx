@@ -228,6 +228,15 @@ export default class WebScene extends Media {
       let portalUrl = app.indexCfg.sharingurl.split('/sharing/')[0];
       this._esriConfig.portalUrl = portalUrl;
 
+      this._esriConfig.workers.loaderConfig = {
+        packages: [
+          {
+            name: 'esri4',
+            location: 'https://js.arcgis.com/4.3/esri'
+          }
+        ]
+      };
+
       // Proxy rules
       this._esriConfig.request.proxyUrl = location.protocol + app.indexCfg.proxyurl;
 
