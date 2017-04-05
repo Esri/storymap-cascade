@@ -313,7 +313,3 @@ Some open-source components of this project are licensed under other License ter
 | jquery-mousewheel     | MIT       |
 
 Additionally, The Unite Gallery open-source library is located at `src/app/storymaps/common/utils/UniteGallery.js`. It is licensed MIT; those portions modified by the Story Maps team are licensed Apache 2.0 with the rest of this project.
-
-
-[](Esri Tags: Storytelling Cascade ArcGIS-Online Template)
-[](Esri Language: JavaScript)
