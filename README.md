@@ -24,14 +24,14 @@ The Story Map Cascade℠ app lets you combine narrative text with maps, images, 
  * [Licensing](#licensing)
 
 ## Introduction
-A Cascade story can be created from [ArcGIS Online](http://arcgis.com), from the [Esri Story Maps website](https://storymaps.arcgis.com/) or from a [Portal for ArcGIS](http://www.esri.com/software/arcgis/arcgisserver/extensions/portal-for-arcgis) deployment. The Cascade's data are stored in a Web Application Item.
+A Cascade story can be created from [ArcGIS Online](http://arcgis.com), from the [Esri Story Maps website](https://storymaps.arcgis.com/), or from [ArcGIS Enterprise](http://www.esri.com/en/arcgis/products/arcgis-enterprise/overview). The Cascade story's data are stored in a Web Application Item.
 This repository provides the application source code for developers who want to customize the application.
 
 For more information about the application, including a gallery of examples and a step-by-step tutorial, please see the [Cascade page](https://storymaps.arcgis.com/en/app-list/cascade/) on the [Esri Story Maps website](https://storymaps.arcgis.com/).
 
 ## Instructions
-First create your Cascade story in ArcGIS Online using the [step-by-step tutorial](https://storymaps.arcgis.com/en/app-list/cascade/tutorial/).
-Once your story is ready, you have to find its ID in ArcGIS Online. The ID is a 32 character string that you will find in your web browser's address bar when you are viewing your story.
+First create your Cascade story in ArcGIS using the [step-by-step tutorial](https://storymaps.arcgis.com/en/app-list/cascade/tutorial/).
+Once your story is ready, you have to find its ID in ArcGIS. The ID is a 32 character string that you will find in your web browser's address bar when you are viewing your story.
 
 ![Screenshot](https://cloud.githubusercontent.com/assets/994078/16124454/e26566ba-33a3-11e6-9be1-8af3f9f86113.png)
 
@@ -40,11 +40,11 @@ Once your story is ready, you have to find its ID in ArcGIS Online. The ID is a 
 3. Edit index.html, find the configuration section on line 44 and paste in your application ID
 4. Navigate to index.html (e.g., `http://127.0.0.1/Cascade/index.html`)
 
-Enjoy!
-You can continue to use the builder in ArcGIS Online to modify your story.
+You can continue to use the builder in ArcGIS to modify your story.
+
 See [customize the look and feel section](#customize-the-look-and-feel) or [developer guide](#developer-guide) if you want to modify the app.
 
-*If you are using Portal for ArcGIS, please follow the instructions at the end of `app/config.js` to configure the application.*
+*If you are using ArcGIS Enterprise, please follow the instructions at the end of `app/config.js` to configure the application.*
 
 ## Feedback / support
 We would love to hear from you!
@@ -63,46 +63,46 @@ For more answers, please see the [Story Map website FAQ page](https://storymaps.
 
 ### What are the supported browsers?
 Cascade stories are supported on Internet Explorer 11 and above, Chrome, Firefox, Safari and the most recent tablet and smartphone devices.
-Cascade authoring is only supported on Chrome and Safari on a desktop computer. We are working on supporting more browsers.
+
+Cascade authoring is only supported on Chrome and Safari on a desktop computer. We are considering support for other browsers.
 
 We actively test the application in all major browsers but if you experience difficulties, especially with the builder, we recommend that you use [Chrome](https://www.google.com/intl/en_us/chrome/browser/).
 
 ### Tips for your content
 
-We have posted a number of tips and tricks for authoring your Cascade app [on the esri blog](https://blogs.esri.com/esri/arcgis/tag/story-map-cascade/), as well as several ["How To Cascade" tutorials](https://blogs.esri.com/esri/arcgis/2017/02/10/how-to-cascade/) using Cascade itself.
+We have posted a number of tips and tricks for authoring your Cascade app [on the ArcGIS blog](https://blogs.esri.com/esri/arcgis/tag/story-map-cascade/), as well as several ["How To Cascade" tutorials](https://blogs.esri.com/esri/arcgis/2017/02/10/how-to-cascade/) using Cascade itself.
 
 ### Security
 
 #### Can I keep my story private?
-Yes, the regular ArcGIS Online security model applies.
-By default your story is private, you can share it through Cascade builder or ArcGIS Online.
+Yes, the regular ArcGIS security model applies.
+By default your story is private, you can share it through Cascade builder or ArcGIS.
 When you share your story through the Cascade builder, its maps and layers will also be shared if you own them or have privileges to share them. You will still need to make sure webscenes and embedded apps are accessible to your audience when you share, as they are not shared automatically with the story.
 
-#### Can I use private webmaps or layers?
+#### Can I use private web maps or layers?
 Yes.
 
-When the story is hosted in ArcGIS Online or Portal for ArcGIS, users who don't have access to the story or a webmap used in the story will be redirected to the ArcGIS Online sign-in page. It is not possible to display an authentication dialog in the application when it's hosted in ArcGIS Online.
+When the story is hosted in ArcGIS Online or ArcGIS Enterprise, users who don't have access to the story or a web map used in the story will be redirected to the ArcGIS sign-in page. It is not possible to display an authentication dialog in the application when it's hosted in ArcGIS.
 
-When the story is hosted on your web server, by default an authentication dialog will appear inside the application. But we recommend that you configure the application to use OAuth. OAuth 2.0 based authentication is available for ArcGIS Online and Portal for ArcGIS users with developer or organizational accounts. Follow [this procedure](http://doc.arcgis.com/en/arcgis-online/share-maps/add-items.htm#ESRI_SECTION1_0D1B620254F745AE84F394289F8AF44B) to add and register an application to get an OAuth application ID. Once you have that application, open `index.html`, locate the `configOptions` section and fill the `oAuthAppId` property.
+When the story is hosted on your web server, by default an authentication dialog will appear inside the application. But we recommend that you configure the application to use OAuth. OAuth 2.0 based authentication is available for ArcGIS Online users with developer or organizational accounts and ArcGIS Enterprise users. Follow [this procedure](http://doc.arcgis.com/en/arcgis-online/share-maps/add-items.htm#ESRI_SECTION1_0D1B620254F745AE84F394289F8AF44B) to add and register an application to get an OAuth application ID. Once you have that application, open `index.html`, locate the `configOptions` section and fill the `oAuthAppId` property.
 
 If you are using secured services but don't want users to have to authenticate, you can use a proxy to store the username/password to be used, see [Working with Proxy Services](https://developers.arcgis.com/authentication/working-with-proxies/#selfhosted-proxy-service), and add a proxy rules to specify what services need to use the proxy by editing `PROXY_RULES` in `app/config.js`.
 
 ### Deployment
-Deploying a Cascade story requires use of ArcGIS Online or Portal for ArcGIS. The Cascade content must be created using the Cascade builder and will live in a Web Application Item.
+Deploying a Cascade story requires use of ArcGIS Online or ArcGIS Enterprise. The Cascade content must be created using the Cascade builder and will live in a Web Application Item.
 
-#### Can I use the template without ArcGIS Online or Portal for ArcGIS?
+#### Can I use the template without ArcGIS Online or ArcGIS Enterprise?
 This is not a supported use case at this time. Please let us know if you are interested in such a scenario.
-Cascade relies heavily on the Portal for ArcGIS API but it is doable to modify the application to support other scenarios.
 
 #### Where is the data stored?
-The Cascade data are stored in a Web Application Item in ArcGIS Online or Portal for ArcGIS. This includes the narrative content, reference to any media used (webmaps, webscenes, pictures, audio, videos, web pages), and app-wide settings.
+The Cascade data are stored in a Web Application Item in ArcGIS Online or an ArcGIS Enterprise portal. This includes the narrative content, reference to any media used (web maps, web scenes, pictures, audio, videos, web pages), and app-wide settings.
 
-The images, audio, and videos that you include in your story using the builder are not copied in ArcGIS Online unless you upload them through the ArcGIS option. You have to make sure that those medias that are stored on other services are, and will remain, accessible to your audience.
+The images, audio, and videos that you include in your story using the builder are not loaded into ArcGIS unless you upload them through the ArcGIS option. You have to make sure that those medias that are stored on other services are, and will remain, accessible to your audience.
 
-#### Can I deploy Cascade on Portal for ArcGIS?
-Yes, Cascade is included with Portal for ArcGIS starting at version 10.5.1.
+#### Can I deploy Cascade using ArcGIS Enterprise?
+Yes, Cascade is included with ArcGIS Enterprise starting at version 10.5.1.
 
-#### Can I use the builder with the downloadable?
+#### Can I use the builder if I host the app on my own web server?
 Yes, when the story is configured with an application ID, adding the URL parameter 'edit' will open the builder. You will be prompted for user authentication.
 
 #### How do I deploy the application on a web server?
@@ -119,7 +119,7 @@ If you are experiencing some rendering issues like improper symbols appearing in
 Yes.
 If you have customized the application and deployed it on your server, you don't need to copy it multiple times, edit index.html and paste a different application ID for each story you want to publish.
 
-Instead edit `index.html`, locate the `configOptions` section and fill the `authorizedOwners` property with the ArcGIS Online or Portal for ArcGIS login of the owner(s) of the story you want to use. This makes it possible for the application to display any of stories created by the specified user(s) through a URL parameter.
+Instead edit `index.html`, locate the `configOptions` section and fill the `authorizedOwners` property with the ArcGIS Online or for ArcGIS login of the owner(s) of the story you want to use. This makes it possible for the application to display any of stories created by the specified user(s) through a URL parameter.
 
 Example of the same application displaying two stories:
  * http://myserver.com/Cascade/index.html?appid=c7ad1a55de0247a68454a76f251225a4
@@ -202,7 +202,7 @@ This will create a new `node-modules` folder in your project root with all the t
 
 ### How to use the application from the source code
  * Make accessible the Cascade folder on a web server. Use your favorite server or run one with `grunt server`; this will start a server on port `8080`
- * If using a Portal for ArcGIS instance, configure the `DEFAULT_SHARING_URL` property in `app/config.js` (close to the bottom of the file)
+ * If using an ArcGIS Enterprise portal, configure the `DEFAULT_SHARING_URL` property in `app/config.js` (close to the bottom of the file)
  * Run the following command: `grunt dev`
  * Navigate to index.html using the URL parameter `appid` to specify the web item to be loaded, e.g.: `http://localhost:8080/index.html?appid=ABCD` (configuring `index.html` > `configOptions.appid` is not supported in development mode)
  * If you want to use a non-public story or the builder you need to configure an `oAuth` ID in `index.html`. Follow [this procedure](http://doc.arcgis.com/en/arcgis-online/share-maps/add-items.htm#ESRI_SECTION1_0D1B620254F745AE84F394289F8AF44B) to add and register an application to get an OAuth application ID. Once you have that application, open `index.html`, locate the `configOptions` section and fill the `oAuthAppId` property.
