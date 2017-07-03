@@ -2,8 +2,6 @@ import Media from './Media';
 
 import {} from 'lib-build/less!./Color';
 
-import lang from 'dojo/_base/lang';
-
 export default class Color extends Media {
   constructor(color) {
     super({
@@ -22,17 +20,36 @@ export default class Color extends Media {
       return '';
     }
 
-    return `<div class="media-color" style="background-color: ${this._color.value}"></div>`;
+    return '<div class="media-color"></div>';
+  }
+
+  postCreate(params) {
+    if (!params.container) {
+      return;
+    }
+    this._node = params.container.find('.media-color');
+    this._applyConfig();
+  }
+
+  _applyConfig() {
+    this._node.css('background-color', this._color.value);
+  }
+
+  updateColor(color) {
+    this._color.value = color;
+    this._applyConfig();
   }
 
   load() {
     //
   }
 
+  update(color) {
+    this.updateColor(color);
+  }
+
   serialize() {
-    return lang.clone({
-      type: 'color',
-      color: this._color
-    });
+    // TODO dead code
+    return super.serialize('color', this._color, false);
   }
 }

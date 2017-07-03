@@ -35,13 +35,13 @@
     text-align: center;
     text-decoration: none;
     background: #fff;
-    transform: rotate(0);
-    transition: transform 100ms;
     text-decoration: underline;
     cursor: pointer;
     margin-left: -10px;
-
-    color: #000;
+    border: 0px;
+    background: linear-gradient(to right, rgb(255,255,255), rgb(220,220,220));
+    color: #666666;
+    font-size: 14px;
 
     &:hover {
       opacity: 0.6;
@@ -67,8 +67,10 @@
     z-index: 11;
 
     .block-toolbar-button-status {
-      transition: transform 250ms;
-      transform: rotate(45deg);
+      border: 0px;
+      background: linear-gradient(to right, rgb(255,255,255), rgb(220,220,220));
+      color: #666666;
+      font-size: 14px;
     }
   }
 }
@@ -81,8 +83,8 @@
   top: 0;
   left: 0;
 
-  background-color: #fff;
-  box-shadow: 0px 0px 8px 0 rgba(0,0,0,0.8);
+  background-color: rgba(255,255,255,0.95);
+  box-shadow: 0px 2px 8px 0px rgba(0,0,0,0.2);
   border-radius: 2px;
 
   /* Above add toolbar */
@@ -103,6 +105,9 @@
     margin-left: 1px !important;
     border: none !important;
     border-style: none !important;
+    border-width: 8px, 10px, 0 10px;
+    left: 18px;
+    top: 32px;
   }
 
   ul {
@@ -133,14 +138,14 @@
         -ms-user-select: none;
         user-select: none;
 
-        color: #000;
+        color: #666666;
 
         &:hover {
           background-color: #d3d3d3;
         }
 
         &.active {
-          background-color: #b3b3b3;
+          background-color: #DCDCDC;
         }
 
         .fa {
@@ -155,7 +160,7 @@
      */
 
     li:nth-child(3) a {
-      border-right: 1px solid black;
+      border-right: 1px solid #EEEEEE;
     }
   }
 

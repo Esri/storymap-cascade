@@ -1,4 +1,3 @@
-// nls expects double quotes
 /*eslint quotes:[2, 'double'] */
 define({
   "mediaPicker": {
@@ -65,15 +64,15 @@ define({
             "embedProtocolWarning3": "Als alternatief kunt u een koppeling in uw verhaal toevoegen om de pagina te openen in een nieuw browsertabblad. ${linkText}",
             "linkText": "Meer informatie."
           },
-          "placeholder": "${https://}... or ${http://}... or ${<iframe>}",
+          "placeholder": "${https://}... of ${http://}... of ${<iframe>}",
           "uploadErrors": {
             "generic": "Er is iets misgegaan met het ingevoerde adres. Probeer het nogmaals.",
             "imageOnly1": "In dit deel van het verhaal moet u een afbeelding gebruiken.",
             "imageOnly2": "Geef een koppeling naar een afbeelding op (.jpg, .png, .gif), of kies een afbeelding van ${ArcGIS}, ${Flickr}, ${Google+} of ${Unsplash}.",
             "imageAndVideo1": "In dit deel van het verhaal moet u een afbeelding of video gebruiken.",
             "imageAndVideo2": "Geef een koppeling naar een afbeelding op (.jpg, .png, .gif) of een video op ${YouTube} of ${Vimeo}, of kies een afbeelding van ${ArcGIS}, ${Flickr}, ${Google+} of ${Unsplash}.",
-            "badFormat": "De koppeling naar het ${media-type} die u tracht toe te voegen is niet goed geformatteerd.",
-            "inaccessible": "Het ${media-type} dat u tracht toe te voegen ontbreekt of is niet toegankelijk.",
+            "badFormat": "De koppeling naar het bestand dat u tracht toe te voegen is niet goed geformatteerd.",
+            "inaccessible": "Het bestand dat u tracht toe te voegen ontbreekt of is niet toegankelijk.",
             "tryAgain": "Controleer het adres en probeer het nogmaals.",
             "mediaTypes": {
               "VIDEO": "video",
@@ -125,6 +124,8 @@ define({
           "searchLocation": {
             "thisStory": "Dit verhaal",
             "agol": "ArcGIS Online",
+            "portalArcGIS": "Portal for ArcGIS",
+            "portal": "Portaal",
             "myOrg": "${orgname} organisatie",
             "myContent": "Mijn Content"
           },

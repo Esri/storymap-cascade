@@ -11,8 +11,14 @@ function ItemMain(props) {
   const hasErrors = srArr.some(sr => {
     return sr.hasErrors;
   });
+  const hasWarnings = srArr.some(sr => {
+    return sr.hasWarnings;
+  });
   if (hasErrors) {
     className += ' error';
+  }
+  else if (hasWarnings) {
+    className += ' warning';
   }
   return (
     <div style={{ backgroundImage: 'url(' + props.item.thumbnail + ')'}} className={className}>

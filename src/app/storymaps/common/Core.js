@@ -179,7 +179,7 @@ define([
     if (app.isInBuilder && (has('ie') || has('trident') || has('ff') || has('edge'))) {
       $('#fatalError .error-title').html(i18n.viewer.errors.sorry);
 //      $('#fatalError .error-msg').html(i18n.viewer.errors.builderSupport3.replace('${CHROME}', '<a href="https://www.google.com/chrome/" target="_blank">Chrome</a>').replace('${SAFARI}', '<a href="https://www.apple.com/safari/" target="_blank">Safari</a>'));
-      $('#fatalError .error-msg').html(i18n.viewer.errors.builderSupport4.replace('${CHROME}', '<a href="https://www.google.com/chrome/" target="_blank">Chrome</a>').replace('${SAFARI}', '<a href="https://www.apple.com/safari/" target="_blank">Safari</a>').replace('${ESRI-SUPPORT}', '<a href="https://support.esri.com" target="_blank">Esri Support</a>').replace('${FIREFOX-BUILDER}', '<a href="http://links.esri.com/storymaps/vote-for-cascade-builder-on-firefox" target="_blank">Firefox</a>').replace('${IE-BUILDER}', '<a href="http://links.esri.com/storymaps/vote-for-cascade-builder-on-ie" target="_blank">IE</a>'));
+      $('#fatalError .error-msg').html(i18n.viewer.errors.builderSupport4.replace('${CHROME}', '<a href="https://www.google.com/chrome/" target="_blank">Chrome</a>').replace('${SAFARI}', '<a href="https://www.apple.com/safari/" target="_blank">Safari</a>').replace('${ESRI-SUPPORT}', '<a href="https://support.esri.com" target="_blank">Esri Support</a>').replace('${BROWSER-SUPPORT-VOTE}', '<a href="http://links.esri.com/storymaps/vote-for-cascade-builder-browser-support" target="_blank">vote here</a>'));
       $('#fatalError').show();
       return;
     }
@@ -601,6 +601,8 @@ define([
         app.userCanEdit = CommonHelper.userIsAppOwner();
 
         definePortalConfig();
+        app.portal.signedIn = true;
+        topic.publish('portal-signin');
         resultDeferred.resolve();
       },
       function() {

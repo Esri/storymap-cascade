@@ -10,9 +10,11 @@ export default class Result {
       layers: NormalizeHelper.createObject(),
       images: NormalizeHelper.createObject(),
       videos: NormalizeHelper.createObject(),
+      audio: NormalizeHelper.createObject(),
       webpages: NormalizeHelper.createObject()
     };
     this.errors = NormalizeHelper.createObject();
+    this.warnings = NormalizeHelper.createObject();
 
     if (mediaIDs) {
       this._addMediaEntries(mediaIDs);
@@ -27,6 +29,13 @@ export default class Result {
       }
     }
 
+    if (mediaIDs.audioIDs) {
+      for (let audioID of mediaIDs.audioIDs) {
+        let data = new CheckedItem(audioID, 'audio');
+        NormalizeHelper.addEntry(this.media.audio, audioID, data);
+      }
+    }
+
     if (mediaIDs.videoIDs) {
       for (let videoID of mediaIDs.videoIDs) {
         let data = new CheckedItem(videoID, 'video');
@@ -34,10 +43,24 @@ export default class Result {
       }
     }
 
+    if (mediaIDs.webpageIDs) {
+      for (let webpageID of mediaIDs.webpageIDs) {
+        let data = new CheckedItem(webpageID, 'webpage');
+        NormalizeHelper.addEntry(this.media.webpages, webpageID, data);
+      }
+    }
+
     if (mediaIDs.mapIDs) {
       for (let mapID of mediaIDs.mapIDs) {
         let data = new AGOLCheckedItem(mapID, 'map');
         NormalizeHelper.addEntry(this.media.maps, mapID, data);
+      }
+    }
+
+    if (mediaIDs.sceneIDs) {
+      for (let sceneID of mediaIDs.sceneIDs) {
+        let data = new AGOLCheckedItem(sceneID, 'scene');
+        NormalizeHelper.addEntry(this.media.scenes, sceneID, data);
       }
     }
   }

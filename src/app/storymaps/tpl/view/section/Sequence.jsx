@@ -2,6 +2,8 @@ import SectionCommon from 'storymaps/tpl/view/section/Common';
 import UIUtils from 'storymaps/tpl/utils/UI';
 import Viewport from 'storymaps-react/tpl/utils/Viewport';
 
+import lang from 'dojo/_base/lang';
+
 import {} from 'lib-build/less!./Sequence';
 
 var CONFIG = {
@@ -42,7 +44,9 @@ export default class Sequence {
     // Background
     //
 
-    this._backgroundMedia = SectionCommon.initMedia(this._section.background);
+    this._backgroundMedia = SectionCommon.initMedia({
+      media: this._section.background
+    });
     output += SectionCommon.renderBackground({
       media: this._backgroundMedia
     });
@@ -71,6 +75,10 @@ export default class Sequence {
   postCreate(node) {
     this._node = node;
 
+    if (this._backgroundMedia.postCreate) {
+      this._backgroundMedia.postCreate({container: this._node});
+    }
+
     let promises = [];
 
     for (let block of this._blocks) {
@@ -79,7 +87,8 @@ export default class Sequence {
           container: node,
           onToggleMediaConfig: app.isInBuilder ? this._onToggleMediaConfig.bind(this) : null,
           onConfigAction: app.isInBuilder ? this._onMediaConfigAction.bind(this) : null,
-          builderConfigurationTabs: this.MEDIA_BUILDER_TABS
+          builderConfigurationTabs: this.MEDIA_BUILDER_TABS,
+          sectionType: 'sequence'
         });
 
         if (createResult && createResult.isAsync) {
@@ -103,6 +112,17 @@ export default class Sequence {
 
   getNumberOfBlocks() {
     return this._section.foreground && this._section.foreground.blocks ? this._section.foreground.blocks.length : 0;
+  }
+
+  changeTheme() {
+    var bgMain = lang.getObject('app.data.appItem.data.values.settings.theme.colors.bgMain');
+    if (!bgMain) {
+      return;
+    }
+    if (this._backgroundMedia && this._backgroundMedia.update) {
+      this._backgroundMedia.update(bgMain);
+    }
+
   }
 
   onScroll(params) {
@@ -141,9 +161,38 @@ export default class Sequence {
         });
       }
 
+      if (!app.isInBuilder) {
+        this._loadBlocks();
+      }
       this._loadWebScenes(params.webSceneCache, false, params.scrollDifference);
 
       this._isLoaded = true;
+    }
+  }
+
+  _loadBlocks() {
+    const FROM_BOTTOM = 100;
+    for (let block of this._blocks) {
+      const blockNode = block._node;
+
+      if (blockNode && block.type !== 'text') {
+        if (!blockNode.hasClass('bring-in')) {
+          let nearViewport = Viewport.isNearViewportBottom(blockNode, FROM_BOTTOM);
+
+          if (nearViewport) {
+            blockNode.addClass('bring-in');
+          }
+        }
+        else {
+          let viewportTop = app.display.scrollTop;
+          let viewportBottom = viewportTop + app.display.windowHeight;
+          let itemTop = blockNode.offset().top;
+
+          if (itemTop > viewportBottom) {
+            blockNode.removeClass('bring-in');
+          }
+        }
+      }
     }
   }
 

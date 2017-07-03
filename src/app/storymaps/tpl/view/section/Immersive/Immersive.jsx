@@ -114,7 +114,7 @@ export default class Immersive {
       credits = options.credits;
     }
 
-    for(let view of views) {
+    for (let view of views) {
       //
       // Background
       //
@@ -123,7 +123,10 @@ export default class Immersive {
 
       // A new media is created for every view even if the media is used multiple times
       // This allow builder to modify it's option easily
-      var media = SectionCommon.initMedia(view.background, this._mediaCache);
+      var media = SectionCommon.initMedia({
+        media: view.background,
+        mediaCache: this._mediaCache
+      });
 
       // But a media is rendered only once per section
       if (! isMediaAlreadyLoaded) {
@@ -197,6 +200,8 @@ export default class Immersive {
         mediaConfigurationTabs: this.MEDIA_BUILDER_TABS_PANEL
       });
     }
+
+    this._node.find('.background').first().addClass('first-view');
 
     this._update();
   }
@@ -285,7 +290,7 @@ export default class Immersive {
       }
 
       if (this._panels[0]) {
-        this._panels[0].updatePosition(params);
+        this._panels[0].updatePosition(Object.assign({}, params, {panelIndex: 0}));
       }
 
       this._node.toggleClass('hide-title hide-credits', true);
@@ -411,6 +416,11 @@ export default class Immersive {
 
       if (! this._isNavigatingAway) {
         if (transition == 'swipe-vertical' || transition == 'swipe-horizontal') {
+          // we want to see the full, swiped-on media before the next one is swiped on.
+          // We need then to make the swipe reach the edge of the screen before the view is 100% scrolled-through.
+          // This makes the swipe finish sooner so we see the whole media for a bit before the next view comes.
+          const SWIPE_ACCELERATION_FACTOR = 1.3;
+
           if (! mediaPerformTransition) {
             var swipePosition = null,
                 mediaWidth = app.display.windowWidth,
@@ -421,11 +431,7 @@ export default class Immersive {
             }
 
             if (transition == 'swipe-vertical') {
-              /* todo: should be more so that the cut is not right above scroll-full panel
-                 but this require to have the media visible outside of it's view */
-              // mediaHeight -= 20;
-
-              swipePosition = mediaHeight - this._currentViewScrollPosition;
+              swipePosition = mediaHeight - (this._currentViewScrollPosition * SWIPE_ACCELERATION_FACTOR);
 
               currentMedia.getNode().css(
                 'clip',
@@ -443,14 +449,9 @@ export default class Immersive {
                 .addClass('active');
             }
             else if (transition == 'swipe-horizontal') {
-              let swipeRatio = this._currentViewScrollPosition / mediaHeight;
-              // if the swiped media is "almost all the way" swiped, round so it's swiped all the way.
-              if (swipeRatio >= 0.97) {
-                swipePosition = 0;
-              }
-              else {
-                swipePosition = mediaWidth - swipeRatio * mediaWidth;
-              }
+              let swipeRatio = (this._currentViewScrollPosition * SWIPE_ACCELERATION_FACTOR) / mediaHeight;
+
+              swipePosition = mediaWidth - swipeRatio * mediaWidth;
 
               currentMedia.getNode().css(
                 'clip',
@@ -482,12 +483,13 @@ export default class Immersive {
        */
       var panel = this._panels && this._panels.length ? this._panels[viewIndex - 1] : null;
 
-      panel.updatePosition(params);
+      panel.updatePosition(Object.assign({}, params, {panelIndex: viewIndex - 1}));
 
       if (mediaUpdate.isNewView) {
         let previousPanel = this._panels[viewIndex - 2];
         if (previousPanel) {
           previousPanel.updatePosition({
+            panelIndex: viewIndex - 2,
             isNewView: true
           });
         }
@@ -602,7 +604,7 @@ export default class Immersive {
 
     if (media.type === 'webmap') {
       loadDeferred = media.load({
-        isUniqueInSection: this.isMediaUniqueInSection(media.serialize())
+        isUniqueInSection: this.isMediaUniqueInSection(media.serialize(false))
       });
     }
     else {

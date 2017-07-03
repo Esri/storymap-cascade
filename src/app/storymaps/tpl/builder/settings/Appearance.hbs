@@ -1,0 +1,78 @@
+<div class="builder-config-section appearance-tab">
+  <div class="appearance-options">
+    <div class="hc-container split">
+      <div class="item-title">{{strings.themeLabel}}</div>
+
+      <ul class="section-content horizontal color-list">
+        {{#each colors}}
+          <li class="config-item {{#if selected}}selected{{/if}}" data-colorid={{id}}>
+            <div class="config-background" style="background: {{bgMain}};">
+              <div class="color-sample">
+                <div class="fa fa-check"></div>
+                <div class="text-block width-1" style="background: {{textMain}};"></div>
+                <div class="text-block width-2" style="background: {{textMain}};"></div>
+                <div class="text-block width-1" style="background: {{textMain}};"></div>
+                <div class="text-block width-2" style="background: {{textMain}};"></div>
+                <div class="text-block width-1" style="background: {{textMain}};"></div>
+                <div class="text-block width-1" style="background: {{textMain}};"></div>
+                <div class="text-block width-2" style="background: {{textMain}};"></div>
+                <div class="text-block width-1" style="background: {{textMain}};"></div>
+                <div class="text-block width-2" style="background: {{textMain}};"></div>
+                <div class="text-block width-1" style="background: {{textMain}};"></div>
+              </div>
+            </div>
+            <span>{{label}}</span>
+          </li>
+        {{/each}}
+      </ul>
+
+    </div>
+
+    <div class="hc-container split">
+      <div class="item-title">{{strings.fontLabel}}</div>
+
+      <ul class="section-content horizontal font-list">
+        <li class="config-item">
+          <div class="item-subtitle">{{strings.fontsTitleLabel}}</div>
+          <div class="dropdown">
+            <button class="btn btn-gray dropdown-toggle font-title-btn" type="button" data-toggle="dropdown">
+              <span class="font-label" style="font-family: {{fonts.titleFont.fontFamily}}">{{fonts.titleFont.label}}</span>
+              <span class="fa fa-caret-down"></span>
+            </button>
+            <ul class="dropdown-menu title-font-list" data-selected-font={{fonts.titleFont.label}}>
+            {{#each fonts.fontArr}}
+              <li><a href="#" data-fontid="{{label}}" style="font-family: {{fontFamily}}">{{label}}</a></li>
+            {{/each}}
+            </ul>
+          </div>
+        </li>
+        <li class="config-item">
+          <div class="item-subtitle">{{strings.fontsBodyLabel}}</div>
+          <div class="dropdown">
+            <button class="btn btn-gray dropdown-toggle font-body-btn" type="button" data-toggle="dropdown">
+              <span class="font-label" style="font-family: {{fonts.bodyFont.fontFamily}}">{{fonts.bodyFont.label}}</span>
+              <span class="fa fa-caret-down"></span>
+            </button>
+            <ul class="dropdown-menu body-font-list" data-selected-font={{fonts.bodyFont.label}}>
+            {{#each fonts.fontArr}}
+              <li><a href="#" data-fontid="{{label}}" style="font-family: {{fontFamily}}">{{label}}</a></li>
+            {{/each}}
+            </ul>
+          </div>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+
+  <div class="appearance-preview">
+    <div class="item-title">{{strings.previewLabel}}</div>
+    <div class="config-background">
+      <div class="font-sample">
+        <div class="title-sample" style="font-family: {{fonts.titleFont.fontFamily}}">{{strings.loremTitle}}</div>
+        <div class="body-sample" style="font-family: {{fonts.bodyFont.fontFamily}}">{{strings.loremBody}}</div>
+      </div>
+    </div>
+  </div>
+
+</div>

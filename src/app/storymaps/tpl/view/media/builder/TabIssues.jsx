@@ -21,6 +21,8 @@ export default class TabIssues extends Tab {
 
     this.scanResults = params.scanResults;
     this.errorIds = params.errorIds;
+    // this tab always has an error
+    this.showErrors = true;
     if (params.map) {
       this.setMap(params.map);
     }
@@ -166,7 +168,7 @@ export default class TabIssues extends Tab {
 
   postCreate(params) {
     super.postCreate(params);
-    this.showErrors();
+    this.displayErrors();
 
     this.highlightFromError(this.scanResults.errors[0]);
 
@@ -226,7 +228,7 @@ export default class TabIssues extends Tab {
 
   }
 
-  showErrors() {
+  displayErrors() {
     this._node.find('.webmap-info').toggleClass('error', this.mapHasError());
 
     var layersList = this._node.find('.layers-info');

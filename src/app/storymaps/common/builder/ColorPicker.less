@@ -1,8 +1,82 @@
 @import './../common-variables';
 
 .sp-container {
+  background-color: @Calcite_Gray_100;
+  border: none !important;
+  box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.2);
+
   .sp-input {
     background-color: #FFF;
+  }
+
+  .sp-picker-container {
+    border-left: solid 1px @Calcite_Gray_200 !important;
+    width: 185px;
+  }
+
+  .sp-palette-container {
+    border-right: none !important;
+  }
+
+  .sp-hue {
+      width: 10px;
+      border: none;
+      top: 0px !important;
+      left: 160px;
+      vertical-align:top;
+      height: 146px !important;
+  }
+
+  .sp-clear.sp-clear-display {
+      position:relative;
+      top: 172px;
+      border:none;
+  }
+
+  .sp-color {
+      width: 150px;
+      border: none;
+  }
+
+  .sp-alpha {
+    width: 150px;
+  }
+
+  .sp-alpha-inner {
+      border: none !important;
+  }
+
+  .sp-alpha-handle {
+    width: 8px !important;
+    transform: translateX(-2px);
+  }
+
+  .sp-slider {
+    height: 8px !important;
+    top: 10px;
+    transform: translate(-2px, 3px);
+    width: 14px !important;
+  }
+
+  .sp-cancel {
+      top: 18px;
+      font-family: open_sans;
+      font-size: 14px !important;
+      padding: 12px;
+  }
+
+  .sp-input {
+      border: none;
+      border-radius: 0px;
+      width: 80%;
+      font-size: 0.9em !important;
+  }
+
+  .sp-button-container {
+    position: relative;
+    top: 4px;
+    display: flex;
+    align-items: baseline;
   }
 
   .sp-choose {
@@ -17,21 +91,22 @@
     padding: inherit;
     text-align: inherit;
     text-shadow: inherit;
-    vertical-align: inherit;
+    font-family: open_sans;
 
-    color: @btn-primary-color;
-    background-color: @btn-primary-bg;
+    color: $Calcite_Gray_650;
+    background-color: @Calcite_Gray_350;
     border-color: @btn-primary-border;
 
     padding: 6px 10px;
     font-size: 14px;
     line-height: 1.5;
     float: left;
+    flex: 1;
+    order: 0;
 
     &:hover {
-      background-color: @link-hover-color;
-      border-color: @link-hover-color;
-      color: @btn-primary-color;
+      color: @Calcite_Highlight_Blue_350;
+      background-color: @Calcite_Gray_350;
       background-image: inherit;
       border: inherit;
       border-bottom: inherit;
@@ -44,16 +119,27 @@
   }
 
   .sp-cancel {
-    color: #428BC9 !important;
-    vertical-align: -6px;
-    margin-left: 8px;
+    color: @Calcite_Highlight_Blue_400 !important;
     font-weight: normal;
-    font-size: 12px;
+    font-size: 20px;
+    border: 0;
+    color: @link-color;
+    outline: none !important;
+    background-color: transparent;
+    order: 1;
+
+
+    &:hover {
+      text-decoration: none;
+      color: @Calcite_Highlight_Blue_350 !important;
+    }
   }
 
   .sp-clear {
     cursor: pointer;
-    opacity: 0.9;
+    opacity: 0.8;
+    position: relative;
+    top: 150px;
 
     &:hover {
       opacity: 1.0;

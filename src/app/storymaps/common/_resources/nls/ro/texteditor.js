@@ -7,8 +7,8 @@ define({
     "blockAdd": {
       "text": "Text",
       "media": "Media",
-      "title": "Secţiune titlu",
-      "immersive": "Secţiune imersivă"
+      "title": "Titlu",
+      "immersive": "Captivantă"
     },
     "link": {
       "invite": "Lipiţi sau tastaţi un link..."

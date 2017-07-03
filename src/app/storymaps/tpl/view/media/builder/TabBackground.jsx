@@ -35,6 +35,8 @@ export default class TabBackground extends Tab {
     return viewTpl({
       isTitle: this.sectionType === 'title',
       isImmersive: this.sectionType === 'immersive',
+      // need to add narrative panel check to next statement
+      isNarrativeOrPanel: this.sectionType === 'sequence',
       strings: i18n.builder.mediaConfig.background,
       isSafari: isSafari
     });

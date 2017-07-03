@@ -4,6 +4,7 @@ import i18n from 'lib-build/i18n!commonResources/nls/media';
 import constants from '../constants';
 import Helper from '../utils/Helper';
 import esriRequest from 'esri/request';
+import topic from 'dojo/topic';
 
 var text = i18n.mediaPicker.browsePanel.sidePanel.agol;
 
@@ -34,7 +35,7 @@ var ArcGISConnector = (function() {
   var getSharingUrl = function() {
     const portal = (_portal || getPortal());
 
-    _sharingUrl = '//' + portal.portalHostname.replace(/\//g, '') + '/sharing/rest';
+    _sharingUrl = '//' + portal.portalHostname.replace(/\/$/, '') + '/sharing/rest';
 
     return _sharingUrl;
   };
@@ -90,9 +91,13 @@ var ArcGISConnector = (function() {
       if (!app.portal) {
         console.warn('no portal');
         reject();
+        return;
       }
-      if (!_portalUser && !getUser()) {
-        app.portal.signIn().then(() => {
+      if (app.portal.user && app.portal.signedIn) {
+        resolve();
+      }
+      else {
+        topic.subscribe('portal-signin', function() {
           resolve();
         });
       }
@@ -333,13 +338,13 @@ var ArcGISConnector = (function() {
       let modified = endSplit[0].match(/^[0-9]{13}$/) ? new Date(parseInt(endSplit[0])) : '';
 
       returnArr.push({
-        name,
+        name: decodeURIComponent(name),
         modified,
         thumbUrl,
         tokenizedThumbUrl,
         thumbFile,
         type,
-        picUrl: Helper.stripTrailingSlash(resourcesUrl) + '/' + r,
+        picUrl: Helper.stripTrailingSlash(resourcesUrl) + '/' + encodeURIComponent(r),
         displayName: text.filterAndSort.image,
         id: r, // these need unique ids for react gallery item array
         fileName: r,

@@ -1,14 +1,15 @@
 /* eslint quotes: ["error", "double"] */
-/* strings files need to be double quotes */
 define({
   "commonCore": {
     "builderPanel": {
+      "builderNamePrefix": "",
+      "builderNameSuffix": "Generatore",
       "buttonSaving": "Salvataggio in corso",
       "buttonSaved": "Salvato",
       "buttonError": "Salvataggio non riuscito",
       "buttonShare": "Condividi",
       "buttonSettings": "Impostazioni",
-      "buttonHelp": "Guida",
+      "buttonHelp": "Ottieni assistenza o invia feedback on GeoNet",
       "buttonPreview": "Visualizza storia",
       "buttonHealth": "Report integrità",
       "manageStories": "Gestisci My Stories",
@@ -31,7 +32,13 @@ define({
     "share": {
       "btnPrivate": "Privato",
       "btnOrg": "Organizzazione",
-      "btnPublic": "Pubblico"
+      "btnPublic": "Pubblico",
+      "btnEveryone": "Tutti"
+    },
+    "portal": {
+      "disconnected": "Questo portale non è connesso a Internet",
+      "portal": "Portale",
+      "portalArcGIS": "Portal for ArcGIS"
     }
   }
 });

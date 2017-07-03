@@ -35,12 +35,15 @@ define({
       "builderSupport1": "Aplicaţia de creare Story Map Cascade este disponibilă doar pentru ${CHROME} şi ${SAFARI}. Totuşi, poveştile cascadă pe care le creaţi cu aplicaţia de creare pot fi vizualizate cu acele browsere, cu Internet Explorer 11+ şi cu Firefox.",
       "builderSupport2": "Aplicaţia de creare Story Map Cascade nu este suportată pe iPad. Poveştile cascadă pe care le creaţi şi partajaţi vor funcţiona pe iPad.",
       "builderSupport3": "Poveştile cascadă pot fi vizualizate în Chrome, Safari, Firefox şi Internet Explorer 11+, dar aplicaţia de creare Story Map Cascade este suportată doar în ${CHROME} şi ${SAFARI}.",
-      "builderSupport4": "Poveştile cascadă pot fi vizualizate în Chrome, Safari, Firefox şi Internet Explorer 11+, dar aplicaţia de creare Story Map Cascade este suportată doar în ${CHROME} şi ${SAFARI}.<br><br>Dacă aveţi nevoie ca aplicaţia de creare cascadă să suporte şi alt browser, vă rugăm să contactaţi ${ESRI-SUPPORT} sau să faceţi clic pentru a vota: ${FIREFOX-BUILDER} | ${IE-BUILDER}.",
+      "builderSupport4": "Poveştile cascadă pot fi vizualizate în orice browser modern, dar aplicaţia de creare Story Map Cascade este suportată doar în ${CHROME} şi ${SAFARI}.<br><br>Dacă aveţi nevoie ca aplicaţia de creare cascadă să suporte şi alt browser, vă rugăm să contactaţi ${ESRI-SUPPORT} sau ${BROWSER-SUPPORT-VOTE}.",
       "sorry": "Atenţie:"
     },
     "mobileWarning": {
       "message1": "Aţi citit versiunea pentru mobil a acestei poveşti. Pentru versiunea completă, cu elemente media mai bogate, încercaţi să o citiţi pe un computer.",
       "email": "Partajaţi un link către această poveste"
+    },
+    "cover": {
+      "iosEmbedLink": "Atingeţi pentru a citi povestea completă"
     },
     "media": {
       "captionPlaceholder": "Comentariul dvs. aici...",
@@ -70,6 +73,10 @@ define({
       "autoplayExplain1": "Modul de redare automată va avansa prin scenariul dvs. la un interval regulat. Această opţiune este ideală pentru un chioşc sau un monitor pentru afişare publică, dar, reţineţi, că în alte situaţii poate face ca scenariul să fie dificil de urmărit. Această caracteristică nu este acceptată pe ecranele de dimensiuni mici.",
       "autoplayExplain2": "Când acest mod este activ, sunt afişate butoane pentru a reda/întrerupe scenariul şi pentru a regla viteza de navigare.",
       "linksupdated": "Legătură actualizată!"
+    },
+    "theme": {
+      "lightLabel": "Deschis",
+      "darkLabel": "Închis"
     }
   }
 });

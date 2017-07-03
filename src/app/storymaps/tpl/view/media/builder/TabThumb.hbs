@@ -1,0 +1,11 @@
+<li class="tab btn-clear lighter{{#if isSelected}} selected{{/if}}" data-tab="{{tab.type}}">
+  {{#if tab.showErrors}}
+    <span class="border-error"></span>
+    {{else}}
+      {{#if tab.showWarnings}}
+        <span class="border-warning"></span>
+      {{/if}}
+  {{/if}}
+  <span class="config-tab-icon fa {{tab.icon}}"></span>
+  {{tab.title}}
+</li>

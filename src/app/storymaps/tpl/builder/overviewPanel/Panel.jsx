@@ -8,6 +8,7 @@ import {} from 'lib-build/less!./Panel';
 function Panel(props) {
   var text = props.organize ? i18n.builder.builderPanel.done : i18n.builder.builderPanel.organize;
   var iconClass = 'icon glyphicon';
+  var wrapperClass = 'organize-toggle-wrapper';
   var panelClass = 'op-panel';
 
   if (props.orientation === 'horizontal') {
@@ -16,9 +17,7 @@ function Panel(props) {
 
   if (props.organize) {
     panelClass += ' organize';
-  }
-
-  if (props.organize) {
+    wrapperClass += ' btn-bright';
     iconClass += ' glyphicon-ok done';
   }
   else {
@@ -54,7 +53,7 @@ function Panel(props) {
           }
           props.toggleOrganize();
         }}>
-        <div className="organize-toggle-wrapper">
+        <div className={wrapperClass}>
           <span className={iconClass}></span>
           {props.orientation === 'horizontal' ? null : text}
         </div>

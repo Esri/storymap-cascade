@@ -8,6 +8,7 @@ import Video from './VideoBuilder';
 import WebMap from './WebMapBuilder';
 import WebScene from './WebSceneBuilder';
 import WebPage from './WebPageBuilder';
+import Audio from './AudioBuilder';
 
 import Empty from './Empty';
 
@@ -26,6 +27,7 @@ export default class FactoryBuilder extends FactoryViewer {
       WebMap: WebMap,
       WebScene: WebScene,
       WebPage: WebPage,
+      Audio: Audio,
 
       Empty: Empty,
 

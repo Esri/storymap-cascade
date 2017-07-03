@@ -7,8 +7,8 @@ define({
     "blockAdd": {
       "text": "Tekst",
       "media": "Mediji",
-      "title": "Odeljak sa naslovom",
-      "immersive": "Sveobuhvatni odeljak"
+      "title": "Naslov",
+      "immersive": "Sveobuhvatno"
     },
     "link": {
       "invite": "Nalepite ili otkucajte link..."

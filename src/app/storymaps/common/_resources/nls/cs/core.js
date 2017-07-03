@@ -1,14 +1,15 @@
 /* eslint quotes: ["error", "double"] */
-/* strings files need to be double quotes */
 define({
   "commonCore": {
     "builderPanel": {
+      "builderNamePrefix": "",
+      "builderNameSuffix": "Nástroj pro tvorbu",
       "buttonSaving": "Ukládání",
       "buttonSaved": "Uloženo",
       "buttonError": "Uložení se nezdařilo",
       "buttonShare": "Sdílet",
       "buttonSettings": "Nastavení",
-      "buttonHelp": "Nápověda",
+      "buttonHelp": "Získat nápovědu nebo odeslat zpětnou vazbu v síti GeoNet",
       "buttonPreview": "Zobrazit příběh",
       "buttonHealth": "Zpráva o zdraví",
       "manageStories": "Spravovat moje příběhy",
@@ -31,7 +32,13 @@ define({
     "share": {
       "btnPrivate": "Soukromé",
       "btnOrg": "Organizační",
-      "btnPublic": "Veřejné"
+      "btnPublic": "Veřejné",
+      "btnEveryone": "Všichni"
+    },
+    "portal": {
+      "disconnected": "Tento portál není připojen k internetu.",
+      "portal": "Portál",
+      "portalArcGIS": "Portal for ArcGIS"
     }
   }
 });

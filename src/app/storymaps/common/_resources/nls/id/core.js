@@ -1,14 +1,15 @@
 /* eslint quotes: ["error", "double"] */
-/* strings files need to be double quotes */
 define({
   "commonCore": {
     "builderPanel": {
+      "builderNamePrefix": "",
+      "builderNameSuffix": "Builder",
       "buttonSaving": "Menyimpan",
       "buttonSaved": "Tersimpan",
       "buttonError": "Gagal menyimpan",
       "buttonShare": "Bagikan",
       "buttonSettings": "Pengaturan",
-      "buttonHelp": "Bantuan",
+      "buttonHelp": "Dapatkan Bantuan atau Kirim Umpan Balik mengenai GeoNet",
       "buttonPreview": "Tampilkan Cerita",
       "buttonHealth": "Laporan Kesehatan",
       "manageStories": "Kelola Cerita Saya",
@@ -31,7 +32,13 @@ define({
     "share": {
       "btnPrivate": "Pribadi",
       "btnOrg": "Organisasi",
-      "btnPublic": "Publik"
+      "btnPublic": "Publik",
+      "btnEveryone": "Semua Orang"
+    },
+    "portal": {
+      "disconnected": "Portal ini tidak terhubung ke Internet",
+      "portal": "Portal",
+      "portalArcGIS": "Portal for ArcGIS"
     }
   }
 });

@@ -24,21 +24,25 @@ export default class CreditsPlaceholder {
   }
 
   render() {
+    this._background = SectionCommon.initMedia({
+      media: {
+        type: 'color',
+        color: {
+          value: '#777'
+        }
+      }
+    });
     return viewTpl({
-      background: SectionCommon.renderBackground({
-        media: SectionCommon.initMedia({
-          type: 'color',
-          color: {
-            value: '#777'
-          }
-        })
-      }),
+      background: SectionCommon.renderBackground({media: this._background}),
       invite: i18n.builder.credits.sectionInvite
     });
   }
 
   postCreate(sectionContainer) {
     this._node = sectionContainer;
+    if (this._background && this._background.postCreate) {
+      this._background.postCreate({container: this._node});
+    }
 
     this._addMenu.postCreate({
       container: this._node.find('.builder-section-add-menu'),
@@ -81,5 +85,9 @@ export default class CreditsPlaceholder {
 
   setScanResults(hasErrors, hasWarnings) {
     Object.assign(this.scanResults, {hasErrors}, {hasWarnings});
+  }
+
+  addContextSpecificIssues() {
+    //
   }
 }

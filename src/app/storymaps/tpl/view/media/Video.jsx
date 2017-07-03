@@ -19,26 +19,6 @@ var CONFIG = {
   ratio: 16 / 9
 };
 
-/*
-window.onYouTubeIframeAPIReady = function() {
-  //console.log("Youtube ready!");
-  // TODO not handled yet
-  //YOUTUPE_API_READY = true;
-};
-
-function onYoutubePlayerReady(e, videoId)
-{
-  //console.log(e);
-  //e.target.playVideo();
-
-  e.target.mute();
-  e.target.loadPlaylist(videoId);
-  e.target.setLoop(true);
-
-  resizeVideo();
-}
-*/
-
 const PREVIEW_THUMB = 'resources/tpl/builder/icons/media-placeholder/video.png';
 const PREVIEW_ICON = 'resources/tpl/builder/icons/immersive-panel/video.png';
 
@@ -232,30 +212,6 @@ export default class Video extends Media {
       this._nodeMedia.replaceWith(newMedia);
       this._nodeMedia = newMedia;
 
-      /*
-      $('#' + _id).siblings().find('.play').click(function() {
-        _videoPlayer.api('paused', function(paused) {
-          if (paused) {
-            _videoPlayer.api('play');
-          }
-          else {
-            _videoPlayer.api('pause');
-          }
-        });
-      });
-
-      $('#' + _id).siblings().find('.mute').click(function() {
-        _videoPlayer.api('getVolume', function(volume) {
-          if (volume == '0') {
-            _videoPlayer.api('setVolume', '1');
-          }
-          else {
-            _videoPlayer.api('setVolume', '0');
-          }
-        });
-      });
-      */
-
       this._videoPlayer = $f(newMedia[0]); // eslint-disable-line no-undef
 
       try {
@@ -350,11 +306,6 @@ export default class Video extends Media {
           this._videoPlayer.api('play');
         }
         else {
-          //_videoPlayer.api('pause');
-
-          //if (params.visibilityProgress > 0.1) {
-            //this._videoPlayer.api('setVolume', params.visibilityProgress);
-          //}
           if (this._placement == 'background') {
             if (this._soundLevelPreImmersive != null) {
               this._videoPlayer.api('setVolume', this._soundLevelPreImmersive);
@@ -376,9 +327,6 @@ export default class Video extends Media {
                 this._soundLevelPreImmersive = volume;
               }
 
-              //if (params.visibilityProgress) {
-                //this._videoPlayer.setVolume(params.visibilityProgress * 100);
-              //}
               this._videoPlayer.setVolume(100);
             }
           }
@@ -410,8 +358,6 @@ export default class Video extends Media {
 
   _onVimeoPlayerReady() {
     this._isVideoLoaded = true;
-
-    this._node.find('.media-loading').hide();
 
     if (this._placement == 'block') {
       this._videoPlayer.api('pause');
@@ -447,6 +393,8 @@ export default class Video extends Media {
     this.resize();
     this._applyConfig();
 
+    this._fadeInMedia();
+
     if (this._pendingAction) {
       this.performAction(this._pendingAction);
       this._pendingAction = null;
@@ -455,8 +403,6 @@ export default class Video extends Media {
 
   _onYoutubePlayerReady() {
     this._isVideoLoaded = true;
-
-    this._node.find('.media-loading').hide();
 
     if (this._placement == 'background') {
       this._videoPlayer.setLoop(true);
@@ -481,6 +427,8 @@ export default class Video extends Media {
     this._loadDeferred.resolve();
     this.resize();
     this._applyConfig();
+
+    this._fadeInMedia();
 
     if (this._pendingAction) {
       this.performAction(this._pendingAction);
@@ -526,10 +474,4 @@ export default class Video extends Media {
     this._nodeMedia.parent().scrollLeft((videoWidth - windowWidth) / 2);
     this._nodeMedia.parent().scrollTop((videoHeight - windowHeight) / 2);
   }
-
-  /*
-  _resizeVideoForeground() {
-    this._nodeMedia.height(this._nodeMedia.width() / CONFIG.ratio);
-  }
-  */
 }

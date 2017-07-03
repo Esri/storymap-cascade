@@ -10,7 +10,7 @@ define([
   Clipboard
 ) {
   return function ShareEmbedPanel(container) {
-    var EMBED_TPL  = '<iframe width="%WIDTH%" height="%HEIGHT%" src="%URL%" frameborder="0" scrolling="no"></iframe>',
+    var EMBED_TPL  = '<iframe width="%WIDTH%" height="%HEIGHT%" src="%URL%" frameborder="0" scrolling="yes"></iframe>',
         EMBED_SIZE = [
           {
             width: '100%',

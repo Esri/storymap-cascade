@@ -1,3 +1,5 @@
+@import '../../core/Variables';
+
 .hc-dialog {
     .modal-body {
       height: 450px;
@@ -252,6 +254,152 @@ input.hc-checkbox {
     flex: 0 0 auto;
     margin-left: 8px;
   }
+}
+
+.display-block {
+  display: block;
+}
+
+.color-sample, .font-sample {
+  width: 100%;
+  border: 1px solid @gray-lighter;
+  position: relative;
+}
+
+.color-sample {
+  padding: 16px 22px;
+
+  .text-block {
+    height: 2px;
+    margin-bottom: 2px;
+  }
+
+  .width-1 {
+    width: 40px;
+  }
+
+  .width-2 {
+    width: 46px;
+  }
+}
+
+.font-sample {
+  padding: 15px;
+
+  .title-sample {
+    font-size: 1.5em;
+    margin-bottom: 8px;
+  }
+
+  .body-sample {
+    line-height: 1.2em;
+    text-align: left;
+  }
+}
+
+.hc-container .config-item {
+
+  justify-content: flex-start !important;
+
+  .config-background {
+    margin-bottom: 1em;
+  }
+
+  &:hover .config-background {
+      box-shadow: 0 0 2px 1px @gray-lighter;
+  }
+
+  .fa-check {
+    position: absolute;
+    font-size: 1.5em;
+    right: -0.5em;
+    top: -0.5em;
+    color: @brand-primary;
+    text-shadow: -1px 0px 2px rgba(255, 255, 255, 1);
+    display: none;
+  }
+
+  &.selected .fa-check {
+    display: block;
+  }
+}
+
+.hc-container .color-list, .hc-container .font-list {
+  width: 100%;
+}
+
+.hc-container .color-list {
+  li {
+    width: 30%;
+  }
+  .config-background {
+    width: 90px;
+  }
+}
+
+.hc-container .font-list {
+  & > li {
+    width: 45%;
+    justify-content: flex-start !important;
+  }
+
+  .dropdown,
+  .dropdown-toggle {
+    width: 100%;
+
+    .fa {
+      margin-left: 5px;
+    }
+  }
+
+  .dropdown-menu {
+    font-size: 14px;
+
+    li > a {
+      padding: 5px 20px !important;
+    }
+  }
+
+  .config-background {
+    width: 100%;
+  }
+}
+
+.appearance-tab {
+  padding: 0;
+  flex-direction: row;
+
+  .item-title,
+  .item-subtitle {
+    // combat flex positioning
+    width: 100%;
+    text-align: left;
+  }
+
+  .item-title {
+    font-size: 1.5em;
+    margin-bottom: 0.5em;
+  }
+
+  .item-subtitle {
+    line-height: 1.3em;
+    cursor: default;
+    margin-bottom: 0.5em;
+  }
+}
+
+.appearance-options {
+  width: 60%;
+  border-right: 1px solid #eee;
+  padding: 0 2% 0 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.appearance-preview {
+  width: 35%;
+  margin-left: 3%;
+  margin-top: 10%;
 }
 
 

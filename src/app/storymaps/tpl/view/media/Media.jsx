@@ -1,6 +1,7 @@
 import UIUtils from 'storymaps/tpl/utils/UI';
 import CommonHelper from 'storymaps/common/utils/CommonHelper';
 import topic from 'dojo/topic';
+import lang from 'dojo/_base/lang';
 import IdentityManager from 'esri/IdentityManager';
 
 import errorTpl from 'lib-build/hbars!./MediaError';
@@ -33,9 +34,11 @@ export default class Media {
     this._cache = {};
     this._isLoaded = false;
     this._alternateMedia = null;
+    this._isAlternate = false;
 
     this._node = null;
     this._domID = UIUtils.getUID();
+    this._instanceID = UIUtils.getUID();
 
     /*
      * Builder
@@ -43,15 +46,22 @@ export default class Media {
 
     this._isUploadPending = false;
     this._builderConfigurationTabs = [];
+    this._builderConfigPanel = null;
     this._onConfigAction = null;
+    this._sectionType = null;
   }
 
   postCreate(params) {
     // TODO: should find the node here?
-
     this._builderConfigurationTabs = params.builderConfigurationTabs || [];
     this._onConfigAction = params.onConfigAction;
     this._onConfigChangeCallback = params.onConfigChange;
+    this._sectionType = params.sectionType;
+
+    const alternateMedia = this.getAlternate();
+    if (app.isInBuilder && alternateMedia) {
+      alternateMedia.postCreate();
+    }
   }
 
   setCache(cache) {
@@ -60,10 +70,15 @@ export default class Media {
 
   setAlternate(alternateMedia) {
     this._alternateMedia = alternateMedia;
+    this._alternateMedia._isAlternate = true;
   }
 
   getAlternate() {
     return this._alternateMedia;
+  }
+
+  removeAlternate() {
+    this._alternateMedia = null;
   }
 
   getPreviewThumbnail() {
@@ -92,6 +107,22 @@ export default class Media {
     }
   }
 
+  _fadeInMedia() {
+    const FADE_DURATION = 1000;
+
+    if (this._node) {
+      this._node.removeClass('media-is-loading');
+      this._node.find('.media-loading .large-loader').hide();
+
+      setTimeout(() => {
+        this._node.find('.media-loading').hide();
+        this._node.find('.media-loading .large-loader').show();
+      }, FADE_DURATION);
+
+      this._node.find('.media-item').addClass('bring-in');
+    }
+  }
+
   _onEnableButtonClick(e) {
     var btn = $(e.currentTarget);
 
@@ -99,35 +130,78 @@ export default class Media {
     this._node.toggleClass('interaction-enabled');
   }
 
-  mapErrors(scanResult) {
-    if (scanResult && scanResult.errors && scanResult.errors.length) {
-      return scanResult.errors.map(errObj => {
-        return errObj.id;
-      });
+  _createAlternateTab() {
+    //
+  }
+
+  _createManageTab() {
+    //
+  }
+
+  checkErrors(scanResult, params) {
+    // start off with a clean slate
+    this.scanResults.hasErrors = false;
+    this.scanResults.hasWarnings = false;
+
+    // merge the scan results in with our current scan results.
+    Object.assign(this.scanResults, scanResult);
+
+    if (this.scanResults.errors.length) {
+      let errorOptions = undefined;
+      const errorsToIDs = this.scanResults.errors.map(errors => errors.id);
+      const additionalParams = {};
+      if (this.type === 'image-gallery') {
+        additionalParams.index = params.index;
+      }
+      const unfixableOptions = this.isUnfixableError(errorsToIDs, additionalParams);
+
+      if (unfixableOptions) {
+        errorOptions = unfixableOptions;
+      }
+      this.setError(errorOptions);
     }
-    return false;
+    else {
+      if (this.scanResults.warnings.length) {
+        this.scanResults.hasWarnings = true;
+      }
+
+      this.errorMessage = null;
+      this.updateErrorUI();
+    }
+
+    this._updateConfigPanel();
+  }
+
+  isUnfixableError() {
+    //
   }
 
   setError(options = {}) {
-    Object.assign(this.scanResults, options.scanResult, {hasErrors: true}, {unfixable: options.unfixable || false});
+    this.scanResults.hasErrors = true;
+    this.scanResults.unfixable = options.unfixable || false;
+
     if (options.msg) {
       this.errorMessage = options.msg;
     }
     else {
       options.msg = this.errorMessage;
     }
+
     this.updateErrorUI(options);
   }
 
-  removeError(options = {}) {
-    Object.assign(this.scanResults, options.scanResult, {hasErrors: false});
-    this.errorMessage = null;
-    this.updateErrorUI();
+  setAlternateError() {
+
+  }
+
+  removeAlternateError() {
+
   }
 
   updateErrorUI(options = {}) {
     // toggleClass needs actual boolean, not truthy/falsy
     let hasError = this.scanResults.hasErrors;
+    let hasWarning = this.scanResults.hasWarnings;
     let minimizeInViewer = options.minimizeInViewer || false;
     let showError = options.showLoadingError || false;
     let errorTarget, msgTarget;
@@ -138,24 +212,31 @@ export default class Media {
       msgTarget = imageGalleryNode;
     }
     else {
-      errorTarget = this._node.find('.block-media,.background')
-                         .addBack('.block-media,.background');
+      errorTarget = this._node.find('.block-media,.background').addBack('.block-media,.background');
       msgTarget = errorTarget;
     }
-    errorTarget.toggleClass('error', hasError)
-          .toggleClass('minimize-on-viewer', minimizeInViewer)
-          .toggleClass('show-loading-error', showError);
+    // remove all error/warning classes from media.
+    errorTarget.removeClass('error warning');
+
+    errorTarget.toggleClass('minimize-on-viewer', minimizeInViewer).toggleClass('show-loading-error', showError);
+
     msgTarget.find('.loading-error').remove();
     if (hasError) {
+      errorTarget.addClass('error');
       this.errorMessage = options.msg || this.errorMessage || i18n.viewer.media.loadingError;
       msgTarget.append(errorTpl({
         message: this.errorMessage
       }));
     }
+    // add warning class if there are ONLY warnings; if there are errors AND warnings only show error.
+    else if (hasWarning) {
+      errorTarget.addClass('warning');
+    }
   }
 
   getArcGISContent() {
     let arcgisContent = [];
+    let agolImg;
 
     if (this.type == 'webmap' || this.type == 'webscene') {
       arcgisContent = [{
@@ -164,33 +245,44 @@ export default class Media {
       }];
     }
     else if (this.type == 'image') {
-      let arcgisResourceURL = Media.getArcGISItemResourceURL(this._url);
-
-      if (arcgisResourceURL) {
-        arcgisContent = [{
-          type: 'item-resource',
-          mediaType: this.type,
-          url: arcgisResourceURL.url,
-          file: arcgisResourceURL.file
-        }];
+      agolImg = this.getImageArcGISContent(this);
+      if (agolImg) {
+        arcgisContent.push(agolImg);
       }
     }
     else if (this.type == 'image-gallery') {
       for (var image of this._images.images) {
-        let arcgisResourceURL = Media.getArcGISItemResourceURL(image.url);
-
-        if (arcgisResourceURL) {
-          arcgisContent.push({
-            type: 'item-resource',
-            mediaType: this.type,
-            url: arcgisResourceURL.url,
-            file: arcgisResourceURL.file
-          });
+        agolImg = this.getImageArcGISContent(image);
+        if (agolImg) {
+          arcgisContent.push(agolImg);
         }
       }
     }
 
+    const altMedia = this.getAlternate();
+    if (altMedia) {
+      agolImg = this.getImageArcGISContent(altMedia);
+      if (agolImg) {
+        arcgisContent.push(agolImg);
+      }
+    }
+
     return arcgisContent;
+  }
+
+  getImageArcGISContent(media) {
+    let arcgisResourceURL = Media.getArcGISItemResourceURL(media._url);
+
+    if (arcgisResourceURL) {
+      return {
+        type: 'item-resource',
+        mediaType: media.type,
+        url: arcgisResourceURL.url,
+        file: arcgisResourceURL.file
+      };
+    }
+    return null;
+
   }
 
   static getArcGISItemResourceURL(url = '') {
@@ -358,11 +450,34 @@ export default class Media {
   }
 
   destroy() {
-    this._node.remove();
+    this._node && this._node.remove();
   }
 
   remove() {
-    this._node.remove();
+    this._node && this._node.remove();
+  }
+
+  serialize(type, media, includeInstanceID) {
+    const serializedObject = lang.clone({
+      type: type,
+      [type]: media
+    });
+
+    const alternateMedia = this.getAlternate();
+    if (alternateMedia) {
+      serializedObject.alternate = alternateMedia.serialize(includeInstanceID);
+      if (serializedObject.alternate && serializedObject.alternate.image) {
+        this._addAlternateCaption(serializedObject[type], serializedObject.alternate.image);
+        this._addAlternateSize(serializedObject[type], serializedObject.alternate.image);
+      }
+    }
+
+    // include the instanceID if we are doing a scan.
+    if (includeInstanceID && typeof serializedObject[type] === 'object') {
+      serializedObject[type].instanceID = this._instanceID;
+    }
+
+    return serializedObject;
   }
 
   isPlaceholder() {
@@ -371,12 +486,20 @@ export default class Media {
 
   _onAction(action, newMedia) {
     // TODO: does that need to be checked?
-    if (action == 'remove' || action == 'swap'
-        || action == 'image-to-image-gallery' || action == 'image-gallery-to-image') {
+    if (action === 'remove' || action === 'swap' || action === 'alternate-media-swap' || action === 'alternate-media-add'
+        || action === 'alternate-media-remove' || action === 'image-to-image-gallery' || action === 'image-gallery-to-image') {
+      let mediaItem = this;
+      const isAlternate = action.indexOf('alternate-') !== -1;
+
+      if (isAlternate) {
+        mediaItem = this.getAlternate();
+      }
+
       this._onConfigAction({
         action: action,
-        media: this,
-        newMedia: newMedia
+        media: mediaItem,
+        newMedia: newMedia,
+        mainMedia: isAlternate ? this : null
       });
     }
 
@@ -384,7 +507,7 @@ export default class Media {
       this._openEditor();
     }
 
-    if (action === 'remove') {
+    if (action === 'remove' || action === 'alternate-media-remove') {
       topic.publish('builder-should-check-story');
     }
 
@@ -396,6 +519,61 @@ export default class Media {
 
     if (this._onConfigChangeCallback) {
       this._onConfigChangeCallback();
+    }
+  }
+
+  _initConfigPanel() {
+    //
+  }
+
+  _initConfigTabs() {
+    //
+  }
+
+  _destroyConfigTabs() {
+    if (this._builderConfigPanel && this._builderConfigPanel._tabs) {
+      var activeTab = this._builderConfigPanel._tabs.find(function(tab) {
+        return tab._isActive;
+      });
+      if (activeTab) {
+        this._builderConfigPanel.destroyTab(activeTab);
+      }
+    }
+  }
+
+  _refreshConfigTabs() {
+    const tabs = this._initConfigTabs();
+    this._builderConfigPanel.refreshTabs(tabs);
+  }
+
+  _updateConfigPanel() {
+    const configPanelOpen = this._node.hasClass('builder-config-open');
+
+    this._builderConfigPanel && this._destroyConfigTabs();
+    this._builderConfigPanel && this._refreshConfigTabs();
+
+    if (configPanelOpen && this._builderConfigPanel) {
+      // this doesn't call our onToggle callback we've set on the media config down below, that's because
+      // we shouldn't be "toggling" the panel -- it should just be "keeping it open"
+      this._builderConfigPanel.openPanel(true);
+    }
+  }
+
+  _addAlternateCaption(mainMedia, alternateMedia) {
+    if (mainMedia && mainMedia.caption) {
+      alternateMedia.caption = mainMedia.caption;
+    }
+  }
+
+  _addAlternateSize(mainMedia, alternateMedia) {
+    // if main has size, add it on to the other...
+    if (mainMedia && mainMedia.options && mainMedia.options.size) {
+      // check if there's no options object (safety check)
+      if (!alternateMedia.options) {
+        alternateMedia.options = {};
+      }
+      // alt media's size is set from the main media's.
+      alternateMedia.options.size = mainMedia.options.size;
     }
   }
 }

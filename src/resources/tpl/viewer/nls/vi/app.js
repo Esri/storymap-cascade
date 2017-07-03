@@ -35,12 +35,15 @@ define({
       "builderSupport1": "Bộ thiết lập Story Map Cascade chỉ được hỗ trợ trong ${CHROME} và ${SAFARI}. Tuy nhiên, các câu chuyện Cascade bạn đã tạo ra với bộ thiết lập có thể được xem trên các trình duyệt Internet Explorer 11+ và Firefox.",
       "builderSupport2": "Bộ thiết lập Story Map Cascade không được hỗ trợ trên iPad. Các câu chuyện Cascade bạn đã tạo ra và chia sẻ sẽ hoạt động được trên iPad.",
       "builderSupport3": "Các câu chuyện Cascade có thể được xem ở Chrome, Safari, Firefox, và Internet Explorer 11+, nhưng bộ thiết lập Story Map Cascade chỉ được hỗ trợ ở ${CHROME} và ${SAFARI}.",
-      "builderSupport4": "Các câu chuyện Cascade có thể được xem ở Chrome, Safari, Firefox, và Internet Explorer 11+, nhưng bộ thiết lập Story Map Cascade chỉ được hỗ trợ ở ${CHROME} và ${SAFARI}.<br><br>Nếu bạn cần bộ thiết lập Cascade để hỗ trợ một trình duyệt khác, vui lòng liên lạc ${ESRI-SUPPORT} hoặc nhấp vào để bình chọn: ${FIREFOX-BUILDER} | ${IE-BUILDER}.",
+      "builderSupport4": "Các câu chuyện Cascade có thể được xem ở bất kỳ trình duyệt web hiện đại nào, nhưng bộ thiết lập Story Map Cascade chỉ được hỗ trợ ở ${CHROME} và ${SAFARI}.<br><br>Nếu bạn cần bộ thiết lập Cascade để hỗ trợ một trình duyệt khác, vui lòng liên lạc ${ESRI-SUPPORT} hoặc ${BROWSER-SUPPORT-VOTE}.",
       "sorry": "Lưu ý:"
     },
     "mobileWarning": {
       "message1": "Bạn đã xem phiên bản điện thoại của câu chuyện này. Để có phiên bản đầy đủ, với các yếu tố phương tiện sống động hơn, hãy thử nghiệm trên máy tính để bàn.",
       "email": "Gửi email một liên kết đến câu chuyện này"
+    },
+    "cover": {
+      "iosEmbedLink": "Chạm vào để đọc toàn bộ câu chuyện"
     },
     "media": {
       "captionPlaceholder": "Chú thích của bạn tại đây...",
@@ -70,6 +73,10 @@ define({
       "autoplayExplain1": "Chế độ phát tự động sẽ chuyển qua câu chuyện của bạn theo khoảng thời gian định kỳ. Đây là tính năng lý tưởng đối với màn hình hiển thị nơi công cộng hoặc của ki-ốt, tuy nhiên, hãy lưu ý rằng trong các trường hợp khác, câu chuyện có thể trở nên khó đọc hơn. Tính năng này không được hỗ trợ trên các màn hình hiển thị nhỏ.",
       "autoplayExplain2": "Khi chế độ này được kích hoạt, có các nút điều khiển để phát/tạm dừng câu chuyện và điều chỉnh tốc độ điều hướng.",
       "linksupdated": "Liên kết đã được cập nhật!"
+    },
+    "theme": {
+      "lightLabel": "Sáng",
+      "darkLabel": "Đậm"
     }
   }
 });

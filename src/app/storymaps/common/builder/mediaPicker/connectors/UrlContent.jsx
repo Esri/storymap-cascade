@@ -152,7 +152,7 @@ var URLConnector = (function() {
   };
 
   var getVimeoId = function(url) {
-    var urlTest = /https?:\/\/(?:www\.|player\.)?vimeo.com\/(?:channels\/(?:\w+\/)?|groups\/([^\/]*)\/videos\/|album\/(\d+)\/video\/|video\/|)(\d+)(?:$|\/|\?)/.exec(url);
+    var urlTest = /(?:www\.|player\.)?vimeo.com\/(?:channels\/(?:\w+\/)?|groups\/([^\/]*)\/videos\/|album\/(\d+)\/video\/|video\/|)(\d+)(?:$|\/|\?)/.exec(url);
     return urlTest ? urlTest.pop() : null;
   };
 
@@ -176,11 +176,19 @@ var URLConnector = (function() {
     return null;
   };
 
+  var getIframeHeight = function(iframeStr) {
+    const height = $(iframeStr).attr('height');
+    if (height && height.indexOf('%') < 0) {
+      return parseInt(height, 10);
+    }
+    return null;
+  };
+
   var checkForImage = function(url) {
     return new Promise((resolve, reject) => {
-      if (url.match(/(.jpg)|(.jpeg)|(.png)|(.gif)$/i)) {
+      if (url.match(/\.(jpe?g|png|gif)$/i)) {
+        url = url.replace(/^https?:\/\//, '//');
         const image = new Image();
-        image.src = url;
         image.onload = function() {
           this.onload = null;
           resolve({url: url});
@@ -194,6 +202,41 @@ var URLConnector = (function() {
             error: err
           });
         };
+        image.src = url;
+      }
+      else {
+        resolve(constants.fetchStatus.NON_MATCHING_URL);
+      }
+    });
+  };
+
+  var checkForAudio = function(url) {
+    return new Promise((resolve, reject) => {
+      if (url.match(/\.(mp3|m4a|wav)$/i)) {
+        const audio = new Audio([url]);
+        audio.onloadedmetadata = function() {
+          this.onloadedmetadata = null;
+          this.onerror = null;
+          resolve({url: url});
+        };
+        audio.onerror = function(err) {
+          this.onloadedmetadata = null;
+          this.onerror = null;
+          reject({
+            reason: constants.fetchStatus.NOT_FOUND,
+            type: 'AUDIO',
+            error: err
+          });
+        };
+        audio.ondurationchange = function() {
+          if (audio.duration && !isFinite(audio.duration)) {
+            reject({
+              reason: constants.fetchStatus.NOT_FOUND,
+              type: 'AUDIO',
+              error: 'duration not finite'
+            });
+          }
+        };
       }
       else {
         resolve(constants.fetchStatus.NON_MATCHING_URL);
@@ -206,7 +249,9 @@ var URLConnector = (function() {
     checkVimeoUrl,
     checkForIframe,
     getIframeSrc,
-    checkForImage
+    getIframeHeight,
+    checkForImage,
+    checkForAudio
   };
 }());
 

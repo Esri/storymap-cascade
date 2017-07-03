@@ -4,55 +4,85 @@
   display: none;
 }
 
-.beta-feedback {
-  position: absolute;
-  top: 57px;
-  right: 5px;
-  color: #666;
-  z-index: 1;
-  font-size: 14px;
-}
-
 body.builder-mode .section-builder-panel {
   display: flex;
   flex-direction: column;
   position: fixed;
   top: 0;
   left: 0;
-
   width: 250px;
   height: 100%;
-
-  border-right: 1px solid #CCC;
   z-index: 9;
 }
 
 .section-builder-panel {
-  background: #656565;
+  background: @Calcite_Gray_550;
 
-  .btn {
+  .btn,
+  .btn-share-container {
     outline: none !important;
   }
 
-  .btn:focus:not(:hover) {
-    color: inherit;
+  .builder-panel-tools {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    z-index: 2;
   }
 
-  /*
-   * Top buttons
-   */
+  .builder-panel-tools-row-1 {
+    position: relative;
+    left: 0px;
+    top: 0px;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    background: @Calcite_Gray_700;
+  }
 
-  .builder-buttons {
-    background: #444444;
+  .builder-title {
+    background: transparent;
+    position: relative;
+    width: 200px;
+    word-wrap: normal;
+    text-align: left;
+    padding-left: 10px;
+    font-size: 1.5em;
+    line-height: 21px;
+    vertical-align: middle;
+    border: none;
+    pointer-events: none;
+    cursor: default;
+  }
+
+  .btn-feedback {
+    font-size: 1.3em;
+    border: none;
+    width: 50px;
+    color: #CCCCCC;
+  }
+
+  .builder-panel-tools-row-2 {
+    position: relative;
+    display: flex;
+    flex-direction: row;
 
     .btn {
-      display: block;
-      width: 100%;
-      text-align: left;
+      background: @Calcite_Gray_600;
+      color: white;
+      flex: 1;
+      width: 33%;
+      border-right: 1px solid @Calcite_Gray_650;
+      font-size: 1.7em;
+
+      &:hover {
+        background-color: @Calcite_Gray_550;
+      }
     }
 
     .btn.not-clickable {
       cursor: default;
+      pointer-events: none;
 
       &:hover {
         color: inherit !important;
@@ -65,29 +95,189 @@ body.builder-mode .section-builder-panel {
       }
     }
 
+    // ----- Settings ----- //
+
+    .btn-settings {
+      .btn-settings-label {
+        // margin-left: 15px;
+      }
+    }
+
+    // ----- preview ----- //
+
+    .btn-preview {
+      .btn-preview-label {
+        // margin-left: 12px;
+      }
+
+      .btn-preview-wrapper {
+        position: relative;
+        width: 100%;
+      }
+
+      .fa-eye {
+        position: relative;
+        font-size: 1.5em;
+        left: 11px;
+      }
+
+      .fa-caret-up {
+        position: relative;
+        top: -17px;
+        right: -14px;
+        transform: rotate(45deg);
+        font-size: 1.2em;
+      }
+    }
+    // ----- story health ----- //
+
+    .btn-check.errors {
+      background:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAKklEQVQYV2NcbSP2nwEKBNX1GRhhAiDO+5sXIQIwDkgh455k1/8gGRgAAC9QEVwJfARIAAAAAElFTkSuQmCC') repeat;
+      color: white;
+    }
+
+    .btn-check.warnings {
+      background:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAK0lEQVQYV2N8MVHvPwMUMDP8N2GECYA4fxkYz4AFYByQQsbXE3WNQTIwbQCukBLTDbfyrgAAAABJRU5ErkJggg==') repeat;
+      color: white;
+    }
+
+    .btn-check {
+      cursor: default;
+
+      .checking-icon-wrapper,
+      .error-icon-wrapper,
+      .warning-icon-wrapper,
+      .no-issues-icon-wrapper {
+        display: none;
+        position: relative;
+      }
+
+      .fa-exclamation-triangle {
+        position: relative;
+        left: 8px;
+      }
+
+      .super {
+        font-size: 0.8em;
+        vertical-align: top;
+       // margin-left: -4px;
+       // font-weight: bold;
+        position: relative;
+        left: -6px;
+        top: -6px;
+      }
+
+      .tooltip {
+        min-width: 0 !important;
+      }
+
+      .fa-heartbeat {
+        position: relative;
+        left: 10px;
+      }
+
+      .fa-check {
+        color: @state-success-border;
+        position: relative;
+        left: -8px;
+        top: -1px;
+      }
+
+      .btn-check-label {
+       // position: absolute;
+        left: 50px;
+      }
+
+      .check-tooltip,
+      .my-stories-link {
+        cursor: pointer;
+        margin-left: 6px;
+        color: #666;
+        font-size: 14px
+      }
+
+      // visibility changing
+
+      &.checking {
+        .checking-icon-wrapper {
+          display: inline-block;
+        }
+      }
+
+      &.errors {
+        .error-icon-wrapper {
+          display: inline-block;
+        }
+      }
+
+      &.warnings {
+        .warning-icon-wrapper {
+          display: inline-block;
+        }
+        .fa-heartbeat {
+          left: 0px;
+        }
+      }
+
+      &.no-issues {
+        .no-issues-icon-wrapper {
+          display: inline-block;
+        }
+      }
+    }
+  }
+
+  .builder-panel-tools-row-3 {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    height: 50px;
+    box-shadow: -5px 5px 10px 0px rgba(0,0,0,0.75);
+
     .btn-save {
-      .btn-save-loader,
+      font-size: 1.5em;
+      position: relative;
+      flex: 1;
+      border-right: 1px solid @Calcite_Gray_400;
+      border-top: none;
+      border-bottom: none;
+
+      &:not(.btn-bright) {
+        background-color: white;
+      }
+
+      .btn-save-loader {
+        display: none;
+        position: relative;
+      }
+
       .btn-save-success,
       .btn-save-error {
         display: none;
+        position: relative;
+        color: white;
+        top: 5px;
+        font-size: 1.5em;
       }
 
       &.saving {
         .btn-save-loader {
           display: inline-block;
-          margin-left: 1px;
+          top: -1px;
         }
       }
 
       &.saved {
         .btn-save-success {
           display: inline-block;
-          margin-left: 7px;
+          color: @state-success-border;
+          font-size: 1.7em;
+          top: 1px;
         }
       }
 
       &.error {
-        color: @sm-danger-text;
+        background:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAKklEQVQYV2NcbSP2nwEKBNX1GRhhAiDO+5sXIQIwDkgh455k1/8gGRgAAC9QEVwJfARIAAAAAElFTkSuQmCC') repeat;
 
         .btn-save-error {
           display: inline-block;
@@ -99,171 +289,75 @@ body.builder-mode .section-builder-panel {
 
         .btn-save-icon {
           display: none;
+          left: 13px;
         }
       }
-
-      .btn-save-label {
-        margin-left: 10px;
-      }
     }
 
-    // ----- Settings ----- //
-
-    .btn-settings {
-      .btn-settings-label {
-        margin-left: 15px;
-      }
-    }
-    /*
-     * Share
-     */
-
-    .btn-share {
+    .btn-share-container {
       position: relative;
+      background: white;
+      width: 167px;
+      display: flex;
+      flex-direction: row;
+      padding: 1px;
+      z-index: inherit;
+      border: none;
+      padding-left: 22px;
+      padding-right: 16px;
 
       &.disabled {
-        cursor: not-allowed;
+        pointer-events: none;
+        cursor: default;
+        opacity: 0.5;
       }
 
-      .btn-share-container {
-        position: absolute;
-        top: 2px;
-        right: 2px;
-        font-size: 2.4rem;
-        border: 1px solid #C1CCD2;
-        margin-left: 5px;
+      .btn-share-outer-tooltip {
         display: flex;
+        flex: 1 1 auto;
+      }
 
-        &.disabled {
-          pointer-events: none;
-          cursor: default;
-          opacity: 0.5;
+      .btn-share-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 35px;
+        flex: 1 1 auto;
+        color: @Calcite_Gray_600;
+        border-right: 1px solid #C1CCD2;
+        cursor: pointer;
+
+        &:nth-last-child(1) {
+          border-right: none;
         }
 
-        .btn-share-outer-tooltip {
-          display: flex;
-          flex: 1 1 auto;
+        &:hover {
+          color: @link-hover-color;
         }
 
-        .btn-share-wrapper {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          width: 35px;
-          height: 30px;
-          flex: 1 1 auto;
-          text-align: center;
+        &.active {
           color: @link-color;
-          border-right: 1px solid #C1CCD2;
-          cursor: pointer;
+          border-bottom: 4px solid @link-color;
+        }
 
-          &:nth-last-child(1) {
-            border-right: none;
-          }
+        .small-loader {
+          display: none;
+        }
 
-          &:hover {
-            color: @link-hover-color;
-          }
+        .share-icon {
+          font-size: 25px;
+        }
 
-          &.active {
-            background: @link-color;
-            color: white;
-          }
-
+        &.sharing {
           .small-loader {
-            display: none;
+            display: inline-block;
           }
 
           .share-icon {
-            font-size: 20px;
-          }
-
-          &.sharing {
-            .small-loader {
-              display: inline-block;
-            }
-
-            .share-icon {
-              display: none;
-            }
+            display: none;
           }
         }
       }
-
-      .btn-share-label {
-        margin-left: 12px;
-      }
-    }
-
-    // ----- preview ----- //
-
-    .btn-preview {
-      .btn-preview-label {
-        margin-left: 12px;
-      }
-    }
-    // ----- story health ----- //
-
-    .btn-check {
-      cursor: default;
-
-      .checking-icon-wrapper,
-      .issue-icon-wrapper,
-      .no-issues-icon-wrapper {
-        display: none;
-      }
-
-      .super {
-        font-size: 0.7em;
-        vertical-align: super;
-        margin-left: -4px;
-        font-weight: bold;
-      }
-
-      .tooltip {
-        min-width: 0 !important;
-      }
-
-      .issue-icon-wrapper {
-        color: @sm-danger-text;
-      }
-
-      .fa-check {
-        color: @brand-success;
-      }
-
-      .btn-check-label {
-        position: absolute;
-        left: 50px;
-      }
-
-      .check-tooltip,
-      .my-stories-link {
-        cursor: pointer;
-        margin-left: 6px;
-        color: #666;
-        font-size: 14px
-      }
-      // visibility changing
-
-      &.checking {
-        .checking-icon-wrapper {
-          display: inline-block;
-        }
-      }
-
-      &.errors {
-        .issue-icon-wrapper {
-          display: inline-block;
-        }
-      }
-
-      &.no-issues {
-        .no-issues-icon-wrapper {
-          display: inline-block;
-        }
-      }
-
     }
   }
 
@@ -293,12 +387,11 @@ body.builder-mode .section-builder-panel {
     }
   }
 
-  /*
-   * Overview
-   */
+// ----- story overview ----- //
 
   .overview {
     display: flex;
     flex: 1;
+    border: none;
   }
 }

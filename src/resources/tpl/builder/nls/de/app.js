@@ -13,13 +13,14 @@ define({
     "headerConfig": {
       "toggles": {
         "bookmarks": "Lesezeichen",
-        "logoSharing": "Logo & Freigabe"
+        "logoSharing": "Logo & Freigabe",
+        "theme": "Darstellung"
       },
       "bookmarks": {
         "title": "Abschnitt",
         "bookmark": "Lesezeichen",
         "intro": "Lesezeichen sind Links zu Story-Abschnitten, die in der Kopfzeile angezeigt werden. Durch die Erstellung präziser Lesezeichen für die Hauptabschnitte Ihrer Story können sich die Leser Ihrer Story besser orientieren.",
-        "sequentialDefault": "Sequenzieller Abschnitt (kein Text gefunden)",
+        "sequentialDefault": "Zusammenfassungsabschnitt (kein Text gefunden)",
         "immersiveDefault": "Immersiver Abschnitt (kein Text gefunden)",
         "titleDefault": "Titelabschnitt (kein Text gefunden)",
         "coverDefault": "Titelabschnitt (kein Text gefunden)",
@@ -38,6 +39,15 @@ define({
         "taglineLinkDisabledTooltip": "Geben Sie eine Tag-Zeile ein, um den Link zu aktivieren",
         "link": "Tag-Zeilen-Link",
         "enableSocialSharing": "Schaltflächen für Freigabe anzeigen"
+      },
+      "appearance": {
+        "themeLabel": "Design",
+        "fontLabel": "Schriftarten",
+        "previewLabel": "Vorschau",
+        "fontsTitleLabel": "Titel",
+        "fontsBodyLabel": "Textkörper",
+        "loremTitle": "Lorem Ipsum",
+        "loremBody": "Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor. Mauris consequat orci nec magna facilisis bibendum at eget libero."
       }
     },
     "builderPanel": {
@@ -47,7 +57,7 @@ define({
       "betaNote": "Teilen Sie uns Ihre Meinung zu ${APP_NAME} mit, oder ob etwas nicht so funktioniert, wie Sie es erwartet haben.",
       "notSharedNote": "Ihre Story ist nicht freigegeben, nur Sie können sie anzeigen",
       "organizationWarning": "Um sicherzustellen, dass diese Story von anderen Benutzern angezeigt werden kann, müssen ihre Szenen, Szenen-Layer und eingebetteten Apps ebenfalls für Ihre Organisation freigegeben sein. Karten und Karten-Layer werden automatisch freigegeben.",
-      "publicWarning": "Um sicherzustellen, dass diese Story von anderen Benutzern angezeigt werden kann, müssen ihre Szenen, Szenen-Layer und eingebetteten Apps ebenfalls für Ihre Organisation freigegeben sein. Karten und Karten-Layer werden automatisch freigegeben.",
+      "publicWarning": "Um sicherzustellen, dass diese Story von anderen Benutzern angezeigt werden kann, müssen ihre Szenen, Szenen-Layer und eingebetteten Apps ebenfalls für alle Benutzer freigegeben sein. Karten und Karten-Layer werden automatisch freigegeben.",
       "addTitleNote": "Fügen Sie dem Deckblatt einen zu speichernden Titel hinzu",
       "saveError": "Beim Speichern der Story ist ein Fehler aufgetreten.",
       "duplicate": "Duplizieren",
@@ -77,6 +87,7 @@ define({
         "manage": "Verwalten",
         "size": "Größe",
         "background": "Hintergrund",
+        "mobile": "Mobil",
         "issues": "Probleme",
         "fixIssues": "Probleme beheben"
       },
@@ -112,15 +123,23 @@ define({
       "size": {
         "small": "Klein",
         "medium": "Mittel",
-        "large": "Groß"
+        "large": "Groß",
+        "noCrop": "Große Bilder nicht zuschneiden",
+        "noCropTallTooltip": "Nichtzuschneiden eines großen Bilds hat drastische Auswirkungen für die Leser. Um das gesamte Bild betrachten zu können, müssen sie scrollen."
       },
       "background": {
-        "noCrop": "Bild nicht zuschneiden",
+        "noCrop": "Nicht zuschneiden",
         "mostImportantPart": "Wählen Sie den wichtigsten Punkt aus",
-        "cropExplanationImmersive": "Wählen Sie einen Punkt auf dem Bild aus, um festzulegen, wie das Bild bei unterschiedlichen Bildschirmgrößen zugeschnitten wird. Der Punkt, den Sie ausgewählt haben, ist immer sichtbar. Aktivieren Sie das darunter befindliche Kontrollkästchen, wenn Ihre Medien vollständig sichtbar sein sollen.",
+        "cropExplanationImmersive": "Wählen Sie einen Punkt auf dem Bild aus, um festzulegen, wie das Bild bei unterschiedlichen Bildschirmgrößen zugeschnitten wird. Der Punkt, den Sie ausgewählt haben, ist immer sichtbar. Aktivieren Sie das Kontrollkästchen \"Nicht zuschneiden\", wenn Ihr Bild vollständig sichtbar sein soll.",
         "cropExplanation": "Wählen Sie einen Punkt auf dem Bild aus, um festzulegen, wie das Bild bei unterschiedlichen Bildschirmgrößen zugeschnitten wird. Der Punkt, den Sie ausgewählt haben, ist immer sichtbar.",
         "color": "Farbe",
         "previews": "Vorschau"
+      },
+      "altMedia": {
+        "alternativeMedia": "Alternative Medien",
+        "explanation": "Einige Medien werden nicht unterstützt oder laufen möglicherweise nicht gut auf Mobilgeräten. Verwenden Sie dieses Fenster, um ein alternatives, für mobile Geräte optimiertes Element festzulegen, das anstelle dieses Mediums bei der Anzeige Ihrer Story auf einem Telefon oder Tablet dargestellt wird.",
+        "changeAltImage": "Bild ändern",
+        "uploadAltImage": "Bild hinzufügen"
       }
     },
     "imageGallery": {
@@ -174,9 +193,9 @@ define({
       "undo": "Rückgängig"
     },
     "sections": {
-      "sequence": "Abschnitt für Zusammenfassung",
-      "immersive": "Immersiver Abschnitt",
-      "title": "Titelabschnitt"
+      "sequence": "Narrativ",
+      "immersive": "Immersiv",
+      "title": "Titel"
     },
     "mediaErrors": {
       "mediaTypes": {
@@ -189,14 +208,22 @@ define({
       },
       "placeholders": {
         "generic": "Auf diesen Inhalt kann nicht zugegriffen werden.",
-        "deleted": "Dieser ${media-type} wurde gelöscht.",
-        "inaccessible": "Auf diesen ${media-type} kann nicht zugegriffen werden.",
-        "unauthorized": "Sie sind nicht berechtigt, diesen ${media-type} anzuzeigen.",
-        "unshared": "Dieser ${media-type} wird nicht auf die gleiche Weise freigegeben wie Ihre Story.",
-        "othersUnshared": "Dieser ${media-type} wird nicht auf die gleiche Weise freigegeben wie Ihre Story.",
-        "subscriptionContent": "Dieser ${media-type} enthält einen Abonnenten-Layer.",
-        "premiumContent": "Dieser ${media-type} enthält einen Premium-Layer.",
-        "secureService": "Dieser ${media-type} enthält einen sicheren Layer."
+        "deleted": "Dieses Element wurde gelöscht.",
+        "inaccessible": "Auf diesen Inhalt kann nicht zugegriffen werden.",
+        "unauthorized": "Sie sind nicht autorisiert, diesen Inhalt anzuzeigen.",
+        "unshared": "Dieses Element ist nicht auf die gleiche Weise wie Ihre Story freigegeben.",
+        "othersUnshared": "Dieses Element ist nicht auf die gleiche Weise wie Ihre Story freigegeben.",
+        "subscriptionContent": "Diese Karte enthält einen Abonnenten-Layer.",
+        "premiumContent": "Diese Karte enthält einen Premium-Layer.",
+        "secureService": "Diese Karte enthält einen sicheren Layer."
+      },
+      "contentIssues": {
+        "noAltImage": "Medien werden auf Mobilgeräten nicht unterstützt",
+        "altImageBroken": "Auf das für diese Medien definierte alternative Bild kann nicht zugegriffen werden."
+      },
+      "contentWarnings": {
+        "noAltImage": "Dieser Medientyp wird auf Mobilgeräten nicht unterstützt. Legen Sie ein alternatives Bild fest, das bei der Anzeige der Story auf Mobilgeräten dargestellt wird.",
+        "noAltImageAlt": "Dieser Medientyp wird auf Mobilgeräten nicht unterstützt. Legen Sie auf der Registerkarte \"Mobil\" ein alternatives Bild fest, das bei der Anzeige der Story auf Mobilgeräten dargestellt wird."
       },
       "mapIssues": {
         "fixButton": "Probleme beheben",

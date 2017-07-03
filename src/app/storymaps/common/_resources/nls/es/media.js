@@ -1,4 +1,3 @@
-// nls expects double quotes
 /*eslint quotes:[2, 'double'] */
 define({
   "mediaPicker": {
@@ -65,15 +64,15 @@ define({
             "embedProtocolWarning3": "Como alternativa, agregue un vínculo a la narración para abrir la página en una nueva pestaña de navegador. ${linkText}",
             "linkText": "Más información."
           },
-          "placeholder": "${https://}... or ${http://}... or ${<iframe>}",
+          "placeholder": "${https://}... o ${http://}... o ${<iframe>}",
           "uploadErrors": {
             "generic": "Se ha producido un error relacionado con la dirección introducida. Vuelva a intentarlo.",
             "imageOnly1": "Debe usar una imagen en esta parte de la historia.",
             "imageOnly2": "Proporcione un vínculo a una imagen (.jpg, .png, .gif) o elija una imagen de ${ArcGIS}, ${Flickr}, ${Google+} o ${Unsplash}.",
             "imageAndVideo1": "Debe usar una imagen o un vídeo en esta parte de la historia.",
             "imageAndVideo2": "Proporcione un vínculo a una imagen (.jpg, .png, .gif) o un vídeo de ${YouTube} o ${Vimeo}, o elija una imagen de ${ArcGIS}, ${Flickr}, ${Google+} o ${Unsplash}.",
-            "badFormat": "El vínculo al/la ${media-type} que está intentando agregar tiene un formato incorrecto.",
-            "inaccessible": "El/la ${media-type} que está intentando agregar no se puede encontrar o no está disponible.",
+            "badFormat": "El vínculo al archivo que está intentando agregar tiene un formato incorrecto.",
+            "inaccessible": "El archivo que está intentando agregar no se puede encontrar o no está disponible.",
             "tryAgain": "Compruebe la dirección y vuelva a intentarlo.",
             "mediaTypes": {
               "VIDEO": "vídeo",
@@ -125,6 +124,8 @@ define({
           "searchLocation": {
             "thisStory": "Esta historia",
             "agol": "ArcGIS Online",
+            "portalArcGIS": "Portal for ArcGIS",
+            "portal": "Portal",
             "myOrg": "Organización de ${orgname}",
             "myContent": "Mi contenido"
           },

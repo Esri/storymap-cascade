@@ -4,11 +4,6 @@
 	display: block !important;
 }
 
-#global-zeroclipboard-html-bridge {
-	/* specific to cascade as the body is position: fixed when popup is open */
-	position: fixed !important;
-}
-
 body.mobile-view .shareDialog {
 	margin-top: 40px;
 	padding: 20px;

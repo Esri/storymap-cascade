@@ -13,13 +13,14 @@ define({
     "headerConfig": {
       "toggles": {
         "bookmarks": "Yer işaretleri",
-        "logoSharing": "Logo ve Paylaşım"
+        "logoSharing": "Logo ve Paylaşım",
+        "theme": "Görünüm"
       },
       "bookmarks": {
         "title": "Bölüm",
         "bookmark": "Yer İşareti",
         "intro": "Yer işaretleri başlıkta gösterilen hikaye bölümlerine giden bağlantılardır. Hikayenizin ana bölümleri için doğru yer işaretleri oluşturma okuyucularınıza kolaylık sağlar.",
-        "sequentialDefault": "Sıralı bölüm (metin bulunmaz)",
+        "sequentialDefault": "Açıklama bölümü (metin yok)",
         "immersiveDefault": "Ayrıntılı bölüm (metin bulunmaz)",
         "titleDefault": "Başlık bölümü (metin bulunmaz)",
         "coverDefault": "Kapak bölümü (metin bulunmaz)",
@@ -38,6 +39,15 @@ define({
         "taglineLinkDisabledTooltip": "Bağlantıyı etkinleştirmek için bir etiket satırı girin",
         "link": "Etiket satırı bağlantısı",
         "enableSocialSharing": "Paylaşım düğmesini görüntüle"
+      },
+      "appearance": {
+        "themeLabel": "Tema",
+        "fontLabel": "Yazı Tipleri",
+        "previewLabel": "Önizleme",
+        "fontsTitleLabel": "Başlıklar",
+        "fontsBodyLabel": "Gövde",
+        "loremTitle": "Lorem Ipsum",
+        "loremBody": "Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor. Mauris consequat orci nec magna facilisis bibendum at eget libero."
       }
     },
     "builderPanel": {
@@ -47,7 +57,7 @@ define({
       "betaNote": "${APP_NAME} hakkında ne düşündüğünüzü ya da beklediğiniz gibi çalışmayan bir öğe olup olmadığını bizimle paylaşın.",
       "notSharedNote": "Hikayeniz paylaşılmamış, onu yalnızca siz görebilirsiniz",
       "organizationWarning": "Bu hikayenin başkaları tarafından da görüntülenmesini sağlamak için içindeki sahneleri, sahne katmanlarını ve kuruluşunuzda yerleşik uygulamaları da paylaşmanız gerekir. Haritalar ve harita katmanları otomatik olarak paylaşılır.",
-      "publicWarning": "Bu hikayenin başkaları tarafından da görüntülenmesini sağlamak için içindeki sahneleri, sahne katmanlarını ve yerleşik uygulamaları da genel olarak paylaşmanız gerekir. Haritalar ve harita katmanları otomatik olarak paylaşılır.",
+      "publicWarning": "Bu hikayenin başkaları tarafından da görüntülenmesini sağlamak için içindeki sahneleri, sahne katmanlarını ve yerleşik uygulamaları da herkesle paylaşmanız gerekir. Haritalar ve harita katmanları otomatik olarak paylaşılır.",
       "addTitleNote": "Kaydetmek için kapağa bir başlık ekleyin",
       "saveError": "Hikayeniz kaydedilirken bir hata oluştu.",
       "duplicate": "Çoğalt",
@@ -77,6 +87,7 @@ define({
         "manage": "Yönet",
         "size": "Boyut",
         "background": "Arka Plan",
+        "mobile": "Mobil",
         "issues": "Sorunlar",
         "fixIssues": "Sorunları Gider"
       },
@@ -112,15 +123,23 @@ define({
       "size": {
         "small": "Küçük",
         "medium": "Orta",
-        "large": "Büyük"
+        "large": "Büyük",
+        "noCrop": "Büyük resimleri kırpma",
+        "noCropTallTooltip": "Büyük bir resmin kırpılmaması, resmin tamamını görmek için ekran kaydırmak zorunda kalan okuyucular üzerinde olumsuz etki yapabilir."
       },
       "background": {
-        "noCrop": "Görüntüyü kırpma",
+        "noCrop": "Kırpmadan bırak",
         "mostImportantPart": "En önemli noktayı seçin",
-        "cropExplanationImmersive": "Farklı ekran boyutlarında görüntünüzün kırpılma biçimini belirlemek için görüntü üzerinde bir nokta seçin. Seçtiğiniz nota her zaman için görünür olur. Ortamınızın tam olarak görünür olması gerekiyorsa aşağıdaki kutuyu işaretleyin.",
-        "cropExplanation": "Farklı ekran boyutlarında görüntünüzün kırpılma biçimini belirlemek için görüntü üzerinde bir nokta seçin. Seçtiğiniz nota her zaman için görünür olur.",
+        "cropExplanationImmersive": "Farklı ekran boyutlarında görüntünün kırpılma biçimini belirlemek için görüntü üzerinde bir nokta seçin. Seçtiğiniz nokta her zaman için görünür olur. Ortamınızın tam olarak görünür olması gerekiyorsa ‘Kırpmadan Bırak’ kutusunu işaretleyin.",
+        "cropExplanation": "Farklı ekran boyutlarında görüntünün kırpılma biçimini belirlemek için görüntü üzerinde bir nokta seçin. Seçtiğiniz nokta her zaman için görünür olur.",
         "color": "Renkli",
         "previews": "Önizlemeler"
+      },
+      "altMedia": {
+        "alternativeMedia": "Alternatif Ortam",
+        "explanation": "Bazı ortamlar mobil cihazlarda desteklenmez veya düzgün çalışmayabilir. Bu paneli kullanarak hikayeniz bir telefonda veya tablette görüntülendiğinde bu ortamın yerine gösterilecek alternatif ve daha kullanıcı dostu bir öge belirleyebilirsiniz.",
+        "changeAltImage": "Görüntüyü değiştir",
+        "uploadAltImage": "Görüntü ekle"
       }
     },
     "imageGallery": {
@@ -174,9 +193,9 @@ define({
       "undo": "Geri Al"
     },
     "sections": {
-      "sequence": "Açıklayıcı Bölüm",
-      "immersive": "Ayrıntılı Bölüm",
-      "title": "Başlık Bölümü"
+      "sequence": "Açıklama",
+      "immersive": "Ayrıntılar",
+      "title": "Başlık"
     },
     "mediaErrors": {
       "mediaTypes": {
@@ -189,14 +208,22 @@ define({
       },
       "placeholders": {
         "generic": "Bu içeriğe erişilemiyor.",
-        "deleted": "Bu ${media-type} silinmiş.",
-        "inaccessible": "Bu ${media-type} erişilebilir değil.",
-        "unauthorized": "Bu ${media-type} türünü kullanma yetkiniz yok.",
-        "unshared": "Bu ${media-type} hikayenizle aynı biçimde paylaşılmıyor.",
-        "othersUnshared": "Bu ${media-type} hikayenizle aynı biçimde paylaşılmıyor.",
-        "subscriptionContent": "Bu ${media-type} içinde bir abone katmanı bulunuyor.",
-        "premiumContent": "Bu ${media-type} içinde bir öncelikli katman bulunuyor.",
-        "secureService": "Bu ${media-type} içinde bir güvenli katman bulunuyor."
+        "deleted": "Bu öge silinmiş.",
+        "inaccessible": "Bu içeriğe erişilemiyor.",
+        "unauthorized": "Bu içeriği görüntüleme yetkiniz yok.",
+        "unshared": "Bu öge hikayenizle aynı biçimde paylaşılmıyor.",
+        "othersUnshared": "Bu öge hikayenizle aynı biçimde paylaşılmıyor.",
+        "subscriptionContent": "Bu haritada bir abone katmanı var.",
+        "premiumContent": "Bu haritada bir premium katmanı var.",
+        "secureService": "Bu haritada güvenli bir katman var."
+      },
+      "contentIssues": {
+        "noAltImage": "Ortam Mobil Cihazlarda Desteklenmiyor",
+        "altImageBroken": "Bu medya ortamı için tanımlanan alternatif görüntü erişilebilir değil"
+      },
+      "contentWarnings": {
+        "noAltImage": "Bu ortam türü mobil cihazlarda desteklenmiyor. Hikaye mobil cihazlarda görüntülendiğinde gösterilecek alternatif bir görüntü sağlayın.",
+        "noAltImageAlt": "Bu ortam türü mobil cihazlarda desteklenmiyor. Mobil sekmesinden hikaye mobil cihazlarda görüntülendiğinde gösterilecek alternatif bir görüntü sağlayın."
       },
       "mapIssues": {
         "fixButton": "Sorunları Gider",

@@ -14,13 +14,14 @@ define({
       headerConfig: {
         toggles: {
           bookmarks: "Bookmarks",
-          logoSharing: "Logo & Sharing"
+          logoSharing: "Logo & Sharing",
+          theme: "Appearance"
         },
         bookmarks: {
           title: "Section",
           bookmark: "Bookmark",
           intro: "Bookmarks are links to story sections that are shown in the header. Creating concise bookmarks for the main sections of your story helps readers get oriented.",
-          sequentialDefault: "Sequential section (no text found)",
+          sequentialDefault: "Narrative section (no text found)",
           immersiveDefault: "Immersive section (no text found)",
           titleDefault: "Title section (no text found)",
           coverDefault: "Cover section (no text found)",
@@ -39,6 +40,18 @@ define({
           taglineLinkDisabledTooltip: "Enter a tagline to enable the link",
           link: "Tagline link",
           enableSocialSharing: "Display sharing button"
+        },
+        appearance: {
+          themeLabel: "Theme",
+          fontLabel: "Fonts",
+          previewLabel: "Preview",
+          fontsTitleLabel: "Titles",
+          fontsBodyLabel: "Body",
+          // the two below are just filler texts in pseudo-latin. They don't mean anything.
+          // Just needs to be changed for non-latin-based alphabets, but should still be filler, non-meaningful text.
+          // http://generator.lorem-ipsum.info/ has many but not all languages.
+          loremTitle: "Lorem Ipsum",
+          loremBody: "Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor. Mauris consequat orci nec magna facilisis bibendum at eget libero."
         }
       },
       builderPanel: {
@@ -48,7 +61,7 @@ define({
         betaNote: "Please let us know what you think about ${APP_NAME} or if something is not working as you expected.",
         notSharedNote: "Your story isn't shared, only you can see it",
         organizationWarning: "To ensure this story can be viewed by others you must also share its scenes, scene layers, and embedded apps with your organization. Maps and map layers are shared automatically.",
-        publicWarning: "To ensure this story can be viewed by others you must also share its scenes, scene layers, and embedded apps publicly. Maps and map layers are shared automatically.",
+        publicWarning: "To ensure this story can be viewed by others you must also share its scenes, scene layers, and embedded apps with Everyone. Maps and map layers are shared automatically.",
         addTitleNote: "Add a title on the cover to save",
         saveError: "There was an error saving your story.",
         duplicate: "Duplicate",
@@ -78,6 +91,7 @@ define({
           manage: "Manage",
           size: "Size",
           background: "Background",
+          mobile: "Mobile",
           issues: "Issues",
           fixIssues: "Fix Issues"
         },
@@ -113,15 +127,23 @@ define({
         size: {
           small: "Small",
           medium: "Medium",
-          large: "Large"
+          large: "Large",
+          noCrop: "Do not crop tall images",
+          noCropTallTooltip: "Not cropping a tall image produces a dramatic effect for readers that requires scrolling to see the entire image."
         },
         background: {
-          noCrop: "Do not crop image",
+          noCrop: "Do not crop",
           mostImportantPart: "Choose the most important point",
-          cropExplanationImmersive: "Select a point on the image to choose how your image will be cropped at different screen sizes. The point you select will always be visible. Check the box below if your media needs to be fully visible.",
-          cropExplanation: "Select a point on the image to choose how your image will be cropped at different screen sizes. The point you select will always be visible.",
+          cropExplanationImmersive: "Select a point on the image to choose how it will be cropped at different screen sizes. The point you select will always be visible. Check 'Do Not Crop' if your image needs to be fully visible.",
+          cropExplanation: "Select a point on the image to choose how it will be cropped at different screen sizes. The point you select will always be visible.",
           color: "Color",
           previews: "Previews"
+        },
+        altMedia: {
+          alternativeMedia: "Alternate Media",
+          explanation: "Some media are not supported or may not work well on mobile devices. Use this panel to choose an alternate, more mobile-friendly item that will be shown in place of this media when your story is viewed on a phone or tablet.",
+          changeAltImage: "Change image",
+          uploadAltImage: "Add image"
         }
       },
       imageGallery: {
@@ -175,9 +197,9 @@ define({
         undo: "Undo"
       },
       sections: {
-        sequence: "Narrative Section",
-        immersive: "Immersive Section",
-        title: "Title Section"
+        sequence: "Narrative",
+        immersive: "Immersive",
+        title: "Title"
       },
       mediaErrors: {
         mediaTypes: {
@@ -190,14 +212,22 @@ define({
         },
         placeholders: {
           generic: "This content is not accessible.",
-          deleted: "This ${media-type} has been deleted.",
-          inaccessible: "This ${media-type} is not accessible.",
-          unauthorized: "You are not authorized to view this ${media-type}.",
-          unshared: "This ${media-type} is not shared the same as your story.",
-          othersUnshared: "This ${media-type} is not shared the same as your story.",
-          subscriptionContent: "This ${media-type} contains a subscriber layer.",
-          premiumContent: "This ${media-type} contains a premium layer.",
-          secureService: "This ${media-type} contains a secure layer."
+          deleted: "This item has been deleted.",
+          inaccessible: "This content is not accessible.",
+          unauthorized: "You are not authorized to view this content.",
+          unshared: "This item is not shared the same as your story.",
+          othersUnshared: "This item is not shared the same as your story.",
+          subscriptionContent: "This map contains a subscriber layer.",
+          premiumContent: "This map contains a premium layer.",
+          secureService: "This map contains a secure layer."
+        },
+        contentIssues: {
+          noAltImage: "Media Not Supported on Mobile Devices",
+          altImageBroken: "The alternate image defined for this media item is not accessible"
+        },
+        contentWarnings: {
+          noAltImage: "This type of media is not supported on mobile devices. Provide an alternate image that will be shown when the story is viewed on mobile devices.",
+          noAltImageAlt: "This type of media is not supported on mobile devices. On the mobile tab, provide an alternate image that will be shown when the story is viewed on mobile devices."
         },
         mapIssues: {
           fixButton: "Fix Issues",

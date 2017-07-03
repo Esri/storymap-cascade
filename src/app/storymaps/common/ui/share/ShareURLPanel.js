@@ -51,7 +51,7 @@ define([
       _linkField.val(url);
       container.find('.btn-bitlylink-open').attr('href', url + '&preview');
 
-      SocialSharing.requestBitly(url).then(function(shortURL) {
+      SocialSharing.requestShortUrl(url).then(function(shortURL) {
         container.find('.share-btn').data('clipboardText', shortURL);
         _linkField.val(shortURL).select();
       });

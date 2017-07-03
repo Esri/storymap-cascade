@@ -4,14 +4,12 @@ import BuilderConfig from './builder/Panel';
 import BuilderConfigTabSize from './builder/TabSize';
 import BuilderConfigTabManageScene from './builder/TabManageScene';
 import BuilderConfigTabWebScene from './builder/TabWebScene';
+import BuilderConfigTabAlternateMedia from './builder/TabAlternateMedia';
+import BuilderConfigTabAlternateEmpty from './builder/TabAlternateEmpty';
 
 import lang from 'dojo/_base/lang';
 import topic from 'dojo/topic';
-
 import issues from '../../builder/Issues';
-import i18n from 'lib-build/i18n!resources/tpl/builder/nls/app';
-
-const text = i18n.builder.mediaErrors;
 
 export default class WebSceneBuilder extends WebScene {
 
@@ -21,89 +19,66 @@ export default class WebSceneBuilder extends WebScene {
     this._configTabWebScene = null;
     this._configTabManageScene = null;
     this._onToggleMediaConfig = null;
+    this._sectionType = '';
   }
 
   postCreate(params) {
     super.postCreate(params);
 
     this._onToggleMediaConfig = params.onToggleMediaConfig;
+    this._sectionType = params.sectionType;
 
     if (! params.delayBuilderInit) {
       this._initConfigPanel();
     }
 
     // listen to when THIS SPECIFIC map gets scanned
-    topic.subscribe('scan/scenes/' + this._webscene.id, lang.hitch(this, this.checkErrors));
+    topic.subscribe('scan/scenes/' + this._instanceID, lang.hitch(this, this.checkErrors));
 
     this.initBuilderUI();
 
   }
 
-  checkErrors(scanResult) {
-    // update the map UI based on the scan results
-
-    const errorIds = this.mapErrors(scanResult);
-    if (!errorIds) {
-      this.removeError();
-      return;
+  load(params = {}) {
+    const alternateMedia = this.getAlternate();
+    if (alternateMedia) {
+      alternateMedia.load();
     }
 
-    const unfixableOptions = this.isUnfixableError(errorIds);
-    if (unfixableOptions) {
-      this.setError(unfixableOptions);
-      return;
-    }
-
-    // TODO: something different here?
-    this.setError({errors: scanResult.errors});
-
+    return super.load(params);
   }
 
-  isUnfixableError(errorIds) {
-    let msg, unfixable = false;
-    if (errorIds.indexOf(issues.scenes.deleted) >= 0) {
-      msg = text.placeholders.deleted.replace('${media-type}', text.mediaTypes.webscene);
-      unfixable = true;
-    }
-    else if (errorIds.indexOf(issues.scenes.inaccessible) >= 0) {
-      msg = text.placeholders.inaccessible.replace('${media-type}', text.mediaTypes.webscene);
-      unfixable = true;
-    }
-    else if (errorIds.indexOf(issues.scenes.unauthorized) >= 0) {
-      msg = text.placeholders.unauthorized.replace('${media-type}', text.mediaTypes.webscene);
-      unfixable = true;
-    }
-    if (unfixable) {
-      return {msg, unfixable, showLoadingError: true};
-    }
+  isUnfixableError() {
     return false;
-
   }
 
   performAction(params) {
     if (params.performBuilderInit) {
-      this._initConfigPanel();
+      if (this._builderConfigPanel) {
+        this._destroyConfigTabs();
+        this._refreshConfigTabs();
+      }
+      else {
+        this._initConfigPanel();
+      }
     }
 
     return super.performAction(params);
   }
 
-  serialize() {
+  serialize(includeInstanceID) {
     if (this._node) {
       this._webscene.caption = this._node.find('.block-caption').html();
     }
 
-    return lang.clone({
-      type: 'webscene',
-      webscene: this._webscene
-    });
+    return super.serialize('webscene', this._webscene, includeInstanceID);
   }
 
   //
   // Private
   //
 
-  _initConfigPanel() {
+  _initConfigTabs() {
     let tabs = [];
 
     this._configTabWebScene = new BuilderConfigTabWebScene({
@@ -118,20 +93,24 @@ export default class WebSceneBuilder extends WebScene {
         tabs.push(this._configTabWebScene);
       }
       else if (tab == 'manage') {
-        let sceneName = this.getSceneName(this._cache[this.id]);
-        this._configTabManageScene = new BuilderConfigTabManageScene({
-          hideRemove: this._placement == 'background',
-          mediaType: 'webscene',
-          mediaId: this.id,
-          sceneName
-        });
-        tabs.push(this._configTabManageScene);
+        const manageTab = this._createManageTab();
+        tabs.push(manageTab);
+      }
+      else if (tab == 'alternate') {
+        const alternateTab = this._createAlternateTab(this._sectionType);
+        tabs.push(alternateTab);
       }
     }
 
-    new BuilderConfig({
+    return tabs;
+  }
+
+  _initConfigPanel() {
+    super._initConfigPanel();
+
+    this._builderConfigPanel = new BuilderConfig({
       containerMedia: this._node,
-      tabs: tabs,
+      tabs: this._initConfigTabs(),
       media: this._webscene,
       onChange: this._onConfigChange.bind(this),
       onAction: this._onAction.bind(this),
@@ -187,5 +166,44 @@ export default class WebSceneBuilder extends WebScene {
   _onConfigChange() {
     this._applyConfig();
     super._onConfigChange();
+  }
+
+  _createAlternateTab(sectionType) {
+    const alternateMedia = this.getAlternate();
+    let alternateTab = null;
+    const errors = lang.getObject('scanResults.errors', false, this);
+    const warnings = lang.getObject('scanResults.warnings', false, this);
+    const alternateError = errors ? errors.find(error => error.isAlternate) : null;
+    const showWarnings = warnings && warnings.some(error => error.id === issues.content.noAlternateMedia);
+
+    if (alternateMedia) {
+      alternateTab = new BuilderConfigTabAlternateMedia({
+        sectionType: sectionType,
+        media: alternateMedia._image,
+        errorId: alternateError ? alternateError.id : null,
+        showErrors: alternateError,
+        placement: this._placement
+      });
+    }
+    else {
+      alternateTab = new BuilderConfigTabAlternateEmpty({
+        showWarnings: showWarnings
+      });
+    }
+
+    return alternateTab;
+  }
+
+  _createManageTab() {
+    let sceneName = this.getSceneName(this._cache[this.id]);
+    this._configTabManageScene = new BuilderConfigTabManageScene({
+      hideRemove: this._placement == 'background',
+      mediaType: 'webscene',
+      mediaId: this.id,
+      showErrors: this.scanResults.errors && this.scanResults.errors.length && this.scanResults.errors.filter(error => !error.isAlternate).length,
+      sceneName
+    });
+
+    return this._configTabManageScene;
   }
 }

@@ -15,8 +15,8 @@ export default class ImmersiveBuilder extends Immersive {
   constructor(section, media) {
     super(section);
 
-    this.MEDIA_BUILDER_TABS_BACKGROUND = ['appearance', 'background', 'manage'];
-    this.MEDIA_BUILDER_TABS_PANEL = ['appearance', 'manage'];
+    this.MEDIA_BUILDER_TABS_BACKGROUND = ['appearance', 'background', 'manage', 'alternate'];
+    this.MEDIA_BUILDER_TABS_PANEL = ['appearance', 'manage', 'alternate'];
 
     this._latestOnScrollParams = null;
     this._currentScrollPosition = null;
@@ -45,10 +45,12 @@ export default class ImmersiveBuilder extends Immersive {
 
       this._section.views = [{
         transition: defaultTransition,
-        background: SectionCommon.initMedia(media).serialize(),
+        background: SectionCommon.initMedia({
+          media: media
+        }).serialize(false),
         foreground: {
           panels: [
-            app.ui.ImmersivePanelFactory.createInstance(null, defaultTransition).serialize()
+            app.ui.ImmersivePanelFactory.createInstance(null, defaultTransition).serialize(false)
           ],
           title: {
             style: {
@@ -106,13 +108,13 @@ export default class ImmersiveBuilder extends Immersive {
       .attr('contenteditable', true)
       .attr('placeholder', i18n.builder.title.placeholder)
       .on('blur keyup', function() {
-        this.serialize();
+        this.serialize(false);
         this._onContentChange();
       }.bind(this))
       .on('paste', function() {
         setTimeout(function() {
           this._node.find('.background-title h2').html($('<div>' + this._node.find('.background-title h2').text()).text());
-          this.serialize();
+          this.serialize(false);
           this._onContentChange();
         }.bind(this), 0);
       }.bind(this))
@@ -186,6 +188,9 @@ export default class ImmersiveBuilder extends Immersive {
     if (viewIndexBeforeUpdate != this._currentViewIndex) {
       this._builderPanel.selectView(this._currentViewIndex - 1);
 
+      const panel = this._panels && this._panels.length ? this._panels[viewIndexBeforeUpdate - 1] : null;
+      panel && panel.closeConfigPanel();
+
       // Hide/show the panels depending on background configuration for that view
       if (app.isInBuilder) {
         let media = this._medias[this._currentViewIndex - 1];
@@ -238,6 +243,10 @@ export default class ImmersiveBuilder extends Immersive {
       transform: ''
     });
 
+    if (layout === 'scroll-full') {
+      this._node.find('.imm-panel').css('visibility', 'visible');
+    }
+
     for(let i = 0; i < this._panels.length; i++) {
       let panel = this._panels[i];
 
@@ -245,7 +254,8 @@ export default class ImmersiveBuilder extends Immersive {
 
       if (i == this._currentViewIndex - 1) {
         panel.updatePosition({
-          currentSectionScroll: this._currentScrollPosition
+          currentSectionScroll: this._currentScrollPosition,
+          panelIndex: i
         });
       }
 
@@ -260,7 +270,7 @@ export default class ImmersiveBuilder extends Immersive {
     }.bind(this), 50);
   }
 
-  serialize() {
+  serialize(includeInstanceID) {
     var views = [];
 
     for (var i=0; i < this._medias.length; i++) {
@@ -270,10 +280,10 @@ export default class ImmersiveBuilder extends Immersive {
 
       views.push({
         transition: transition,
-        background: media.serialize(),
+        background: media.serialize(includeInstanceID),
         foreground: {
           panels: [
-            panel.serialize()
+            panel.serialize(includeInstanceID)
           ]
         }
       });
@@ -293,6 +303,39 @@ export default class ImmersiveBuilder extends Immersive {
     return lang.clone(this._section);
   }
 
+  addContextSpecificIssues(scannedMedia) {
+    // loop thru and see if they have alts. if not, they're in trouble!
+    // get all of the view backgrounds
+    //
+    for (let i = 0; i < this._medias.length; i++) {
+      const viewMedia = this._medias[i];
+      const panel = this._panels[i];
+
+      panel.addContextSpecificIssues(scannedMedia);
+
+      const instanceID = viewMedia._instanceID;
+
+      const media = scannedMedia[instanceID];
+
+      if (media) {
+        if (!media.alternateMedia) {
+          if (media.mediaType === 'video') {
+            // add an issue here.
+            media.scanResult.warnings.push('content/noAlternateMedia');
+          }
+          else if (media.mediaType === 'scene') {
+            // add an issue here.
+            media.scanResult.warnings.push('content/noAlternateMedia');
+          }
+          else if (media.mediaType === 'webpage') {
+            // add an issue here.
+            media.scanResult.warnings.push('content/noAlternateMedia');
+          }
+        }
+      }
+    }
+  }
+
   setBookmark(bookmark) {
     this._section.bookmark = {
       enabled: bookmark.status == 'visible',
@@ -301,7 +344,7 @@ export default class ImmersiveBuilder extends Immersive {
   }
 
   _onContentChange() {
-    this.serialize();
+    this.serialize(false);
     topic.publish('builder-section-update');
   }
 
@@ -337,28 +380,52 @@ export default class ImmersiveBuilder extends Immersive {
   }
 
   _onMediaConfigAction(params = {}) {
-    if (! params.action || ! params.media) {
+    if (!params.action || (!params.media && params.action !== 'alternate-media-add')) {
       return;
     }
 
-    if (params.action == 'swap') {
-      var mediaIsEmpty = params.media.serialize().type == 'empty';
+    if (params.action == 'swap' || params.action === 'alternate-media-swap' || params.action === 'alternate-media-add') {
+      const mediaIsEmpty = params.action === 'alternate-media-add' || params.media.serialize(false).type == 'empty';
+      const isAlternate = params.action.indexOf('alternate-') !== -1;
+      const authorizedMedia = isAlternate ? ['image'] : ['image', 'video', 'webpage', 'webmap', 'webscene'];
 
       app.builder.mediaPicker.open({
         mode: mediaIsEmpty ? 'add' : 'edit',
-        media: mediaIsEmpty ? null : params.media.serialize()
+        media: mediaIsEmpty ? null : params.media.serialize(false),
+        authorizedMedia: authorizedMedia
       }).then(
         function(newMedia) {
-          if (params.media.type != 'empty') {
-            this._onToggleMediaConfig();
+          if (isAlternate) {
+            // check media, then...
+            SectionCommon.onEditMediaAlternate({
+              mainMedia: params.mainMedia,
+              newMediaJSON: newMedia,
+              oldMedia: params.media,
+              sectionType: 'immersive'
+            });
+            this.update();
           }
+          else {
+            if (params.media.type != 'empty') {
+              this._onToggleMediaConfig();
+            }
 
-          this._onEditMedia(params.media, newMedia);
+            this._onEditMedia(params.media, newMedia);
+          }
         }.bind(this),
         function() {
           //
         }
       );
+    }
+
+    else if (params.action === 'alternate-media-remove') {
+      SectionCommon.onRemoveMediaAlternate({
+        mainMedia: params.mainMedia,
+        media: params.media,
+        sectionType: 'immersive'
+      });
+      this.update();
     }
   }
 
@@ -369,7 +436,11 @@ export default class ImmersiveBuilder extends Immersive {
   // TODO: deprecate for _onToggleMediaConfig ???
   _onEditMedia(media, newMediaJSON) {
     var mediaIndex = this._medias.indexOf(media),
-        newMedia = SectionCommon.initMedia(newMediaJSON, this._mediaCache);
+        newMedia = SectionCommon.initMedia({
+          media: newMediaJSON,
+          mediaCache: this._mediaCache,
+          isNewMedia: true
+        });
 
     var isMediaAlreadyLoaded = this.isMediaAlreadyLoaded(newMediaJSON);
     if (! isMediaAlreadyLoaded) {
@@ -440,8 +511,10 @@ export default class ImmersiveBuilder extends Immersive {
     //
 
     var media = SectionCommon.initMedia({
-      type: 'empty',
-      empty: 'empty'
+      media: {
+        type: 'empty',
+        empty: 'empty'
+      }
     });
 
     this._medias.splice(index + 1, 0, media);
@@ -465,7 +538,7 @@ export default class ImmersiveBuilder extends Immersive {
     //
 
     var panel = app.ui.ImmersivePanelFactory.duplicateWithoutContent(
-      this._panels[index] ? this._panels[index].serialize() : null,
+      this._panels[index] ? this._panels[index].serialize(false) : null,
       defaultTransition,
       {
         onUpdateLayout: this.onUpdatePanelLayout.bind(this),
@@ -528,9 +601,12 @@ export default class ImmersiveBuilder extends Immersive {
     // Media
     //
 
-    media = SectionCommon.initMedia(media, this._mediaCache);
+    media = SectionCommon.initMedia({
+      media: media,
+      mediaCache: this._mediaCache
+    });
 
-    var isMediaAlreadyLoaded = this.isMediaAlreadyLoaded(media.serialize());
+    var isMediaAlreadyLoaded = this.isMediaAlreadyLoaded(media.serialize(false));
     if (! isMediaAlreadyLoaded) {
       if (index === 0) {
         this._medias[0].getNode().before(SectionCommon.renderBackground({
@@ -627,12 +703,12 @@ export default class ImmersiveBuilder extends Immersive {
 
     var undoData = {
       index: index,
-      panel: this._panels[index].serialize(),
-      media: this._medias[index].serialize(),
+      panel: this._panels[index].serialize(false),
+      media: this._medias[index].serialize(false),
       transition: this._transitions[index]
     };
 
-    if (this.isMediaUniqueInSection(this._medias[index].serialize())) {
+    if (this.isMediaUniqueInSection(this._medias[index].serialize(false))) {
       this._node.find('.background').eq(index).remove();
     }
     this._node.find('.imm-panel').eq(index).remove();
@@ -706,13 +782,13 @@ export default class ImmersiveBuilder extends Immersive {
     // Media
     //
 
-    var newMedia = app.ui.MediaFactory.createInstance(
-      this._medias[index].serialize(),
-      this._mediaCache
-    );
+    var newMedia = app.ui.MediaFactory.createInstance({
+      mediaJSON: this._medias[index].serialize(false),
+      mediaCache: this._mediaCache
+    });
     this._medias.splice(index + 1, 0, newMedia);
 
-    var isMediaAlreadyLoaded = this.isMediaAlreadyLoaded(newMedia.serialize());
+    var isMediaAlreadyLoaded = this.isMediaAlreadyLoaded(newMedia.serialize(false));
     if (! isMediaAlreadyLoaded) {
       if (newMedia.type == 'image') {
         transition = 'none';
@@ -740,7 +816,7 @@ export default class ImmersiveBuilder extends Immersive {
     //
 
     var newPanel = app.ui.ImmersivePanelFactory.duplicateWithoutContent(
-      this._panels[index].serialize(),
+      this._panels[index].serialize(false),
       transition,
       {
         onUpdateLayout: this.onUpdatePanelLayout.bind(this),
@@ -796,7 +872,7 @@ export default class ImmersiveBuilder extends Immersive {
     // we need to hide the home button if the map is reused in the section
     for (let media of this._medias) {
       if (media.type === 'webmap') {
-        if (this.isMediaUniqueInSection(media.serialize())) {
+        if (this.isMediaUniqueInSection(media.serialize(false))) {
           media.showHomeButton();
         }
         else {

@@ -1,5 +1,6 @@
 import {} from 'lib-build/less!./Panel';
 
+import tabThumbTpl from 'lib-build/hbars!./TabThumb';
 import viewInvite from 'lib-build/hbars!./PanelInvite';
 import viewConfig from 'lib-build/hbars!./PanelConfig';
 
@@ -26,14 +27,23 @@ export default class BuilderConfig {
     this._onToggle = params.onToggle;
     this._onAction = params.onAction;
     this._closeBtnStyle = params.closeBtnStyle;
+    this._selectedTab = this._tabs[0];
 
     this.selectedClass = 'selected';
 
     this._init();
   }
 
+  refreshTabs(tabs) {
+    this._tabs = tabs;
+
+    this._selectedTab = this._tabs.find(tab => tab.type === this._selectedTab.type);
+
+    this._init();
+  }
   //
   // Private
+  //
   //
 
   _init() {
@@ -46,47 +56,55 @@ export default class BuilderConfig {
       .off('click')
       .click(this._toggleConfigPanel.bind(this));
 
-    // List of tabs
-    var tabsContainer = this._nodePanel.find('.builder-tabs');
-    var hasIssuesTab = this._tabs.some(function(tab) {
-      return (tab.type.indexOf('issues') >= 0);
-    });
+    this._renderTabThumbs();
+  }
 
-    this._tabs.forEach(function(tab, i) {
-      let errorSpan = '';
-      if (tab.type.indexOf('issues') >= 0 || (tab.type === 'manage') && !hasIssuesTab) {
-        errorSpan = '<span class="border-error"></span>';
-      }
-      tabsContainer.append(
-        `<li class="tab btn-clear lighter${i === 0 ? ' selected' : ''}" data-tab="${tab.type}">` +
-          errorSpan +
-          `<span class="config-tab-icon fa ${tab.icon}"></span>` +
-          `${tab.title}` +
-        '</li>'
-      );
-    });
+  _renderTabThumbs() {
+    // List of tabs
+    const tabsContainer = this._nodePanel.find('.builder-tabs');
+    // start with a clean slate
+    tabsContainer.find('.tab').off('click');
+    tabsContainer.empty();
+
+    for (const tab of this._tabs) {
+      const tabThumb = this._renderTabThumb(tab);
+      tabsContainer.append(tabThumb);
+    }
 
     // set one as selected.
     // attach onclick events
-    var tabs = tabsContainer.find('.tab');
-    // for some reason, "this" breaks
-    var self = this;
-    tabs.on('click', e => {
-      // render the new tab, destroy the old one
-      let target = $(e.currentTarget);
-      let newTabType = target.data('tab');
-      let oldTabType = tabsContainer.find('.tab.' + this.selectedClass).data('tab');
-      let newTab = self._tabs.find(tab => newTabType === tab.type);
-      let oldTab = self._tabs.find(tab => oldTabType === tab.type);
+    this._addClickEvent();
+  }
 
-      tabs.removeClass(this.selectedClass);
-      target.addClass(this.selectedClass);
+  _addClickEvent() {
+    const tabsContainer = this._nodePanel.find('.builder-tabs');
+    const tabs = tabsContainer.find('.tab');
 
-      oldTab && self.destroyTab(oldTab);
-      newTab && self.renderTab(newTab);
+    tabs.off('click').on('click', e => {
+      this._onTabClick(e, tabsContainer, tabs);
     });
+  }
 
-    //this._onChange();
+  _onTabClick(event, tabsContainer, tabs) {
+    // render the new tab, destroy the old one
+    let target = $(event.currentTarget);
+    let newTabType = target.data('tab');
+    let oldTabType = tabsContainer.find('.tab.' + this.selectedClass).data('tab');
+    let newTab = this._tabs.find(tab => newTabType === tab.type);
+    let oldTab = this._tabs.find(tab => oldTabType === tab.type);
+
+    tabs.removeClass(this.selectedClass);
+    target.addClass(this.selectedClass);
+
+    oldTab && this.destroyTab(oldTab);
+    newTab && this.renderTab(newTab);
+  }
+
+  _renderTabThumb(tab) {
+    return tabThumbTpl({
+      tab,
+      isSelected: tab.type === this._selectedTab.type
+    });
   }
 
   destroyTab(tab) {
@@ -104,52 +122,82 @@ export default class BuilderConfig {
       onAction: this._onAction,
       rootNode: this._nodePanel
     });
+
+    this._selectedTab = tab;
   }
 
   _toggleConfigPanel(e) {
     // if shutting, destroy the active panel as well
     if (this._nodeMedia.hasClass(ACTIVE_CLASS)) {
-      // when used for background media, only the x allow to close close
-      if (this._closeBtnStyle == 'light' && $(e.target).hasClass('builder-invite-background')) {
-        return;
-      }
-
-      // destroy the existing tab
-      let tabNode = this._nodePanel.find('.builder-tabs .tab.' + this.selectedClass);
-      let tabType = tabNode.data('tab');
-      let openTab = this._tabs.find(tab => tabType === tab.type);
-
-      // before the panel is destoyed, we may want to make data model changes...
-      openTab && openTab.beforePanelDestroy();
-
-      openTab && this.destroyTab(openTab);
+      this.closePanel(e);
     }
     else {
-      let tabNode = this._nodePanel.find('.builder-tabs .tab.' + this.selectedClass);
-
-      if (this._nodeMedia.hasClass('error') || this._nodeMedia.find('.error').length) {
-        var switchToTab = this._nodePanel.find('[data-tab="issues"]');
-        if (!switchToTab.length) {
-          switchToTab = this._nodePanel.find('[data-tab="manage"]');
-        }
-        if (switchToTab.length) {
-          tabNode.removeClass(this.selectedClass);
-          tabNode = switchToTab.addClass(this.selectedClass);
-        }
-      }
-
-      let tabType = tabNode.data('tab');
-      let openTab = this._tabs.find(tab => tabType === tab.type);
-
-      openTab && this.renderTab(openTab);
-
-      //this._onChange();
+      this.openPanel();
     }
-
-    this._nodeMedia.toggleClass(ACTIVE_CLASS);
 
     if (this._onToggle) {
       this._onToggle();
     }
+  }
+
+  _findOverrideTab() {
+    let overrideTab = null;
+    // don't love reading the DOM to get state, but it'll do for now
+    // if there are errors, we'll show the issues tab if it exists, otherwise the manage tab.
+    if (this._nodeMedia.hasClass('error') || this._nodeMedia.find('.error').length) {
+      overrideTab = this._tabs.find(tab => tab.type === 'issues');
+
+      if (!overrideTab) {
+        overrideTab = this._tabs.find(tab => tab.type === 'manage');
+      }
+    }
+    // if there are warnings but NO issues, we'll show the alt media tab.
+    else if (this._nodeMedia.hasClass('warning') || this._nodeMedia.find('.warning').length) {
+      overrideTab = this._tabs.find(tab => tab.type === 'alternate');
+    }
+
+    return overrideTab;
+  }
+
+  openPanel(stayOnTab) {
+    let openTab = this._selectedTab;
+
+    if (!stayOnTab) {
+      const overrideTab = this._findOverrideTab();
+
+      if (overrideTab) {
+        let tabNode = this._nodePanel.find('.builder-tabs .tab.' + this.selectedClass);
+        tabNode.removeClass(this.selectedClass);
+        const selectedTabThumb = this._nodePanel.find(`.builder-tabs .tab[data-tab="${overrideTab.type}"]`);
+        selectedTabThumb.addClass(this.selectedClass);
+
+        openTab = overrideTab;
+      }
+    }
+
+    openTab && this.renderTab(openTab);
+
+    this._renderTabThumbs();
+
+    this._nodeMedia.addClass(ACTIVE_CLASS);
+  }
+
+  closePanel(e) {
+    // when used for background media, only the x allow to close close
+    if (this._closeBtnStyle == 'light' && $(e.target).hasClass('builder-invite-background')) {
+      return;
+    }
+
+    // destroy the existing tab
+    let tabNode = this._nodePanel.find('.builder-tabs .tab.' + this.selectedClass);
+    let tabType = tabNode.data('tab');
+    let openTab = this._tabs.find(tab => tabType === tab.type);
+
+    // before the panel is destoyed, we may want to make data model changes...
+    openTab && openTab.beforePanelDestroy();
+
+    openTab && this.destroyTab(openTab);
+
+    this._nodeMedia.removeClass(ACTIVE_CLASS);
   }
 }

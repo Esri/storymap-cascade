@@ -23,6 +23,9 @@ export default {
   images: {
     inaccessible: 'images/inaccessible'
   },
+  audio: {
+    inaccessible: 'audio/inaccessible'
+  },
   videos: {
     inaccessible: 'videos/inaccessible'
   }

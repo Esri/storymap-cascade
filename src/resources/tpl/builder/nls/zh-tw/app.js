@@ -13,13 +13,14 @@ define({
     "headerConfig": {
       "toggles": {
         "bookmarks": "書簽",
-        "logoSharing": "標誌與分享"
+        "logoSharing": "標誌與分享",
+        "theme": "外觀"
       },
       "bookmarks": {
         "title": "節",
         "bookmark": "書籤",
         "intro": "書籤是標頭中顯示的故事章節的連結。針對故事的主要章節建立簡要書籤，可協助讀者融入情境。",
-        "sequentialDefault": "循序部分 (找不到文字)",
+        "sequentialDefault": "敘述部分 (找不到文字)",
         "immersiveDefault": "擬真部分 (找不到文字)",
         "titleDefault": "標題部分 (找不到文字)",
         "coverDefault": "封面部分 (找不到文字)",
@@ -38,6 +39,15 @@ define({
         "taglineLinkDisabledTooltip": "輸入標籤行以啟用連結",
         "link": "標籤行連結",
         "enableSocialSharing": "顯示分享按鈕"
+      },
+      "appearance": {
+        "themeLabel": "主題",
+        "fontLabel": "字體",
+        "previewLabel": "預覽",
+        "fontsTitleLabel": "標題",
+        "fontsBodyLabel": "主體",
+        "loremTitle": "Lorem Ipsum",
+        "loremBody": "Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor. Mauris consequat orci nec magna facilisis bibendum at eget libero."
       }
     },
     "builderPanel": {
@@ -47,7 +57,7 @@ define({
       "betaNote": "請將您對 ${APP_NAME} 的看法告訴我們，或如果出現某些非預期的狀況，也請告訴我們。",
       "notSharedNote": "您的故事未分享，只有您會看到",
       "organizationWarning": "若要確保其他人可檢視此故事，您也必須與您的組織分享其場景、場景圖層和內嵌的應用程式。會自動分享地圖和地圖圖層。",
-      "publicWarning": "若要確保其他人可檢視此故事，您也必須公開分享其場景、場景圖層和內嵌的應用程式。會自動分享地圖和地圖圖層。",
+      "publicWarning": "若要確保其他人可檢視此故事，您也必須與每個人分享其場景、場景圖層和內嵌的應用程式。會自動分享地圖和地圖圖層。",
       "addTitleNote": "新增封面上要儲存的標題",
       "saveError": "儲存您的故事時出錯。",
       "duplicate": "重複",
@@ -77,6 +87,7 @@ define({
         "manage": "管理",
         "size": "尺寸",
         "background": "背景",
+        "mobile": "Mobile",
         "issues": "問題",
         "fixIssues": "修復問題"
       },
@@ -112,15 +123,23 @@ define({
       "size": {
         "small": "小",
         "medium": "中",
-        "large": "大"
+        "large": "大",
+        "noCrop": "請勿裁切高圖片",
+        "noCropTallTooltip": "不裁切高圖片會對讀者產生重大影響，也就是需要捲動才能看到整張圖片。"
       },
       "background": {
-        "noCrop": "請勿裁切圖片",
+        "noCrop": "請勿裁切",
         "mostImportantPart": "選擇最重要的點",
-        "cropExplanationImmersive": "選擇圖片上的某個點，以選擇如何以不同的畫面大小裁切圖片。選擇的點一律可見。如果媒體需要完全可見，請勾選下列方塊。",
+        "cropExplanationImmersive": "選擇圖片上的某個點，以選擇如何以不同的畫面大小裁切圖片。選擇的點一律可見。如果圖片需要完全可見，請勾選「請勿裁切」。",
         "cropExplanation": "選擇圖片上的某個點，以選擇如何以不同的畫面大小裁切圖片。選擇的點一律可見。",
         "color": "顏色",
         "previews": "預覽"
+      },
+      "altMedia": {
+        "alternativeMedia": "替代媒體",
+        "explanation": "部分媒體不受支援，或可能無法在行動裝置上順暢運作。使用此面板來選擇更方便在行動時使用的替代項目，以便在手機或平板電腦上檢視您的故事時，顯示該項目來取代此媒體。",
+        "changeAltImage": "變更圖片",
+        "uploadAltImage": "新增圖片"
       }
     },
     "imageGallery": {
@@ -174,9 +193,9 @@ define({
       "undo": "取消"
     },
     "sections": {
-      "sequence": "敘述部分",
-      "immersive": "擬真部分",
-      "title": "標題部分"
+      "sequence": "敘述",
+      "immersive": "擬真",
+      "title": "標題"
     },
     "mediaErrors": {
       "mediaTypes": {
@@ -189,14 +208,22 @@ define({
       },
       "placeholders": {
         "generic": "此內容無法存取。",
-        "deleted": "此 ${media-type} 已刪除。",
-        "inaccessible": "此 ${media-type} 無法存取。",
-        "unauthorized": "您未取得檢視此 ${media-type} 的授權。",
-        "unshared": "此 ${media-type} 未與您的故事分享相同的資訊。",
-        "othersUnshared": "此 ${media-type} 未與您的故事分享相同的資訊。",
-        "subscriptionContent": "此 ${media-type} 包含訂閱者圖層。",
-        "premiumContent": "此 ${media-type} 包含高級圖層。",
-        "secureService": "此 ${media-type} 包含安全圖層。"
+        "deleted": "已刪除此項目。",
+        "inaccessible": "此內容無法存取。",
+        "unauthorized": "您未取得檢視此內容的授權。",
+        "unshared": "此項目未與您的故事分享相同的資訊。",
+        "othersUnshared": "此項目未與您的故事分享相同的資訊。",
+        "subscriptionContent": "此地圖包含訂閱者圖層。",
+        "premiumContent": "此地圖包含高級圖層。",
+        "secureService": "此地圖包含安全圖層。"
+      },
+      "contentIssues": {
+        "noAltImage": "媒體在行動裝置上不受支援",
+        "altImageBroken": "無法存取為此媒體項目定義的替代圖片"
+      },
+      "contentWarnings": {
+        "noAltImage": "行動裝置不支援此媒體類型。提供在行動裝置上檢視故事時將顯示的替代圖片。",
+        "noAltImageAlt": "行動裝置不支援此媒體類型。在行動頁籤上，提供在行動裝置上檢視故事時將顯示的替代圖片。"
       },
       "mapIssues": {
         "fixButton": "修復問題",

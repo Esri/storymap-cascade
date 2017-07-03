@@ -3,6 +3,8 @@
  * https://github.com/orthes/medium-editor-insert-plugin
  */
 
+import UIUtils from 'storymaps/tpl/utils/UI';
+
 import {} from 'lib-build/less!./Core';
 
 import has from 'dojo/has';
@@ -148,6 +150,23 @@ export default class Core {
     if (has('mac')) {
       $('body').addClass('is-mac-os');
     }
+
+    this.setPlusPosition();
+  }
+
+  setPlusPosition() {
+    const scrollDiv = $('<div>', {
+      className: 'scrollbar-measure',
+      style: 'width: 100px; height: 100px; overflow: scroll; position: absolute; top: -9999px;'
+    });
+    $('body').append(scrollDiv);
+
+    const scrollWidth = scrollDiv[0].offsetWidth - scrollDiv[0].clientWidth;
+    if (scrollWidth && scrollWidth > 0) {
+      const offsetWidth = scrollWidth / 4;
+      UIUtils.addCSSRule(`.section-layout-sequence p.block::before { margin-left: -${offsetWidth}px;}`, 'plus-adjustment');
+    }
+    scrollDiv.remove();
   }
 
   handleDocumentClick(e) {

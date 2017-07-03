@@ -249,8 +249,8 @@
               cwd: 'src/lib/font-awesome/fonts/',
               src: ['**'],
               dest: 'deploy/resources/lib/font-awesome/fonts/'
-            },
-            /*
+            }/*,
+
             {
               expand: true,
               cwd: 'src/lib-app/bootstrap/fonts/',
@@ -262,13 +262,13 @@
               cwd: 'src/lib-app/colorbox/',
               src: ['colorbox.css', 'images/**'],
               dest: 'deploy/resources/lib/colorbox/'
-            },*/
+            },
             {
               expand: true,
               cwd: 'src/lib/zero-clipboard/dist',
               src: ['ZeroClipboard.swf'],
               dest: 'deploy/resources/lib/zero-clipboard/'
-            }
+            }*/
           ]
         },
         jsapioptim: {

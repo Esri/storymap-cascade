@@ -32,7 +32,7 @@ export default class PanelBuilder extends Panel {
       addMedia: this.addMedia.bind(this),
       addButtons: ['text', 'media'],
       style: 'compact',
-      authorizedMedia: ['image', 'video', 'webpage'],
+      authorizedMedia: ['image', 'audio', 'video', 'webpage'],
       onChange: this._onContentChange.bind(this)
     });
 
@@ -56,9 +56,7 @@ export default class PanelBuilder extends Panel {
     if (this._configPanelIsOpen) {
       // Close media cfg when changing view
       if (params.isNewView) {
-        this._configPanelMedia.closeConfigPanel();
-        this._configPanelIsOpen = false;
-        this._configPanelMedia = null;
+        this.closeConfigPanel();
       }
       else {
         let mediaNode = this._configPanelMedia.getNode(),
@@ -74,17 +72,16 @@ export default class PanelBuilder extends Panel {
      */
   }
 
+  closeConfigPanel() {
+    if (this._configPanelIsOpen && this._configPanelMedia) {
+      this._configPanelMedia.closeConfigPanel();
+      this._configPanelIsOpen = false;
+      this._configPanelMedia = null;
+    }
+  }
+
   focus() {
-    // Focusing the panel is not ideal as the placeholder will not reappear
-    //  if user chose to set the media first
-    // TODO
-    /*
-    setTimeout(function() {
-      if (this._editor) {
-        this._editor.focus();
-      }
-    }.bind(this), 50);
-    */
+    //
   }
 
   //
@@ -244,7 +241,7 @@ export default class PanelBuilder extends Panel {
   }
 
   _onContentChange() {
-    this.serialize();
+    this.serialize(false);
     this._callbacks.onChange();
   }
 
@@ -269,7 +266,8 @@ export default class PanelBuilder extends Panel {
         container: this._node,
         onToggleMediaConfig: this._onToggleMediaConfig.bind(this),
         onConfigAction: app.isInBuilder ? this._onMediaConfigAction.bind(this) : null,
-        builderConfigurationTabs: this._mediaConfigurationTabs
+        builderConfigurationTabs: this._mediaConfigurationTabs,
+        sectionType: 'immersive'
       });
       block.load();
 
@@ -312,9 +310,11 @@ export default class PanelBuilder extends Panel {
     //
     // Scroll the page if there isn't enough room for the builder panel
     //
+    const MEDIA_PANEL_HEIGHT = 250;
+    const VIEW_PANEL_HEIGHT = 125;
 
-    if (mediaBBOX.bottom + /* media panel */ 175 + /* view panel */ 125 > app.display.windowHeight) {
-      scrollOffset = app.display.windowHeight - mediaBBOX.bottom - 175 - 125;
+    if (mediaBBOX.bottom + MEDIA_PANEL_HEIGHT + VIEW_PANEL_HEIGHT > app.display.windowHeight) {
+      scrollOffset = app.display.windowHeight - mediaBBOX.bottom - MEDIA_PANEL_HEIGHT - VIEW_PANEL_HEIGHT;
     }
 
     if (scrollOffset) {
@@ -327,7 +327,10 @@ export default class PanelBuilder extends Panel {
   }
 
   _onEditMedia(media, newMediaJSON) {
-    let newMedia = SectionCommon.initMedia(newMediaJSON);
+    let newMedia = SectionCommon.initMedia({
+      media: newMediaJSON,
+      isNewMedia: true
+    });
 
     media.getNode().before(newMedia.render({
       placement: 'block'
@@ -353,7 +356,7 @@ export default class PanelBuilder extends Panel {
   }
 
   _onMediaConfigAction(params = {}) {
-    if (! params.action || ! params.media) {
+    if (!params.action || (!params.media && params.action !== 'alternate-media-add')) {
       return;
     }
 
@@ -361,20 +364,43 @@ export default class PanelBuilder extends Panel {
       params.media.remove();
       this._blocks.splice(this._blocks.indexOf(params.media), 1);
     }
-    else if (params.action == 'swap') {
+    else if (params.action == 'swap' || params.action === 'alternate-media-swap' || params.action === 'alternate-media-add') {
+      const mediaIsEmpty = params.action === 'alternate-media-add';
+      const isAlternate = params.action.indexOf('alternate-') !== -1;
+      const authorizedMedia = isAlternate ? ['image'] : ['image', 'audio', 'video', 'webpage'];
+
       app.builder.mediaPicker.open({
-        mode: 'edit',
-        media: params.media.serialize(),
-        authorizedMedia: ['image', 'video', 'webpage']
+        mode: mediaIsEmpty ? 'add' : 'edit',
+        media: mediaIsEmpty ? null : params.media.serialize(false),
+        authorizedMedia: authorizedMedia
       }).then(
         function(newMedia) {
-          this._onToggleMediaConfig(params.media);
-          this._onEditMedia(params.media, newMedia);
+          if (isAlternate) {
+            SectionCommon.onEditMediaAlternate({
+              mainMedia: params.mainMedia,
+              newMediaJSON: newMedia,
+              oldMedia: params.media,
+              sectionType: 'narrative-panel'
+            });
+            this._onContentChange();
+          }
+          else {
+            this._onToggleMediaConfig(params.media);
+            this._onEditMedia(params.media, newMedia);
+          }
         }.bind(this),
         function() {
           //
         }
       );
+    }
+    else if (params.action === 'alternate-media-remove') {
+      SectionCommon.onRemoveMediaAlternate({
+        mainMedia: params.mainMedia,
+        media: params.media,
+        sectionType: 'narrative-panel'
+      });
+      this._onContentChange();
     }
   }
 
@@ -411,11 +437,11 @@ export default class PanelBuilder extends Panel {
     }
   }
 
-  serialize() {
+  serialize(includeInstanceID) {
     var blocksSerialized = [];
 
     if (this._editor) {
-      blocksSerialized = this._editor.serialize();
+      blocksSerialized = this._editor.serialize(includeInstanceID);
 
       for (var i=0; i < blocksSerialized.length; i++) {
         var editorBlock = blocksSerialized[i];
@@ -423,7 +449,7 @@ export default class PanelBuilder extends Panel {
         if (editorBlock.type == 'media') {
           var block = this.findBlock(editorBlock.id);
           if (block) {
-            blocksSerialized[i] = block.serialize();
+            blocksSerialized[i] = block.serialize(includeInstanceID);
           }
         }
       }
@@ -436,5 +462,20 @@ export default class PanelBuilder extends Panel {
       settings: this._settings,
       blocks: this._blocksJSON
     });
+  }
+
+  addContextSpecificIssues(scannedMedia) {
+    for (const blockMedia of this._blocks) {
+      const instanceID = blockMedia._instanceID;
+
+      const media = scannedMedia[instanceID];
+
+      if (media && !media.alternateMedia) {
+        if (media.mediaType === 'webpage') {
+          // add an issue here.
+          media.scanResult.warnings.push('content/noAlternateMedia');
+        }
+      }
+    }
   }
 }

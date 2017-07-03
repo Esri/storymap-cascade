@@ -232,7 +232,7 @@ export default class WebScene extends Media {
         packages: [
           {
             name: 'esri4',
-            location: 'https://js.arcgis.com/4.3/esri'
+            location: 'https://jsdev.arcgis.com/4.4/esri'
           }
         ]
       };
@@ -321,7 +321,7 @@ export default class WebScene extends Media {
       view.ui.move('compass', 'bottom-right');
       view.ui.remove('navigation-toggle');
 
-      this._node.find('.media-loading').hide();
+      this._fadeInMedia();
     }.bind(this));
 
     // Disable wheel

@@ -23,6 +23,7 @@ require([
   i18nViewer
 ) {
   window.i18n = i18nViewer;
+  var mainViewInstance = new MainView();
 
   if (app.isInBuilder) {
     // TODO: check if that step is still required
@@ -51,12 +52,12 @@ require([
       ) {
         var builderView = new BuilderView(Core, Builder);
 
-        Core.init(MainView, Builder);
+        Core.init(mainViewInstance, Builder);
         Builder.init(Core, builderView);
       });
     });
   }
   else {
-    Core.init(MainView);
+    Core.init(mainViewInstance);
   }
 });

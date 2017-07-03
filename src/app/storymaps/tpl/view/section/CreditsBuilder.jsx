@@ -77,6 +77,10 @@ export default class CreditsBuilder extends Credits {
   postCreate(params) {
     super.postCreate(params);
 
+    if (this._backgroundMedia.postCreate) {
+      this._backgroundMedia.postCreate({container: this._node});
+    }
+
     this._addMenu.postCreate({
       container: this._node.find('.builder-section-add-menu'),
       sectionContainer: this._node
@@ -114,7 +118,7 @@ export default class CreditsBuilder extends Credits {
     }.bind(this), 50);
   }
 
-  serialize() {
+  serialize(includeInstanceID) {
     let panels = [];
 
     // loop through each panel, serializing each one and writing the results to the panels object.
@@ -122,10 +126,10 @@ export default class CreditsBuilder extends Credits {
       let panel = this._panels[i];
       if (panel.type === 'credits') {
         // have to get the serialize method from somewhere...
-        panels.push(panel.credits.serialize());
+        panels.push(panel.credits.serialize(includeInstanceID));
       }
       else if (panel.type === 'blocks') {
-        panels.push(this.serializeBlocks(panel));
+        panels.push(this.serializeBlocks(panel, includeInstanceID));
       }
     }
 
@@ -135,11 +139,11 @@ export default class CreditsBuilder extends Credits {
     return lang.clone(this._section);
   }
 
-  serializeBlocks(panel) {
+  serializeBlocks(panel, includeInstanceID) {
     let blocks = [];
 
     if (panel.editor) {
-      blocks = panel.editor.serialize();
+      blocks = panel.editor.serialize(includeInstanceID);
 
       for (let i = 0; i < blocks.length; i++) {
         let editorBlock = blocks[i];
@@ -147,7 +151,7 @@ export default class CreditsBuilder extends Credits {
         if (editorBlock.type === 'media') {
           let block = this.findBlock(panel, editorBlock.id);
           if (block) {
-            blocks[i] = block.serialize();
+            blocks[i] = block.serialize(includeInstanceID);
           }
         }
       }
@@ -179,5 +183,9 @@ export default class CreditsBuilder extends Credits {
 
   setScanResults(hasErrors, hasWarnings) {
     Object.assign(this.scanResults, {hasErrors}, {hasWarnings});
+  }
+
+  addContextSpecificIssues() {
+    //
   }
 }

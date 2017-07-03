@@ -22,6 +22,9 @@ import i18n from 'lib-build/i18n!resources/tpl/viewer/nls/app';
 import Media from 'storymaps-react/tpl/view/media/Media';
 import WebSceneCache from 'storymaps-react/tpl/core/WebSceneCache';
 
+import UIUtils from 'storymaps/tpl/utils/UI';
+import CommonHelper from 'storymaps/common/utils/CommonHelper';
+
 let storyMap = 'Story Map';
 
 export default class Controller {
@@ -91,6 +94,7 @@ export default class Controller {
     }
 
     let orgLogo = lang.getObject('portal.portalProperties.sharedTheme.logo.small', false, app);
+    let orgClickThruLink = lang.getObject('portal.portalProperties.sharedTheme.logo.link', false, app);
 
     if (!orgLogo) {
       return null;
@@ -100,7 +104,7 @@ export default class Controller {
       logo: {
         enabled: true,
         url: orgLogo,
-        link: ''
+        link: orgClickThruLink
       },
       link: {
         url: 'https://storymaps.arcgis.com',
@@ -129,6 +133,145 @@ export default class Controller {
       bookmarks: this.getBookmarks(),
       title: this.getStoryTitle()
     });
+  }
+
+  static get THEME_COLOR_OPTIONS() {
+    const colors = [{
+      id: 'black-on-white-1',
+      label: i18n.viewer.theme.lightLabel,
+      themeMajor: 'light',
+      themeContrast: 'dark',
+      bgMain: 'white',
+      textMain: '#4c4c4c'
+    }, {
+      id: 'white-on-black-1',
+      label: i18n.viewer.theme.darkLabel,
+      themeMajor: 'dark',
+      themeContrast: 'light',
+      bgMain: '#0E0E0E',
+      textMain: '#DDD'
+    }];
+    const appColors = lang.getObject('app.data.appItem.data.values.settings.theme.colors');
+    if (appColors) {
+      const found = colors.some(color => {
+        return color.id === appColors.id;
+      });
+      if (!found) {
+        colors.push(lang.clone(appColors));
+      }
+    }
+    return colors;
+  }
+
+  static get THEME_DEFAULT_COLORS() {
+    const themeId = 'black-on-white-1';
+    const colors = this.THEME_COLOR_OPTIONS;
+    let found;
+    colors.some(colorObj => {
+      if (colorObj.id === themeId) {
+        found = colorObj;
+        return true;
+      }
+      return false;
+    });
+    return found || {};
+  }
+
+  static get THEME_FONT_OPTIONS() {
+    const fonts = [{
+      label: 'Open Sans',
+      fontFamily: '\'open_sans\', \'Helvetica Neue\', \'Helvetica\', \'Arial\', sans-serif'
+    }, {
+      label: 'Noto Serif',
+      fontFamily: '\'noto_serif\', \'Georgia\', \'Hoefler Text\', \'Palatino\', cursive'
+    }, {
+      label: 'Georgia',
+      fontFamily: '\'Georgia\', \'Hoefler Text\', \'Palatino\', serif'
+    }, {
+      label: 'Arial',
+      fontFamily: '\'Arial\', \'Helvetica Neue\', \'Helvetica\', sans-serif'
+    }];
+
+    const appFonts = lang.getObject('app.data.appItem.data.values.settings.theme.fonts');
+    if (appFonts) {
+      let found;
+      if (appFonts.titleFont) {
+        found = fonts.some(font => {
+          return font.label === appFonts.titleFont.label;
+        });
+        if (!found) {
+          fonts.push(lang.clone(appFonts.titleFont));
+        }
+      }
+      if (appFonts.bodyFont) {
+        found = fonts.some(font => {
+          return font.label === appFonts.bodyFont.label;
+        });
+        if (!found) {
+          fonts.push(lang.clone(appFonts.bodyFont));
+        }
+      }
+    }
+    return fonts;
+  }
+
+  static get THEME_DEFAULT_FONTS() {
+    const bodyFontLabel = 'Noto Serif';
+    const titleFontLabel = 'Open Sans';
+    const fonts = this.THEME_FONT_OPTIONS;
+    let bodyFont, titleFont;
+    fonts.forEach(fontObj => {
+      if (fontObj.label === bodyFontLabel) {
+        bodyFont = lang.clone(fontObj);
+      }
+      if (fontObj.label === titleFontLabel) {
+        titleFont = lang.clone(fontObj);
+      }
+    });
+    return {bodyFont, titleFont};
+  }
+
+  // body gets theme major and contrast classes, narrative text gets <style> tag with id
+  static changeTheme() {
+
+    var currentTheme = lang.getObject('app.data.appItem.data.values.settings.theme');
+
+    if (!currentTheme) {
+      return;
+    }
+
+    var colors = currentTheme.colors;
+    if (colors) {
+      // get rid of existing body classes
+      $('body').removeClass('theme-major-dark theme-major-light theme-contrast-dark theme-contrast-light');
+
+      // body gets either theme-major-dark or theme-major-light class.
+      if (colors.themeMajor) {
+        $('body').addClass(`theme-major-${colors.themeMajor}`);
+      }
+
+      // body also gets theme-contrast-dark or theme-contrast-light class.
+      // These are the viewer-specific changes based on bgMain.
+      // Other builder-targeted changes can be found in builder Controller.js
+      if (colors.bgMain || colors.themeContrast) {
+        // this class changes the colors of the links in narrative sections
+        var contrast = colors.themeContrast || CommonHelper.getLightOrDarkText(colors.bgMain);
+        $('body').addClass(`theme-contrast-${contrast}`);
+      }
+
+      // narrative paragraphs get text color <style> with id.
+      var textColorStr = colors.textMain ? `.section-layout-sequence {color: ${colors.textMain};}` : '';
+      UIUtils.addCSSRule(textColorStr, 'text-color');
+    }
+
+    var fonts = currentTheme.fonts;
+    if (fonts) {
+      var titleFontStr = fonts.titleFont ? `.sections h1, .sections h2, .sections h3, .sections h4, .sections h5, .sections h6 { font-family: ${fonts.titleFont.fontFamily};}` : '';
+      UIUtils.addCSSRule(titleFontStr, 'title-font');
+      var bodyFontStr = fonts.bodyFont ? `.sections { font-family: ${fonts.bodyFont.fontFamily};}` : '';
+      UIUtils.addCSSRule(bodyFontStr, 'body-font');
+    }
+
   }
 
   static renderStory(config, sections) {
@@ -390,6 +533,51 @@ export default class Controller {
     this._$currentSection = params.$currentSection;
     this._currentSectionIndex = params.currentSectionIndex;
     this._currentSection = newSection;
+
+    if (!app.isInBuilder && !params.initialUpdate) {
+      this._showSections();
+    }
+  }
+
+  static _showSections() {
+    const FADE_TOLERANCE = 100;
+    const GPU_TOLERANCE = 1000;
+
+    for (let index = 0; index < app.display.sections.length; index++) {
+      let section = app.display.sections[index];
+      const sectionNode = section.node;
+
+      if (sectionNode) {
+        // don't do for narrative section or credits
+        if (section.type === 'title' || section.type === 'immersive') {
+          const viewportTop = app.display.scrollTop;
+          const viewportBottom = viewportTop + app.display.windowHeight;
+
+          if (!sectionNode.hasClass('bring-in')) {
+            if (section.top < viewportBottom + FADE_TOLERANCE) {
+              sectionNode.addClass('bring-in');
+            }
+          }
+          else {
+            if (section.top > viewportBottom) {
+              sectionNode.removeClass('bring-in');
+            }
+          }
+
+          const nextSection = app.display.sections[index + 1];
+          // if you're the last section, the bottom is the bottom of the story.
+          const sectionBottom = nextSection ? nextSection.top : app.display.storyHeight;
+          const topWithinRange = section.top < viewportBottom + GPU_TOLERANCE;
+          const bottomWithinRange = sectionBottom > viewportTop - GPU_TOLERANCE;
+          if (topWithinRange && bottomWithinRange) {
+            sectionNode.addClass('section-on-screen');
+          }
+          else {
+            sectionNode.removeClass('section-on-screen');
+          }
+        }
+      }
+    }
   }
 
   static onResize(params) {
@@ -503,13 +691,13 @@ export default class Controller {
             {
               type: 'text',
               text: {
-                value: '<div class="block"><table><tr>'
+                value: '<div class="block bring-in"><table><tr>'
                 + '<td style="padding-bottom: 10px;">'
                 + ' <img src="resources/tpl/viewer/icons/warning-mobile-smartphone.png" /></td>'
                 + '<td style="padding-bottom: 10px; padding-left: 13px;">'
                 + i18n.viewer.mobileWarning.message1
                 + '</td></tr><tr>'
-                + '<td colspan="2" style="padding-top: 10px; border-top: 1px solid white; text-align: center;"><a class="btn btn-warning-email" style="background-color: white; color: rgba(255, 0, 0, 0.7);" href="' + storyWarningBtn + '"><img src="resources/tpl/viewer/icons/warning-mobile-laptop.png" style="margin-right: 5px;"/>'
+                + '<td colspan="2" style="font-family: open_sans, sans-serif; padding-top: 10px; border-top: 1px solid white; text-align: center;"><a class="btn btn-warning-email" style="background-color: white; color: rgb(171, 60, 22);white-space: normal;" href="' + storyWarningBtn + '"><i class="fa fa-envelope-o" style="margin-right: 5px;color: rgb(171, 60, 22);"></i>'
                 + i18n.viewer.mobileWarning.email
                 + '</a></td></tr></table></div>'
               }

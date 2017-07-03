@@ -1,5 +1,5 @@
 @charset "UTF-8";
-@import url(https://fast.fonts.net/cssapi/9431e9a5-7a6d-4b5f-82be-4d935972de5a.css);
+@import url(https://fast.fonts.net/cssapi/9431e9a5-7a6d-4b5f-82be-4d935972de5a);
 /*
 In order to build the output css we need to import bootstrap-core
 but we don't want that in the sass files we ship

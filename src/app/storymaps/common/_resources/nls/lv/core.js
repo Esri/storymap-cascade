@@ -1,14 +1,15 @@
 /* eslint quotes: ["error", "double"] */
-/* strings files need to be double quotes */
 define({
   "commonCore": {
     "builderPanel": {
+      "builderNamePrefix": "",
+      "builderNameSuffix": "Veidotājs",
       "buttonSaving": "Saglabā",
       "buttonSaved": "Saglabāts",
       "buttonError": "Saglabāšana neizdevās",
       "buttonShare": "Kopīgot",
       "buttonSettings": "Iestatījumi",
-      "buttonHelp": "Palīdzība",
+      "buttonHelp": "Saņemt palīdzību vai iesniegt atsauksmi par GeoNet",
       "buttonPreview": "Skatīt stāstu",
       "buttonHealth": "Darbspējas pārskats",
       "manageStories": "Pārvaldīt manus stāstus",
@@ -31,7 +32,13 @@ define({
     "share": {
       "btnPrivate": "Privāts",
       "btnOrg": "Organizācija",
-      "btnPublic": "Publisks"
+      "btnPublic": "Publisks",
+      "btnEveryone": "Ikviens"
+    },
+    "portal": {
+      "disconnected": "Šis Portal nav savienots ar internetu",
+      "portal": "Portal",
+      "portalArcGIS": "Portal for ArcGIS"
     }
   }
 });

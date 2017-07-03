@@ -5,6 +5,7 @@ import Result from './Result';
 import NormalizeHelper from './helpers/NormalizeHelper';
 import Images from './media/Images';
 import Videos from './media/Videos';
+import Audio from './media/Audio';
 import Maps from './media/Maps';
 import Issue from './Issue';
 import Share from './Share';
@@ -80,6 +81,9 @@ export default class IssueChecker {
     let allVideos = NormalizeHelper.getAllItems(result.media.videos);
     let videosCheck = Videos.check(allVideos);
 
+    let allAudio = NormalizeHelper.getAllItems(result.media.audio);
+    let audioCheck = Audio.check(allAudio);
+
     let allMaps = NormalizeHelper.getAllItems(result.media.maps);
     let mapsCheck = Maps.check({
       items: allMaps,
@@ -91,7 +95,7 @@ export default class IssueChecker {
       return checkedMaps;
     });
 
-    let mediaChecks = [imagesCheck, videosCheck, mapsCheck];
+    let mediaChecks = [imagesCheck, videosCheck, audioCheck, mapsCheck];
     return Promise.all(mediaChecks).then(() => {
       // let's handle the errors here, then return the result.
       // I'm using "result.media" instead of the parameters to this .then function

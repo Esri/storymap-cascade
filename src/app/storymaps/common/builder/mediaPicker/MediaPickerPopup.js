@@ -9,7 +9,7 @@ define([
   MediaPicker,
   Deferred
 ) {
-  var DEFAULT_AUTHORIZED_MEDIA = ['image', 'video', 'webpage', 'webmap', 'webscene'];
+  var DEFAULT_AUTHORIZED_MEDIA = ['image', 'audio', 'video', 'webpage', 'webmap', 'webscene'];
 
   return function MediaPickerPopup(params) {
     var _mediaPicker = null,

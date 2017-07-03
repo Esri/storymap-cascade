@@ -1,4 +1,3 @@
-// nls expects double quotes
 /*eslint quotes:[2, 'double'] */
 define({
   "mediaPicker": {
@@ -65,15 +64,15 @@ define({
             "embedProtocolWarning3": "代替操作として、注釈のリンクを追加して、新しいブラウザー タブでそのページを開きます。${linkText}",
             "linkText": "詳細"
           },
-          "placeholder": "${https://}... or ${http://}... or ${<iframe>}",
+          "placeholder": "${https://}... または ${http://}... または ${<iframe>}",
           "uploadErrors": {
             "generic": "入力したアドレスで問題が発生しました。もう一度やり直してください。",
             "imageOnly1": "ストーリーのこの部分には、画像を使用する必要があります。",
             "imageOnly2": "画像 (*.jpg、*.png、*.gif) へのリンクを指定するか、${ArcGIS}、${Flickr}、${Google+}、または ${Unsplash} から画像を選択してください。",
             "imageAndVideo1": "ストーリーのこの部分には、画像またはビデオを使用する必要があります。",
             "imageAndVideo2": "画像 (*.jpg、*.png、*.gif) または ${YouTube} や ${Vimeo} のビデオへのリンクを指定するか、${ArcGIS}、${Flickr}、${Google+}、または ${Unsplash} から画像を選択してください。",
-            "badFormat": "追加しようとしている ${media-type} へのリンクの書式が正しくありません。",
-            "inaccessible": "追加しようとしている ${media-type} が見つからないか、アクセスできません。",
+            "badFormat": "追加しようとしているファイルへのリンクの書式が正しくありません。",
+            "inaccessible": "追加しようとしているファイルが見つからないか、アクセスできません。",
             "tryAgain": "アドレスを確認して、もう一度やり直してください。",
             "mediaTypes": {
               "VIDEO": "ビデオ",
@@ -125,6 +124,8 @@ define({
           "searchLocation": {
             "thisStory": "このストーリー",
             "agol": "ArcGIS Online",
+            "portalArcGIS": "Portal for ArcGIS",
+            "portal": "ポータル",
             "myOrg": "${orgname} の組織サイト",
             "myContent": "マイ コンテンツ"
           },

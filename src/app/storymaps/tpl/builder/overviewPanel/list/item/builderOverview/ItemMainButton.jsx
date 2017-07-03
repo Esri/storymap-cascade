@@ -7,8 +7,13 @@ import {} from 'lib-build/less!./ItemMainButton';
 
 function ItemMainButton(props) {
   var mainClassName = 'op-item-main item-button ' + props.item.size;
-  if (props.item.scanResults && props.item.scanResults.hasErrors) {
-    mainClassName += ' error';
+  if (props.item.scanResults) {
+    if (props.item.scanResults.hasErrors) {
+      mainClassName += ' error';
+    }
+    else if (props.item.scanResults.hasWarnings) {
+      mainClassName += ' warning';
+    }
   }
 
   return (

@@ -1,14 +1,15 @@
 /* eslint quotes: ["error", "double"] */
-/* strings files need to be double quotes */
 define({
   "commonCore": {
     "builderPanel": {
+      "builderNamePrefix": "",
+      "builderNameSuffix": "빌더",
       "buttonSaving": "저장 중",
       "buttonSaved": "저장됨",
       "buttonError": "저장 실패",
       "buttonShare": "공유",
       "buttonSettings": "설정",
-      "buttonHelp": "도움말",
+      "buttonHelp": "GeoNet에 대한 도움말 보기 또는 피드백 제출",
       "buttonPreview": "스토리 보기",
       "buttonHealth": "상태 보고서",
       "manageStories": "내 스토리 관리",
@@ -31,7 +32,13 @@ define({
     "share": {
       "btnPrivate": "비공개",
       "btnOrg": "기관",
-      "btnPublic": "공개"
+      "btnPublic": "공개",
+      "btnEveryone": "모든 사람"
+    },
+    "portal": {
+      "disconnected": "이 포털이 인터넷에 연결되어 있지 않음",
+      "portal": "포털",
+      "portalArcGIS": "Portal for ArcGIS"
     }
   }
 });

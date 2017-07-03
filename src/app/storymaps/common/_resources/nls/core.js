@@ -1,15 +1,16 @@
 /* eslint quotes: ["error", "double"] */
-/* strings files need to be double quotes */
 define({
   root: ({
     commonCore: {
       builderPanel: {
+        builderNamePrefix: "", //App title is "Cascade Builder", Cascade is not translated. This prefix string is included in case a translation of "Builder" requires words that preceed the untranslated "Cascade"
+        builderNameSuffix: "Builder", //See previous note
         buttonSaving: "Saving",
         buttonSaved: "Saved",
         buttonError: "Save failed",
         buttonShare: "Share",
         buttonSettings: "Settings",
-        buttonHelp: "Help",
+        buttonHelp: "Get Help or Submit Feedback on GeoNet",
         buttonPreview: "View Story",
         buttonHealth: "Health Report",
         manageStories: "Manage My Stories",
@@ -32,7 +33,13 @@ define({
       share: {
         btnPrivate: "Private",
         btnOrg: "Organization",
-        btnPublic: "Public"
+        btnPublic: "Public",
+        btnEveryone: "Everyone"
+      },
+      portal: {
+        disconnected: "This Portal is not connected to the Internet",
+        portal: "Portal",
+        portalArcGIS: "Portal for ArcGIS"
       }
     }
   }),

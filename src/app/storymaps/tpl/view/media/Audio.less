@@ -1,0 +1,84 @@
+// don't let browsers (like iOS Safari) ruin our formatting.
+// particularly useful in mobile narrative panels
+.audio audio {
+  min-width: 0;
+  border: 1px solid #999;
+  box-sizing: content-box;
+}
+
+// audio widths in narrative panels and sections
+// on different devices
+// |                      | iOS  | browser |
+// | -------------------- | ---- | ------- |
+// | panels (% of panel)  | 100% |   90%   |
+// | sections (% of text) | 90%  |   80%   |
+// | -------------------- | ---- | ------- |
+
+// make the audio in immersive sections a little
+// narrower than the text, with a max width of 400px
+.imm-panel {
+  .block-audio {
+    text-align: center;
+    &:first-child {
+      margin-top: 60px !important;
+    }
+    audio {
+      width: 90%;
+      max-width: 400px;
+    }
+  }
+}
+
+// in block audio, the audio is always in a media-small
+// container, which is 40% of the screen width (and 80% of text width)
+.block-audio {
+  height: auto;
+  // in safari, need top margin for volume control
+  &:first-child {
+    margin-top: 80px;
+  }
+
+  .audio {
+    background: transparent;
+  }
+  audio {
+    width: 100%;
+  }
+}
+
+// override rules specific to mobile
+body.mobile-view {
+
+  // set audio width in narrative sections
+  // to be a little narrower than the 90% text width
+  .section-layout-sequence {
+    audio {
+      width: 80%;
+    }
+  }
+
+  // the immersive panels in mobile are pretty narrow, so
+  // let the audio fill the whole width
+  .imm-panel {
+    audio {
+      width: 100%;
+    }
+  }
+}
+
+// we're not currently allowing audio as background media
+// but in case it sneaks in there...
+.background .audio {
+  position: absolute;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+
+  audio {
+    margin-top: 30%;
+    width: 40%;
+  }
+}

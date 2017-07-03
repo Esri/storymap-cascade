@@ -1,4 +1,3 @@
-// nls expects double quotes
 /*eslint quotes:[2, 'double'] */
 define({
   "mediaPicker": {
@@ -65,15 +64,15 @@ define({
             "embedProtocolWarning3": "Vous pouvez également ajouter un lien dans votre narration afin d'ouvrir la page dans un nouvel onglet du navigateur. ${linkText}",
             "linkText": "En savoir plus."
           },
-          "placeholder": "${https://}... or ${http://}... or ${<iframe>}",
+          "placeholder": "${https://}... ou ${http://}... ou ${<iframe>}",
           "uploadErrors": {
             "generic": "Un problème est survenu avec l'adresse saisie. Réessayez.",
             "imageOnly1": "Vous devez utiliser une image dans cette partie du récit.",
             "imageOnly2": "Fournissez un lien vers une image (.jpg, .png, .gif) ou choisissez une image dans ${ArcGIS}, ${Flickr}, ${Google+} ou ${Unsplash}.",
             "imageAndVideo1": "Vous devez utiliser une image ou une vidéo dans cette partie du récit.",
             "imageAndVideo2": "Fournissez un lien vers une image (.jpg, .png, .gif) ou une vidéo sur ${YouTube} ou ${Vimeo}, ou choisissez une image dans ${ArcGIS}, ${Flickr}, ${Google+} ou ${Unsplash}.",
-            "badFormat": "Le format du lien vers le ${media-type} que vous tentez d'ajouter n'est pas correct.",
-            "inaccessible": "Le ${media-type} que vous tentez d'ajouter est manquant ou inaccessible.",
+            "badFormat": "Le format du lien vers le fichier que vous tentez d'ajouter n'est pas correct.",
+            "inaccessible": "Le fichier que vous tentez d'ajouter est manquant ou inaccessible.",
             "tryAgain": "Vérifiez l'adresse et réessayez.",
             "mediaTypes": {
               "VIDEO": "vidéo",
@@ -125,6 +124,8 @@ define({
           "searchLocation": {
             "thisStory": "Ce récit",
             "agol": "ArcGIS Online",
+            "portalArcGIS": "Portal for ArcGIS",
+            "portal": "Portail",
             "myOrg": "Organisation ${orgname}",
             "myContent": "Mon contenu"
           },

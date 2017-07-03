@@ -1,4 +1,3 @@
-// nls expects double quotes
 /*eslint quotes:[2, 'double'] */
 define({
   "mediaPicker": {
@@ -65,15 +64,15 @@ define({
             "embedProtocolWarning3": "Em alternativa, adicione uma ligação à sua narrativa para abrir a página num novo separador do navegador ${linkText}",
             "linkText": "Saber Mais."
           },
-          "placeholder": "${https://}... or ${http://}... or ${<iframe>}",
+          "placeholder": "${https://}... or ${http://}... ou ${<iframe>}",
           "uploadErrors": {
             "generic": "Algo correu mal com o endereço introduzido. Por favor, tente novamente.",
             "imageOnly1": "Tem de utilizar uma imagem nesta parte da história.",
             "imageOnly2": "Por favor, forneça uma ligação a uma imagem (.jpg, .png, .gif), ou selecione uma imagem de ${ArcGIS}, ${Flickr}, ${Google+}, ou ${Unsplash}.",
             "imageAndVideo1": "Tem de utilizar uma imagem ou um vídeo nesta parte da história.",
             "imageAndVideo2": "Por favor, forneça uma ligação a uma imagem (.jpg, .png, .gif) ou um vídeo no ${YouTube} ou ${Vimeo}, ou selecione uma imagem de ${ArcGIS}, ${Flickr}, ${Google+}, ou ${Unsplash}.",
-            "badFormat": "A ligação ao ${media-type} que está a tentar adicionar encontra-se incorretamente formatada.",
-            "inaccessible": "O ${media-type} que está a tentar adicionar encontra-se em falta ou inacessível.",
+            "badFormat": "A ligação ao ficheiro que está a tentar adicionar encontra-se incorretamente formatada.",
+            "inaccessible": "O ficheiro que está a tentar adicionar encontra-se em falta ou inacessível.",
             "tryAgain": "Por favor, verifique o endereço e tente novamente.",
             "mediaTypes": {
               "VIDEO": "vídeo",
@@ -125,6 +124,8 @@ define({
           "searchLocation": {
             "thisStory": "Este História",
             "agol": "ArcGIS Online",
+            "portalArcGIS": "Portal for ArcGIS",
+            "portal": "Portal",
             "myOrg": "Organização ${orgname}",
             "myContent": "O Meu Conteúdo"
           },

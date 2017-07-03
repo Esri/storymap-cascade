@@ -1,4 +1,3 @@
-// nls expects double quotes
 /*eslint quotes:[2, 'double'] */
 define({
   "mediaPicker": {
@@ -65,15 +64,15 @@ define({
             "embedProtocolWarning3": "Alternativ können Sie Ihrer Zusammenfassung einen Link hinzufügen, um die Seite in einer neuen Browser-Registerkarte zu öffnen. ${linkText}",
             "linkText": "Weitere Informationen."
           },
-          "placeholder": "${https://}... or ${http://}... or ${<iframe>}",
+          "placeholder": "${https://}... oder ${http://}... oder ${<iframe>}",
           "uploadErrors": {
             "generic": "Bei der eingegebenen Adresse ist ein Fehler aufgetreten. Versuchen Sie es erneut.",
             "imageOnly1": "Sie müssen in diesem Teil der Story ein Bild verwenden.",
             "imageOnly2": "Stellen Sie einen Link zu einem Bild (.jpg, .png, .gif) bereit, oder wählen Sie ein Bild von ${ArcGIS}, ${Flickr}, ${Google+} oder ${Unsplash} aus.",
             "imageAndVideo1": "Sie müssen in diesem Teil der Story ein Bild oder Video verwenden.",
             "imageAndVideo2": "Stellen Sie einen Link zu einem Bild (.jpg, .png, .gif) oder Video auf ${YouTube} oder ${Vimeo} bereit, oder wählen Sie ein Bild von ${ArcGIS}, ${Flickr}, ${Google+} oder ${Unsplash} aus.",
-            "badFormat": "Der Link zum hinzuzufügenden ${media-type} ist falsch formatiert.",
-            "inaccessible": "Das ${media-type}-Element, das Sie hinzufügen möchten, fehlt oder es kann nicht darauf zugegriffen werden.",
+            "badFormat": "Der Link zur hinzuzufügenden Datei ist falsch formatiert.",
+            "inaccessible": "Die Datei, die Sie hinzufügen möchten, fehlt oder es kann nicht darauf zugegriffen werden.",
             "tryAgain": "Überprüfen Sie die Adresse, und versuchen Sie es erneut.",
             "mediaTypes": {
               "VIDEO": "Video",
@@ -125,6 +124,8 @@ define({
           "searchLocation": {
             "thisStory": "Diese Story",
             "agol": "ArcGIS Online",
+            "portalArcGIS": "Portal for ArcGIS",
+            "portal": "Portal",
             "myOrg": "${orgname}-Organisation",
             "myContent": "Eigene Inhalte"
           },

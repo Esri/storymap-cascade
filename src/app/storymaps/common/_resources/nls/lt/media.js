@@ -1,4 +1,3 @@
-// nls expects double quotes
 /*eslint quotes:[2, 'double'] */
 define({
   "mediaPicker": {
@@ -65,15 +64,15 @@ define({
             "embedProtocolWarning3": "Kaip alternatyvą įtraukite savo pasakojime nuorodą, kad atidarytumėte puslapį naujos naršyklės skirtuke. ${linkText}",
             "linkText": "Sužinokite daugiau."
           },
-          "placeholder": "${https://}... or ${http://}... or ${<iframe>}",
+          "placeholder": "${https://}... arba ${http://}... arba ${<iframe>}",
           "uploadErrors": {
             "generic": "Įvedant adresą įvyko klaida. Bandykite dar kartą.",
             "imageOnly1": "Šioje pasakojimo dalyje turite naudoti atvaizdą.",
             "imageOnly2": "Pateikite nuorodą į atvaizdą (.jpg, .png, .gif) arba pasirinkite atvaizdą iš ${ArcGIS}, ${Flickr}, ${Google+} arba ${Unsplash}.",
             "imageAndVideo1": "Šioje pasakojimo dalyje turite naudoti atvaizdą arba vaizdo įrašą.",
             "imageAndVideo2": "Pateikite nuorodą į atvaizdą (.jpg, .png, .gif) arba vaizdo įrašą ${YouTube} ar ${Vimeo}, arba pasirinkite atvaizdą iš ${ArcGIS}, ${Flickr}, ${Google+} ar ${Unsplash}.",
-            "badFormat": "Nuoroda į ${media-type}, kurią bandote įtraukti, yra netinkamai suformatuota.",
-            "inaccessible": "${Media-type}, kurį bandote pridėti, neegzistuoja arba yra nepasiekiamas.",
+            "badFormat": "Nuoroda į failą, kurį bandote pridėti, suformatuota netinkamai.",
+            "inaccessible": "Failo, kurį bandote pridėti, trūksta arba jis nepasiekiamas.",
             "tryAgain": "Patikrinkite adresą ir bandykite iš naujo.",
             "mediaTypes": {
               "VIDEO": "vaizdo įrašas",
@@ -125,6 +124,8 @@ define({
           "searchLocation": {
             "thisStory": "Šis pasakojimas",
             "agol": "ArcGIS Online",
+            "portalArcGIS": "Portal for ArcGIS",
+            "portal": "Portalas",
             "myOrg": "${orgname} organizacija",
             "myContent": "Mano turinys"
           },

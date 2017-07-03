@@ -7,8 +7,8 @@ define({
     "blockAdd": {
       "text": "Văn bản",
       "media": "Phương tiện truyền thông",
-      "title": "Phần Tiêu đề",
-      "immersive": "Phần Tạo không gian"
+      "title": "Tiêu đề",
+      "immersive": "Phong phú"
     },
     "link": {
       "invite": "Dán hoặc gõ đường liên kết..."

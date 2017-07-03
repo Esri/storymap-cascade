@@ -7,8 +7,8 @@ define({
     "blockAdd": {
       "text": "텍스트",
       "media": "미디어",
-      "title": "제목 섹션",
-      "immersive": "몰입형 섹션"
+      "title": "제목",
+      "immersive": "몰입형"
     },
     "link": {
       "invite": "링크를 붙여넣거나 입력..."

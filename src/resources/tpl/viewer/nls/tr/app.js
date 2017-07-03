@@ -35,12 +35,15 @@ define({
       "builderSupport1": "Story Map Cascade oluşturucu yalnızca ${CHROME} ve ${SAFARI} tarayıcıları tarafından desteklenir. Ancak, oluşturucu ile hazırladığınız Cascade hikayeleri bu tarayıcılar, Internet Explorer 11+ ve Firefox tarafından görüntülenebilir.",
       "builderSupport2": "Story Map Cascade oluşturucu iPad cihazında desteklenmez. Oluşturduğunuz ve paylaştığınız Cascade hikayeleri iPad üzerinde çalışır.",
       "builderSupport3": "Cascade hikayeleri Chrome, Safari, Firefox ve Internet Explorer 11+ tarayıcılarında görüntülenebilir, ancak Story Map Cascade oluşturucu yalnızca ${CHROME} ve ${SAFARI} tarafından desteklenir.",
-      "builderSupport4": "Cascade hikayeleri Chrome, Safari, Firefox ve Internet Explorer 11+ tarayıcılarında görüntülenebilir, ancak Story Map Cascade oluşturucu yalnızca ${CHROME} ve ${SAFARI} tarafından desteklenir.<br><br>Cascade oluşturucunun farklı bir tarayıcıyı desteklemesi gerekiyorsa, ${ESRI-SUPPORT} ile iletişim kurun veya tıklayarak oy verin: ${FIREFOX-BUILDER} | ${IE-BUILDER}.",
+      "builderSupport4": "Cascade hikayeleri her modern tarayıcıda görüntülenebilir, ancak Story Map Cascade oluşturucu yalnızca ${CHROME} ve ${SAFARI} tarafından desteklenir.<br><br>Cascade oluşturucunun farklı bir tarayıcıyı desteklemesi gerekiyorsa, ${ESRI-SUPPORT} veya ${BROWSER-SUPPORT-VOTE} ile iletişim kurun.",
       "sorry": "Dikkat:"
     },
     "mobileWarning": {
       "message1": "Bu hikayenin mobil sürümünü okudunuz. Daha zengin medya öğeleri içeren tam sürüm için hikayeyi bir masaüstü bilgisayarda görüntüleyin.",
       "email": "Hikaye bağlantısını e-posta ile gönder"
+    },
+    "cover": {
+      "iosEmbedLink": "Hikayenin tamamını okumak için dokunun"
     },
     "media": {
       "captionPlaceholder": "Resim yazınız buraya gelir...",
@@ -70,6 +73,10 @@ define({
       "autoplayExplain1": "Otomatik oynatma modu düzenli aralıklarla hikayenizde ilerler. Bu özellik, bir kiosk ya da genel ekran için idealdir, ancak bunun bazı durumlarda hikayenin okunmasını güçleştirebileceğini unutmayın. Bu özellik küçük ekranlarda desteklenmez.",
       "autoplayExplain2": "Bu etkin durumdayken hikayeyi oynatacak/duraklatacak ve gezinme hızını ayarlayacak kontroller vardır.",
       "linksupdated": "Bağlantılar güncellendi!"
+    },
+    "theme": {
+      "lightLabel": "Açık",
+      "darkLabel": "Koyu"
     }
   }
 });

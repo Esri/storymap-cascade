@@ -7,6 +7,7 @@ export default class AppParser {
       scenes: NormalizeHelper.createObject(),
       images: NormalizeHelper.createObject(),
       videos: NormalizeHelper.createObject(),
+      audio: NormalizeHelper.createObject(),
       webpages: NormalizeHelper.createObject()
     };
 
@@ -91,21 +92,76 @@ export default class AppParser {
   }
 
   static _parseMediaItem(item, media, sectionID) {
+    if (item.alternate && item.alternate.image) {
+      this._updateMediaItem({
+        instanceID: item.alternate.image.instanceID,
+        id: item.alternate.image.url,
+        media: media.images,
+        sectionID: sectionID,
+        mediaType: 'image'
+      });
+    }
+
     switch (item.type) {
       case 'image':
-        this._updateMediaItem(item.image.url, media.images, sectionID);
+        this._updateMediaItem({
+          instanceID: item.image.instanceID,
+          id: item.image.url,
+          media: media.images,
+          sectionID: sectionID,
+          alternateMedia: item.alternate && item.alternate.image ? item.alternate.image.instanceID : null,
+          mediaType: 'image'
+        });
+        break;
+      case 'audio':
+        this._updateMediaItem({
+          instanceID: item.audio.instanceID,
+          id: item.audio.url,
+          media: media.audio,
+          sectionID: sectionID,
+          alternateMedia: item.alternate && item.alternate.image ? item.alternate.image.instanceID : null,
+          mediaType: 'audio'
+        });
         break;
       case 'webmap':
-        this._updateMediaItem(item.webmap.id, media.maps, sectionID);
+        this._updateMediaItem({
+          instanceID: item.webmap.instanceID,
+          id: item.webmap.id,
+          media: media.maps,
+          sectionID: sectionID,
+          alternateMedia: item.alternate && item.alternate.image ? item.alternate.image.instanceID : null,
+          mediaType: 'map'
+        });
         break;
       case 'webscene':
-        this._updateMediaItem(item.webscene.id, media.scenes, sectionID);
+        this._updateMediaItem({
+          instanceID: item.webscene.instanceID,
+          id: item.webscene.id,
+          media: media.scenes,
+          sectionID: sectionID,
+          alternateMedia: item.alternate && item.alternate.image ? item.alternate.image.instanceID : null,
+          mediaType: 'scene'
+        });
         break;
       case 'video':
-        this._updateMediaItem(item.video.url, media.videos, sectionID);
+        this._updateMediaItem({
+          instanceID: item.video.instanceID,
+          id: item.video.url,
+          media: media.videos,
+          sectionID: sectionID,
+          alternateMedia: item.alternate && item.alternate.image ? item.alternate.image.instanceID : null,
+          mediaType: 'video'
+        });
         break;
       case 'webpage':
-        this._updateMediaItem(item.webpage.url, media.webpages, sectionID);
+        this._updateMediaItem({
+          instanceID: item.webpage.instanceID,
+          id: item.webpage.url,
+          media: media.webpages,
+          sectionID: sectionID,
+          alternateMedia: item.alternate && item.alternate.image ? item.alternate.image.instanceID : null,
+          mediaType: 'webpage'
+        });
         break;
       default:
         break;
@@ -129,38 +185,34 @@ export default class AppParser {
     if (gallery && gallery['image-gallery'] && gallery['image-gallery'].images) {
       let images = gallery['image-gallery'].images;
       for (let item of images) {
-        this._updateMediaItem(item.url, media.images, sectionID);
+        this._updateMediaItem({
+          instanceID: item.instanceID,
+          id: item.url,
+          media: media.images,
+          sectionID: sectionID,
+          mediaType: 'image'
+        });
       }
     }
   }
 
   /*
-    if the item doesn't exist, create a new entry, otherwise just add the section onto the existing stuff.
+    Create an entry for the media item. we use the instanceId to store it because you can have multiple instances of the same media,
+    so it's not reliable to just use the image's url or map's id. This way you have one instance per media.
   */
-  static _updateMediaItem(id, media, sectionID) {
-    // see if the item exists.
-    let item = media.byId[id];
+  static _updateMediaItem(params) {
+    let newItem = {
+      instanceID: params.instanceID,
+      id: params.id,
+      section: params.sectionID,
+      mediaType: params.mediaType
+    };
 
-		// if it doesn't yet exist, populate it now.
-    if(!item) {
-      let newItem = {
-        id: id,
-        sections: [sectionID]
-      };
-      // stick it in the data -- the id in the allItems array, and the actual object in byId.
-      media.allItems.push(id);
-      media.byId[id] = newItem;
+    if (params.alternateMedia) {
+      newItem.alternateMedia = params.alternateMedia;
     }
-
-		// if it does exist, add a section to the existing item.
-    else {
-      let sectionIndex = -1;
-
-      sectionIndex = item.sections.indexOf(sectionID);
-
-      if(sectionIndex === -1) {
-        item.sections.push(sectionID);
-      }
-    }
+    // stick it in the data -- the id in the allItems array, and the actual object in byId.
+    params.media.allItems.push(params.instanceID);
+    params.media.byId[params.instanceID] = newItem;
   }
 }

@@ -7,8 +7,8 @@ define({
     "blockAdd": {
       "text": "Tekst",
       "media": "Medier",
-      "title": "Titelafsnit",
-      "immersive": "Fordybelsesafsnit"
+      "title": "Titel",
+      "immersive": "Fordybelse"
     },
     "link": {
       "invite": "Indsæt eller indtast et link..."

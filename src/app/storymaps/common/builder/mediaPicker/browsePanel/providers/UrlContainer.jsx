@@ -139,9 +139,12 @@ class UrlContainer extends React.Component {
       const appId = app.data.appItem.item.id;
       switch (nextProps.currentMedia.type) {
         case 'webpage':
-          Object.assign(newState, {
-            textInputValue: nextProps.currentMedia.webpage.url.replace(/^\/\//, '')
-          });
+          var src = nextProps.currentMedia.webpage.url.replace(/^\/\//, '');
+          var textInputValue = src;
+          if (nextProps.currentMedia.webpage.height) {
+            textInputValue = `<iframe src="${src}" height="${nextProps.currentMedia.webpage.height}"></iframe>`;
+          }
+          Object.assign(newState, {textInputValue});
           break;
         case 'image': {
           // TODO: not sure this is sufficient to catch all images that don't come
@@ -161,6 +164,17 @@ class UrlContainer extends React.Component {
           }
           else {
             console.warn('video fell through because no url');
+          }
+          break;
+        }
+        case 'audio': {
+          if (media.url) {
+            Object.assign(newState, {
+              textInputValue: media.url.replace(/^\/\//, '')
+            });
+          }
+          else {
+            console.warn('audio fell through because no url');
           }
           break;
         }
@@ -220,9 +234,12 @@ class UrlContainer extends React.Component {
       return;
     }
 
+    var iframeHeight;
+
     // if the user has entered an iframe, we just want the
     // src tag of the iframe, since we'll be styling it ourselves
     if (URLConnector.checkForIframe(addr)) {
+      iframeHeight = URLConnector.getIframeHeight(addr);
       addr = URLConnector.getIframeSrc(addr);
     }
 
@@ -240,6 +257,10 @@ class UrlContainer extends React.Component {
       promiseTypeMap.push(constants.contentType.VIDEO);
       promiseTypeMap.push(constants.contentType.VIDEO);
     }
+    if (this.checkSingleMediaType('AUDIO')) {
+      promiseArr.push(URLConnector.checkForAudio(addr));
+      promiseTypeMap.push(constants.contentType.AUDIO);
+    }
 
     Promise.all(promiseArr).then((results) => {
       var found = results.some((result, i) => {
@@ -252,28 +273,30 @@ class UrlContainer extends React.Component {
       if (found) {
         return;
       }
-      if (this.checkSingleMediaType('WEBPAGE')) {
+      // TODO: better way of excluding audio
+      if (this.checkSingleMediaType('WEBPAGE') && !(addr.match(/\.(mp3|m4a|wav)$/i))) {
         if (addr.indexOf('http:\/\/') !== 0 && addr.indexOf('https:\/\/') !== 0 && addr.indexOf('\/\/') !== 0) {
           addr = '//' + addr;
         }
-        this.publishSelection({type: 'webpage', url: addr});
+        this.publishSelection({type: 'webpage', url: addr, height: iframeHeight});
+        return;
+      }
+
+      // we only get here if all the previous checks fall through...
+      var errorTextArr = [];
+      if (this.state.contentTypeDescriptor === 'imageOnly') {
+        errorTextArr.push(Helper.unescapeBrands(text.uploadErrors.imageOnly1), Helper.unescapeBrands(text.uploadErrors.imageOnly2));
+      }
+      else if (this.state.contentTypeDescriptor === 'imageAndVideo') {
+        errorTextArr.push(Helper.unescapeBrands(text.uploadErrors.imageAndVideo1), Helper.unescapeBrands(text.uploadErrors.imageAndVideo2));
       }
       else {
-        var errorTextArr = [];
-        if (this.state.contentTypeDescriptor === 'imageOnly') {
-          errorTextArr.push(Helper.unescapeBrands(text.uploadErrors.imageOnly1), Helper.unescapeBrands(text.uploadErrors.imageOnly2));
-        }
-        else if (this.state.contentTypeDescriptor === 'imageAndVideo') {
-          errorTextArr.push(Helper.unescapeBrands(text.uploadErrors.imageAndVideo1), Helper.unescapeBrands(text.uploadErrors.imageAndVideo2));
-        }
-        else {
-          errorTextArr.push(Helper.unescapeBrands(text.uploadErrors.generic));
-        }
-        this.setState({
-          hasError: true,
-          errorText: errorTextArr
-        });
+        errorTextArr.push(Helper.unescapeBrands(text.uploadErrors.generic));
       }
+      this.setState({
+        hasError: true,
+        errorText: errorTextArr
+      });
     }).catch((error) => {
       this.setState({
         hasError: true,
@@ -337,6 +360,11 @@ class UrlContainer extends React.Component {
     if (this.checkSingleMediaType('IMAGE')) {
       mediaIcons.push(
         <span className="fa fa-picture-o" key="media-picture-o" />
+      );
+    }
+    if (this.checkSingleMediaType('AUDIO')) {
+      mediaIcons.push(
+        <span className="fa fa-volume-up" key="media-volume-up" />
       );
     }
     if (this.checkSingleMediaType('VIDEO')) {

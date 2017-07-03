@@ -1,14 +1,15 @@
 /* eslint quotes: ["error", "double"] */
-/* strings files need to be double quotes */
 define({
   "commonCore": {
     "builderPanel": {
+      "builderNamePrefix": "",
+      "builderNameSuffix": "建立器",
       "buttonSaving": "儲存",
       "buttonSaved": "已儲存",
       "buttonError": "儲存失敗",
       "buttonShare": "分享",
       "buttonSettings": "設定",
-      "buttonHelp": "幫助",
+      "buttonHelp": "在 GeoNet 上取得說明或提交回饋意見",
       "buttonPreview": "檢視故事",
       "buttonHealth": "健康報告",
       "manageStories": "管理我的故事",
@@ -31,7 +32,13 @@ define({
     "share": {
       "btnPrivate": "私有",
       "btnOrg": "組織",
-      "btnPublic": "公共"
+      "btnPublic": "公共",
+      "btnEveryone": "任何人"
+    },
+    "portal": {
+      "disconnected": "此入口網站未連線到網際網路",
+      "portal": "入口網站",
+      "portalArcGIS": "Portal for ArcGIS"
     }
   }
 });

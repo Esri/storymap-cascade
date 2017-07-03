@@ -35,12 +35,15 @@ define({
       "builderSupport1": "El Builder de Story Map Cascade solo es compatible con ${CHROME} y ${SAFARI}. Sin embargo, las historias de Cascade que se crean con el Builder se pueden visualizar en esos navegadores, en Internet Explorer 11+ y en Firefox.",
       "builderSupport2": "El Builder de Story Map Cascade no es compatible con un iPad. Las historias de Cascade que cree y comparta sí funcionarán en un iPad.",
       "builderSupport3": "Las historias de Cascade se pueden visualizar en Chrome, Safari, Firefox e Internet Explorer 11+, pero el Builder de Story Map Cascade solo es compatible con ${CHROME} y ${SAFARI}.",
-      "builderSupport4": "Las historias de Cascade se pueden visualizar en Chrome, Safari, Firefox e Internet Explorer 11+, pero el Builder de Story Map Cascade solo es compatible con ${CHROME} y ${SAFARI}.<br><br>Si necesita que el Builder de Cascade sea compatible con un navegador diferente, póngase en contacto con ${ESRI-SUPPORT} o haga clic para votar: ${FIREFOX-BUILDER} | ${IE-BUILDER}.",
+      "builderSupport4": "Las historias de Cascade se pueden visualizar en cualquier navegador web moderno, pero el builder de Story Map Cascade solo es compatible con ${CHROME} y ${SAFARI}.<br><br>Si necesita que el builder de Cascade sea compatible con un navegador diferente, póngase en contacto con ${ESRI-SUPPORT} o con ${BROWSER-SUPPORT-VOTE}.",
       "sorry": "Atención:"
     },
     "mobileWarning": {
       "message1": "Ha leído la versión para móvil de esta historia. Para ver la versión completa, con más elementos multimedia, ábrala en un equipo de sobremesa.",
       "email": "Enviar por correo electrónico un vínculo a esta historia"
+    },
+    "cover": {
+      "iosEmbedLink": "Tocar para leer la historia completa"
     },
     "media": {
       "captionPlaceholder": "El título debe aparecer aquí...",
@@ -70,6 +73,10 @@ define({
       "autoplayExplain1": "El modo de reproducción automática avanzará por la historia a intervalos regulares. Esto resulta idóneo para un quiosco o un monitor público, pero en otras situaciones puede dificultar la lectura de la historia. Esta característica no es compatible con pantallas pequeñas.",
       "autoplayExplain2": "Cuando este modo está activo, aparecen controles para reproducir y poner en pausa la historia, así como para ajustar la velocidad de navegación.",
       "linksupdated": "Los vínculos se han actualizado."
+    },
+    "theme": {
+      "lightLabel": "Claro",
+      "darkLabel": "Oscuro"
     }
   }
 });

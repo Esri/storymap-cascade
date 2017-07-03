@@ -13,13 +13,14 @@ define({
     "headerConfig": {
       "toggles": {
         "bookmarks": "Bokmärken",
-        "logoSharing": "Logotyp och delning"
+        "logoSharing": "Logotyp och delning",
+        "theme": "Utseende"
       },
       "bookmarks": {
         "title": "Sektion",
         "bookmark": "Bokmärke",
         "intro": "Bokmärken är länkar till berättelseavsnitt som visas i rubriken. Om du skapar korta och koncisa bokmärken för de viktigaste delarna av din berättelse, hjälper du läsarna att orientera sig.",
-        "sequentialDefault": "Sekventiellt avsnitt (ingen text hittades)",
+        "sequentialDefault": "Berättelseavsnitt (ingen text hittades)",
         "immersiveDefault": "Fördjupande avsnitt (ingen text hittades)",
         "titleDefault": "Titelavsnitt (ingen text hittades)",
         "coverDefault": "Omslagsavsnitt (ingen text hittades)",
@@ -38,6 +39,15 @@ define({
         "taglineLinkDisabledTooltip": "Ange ett motto så att länken aktiveras",
         "link": "Länk till motto",
         "enableSocialSharing": "Visa delningsknapp"
+      },
+      "appearance": {
+        "themeLabel": "Tema",
+        "fontLabel": "Teckensnitt",
+        "previewLabel": "Förhandsgranska",
+        "fontsTitleLabel": "Rubriker",
+        "fontsBodyLabel": "Huvudtext",
+        "loremTitle": "Lorem ipsum",
+        "loremBody": "Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor. Mauris consequat orci nec magna facilisis bibendum at eget libero."
       }
     },
     "builderPanel": {
@@ -47,7 +57,7 @@ define({
       "betaNote": "Berätta vad du tycker om ${APP_NAME} eller om något inte fungerar som förväntat.",
       "notSharedNote": "Din berättelse är inte delad och bara du kan se den",
       "organizationWarning": "Om du vill se till att denna berättelse kan ses av andra måste du också dela dess scener, scenlager och inbäddade appar med din organisation. Kartor och kartlager delas automatiskt.",
-      "publicWarning": "Om du vill se till att denna berättelse kan ses av andra måste du också dela dess scener, scenlager och inbäddade appar offentligt. Kartor och kartlager delas automatiskt.",
+      "publicWarning": "Om du vill att denna berättelse ska kunna ses av andra måste du också dela dess scener, scenlager och inbäddade appar med alla. Kartor och kartlager delas automatiskt.",
       "addTitleNote": "Lägg till en titel på omslaget som ska sparas",
       "saveError": "Det uppstod ett fel när din berättelse skulle sparas.",
       "duplicate": "Duplicera",
@@ -77,6 +87,7 @@ define({
         "manage": "Hantera",
         "size": "Storlek",
         "background": "Bakgrund",
+        "mobile": "Mobil",
         "issues": "Problem",
         "fixIssues": "Åtgärda problem"
       },
@@ -112,15 +123,23 @@ define({
       "size": {
         "small": "Liten",
         "medium": "Medium",
-        "large": "Stor"
+        "large": "Stor",
+        "noCrop": "Beskär inte höga bilder",
+        "noCropTallTooltip": "Genom att låta bli att beskära en hög bild får man en dramatisk effekt för läsarna då man måste bläddra för att se hela bilden."
       },
       "background": {
-        "noCrop": "Beskär inte bild",
+        "noCrop": "Beskär inte",
         "mostImportantPart": "Välj den viktigaste punkten",
-        "cropExplanationImmersive": "Välj en punkt i bilden för att välja hur din bild ska beskäras i olika skärmstorlekar. Den punkt som du väljer kommer alltid att visas. Markera rutan nedan om ditt mediematerial måste vara fullt synligt.",
+        "cropExplanationImmersive": "Välj en punkt i bilden för att välja hur din bild ska beskäras i olika skärmstorlekar. Den punkt som du väljer kommer alltid att visas. Markera Beskär inte om din bild måste vara fullt synlig.",
         "cropExplanation": "Välj en punkt i bilden för att välja hur din bild ska beskäras i olika skärmstorlekar. Den punkt som du väljer kommer alltid att visas.",
         "color": "Färg",
         "previews": "Förhandsgranskningar"
+      },
+      "altMedia": {
+        "alternativeMedia": "Alternativt mediematerial",
+        "explanation": "Vissa medier stöds inte eller fungerar inte så bra på mobila enheter. Använd denna panel för att välja ett alternativt, mer mobilvänligt objekt som visas i stället för detta mediematerial när din berättelse visas på en telefon eller surfplatta.",
+        "changeAltImage": "Ändra bild",
+        "uploadAltImage": "Lägg till bild"
       }
     },
     "imageGallery": {
@@ -174,9 +193,9 @@ define({
       "undo": "Ångra"
     },
     "sections": {
-      "sequence": "Berättande avsnitt",
-      "immersive": "Fördjupande avsnitt",
-      "title": "Titelavsnitt"
+      "sequence": "Berättelse",
+      "immersive": "Fördjupning",
+      "title": "Titel"
     },
     "mediaErrors": {
       "mediaTypes": {
@@ -189,14 +208,22 @@ define({
       },
       "placeholders": {
         "generic": "Det här innehållet är inte tillgängligt.",
-        "deleted": "Den här ${media-type} har tagits bort.",
-        "inaccessible": "Den här ${media-type} är inte tillgänglig.",
-        "unauthorized": "Du har inte behörighet att visa den här ${media-type}.",
-        "unshared": "Den här ${media-type} delas inte som din berättelse.",
-        "othersUnshared": "Den här ${media-type} delas inte som din berättelse.",
-        "subscriptionContent": "Den här ${media-type} innehåller ett abonnentlager.",
-        "premiumContent": "Den här ${media-type} innehåller ett premiumlager.",
-        "secureService": "Den här ${media-type} innehåller ett säkert lager."
+        "deleted": "Det här objektet har tagits bort.",
+        "inaccessible": "Det här innehållet är inte tillgängligt.",
+        "unauthorized": "Du är inte behörig att visa det här innehållet.",
+        "unshared": "Det här objektet delas inte som din berättelse.",
+        "othersUnshared": "Det här objektet delas inte som din berättelse.",
+        "subscriptionContent": "Den här kartan innehåller ett abonnentlager.",
+        "premiumContent": "Den här kartan innehåller ett premiumlager.",
+        "secureService": "Den här kartan innehåller ett säkert lager."
+      },
+      "contentIssues": {
+        "noAltImage": "Mediematerialet stöds inte på mobila enheter",
+        "altImageBroken": "Den alternativa bild som definierats för detta medieobjekt är inte tillgänglig"
+      },
+      "contentWarnings": {
+        "noAltImage": "Denna typ av mediematerial stöds inte på mobila enheter. Ange en alternativ bild som ska visas när berättelsen visas på mobila enheter.",
+        "noAltImageAlt": "Denna typ av mediematerial stöds inte på mobila enheter. Ange en alternativ bild på mobilfliken som ska visas när berättelsen visas på mobila enheter."
       },
       "mapIssues": {
         "fixButton": "Åtgärda problem",

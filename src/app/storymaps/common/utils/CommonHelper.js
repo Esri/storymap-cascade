@@ -1,11 +1,13 @@
 define([
   'esri/urlUtils',
   'dojo/cookie',
+  'dojo/_base/Color',
   './SocialSharing'
 ],
 function(
   urlUtils,
   cookie,
+  Color,
   SocialSharing
 ) {
   return {
@@ -177,6 +179,17 @@ function(
         return url;
       }
       return url.replace(specificPortalUrl, genericPortalUrl);
+    },
+
+    getLightOrDarkText: function(bgColor) {
+      var yiq = this.getYIQ(bgColor);
+      return (yiq >= 128) ? 'dark' : 'light';
+    },
+
+    getYIQ: function(thisColor) {
+      var djColor = new Color(thisColor);
+      var rgbArr = djColor.toRgb();
+      return (rgbArr[0] * 299 + rgbArr[1] * 587 + rgbArr[2] * 114) / 1000;
     },
 
     throttle: function(fn, threshhold, scope) {

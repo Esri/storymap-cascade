@@ -1,4 +1,3 @@
-// nls expects double quotes
 /*eslint quotes:[2, 'double'] */
 define({
   "mediaPicker": {
@@ -65,15 +64,15 @@ define({
             "embedProtocolWarning3": "Kao alternativu, dodajte link u svom narativu da biste otvorili stranicu u novoj kartici pregledača. ${linkText}",
             "linkText": "Saznajte više."
           },
-          "placeholder": "${https://}... or ${http://}... or ${<iframe>}",
+          "placeholder": "${https://}... ili ${http://}... ili ${<iframe>}",
           "uploadErrors": {
             "generic": "Nešto nije u redu sa unetom adresom. Pokušajte ponovo.",
             "imageOnly1": "Morate da koristite snimak u ovom delu priče.",
             "imageOnly2": "Unesite link do snimka (.jpg, .png, .gif) ili odaberite snimak sa ${ArcGIS}, ${Flickr}, ${Google+} ili ${Unsplash}.",
             "imageAndVideo1": "Morate da koristite snimak ili video zapis u ovom delu priče.",
             "imageAndVideo2": "Unesite link do snimka (.jpg, .png, .gif) ili video zapisa na ${YouTube} ili ${Vimeo}, ili odaberite snimak sa ${ArcGIS}, ${Flickr}, ${Google+} ili ${Unsplash}.",
-            "badFormat": "Link do ${media-type} koji pokušavate da dodate je nepravilno formatiran.",
-            "inaccessible": "${media-type} koji pokušavate da dodate nedostaje ili je nepristupačan.",
+            "badFormat": "Link do datoteke koju pokušavate da dodate je nepravilno formatiran.",
+            "inaccessible": "Datoteka koju pokušavate da dodate nedostaje ili je nepristupačna.",
             "tryAgain": "Proverite adresu i pokušajte ponovo.",
             "mediaTypes": {
               "VIDEO": "kolekciju",
@@ -125,6 +124,8 @@ define({
           "searchLocation": {
             "thisStory": "Ova priča",
             "agol": "ArcGIS Online",
+            "portalArcGIS": "Portal for ArcGIS",
+            "portal": "Portal",
             "myOrg": "Organizacija ${orgname}",
             "myContent": "Moj sadržaj"
           },

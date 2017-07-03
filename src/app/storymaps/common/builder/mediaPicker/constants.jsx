@@ -9,7 +9,7 @@ export default {
   contentType: {
     IMAGE: 'image',
     VIDEO: 'video',
-    // AUDIO: 'audio',
+    AUDIO: 'audio',
     WEBPAGE: 'webpage',
     WEBMAP: 'webmap',
     WEBSCENE: 'webscene'

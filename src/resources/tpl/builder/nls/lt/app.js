@@ -13,13 +13,14 @@ define({
     "headerConfig": {
       "toggles": {
         "bookmarks": "Žymės",
-        "logoSharing": "Logotipas ir bendrinimas"
+        "logoSharing": "Logotipas ir bendrinimas",
+        "theme": "Išvaizda"
       },
       "bookmarks": {
         "title": "Skiltis",
         "bookmark": "Žymos",
         "intro": "Žymos – tai nuorodos į pasakojimų dalis, rodomas antraštėje. Sukūrus pagrindinių pasakojimo dalių žymas, skaitytojams bus lengviau orientuotis.",
-        "sequentialDefault": "Slenkanti skiltis (tekstas nerastas)",
+        "sequentialDefault": "Pasakojimo skiltis (tekstas nerastas)",
         "immersiveDefault": "Fiksuota skiltis (tekstas nerastas)",
         "titleDefault": "Pavadinimas (tekstas nerastas)",
         "coverDefault": "Viršelis (tekstas nerastas)",
@@ -38,6 +39,15 @@ define({
         "taglineLinkDisabledTooltip": "Norėdami suaktyvinti nuorodą, įveskite paantraštę",
         "link": "Paantraštės nuoroda",
         "enableSocialSharing": "Rodyti bendrinimo mygtuką"
+      },
+      "appearance": {
+        "themeLabel": "Stilius",
+        "fontLabel": "Šriftai",
+        "previewLabel": "Peržiūra",
+        "fontsTitleLabel": "Antraštės",
+        "fontsBodyLabel": "Pagrindinė dalis",
+        "loremTitle": "Lorem Ipsum",
+        "loremBody": "Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor. Mauris consequat orci nec magna facilisis bibendum at eget libero."
       }
     },
     "builderPanel": {
@@ -47,7 +57,7 @@ define({
       "betaNote": "Praneškite mums, ką manote apie ${APP_NAME}, arba jei kas nors neveikia taip, kaip turėtų.",
       "notSharedNote": "Jūsų pasakojimas nebendrinamas, jį galite matyti tik jūs",
       "organizationWarning": "Kad šį pasakojimą galėtų matyti kiti, turite viešai bendrinti jo scenas, scenų sluoksnius ir įkeltas aplikacijas su savo organizacija. Žemėlapiai ir žemėlapių sluoksniai bendrinami automatiškai.",
-      "publicWarning": "Kad šį pasakojimą galėtų matyti kiti, turite viešai bendrinti ir jo scenas, scenų sluoksnius ir įkeltas aplikacijas. Žemėlapiai ir žemėlapių sluoksniai bendrinami automatiškai.",
+      "publicWarning": "Norėdami užtikrinti, kad šį pasakojimą galės peržiūrėti kiti vartotojai, turite su visais bendrinti ir jo scenas, scenų sluoksnius bei įterptas aplikacijas. Žemėlapiai ir žemėlapių sluoksniai bendrinami automatiškai.",
       "addTitleNote": "Norėdami įrašyti, viršelyje nurodykite pavadinimą",
       "saveError": "Įrašant jūsų pasakojimą, įvyko klaida.",
       "duplicate": "Dubliuoti",
@@ -77,6 +87,7 @@ define({
         "manage": "Valdyti",
         "size": "Dydis",
         "background": "Fonas",
+        "mobile": "Mobili",
         "issues": "Klaidos",
         "fixIssues": "Taisyti klaidas"
       },
@@ -112,15 +123,23 @@ define({
       "size": {
         "small": "Mažas",
         "medium": "Vidutiniškas",
-        "large": "Didelis"
+        "large": "Didelis",
+        "noCrop": "Neapkarpyti aukštų atvaizdų",
+        "noCropTallTooltip": "Neapkarpyti aukšti atvaizdai daro nemalonų įspūdį skaitytojams, kurie turi juos slinkti, kad peržiūrėtų visą puslapį."
       },
       "background": {
-        "noCrop": "Neapkarpyti atvaizdo",
+        "noCrop": "Neapkarpyti",
         "mostImportantPart": "Pasirinkite vietą",
-        "cropExplanationImmersive": "Pasirinkite vietą atvaizde, pagal kurią jis bus apkarpomas skirtingo dydžio ekranuose. Jūsų pasirinkta vieta bus visada matoma. Jei reikia, kad būtų matoma visa medija, pažymėkite toliau pateiktą langelį.",
+        "cropExplanationImmersive": "Pasirinkite vietą atvaizde, pagal kurią jis bus apkarpomas skirtingo dydžio ekranuose. Jūsų pasirinkta vieta bus visada matoma. Jei reikia, kad būtų matomas visas atvaizdas, pažymėkite Neapkarpyti.",
         "cropExplanation": "Pasirinkite vietą atvaizde, pagal kurią jis bus apkarpomas skirtingo dydžio ekranuose. Jūsų pasirinkta vieta bus visada matoma.",
         "color": "Spalva",
         "previews": "Peržiūros"
+      },
+      "altMedia": {
+        "alternativeMedia": "Alternatyvi medija",
+        "explanation": "Tam tikra medija nepalaikoma arba gali tinkamai neveikti mobiliuosiuose įrenginiuose. Pasirinkite alternatyvų labiau pritaikytą elementą, kurį galima rodyti vietoje šios medijos, kai pasakojimas peržiūrimas telefone arba planšetiniame kompiuteryje.",
+        "changeAltImage": "Keisti atvaizdą",
+        "uploadAltImage": "Pridėti atvaizdą"
       }
     },
     "imageGallery": {
@@ -148,7 +167,7 @@ define({
       },
       "panelConfig": {
         "position": "Padėtis",
-        "theme": "Tema",
+        "theme": "Stilius",
         "size": "Dydis",
         "background": "Fonas",
         "layout": "Slinkimas"
@@ -174,8 +193,8 @@ define({
       "undo": "Atšaukti"
     },
     "sections": {
-      "sequence": "Pasakojimo skiltis",
-      "immersive": "Fiksuota skiltis",
+      "sequence": "Pasakojimas",
+      "immersive": "Fiksuotas",
       "title": "Pavadinimas"
     },
     "mediaErrors": {
@@ -189,14 +208,22 @@ define({
       },
       "placeholders": {
         "generic": "Šis turinys nepasiekiamas",
-        "deleted": "Šis ${media-type} panaikintas.",
-        "inaccessible": "Šis ${media-type} nepasiekiamas.",
-        "unauthorized": "Jūs neturite teisių peržiūrėti ${media-type}.",
-        "unshared": "${media-type} nėra bendrinamas taip pat, kaip jūsų pasakojimas.",
-        "othersUnshared": "${media-type} nėra bendrinamas taip pat, kaip jūsų pasakojimas.",
-        "subscriptionContent": "${media-type} yra prenumeratoriaus sluoksnis.",
-        "premiumContent": "${media-type} yra premium sluoksnis.",
-        "secureService": "${media-type} yra saugus sluoksnis."
+        "deleted": "Šis elementas buvo panaikintas.",
+        "inaccessible": "Šis turinys nepasiekiamas",
+        "unauthorized": "Jūs neturite teisių peržiūrėti šį turinį.",
+        "unshared": "Šis elementas nėra bendrinamas taip pat, kaip jūsų pasakojimas.",
+        "othersUnshared": "Šis elementas nėra bendrinamas taip pat, kaip jūsų pasakojimas.",
+        "subscriptionContent": "Šiame žemėlapyje yra prenumeratoriaus sluoksnis.",
+        "premiumContent": "Šiame žemėlapyje yra „Premium“ sluoksnis.",
+        "secureService": "Šiame žemėlapyje yra saugaus sluoksnis."
+      },
+      "contentIssues": {
+        "noAltImage": "Medija nepalaikoma mobiliuosiuose įrenginiuose",
+        "altImageBroken": "Alternatyvus apibrėžtas šios medijos elemento atvaizdas nepasiekiamas"
+      },
+      "contentWarnings": {
+        "noAltImage": "Šio tipo medija nepalaikoma mobiliuosiuose įrenginiuose. Pateikite alternatyvų atvaizdą,kuris bus rodomas, kai mobiliuosiuose įrenginiuose bus peržiūrimas pasakojimas.",
+        "noAltImageAlt": "Šio tipo medija nepalaikoma mobiliuosiuose įrenginiuose. Mobiliojo įrenginio skirtuke pateikite alternatyvų atvaizdą, kuris bus rodomas, kai mobiliuosiuose įrenginiuose bus peržiūrimas pasakojimas."
       },
       "mapIssues": {
         "fixButton": "Taisyti klaidas",

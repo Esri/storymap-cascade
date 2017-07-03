@@ -1,14 +1,15 @@
 /* eslint quotes: ["error", "double"] */
-/* strings files need to be double quotes */
 define({
   "commonCore": {
     "builderPanel": {
+      "builderNamePrefix": "",
+      "builderNameSuffix": "Builder",
       "buttonSaving": "Opslaan",
       "buttonSaved": "Opgeslagen",
       "buttonError": "Opslaan is mislukt",
       "buttonShare": "Delen",
       "buttonSettings": "Instellingen",
-      "buttonHelp": "Help",
+      "buttonHelp": "Krijg hulp of Geef feedback op GeoNet",
       "buttonPreview": "Verhaal bekijken",
       "buttonHealth": "Gezondheidsrapport",
       "manageStories": "Mijn Verhalen beheren",
@@ -31,7 +32,13 @@ define({
     "share": {
       "btnPrivate": "Privé",
       "btnOrg": "Organisatie",
-      "btnPublic": "Openbaar"
+      "btnPublic": "Openbaar",
+      "btnEveryone": "Iedereen"
+    },
+    "portal": {
+      "disconnected": "Dit Portaal is niet verbonden met internet.",
+      "portal": "Portaal",
+      "portalArcGIS": "Portal for ArcGIS"
     }
   }
 });

@@ -17,19 +17,20 @@
 }
 
 .block::before {
-  content: '\f0c8';
-  border-bottom: 2px solid #666;
+  content: '\f111';
+  border-bottom: 1px solid #666;
   padding-top: 14px;
   line-height: 0;
   font-size: 24px;
   color: white;
   opacity: 0;
+  text-shadow: none;
 }
 
 .block::after {
   content: '\f067';
   padding-top: 4px;
-  line-height: 24px;
+  line-height: 22px;
   font-size: 14px;
   color: #666;
   opacity: 0.5;
@@ -44,7 +45,7 @@
   p.block::before {
     left: 0;
     /* half the scrollbar, see below for rule for browser without scrollbar */
-    margin-left: -4.5px;
+    // margin-left: -4.5px;
   }
 
   div.block::before,
@@ -60,14 +61,6 @@
 
     &::after {
       height: 0;
-    }
-  }
-}
-
-body.is-mac-os {
-  .section-layout-sequence {
-    p.block::before {
-      margin-left: 0;
     }
   }
 }

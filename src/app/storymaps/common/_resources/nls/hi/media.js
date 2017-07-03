@@ -1,4 +1,3 @@
-// nls expects double quotes
 /*eslint quotes:[2, 'double'] */
 define({
   "mediaPicker": {
@@ -65,15 +64,15 @@ define({
             "embedProtocolWarning3": "एक विकल्प के रूप में, किसी नया ब्राउज़र टैब में पेज खोलने के लिए अपनी कहानी में एक लिंक जोड़ें। ${linkText}",
             "linkText": "और अधिक जानें।"
           },
-          "placeholder": "${https://}... or ${http://}... or ${<iframe>}",
+          "placeholder": "${https://}... या ${http://}... या ${<iframe>}",
           "uploadErrors": {
             "generic": "दर्ज किये गए पते के साथ कुछ गलत हो गया। कृपया पुन: प्रयास करें।",
             "imageOnly1": "आपको कहानी के इस भाग में एक छवि का उपयोग करना आवश्यक है।",
             "imageOnly2": "कृपया एक छवि (.jpg, .png, .gif) के लिए एक लिंक प्रदान करें या ${ArcGIS}, ${Flickr}, ${Google+}, या ${Unsplash} से एक छवि चुनें।",
             "imageAndVideo1": "आपको कहानी के इस भाग में किसी छवि या वीडियो का उपयोग करना आवश्यक है।",
             "imageAndVideo2": "कृपया एक छवि (.jpg, .png, .gif) या ${YouTube} या ${Vimeo} पर एक वीडियो के लिए एक लिंक प्रदान करें, ${ArcGIS}, ${Flickr}, ${Google+}, या ${Unsplash} से एक छवि चुनें।",
-            "badFormat": "${media-type} के लिए जो लिंक आप जोड़ने की कोशिश कर रहे हैं उसका प्रारूप गलत है।",
-            "inaccessible": "${media-type} जो आप जोड़ने की कोशिश कर रहे हैं, अनुपस्थित या प्राप्य नहीं है।",
+            "badFormat": "फ़ाइल के लिए जो लिंक आप जोड़ने की कोशिश कर रहे हैं उसका प्रारूप गलत है।",
+            "inaccessible": "आप जिस फ़ाइल को जोड़ने की कोशिश कर रहे हैं, वह अनुपस्थित है या पहुँच योग्य नहीं है।",
             "tryAgain": "कृपया पते की जांच करें और पुनः प्रयास करें।",
             "mediaTypes": {
               "VIDEO": "वीडियो",
@@ -125,6 +124,8 @@ define({
           "searchLocation": {
             "thisStory": "यह कहानी",
             "agol": "ArcGIS Online",
+            "portalArcGIS": "ArcGIS का पोर्टल",
+            "portal": "पोर्टल",
             "myOrg": "${orgname} संगठन",
             "myContent": "मेरी सामग्री"
           },

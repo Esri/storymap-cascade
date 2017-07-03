@@ -1,4 +1,3 @@
-// nls expects double quotes
 /*eslint quotes:[2, 'double'] */
 define({
   "mediaPicker": {
@@ -65,15 +64,15 @@ define({
             "embedProtocolWarning3": "Alternatif olarak, açıklamanıza bir bağlantı ekleyerek sayfayı yeni bir tarayıcı sekmesinde açabilirsiniz. ${linkText}",
             "linkText": "Daha Fazla Bilgi Edinin."
           },
-          "placeholder": "${https://}... or ${http://}... or ${<iframe>}",
+          "placeholder": "${https://}... veya ${http://}... veya ${<iframe>}",
           "uploadErrors": {
             "generic": "Girilen adresle ilgili bir hata oluştu. Yeniden deneyin.",
             "imageOnly1": "Hikayenin bu bölümünde bir görüntü kullanmalısınız.",
             "imageOnly2": "Bir görüntü dosyası (.jpg, .png, .gif) bağlantısı girin veya ${ArcGIS}, ${Flickr}, ${Google+} veya ${Unsplash} uygulamalarından bir görüntü seçin.",
             "imageAndVideo1": "Hikayenin bu bölümünde bir görüntü veya video kullanmalısınız.",
             "imageAndVideo2": "Bir görüntü dosyası (.jpg, .png, .gif) ya da ${YouTube} veya ${Vimeo} uygulamasından bir video bağlantısı girin veya ${ArcGIS}, ${Flickr}, ${Google+} veya ${Unsplash} uygulamalarından bir görüntü seçin.",
-            "badFormat": "Eklemeye çalıştığınız ${media-type} bağlantısı hatalı biçimde yapılandırılmış.",
-            "inaccessible": "Eklemeye çalıştığınız ${media-type} yok veya erişilebilir değil.",
+            "badFormat": "Eklemeye çalıştığınız dosya bağlantısı hatalı biçimde yapılandırılmış.",
+            "inaccessible": "Eklemeye çalıştığınız dosya yok veya erişilebilir değil.",
             "tryAgain": "Adresi kontrol edin ve yeniden deneyin.",
             "mediaTypes": {
               "VIDEO": "video",
@@ -125,6 +124,8 @@ define({
           "searchLocation": {
             "thisStory": "Bu Hikaye",
             "agol": "ArcGIS Online",
+            "portalArcGIS": "Portal for ArcGIS",
+            "portal": "Portal",
             "myOrg": "${orgname} Kuruluşu",
             "myContent": "İçeriğim"
           },

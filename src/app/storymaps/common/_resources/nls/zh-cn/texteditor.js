@@ -7,8 +7,8 @@ define({
     "blockAdd": {
       "text": "文本",
       "media": "媒体",
-      "title": "标题章节",
-      "immersive": "拟真章节"
+      "title": "标题",
+      "immersive": "拟真"
     },
     "link": {
       "invite": "粘贴或输入链接..."

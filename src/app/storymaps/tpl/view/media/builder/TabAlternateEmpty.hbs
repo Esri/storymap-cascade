@@ -1,0 +1,29 @@
+<div class="builder-config-section alt-media-empty">
+  <h4 class="title">{{strings.alternativeMedia}}</h4>
+  <div class="section-content">
+  {{#if hasWarnings}}
+    <div class="warning-summary">
+      <div class="title-wrapper">
+        <div class="warning-title">{{stringsIssues.noAltImage}}</div>
+        <div class="warning-description">{{stringsWarnings.noAltImage}}</div>
+      </div>
+        <div class="fix-btn config-item btn btn-primary" data-action="add">
+          <span class="small-loader hidden"></span>
+          <span>{{strings.uploadAltImage}}</span>
+        </div>
+        <!-- <div class="media-info">
+          <div class="media-info-background"></div>
+          <i class="fix-tooltip fa fa-info-circle" aria-hidden="true" title="{{strings.altMediaExplanation}}" data-link={{strings.altMediaExplanation}}></i>
+        </div> -->
+      </div>
+    {{else}}
+      <div class="section-content button">
+        <span class="mobile-tab-help">{{strings.explanation}}</span>
+        <div class="alt-image-add config-item button btn btn-bw" data-action="add">
+          <span class="fa fa-image fa-lg"/>
+          {{strings.uploadAltImage}}
+        </div>
+      </div>
+      {{/if}}
+  </div>
+</div>

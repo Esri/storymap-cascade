@@ -1,4 +1,3 @@
-// nls expects double quotes
 /*eslint quotes:[2, 'double'] */
 define({
   "mediaPicker": {
@@ -65,15 +64,15 @@ define({
             "embedProtocolWarning3": "לחלופין, הוסף קישור בסיפור שלך לפתיחת הדף בכרטיסיית דפדפן חדשה. ${linkText}",
             "linkText": "למידע נוסף."
           },
-          "placeholder": "${https://}... or ${http://}... or ${<iframe>}",
+          "placeholder": "${https://}... או ${http://}... או ${<iframe>}",
           "uploadErrors": {
             "generic": "משהו השתבש בקשר לכתובת שהוזנה. נסה שוב.",
             "imageOnly1": "בחלק הזה של הסיפור עליך להשתמש בתמונה.",
             "imageOnly2": "ספק קישור לתמונה (‎.jpg,‏ ‎.png,‏ ‎.gif), או בחר תמונה מ-${ArcGIS}, ‏${Flickr}, ‏${Google+}או ${Unsplash}.",
             "imageAndVideo1": "בחלק הזה של הסיפור עליך להשתמש בתמונה או בסרטון.",
             "imageAndVideo2": "ספק קישור לתמונה (‎.jpg,‏ ‎.png,‏ ‎.gif) או לסרטון ב-${YouTube} או ב-${Vimeo}, או בחר תמונה מ-${ArcGIS}, ‏${Flickr}, ‏${Google+}או ${Unsplash}.",
-            "badFormat": "הקישור ל${media-type} שאתה מנסה להוסיף מעוצב בצורה שגויה.",
-            "inaccessible": "אין גישה ל${media-type} שאתה מנסה להוסיף, או שהמדיה חסרה.",
+            "badFormat": "הקישור לקובץ שאתה מנסה להוסיף מעוצב בצורה שגויה.",
+            "inaccessible": "אין גישה לקובץ שאתה מנסה להוסיף, או שהמדיה חסרה.",
             "tryAgain": "בדוק את הכתובת ונסה שוב.",
             "mediaTypes": {
               "VIDEO": "סרטון",
@@ -125,6 +124,8 @@ define({
           "searchLocation": {
             "thisStory": "הסיפור הזה",
             "agol": "ArcGIS Online",
+            "portalArcGIS": "Portal for ArcGIS",
+            "portal": "פורטל",
             "myOrg": "הארגון ${orgname}",
             "myContent": "התוכן שלי"
           },

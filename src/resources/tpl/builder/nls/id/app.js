@@ -13,13 +13,14 @@ define({
     "headerConfig": {
       "toggles": {
         "bookmarks": "Penanda Lokasi",
-        "logoSharing": "Logo & Berbagi"
+        "logoSharing": "Logo & Berbagi",
+        "theme": "Tampilan"
       },
       "bookmarks": {
         "title": "Bagian",
         "bookmark": "Penanda Lokasi",
         "intro": "Penanda Lokasi adalah tautan ke bagian cerita yang ditunjukkan di header. Membuat penanda lokasi yang singkat untuk bagian utama cerita Anda akan membantu pembaca mendapatkan arah.",
-        "sequentialDefault": "Bagian berurutan (tidak ada teks ditemukan)",
+        "sequentialDefault": "Bagian narasi (tidak ada teks ditemukan)",
         "immersiveDefault": "Bagian imersif (tidak ada teks ditemukan)",
         "titleDefault": "Bagian judul (tidak ada teks ditemukan)",
         "coverDefault": "Bagian sampul (tidak ada teks ditemukan)",
@@ -38,6 +39,15 @@ define({
         "taglineLinkDisabledTooltip": "Masukkan slogan untuk mengaktifkan tautan",
         "link": "Tautan slogan",
         "enableSocialSharing": "Tampilkan tombol berbagi"
+      },
+      "appearance": {
+        "themeLabel": "Tema",
+        "fontLabel": "Font",
+        "previewLabel": "Pratinjau",
+        "fontsTitleLabel": "Judul",
+        "fontsBodyLabel": "Isi",
+        "loremTitle": "Lorem Ipsum",
+        "loremBody": "Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor. Mauris consequat orci nec magna facilisis bibendum at eget libero."
       }
     },
     "builderPanel": {
@@ -47,7 +57,7 @@ define({
       "betaNote": "Harap beri tahu pendapat Anda mengenai ${APP_NAME} atau jika ada yang tidak berfungsi seperti yang Anda inginkan.",
       "notSharedNote": "Cerita Anda tidak dibagikan, hanya Anda yang dapat melihatnya",
       "organizationWarning": "Untuk memastikan cerita ini dapat dilihat oleh orang lain, Anda juga harus membagikan scene, layer scene, dan aplikasi yang disematkan dengan organisasi Anda. Peta dan layer peta dibagikan otomatis.",
-      "publicWarning": "Untuk memastikan cerita ini dapat dilihat oleh orang lain, Anda juga harus membagikan scene, layer scene, dan aplikasi yang disematkan secara publik. Peta dan layer peta dibagikan otomatis.",
+      "publicWarning": "Untuk memastikan cerita ini dapat dilihat oleh orang lain, Anda juga harus membagikan scene, layer scene, dan aplikasi yang disematkan dengan Semua Orang. Peta dan layer peta dibagikan secara otomatis.",
       "addTitleNote": "Tambahkan judul pada sampul yang akan disimpan",
       "saveError": "Ada kesalahan saat menyimpan cerita Anda.",
       "duplicate": "Duplikasi",
@@ -77,6 +87,7 @@ define({
         "manage": "Kelola",
         "size": "Ukuran",
         "background": "Latar belakang",
+        "mobile": "Seluler",
         "issues": "Masalah",
         "fixIssues": "Perbaiki Masalah"
       },
@@ -112,15 +123,23 @@ define({
       "size": {
         "small": "Kecil",
         "medium": "Sedang",
-        "large": "Besar"
+        "large": "Besar",
+        "noCrop": "Jangan memotong gambar yang tinggi",
+        "noCropTallTooltip": "Tidak memotong gambar yang tinggi menghasilkan efek dramatis bagi pembaca yang memerlukan pengguliran untuk melihat keseluruhan gambar."
       },
       "background": {
-        "noCrop": "Jangan pangkas gambar",
+        "noCrop": "Jangan dipotong",
         "mostImportantPart": "Pilih titik yang paling penting",
-        "cropExplanationImmersive": "Pilih titik pada gambar untuk memilih cara gambar Anda dipangkas dengan berbagai ukuran. Titik yang Anda pilih akan selalu terlihat. Centang kotak di bawah jika media Anda harus terlihat sepenuhnya.",
-        "cropExplanation": "Pilih titik pada gambar untuk memilih cara gambar Anda dipangkas dengan berbagai ukuran. Titik yang Anda pilih akan selalu terlihat.",
+        "cropExplanationImmersive": "Pilih titik pada gambar untuk memilih bagaimana gambar akan dipotong pada berbagai ukuran layar. Titik yang Anda pilih akan selalu terlihat. Centang 'Jangan Dipotong' jika gambar Anda harus terlihat sepenuhnya.",
+        "cropExplanation": "Pilih titik pada gambar untuk memilih bagaimana gambar akan dipotong pada berbagai ukuran layar. Titik yang Anda pilih akan selalu terlihat.",
         "color": "Warna",
         "previews": "Pratinjau"
+      },
+      "altMedia": {
+        "alternativeMedia": "Media Alternatif",
+        "explanation": "Beberapa media tidak didukung atau mungkin tidak berfungsi dengan baik pada perangkat seluler. Gunakan panel ini untuk memilih item lain yang lebih ramah seluler yang akan ditampilkan menggantikan media ini saat cerita Anda dilihat di ponsel atau tablet.",
+        "changeAltImage": "Ubah gambar",
+        "uploadAltImage": "Tambahkan gambar"
       }
     },
     "imageGallery": {
@@ -174,9 +193,9 @@ define({
       "undo": "Urungkan"
     },
     "sections": {
-      "sequence": "Bagian Narasi",
-      "immersive": "Bagian Imersif",
-      "title": "Bagian Judul"
+      "sequence": "Naratif",
+      "immersive": "Imersif",
+      "title": "Judul"
     },
     "mediaErrors": {
       "mediaTypes": {
@@ -189,14 +208,22 @@ define({
       },
       "placeholders": {
         "generic": "Konten ini tidak dapat diakses.",
-        "deleted": "${media-type} ini sudah dihapus.",
-        "inaccessible": "${media-type} ini tidak dapat diakses.",
-        "unauthorized": "Anda tidak berwenang melihat ${media-type} ini.",
-        "unshared": "${media-type} ini tidak dibagi seperti halnya cerita Anda.",
-        "othersUnshared": "${media-type} ini tidak dibagi seperti halnya cerita Anda.",
-        "subscriptionContent": "${media-type} ini berisi layer pelanggan.",
-        "premiumContent": "${media-type} ini berisi layer premium.",
-        "secureService": "${media-type} ini berisi layer aman."
+        "deleted": "Item ini sudah dihapus.",
+        "inaccessible": "Konten ini tidak dapat diakses.",
+        "unauthorized": "Anda tidak berwenang melihat konten ini.",
+        "unshared": "Item ini tidak dibagi seperti halnya cerita Anda.",
+        "othersUnshared": "Item ini tidak dibagi seperti halnya cerita Anda.",
+        "subscriptionContent": "Peta ini berisi layer pelanggan.",
+        "premiumContent": "Peta ini berisi layer premium.",
+        "secureService": "Peta ini berisi layer yang aman."
+      },
+      "contentIssues": {
+        "noAltImage": "Media Tidak Didukung pada Perangkat Seluler",
+        "altImageBroken": "Gambar alternatif yang ditentukan untuk item media ini tidak dapat diakses"
+      },
+      "contentWarnings": {
+        "noAltImage": "Jenis media ini tidak didukung pada perangkat seluler. Sediakan gambar alternatif yang akan ditampilkan saat cerita dilihat pada perangkat seluler.",
+        "noAltImageAlt": "Jenis media ini tidak didukung pada perangkat seluler. Pada tab seluler, sediakan gambar alternatif yang akan ditampilkan saat cerita dilihat pada perangkat seluler."
       },
       "mapIssues": {
         "fixButton": "Perbaiki Masalah",

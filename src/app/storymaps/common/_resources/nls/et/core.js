@@ -1,14 +1,15 @@
 /* eslint quotes: ["error", "double"] */
-/* strings files need to be double quotes */
 define({
   "commonCore": {
     "builderPanel": {
+      "builderNamePrefix": "",
+      "builderNameSuffix": "Koostaja",
       "buttonSaving": "Salvestamine",
       "buttonSaved": "Salvestatud",
       "buttonError": "Salvestamine ebaõnnestus",
       "buttonShare": "Jaga",
       "buttonSettings": "Seaded",
-      "buttonHelp": "Abi",
+      "buttonHelp": "Abi otsimine või tagasiside esitamine GeoNetis",
       "buttonPreview": "Kuva lugu",
       "buttonHealth": "Tervisearuanne",
       "manageStories": "Hallake minu lugusid",
@@ -31,7 +32,13 @@ define({
     "share": {
       "btnPrivate": "Privaatne",
       "btnOrg": "Ettevõte",
-      "btnPublic": "Avalik"
+      "btnPublic": "Avalik",
+      "btnEveryone": "Kõigiga"
+    },
+    "portal": {
+      "disconnected": "Sel portaalil puudub veebiühendus",
+      "portal": "Portal",
+      "portalArcGIS": "Portal for ArcGIS"
     }
   }
 });

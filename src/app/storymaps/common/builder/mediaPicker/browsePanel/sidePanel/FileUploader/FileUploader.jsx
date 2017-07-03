@@ -341,7 +341,7 @@ export default class FileUploader extends React.Component {
   }
 
   getUploadFileNames(file, offset) {
-    const fileName = file.name;
+    const fileName = file.name.replace(/[<>"'()*%!?&]/g, '');
     const now = new Date();
     const lastDot = fileName.lastIndexOf('.');
     const name = lastDot >= 0 ? fileName.substr(0, lastDot) : fileName;

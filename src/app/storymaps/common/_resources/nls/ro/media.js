@@ -1,4 +1,3 @@
-// nls expects double quotes
 /*eslint quotes:[2, 'double'] */
 define({
   "mediaPicker": {
@@ -65,15 +64,15 @@ define({
             "embedProtocolWarning3": "Ca alternativă, adăugaţi un link la naraţiunea dvs. pentru a deschide pagina într-o filă de browser nouă. ${linkText}",
             "linkText": "Aflaţi mai multe."
           },
-          "placeholder": "${https://}... or ${http://}... or ${<iframe>}",
+          "placeholder": "${https://}... sau ${http://}... sau ${<iframe>}",
           "uploadErrors": {
             "generic": "Ceva nu a mers cum trebuie cu privire la adresa introdusă. Încercaţi din nou.",
             "imageOnly1": "Trebuie să utilizaţi o imagine în această parte a relatării.",
             "imageOnly2": "Furnizaţi un link către o imagine (.jpg, .png, .gif) sau alegeţi o imagine de pe ${ArcGIS}, ${Flickr}, ${Google+} sau ${Unsplash}.",
             "imageAndVideo1": "Trebuie să utilizaţi o imagine sau un videoclip în această parte a relatării.",
             "imageAndVideo2": "Furnizaţi un link către o imagine (.jpg, .png, .gif) sau un videoclip de pe ${YouTube} sau ${Vimeo} sau alegeţi o imagine de pe ${ArcGIS}, ${Flickr}, ${Google+} sau ${Unsplash}.",
-            "badFormat": "Linkul către ${media-type} pe care încercaţi să îl adăugaţi este formatat incorect.",
-            "inaccessible": "${media-type} pe care încercaţi să îl adăugaţi lipseşte sau nu este accesibil.",
+            "badFormat": "Linkul către fişier pe care încercaţi să îl adăugaţi este formatat incorect.",
+            "inaccessible": "Fişierul pe care încercaţi să îl adăugaţi lipseşte sau nu este accesibil.",
             "tryAgain": "Verificaţi adresa şi încercaţi din nou.",
             "mediaTypes": {
               "VIDEO": "video",
@@ -125,6 +124,8 @@ define({
           "searchLocation": {
             "thisStory": "Această relatare",
             "agol": "ArcGIS Online",
+            "portalArcGIS": "Portal for ArcGIS",
+            "portal": "Portal",
             "myOrg": "Organizaţie ${orgname}",
             "myContent": "Resursele mele"
           },

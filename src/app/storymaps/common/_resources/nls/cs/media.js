@@ -1,4 +1,3 @@
-// nls expects double quotes
 /*eslint quotes:[2, 'double'] */
 define({
   "mediaPicker": {
@@ -72,8 +71,8 @@ define({
             "imageOnly2": "Zadejte odkaz na obrázek (.jpg, .png, .gif) nebo vyberte obrázek ze služby ${ArcGIS}, ${Flickr}, ${Google+} nebo ${Unsplash}.",
             "imageAndVideo1": "V této části příběhu musíte použít obrázek nebo video.",
             "imageAndVideo2": "Zadejte odkaz na obrázek (.jpg, .png, .gif) nebo video ze služby ${YouTube} or ${Vimeo} nebo vyberte obrázek ze služby ${ArcGIS}, ${Flickr}, ${Google+} nebo ${Unsplash}.",
-            "badFormat": "Odkaz na typ média ${media-type}, který se pokoušíte přidat, je zformátován nesprávně.",
-            "inaccessible": "Typ média ${media-type}, který se snažíte přidat, chybí nebo je nedostupný.",
+            "badFormat": "Odkaz na soubor, který se pokoušíte přidat, je zformátován nesprávně.",
+            "inaccessible": "Soubor, který se pokoušíte přidat, chybí nebo je nedostupný.",
             "tryAgain": "Zkontrolujte adresu a zkuste to znovu",
             "mediaTypes": {
               "VIDEO": "video",
@@ -125,6 +124,8 @@ define({
           "searchLocation": {
             "thisStory": "Tento příběh",
             "agol": "ArcGIS Online",
+            "portalArcGIS": "Portal for ArcGIS",
+            "portal": "Portál",
             "myOrg": "Organizace ${orgname}",
             "myContent": "Můj obsah"
           },

@@ -1,14 +1,15 @@
 /* eslint quotes: ["error", "double"] */
-/* strings files need to be double quotes */
 define({
   "commonCore": {
     "builderPanel": {
+      "builderNamePrefix": "",
+      "builderNameSuffix": "Bộ thiết lập",
       "buttonSaving": "Đang lưu",
       "buttonSaved": "Đã lưu",
       "buttonError": "Không lưu được",
       "buttonShare": "Chia sẻ",
       "buttonSettings": "Thiết lập",
-      "buttonHelp": "Trợ giúp",
+      "buttonHelp": "Được trợ giúp hoặc Gửi ý kiến phản hồi trên GeoNet",
       "buttonPreview": "Xem Câu chuyện",
       "buttonHealth": "Báo cáo y tế",
       "manageStories": "Quản lý câu chuyện của tôi",
@@ -31,7 +32,13 @@ define({
     "share": {
       "btnPrivate": "Riêng tư",
       "btnOrg": "Tổ chức",
-      "btnPublic": "Công khai"
+      "btnPublic": "Công khai",
+      "btnEveryone": "Mọi người"
+    },
+    "portal": {
+      "disconnected": "Cổng thông tin này không được kết nối với Internet.",
+      "portal": "Cổng thông tin",
+      "portalArcGIS": "Portal for ArcGIS"
     }
   }
 });

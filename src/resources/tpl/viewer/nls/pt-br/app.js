@@ -35,12 +35,15 @@ define({
       "builderSupport1": "O construtor de Cascata do Mapa Histórico é suportado somente no ${CHROME} e ${SAFARI}. No entanto, as histórias em Cascata que você cria com o construtor podem ser visualizadas nestes navegadores, Internet Explorer 11+ e Firefox.",
       "builderSupport2": "O construtor de Cascata do Mapa Histórico não é suportado no iPad. As histórias em cascata que você cria e compartilha funcionam no iPad.",
       "builderSupport3": "As histórias em cascata podem ser visualizadas no Chrome, Safari, Firefox e Internet Explorer 11+, mas o construtor de Cascata do Mapa Histórico é suportado somente no ${CHROME} e ${SAFARI}.",
-      "builderSupport4": "As histórias em cascata podem ser visualizadas no Chrome, Safari, Firefox e Internet Explorer 11+, mas o construtor de Cascata do Mapa Histórico é suportado somente no ${CHROME} e ${SAFARI}.<br><br>Se você precisar do construtor de Cascata para oferecer suporte a um navegador diferente, entre em contato com ${ESRI-SUPPORT} ou clique para votar: ${FIREFOX-BUILDER} | ${IE-BUILDER}.",
+      "builderSupport4": "As histórias em cascata podem ser visualizadas em qualquer navegador da web moderno, mas o construtor de Cascata de Mapa Histórico é suportado somente no ${CHROME} e ${SAFARI}.<br><br>Se você precisar do construtor de Cascade para suportar um navegador diferente, entre em contato com ${ESRI-SUPPORT} ou ${BROWSER-SUPPORT-VOTE}.",
       "sorry": "Atenção:"
     },
     "mobileWarning": {
       "message1": "Você leu a versão móvel desta história. Para a versão completa, com elementos de mídia mais eficientes, teste em um computador de desktop.",
       "email": "Envie um link para esta história por e-mail"
+    },
+    "cover": {
+      "iosEmbedLink": "Toque para ler a história completa"
     },
     "media": {
       "captionPlaceholder": "Sua legenda aqui...",
@@ -70,6 +73,10 @@ define({
       "autoplayExplain1": "O modo de reprodução automática avançará por sua história em um intervalo regular. Isto é ideal em um monitor de visualização pública ou de quiosque, mas esteja ciente que em outras situações ele pode tornar a história mais difícil de ler. Este recurso não é suportado em visualizações pequenas.",
       "autoplayExplain2": "Quando este modo está ativo há controles para reproduzir/pausar a história e ajustar a velocidade de navegação.",
       "linksupdated": "Links atualizados!"
+    },
+    "theme": {
+      "lightLabel": "Claro",
+      "darkLabel": "Escuro"
     }
   }
 });

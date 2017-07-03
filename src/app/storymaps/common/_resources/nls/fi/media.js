@@ -1,4 +1,3 @@
-// nls expects double quotes
 /*eslint quotes:[2, 'double'] */
 define({
   "mediaPicker": {
@@ -65,15 +64,15 @@ define({
             "embedProtocolWarning3": "Voit vaihtoehtoisesti lisätä linkin tarinaan, jolloin sivu avautuu uudella välilehdellä selaimessa. ${linkText}",
             "linkText": "Lisätietoja."
           },
-          "placeholder": "${https://}... or ${http://}... or ${<iframe>}",
+          "placeholder": "${https://}... tai ${http://}... tai ${<iframe>}",
           "uploadErrors": {
             "generic": "Annettu osoite on virheellinen. Yritä uudelleen.",
             "imageOnly1": "Tässä tarinan osassa on käytettävä kuvaa.",
             "imageOnly2": "Määritä linkki kuvaan (.jpg, .png tai .gif) tai valitse ${ArcGIS}-, ${Flickr}-, ${Google+}- tai ${Unsplash}-palvelun kuva.",
             "imageAndVideo1": "Tässä tarinan osassa on käytettävä kuvaa tai videota.",
             "imageAndVideo2": "Määritä linkki kuvaan (.jpg, .png tai .gif) tai ${YouTube}- tai ${Vimeo}-palvelun videoon. Voit vaihtoehtoisesti valita ${ArcGIS}-, ${Flickr}-, ${Google+}- tai ${Unsplash}-palvelun kuvan.",
-            "badFormat": "Linkki mediaan ${media-type}, jota yrität lisätä, on muotoiltu väärin.",
-            "inaccessible": "${Media-type}, jota yrität lisätä, puuttuu tai sitä ei voi käyttää.",
+            "badFormat": "Linkki tiedostoon, jota yrität lisätä, on muotoiltu väärin.",
+            "inaccessible": "Tiedosto, jota yrität lisätä, puuttuu tai sitä ei voi käyttää.",
             "tryAgain": "Tarkista osoite ja yritä uudelleen.",
             "mediaTypes": {
               "VIDEO": "video",
@@ -125,6 +124,8 @@ define({
           "searchLocation": {
             "thisStory": "Tämä tarina",
             "agol": "ArcGIS Online",
+            "portalArcGIS": "Portal for ArcGIS",
+            "portal": "Portaali",
             "myOrg": "Organisaatio ${orgname}",
             "myContent": "Oma sisältö"
           },

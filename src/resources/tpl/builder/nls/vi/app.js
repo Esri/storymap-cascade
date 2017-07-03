@@ -13,13 +13,14 @@ define({
     "headerConfig": {
       "toggles": {
         "bookmarks": "Đánh dấu",
-        "logoSharing": "Logo & Chia sẻ"
+        "logoSharing": "Logo & Chia sẻ",
+        "theme": "Giao diện"
       },
       "bookmarks": {
         "title": "Phần",
         "bookmark": "Đánh dấu",
         "intro": "Các đánh dấu là các liên kết đến các phần của câu chuyện được hiển thị trong tiêu đề. Tạo các đánh dấu ngắn gọn cho các phần chính của câu chuyện của bạn giúp định hướng người xem.",
-        "sequentialDefault": "Phần tuần tự (không tìm thấy văn bản)",
+        "sequentialDefault": "Phần kể chuyện (không tìm thấy văn bản)",
         "immersiveDefault": "Phần tạo không gian (không tìm thấy văn bản)",
         "titleDefault": "Phần tiêu đề (không tìm thấy văn bản)",
         "coverDefault": "Phần bìa (không tìm thấy văn bản)",
@@ -38,6 +39,15 @@ define({
         "taglineLinkDisabledTooltip": "Nhập khẩu hiệu để kích hoạt liên kết này",
         "link": "Liên kết khẩu hiệu",
         "enableSocialSharing": "Hiển thị nút chia sẻ"
+      },
+      "appearance": {
+        "themeLabel": "Chủ đề",
+        "fontLabel": "Phông chữ",
+        "previewLabel": "Xem trước",
+        "fontsTitleLabel": "Tiêu đề",
+        "fontsBodyLabel": "Nội dung",
+        "loremTitle": "Lorem Ipsum",
+        "loremBody": "Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor. Mauris consequat orci nec magna facilisis bibendum at eget libero."
       }
     },
     "builderPanel": {
@@ -47,7 +57,7 @@ define({
       "betaNote": "Vui lòng cho chúng tôi biết bạn nghĩ gì về ${APP_NAME} hay liệu có điều gì đó không hoạt động như bạn đã mong đợi không.",
       "notSharedNote": "Câu chuyện của bạn không được chia sẻ, chỉ có bạn mới có thể xem câu chuyện này",
       "organizationWarning": "Để đảm bảo rằng những người khác có thể xem câu chuyện này, bạn cũng phải chia sẻ các scene, các lớp scene của câu chuyện, và các ứng dụng đi kèm với tổ chức của bạn. Các bản đồ và các lớp bản đồ được chia sẻ tự động.",
-      "publicWarning": "Để đảm bảo rằng người khác có thể xem câu chuyện này, bạn cũng phải chia sẻ các scene, các lớp scene của câu chuyện và các ứng dụng đi kèm với tổ chức của bạn. Các bản đồ và các lớp bản đồ được chia sẻ tự động.",
+      "publicWarning": "Để đảm bảo rằng người khác có thể xem câu chuyện này, bạn cũng phải chia sẻ công khai các scene, các lớp scene của câu chuyện cũng như các ứng dụng đi kèm. Các bản đồ và các lớp bản đồ được chia sẻ một cách tự động.",
       "addTitleNote": "Thêm tiêu đề vào trang bìa để lưu",
       "saveError": "Đã có lỗi khi lưu câu chuyện của bạn.",
       "duplicate": "Bản sao",
@@ -77,6 +87,7 @@ define({
         "manage": "Quản lý",
         "size": "Kích cỡ",
         "background": "Nền",
+        "mobile": "Di động",
         "issues": "Vấn đề",
         "fixIssues": "Khắc phục Vấn đề"
       },
@@ -112,15 +123,23 @@ define({
       "size": {
         "small": "Nhỏ",
         "medium": "Trung bình",
-        "large": "Lớn"
+        "large": "Lớn",
+        "noCrop": "Không được cắt bớt ảnh cao",
+        "noCropTallTooltip": "Không cắt bớt ảnh cao tạo ra hiệu ứng động cho người đọc đòi hỏi phải cuộn để thấy toàn bộ hình ảnh."
       },
       "background": {
-        "noCrop": "Không được cắt bớt ảnh",
+        "noCrop": "Không được cắt bớt",
         "mostImportantPart": "Chọn điểm quan trọng nhất",
-        "cropExplanationImmersive": "Chọn một điểm trên ảnh để chọn cách ảnh của bạn sẽ được cắt bớt ở các kích thước khác nhau. Điểm bạn chọn sẽ luôn được nhìn thấy. Kiểm tra ô bên dưới xem liệu có cần thấy toàn bộ phương tiện của bạn hay không.",
-        "cropExplanation": "Chọn một điểm trên ảnh để chọn cách ảnh của bạn sẽ được cắt bớt ở các kích thước khác nhau như thế nào. Điểm bạn chọn sẽ luôn được nhìn thấy.",
+        "cropExplanationImmersive": "Chọn một điểm trên ảnh để chọn cách ảnh của bạn sẽ được cắt bớt ở các kích thước màn hình khác nhau. Điểm bạn chọn sẽ luôn được nhìn thấy. Đánh dấu chọn \"Không được cắt bớt\" nếu hình của bạn cần được xem toàn bộ.",
+        "cropExplanation": "Chọn một điểm trên ảnh để chọn cách ảnh của bạn sẽ được cắt bớt ở các kích thước màn hình khác nhau. Điểm bạn chọn sẽ luôn được nhìn thấy.",
         "color": "Màu sắc",
         "previews": "Xem trước"
+      },
+      "altMedia": {
+        "alternativeMedia": "Truyền thông khác",
+        "explanation": "Một số truyền thông không được hỗ trợ hoặc có thể không hoạt động tốt trên thiết bị di động. Sử dụng bảng này để chọn một truyền thông khác, mục dễ dùng cho di động hơn sẽ được hiển thị ở chỗ truyền thông này khi câu chuyện của bạn được xem trên điện thoại hoặc máy tính bảng.",
+        "changeAltImage": "Thay đổi hình ảnh",
+        "uploadAltImage": "Thêm hình ảnh"
       }
     },
     "imageGallery": {
@@ -174,9 +193,9 @@ define({
       "undo": "Hoàn tác"
     },
     "sections": {
-      "sequence": "Phần Nội dung",
-      "immersive": "Phần Tạo không gian",
-      "title": "Phần Tiêu đề"
+      "sequence": "Kể chuyện",
+      "immersive": "Phong phú",
+      "title": "Tiêu đề"
     },
     "mediaErrors": {
       "mediaTypes": {
@@ -189,14 +208,22 @@ define({
       },
       "placeholders": {
         "generic": "Không thể truy cập nội dung này.",
-        "deleted": "${media-type} này đã bị xóa.",
-        "inaccessible": "Không thể truy cập ${media-type} này.",
-        "unauthorized": "Bạn không có quyền xem ${media-type} này.",
-        "unshared": "${media-type} này không được chia sẻ giống như câu chuyện của bạn.",
-        "othersUnshared": "${media-type} này không được chia sẻ giống như câu chuyện của bạn.",
-        "subscriptionContent": "${media-type} này chứa lớp của người đăng ký.",
-        "premiumContent": "${media-type} này chứa lớp cao cấp.",
-        "secureService": "${media-type} này chứa lớp bảo mật."
+        "deleted": "Mục này đã bị xóa.",
+        "inaccessible": "Không thể truy cập nội dung này.",
+        "unauthorized": "Bạn không có quyền xem nội dung này.",
+        "unshared": "Mục này không được chia sẻ giống như câu chuyện của bạn.",
+        "othersUnshared": "Mục này không được chia sẻ giống như câu chuyện của bạn.",
+        "subscriptionContent": "Bản đồ này chứa lớp của người đăng ký.",
+        "premiumContent": "Bản đồ này chứa lớp cao cấp.",
+        "secureService": "Bản đồ này chứa lớp bảo mật."
+      },
+      "contentIssues": {
+        "noAltImage": "Truyền thông không được hỗ trợ trên thiết bị di động",
+        "altImageBroken": "Hình ảnh khác được xác định cho mục truyền thông này không thể truy cập được"
+      },
+      "contentWarnings": {
+        "noAltImage": "Loại truyền thông này không được hỗ trợ trên thiết bị di động. Cung cấp một hình khác sẽ được hiển thị khi câu chuyện được xem trên thiết bị di động.",
+        "noAltImageAlt": "Loại truyền thông này không được hỗ trợ trên thiết bị di động. Trong tab di động, cung cấp một hình ảnh khác sẽ được hiển thị khi câu chuyện được xem trên thiết bị di động."
       },
       "mapIssues": {
         "fixButton": "Khắc phục Vấn đề",

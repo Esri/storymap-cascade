@@ -35,12 +35,15 @@ define({
       "builderSupport1": "ストーリー マップ カスケード ビルダーは ${CHROME} および ${SAFARI} でのみサポートされています。ただし、ビルダーで作成したカスケード ストーリーは、それらのブラウザーの他に Internet Explorer 11+ と Firefox でも表示できます。",
       "builderSupport2": "ストーリー マップ カスケード ビルダーは iPad ではサポートされていません。作成および共有したカスケード ストーリーは iPad 上で動作します。",
       "builderSupport3": "カスケード ストーリーは、Chrome、Safari、Firefox、および Internet Explorer 11+ で表示できますが、ストーリー マップ カスケード ビルダーは ${CHROME} および ${SAFARI} でのみサポートされています。",
-      "builderSupport4": "カスケード ストーリーは、Chrome、Safari、Firefox、および Internet Explorer 11+ で表示できますが、ストーリー マップ カスケード ビルダーは ${CHROME} および ${SAFARI} でのみサポートされています。<br><br>カスケード ビルダーで別のブラウザーをサポートする必要がある場合は、${ESRI-SUPPORT} に問い合わせるか、クリックして投票してください: ${FIREFOX-BUILDER} | ${IE-BUILDER}",
+      "builderSupport4": "カスケード ストーリーは、最新の Web ブラウザーで表示できますが、ストーリー マップ カスケード ビルダーは ${CHROME} および ${SAFARI} でのみサポートされています。<br><br>カスケード ビルダーで別のブラウザーをサポートする必要がある場合は、${ESRI-SUPPORT} または ${BROWSER-SUPPORT-VOTE} にお問い合わせください。",
       "sorry": "注意:"
     },
     "mobileWarning": {
       "message1": "このストーリーのモバイル バージョンを読み取りました。メディア エレメントが豊富な完全バージョンについては、デスクトップ コンピューターでお試しください。",
       "email": "このストーリーのリンクを電子メールで送信"
+    },
+    "cover": {
+      "iosEmbedLink": "タップしてストーリー全体を読む"
     },
     "media": {
       "captionPlaceholder": "ここにキャプションを入力...",
@@ -70,6 +73,10 @@ define({
       "autoplayExplain1": "自動再生モードでは、ストーリーが一定の間隔で進みます。このモードは、売店や公共の表示モニターでは理想的ですが、その他の状況では、ストーリーを読むのを難しくする場合があることに注意してください。この機能は、小さいディスプレイではサポートされません。",
       "autoplayExplain2": "このモードがアクティブの場合、ストーリーの再生/一時停止および再生速度の調整を行うコントロールが表示されます。",
       "linksupdated": "リンクが更新されました"
+    },
+    "theme": {
+      "lightLabel": "明るい",
+      "darkLabel": "暗い"
     }
   }
 });

@@ -13,13 +13,14 @@ define({
     "headerConfig": {
       "toggles": {
         "bookmarks": "책갈피",
-        "logoSharing": "로고 및 공유"
+        "logoSharing": "로고 및 공유",
+        "theme": "모양"
       },
       "bookmarks": {
         "title": "섹션",
         "bookmark": "책갈피",
         "intro": "책갈피는 헤더에 나타나는 스토리 섹션에 대한 링크입니다. 스토리 기본 섹션에 대한 간략한 책갈피를 만들어 독자가 스토리를 쉽게 살펴볼 수 있습니다.",
-        "sequentialDefault": "순차형 섹션(텍스트가 없음)",
+        "sequentialDefault": "이야기 섹션(텍스트가 없음)",
         "immersiveDefault": "몰입형 섹션(텍스트가 없음)",
         "titleDefault": "제목 섹션(텍스트가 없음)",
         "coverDefault": "커버 섹션(텍스트가 없음)",
@@ -38,6 +39,15 @@ define({
         "taglineLinkDisabledTooltip": "링크를 활성화하는 설명을 입력",
         "link": "링크 설명",
         "enableSocialSharing": "공유 버튼 표시"
+      },
+      "appearance": {
+        "themeLabel": "테마",
+        "fontLabel": "글꼴",
+        "previewLabel": "미리 보기",
+        "fontsTitleLabel": "제목",
+        "fontsBodyLabel": "본문",
+        "loremTitle": "Lorem Ipsum",
+        "loremBody": "Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor. Mauris consequat orci nec magna facilisis bibendum at eget libero."
       }
     },
     "builderPanel": {
@@ -47,7 +57,7 @@ define({
       "betaNote": "${APP_NAME}에 대한 의견 또는 잘못된 사항이 있다면 알려주시기 바랍니다.",
       "notSharedNote": "스토리가 비공유 상태이므로 사용자 본인만 볼 수 있습니다.",
       "organizationWarning": "이 스토리를 다른 사람이 볼 수 있도록 하려면 스토리의 씬, 씬 레이어 및 임베드된 앱을 기관과 공유해야 합니다. 맵과 맵 레이어는 자동으로 공유됩니다.",
-      "publicWarning": "이 스토리를 다른 사람이 볼 수 있도록 하려면 스토리의 씬, 씬 레이어, 임베드된 앱을 공개적으로 공유해야 합니다. 맵과 맵 레이어는 자동으로 공유됩니다.",
+      "publicWarning": "이 스토리를 다른 사람이 볼 수 있도록 하려면 스토리의 씬, 씬 레이어, 임베드된 앱을 모두에게 공유(공개)해야 합니다. 맵과 맵 레이어는 자동으로 공유됩니다.",
       "addTitleNote": "저장할 커버의 표지 추가",
       "saveError": "스토리를 저장하는 중 오류가 발생했습니다.",
       "duplicate": "복제",
@@ -77,6 +87,7 @@ define({
         "manage": "관리",
         "size": "크기",
         "background": "배경",
+        "mobile": "모바일",
         "issues": "문제",
         "fixIssues": "문제 해결"
       },
@@ -112,15 +123,23 @@ define({
       "size": {
         "small": "작게",
         "medium": "중간",
-        "large": "크게"
+        "large": "크게",
+        "noCrop": "긴 이미지를 자르지 않음",
+        "noCropTallTooltip": "자르지 않은 긴 이미지는 전체이미지를 보기위해 스크롤을 해야하는 독자에게 영향을 미칩니다."
       },
       "background": {
-        "noCrop": "이미지를 자르지 않음",
+        "noCrop": "자르지 않음",
         "mostImportantPart": "가장 중요한 포인트 선택",
-        "cropExplanationImmersive": "이미지상의 한 포인트를 선택하여 다양한 화면 크기에서 이미지가 잘리는 방식을 선택합니다. 선택한 포인트는 항상 표시됩니다. 미디어를 완전히 보이도록 해야 하는 경우 아래의 체크 박스를 선택합니다.",
+        "cropExplanationImmersive": "이미지상의 한 포인트를 선택하여 다양한 화면 크기에서 이미지가 잘리는 방식을 선택합니다.  선택한 포인트는 항상 표시됩니다. 이미지가 완전히 보여야 하는 경우 '자르지 않음'을 선택합니다.",
         "cropExplanation": "이미지상의 한 포인트를 선택하여 다양한 화면 크기에서 이미지가 잘리는 방식을 선택합니다. 선택한 포인트는 항상 표시됩니다.",
         "color": "색상",
         "previews": "미리 보기"
+      },
+      "altMedia": {
+        "alternativeMedia": "대체 미디어",
+        "explanation": "일부 미디어는 모바일 기기에서 지원되지 않거나 올바르게 작동하지 않을 수 있습니다. 이 패널을 사용하여 더욱 모바일 친화적인 대체 항목을 선택합니다. 이 항목은 휴대폰이나 태블릿에서 스토리를 볼 때 이 미디어 대신 나타납니다.",
+        "changeAltImage": "이미지 변경",
+        "uploadAltImage": "이미지 추가"
       }
     },
     "imageGallery": {
@@ -174,9 +193,9 @@ define({
       "undo": "실행 취소"
     },
     "sections": {
-      "sequence": "이야기 섹션",
-      "immersive": "몰입형 섹션",
-      "title": "제목 섹션"
+      "sequence": "이야기",
+      "immersive": "몰입형",
+      "title": "제목"
     },
     "mediaErrors": {
       "mediaTypes": {
@@ -189,14 +208,22 @@ define({
       },
       "placeholders": {
         "generic": "이 콘텐츠에는 접근할 수 없습니다.",
-        "deleted": "이 ${media-type}이(가) 삭제되었습니다.",
-        "inaccessible": "이 ${media-type}에는 접근할 수 없습니다.",
-        "unauthorized": "이 ${media-type}을(를) 볼 수 있는 권한이 없습니다.",
-        "unshared": "이 ${media-type}은(는) 스토리와 마찬가지로 공유되지 않습니다.",
-        "othersUnshared": "이 ${media-type}은(는) 스토리와 마찬가지로 공유되지 않습니다.",
-        "subscriptionContent": "이 ${media-type}에는 구독자 레이어가 포함되어 있습니다.",
-        "premiumContent": "이 ${media-type}에는 프리미엄 레이어가 포함되어 있습니다.",
-        "secureService": "이 ${media-type}에는 보안 레이어가 포함되어 있습니다."
+        "deleted": "이 항목은 삭제되었습니다.",
+        "inaccessible": "이 콘텐츠에는 접근할 수 없습니다.",
+        "unauthorized": "이 콘텐츠를 볼 수 있는 권한이 없습니다.",
+        "unshared": "이 항목은 스토리와 마찬가지로 공유되지 않습니다.",
+        "othersUnshared": "이 항목은 스토리와 마찬가지로 공유되지 않습니다.",
+        "subscriptionContent": "이 맵에는 구독자 레이어가 포함되어 있습니다.",
+        "premiumContent": "이 맵에는 프리미엄 레이어가 포함되어 있습니다.",
+        "secureService": "이 맵에는 보안 레이어가 포함되어 있습니다."
+      },
+      "contentIssues": {
+        "noAltImage": "모바일 기기에서 미디어가 지원되지 않음",
+        "altImageBroken": "이 미디어 항목에 대해 정의된 대체 이미지에 접근할 수 없음"
+      },
+      "contentWarnings": {
+        "noAltImage": "이 미디어 유형은 모바일 기기에서 지원되지 않습니다. 스토리를 모바일 기기에서 볼 때 나타나는 대체 이미지를 제공하세요.",
+        "noAltImageAlt": "이 미디어 유형은 모바일 기기에서 지원되지 않습니다. 스토리를 모바일 기기에서 볼 때 나타나는 대체 이미지를 모바일 탭에서 제공하세요."
       },
       "mapIssues": {
         "fixButton": "문제 해결",

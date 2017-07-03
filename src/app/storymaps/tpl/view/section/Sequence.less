@@ -32,11 +32,37 @@
 }
 
 .section-layout-sequence h1,
-.section-layout-sequence h2,
 .section-layout-sequence blockquote {
   width: 45%;
   margin-left: auto;
   margin-right: auto;
+}
+
+.section-layout-sequence h2 {
+  width: 50%;
+  line-height: 140%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+@keyframes fade-in-media {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+body:not(.builder-mode) .section-layout-sequence {
+  div.block:not(.bring-in) {
+    opacity: 0;
+  }
+
+  div.block.bring-in {
+    animation: fade-in-media 1s;
+  }
 }
 
 .section-layout-sequence blockquote {
@@ -66,6 +92,14 @@ body.mobile-view .section-layout-sequence blockquote {
   margin-right: auto;
 }
 
+// portrait images
+.block-size-small.portrait .block-media,
+.block-size-small.portrait .block-caption {
+  width: 27%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .block-size-medium .block-media,
 .block-size-medium .block-caption {
   width: 80%;
@@ -73,9 +107,22 @@ body.mobile-view .section-layout-sequence blockquote {
   margin-right: auto;
 }
 
+// portrait images
+.block-size-medium.portrait .block-media,
+.block-size-medium.portrait .block-caption {
+  width: 57%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// large media (including images) will always fill width, regardless of landscape or portrait (images)
 .block-size-large .block-media,
 .block-size-large .block-caption {
   width: 100%;
+}
+
+.section-layout-sequence .block.image .block-media {
+  min-width: 170px;
 }
 
 .block-caption {
@@ -96,7 +143,7 @@ body.mobile-view .section-layout-sequence {
     width: 90%;
   }
 
-  h1, h2, blockquote {
+  h1, blockquote {
     width: 80%;
   }
 
@@ -111,11 +158,19 @@ body.mobile-view .section-layout-sequence {
 
   h2 {
     font-size: 24px;
+    width: 90%;
   }
 
   .block-media {
     width: 100%;
   }
+
+  .block-caption {
+    line-height: 140%;
+    width: 90%;
+    margin: 5px auto 0;
+}
+
 }
 
 

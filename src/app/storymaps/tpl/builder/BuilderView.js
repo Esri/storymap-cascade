@@ -18,6 +18,7 @@ define([
   'lib-build/tpl!./BuilderView',
   'lib-build/less!./BuilderView',
   'storymaps-react/tpl/builder/Controller',
+  'storymaps/tpl/utils/UI',
 
   'storymaps/common/builder/mediaPicker/MediaPickerPopup',
   'storymaps-react/tpl/builder/settings/Popup',
@@ -38,6 +39,7 @@ define([
   viewTpl,
   viewCss,
   Controller,
+  UIUtils,
 
   MediaPickerPopup,
   SettingsPopup,
@@ -75,13 +77,6 @@ define([
       });
       app.builder.settingsPopup = _settingsPopup;
 
-      //
-      // My Stories
-      //
-
-      //topic.subscribe('MY-STORIES-EDIT-MEDIA', myStoriesEditMedia);
-      //topic.subscribe('MY-STORIES-EDIT-MAP', myStoriesEditMap);
-
       topic.subscribe('builder-section-update', onSectionUpdate);
 
       // Mhh
@@ -118,8 +113,6 @@ define([
           (CommonHelper.getUrlParams().fromScratch !== undefined
           || CommonHelper.getUrlParams().fromscratch !== undefined)) {
         newStory = getBlankAppDataJSON({
-          //title: 'Cascade created on ' + new Date().toLocaleDateString() + ' at ' + new Date().toLocaleTimeString(),
-          //subtitle: 'Builder placeholder'
           title: '',
           subtitle: ''
         });
@@ -186,7 +179,7 @@ define([
     };
 
     this.saveApp = function() {
-      var storyData = Controller.serializeStory(false);
+      var storyData = Controller.serializeStory(false, false);
       app.data.title = app.Controller.getStoryTitle();
       app.data.appItem.data.values.sections = storyData;
       app.data.appItem.data.values.template.editedWith = app.version;
@@ -216,12 +209,6 @@ define([
 
     /*jshint -W098 */
     this.resize = function() {
-      // On Firefox and share dialog is displayed
-      /*
-      if (has('ff') && $('#sharePopup').hasClass('in')) {
-        _sharePopup.updateMyStoriesPosition();
-      }
-      */
     };
 
     this.onFirstAppSave = function() {
@@ -241,19 +228,92 @@ define([
         appAccess: app.data.appItem.item.access
       })
       .then(function(scanResults) {
-        // add the story-specific context (for now, just the sections it's in) on each one.
-        this.addAppContext(scanResults.media, scanData.media);
+        // broaden minimal results to each media instance
+        this.addAppContext(scanResults, scanData);
+
+        // Hand controller map of sections with data for each...
+        var mediaBySections = this.getMediaBySections(scanData.media);
+
+        // get context-specific issues.
+        app.Controller.addContextSpecificIssues(mediaBySections);
+
+        // aggregate context-specific issues here
+        this.aggregateContextIssues(scanData.media, scanData.warnings);
+
         // add the fix methods on, instead of just the strings.
-        this.addFixMethods(scanResults);
+        this.addFixMethods(scanData.errors);
 
-        var issueSections = this.compileIssueSections(scanResults.media);
+        var issueSections = this.compileIssueSections(scanData.media);
 
-        app.Controller.reportScanResults(scanResults, issueSections);
+        app.Controller.reportScanResults(scanData, issueSections);
       }.bind(this));
     };
 
+    this.aggregateContextIssues = function(media, warnings) {
+      for (var mediaType in media) {
+        if (media.hasOwnProperty(mediaType) && mediaType !== 'layers') {
+          this.aggregateContextIssuesByMediaType(media[mediaType], warnings);
+        }
+      }
+    };
+
+    this.aggregateContextIssuesByMediaType = function(media, mediaWarnings) {
+      var allMedia = NormalizeHelper.getAllItems(media);
+      var ALT_MEDIA_ISSUE = 'content/noAlternateMedia';
+      // loop throuh all the media items
+      for (var i = 0; i < allMedia.length; i++) {
+        var item = allMedia[i];
+        // add the warning if there is one -- both allItems and the entry to byId
+        var warnings = lang.getObject('scanResult.warnings', false, item);
+
+        if (warnings && warnings.length && warnings.indexOf(ALT_MEDIA_ISSUE) !== -1) {
+          // see if the warning exists at the top level. If not, add it !
+          if (mediaWarnings.allItems.indexOf(ALT_MEDIA_ISSUE) === -1) {
+            NormalizeHelper.addEntry(mediaWarnings, ALT_MEDIA_ISSUE, {
+              actions: [],
+              id: ALT_MEDIA_ISSUE,
+              media: [],
+              mediaType: 'content'
+            });
+          }
+          // add the item to the warning's list of miscreants
+          mediaWarnings.byId[ALT_MEDIA_ISSUE].media.push(item.instanceID);
+        }
+      }
+    };
+
+    this.getMediaBySections = function(media) {
+      var sections = {};
+
+      for (var mediaType in media) {
+        if (media.hasOwnProperty(mediaType) && mediaType !== 'layers') {
+          this.getSectionMediaByMediaType(sections, media[mediaType]);
+        }
+      }
+
+      return sections;
+    };
+
+    this.getSectionMediaByMediaType = function(sections, media) {
+      var mediaItems = NormalizeHelper.getAllItems(media);
+
+      // loop through each scanned item
+      for (var i = 0; i < mediaItems.length; i++) {
+        var item = mediaItems[i];
+        var sectionID = item.section;
+
+        // add an entry into the sections obj if it doesn't exist yet
+        if (!(sectionID in sections)) {
+          sections[sectionID] = {};
+
+        }
+        // add the scanned item to the sections map.
+        sections[sectionID][item.instanceID] = item;
+      }
+    };
+
     this.getScanData = function() {
-      var serializedStory = Controller.serializeStory(true);
+      var serializedStory = Controller.serializeStory(true, true);
       var media = AppParser.getMedia(serializedStory);
       var mediaIDs = this.getMediaIDs(media);
 
@@ -264,50 +324,182 @@ define([
     };
 
     this.getMediaIDs = function(media) {
-      // for each one, put it in its right place.
+      // test:
+      // same media 2 diff sections -- same after this
+      // same media same sections -- same after this
       var mediaIDs = {
-        mapIDs: media.maps.allItems,
-        sceneIDs: media.scenes.allItems,
-        imageIDs: media.images.allItems,
-        videoIDs: media.videos.allItems
+        mapIDs: this.flattenMediaById(media.maps),
+        sceneIDs: this.flattenMediaById(media.scenes),
+        imageIDs: this.flattenMediaById(media.images),
+        videoIDs: this.flattenMediaById(media.videos),
+        audioIDs: this.flattenMediaById(media.audio),
+        webpageIDs: this.flattenMediaById(media.webpages)
       };
 
       return mediaIDs;
     };
 
-    this.addAppContext = function(resultsMedia, contextMedia) {
+    /*
+    Fill an array of unique IDs, when input is an object with possible duplicates.
+    This is because we only want to scan media once, even if that media is in the story 4 different places.
+     */
+    this.flattenMediaById = function(media) {
+      var ids = [];
+
+      for (var i = 0; i < media.allItems.length; i++) {
+        var instanceID = media.allItems[i];
+        var entry = media.byId[instanceID];
+
+        // put the ID in the list if it doesn't exist in there
+        if (ids.indexOf(entry.id) === -1) {
+          ids.push(entry.id);
+        }
+      }
+
+      return ids;
+    };
+
+    this.addAppContext = function(results, contextResults) {
       // basically, for each media, do a lookup and add on the sections.
       // similar: for each... hasOwnProp... (if not layers)
       // loop it up.
-      for (var mediaType in resultsMedia) {
+      for (var mediaType in results.media) {
         // if the media type exists on both the serialized and scanned results, we'll match it up (this excludes layers, which are scanned but not serialized).
-        if (resultsMedia.hasOwnProperty(mediaType) && contextMedia.hasOwnProperty(mediaType)) {
-          this.addAppContextByMedia(resultsMedia[mediaType], contextMedia[mediaType]);
+        if (results.media.hasOwnProperty(mediaType) && contextResults.media.hasOwnProperty(mediaType)) {
+          this.addAppContextByMedia(results.media[mediaType], contextResults.media[mediaType]);
         }
       }
+      contextResults.media.layers = this.addLayerContext(results.media.layers, contextResults.media);
+
+      // make errors and warnings point to the instanceIDs of the offending media, not the media's ID.
+      contextResults.errors = this.assignIssuesToInstances(results.errors, contextResults.media);
+      contextResults.warnings = this.assignIssuesToInstances(results.warnings, contextResults.media);
+    };
+
+    this.assignIssuesToInstances = function(issues, media) {
+      // make errors and warnings point to the instanceIDs of the offending media, not the media's ID.
+      // this is so that we know which specific instance of, say, a video has a problem, instead of
+      // only knowing that that video has an issue (same video can be reused across the story)
+      var allIssues = NormalizeHelper.getAllItems(issues);
+
+      // for each error
+      for (var i = 0; i < allIssues.length; i++) {
+        var newMedia = [];
+        var issue = allIssues[i];
+        // for each media item with the error,
+        for (var j = 0; j < issue.media.length; j++) {
+          var offendingMedia = issue.media[j];
+          // find all instances of it
+          var allInstances = this.findInstancesById(offendingMedia, media, issue.mediaType);
+          // point to all of those.
+          newMedia = newMedia.concat(allInstances);
+        }
+
+        issue.media = newMedia;
+      }
+
+      return issues;
+    };
+
+    this.findInstancesById = function(itemID, media, type) {
+      var instanceIDs = [];
+      // loop through the media (only a subset if type is not "content") and find all instances of the media with that given ID.
+      var items = [];
+      switch (type) {
+        case 'maps':
+          items = NormalizeHelper.getAllItems(media.maps);
+          break;
+        case 'images':
+          items = NormalizeHelper.getAllItems(media.images);
+          break;
+        case 'audio':
+          items = NormalizeHelper.getAllItems(media.audio);
+          break;
+        case 'scenes':
+          items = NormalizeHelper.getAllItems(media.scenes);
+          break;
+        case 'videos':
+          items = NormalizeHelper.getAllItems(media.videos);
+          break;
+        case 'webpages':
+          items = NormalizeHelper.getAllItems(media.webpages);
+          break;
+        case 'layers':
+          items = NormalizeHelper.getAllItems(media.layers);
+          break;
+        default:
+          break;
+      }
+
+      // loop thru each one, if ID is the same, add the instance ID
+      for (var i = 0; i < items.length; i++) {
+        var item = items[i];
+        if (item.id === itemID) {
+          instanceIDs.push(item.instanceID);
+        }
+      }
+
+      return instanceIDs;
     };
 
     this.addAppContextByMedia = function(media, contextMedia) {
       // but you have the ID, so you could swap it for that.
-      var mediaItems = NormalizeHelper.getAllItems(media);
+      var mediaItems = NormalizeHelper.getAllItems(contextMedia);
       // for each media item, get the context (for now, just sections) off of the contextMedia.
       for (var i = 0; i < mediaItems.length; i++) {
         var resultItem = mediaItems[i];
-        var contextItem = contextMedia.byId[resultItem.id];
-
-        resultItem.sections = [];
-        // make sure the item is in the context media (it should be) and has the sections property
-        if (contextItem && contextItem.sections) {
-          resultItem.sections = contextItem.sections;
-        }
+        var scanItem = media.byId[resultItem.id];
+        // make a deep copy of the scan result, since one scan result can be reused in many instances
+        resultItem.scanResult = $.extend(true, {}, scanItem);
       }
     };
 
-    this.addFixMethods = function(results) {
-      var errors = NormalizeHelper.getAllItems(results.errors);
+    this.addLayerContext = function(resultLayers, contextMedia) {
+      var newLayersResult = NormalizeHelper.createObject();
 
-      for (var i = 0; i < errors.length; i++) {
-        this.addFixMethodsByIssue(errors[i]);
+      this.addLayerContextByMedia(contextMedia.maps, resultLayers, newLayersResult, 'map');
+      this.addLayerContextByMedia(contextMedia.scenes, resultLayers, newLayersResult, 'scene');
+
+      return newLayersResult;
+    };
+
+    this.addLayerContextByMedia = function(media, resultLayers, newLayersResult, mediaType) {
+      var allItems = NormalizeHelper.getAllItems(media);
+      for (var i = 0; i < allItems.length; i++) {
+        var item = allItems[i];
+        var itemLayers = [];
+        // for each layer
+        for (var j = 0; j < item.scanResult.layers.length; j++) {
+          // make a new instanceID and object from the layer.
+          // it will point to item, item will point to it.
+          var layerID = item.scanResult.layers[j];
+          var layerReference = resultLayers.byId[layerID];
+          var newLayer = {
+            id: layerReference.id,
+            instanceID: UIUtils.getUID(),
+            mediaType: 'layer',
+            section: item.section,
+            scanResult: $.extend(true, {}, layerReference)
+          };
+          // point the layer to the item
+          delete newLayer.scanResult.maps;
+          delete newLayer.scanResult.scenes;
+          newLayer.scanResult[mediaType] = item.instanceID;
+
+          itemLayers.push(newLayer.instanceID);
+          // add the layer to the list of layers
+          NormalizeHelper.addEntry(newLayersResult, newLayer.instanceID, newLayer);
+        }
+        // replace item's layers with this list
+        item.scanResult.layers = itemLayers;
+      }
+    };
+
+    this.addFixMethods = function(errors) {
+      var allErrors = NormalizeHelper.getAllItems(errors);
+
+      for (var i = 0; i < allErrors.length; i++) {
+        this.addFixMethodsByIssue(allErrors[i]);
       }
     };
 
@@ -355,43 +547,18 @@ define([
 
     this.compileIssueSections = function(resultsMedia) {
       var issueSections = {
-        errorSections: []
+        errorSections: [],
+        warningSections: []
       };
 
       for (var mediaItem in resultsMedia) {
         if (resultsMedia.hasOwnProperty(mediaItem)) {
-          if (mediaItem === 'layers') {
-            this.compileIssueSectionsByLayer(resultsMedia[mediaItem], resultsMedia, issueSections.errorSections, 'errors');
-          }
-          else {
-            this.compileIssueSectionsByMedia(resultsMedia[mediaItem], issueSections.errorSections, 'errors');
-          }
+          this.compileIssueSectionsByMedia(resultsMedia[mediaItem], issueSections.errorSections, 'errors');
+          this.compileIssueSectionsByMedia(resultsMedia[mediaItem], issueSections.warningSections, 'warnings');
         }
       }
 
       return issueSections;
-    };
-
-    this.compileIssueSectionsByLayer = function(layers, media, sections, severity) {
-      var layerItems = NormalizeHelper.getAllItems(layers);
-
-      for (var i = 0; i < layerItems.length; i++) {
-        var layer = layerItems[i];
-
-        // see if there are issues with the layer.
-        if (layer[severity].length) {
-          // if so, get the maps and scenes that this layer is a part of, and (conditionally) add their sections on.
-          // start with maps
-          if (layer.maps && layer.maps.length) {
-            for (var j = 0; j < layer.maps.length; j++) {
-              var mapID = layer.maps[j];
-              var map = media.maps.byId[mapID];
-
-              this.addIssueSections(map.sections, sections);
-            }
-          }
-        }
-      }
     };
 
     this.compileIssueSectionsByMedia = function(media, sections, severity) {
@@ -400,21 +567,16 @@ define([
       for (var i = 0; i < mediaItems.length; i++) {
         var item = mediaItems[i];
 
-        if (item[severity].length) {
+        if (item.scanResult[severity] && item.scanResult[severity].length) {
           // push onto sections if not there.
-          this.addIssueSections(item.sections, sections);
+          this.addIssueSections(item.section, sections);
         }
       }
     };
 
-    this.addIssueSections = function(itemSections, issueSections) {
-      // for the sections on the item, if it doesn't already exist on the issuesSections, add it to it.
-      for (var j = 0; j < itemSections.length; j++) {
-        var section = itemSections[j];
-
-        if (issueSections.indexOf(section) === -1) {
-          issueSections.push(section);
-        }
+    this.addIssueSections = function(section, issueSections) {
+      if (issueSections.indexOf(section) === -1) {
+        issueSections.push(section);
       }
     };
 
@@ -477,14 +639,9 @@ define([
           }
         },
         settings: {
-          /*
           theme: {
-            colors: {
-              id: 'black-over-white-1',
-              'text-main': '#000',
-              'background-main': '#FFF'
-            }
-          },*/
+            colors: app.Controller.THEME_DEFAULT_COLORS
+          },
           header: app.Controller.SHARED_STYLE_HEADER_SETTINGS || {}
         },
         template: {
@@ -513,24 +670,30 @@ define([
         firstSectionBlocks = [
           /* todo webmap title? */
           app.ui.MediaFactory.createInstance({
-            type: 'webmap',
-            webmap: {
-              id: params.webmapId
+            mediaJSON: {
+              type: 'webmap',
+              webmap: {
+                id: params.webmapId
+              }
             }
-          }).serialize()
+          }).serialize(false)
         ];
       }
       else if (params.websceneId) {
         firstSectionBlocks = [
           /* todo webscene title? */
           app.ui.MediaFactory.createInstance({
-            type: 'webscene',
-            webscene: {
-              id: params.websceneId
+            mediaJSON: {
+              type: 'webscene',
+              webscene: {
+                id: params.websceneId
+              }
             }
-          }).serialize()
+          }).serialize(false)
         ];
       }
+
+      var bgColor = lang.getObject('story.settings.theme.colors.bgMain') || '#fff';
 
       story.sections = [
         app.ui.SectionFactory.createInstance({
@@ -539,19 +702,21 @@ define([
             title: params.title,
             subtitle: params.subtitle
           }
-        }).serialize(),
+        }).serialize(false),
         app.ui.SectionFactory.createInstance({
           type: 'sequence',
           background: app.ui.MediaFactory.createInstance({
-            type: 'color',
-            color: {
-              value: '#FFF'
+            mediaJSON: {
+              type: 'color',
+              color: {
+                value: bgColor
+              }
             }
-          }).serialize(),
+          }).serialize(false),
           foreground: {
             blocks: firstSectionBlocks
           }
-        }).serialize()
+        }).serialize(false)
       ];
 
       return story;

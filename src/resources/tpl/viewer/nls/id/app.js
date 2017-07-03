@@ -35,12 +35,15 @@ define({
       "builderSupport1": "Builder Story Map Cascade hanya didukung di ${CHROME} dan ${SAFARI}. Namun demikian, cerita Cascade yang Anda buat dengan builder dapat dilihat oleh browser tersebut, Internet Explorer 11+, dan Firefox.",
       "builderSupport2": "Builder Story Map Cascade tidak didukung di iPad. Cerita Cascade yang Anda buat dan bagikan akan berjalan di iPad.",
       "builderSupport3": "Cerita Cascade dapat dilihat di Chrome, Safari, Firefox, dan Internet Explorer 11+, tetapi builder Story Map Cascade hanya didukung di ${CHROME} dan ${SAFARI}.",
-      "builderSupport4": "Cerita Cascade dapat dilihat di Chrome, Safari, Firefox, dan Internet Explorer 11+, tetapi builder Story Map Cascade hanya didukung di ${CHROME} dan ${SAFARI}.<br><br>Jika Anda memerlukan builder Cascade untuk mendukung browser lainnya, harap hubungi ${ESRI-SUPPORT} atau klik untuk memilih: ${FIREFOX-BUILDER} | ${IE-BUILDER}.",
+      "builderSupport4": "Cerita Cascade dapat dilihat di browser web modern mana pun, namun builder Story Map Cascade (Peta Cerita Kaskade) hanya didukung di ${CHROME} dan ${SAFARI}.<br><br>Jika Anda memerlukan builder Cascade untuk mendukung browser lainnya, harap hubungi ${ESRI-SUPPORT} atau ${BROWSER-SUPPORT-VOTE}.",
       "sorry": "Perhatian:"
     },
     "mobileWarning": {
       "message1": "Anda sudah membaca versi seluler cerita ini. Untuk versi lengkap, dengan unsur media yang lebih kaya, cobalah di komputer desktop.",
       "email": "Kirim tautan ke cerita ini melalui email"
+    },
+    "cover": {
+      "iosEmbedLink": "Ketuk untuk membaca cerita lengkapnya"
     },
     "media": {
       "captionPlaceholder": "Keterangan Anda di sini...",
@@ -70,6 +73,10 @@ define({
       "autoplayExplain1": "Mode pemutaran otomatis akan berputar seiring cerita Anda pada interval reguler. Interval ini ideal pada monitor layar kios atau publik, namun perlu diperhatikan bahwa dalam situasi lainnya, cerita mungkin akan lebih sulit dibaca. Fitur ini tidak didukung pada layar kecil.",
       "autoplayExplain2": "Saat mode ini aktif, ada beberapa kontrol untuk memutar/menjeda cerita dan mengatur kecepatan navigasi.",
       "linksupdated": "Tautan diperbarui!"
+    },
+    "theme": {
+      "lightLabel": "Terang",
+      "darkLabel": "Gelap"
     }
   }
 });

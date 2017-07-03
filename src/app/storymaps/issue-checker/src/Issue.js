@@ -11,6 +11,10 @@ export default class Issue {
         mediaType: 'videos',
         actions: []
       },
+      [IssueTypes.audio.inaccessible]: {
+        mediaType: 'audio',
+        actions: []
+      },
       [IssueTypes.maps.inaccessible]: {
         mediaType: 'maps',
         actions: []

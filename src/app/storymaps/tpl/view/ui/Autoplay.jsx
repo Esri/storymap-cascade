@@ -6,22 +6,12 @@ import {} from 'lib-build/css!lib/seiyria-bootstrap-slider/dist/css/bootstrap-sl
 
 import has from 'dojo/has';
 
-var SCROLL_DURATION = 1000,
-    DEFAULT_DELAY = 10,
-    BTN_FADE_DELAY = 3000;
+const SCROLL_DURATION = 200;
+const SCROLL_AMOUNT_BASE_UNIT = 12;
+const BTN_FADE_DELAY = 3000;
 
-var END_STORY_DELAY_BOTTOM = 2000,
-    END_STORY_DELAY_TOP = 2000;
-
-var HEADER_HEIGHT = 50,
-    IMMERSIVE_PANEL_PADDING = 180;
-
-/*
- * Autoplay require specific knowledge of each section type behavior,
- *   it would be best to offload that to each section class
- * Then it could use a similar model than other story maps apps to allow
- *   for a Kiosk app to control the autoplay
- */
+const END_STORY_DELAY_BOTTOM = 2000;
+const STORY_DELAY_TOP = 3000;
 
 export default class Autoplay {
 
@@ -30,7 +20,7 @@ export default class Autoplay {
     this._autoplayBtn = null;
 
     this._inProgress = false;
-    this._delay = null;
+    this._scrollAmount = null;
 
     this._slider = null;
     this._isHoverContainer = false;
@@ -39,8 +29,8 @@ export default class Autoplay {
     this._init();
   }
 
-  start(p = {}) {
-    this._delay = this._slider.slider('getValue') * 1000;
+  start() {
+    this._scrollAmount = this._slider.slider('getValue') * SCROLL_AMOUNT_BASE_UNIT;
 
     if (this._inProgress) {
       return;
@@ -48,11 +38,13 @@ export default class Autoplay {
 
     this._inProgress = true;
 
-    if (p.immediate) {
-      this._next();
+    if ($(document).scrollTop() === 0) {
+      setTimeout(() => {
+        this._next();
+      }, STORY_DELAY_TOP);
     }
     else {
-      setTimeout(this._next.bind(this), this._delay);
+      this._next();
     }
 
     this._updatePlayPauseButton(true);
@@ -72,96 +64,24 @@ export default class Autoplay {
   //
 
   _next() {
-    var currentSectionIndex = app.Controller._currentSectionIndex,
-        currentSection = app.display.sections[currentSectionIndex],
-        currentSectionType = currentSection.type,
-        currentSectionHeight = currentSection.node.height(),
-        browserHeight = app.display.windowHeight,
-        scrollTop = $(document).scrollTop(),
-        step = 0;
+    const currentSectionIndex = app.Controller._currentSectionIndex;
+    const currentSection = app.display.sections[currentSectionIndex];
+    let step = this._scrollAmount;
+    const scrollTop = $(document).scrollTop();
+
+    if (currentSection.type === 'immersive') {
+      // we check if the immersive is all that's seen. If we're almost at the end of an immersive section,
+      // we'll want to scroll slowly again to accommodate the non-immersive content coming up next.
+      let remainingScroll = (currentSection.top + currentSection.node.height()) - scrollTop;
+
+      if (remainingScroll > app.display.windowHeight) {
+        // go faster
+        step = this._scrollAmount * 1.5;
+      }
+    }
 
     if (! this._inProgress) {
       return;
-    }
-
-    if (currentSectionType == 'cover') {
-      // +1 to trigger the proper active section
-      step = browserHeight - HEADER_HEIGHT + 1;
-    }
-    else if (currentSectionType == 'immersive') {
-      let remainingScroll = Math.ceil(currentSection.top + currentSectionHeight - scrollTop);
-
-      if (remainingScroll >= currentSectionHeight - 1) {
-        step = browserHeight + (remainingScroll - currentSectionHeight) - IMMERSIVE_PANEL_PADDING;
-      }
-      else if (remainingScroll == currentSectionHeight - browserHeight + IMMERSIVE_PANEL_PADDING) {
-        step = browserHeight + IMMERSIVE_PANEL_PADDING;
-      }
-      else if (remainingScroll == browserHeight) {
-        step = browserHeight - HEADER_HEIGHT;
-      }
-      else {
-        step = browserHeight;
-      }
-    }
-    else if (currentSectionType == 'title') {
-      step = browserHeight;
-    }
-    else {
-      //let remainingScroll = currentSection.top + currentSectionHeight - scrollTop;
-      //step = Math.min(currentSectionHeight, browserHeight);
-      //step = Math.min(step, remainingScroll);
-
-      step = browserHeight;
-    }
-
-    console.log('scrolling', step + 'px on a ', currentSectionType, 'section');
-
-    /*
-    if (app.display.sections[currentSectionIndex + 1]) {
-      var nextSectionTop = Math.floor(app.display.sections[currentSectionIndex + 1].top);
-
-      // Make sure never scroll past the top of next section
-      // TODO: should not be necessary...
-      if (scrollTop + step > nextSectionTop + 1) {
-        step = nextSectionTop - scrollTop - HEADER_HEIGHT + 1;
-      }
-      // If the next section is less than 200px away, scroll to it to avoid doing a small scroll next
-      else if (scrollTop + step >= nextSectionTop - 200) {
-        step = nextSectionTop - scrollTop + 1;
-      }
-    }
-    */
-
-    // Make sure never scroll past the top of next Immersive section
-    var targetSectionIndex = -1;
-
-    for (let i = app.display.sections.length - 1; i > 0; i--) {
-      let section = app.display.sections[i];
-      if (scrollTop + step > section.top) {
-        targetSectionIndex = i;
-        break;
-      }
-    }
-
-    if (targetSectionIndex != currentSectionIndex) {
-      let nextSection = app.display.sections[targetSectionIndex];
-      if (nextSection && nextSection.type == 'immersive') {
-        var nextSectionTop = nextSection.top;
-
-        if (scrollTop + step > nextSectionTop) {
-          step = nextSectionTop - scrollTop - HEADER_HEIGHT + 1;
-        }
-      }
-    }
-    else {
-      let nextSection = app.display.sections[currentSectionIndex + 1];
-      if (nextSection) {
-        // Allow to scroll 200px more to avoid next scroll being small
-        if (nextSection.top - (scrollTop + step) < 200) {
-          step += nextSection.top - (scrollTop + step) - HEADER_HEIGHT;
-        }
-      }
     }
 
     $('html,body').animate(
@@ -169,11 +89,11 @@ export default class Autoplay {
         scrollTop: scrollTop + step
       },
       {
-        duration: SCROLL_DURATION
-        //easing: 'linear'
+        duration: SCROLL_DURATION,
+        easing: 'linear'
       }
     ).promise().then(function() {
-      if ($(document).scrollTop() + browserHeight >= $('body').height()) {
+      if ($(document).scrollTop() + app.display.windowHeight >= $('body').height()) {
         setTimeout(function() {
           document.body.scrollTop = 0;
           document.documentElement.scrollTop = 0;
@@ -182,11 +102,11 @@ export default class Autoplay {
             forceUpdate: true
           });
 
-          setTimeout(this._next.bind(this), END_STORY_DELAY_TOP);
+          setTimeout(this._next.bind(this), STORY_DELAY_TOP);
         }.bind(this), END_STORY_DELAY_BOTTOM);
       }
       else {
-        setTimeout(this._next.bind(this), this._delay);
+        this._next();
       }
     }.bind(this));
   }
@@ -246,20 +166,26 @@ export default class Autoplay {
       );
     }
 
+    const speedLabels = {
+      '1': 'Slow',
+      '2': 'Medium',
+      '3': 'Fast'
+    };
+
     // Slider
     this._slider = this._node.find('.slider-container input').slider({
-      min: 5,
-      max: 60,
-      value: DEFAULT_DELAY,
+      min: 1,
+      max: 3,
+      value: 2,
       formatter: function(value) {
-        return value + 's';
+        return speedLabels[value];
       }
     });
 
     // Slider change
     this._node.find('.slider-container input').on('slideStop', () => {
       if (this.isPlaying()) {
-        this.start({ immediate: false });
+        this.start();
       }
     });
 
@@ -267,7 +193,7 @@ export default class Autoplay {
       var nowPlaying = this._autoplayBtn.hasClass('fa-play');
 
       if (nowPlaying) {
-        this.start({ immediate: true });
+        this.start();
       }
       else {
         this.stop();

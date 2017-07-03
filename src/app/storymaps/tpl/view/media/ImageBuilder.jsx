@@ -18,55 +18,34 @@ import issues from '../../builder/Issues';
 const text = i18n.builder;
 
 export default class ImageBuilder extends Image {
-  constructor(image) {
-    super(image);
+  constructor(image, isNewMedia) {
+    super(image, isNewMedia);
 
     this._uploadNotification = null;
+    this._onToggleMediaConfig = null;
+    this._foregroundOptions = null;
+    this._applySectionConfig = null;
   }
 
   postCreate(params) {
+    // if it's an alternate media, its postCreate will be very different
+    if (this._isAlternate) {
+      this.postCreateAlternate();
+      return;
+    }
+
     super.postCreate(params);
+
+    this._onToggleMediaConfig = params.onToggleMediaConfig;
+    this._foregroundOptions = params.foregroundOptions;
+    this._applySectionConfig = params.applySectionConfig;
 
     // Placeholder image are managed by the section
     if (this._image.isPlaceholder) {
       this._node.find('.media-cfg-invite').hide();
     }
     else {
-      let tabs = [];
-
-      for(let tab of this._builderConfigurationTabs) {
-        if (tab == 'size') {
-          tabs.push(new BuilderConfigTabSizeImage());
-        }
-        else if (tab == 'section-appearance') {
-          tabs.push(new BuilderConfigTabSectionAppearance({
-            sectionOptions: params.foregroundOptions,
-            onSectionChange: params.applySectionConfig
-          }));
-        }
-        else if (tab == 'background') {
-          tabs.push(new BuilderConfigTabBackground({
-            sectionType: params.sectionType
-          }));
-        }
-        else if (tab == 'manage') {
-          tabs.push(new BuilderConfigTabManageImage({
-            hideRemove: this._placement == 'background'
-          }));
-        }
-      }
-
-      new BuilderConfig({
-        containerMedia: this._node,
-        tabs: tabs,
-        media: this._image,
-        onChange: this._onConfigChange.bind(this),
-        onAction: this._onAction.bind(this),
-        onToggle: function() {
-          params.onToggleMediaConfig(this);
-        }.bind(this),
-        closeBtnStyle: this._placement == 'background' ? 'light' : 'standard'
-      });
+      this._initConfigPanel();
 
       //
       // Image gallery invite
@@ -80,29 +59,59 @@ export default class ImageBuilder extends Image {
     }
 
     // we subscribe to the scan change for this SPECIFIC image only (hence the scan/image/imageID pattern).
-    topic.subscribe('scan/images/' + this._image.url, lang.hitch(this, this.checkErrors));
+    topic.subscribe('scan/images/' + this._instanceID, lang.hitch(this, this.checkErrors));
 
     this.initBuilderUI();
   }
 
-  checkErrors(scanResult) {
-    // update the map UI based on the scan results
+  postCreateAlternate() {
+    if (this._isUploadPending) {
+      this._onUploadStart();
+    }
+  }
 
-    const errorIds = this.mapErrors(scanResult);
-    if (!errorIds) {
-      this.removeError();
-      return;
+  _initConfigTabs() {
+    let tabs = [];
+
+    for(let tab of this._builderConfigurationTabs) {
+      if (tab == 'size') {
+        tabs.push(new BuilderConfigTabSizeImage());
+      }
+      else if (tab == 'section-appearance') {
+        tabs.push(new BuilderConfigTabSectionAppearance({
+          sectionOptions: this._foregroundOptions,
+          onSectionChange: this._applySectionConfig
+        }));
+      }
+      else if (tab == 'background') {
+        tabs.push(new BuilderConfigTabBackground({
+          sectionType: this._sectionType
+        }));
+      }
+      else if (tab == 'manage') {
+        const manageTab = this._createManageTab();
+        tabs.push(manageTab);
+      }
     }
 
-    const unfixableOptions = this.isUnfixableError(errorIds);
-    if (unfixableOptions) {
-      this.setError(unfixableOptions);
-      return;
-    }
+    return tabs;
+  }
 
-    // TODO: something different here?
-    this.setError({errors: scanResult.errors});
+  _initConfigPanel() {
+    super._initConfigPanel();
 
+    this._builderConfigPanel = new BuilderConfig({
+      containerMedia: this._node,
+      tabs: this._initConfigTabs(),
+      media: this._image,
+      onChange: this._onConfigChange.bind(this),
+      onAction: this._onAction.bind(this),
+      onToggle: function() {
+        this._node.toggleClass('builder-config-open');
+        this._onToggleMediaConfig(this);
+      }.bind(this),
+      closeBtnStyle: this._placement == 'background' ? 'light' : 'standard'
+    });
   }
 
   isUnfixableError(errorIds) {
@@ -117,7 +126,7 @@ export default class ImageBuilder extends Image {
     return false;
   }
 
-  serialize() {
+  serialize(includeInstanceID) {
     if (this._image.uploadDeferred) {
       delete this._image.uploadDeferred;
     }
@@ -126,10 +135,7 @@ export default class ImageBuilder extends Image {
       this._image.caption = this._node.find('.block-caption').html();
     }
 
-    return lang.clone({
-      type: 'image',
-      image: this._image
-    });
+    return super.serialize('image', this._image, includeInstanceID);
   }
 
   //
@@ -142,6 +148,9 @@ export default class ImageBuilder extends Image {
   }
 
   _onUploadStart() {
+    if (this._isAlternate) {
+      return;
+    }
     this._uploadNotification = new CancelNotification({
       container: this._node.parents('.section').eq(0),
       label: text.media.imageUpload
@@ -183,7 +192,10 @@ export default class ImageBuilder extends Image {
     this.preload().then(this.load.bind(this));
 
     topic.publish('builder-media-update');
-    this._node.find('.img-gallery-invite').removeClass('disabled');
+
+    if (!this._isAlternate) {
+      this._node.find('.img-gallery-invite').removeClass('disabled');
+    }
   }
 
   _onUploadFail() {
@@ -197,7 +209,7 @@ export default class ImageBuilder extends Image {
     if (this._placement == 'block') {
       this._onAction('remove');
     }
-    else {
+    else if (!this._isAlternate) {
       this._onAction(
         'swap',
         {
@@ -210,5 +222,12 @@ export default class ImageBuilder extends Image {
 
   _onCreateImageGallery() {
     this._onAction('image-to-image-gallery');
+  }
+
+  _createManageTab() {
+    return new BuilderConfigTabManageImage({
+      hideRemove: this._placement == 'background',
+      showErrors: this.scanResults.errors && this.scanResults.errors.length
+    });
   }
 }

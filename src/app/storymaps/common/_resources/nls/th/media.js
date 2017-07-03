@@ -1,4 +1,3 @@
-// nls expects double quotes
 /*eslint quotes:[2, 'double'] */
 define({
   "mediaPicker": {
@@ -72,8 +71,8 @@ define({
             "imageOnly2": "โปรดให้การเชื่อมโยงไปยังรูปภาพ (.jpg, .png, .gif) หรือเลือกภาพจาก ${ArcGIS}, ${Flickr}, ${Google+}, หรือ ${Unsplash}.",
             "imageAndVideo1": "คุณต้องใช้ภาพหรือวิดีโอในส่วนหนึ่งของเรื่องนี้",
             "imageAndVideo2": "โปรดให้การเชื่อมโยงไปยังรูปภาพ (.jpg, .png, .gif) หรือวิดีโอบน ${YouTube} หรือ ${Vimeo}, หรือเลือกภาพจาก ${ArcGIS}, ${Flickr}, ${Google+}, หรือ ${Unsplash}.",
-            "badFormat": "การเชื่อมโยงไปยัง ${media-type} คุณกำลังพยายามที่จะเพิ่มการจัดรูปแบบไม่ถูกต้อง.",
-            "inaccessible": "${media-type} คุณกำลังพยายามที่จะเพิ่มการขาดหายไปหรือไม่สามารถเข้าถึงได้.",
+            "badFormat": "ลิงก์ไปยังไฟล์ที่คุณต้องการเพิ่มมีรูปแบบไม่ถูกต้อง",
+            "inaccessible": "ไฟล์ที่คุณพยายามเพิ่มหายไปหรือไม่สามารถเข้าถึงได้",
             "tryAgain": "กรุณาตรวจสอบที่อยู่และลองอีกครั้ง.",
             "mediaTypes": {
               "VIDEO": "วิดีโอ",
@@ -125,6 +124,8 @@ define({
           "searchLocation": {
             "thisStory": "เรื่องนี้",
             "agol": "ArcGIS Online",
+            "portalArcGIS": "Portal for ArcGIS",
+            "portal": "พอร์ทัล",
             "myOrg": "${orgname} องค์กร",
             "myContent": "เนื้อหาของฉัน"
           },

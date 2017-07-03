@@ -13,13 +13,14 @@ define({
     "headerConfig": {
       "toggles": {
         "bookmarks": "Semne de carte",
-        "logoSharing": "Siglă şi partajare"
+        "logoSharing": "Siglă şi partajare",
+        "theme": "Aspect"
       },
       "bookmarks": {
         "title": "Secţiune",
         "bookmark": "Semn de carte",
         "intro": "Semnele de carte sunt legături către secţiuni ale poveştii, afişate în titlu. Crearea de semne de carte concise pentru secţiunile principale ale poveştii dvs. îi ajută pe cititori să se orienteze.",
-        "sequentialDefault": "Secţiune scvenţială (nu s-a găsit text)",
+        "sequentialDefault": "Secţiune naraţiune (nu s-a găsit text)",
         "immersiveDefault": "Secţiune imersivă (nu s-a găsit text)",
         "titleDefault": "Secţiune titlu (nu s-a găsit text)",
         "coverDefault": "Secţiune copertă (nu s-a găsit text)",
@@ -38,6 +39,15 @@ define({
         "taglineLinkDisabledTooltip": "Introduceţi un slogan pentru a activa legătura",
         "link": "Legătură slogan",
         "enableSocialSharing": "Afişare buton partajare"
+      },
+      "appearance": {
+        "themeLabel": "Temă",
+        "fontLabel": "Fonturi",
+        "previewLabel": "Previzualizare",
+        "fontsTitleLabel": "Titluri",
+        "fontsBodyLabel": "Corp",
+        "loremTitle": "Lorem Ipsum",
+        "loremBody": "Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor. Mauris consequat orci nec magna facilisis bibendum at eget libero."
       }
     },
     "builderPanel": {
@@ -47,7 +57,7 @@ define({
       "betaNote": "Vă rugăm să ne spuneţi ce credeţi despre ${APP_NAME} sau dacă ceva nu funcţionează aşa cum v-aţi aşteptat.",
       "notSharedNote": "Scenariul dvs. nu este partajat, numai dvs. îl puteţi vizualiza",
       "organizationWarning": "Pentru a vă asigura că această poveste poate fi vizualizată de alte persoane, trebuie să partajaţi şi scenele acesteia, straturile tematice de scenă şi aplicaţiile încorporate cu organizaţia dvs. Hărţile şi straturile tematice de hartă sunt partajate automat.",
-      "publicWarning": "Pentru a vă asigura că această poveste poate fi vizualizată de alte persoane, trebuie să partajaţi şi scenele acesteia, straturile tematice de scenă şi aplicaţiile încorporate în mod public. Hărţile şi straturile tematice de hartă sunt partajate automat.",
+      "publicWarning": "Pentru a vă asigura că această poveste poate fi vizualizată de alte persoane, trebuie să partajaţi şi scenele acesteia, straturile tematice de scenă şi aplicaţiile încorporate cu toată lumea. Hărţile şi straturile tematice de hartă sunt partajate automat.",
       "addTitleNote": "Adăugaţi un titlu pe copertă pentru a salva",
       "saveError": "A apărut o eroare la salvarea poveştii dvs.",
       "duplicate": "Duplicare",
@@ -77,6 +87,7 @@ define({
         "manage": "Gestionare",
         "size": "Dimensiune",
         "background": "Fundal",
+        "mobile": "Mobil",
         "issues": "Probleme",
         "fixIssues": "Rezolvare probleme"
       },
@@ -112,15 +123,23 @@ define({
       "size": {
         "small": "Mic",
         "medium": "Medie",
-        "large": "Mare"
+        "large": "Mare",
+        "noCrop": "Nu se decupează imaginile înalte",
+        "noCropTallTooltip": "Nedecuparea unei imagini înalte produce un efect dramatic pentru cititori, care necesită derularea pentru a vedea întreaga imagine."
       },
       "background": {
-        "noCrop": "Nu decupaţi imaginea",
+        "noCrop": "Nu se decupează",
         "mostImportantPart": "Alegeţi cel mai important punct",
-        "cropExplanationImmersive": "Selectaţi un punct pe imagine pentru a alege modul în care imaginea va fi decupată în funcţie de dimensiunile ecranului. Punctul pe care îl alegeţi va fi întotdeauna vizibil. Bifaţi caseta aflată mai jos în cazul în care conţinutul media trebuie să fie complet vizibil.",
-        "cropExplanation": "Selectaţi un punct pe imagine pentru a alege modul în care imaginea va fi decupată în funcţie de dimensiunile ecranului. Punctul pe care îl alegeţi va fi întotdeauna vizibil.",
+        "cropExplanationImmersive": "Selectaţi un punct pe imagine pentru a alege modul în care aceasta va fi decupată în funcţie de dimensiunile ecranului. Punctul pe care îl alegeţi va fi întotdeauna vizibil. Bifaţi caseta „Nu se decupează” în cazul în care imaginea trebuie să fie complet vizibilă.",
+        "cropExplanation": "Selectaţi un punct pe imagine pentru a alege modul în care aceasta va fi decupată în funcţie de dimensiunile ecranului. Punctul pe care îl alegeţi va fi întotdeauna vizibil.",
         "color": "Culoare",
         "previews": "Examinări"
+      },
+      "altMedia": {
+        "alternativeMedia": "Multimedia alternativă",
+        "explanation": "Unele materiale multimedia nu sunt acceptate sau este posibil să nu funcţioneze bine pe dispozitive mobile. Folosiţi acest panou pentru a alege un element alternativ, compatibil cu mediul mobil, care să fie prezentat în locul acestui material multimedia atunci când povestea dvs. este vizualizată pe un telefon sau pe o tabletă.",
+        "changeAltImage": "Modificare imagine",
+        "uploadAltImage": "Adăugare imagine"
       }
     },
     "imageGallery": {
@@ -174,9 +193,9 @@ define({
       "undo": "Anulare"
     },
     "sections": {
-      "sequence": "Secţiune narativă",
-      "immersive": "Secţiune imersivă",
-      "title": "Secţiune titlu"
+      "sequence": "Naraţiune",
+      "immersive": "Captivantă",
+      "title": "Titlu"
     },
     "mediaErrors": {
       "mediaTypes": {
@@ -189,14 +208,22 @@ define({
       },
       "placeholders": {
         "generic": "Acest conţinut nu este accesibil.",
-        "deleted": "Acest ${media-type} a fost şters.",
-        "inaccessible": "Acest ${media-type} nu este accesibil.",
-        "unauthorized": "Nu sunteţi autorizat să accesaţi acest ${media-type}.",
-        "unshared": "Acest ${media-type} nu este partajat la fel ca povestea dvs.",
-        "othersUnshared": "Acest ${media-type} nu este partajat la fel ca povestea dvs.",
-        "subscriptionContent": "Acest ${media-type} conţine un strat tematic de abonat.",
-        "premiumContent": "Acest ${media-type} conţine un strat tematic premium.",
-        "secureService": "Acest ${media-type} conţine un strat tematic securizat."
+        "deleted": "Acest element a fost şters.",
+        "inaccessible": "Acest conţinut nu este accesibil.",
+        "unauthorized": "Nu sunteţi autorizat să vizualizaţi acest conţinut.",
+        "unshared": "Acest element nu este partajat la fel ca povestea dvs.",
+        "othersUnshared": "Acest element nu este partajat la fel ca povestea dvs.",
+        "subscriptionContent": "Această hartă conţine un strat tematic de abonat.",
+        "premiumContent": "Această hartă conţine un strat tematic premium.",
+        "secureService": "Această hartă conţine un strat tematic securizat."
+      },
+      "contentIssues": {
+        "noAltImage": "Material multimedia neacceptat pe dispozitive mobile",
+        "altImageBroken": "Imaginea alternativă definită pentru acest element multimedia nu este accesibilă"
+      },
+      "contentWarnings": {
+        "noAltImage": "Acest tip de material multimedia nu este acceptat pe dispozitive mobile. Furnizaţi o imagine alternativă, care să fie afişată atunci când povestea este vizualizată pe dispozitive mobile.",
+        "noAltImageAlt": "Acest tip de material multimedia nu este acceptat pe dispozitive mobile. În fila pentru mobile, furnizaţi o imagine alternativă, care să fie afişată atunci când povestea este vizualizată pe dispozitive mobile."
       },
       "mapIssues": {
         "fixButton": "Rezolvare probleme",

@@ -13,13 +13,14 @@ define({
     "headerConfig": {
       "toggles": {
         "bookmarks": "Kirjanmerkit",
-        "logoSharing": "Logo ja jakaminen"
+        "logoSharing": "Logo ja jakaminen",
+        "theme": "Ulkoasu"
       },
       "bookmarks": {
         "title": "Osio",
         "bookmark": "Kirjanmerkki",
         "intro": "Kirjanmerkit ovat tarinan osioiden linkkejä, jotka näkyvät otsikkorivillä. Ytimekkäiden kirjanmerkkien luonti tarinan pääosioita varten auttaa lukijoita perehtymisessä.",
-        "sequentialDefault": "Peräkkäinen osio (tekstiä ei löytynyt)",
+        "sequentialDefault": "Kerrontaosio (tekstiä ei löytynyt)",
         "immersiveDefault": "Immersiivinen osio (tekstiä ei löytynyt)",
         "titleDefault": "Otsikko-osio (tekstiä ei löytynyt)",
         "coverDefault": "Kansi-osio (tekstiä ei löytynyt)",
@@ -38,6 +39,15 @@ define({
         "taglineLinkDisabledTooltip": "Ota linkki käyttöön kirjoittamalla iskulause",
         "link": "Iskulauselinkki",
         "enableSocialSharing": "Näytä jakamispainike"
+      },
+      "appearance": {
+        "themeLabel": "Teema",
+        "fontLabel": "Fontit",
+        "previewLabel": "Esikatselu",
+        "fontsTitleLabel": "Otsikot",
+        "fontsBodyLabel": "Runko-osa",
+        "loremTitle": "Lorem Ipsum",
+        "loremBody": "Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor. Mauris consequat orci nec magna facilisis bibendum at eget libero."
       }
     },
     "builderPanel": {
@@ -47,7 +57,7 @@ define({
       "betaNote": "Kerro meille, mitä pidät sovelluksesta ${APP_NAME}, tai jos jokin ei toimi odottamallasi tavalla.",
       "notSharedNote": "Tarinaasi ei ole jaettu. Vain sinä näet sen.",
       "organizationWarning": "Jos haluat varmistaa, että muut näkevät tarinasi, sinun on jaettava organisaatiosi kanssa myös tarinan maisemat, maisemakarttatasot ja upotetut sovellukset.",
-      "publicWarning": "Jos haluat varmistaa, että muut näkevät tarinasi, sinun on jaettava julkisesti myös tarinan maisemat, maisemakarttatasot ja upotetut sovellukset.",
+      "publicWarning": "Jos haluat varmistaa, että muut näkevät tarinasi, sinun on jaettava kaikkien kanssa myös tarinan maisemat, maisemakarttatasot ja upotetut sovellukset.",
       "addTitleNote": "Tallenna lisäämällä otsikko kanteen",
       "saveError": "Tarinan tallennuksessa tapahtui virhe.",
       "duplicate": "Tee kopio",
@@ -77,6 +87,7 @@ define({
         "manage": "Hallitse",
         "size": "Koko",
         "background": "Tausta",
+        "mobile": "Mobiili",
         "issues": "Ongelmia",
         "fixIssues": "Korjaa ongelmat"
       },
@@ -112,15 +123,23 @@ define({
       "size": {
         "small": "Pieni",
         "medium": "Keskitaso",
-        "large": "Suuri"
+        "large": "Suuri",
+        "noCrop": "Älä rajaa korkeita kuvia",
+        "noCropTallTooltip": "Jos et rajaa korkeaa kuvaa, lukijat joutuvat vierittämään kuvaa nähdäkseen sen kokonaan, mikä ei ole suotavaa."
       },
       "background": {
-        "noCrop": "Älä rajaa kuvaa",
+        "noCrop": "Älä rajaa",
         "mostImportantPart": "Valitse tärkein piste",
-        "cropExplanationImmersive": "Määritä, miten kuva rajataan erikokoisissa näytöissä, valitsemalla piste kuvasta. Valitsemasi piste näkyy aina. Valitse alla oleva valintaruutu, jos median on näyttävä kokonaan.",
+        "cropExplanationImmersive": "Määritä, miten kuva rajataan erikokoisissa näytöissä, valitsemalla piste kuvasta. Valitsemasi piste näkyy aina. Valitse Älä raja -valintaruutu, jos kuvan on näyttävä kokonaan.",
         "cropExplanation": "Määritä, miten kuva rajataan erikokoisissa näytöissä, valitsemalla piste kuvasta. Valitsemasi piste näkyy aina.",
         "color": "Väri",
         "previews": "Esikatselut"
+      },
+      "altMedia": {
+        "alternativeMedia": "Vaihtoehtoinen media",
+        "explanation": "Joitakin mediatyyppejä ei tueta tai ne eivät toimi hyvin mobiililaitteissa. Tässä paneelissa voit valita vaihtoehtoisen, mobiiliystävällisemmän kohteen, joka näytetään tämän median tilalla, kun tarinaasi tarkastellaan puhelimessa tai tabletilla.",
+        "changeAltImage": "Vaihda kuva",
+        "uploadAltImage": "Lisää kuva"
       }
     },
     "imageGallery": {
@@ -174,9 +193,9 @@ define({
       "undo": "Kumoa"
     },
     "sections": {
-      "sequence": "Kerrontaosio",
-      "immersive": "Immersiivinen osio",
-      "title": "Otsikko-osio"
+      "sequence": "Kerronta",
+      "immersive": "Immersiivinen",
+      "title": "Otsikko"
     },
     "mediaErrors": {
       "mediaTypes": {
@@ -189,14 +208,22 @@ define({
       },
       "placeholders": {
         "generic": "Tätä sisältöä ei voi käyttää.",
-        "deleted": "Tämä ${media-type} on poistettu.",
-        "inaccessible": "Mediatyyppiä ${media-type} ei voi käyttää.",
-        "unauthorized": "Sinulla ei ole lupaa mediatyypin ${media-type} tarkasteluun.",
-        "unshared": "Mediatyyppiä ${media-type} ei jaeta yhdessä tarinan kanssa.",
-        "othersUnshared": "Mediatyyppiä ${media-type} ei jaeta yhdessä tarinan kanssa.",
-        "subscriptionContent": "Tämä ${media-type} sisältää Tilaaja-karttatason.",
-        "premiumContent": "Tämä ${media-type} sisältää Premium-karttatason.",
-        "secureService": "Tämä ${media-type} sisältää suojatun karttatason."
+        "deleted": "Tämä kohde on poistettu.",
+        "inaccessible": "Tätä sisältöä ei voi käyttää.",
+        "unauthorized": "Sinulla ei ole tämän sisällön tarkasteluoikeuksia.",
+        "unshared": "Tätä kohdetta ei jaeta samalla tavalla tarinan kanssa.",
+        "othersUnshared": "Tätä kohdetta ei jaeta samalla tavalla tarinan kanssa.",
+        "subscriptionContent": "Tämä kartta sisältää Tilaaja-karttatason.",
+        "premiumContent": "Tämä kartta sisältää Premium-karttatason.",
+        "secureService": "Tämä kartta sisältää suojatun karttatason."
+      },
+      "contentIssues": {
+        "noAltImage": "Mobiililaitteet eivät tue mediaa",
+        "altImageBroken": "Tälle medialle määritetty vaihtoehtoinen kuva ei ole käytettävissä"
+      },
+      "contentWarnings": {
+        "noAltImage": "Mobiililaitteet eivät tue tämäntyyppistä mediaa. Määritä vaihtoehtoinen kuva, joka näytetään, kun tarinaa tarkastellaan mobiililaitteissa.",
+        "noAltImageAlt": "Mobiililaitteet eivät tue tämäntyyppistä mediaa. Määritä mobiilivälilehdellä vaihtoehtoinen kuva, joka näytetään, kun tarinaa tarkastellaan mobiililaitteissa."
       },
       "mapIssues": {
         "fixButton": "Korjaa ongelmat",

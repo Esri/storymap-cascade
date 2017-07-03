@@ -1,4 +1,3 @@
-// nls expects double quotes
 /*eslint quotes:[2, 'double'] */
 define({
   root: ({
@@ -73,8 +72,8 @@ define({
               imageOnly2: "Please provide a link to an image (.jpg, .png, .gif), or choose an image from ${ArcGIS}, ${Flickr}, ${Google+}, or ${Unsplash}.",
               imageAndVideo1: "You must use an image or video in this part of the story.",
               imageAndVideo2: "Please provide a link to an image (.jpg, .png, .gif) or a video on ${YouTube} or ${Vimeo}, or choose an image from ${ArcGIS}, ${Flickr}, ${Google+}, or ${Unsplash}.",
-              badFormat: "The link to the ${media-type} you are trying to add is formatted incorrectly.",
-              inaccessible: "The ${media-type} you are trying to add is missing or not accessible.",
+              badFormat: "The link to the file you are trying to add is formatted incorrectly.",
+              inaccessible: "The file you are trying to add is missing or not accessible.",
               tryAgain: "Please check the address and try again.",
               mediaTypes: {
                 VIDEO: "video",
@@ -126,6 +125,8 @@ define({
             searchLocation: {
               thisStory: "This Story",
               agol: "ArcGIS Online",
+              portalArcGIS: "Portal for ArcGIS",
+              portal: "Portal",
               myOrg: "${orgname} Organization",
               myContent: "My Content"
             },

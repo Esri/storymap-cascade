@@ -1,4 +1,3 @@
-// nls expects double quotes
 /*eslint quotes:[2, 'double'] */
 define({
   "mediaPicker": {
@@ -65,15 +64,15 @@ define({
             "embedProtocolWarning3": "Hoặc cách khác, thêm đường liên kết vào câu chuyện của bạn để mở trang trong tab trình duyệt mới. ${linkText}",
             "linkText": "Tìm hiểu Thêm."
           },
-          "placeholder": "${https://}... or ${http://}... or ${<iframe>}",
+          "placeholder": "${https://}... hoặc ${http://}... hoặc ${<iframe>}",
           "uploadErrors": {
             "generic": "Đã xảy ra lỗi với địa chỉ khi nhập vào. Vui lòng thử lại.",
             "imageOnly1": "Bạn phải sử dụng một hình ảnh trong phần này của câu chuyện.",
             "imageOnly2": "Vui lòng cung cấp đường liên kết cho hình ảnh (.jpg, .png, .gif), hoặc chọn hình ảnh từ ${ArcGIS}, ${Flickr}, ${Google+}, hoặc ${Unsplash}.",
             "imageAndVideo1": "Bạn phải sử dụng một hình ảnh hoặc video trong phần này của câu chuyện.",
             "imageAndVideo2": "Vui lòng cung cấp đường liên kết cho hình ảnh (.jpg, .png, .gif), hoặc video trên ${YouTube} hoặc ${Vimeo}, hoặc chọn hình ảnh từ ${ArcGIS}, ${Flickr}, ${Google+}, hoặc ${Unsplash}.",
-            "badFormat": "Đường liên kết đến ${media-type} mà bạn đang cố gắng thêm vào có định dạng không chính xác.",
-            "inaccessible": "${media-type} mà bạn đang cố gắng thêm vào bị thiếu hoặc không thể truy cập được.",
+            "badFormat": "Đường liên kết đến tệp tin mà bạn đang cố gắng thêm vào có định dạng không chính xác.",
+            "inaccessible": "Tệp tin mà bạn đang cố gắng thêm vào bị thiếu hoặc không thể truy cập được.",
             "tryAgain": "Vui lòng kiểm tra địa chỉ và thử lại.",
             "mediaTypes": {
               "VIDEO": "video",
@@ -125,6 +124,8 @@ define({
           "searchLocation": {
             "thisStory": "Câu chuyện này",
             "agol": "ArcGIS Online",
+            "portalArcGIS": "Portal for ArcGIS",
+            "portal": "Cổng thông tin",
             "myOrg": "Tổ chức ${orgname}",
             "myContent": "Nội dung của tôi"
           },

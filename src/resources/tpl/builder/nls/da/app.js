@@ -13,13 +13,14 @@ define({
     "headerConfig": {
       "toggles": {
         "bookmarks": "Bogmærker",
-        "logoSharing": "Logo og deling"
+        "logoSharing": "Logo og deling",
+        "theme": "Udseende"
       },
       "bookmarks": {
         "title": "Sektion",
         "bookmark": "Bogmærke",
         "intro": "Bogmærker og links til historieafsnit, der vises i headeren. Når du opretter nøjagtige bogmærker til hovedafsnittene i din historie, hjælper det læserne, så de kan orientere sig.",
-        "sequentialDefault": "Sekvensopbygget afsnit (ingen tekst fundet)",
+        "sequentialDefault": "Fortællingsafsnit (ingen tekst fundet)",
         "immersiveDefault": "Fordybelsesafsnit (ingen tekst fundet)",
         "titleDefault": "Titelafsnit (ingen tekst fundet)",
         "coverDefault": "Forsideafsnit (ingen tekst fundet)",
@@ -38,6 +39,15 @@ define({
         "taglineLinkDisabledTooltip": "Indtast en tagline for at aktivere linket",
         "link": "Tagline-link",
         "enableSocialSharing": "Vis delingsknappen"
+      },
+      "appearance": {
+        "themeLabel": "Tema",
+        "fontLabel": "Skrifttyper",
+        "previewLabel": "Eksempel",
+        "fontsTitleLabel": "Titler",
+        "fontsBodyLabel": "Brødtekst",
+        "loremTitle": "Lorem Ipsum",
+        "loremBody": "Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor. Mauris consequat orci nec magna facilisis bibendum at eget libero."
       }
     },
     "builderPanel": {
@@ -47,7 +57,7 @@ define({
       "betaNote": "Fortæl os, hvad du synes om ${APP_NAME}, eller om der er noget, der ikke fungerer, som du forventede.",
       "notSharedNote": "Din historie er ikke delt. Kun du kan se den",
       "organizationWarning": "For at sikre, at denne historie kan ses af andre, skal du også dele dens scener, scenelag og indlejrede apps med din organisation. Kort og kortlag deles automatisk.",
-      "publicWarning": "For at sikre, at denne historie kan ses af andre, skal du også dele dens scener, scenelag og indlejrede apps offentligt. Kort og kortlag deles automatisk.",
+      "publicWarning": "For at sikre, at denne historie kan ses af andre, skal du også dele dens scener, scenelag og indlejrede apps med Alle. Kort og kortlag deles automatisk.",
       "addTitleNote": "Tilføj en titel på forsiden til lagring",
       "saveError": "Der opstod en fejl under lagring af din historie.",
       "duplicate": "Duplikér",
@@ -77,6 +87,7 @@ define({
         "manage": "Håndter",
         "size": "Størrelse",
         "background": "Baggrund",
+        "mobile": "Mobil",
         "issues": "Problemer",
         "fixIssues": "Løs problemer"
       },
@@ -112,15 +123,23 @@ define({
       "size": {
         "small": "Lille",
         "medium": "Mellem",
-        "large": "Stor"
+        "large": "Stor",
+        "noCrop": "Beskær ikke høje billeder",
+        "noCropTallTooltip": "Når du undlader at beskære høje billeder, fremkommer der en dramatisk virkning, som kræver, at læserne skal rulle for at se hele billedet."
       },
       "background": {
-        "noCrop": "Beskær ikke billedet",
+        "noCrop": "Beskær ikke",
         "mostImportantPart": "Vælg det vigtigste punkt",
-        "cropExplanationImmersive": "Vælg et punkt på billedet for at angive, hvordan dit billede skal beskæres ved forskellige skærmstørrelser. Det punkt, du vælger, vil altid være synligt. Marker boksen nedenfor, hvis dine medier skal være fuldt synlige.",
-        "cropExplanation": "Vælg et punkt på billedet for at angive, hvordan dit billede skal beskæres ved forskellige skærmstørrelser. Det punkt, du vælger, vil altid være synligt.",
+        "cropExplanationImmersive": "Vælg et punkt på billedet for at angive, hvordan billedet skal beskæres ved forskellige skærmstørrelser. Det punkt, du vælger, vil altid være synligt. Markér 'Beskær ikke', hvis dit billede skal være fuldt synligt.",
+        "cropExplanation": "Vælg et punkt på billedet for at angive, hvordan billedet skal beskæres ved forskellige skærmstørrelser. Det punkt, du vælger, vil altid være synligt.",
         "color": "Farve",
         "previews": "Forhåndsvisninger"
+      },
+      "altMedia": {
+        "alternativeMedia": "Alternative medier",
+        "explanation": "Nogle medier understøttes ikke eller fungerer måske ikke godt på mobile enheder. Brug dette panel til at vælge et alternativt, mere mobilvenligt element, som vil blive vist i stedet for dette medie, når din historie vises på en telefon eller tablet.",
+        "changeAltImage": "Skift billede",
+        "uploadAltImage": "Tilføj billede"
       }
     },
     "imageGallery": {
@@ -174,9 +193,9 @@ define({
       "undo": "Fortryd"
     },
     "sections": {
-      "sequence": "Fortællende afsnit",
-      "immersive": "Fordybelsesafsnit",
-      "title": "Titelafsnit"
+      "sequence": "Fortælling",
+      "immersive": "Fordybelse",
+      "title": "Titel"
     },
     "mediaErrors": {
       "mediaTypes": {
@@ -189,14 +208,22 @@ define({
       },
       "placeholders": {
         "generic": "Dette indhold er utilgængeligt.",
-        "deleted": "Denne ${media-type} er blevet slettet.",
-        "inaccessible": "Denne ${media-type} er utilgængelig.",
-        "unauthorized": "Du har ikke autorisation til at vise denne ${media-type}.",
-        "unshared": "Denne ${media-type} deles ikke på samme måde som din historie.",
-        "othersUnshared": "Denne ${media-type} deles ikke på samme måde som din historie.",
-        "subscriptionContent": "Denne ${media-type} indeholder et abonnentlag.",
-        "premiumContent": "Denne ${media-type} indeholder et premium-lag.",
-        "secureService": "Denne ${media-type} indeholder et sikkert lag."
+        "deleted": "Dette element er blevet slettet.",
+        "inaccessible": "Dette indhold er utilgængeligt.",
+        "unauthorized": "Du er ikke autoriseret til at vise dette indhold.",
+        "unshared": "Dette element deles ikke på samme måde som din historie.",
+        "othersUnshared": "Dette element deles ikke på samme måde som din historie.",
+        "subscriptionContent": "Dette kort indeholder et abonnentlag.",
+        "premiumContent": "Dette kort indeholder et premium-lag.",
+        "secureService": "Dette kort indeholder et sikkert lag."
+      },
+      "contentIssues": {
+        "noAltImage": "Medier, der ikke understøttes på mobile enheder",
+        "altImageBroken": "Det alternative billede, der er defineret for dette medieelement, er ikke tilgængeligt"
+      },
+      "contentWarnings": {
+        "noAltImage": "Denne type medier understøttes ikke på mobile enheder. Angiv et alternativt billede, som skal vises, når historien vises på mobile enheder.",
+        "noAltImageAlt": "Denne type medier understøttes ikke på mobile enheder. På den mobile fane skal du angive et alternativt billede, som skal vises, når historien vises på mobile enheder."
       },
       "mapIssues": {
         "fixButton": "Løs problemer",

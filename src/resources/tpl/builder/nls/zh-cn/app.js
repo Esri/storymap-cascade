@@ -13,13 +13,14 @@ define({
     "headerConfig": {
       "toggles": {
         "bookmarks": "书签",
-        "logoSharing": "徽标和共享"
+        "logoSharing": "徽标和共享",
+        "theme": "外观"
       },
       "bookmarks": {
         "title": "部分",
         "bookmark": "书签",
         "intro": "书签是显示在页眉中的指向故事部分的链接。为故事的主要部分创建简明书签可便于读者进行导航。",
-        "sequentialDefault": "连续部分(找不到文本)",
+        "sequentialDefault": "叙述章节(找不到文本)",
         "immersiveDefault": "拟真部分(找不到文本)",
         "titleDefault": "标题部分(找不到文本)",
         "coverDefault": "封面部分(找不到文本)",
@@ -38,6 +39,15 @@ define({
         "taglineLinkDisabledTooltip": "请输入用于启用链接的标语",
         "link": "标语链接",
         "enableSocialSharing": "显示共享按钮"
+      },
+      "appearance": {
+        "themeLabel": "主题",
+        "fontLabel": "字体",
+        "previewLabel": "预览",
+        "fontsTitleLabel": "标题",
+        "fontsBodyLabel": "主体",
+        "loremTitle": "Lorem Ipsum",
+        "loremBody": "Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor. Mauris consequat orci nec magna facilisis bibendum at eget libero."
       }
     },
     "builderPanel": {
@@ -47,7 +57,7 @@ define({
       "betaNote": "请告知我们您对于 ${APP_NAME} 的想法，如果某些功能未按预期运行，也请通知我们。",
       "notSharedNote": "您的故事尚未共享，只有您可以查看",
       "organizationWarning": "要确保他人可查看此故事，还必须与组织共享该故事的场景、场景图层和嵌入式应用程序。地图和地图图层自动共享。",
-      "publicWarning": "要确保他人可查看此故事，还必须共享该故事的场景、场景图层和嵌入式应用程序。地图和地图图层自动共享。",
+      "publicWarning": "要确保他人可查看此故事，还必须与所有人共享该故事的场景、场景图层和嵌入式应用程序。地图和地图图层自动共享。",
       "addTitleNote": "向封面添加标题以进行保存",
       "saveError": "保存故事时出错。",
       "duplicate": "复制",
@@ -77,6 +87,7 @@ define({
         "manage": "管理",
         "size": "大小",
         "background": "背景",
+        "mobile": "移动",
         "issues": "问题",
         "fixIssues": "修复问题"
       },
@@ -112,15 +123,23 @@ define({
       "size": {
         "small": "小型",
         "medium": "中等",
-        "large": "大型"
+        "large": "大型",
+        "noCrop": "请勿裁剪长图像",
+        "noCropTallTooltip": "不裁剪长图像会为读者提供一种需要滚动才能查看完整图像的动态效果。"
       },
       "background": {
-        "noCrop": "请勿裁剪图像",
+        "noCrop": "请勿裁剪",
         "mostImportantPart": "选择最重要的点",
-        "cropExplanationImmersive": "选择地图上的某点以选择图像在不同屏幕尺寸的裁剪方式。您选择的点将始终可见。如果媒体需要完全可见，请选中以下框。",
-        "cropExplanation": "选择地图上的某点以选择图像在不同屏幕尺寸的裁剪方式。您选择的点将始终可见。",
+        "cropExplanationImmersive": "选择图像上的某点以选择图像在不同屏幕尺寸的裁剪方式。您选择的点将始终可见。如果图像需要完全可见，请选中“请勿裁剪”。",
+        "cropExplanation": "选择图像上的某点以选择图像在不同屏幕尺寸的裁剪方式。您选择的点将始终可见。",
         "color": "颜色",
         "previews": "预览"
+      },
+      "altMedia": {
+        "alternativeMedia": "备用介质",
+        "explanation": "有些介质可能不受支持，或无法在移动设备上正常工作。使用此面板可选择更适于移动的备用项目，在手机或平板电脑上查看故事时，将使用该项目替换该介质。",
+        "changeAltImage": "更改图像",
+        "uploadAltImage": "添加图像"
       }
     },
     "imageGallery": {
@@ -174,9 +193,9 @@ define({
       "undo": "撤消"
     },
     "sections": {
-      "sequence": "叙述部分",
-      "immersive": "拟真部分",
-      "title": "标题部分"
+      "sequence": "叙述",
+      "immersive": "拟真",
+      "title": "标题"
     },
     "mediaErrors": {
       "mediaTypes": {
@@ -189,14 +208,22 @@ define({
       },
       "placeholders": {
         "generic": "无法访问此内容。",
-        "deleted": "此 ${media-type} 已删除。",
-        "inaccessible": "无法访问此 ${media-type}。",
-        "unauthorized": "您无权查看此 ${media-type}。",
-        "unshared": "此 ${media-type} 未以与故事相同的方式进行共享。",
-        "othersUnshared": "此 ${media-type} 未以与故事相同的方式进行共享。",
-        "subscriptionContent": "此 ${media-type} 包含订阅者图层。",
-        "premiumContent": "此 ${media-type} 包含高级图层。",
-        "secureService": "此 ${media-type} 包含安全图层。"
+        "deleted": "该项目已被删除。",
+        "inaccessible": "无法访问此内容。",
+        "unauthorized": "您无权查看此内容。",
+        "unshared": "此项目未与以故事相同的方式进行共享。",
+        "othersUnshared": "此项目未与以故事相同的方式进行共享。",
+        "subscriptionContent": "此地图包含订阅者图层。",
+        "premiumContent": "此地图包含高级图层。",
+        "secureService": "此地图包含安全图层。"
+      },
+      "contentIssues": {
+        "noAltImage": "介质不支持移动设备",
+        "altImageBroken": "无法访问为此介质定义的备用图像"
+      },
+      "contentWarnings": {
+        "noAltImage": "此介质类型不支持移动设备。请提供在移动设备上查看故事时显示的备用图像。",
+        "noAltImageAlt": "此介质类型不支持移动设备。请在移动选项卡上提供在移动设备上查看故事时显示的备用图像。"
       },
       "mapIssues": {
         "fixButton": "修复问题",

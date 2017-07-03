@@ -7,8 +7,8 @@ define({
     "blockAdd": {
       "text": "Text",
       "media": "Média",
-      "title": "Titulní část",
-      "immersive": "Poutavá část"
+      "title": "Název",
+      "immersive": "Poutavé"
     },
     "link": {
       "invite": "Vložte nebo zadejte odkaz..."

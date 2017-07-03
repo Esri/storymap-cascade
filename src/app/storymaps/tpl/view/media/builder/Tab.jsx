@@ -2,12 +2,15 @@ export default class Tab {
   constructor(params = {}) {
     this.title = '';
     this.selectedClass = 'selected';
+    this.hasBeenRendered = false;
 
     this._isActive = false;
     this._options = params;
     this._sectionOptions = params.sectionOptions;
     this._onSectionChange = params.onSectionChange;
     this._onOpen = params.onOpen;
+    this.showErrors = params.showErrors;
+    this.showWarnings = params.showWarnings;
   }
 
   onChange() {
@@ -24,6 +27,7 @@ export default class Tab {
     }
 
     this._isActive = true;
+    this.hasBeenRendered = true;
 
     this._node = params.container;
     this._media = params.media;

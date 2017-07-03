@@ -5,8 +5,6 @@ import i18n from 'lib-build/i18n!resources/tpl/builder/nls/app';
 import {} from 'lib-build/less!./Empty';
 import viewTpl from 'lib-build/hbars!./Empty';
 
-import lang from 'dojo/_base/lang';
-
 const PREVIEW_THUMB = 'resources/tpl/builder/icons/media-placeholder/image.jpg';
 const PREVIEW_ICON = 'resources/tpl/builder/icons/immersive-panel/image.png';
 
@@ -77,10 +75,8 @@ export default class Empty extends Media {
   //
 
   serialize() {
-    return lang.clone({
-      type: 'empty',
-      empty: 'empty'
-    });
+    // we don't ever want the instanceID put on
+    return super.serialize('empty', 'empty', false);
   }
 
   onPickMedia() {

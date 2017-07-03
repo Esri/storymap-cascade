@@ -1,4 +1,3 @@
-// nls expects double quotes
 /*eslint quotes:[2, 'double'] */
 define({
   "mediaPicker": {
@@ -65,15 +64,15 @@ define({
             "embedProtocolWarning3": "Alternatīva iespēja — stāstījumam pievienojiet saiti, lai lapu atvērtu jaunā pārlūka cilnē. ${linkText}",
             "linkText": "Uzziniet vairāk."
           },
-          "placeholder": "${https://}... or ${http://}... or ${<iframe>}",
+          "placeholder": "${https://}... vai ${http://}... vai ${<iframe>}",
           "uploadErrors": {
             "generic": "Ar ievadīto adresi radās problēma. Lūdzu, mēģiniet vēlreiz.",
             "imageOnly1": "Šajā stāsta daļā ir jāizmanto attēls.",
             "imageOnly2": "Lūdzu, sniedziet saiti uz attēlu (.jpg, .png, .gif) vai izvēlieties attēlu no ${ArcGIS}, ${Flickr}, ${Google+} vai  ${Unsplash}.",
             "imageAndVideo1": "Šajā stāsta daļā ir jāizmanto attēls vai video.",
             "imageAndVideo2": "Lūdzu, sagādājiet saiti uz attēlu (.jpg, .png, .gif), uz video vietnē ${YouTube} vai ${Vimeo} vai izvēlieties attēlu no ${ArcGIS}, ${Flickr}, ${Google+} vai ${Unsplash}.",
-            "badFormat": "Saite uz ${media-type}, ko mēģināt pievienot, ir nepareizi formatēta.",
-            "inaccessible": "${Media-type}, ko mēģināt pievienot, trūkst vai tam nevar piekļūt.",
+            "badFormat": "Saite uz failu, ko mēģināt pievienot, ir nepareizi formatēta.",
+            "inaccessible": "Trūkst faila, ko mēģināt pievienot, vai tam nevar piekļūt.",
             "tryAgain": "Pārbaudiet ievadīto adresi un mēģiniet vēlreiz.",
             "mediaTypes": {
               "VIDEO": "video",
@@ -125,6 +124,8 @@ define({
           "searchLocation": {
             "thisStory": "Šis stāsts",
             "agol": "ArcGIS Online",
+            "portalArcGIS": "Portal for ArcGIS",
+            "portal": "Portal",
             "myOrg": "Organizācija ${orgname}",
             "myContent": "Mans Saturs"
           },

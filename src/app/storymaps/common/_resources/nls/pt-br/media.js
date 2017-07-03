@@ -1,4 +1,3 @@
-// nls expects double quotes
 /*eslint quotes:[2, 'double'] */
 define({
   "mediaPicker": {
@@ -65,15 +64,15 @@ define({
             "embedProtocolWarning3": "Como alternativa, adicione um link na sua narrativa para abrir a página em uma nova guia do navegador. ${linkText}",
             "linkText": "Obtenha Mais Informações."
           },
-          "placeholder": "${https://}... or ${http://}... or ${<iframe>}",
+          "placeholder": "${https://}... ou ${http://}... ou ${<iframe>}",
           "uploadErrors": {
             "generic": "Algo deu errado com o endereço inserido. Tente novamente.",
             "imageOnly1": "Você deve utilizar uma imagem nesta parte da história.",
             "imageOnly2": "Forneça um link para uma imagem (.jpg, .png, .gif) ou escolha uma imagem ${ArcGIS}, ${Flickr}, ${Google+} ou ${Unsplash}.",
             "imageAndVideo1": "Você deve utilizar uma imagem ou vídeo nesta parte da história.",
             "imageAndVideo2": "Forneça um link para uma imagem (.jpg, .png, .gif) ou um vídeo em ${YouTube} ou ${Vimeo}, ou escolha uma imagem ${ArcGIS}, ${Flickr}, ${Google+} ou ${Unsplash}.",
-            "badFormat": "O link para ${media-type} que você está tentando adicionar está formatado incorretamente.",
-            "inaccessible": "O ${media-type} que você está tentando adicionar está ausente ou não acessível.",
+            "badFormat": "O link para o arquivo que você está tentando adicionar está formatado incorretamente.",
+            "inaccessible": "O arquivo que você está tentando adicionar está faltando ou não está acessível.",
             "tryAgain": "Verifique o endereço e tente novamente.",
             "mediaTypes": {
               "VIDEO": "vídeo",
@@ -125,6 +124,8 @@ define({
           "searchLocation": {
             "thisStory": "Esta História",
             "agol": "ArcGIS Online",
+            "portalArcGIS": "Portal for ArcGIS",
+            "portal": "Portal",
             "myOrg": "${orgname} Organização",
             "myContent": "Meu Conteúdo"
           },

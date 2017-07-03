@@ -1,29 +1,70 @@
-<div class="builder-buttons">
-  <img src="resources/tpl/builder/icons/builder.jpg" />
+<div class="builder-panel-tools">
 
-  <button class="btn btn-settings">
-    <i class="fa fa-cog fa-lg" aria-hidden="true"></i>
-    <span class="btn-settings-label">{{commonStrings.buttonSettings}}</span>
-  </button>
-  <div class="beta-feedback">
-    <a href="http://links.esri.com/storymaps/cascade-beta-feedback" target="_blank">{{strings.betaFeedback}}</a>
-    <i class="beta-tooltip fa fa-commenting" aria-hidden="true"></i>
+  <div class="builder-panel-tools-row-1">
+    <button class="builder-title">
+      <span class="white-text">{{commonStrings.builderNamePrefix}}</span>
+      <span class="blue-text">Cascade</span>
+      <span class="white-text">{{commonStrings.builderNameSuffix}}</span>
+    </button>
+    <button id="feedback-button" class="btn-feedback btn btn-clear lightest" data-title="{{strings.betaFeedback}}" title="{{commonStrings.buttonHelp}}" onClick="window.open('http://links.esri.com/storymaps/cascade-beta-feedback')">
+      <i class="btn-feedback-icon fa fa-commenting" aria-hidden="true"></i>
+    </button>
   </div>
 
-  <button class="btn btn-share not-clickable">
-    <i class="fa fa-share fa-lg" aria-hidden="true"></i>
-    <span class="btn-share-label">{{commonStrings.buttonShare}}</span>
-    <div class="btn-share-container">
+  <div class="builder-panel-tools-row-2">
+
+    <button class="btn btn-preview">
+        <span class="btn-preview-wrapper">
+          <i class="fa fa-eye fa-lg" aria-hidden="true" title="{{commonStrings.buttonPreview}}"></i>
+          <i class="fa fa-caret-up" aria-hidden="true"></i>
+        </span>
+      <span class="btn-preview-label"></span>
+    </button>
+
+    <button class="btn btn-settings">
+      <i class="fa fa-cog fa-lg" aria-hidden="true" title="{{commonStrings.buttonSettings}}"></i>
+      <span class="btn-settings-label"></span>
+    </button>
+
+    <button class="btn btn-check" title="{{commonStrings.buttonHealth}}: {{strings.mystoriestooltip}}">
+      <span class="error-icon-wrapper">
+        <i class="fa fa-exclamation-triangle fa-lg"></i>
+        <span class="issue-count super"></span>
+      </span>
+      <span class="warning-icon-wrapper">
+        <i class="fa fa-heartbeat fa-lg" aria-hidden="true"></i>
+      </span>
+      <span class="checking-icon-wrapper">
+        <span class="small-loader"></span>
+      </span>
+      <span class="no-issues-icon-wrapper">
+        <i class="fa fa-heartbeat fa-lg" aria-hidden="true"></i>
+        <i class="fa fa-check super"></i>
+      </span>
+    </button>
+
+  </div>
+
+  <div class="builder-panel-tools-row-3">
+
+    <button id="save-button" class="btn btn-save" data-toggle="tooltip" data-placement="top" data-title="{{strings.saveError}}">
+      <i class="btn-save-icon fa fa-floppy-o fa-lg" aria-hidden="true" title="{{btnSave}}"></i>
+      <span class="btn-save-loader small-loader"></span>
+      <span class="btn-save-success fa fa-check"></span>
+      <span class="btn-save-error glyphicon glyphicon-exclamation-sign"></span>
+    </button>
+
+    <button class="btn-share-container">
       <div class="btn-share-outer-tooltip" data-level="private">
         <div class="btn-share-wrapper" data-level="private" data-title="{{sharingLevelStrings.btnPrivate}}">
     			<span class="small-loader"></span>
-    			<i class="share-icon fa fa-user fa-lg" aria-hidden="true"></i>
+    			<i class="share-icon fa fa-lock fa-lg" aria-hidden="true"></i>
     		</div>
       </div>
       <div class="btn-share-outer-tooltip tooltip-enabled" data-level="account" data-title="{{organizationWarning}}">
         <div class="btn-share-wrapper" data-level="account" data-title="{{sharingLevelStrings.btnOrg}}">
     			<span class="small-loader"></span>
-    			<i class="share-icon fa fa-users fa-lg" aria-hidden="true"></i>
+    			<i class="share-icon fa fa-building fa-lg" aria-hidden="true"></i>
     		</div>
       </div>
       <div class="btn-share-outer-tooltip tooltip-enabled" data-level="public" data-title="{{publicWarning}}">
@@ -32,39 +73,10 @@
     			<i class="share-icon fa fa-globe fa-lg" aria-hidden="true"></i>
     		</div>
       </div>
-    </div>
-  </button>
+    </button>
 
-  <button class="btn btn-preview">
-    <i class="fa fa-eye fa-lg" aria-hidden="true"></i>
-    <span class="btn-preview-label">{{commonStrings.buttonPreview}}</span>
-  </button>
-
-  <button class="btn btn-check not-clickable">
-    <span class="checking-icon-wrapper">
-      <span class="small-loader"></span>
-    </span>
-    <span class="issue-icon-wrapper">
-      <i class="fa fa-exclamation-triangle fa-lg"></i>
-      <span class="issue-count super"></span>
-    </span>
-    <span class="no-issues-icon-wrapper">
-      <i class="fa fa-heartbeat fa-lg" aria-hidden="true"></i>
-      <i class="fa fa-check super"></i>
-    </span>
-
-    <span class="btn-check-label">{{commonStrings.buttonHealth}}
-      <i class="check-tooltip fa fa-info-circle" aria-hidden="true"></i>
-    </span>
-  </button>
-
-  <button id="save-button" class="btn btn-save" data-toggle="tooltip" data-placement="top" data-title="{{strings.saveError}}">
-    <i class="btn-save-icon fa fa-cloud fa-lg" aria-hidden="true"></i>
-    <span class="btn-save-loader small-loader"></span>
-    <span class="btn-save-success glyphicon glyphicon-ok"></span>
-    <span class="btn-save-error glyphicon glyphicon-exclamation-sign"></span>
-    <span class="btn-save-label">{{btnSave}}</span>
-  </button>
+  </div>
 
 </div>
+
 <div class="overview"></div>

@@ -58,8 +58,8 @@ var GooglePhotosConnector = (function() {
 
           // If the builder is used in HTTPS, the picture will have an HTTPS url
           // Some browser won't load picture using HTTPS when the app is accessed over HTTP
-          picUrl = picUrl.replace('https://', 'http://');
-          thumbUrl = thumbUrl.replace('https://', 'http://');
+          picUrl = picUrl.replace(/^https?:\/\//, '//');
+          thumbUrl = thumbUrl.replace(/^https?:\/\//, '//');
 
           var photo = {
             name: item['media$group']['media$description']['$t'] || '',

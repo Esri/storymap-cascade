@@ -13,13 +13,14 @@ define({
     "headerConfig": {
       "toggles": {
         "bookmarks": "Záložky",
-        "logoSharing": "Logo & sdílení"
+        "logoSharing": "Logo & sdílení",
+        "theme": "Vzhled"
       },
       "bookmarks": {
         "title": "Část",
         "bookmark": "Záložka",
         "intro": "Záložky jsou odkazy na části příběhu, které se zobrazují v záhlaví. Vytvoření stručných záložek pro hlavní části vašeho příběhu pomůže uživatelům s orientací.",
-        "sequentialDefault": "Sekvenční část (nenalezen žádný text)",
+        "sequentialDefault": "Část příběhu (nenalezen žádný text)",
         "immersiveDefault": "Poutavá část (nenalezen žádný text)",
         "titleDefault": "Titulní část (nenalezen žádný text)",
         "coverDefault": "Úvodní část (nenalezen žádný text)",
@@ -38,6 +39,15 @@ define({
         "taglineLinkDisabledTooltip": "Zadejte slogan pro aktivaci odkazu",
         "link": "Odkaz na slogan",
         "enableSocialSharing": "Zobrazit tlačítko sdílení"
+      },
+      "appearance": {
+        "themeLabel": "Téma",
+        "fontLabel": "Písma",
+        "previewLabel": "Náhled",
+        "fontsTitleLabel": "Názvy",
+        "fontsBodyLabel": "Tělo",
+        "loremTitle": "Lorem Ipsum",
+        "loremBody": "Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor. Mauris consequat orci nec magna facilisis bibendum at eget libero."
       }
     },
     "builderPanel": {
@@ -47,7 +57,7 @@ define({
       "betaNote": "Dejte nám vědět, co si myslíte o aplikaci ${APP_NAME}, nebo pokud něco nefunguje podle vašeho očekávání.",
       "notSharedNote": "Váš příběh není sdílen, vidíte ho jenom vy.",
       "organizationWarning": "Abyste zajistili, že tento příběh budou moci zobrazit ostatní uživatelé, musíte se svou organizací sdílet také jeho scény, vrstvy scén a vložené aplikace. Mapy a mapové vrstvy se sdílejí automaticky.",
-      "publicWarning": "Abyste zajistili, že tento příběh budou moci zobrazit ostatní uživatelé, musíte veřejně sdílet také jeho scény, vrstvy scén a vložené aplikace. Mapy a mapové vrstvy se sdílejí automaticky.",
+      "publicWarning": "Aby tento příběh mohli zobrazit ostatní uživatelé, musíte se všemi sdílet také jeho scény, vrstvy scén a vložené aplikace. Mapy a mapové vrstvy se sdílejí automaticky.",
       "addTitleNote": "Pro uložení přidejte na obal nadpis",
       "saveError": "Při ukládání vašeho příběhu došlo k chybě.",
       "duplicate": "Duplikovat",
@@ -77,6 +87,7 @@ define({
         "manage": "Spravovat",
         "size": "Velikost",
         "background": "Pozadí",
+        "mobile": "Mobilní",
         "issues": "Problémy",
         "fixIssues": "Vyřešit problémy"
       },
@@ -112,15 +123,23 @@ define({
       "size": {
         "small": "Malá",
         "medium": "Střední",
-        "large": "Velká"
+        "large": "Velká",
+        "noCrop": "Neořezávat vysoké obrázky",
+        "noCropTallTooltip": "Pokud neořežete vysoký obrázek, docílíte dramatického efektu pro čtenáře, kteří si budou muset posunout zobrazení, aby viděli celý obrázek."
       },
       "background": {
-        "noCrop": "Neořezávat obrázek",
+        "noCrop": "Neořezávat",
         "mostImportantPart": "Zvolte nejdůležitější bod",
-        "cropExplanationImmersive": "Zvolte bod na obrázku pro určení, jak bude obrázek oříznut na různě velkých obrazovkách. Vybraný bod bude vždy viditelný. Zaškrtněte níže uvedené pole, pokud vaše médium musí být zcela viditelné.",
+        "cropExplanationImmersive": "Zvolte bod na obrázku pro určení, jak bude obrázek oříznut na různě velkých obrazovkách. Vybraný bod bude vždy viditelný. Pole Neořezávat zaškrtněte, pokud váš obrázek musí být zcela viditelný.",
         "cropExplanation": "Zvolte bod na obrázku pro určení, jak bude obrázek oříznut na různě velkých obrazovkách. Vybraný bod bude vždy viditelný.",
         "color": "Barva",
         "previews": "Náhledy"
+      },
+      "altMedia": {
+        "alternativeMedia": "Alternativní médium",
+        "explanation": "Některá média nejsou podporována nebo nemusejí na mobilních zařízeních fungovat správně. Na tomto panelu zvolte alternativní vhodnější položku, která se zobrazí namísto tohoto média při prohlížení vašeho příběhu na telefonu nebo tabletu.",
+        "changeAltImage": "Změnit obrázek",
+        "uploadAltImage": "Přidat obrázek"
       }
     },
     "imageGallery": {
@@ -174,9 +193,9 @@ define({
       "undo": "Vrátit"
     },
     "sections": {
-      "sequence": "Vyprávěčská část",
-      "immersive": "Poutavá část",
-      "title": "Titulní část"
+      "sequence": "Vyprávění",
+      "immersive": "Poutavé",
+      "title": "Název"
     },
     "mediaErrors": {
       "mediaTypes": {
@@ -189,14 +208,22 @@ define({
       },
       "placeholders": {
         "generic": "Tento obsah není přístupný.",
-        "deleted": "Tento typ média ${media-type} byl odstraněn.",
-        "inaccessible": "Tento typ média ${media-type} není přístupný.",
-        "unauthorized": "Nemáte oprávnění k zobrazení tohoto typu média ${media-type}.",
-        "unshared": "Tento typ média ${media-type} není sdílen stejným způsobem jako váš příběh.",
-        "othersUnshared": "Tento typ média ${media-type} není sdílen stejným způsobem jako váš příběh.",
-        "subscriptionContent": "Tento typ média ${media-type} obsahuje předplatitelskou vrstvu.",
-        "premiumContent": "Tento typ média ${media-type} obsahuje prémiovou vrstvu.",
-        "secureService": "Tento typ média ${media-type} obsahuje zabezpečenou vrstvu."
+        "deleted": "Tato položka byla vymazána.",
+        "inaccessible": "Tento obsah není přístupný.",
+        "unauthorized": "Nejste oprávněni zobrazit tento obsah.",
+        "unshared": "Tato položka není sdílena stejně jako váš příběh.",
+        "othersUnshared": "Tato položka není sdílena stejně jako váš příběh.",
+        "subscriptionContent": "Tato mapa obsahuje předplatitelskou vrstvu.",
+        "premiumContent": "Tato mapa obsahuje prémiovou vrstvu.",
+        "secureService": "Tato mapa obsahuje zabezpečenou vrstvu."
+      },
+      "contentIssues": {
+        "noAltImage": "Médium není podporováno na mobilních zařízeních",
+        "altImageBroken": "Alternativní obrázek definovaný pro toto médium je nedostupný."
+      },
+      "contentWarnings": {
+        "noAltImage": "Tento typ média není podporován na mobilních zařízeních. Poskytněte alternativní obrázek, který se zobrazí při prohlížení příběhu na mobilních zařízeních.",
+        "noAltImageAlt": "Tento typ média není podporován na mobilních zařízeních. Na záložce pro mobilní zařízení poskytněte alternativní obrázek, který se zobrazí při prohlížení příběhu na mobilních zařízeních."
       },
       "mapIssues": {
         "fixButton": "Vyřešit problémy",

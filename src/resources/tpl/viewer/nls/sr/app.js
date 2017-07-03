@@ -35,12 +35,15 @@ define({
       "builderSupport1": "Alatka za izradu Story Map Cascade je podržana samo na pregledačima i ${CHROME} i ${SAFARI}. Međutim, kaskadne priče koje kreirate pomoću alatke za izradu mogu da budu pregledane samo u ovim pregledačima, Internet Explorer 11+ i Firefox.",
       "builderSupport2": "Alatka za izradu Story Map Cascade nije podržana na iPad uređaju. Kaskadne priče koje kreirate i podelite će raditi na iPad uređajima.",
       "builderSupport3": "Kaskadne priče mogu da budu pregledane na pregledačima Chrome, Safari, Firefox i Internet Explorer 11+, ali alatka za izradu kaskadne priče je podržana samo na pregledačima ${CHROME} i ${SAFARI}.",
-      "builderSupport4": "Kaskadne priče mogu da budu pregledane na pregledačima Chrome, Safari, Firefox, i Internet Explorer 11+, ali alatka za izradu kaskadne priče je podržana samo na pregledačima ${CHROME} i ${SAFARI}.<br><br>Ako vam je potrebno da alatka za kaskadnu izradu bude podržana na drugom pregledaču, obratite se ${ESRI-SUPPORT} ili kliknite da biste glasali: ${FIREFOX-BUILDER} | ${IE-BUILDER}.",
+      "builderSupport4": "Cascade priče mogu da budu pregledane u bilo kom novijem veb pregledaču, ali Story Map Cascade alatka za izradu je podržana samo u ${CHROME} i ${SAFARI}.<br><br>Ako vam je potrebna Cascade alatka za izradu kako biste podržali različit pregledač, obratite se ${ESRI-SUPPORT} ili ${BROWSER-SUPPORT-VOTE}.",
       "sorry": "Napomena:"
     },
     "mobileWarning": {
       "message1": "Pročitali ste mobilnu verziju ove priče. Za punu verziju, sa bogatijim elementima medija, koristite stoni računar.",
       "email": "Pošalji e-poruku sa linkom za ovu priču"
+    },
+    "cover": {
+      "iosEmbedLink": "Kliknite kako biste pročitali čitavu priču"
     },
     "media": {
       "captionPlaceholder": "Naslov ide ovde...",
@@ -70,6 +73,10 @@ define({
       "autoplayExplain1": "Režim automatske reprodukcije će ići kroz priču uobičajenim intervalom. Ovo je idealno na terminalima ili javim ekranima, ali imajte u vidu da u drugim situacijama čitanje priče može da bude otežano. Ova funkcija nije podržana na ekranima malih dimenzija.",
       "autoplayExplain2": "Kada je ovaj režim aktiviran, postoje kontrole da se priča reprodukuje/pauzira i da se prilagodi brzina navigacije.",
       "linksupdated": "Linkovi su ažurirani!"
+    },
+    "theme": {
+      "lightLabel": "Svetlo",
+      "darkLabel": "Tamno"
     }
   }
 });

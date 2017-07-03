@@ -13,13 +13,14 @@ define({
     "headerConfig": {
       "toggles": {
         "bookmarks": "Järjehoidjad",
-        "logoSharing": "Logo ja jagamine"
+        "logoSharing": "Logo ja jagamine",
+        "theme": "Välimus"
       },
       "bookmarks": {
         "title": "Jaotis",
         "bookmark": "Järjehoidja",
         "intro": "Järjehoidjad on päises kuvatavate lugude jaotiste lingid. Loo põhijaotiste konkreetsed järjehoidjad aitavad lugejatel loost parema ülevaate saada.",
-        "sequentialDefault": "Järjestikuline jaotis (teksti ei leitud)",
+        "sequentialDefault": "Narratiivjaotis (teksti ei leitud)",
         "immersiveDefault": "Detailsem jaotis (teksti ei leitud)",
         "titleDefault": "Pealkirja jaotis (teksti ei leitud)",
         "coverDefault": "Esilehe jaotis (teksti ei leitud)",
@@ -38,6 +39,15 @@ define({
         "taglineLinkDisabledTooltip": "Lingi lubamiseks sisestage reklaamlause",
         "link": "Reklaamlause link",
         "enableSocialSharing": "Kuva jagamise nupp"
+      },
+      "appearance": {
+        "themeLabel": "Kujundus",
+        "fontLabel": "Fondid",
+        "previewLabel": "Eelvaade",
+        "fontsTitleLabel": "Pealkirjad",
+        "fontsBodyLabel": "Sisu",
+        "loremTitle": "Lorem Ipsum",
+        "loremBody": "Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor. Mauris consequat orci nec magna facilisis bibendum at eget libero."
       }
     },
     "builderPanel": {
@@ -47,7 +57,7 @@ define({
       "betaNote": "Andke meile teada, mida rakendusest ${APP_NAME} arvate. Samuti teavitage meid ka sellest, kui miski ootustekohaselt ei tööta.",
       "notSharedNote": "Teie lugu pole jagatud, ainult teie näete seda.",
       "organizationWarning": "Selleks et teised saaksid seda lugu vaadata, peate loole lisatud vaateid, vaatekihte ja rakendusi oma ettevõttega jagama. Kaarte ja kaardikihte jagatakse automaatselt.",
-      "publicWarning": "Selleks et teised saaksid seda lugu vaadata, peate loole lisatud vaateid, vaatekihte ja rakendusi avalikult jagama. Kaarte ja kaardikihte jagatakse automaatselt.",
+      "publicWarning": "Selleks et teised saaksid seda lugu vaadata, peate loole lisatud vaateid, vaatekihte ja rakendusi kõigiga jagama. Kaarte ja kaardikihte jagatakse automaatselt.",
       "addTitleNote": "Salvestamiseks lisage esilehe pealkiri",
       "saveError": "Teie loo salvestamisel ilmnes tõrge.",
       "duplicate": "Duplikaat",
@@ -77,6 +87,7 @@ define({
         "manage": "Halda",
         "size": "Suurus",
         "background": "Taust",
+        "mobile": "Mobiil",
         "issues": "Probleemid",
         "fixIssues": "Lahenda probleeme"
       },
@@ -112,15 +123,23 @@ define({
       "size": {
         "small": "Väike",
         "medium": "Keskmine",
-        "large": "Suur"
+        "large": "Suur",
+        "noCrop": "Ära kärbi kõrgeid pilte",
+        "noCropTallTooltip": "Kui jätate kõrge pildi kärpimata, jätab see lugejatele dramaatilise mulje, kui nad peavad kogu pildi nägemiseks alla kerima."
       },
       "background": {
-        "noCrop": "Ära kärbi pilti",
+        "noCrop": "Ära kärbi",
         "mostImportantPart": "Vali põhipunkt",
-        "cropExplanationImmersive": "Selleks et valida, kuidas pilt eri ekraanisuuruste korral kärbitakse, valige pildil punkt. Valitud punkt on alati nähtav. Juhul, kui meedium peab täielikult nähtav olema, valige allpool olev märkeruut.",
+        "cropExplanationImmersive": "Selleks et valida, kuidas pilt eri ekraanisuuruste korral kärbitakse, valige pildil punkt. Valitud punkt on alati nähtav. Juhul, kui pilt peab täielikult nähtav olema, valige märkeruut „Ära kärbi”.",
         "cropExplanation": "Selleks et valida, kuidas pilt eri ekraanisuuruste korral kärbitakse, valige pildil punkt. Valitud punkt on alati nähtav.",
         "color": "Värv",
         "previews": "Eelvaated"
+      },
+      "altMedia": {
+        "alternativeMedia": "Alternatiivne meedia",
+        "explanation": "Teatud meedia ei pruugi olla toetatud või ei pruugi töötada hästi mobiilsideseadmetes. Kasutage seda paneeli alternatiivsete, mobiilsideseadmetele paremini sobivate üksuste valimiseks, mida näidatakse selle meedia asemel, kui teie lugu vaadatakse mobiiltelefonis või tahvelarvutis.",
+        "changeAltImage": "Muuda pilt",
+        "uploadAltImage": "Lisa pilt"
       }
     },
     "imageGallery": {
@@ -174,9 +193,9 @@ define({
       "undo": "Ennista"
     },
     "sections": {
-      "sequence": "Narratiivjaotis",
-      "immersive": "Detailne jaotis",
-      "title": "Pealkirja jaotis"
+      "sequence": "Narratiiv",
+      "immersive": "Detailne",
+      "title": "Pealkiri"
     },
     "mediaErrors": {
       "mediaTypes": {
@@ -189,14 +208,22 @@ define({
       },
       "placeholders": {
         "generic": "See sisu pole kättesaadav.",
-        "deleted": "See ${media-type} on kustutatud.",
-        "inaccessible": "See ${media-type} pole kättesaadav.",
-        "unauthorized": "Teil pole selle ${media-type} vaatamiseks õigusi.",
-        "unshared": "Seda ${media-type} jagatakse teie looga võrreldes muul viisil.",
-        "othersUnshared": "Seda ${media-type} jagatakse teie looga võrreldes muul viisil.",
-        "subscriptionContent": "See ${media-type} sisaldab tellijasisu kihti.",
-        "premiumContent": "See ${media-type} sisaldab kvaliteetsisu kihti.",
-        "secureService": "See ${media-type} sisaldab kaitstud kihti."
+        "deleted": "See üksus on kustutatud.",
+        "inaccessible": "See sisu pole kättesaadav.",
+        "unauthorized": "Teil puudub õigus seda sisu vaadata.",
+        "unshared": "Seda üksust jagatakse teie looga võrreldes muul viisil.",
+        "othersUnshared": "Seda üksust jagatakse teie looga võrreldes muul viisil.",
+        "subscriptionContent": "See kaart sisaldab tellijasisu kihti.",
+        "premiumContent": "See kaart sisaldab kvaliteetsisu kihti.",
+        "secureService": "See kaart sisaldab kaitstud kihti."
+      },
+      "contentIssues": {
+        "noAltImage": "Meedia pole mobiilsidega seadmetes toetatud",
+        "altImageBroken": "Selle meediaüksuse jaoks määratud alternatiivne pilt pole ligipääsetav"
+      },
+      "contentWarnings": {
+        "noAltImage": "Seda tüüpi meedia pole mobiilsidega seadmetes toetatud. Määrake alternatiivne pilt, mida näidatakse, kui lugu kuvatakse mobiilsidega seadmetes.",
+        "noAltImageAlt": "Seda tüüpi meedia pole mobiilsidega seadmetes toetatud. Määrake vahekaardil Mobiil alternatiivne pilt, mida näidatakse, kui lugu kuvatakse mobiilsidega seadmetes."
       },
       "mapIssues": {
         "fixButton": "Teemade lahendamine",

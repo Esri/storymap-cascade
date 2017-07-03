@@ -35,12 +35,15 @@ define({
       "builderSupport1": "只有 ${CHROME} 和 ${SAFARI} 支援「故事地圖串流」建立器。不過，那些瀏覽器、Internet Explorer 11+ 和 Firefox 可檢視您使用建立器所建立的串流故事。",
       "builderSupport2": "iPad 不支援事地圖串流建立器。您建立和分享的串流故事將在 iPad 上運作。",
       "builderSupport3": "可在 Chrome、Safari、Firefox 和 Internet Explorer 11+ 中檢視串流故事，但故事地圖串流建立器僅受 ${CHROME} 和 $SAFARI} 支援。",
-      "builderSupport4": "可在 Chrome、Safari、Firefox 和 Internet Explorer 11+ 中檢視串流故事，但故事地圖串流建立器僅受 ${CHROME} 和 $SAFARI} 支援。<br><br>如果需要串流建立器來支援不同的瀏覽器，請聯絡 ${ESRI-SUPPORT} 或按一下以票選: ${FIREFOX-BUILDER} | ${IE-BUILDER}.",
+      "builderSupport4": "可在任何新穎的 Web 瀏覽器中檢視串流故事，但故事地圖串流建立器僅受 ${CHROME} 和 ${SAFARI} 支援。<br><br>如果需要串流建立器來支援不同的瀏覽器，請聯絡 ${ESRI-SUPPORT} 或 ${BROWSER-SUPPORT-VOTE}。",
       "sorry": "注意:"
     },
     "mobileWarning": {
       "message1": "您已閱讀此故事的行動版本。如需包含較豐富的媒體元素的完整版本，請在桌上型電腦中試用。",
       "email": "以電子郵件傳送此故事的連結"
+    },
+    "cover": {
+      "iosEmbedLink": "點選以閱讀完整故事"
     },
     "media": {
       "captionPlaceholder": "這裡是您的標號...",
@@ -70,6 +73,10 @@ define({
       "autoplayExplain1": "自動播放模式將以一定間隔向前播放您的故事。這很適用於書報攤或公共顯示器，但請注意，在其他情況下可能會使得故事更難閱讀。此圖徵不支援小畫面。",
       "autoplayExplain2": "啟用此模式時，可使用控制項來播放/暫停故事和調整瀏覽速度。",
       "linksupdated": "已更新連結!"
+    },
+    "theme": {
+      "lightLabel": "淺色",
+      "darkLabel": "深色"
     }
   }
 });

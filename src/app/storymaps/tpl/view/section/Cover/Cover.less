@@ -91,6 +91,7 @@ body.builder-mode .section-layout-cover .wrapper {
   color: #FFF;
   margin-top: -50px;
   text-shadow: 0 0 8px rgba(0, 0, 0, 0.95);
+  padding-bottom: 0;
 }
 
 .section-layout-cover {
@@ -243,7 +244,7 @@ body.builder-mode .section-layout-cover .wrapper {
  * Scroll invite
  */
 
-.section-layout-cover .scroll-invite {
+.section-layout-cover .scroll-invite, .section-layout-cover .ios-embed-link {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -251,6 +252,27 @@ body.builder-mode .section-layout-cover .wrapper {
   width: 100%;
   padding: 15px;
   text-align: center;
+}
+
+.section-layout-cover .ios-embed-link {
+  display: none;
+  bottom: 15px;
+
+  .text-background {
+    max-width: 100%;
+  }
+}
+
+.ios-embed {
+
+  .scroll-invite {
+    display: none;
+  }
+
+  .ios-embed-link {
+    display: block;
+  }
+
 }
 
 body.mobile-view .section-layout-cover .scroll-invite {
@@ -305,12 +327,23 @@ body.mobile-view .section-layout-cover .scroll-invite {
  * Responsive
  */
 
+// iPad text styling -- it's too small a screen to use normal font sizes
+@media (max-width: @screen-lg) {
+  .section-layout-cover .cover-title {
+    font-size: 5em;
+  }
+
+  .section-layout-cover .cover-subtitle {
+    font-size: 1.7em;
+  }
+}
+
 body.mobile-view .section-layout-cover .cover-title {
-   font-size: 3em;
+   font-size: 2.7em;
 }
 
 body.mobile-view .section-layout-cover .cover-subtitle {
-   font-size: 1.2em;
+   font-size: 1.1em;
    width: 100%;
    margin-top: 10px;
 }

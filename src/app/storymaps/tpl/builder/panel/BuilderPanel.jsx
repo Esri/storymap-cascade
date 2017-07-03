@@ -126,8 +126,8 @@ export default class BuilderPanel {
   //
 
   _updateStoryTitle() {
-    var buttons = this._node.find('.builder-buttons .btn'),
-        buttonsExceptSave = this._node.find('.builder-buttons .btn:not(.btn-save)'),
+    var buttons = this._node.find('.builder-panel-tools .btn-save'),
+        buttonsExceptSave = this._node.find('.builder-panel-tools .btn:not(.btn-save)'),
         storyTitle = app.Controller.getStoryTitle();
 
     buttons.toggleClass('disabled', ! storyTitle);
@@ -297,6 +297,17 @@ export default class BuilderPanel {
       app.Controller.getStoryURL() + '&preview',
       '_blank'
     );
+
+    var oldFocus = window.onfocus || function() {};
+
+    window.onfocus = function() {
+      oldFocus();
+      // not sure why, but it wouldn't do this without a settimeout
+      setTimeout(function() {
+        $(e.currentTarget).blur();
+      }, 500);
+      window.onfocus = oldFocus();
+    };
   }
 
   //
@@ -381,7 +392,7 @@ export default class BuilderPanel {
     this._node.find('.btn-save[data-toggle="tooltip"]').tooltip({
       trigger: 'manual',
       placement: 'right',
-      container: '.builder-buttons'
+      container: '.section-builder-panel'
     });
 
     this._node.find('.btn-save[data-toggle="tooltip"]').on('inserted.bs.tooltip', function() {
@@ -402,9 +413,10 @@ export default class BuilderPanel {
   //
   _updateIssueStatusButton(status, checkComplete) {
     let btn = this._node.find('.btn-check');
-    btn.removeClass('checking no-issues errors');
+    btn.removeClass('checking no-issues errors warnings');
 
     if (checkComplete) {
+      // if there are errors, EVEN IF there are errors AND warnings, just show errors.
       if (status.errors.allItems.length) {
         btn.addClass('errors');
         let errorCount = 0;
@@ -415,6 +427,10 @@ export default class BuilderPanel {
           }
         });
         this._node.find('.issue-count').text(errorCount);
+      }
+      // if there are ONLY warnings, show warnings
+      else if (status.warnings.allItems.length) {
+        btn.addClass('warnings');
       }
       else {
         btn.addClass('no-issues');

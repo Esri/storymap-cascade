@@ -26,6 +26,9 @@ import UndoNotification from './notification/Undo';
 import Issues from './Issues';
 import Actions from './Actions';
 
+import UIUtils from 'storymaps/tpl/utils/UI';
+import CommonHelper from 'storymaps/common/utils/CommonHelper';
+
 topic.subscribe('builder-section-update', function() {
   ControllerBuilder.storyChange();
 });
@@ -79,6 +82,26 @@ export default class ControllerBuilder extends ControllerCore {
       headerSettings = ControllerCore.DEFAULT_HEADER_SETTINGS;
     }
 
+    const currentTheme = app.data.appItem.data.values.settings.theme || {};
+    if (!currentTheme.colors) {
+      currentTheme.colors = ControllerCore.THEME_DEFAULT_COLORS;
+    }
+    var defaultFonts = ControllerCore.THEME_DEFAULT_FONTS;
+    if (!currentTheme.fonts) {
+      currentTheme.fonts = defaultFonts;
+    }
+    // do this separately, as some older apps may only have one of these set.
+    currentTheme.fonts = {
+      titleFont: currentTheme.fonts.titleFont || defaultFonts.titleFont,
+      bodyFont: currentTheme.fonts.bodyFont || defaultFonts.bodyFont
+    };
+
+    let themeSettings = {
+      colorOptions: ControllerCore.THEME_COLOR_OPTIONS,
+      fontOptions: ControllerCore.THEME_FONT_OPTIONS,
+      currentTheme
+    };
+
     let orgLogo = app.portal.isOrganization && lang.getObject('portal.portalProperties.sharedTheme.logo.small', false, app);
     let useOrgLogo = orgLogo === headerSettings.logo.url;
 
@@ -98,6 +121,9 @@ export default class ControllerBuilder extends ControllerCore {
             useOrgLogo: useOrgLogo,
             orgLogo: orgLogo
           }
+        },
+        {
+          themeData: themeSettings
         }
       )
     };
@@ -113,6 +139,10 @@ export default class ControllerBuilder extends ControllerCore {
           link: settings.link,
           social: settings.social
         };
+
+        // Persist theme
+        app.data.appItem.data.values.settings.theme = settings.themeData.currentTheme;
+        this.changeTheme(settings.themeData);
 
         // Persist bookmarks
         this._setBookmarksBuilder(settings.bookmarks);
@@ -145,13 +175,10 @@ export default class ControllerBuilder extends ControllerCore {
             else if (section.type == 'title') {
               bookmark.title = i18n.builder.headerConfig.bookmarks.titleDefault;
             }
-            else if (section.type == 'cover') {
-              bookmark.title = i18n.builder.headerConfig.bookmarks.coverDefault;
-            }
           }
           else {
             if (section.type == 'cover') {
-              bookmark.title += ' ' + i18n.builder.headerConfig.bookmarks.coverAppendage;
+              bookmark.title = i18n.builder.headerConfig.bookmarks.coverAppendage;
             }
           }
           bookmarks.push(bookmark);
@@ -172,11 +199,11 @@ export default class ControllerBuilder extends ControllerCore {
     }
   }
 
-  static serializeStory(includeSectionID) {
+  static serializeStory(includeSectionID, includeInstanceID) {
     var story = [];
 
     for (let section of this._sections) {
-      var sectionJSON = section.serialize();
+      var sectionJSON = section.serialize(includeInstanceID);
 
       if (sectionJSON) {
         if (includeSectionID) {
@@ -190,15 +217,30 @@ export default class ControllerBuilder extends ControllerCore {
     return story;
   }
 
+  static addContextSpecificIssues(mediaBySections) {
+    // loop thru each section
+    for (const section of this._sections) {
+      // send off the media to each one to get added to.
+      const sectionMedia = mediaBySections[section.id];
+      if (sectionMedia) {
+        section.addContextSpecificIssues(sectionMedia);
+      }
+    }
+  }
+
   static reportScanResults(results, issueSections) {
     // update each section's scanresults, then broadcast all the results.
     for (let section of this._sections) {
+      let hasWarnings = false;
+      let hasErrors = false;
+
       if (issueSections.errorSections.indexOf(section.id) !== -1) {
-        section.setScanResults(true, false);
+        hasErrors = true;
       }
-      else {
-        section.setScanResults(false, false);
+      if (issueSections.warningSections.indexOf(section.id) !== -1) {
+        hasWarnings = true;
       }
+      section.setScanResults(hasErrors, hasWarnings);
     }
 
     this._broadcastScanResults(results);
@@ -209,7 +251,7 @@ export default class ControllerBuilder extends ControllerCore {
 
     // scan each media type
     for (let mediaType in results.media) {
-      if (results.media.hasOwnProperty(mediaType)) {
+      if (results.media.hasOwnProperty(mediaType) && mediaType !== 'layers') {
         this._broadcastMediaResults(results, mediaType);
       }
     }
@@ -228,38 +270,40 @@ export default class ControllerBuilder extends ControllerCore {
 
       if (mediaType === 'maps' || mediaType === 'scenes') {
         itemResult = {
-          layers: this._extractLayerInfo(item.layers, results),
-          details: item.details,
-          errors: this._findMapSceneIssues(item, results, 'errors')
+          layers: this._extractLayerInfo(item.scanResult.layers, results.media.layers),
+          details: item.scanResult.details,
+          errors: this._findMapSceneIssues(item.scanResult, results, 'errors', item.alternateMedia),
+          warnings: this._findMapSceneIssues(item.scanResult, results, 'warnings', item.alternateMedia)
         };
       }
-      else if (mediaType === 'images' || mediaType === 'videos') {
+      else if (mediaType === 'images' || mediaType === 'videos' || mediaType === 'webpages' || mediaType === 'audio') {
         itemResult = {
-          errors: this._findMediaIssues(item.errors, results.errors)
+          errors: this._findMediaIssues(item.scanResult.errors, results.errors, item.alternateMedia, results.media.images, 'errors'),
+          warnings: this._findMediaIssues(item.scanResult.warnings, results.warnings, item.alternateMedia, results.media.images, 'warnings')
         };
       }
-      // layers are reported as part of maps and scenes, and webpages/audio aren't scanned, so skip them.
+      // audio isn't scanned, so skip that.
       else {
         return;
       }
 
       // publish the result!
-      topic.publish(`scan/${mediaType}/${item.id}`, itemResult);
+      topic.publish(`scan/${mediaType}/${item.instanceID}`, itemResult);
     }
   }
 
-  static _extractLayerInfo(layerIDs, results) {
+  static _extractLayerInfo(layerIDs, resultLayers) {
     let finalLayers = [];
     // loop thru these.
     for (let layerID of layerIDs) {
       // Get the layer
-      let layer = results.media.layers.byId[layerID];
+      let layer = resultLayers.byId[layerID];
       // If layer exists,
       if (layer) {
         // add its id and details to that panel.
         finalLayers.push({
           id: layer.id,
-          details: layer.details
+          details: layer.scanResult.details
         });
       }
     }
@@ -267,23 +311,46 @@ export default class ControllerBuilder extends ControllerCore {
     return finalLayers;
   }
 
-  static _findMediaIssues(itemIssues, appIssues) {
-    let issues = [];
-
+  static _findMediaIssues(itemIssues, appIssues, alternateMediaID, imageResults, severity) {
     // add the issues from the media
+    let issues = this._findIssues(itemIssues, appIssues, false);
+
+    const alternateMediaIssues = this._findAlternateMediaIssues(appIssues, alternateMediaID, imageResults, severity);
+    issues = issues.concat(alternateMediaIssues);
+
+    return issues;
+  }
+
+  static _findIssues(itemIssues, appIssues, isAlternateMedia) {
+    const issues = [];
+
     for (let issueID of itemIssues) {
       let issue = appIssues.byId[issueID];
 
       issues.push({
         id: issue.id,
-        actions: issue.actions
+        actions: issue.actions,
+        isAlternate: isAlternateMedia
       });
     }
 
     return issues;
   }
 
-  static _findMapSceneIssues(item, results, severity) {
+  static _findAlternateMediaIssues(appIssues, alternateMediaID, imageResults, severity) {
+    let issues = [];
+    if (alternateMediaID) {
+      // get alternate media issues and add them as well.
+      const alternateMedia = imageResults.byId[alternateMediaID];
+
+      if (alternateMedia && alternateMedia.scanResult && alternateMedia.scanResult[severity]) {
+        issues = this._findIssues(alternateMedia.scanResult[severity], appIssues, true);
+      }
+    }
+    return issues;
+  }
+
+  static _findMapSceneIssues(item, results, severity, alternateMedia) {
     let issues = [];
 
     for (let issueID of item[severity]) {
@@ -300,6 +367,10 @@ export default class ControllerBuilder extends ControllerCore {
     let layerIssues = this._findLayerIssues(item.layers, results[severity], results.media.layers, severity);
     // and add them on as well
     issues = issues.concat(layerIssues);
+
+    const alternateMediaIssues = this._findAlternateMediaIssues(results[severity], alternateMedia, results.media.images, severity);
+
+    issues = issues.concat(alternateMediaIssues);
     // finally, if maps/scenes and layers both have sharing level issues, we'll combine them
     this._combineSharingIssues(issues);
 
@@ -312,31 +383,33 @@ export default class ControllerBuilder extends ControllerCore {
     for (let layerID of layerIDs) {
       let layer = appLayers.byId[layerID];
 
-      for (let issueID of layer[severity]) {
-        let issue = appIssues.byId[issueID];
-        // see if this layer issue already exists (the scope amongst layers within the map/scene)
-        let existingIssue = issues.find(issueItem => issueItem.id === issue.id);
+      if (layer.scanResult[severity]) {
+        for (let issueID of layer.scanResult[severity]) {
+          let issue = appIssues.byId[issueID];
+          // see if this layer issue already exists (the scope amongst layers within the map/scene)
+          let existingIssue = issues.find(issueItem => issueItem.id === issue.id);
 
-        if (existingIssue) {
-          // if it's an existing issue, we'll just add this layer to it (we already have the issue ID, the actions, and the media type).
-          existingIssue.layers.push({
-            id: layer.id,
-            details: layer.details
-          });
-        }
-        // otherwise we'll make a new issue.
-        else {
-          issues.push({
-            id: issue.id,
-            actions: issue.actions,
-            mediaType: layer.mediaType,
-            layers: [
-              {
-                id: layer.id,
-                details: layer.details
-              }
-            ]
-          });
+          if (existingIssue) {
+            // if it's an existing issue, we'll just add this layer to it (we already have the issue ID, the actions, and the media type).
+            existingIssue.layers.push({
+              id: layer.scanResult.id,
+              details: layer.scanResult.details
+            });
+          }
+          // otherwise we'll make a new issue.
+          else {
+            issues.push({
+              id: issue.id,
+              actions: issue.actions,
+              mediaType: layer.scanResult.mediaType,
+              layers: [
+                {
+                  id: layer.scanResult.id,
+                  details: layer.scanResult.details
+                }
+              ]
+            });
+          }
         }
       }
     }
@@ -728,7 +801,7 @@ export default class ControllerBuilder extends ControllerCore {
     }
 
     var oldSection = this._sections.slice(p.index, p.index + 1)[0],
-        oldSectionJSON = oldSection.serialize();
+        oldSectionJSON = oldSection.serialize(false);
 
     if (oldSectionJSON.bookmark) {
       oldSectionJSON.bookmark.enabled = false;
@@ -1023,5 +1096,53 @@ export default class ControllerBuilder extends ControllerCore {
       hasMerged: hasMerged,
       newCurrentSectionIndex: newCurrentSectionIndex
     };
+  }
+
+  static changeTheme() {
+    // add css for paragraph and link text
+
+    var colors = lang.getObject('app.data.appItem.data.values.settings.theme.colors');
+    if (!colors) {
+      return;
+    }
+
+    // These are the builder-specific changes based on bgMain.
+    // Other viewer-targeted changes can be found in viewer Controller.js
+    if (colors.bgMain) {
+      // change the colors of the + dividers for adding new sections
+      let plusStyleArr;
+      if (CommonHelper.getLightOrDarkText(colors.bgMain) === 'light') {
+        const plusColor = '#f8f8f8';
+        plusStyleArr = [
+          // horizontal line and background to + on hover in sequential section
+          '.block::before {color:' + colors.bgMain + '; border-bottom-color: ' + plusColor + ';}',
+          // + in sequential section (has some transparency except on hover)
+          '.block::after {color: ' + plusColor + ';}',
+          // + in sequential section image gallery (on the right of all the pics)
+          '.image-gallery .ig-add.builder-ui .ig-action-icon {color: ' + plusColor + ';}',
+          // circle around plus above
+          '.image-gallery .ig-add.builder-ui {border-color: ' + plusColor + ';}'
+        ];
+      }
+      else {
+        plusStyleArr = [
+          // background to + on hover in sequential section
+          '.block::before {color:' + colors.bgMain + ';}'
+        ];
+      }
+      UIUtils.addCSSRule(plusStyleArr.join(' '), 'plus-color');
+
+      this._sections.forEach((section) => {
+        if (section.changeTheme) {
+          section.changeTheme();
+        }
+
+      });
+      // change the bg of the side panels?
+      // UIUtils.addCSSRule('.op-item-main.builder-overview {background-color: ' + y + ';}', 'overview-bg');
+
+    }
+    super.changeTheme();
+
   }
 }

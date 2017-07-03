@@ -122,6 +122,7 @@ class AuthMediaHeader extends React.Component {
         }
         return this.getErrorSpan('two authorized media, but it wasnt image/video!');
       case 3:
+      case 4:
         if (authMedia.indexOf(IMAGE) >= 0 && authMedia.indexOf(VIDEO) >= 0 && authMedia.indexOf(WEBPAGE) >= 0) {
           return this.getInfoSpan(text.contentType.imageVideoWebpage);
         }
@@ -136,8 +137,14 @@ class AuthMediaHeader extends React.Component {
     const authMedia = this.props.authorizedMedia;
     // if there are as many authorizedMedia types as total allowed media types,
     // don't display anything. get out of here.
-    if (authMedia && authMedia.length && authMedia.length === Object.keys(constants.contentType).length) {
-      return null;
+    if (authMedia && authMedia.length) {
+      const authCount = authMedia.length;
+      const allCount = Object.keys(constants.contentType).length;
+      // TODO: fix for allCount - 1, which is where audio isn't included. immersive backgrounds.
+      if (authCount === allCount || authCount === allCount - 1) {
+        return null;
+      }
+
     }
 
     return (

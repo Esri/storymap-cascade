@@ -13,13 +13,9 @@ import Deferred from 'dojo/Deferred';
 const PREVIEW_THUMB = 'resources/tpl/builder/icons/media-placeholder/image.jpg';
 const PREVIEW_ICON = 'resources/tpl/builder/icons/immersive-panel/image.png';
 
-const BLOCK_WIDTH_SMALL = 0.4;
-const BLOCK_WIDTH_MEDIUM = 0.8;
-const BLOCK_HEIGHT_FOR_CAPTION = 200;
-
 export default class Image extends Media {
 
-  constructor(image) {
+  constructor(image, isNewMedia) {
     // fix sharing url on image constructor...
     const needsFixing = CommonHelper.uploadedImageNeedsFixing(image.url);
     if (needsFixing) {
@@ -97,6 +93,7 @@ export default class Image extends Media {
     this._image = image;
     this._url = image.url;
     this._placement = null;
+    this._isNewMedia = isNewMedia;
 
     // TODO: shouldn't be needed
     if (! this._image.options) {
@@ -127,36 +124,32 @@ export default class Image extends Media {
 
     this._placement = context.placement;
 
-    /*
-    if (this._image.href) {
-      options.push('has-link');
-    }
-    */
-
     if (this._placement == 'block') {
+      this._setBlockFitHeight();
+
       var style = this._computeBlockStyle();
 
       options.push('block-size-' + style.size);
 
+      if (style.isPortrait) {
+        options.push('portrait');
+      }
+
       // This set a max-height in CSS that is needed for large image
-      if (style.fitHeight) {
+      if (style.size === 'large' && this._image.options.fitHeight) {
         options.push('fit-height');
       }
       output += viewBlock({
         id: this._domID,
         classes: ['block', 'image'].concat(options).join(' '),
         padding: style.padding,
+        maxImageWidth: style.maxWidth,
         caption: this._image.caption,
         placeholder: i18n.viewer.media.captionPlaceholder,
         captionEditable: app.isInBuilder
       });
     }
     else if (context.placement == 'background') {
-      if (UIUtils.isMobileBrowser() && this._image.alternate) {
-        this._image.url = this._image.alternate;
-        this._url = this._image.url;
-      }
-
       output += viewBackground({
         id: this._domID,
         classes: ['image', 'image-background'].join(' '),
@@ -201,9 +194,28 @@ export default class Image extends Media {
     this._applyPlacement();
 
     // Test
-    options.size = options.size || 'small';
+    this._applySize(options);
+
+    if (this._placement === 'block' && options.size === 'large') {
+      // this is slightly redundant since we do this in render(), but didn't think I could remove
+      // class changes there since it affected the media's height.
+      this._applyFitHeight();
+    }
 
     super._applyConfig(options);
+  }
+
+  _applySize(options) {
+    options.size = options.size || 'small';
+    // change that max-width valueyvalue.
+    if (this._placement === 'block') {
+      const styles = this._computeBlockStyle();
+      this._node.find('.block-media').css('max-width', styles.maxWidth);
+    }
+  }
+
+  _applyFitHeight() {
+    this._node.toggleClass('fit-height', this._image.options.fitHeight);
   }
 
   _applyPlacement() {
@@ -257,16 +269,16 @@ export default class Image extends Media {
       });
       // if app isn't in builder mode, and the
       // image has, in fact, loaded, take off the error
-      if (!app.builder) {
-        this.removeError();
+      if (!app.builder && !this._isAlternate) {
+        this.removeError && this.removeError();
       }
     }.bind(this);
 
     im.onerror = function() {
       if (app.builder) {
-        this.setError({showLoadingError: true});
+        this._isAlternate ? this.setAlternateError({showLoadingError: true}) : this.setError({showLoadingError: true});
       }
-      else {
+      else if (!this._isAlternate) {
         this.setError({minimizeInViewer: true});
       }
     }.bind(this);
@@ -277,6 +289,11 @@ export default class Image extends Media {
   }
 
   load() {
+    // alternate media load very differently, so they have their own method
+    if (this._isAlternate) {
+      return this.loadAlternate();
+    }
+
     var resultDeferred = new Deferred();
 
     if (this._isLoaded || ! this._node) {
@@ -287,41 +304,22 @@ export default class Image extends Media {
     this._isLoaded = true;
 
     // Preload to get/update image dimension and hide loading indicator
-    this.preload().then(function(p) {
+    this.preload().then((p) => {
       if (p && p.width && p.height) {
         this._image.width = p.width;
         this._image.height = p.height;
 
-        this._node.find('.image-container').css('padding-top', this._computeBlockStyle().padding + '%');
+        if (this._placement === 'block') {
+          const styles = this._computeBlockStyle();
+          this._node.find('.image-container').css('padding-top', styles.padding + '%');
+          this._node.find('.block-media').css('max-width', styles.maxWidth);
+        }
       }
-      this._node.find('.media-loading').hide();
-    }.bind(this));
+      this._fadeInMedia();
+    });
 
     if (this._placement == 'block') {
       this._node.find('.image-container').css('backgroundImage', 'url("' + Media.addToken(this._url) + '")');
-
-      /*
-      if (this._image.href) {
-        this._node.find('img').click(function() {
-          window.open(this._image.href, '_blank');
-        });
-      }
-      else {
-        var img = node.find('img'),
-            fluidbox = img.parent();
-
-        var onImageMaximized = function() {
-          fluidbox.trigger('close.fluidbox');
-          $(window).off('scroll', onImageMaximized);
-        };
-
-        fluidbox
-          .on('openend.fluidbox', function() {
-            $(window).scroll(onImageMaximized);
-          })
-          .fluidbox();
-      }*/
-
     }
     else {
       this._node.find('.image-background').css('backgroundImage', 'url("' + Media.addToken(this._url) + '")');
@@ -330,6 +328,28 @@ export default class Image extends Media {
         this._node.find('.image-background').css('backgroundPositionX', this._image['mobile-pos']);
       }
     }
+
+    resultDeferred.resolve();
+    return resultDeferred;
+  }
+
+  // basically the same as load(), but for alternates
+  loadAlternate() {
+    var resultDeferred = new Deferred();
+
+    if (this._isLoaded) {
+      return resultDeferred;
+    }
+
+    this._isLoaded = true;
+
+    // Preload to get/update image dimension
+    this.preload().then((p) => {
+      if (p && p.width && p.height) {
+        this._image.width = p.width;
+        this._image.height = p.height;
+      }
+    });
 
     resultDeferred.resolve();
     return resultDeferred;
@@ -363,19 +383,10 @@ export default class Image extends Media {
   }
 
   _computeBlockStyle() {
-    var size = 'small',
-        fitHeight = true;
+    var size = 'small';
 
-    if (this._image.options) {
-      if (this._image.options.size) {
-        size = this._image.options.size;
-      }
-
-      if (this._image.options.fitHeight !== undefined) {
-        fitHeight = this._image.options.fitHeight;
-      }
-
-      //options.push(this._image.options.filter ? ('filter-' + this._image.options.filter) : '');
+    if (this._image.options && this._image.options.size) {
+      size = this._image.options.size;
     }
 
     /*
@@ -384,43 +395,32 @@ export default class Image extends Media {
      *  when coupled with background-image a really convenient way to avoid
      *  any JS running when resizing the app
      */
-    var imHeight = this._image.height,
-        avaWidth = this._image.width,
-        imPadding = null;
 
-    // Small and medium are constrained in width
-    // So first need to apply that and recompute the height
-    if (size == 'small' || size == 'medium') {
-      var imRatio = this._image.width / imHeight;
+    const isPortrait = this._image.height >= this._image.width;
 
-      if (size == 'small') {
-        avaWidth = app.display.windowWidth * BLOCK_WIDTH_SMALL;
-      }
-      else {
-        avaWidth = app.display.windowWidth * BLOCK_WIDTH_MEDIUM;
-      }
+    let padding = this._image.height / this._image.width * 100;
+    padding = Math.round(padding * 10) / 10;
 
-      imHeight = Math.round(avaWidth / imRatio);
-      // Assuming fitHeight = true
-      imHeight = Math.min(imHeight, app.display.windowHeight - BLOCK_HEIGHT_FOR_CAPTION);
-    }
-
-    // If the image is smaller than available width and
-    //  - user doesn't want it to fit browser height
-    //  - or the image height is smaller than browser height
-    if (this._image.width < avaWidth && (! fitHeight || this._image.height < app.display.windowHeight - BLOCK_HEIGHT_FOR_CAPTION)) {
-      imPadding = this._image.height / this._image.width * (this._image.width / avaWidth) * 100;
-    }
-    else {
-      imPadding = imHeight / Math.min(this._image.width, avaWidth) * 100;
-    }
-
-    imPadding = Math.round(imPadding * 10) / 10;
+    // if the image is small or medium, don't make it wider than its width.
+    // large will disobey this since we'll want the nice full-bleed look.
+    const maxWidth = size !== 'large' ? this._image.width + 'px' : 'none';
 
     return {
-      size: size,
-      fitHeight: fitHeight,
-      padding: imPadding
+      size,
+      padding,
+      isPortrait,
+      maxWidth
     };
+  }
+
+  _setBlockFitHeight() {
+    if (typeof this._image.options.fitHeight === 'undefined') {
+      if (this._isNewMedia) {
+        this._image.options.fitHeight = false;
+      }
+      else {
+        this._image.options.fitHeight = true;
+      }
+    }
   }
 }

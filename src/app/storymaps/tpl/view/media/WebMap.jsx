@@ -464,9 +464,7 @@ export default class WebMap extends Media {
     arcgisUtils.createMap(this.id, mapElem, options).then(lang.hitch(this, function(response) {
       var map = response.map;
 
-      this._node
-        .removeClass('media-is-loading')
-        .find('.media-loading').hide();
+      this._fadeInMedia();
 
       //response.map.disableMapNavigation();
       // Prevent mouse wheel while map is partialy loaded
@@ -701,11 +699,8 @@ export default class WebMap extends Media {
 
   // serialize needed for getAuthorizedTransitionsWith
   // TODO review this
-  serialize() {
-    return lang.clone({
-      type: 'webmap',
-      webmap: this._webmap
-    });
+  serialize(includeInstanceID) {
+    return super.serialize('webmap', this._webmap, includeInstanceID);
   }
 
   getAuthorizedTransitionsWith(media) {
@@ -713,12 +708,12 @@ export default class WebMap extends Media {
       return [];
     }
 
-    var mediaData = this.serialize().webmap,
+    var mediaData = this.serialize(false).webmap,
         mediaExtent = JSON.stringify(mediaData.extent) || 'null',
         mediaLayers = JSON.stringify(mediaData.layers) || '[]',
         mediaPopup = JSON.stringify(mediaData.popup) || 'null';
 
-    var otherMediaData = media.serialize().webmap,
+    var otherMediaData = media.serialize(false).webmap,
         otherMediaExtent = JSON.stringify(otherMediaData.extent) || 'null',
         otherMediaLayers = JSON.stringify(otherMediaData.layers) || '[]',
         otherMediaPopup = JSON.stringify(otherMediaData.popup) || 'null';
@@ -794,7 +789,8 @@ export default class WebMap extends Media {
 
       if (layer) {
         if (layer.updating) {
-          layer.on('update-end', () => {
+          let eventListener = layer.on('update-end', () => {
+            eventListener.remove();
             this._applyPopupConfigurationStep2(map, popupCfg);
           });
         }

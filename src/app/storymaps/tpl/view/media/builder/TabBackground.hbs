@@ -2,12 +2,13 @@
   <div class="section-content vertical-list fit-fill">
     <div class="section-content two-pane" data-mode="fill">
       <div class="content-pane">
-        <p class="config-label overview-label">{{strings.mostImportantPart}}</p>
-        <span class="crop-info fa fa-info-circle" data-toggle="tooltip" data-placement="top" title="{{#if isImmersive}}{{strings.cropExplanationImmersive}}{{else}}{{strings.cropExplanation}}{{/if}}"></span>
       </div>
       <div class="content-pane overview-thumbnail-pane{{#if isSafari}} safari-specific{{/if}}">
         <img class="overview-thumbnail" src=""/>
+        {{#if isNarrativeOrPanel}}
+        {{else}}
         <div class="overview-dot"></div>
+        {{/if}}
       </div>
     </div>
     <div class="section-content vertical-list" data-mode="fit">
@@ -33,11 +34,24 @@
     </div>
     {{#if isImmersive}}
     <div class="section-content crop-check">
+      <span class="crop-info fa fa-info-circle" data-toggle="tooltip" data-placement="top" title="{{strings.cropExplanationImmersive}}"></span>
       <label class="check"><input class="fit-fill" type="checkbox" value="fit"> {{strings.noCrop}}</label>
+      <div class="section-content" data-mode="fill">
+      </div>
+    </div>
+    {{else}}
+    <div class="section-content" data-mode="fill">
+      {{#if isNarrativeOrPanel}}
+      {{else}}
+        <span class="crop-info fa fa-info-circle" data-toggle="tooltip" data-placement="top" title="{{strings.cropExplanation}}"></span>
+      {{/if}}
     </div>
     {{/if}}
   </div>
 </div>
+{{#if isNarrativeOrPanel}}
+  <div></div>
+{{else}}
 <div class="builder-config-section larger preview-config-section">
   <ul class="section-content horizontal preview-section">
     <li class="config-item preview-item horizontal">
@@ -57,3 +71,4 @@
     </li>
   </ul>
 </div>
+{{/if}}

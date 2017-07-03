@@ -58,21 +58,12 @@ export default class WebPage extends Media {
         placeholder: i18n.viewer.media.captionPlaceholder,
         captionEditable: app.isInBuilder,
         labelExploreStart: i18n.viewer.media.explore,
-        labelExploreStop: i18n.viewer.media.exploreStop
+        labelExploreStop: i18n.viewer.media.exploreStop,
+        isMobile: app.isMobileView || UIUtils.isMobileBrowser()
       });
     }
     else if (context.placement == 'background') {
       var optClass = '';
-
-      /*
-      if (this._webpage.requirements) {
-        if (this._webpage.requirements.indexOf('WEBGL') > -1) {
-          if (! UIUtils.hasWebGL() || UIUtils.isMobileBrowser()) {
-            throw 'RUNTIME-NO-WEBGL';
-          }
-        }
-      }
-      */
 
       output += viewBackground({
         id: this._domID,
@@ -96,6 +87,12 @@ export default class WebPage extends Media {
     if (this._placement == 'block') {
       this._node = params.container.find('#' + this._domID);
       this._nodeMedia = this._node.find('iframe');
+      if (this._webpage.height) {
+        var fig = this._node.find('.block-media');
+        if (fig[0].getBoundingClientRect().height > this._webpage.height) {
+          fig.css('padding-top', this._webpage.height);
+        }
+      }
     }
     else {
       this._nodeMedia = params.container.find('.webpage[data-src="' + this._url + '"]');
@@ -141,12 +138,10 @@ export default class WebPage extends Media {
 
     this._nodeMedia.parent('.webpage-container').addClass('initialized');
 
-    console.log('webpage: ' + this._nodeMedia.data('src'));
-
     this._nodeMedia
       .attr('src', this._nodeMedia.data('src'))
       .load(function() {
-        this._node.find('.media-loading').hide();
+        this._fadeInMedia();
       }.bind(this));
     this._node.find('.interaction-container').click(this._onEnableButtonClick.bind(this));
 

@@ -35,12 +35,15 @@ define({
       "builderSupport1": "Story Map Cascade -luontitoimintoa tuetaan vain ${CHROME}- ja ${SAFARI}-selaimissa. Luontitoiminnon avulla luotuja Cascade-tarinoita voi kuitenkin tarkastella muissa selaimissa, kuten Internet Explorer 11+:ssa ja Firefoxissa.",
       "builderSupport2": "Story Map Cascade -luontitoimintoa ei tueta iPadissa. Luomasi ja jakamasi Cascade-tarinat toimivat kyllä iPadissa.",
       "builderSupport3": "Cascade-tarinoita voi tarkastella Chromessa, Safarissa, Firefoxissa ja Internet Explorer 11+:ssa, mutta Story Map Cascade -luontitoimintoa tuetaan vain ${CHROME}- ja ${SAFARI}-selaimissa.",
-      "builderSupport4": "Cascade-tarinoita voi tarkastella Chromessa, Safarissa, Firefoxissa ja Internet Explorer 11+:ssa, mutta Story Map Cascade -luontitoimintoa tuetaan vain ${CHROME}- ja ${SAFARI}-selaimissa.<br><br>Jos haluat, että Cascade-luontitoiminto tukee toista selainta, ota yhteyttä ${ESRI-SUPPORT} tai äänestä napsauttamalla: ${FIREFOX-BUILDER} | ${IE-BUILDER}.",
+      "builderSupport4": "Cascade-tarinoita voi tarkastella missä tahansa verkkoselaimessa, mutta Story Map Cascade -luontitoimintoa tuetaan vain ${CHROME}- ja ${SAFARI}-selaimissa.<br><br>Jos haluat, että Cascade-luontitoiminto tukee eri selainta, ota yhteyttä ${ESRI-SUPPORT} tai ${BROWSER-SUPPORT-VOTE}.",
       "sorry": "Huomio:"
     },
     "mobileWarning": {
       "message1": "Olet lukenut tämän tarinan mobiiliversion. Jos haluat nähdä täyden version, jossa on enemmän mediaelementtejä, lue tarina pöytätietokoneella.",
       "email": "Lähetä linkki tähän tarinaan sähköpostilla"
+    },
+    "cover": {
+      "iosEmbedLink": "Lue koko tarina napauttamalla"
     },
     "media": {
       "captionPlaceholder": "Kuvatekstisi tulee tähän...",
@@ -70,6 +73,10 @@ define({
       "autoplayExplain1": "Automaattisen toiston tilassa tarina etenee säännöllisin väliajoin. Tämä soveltuu hyvin kioskin näyttöön tai julkiseen näyttöön. Huomaa kuitenkin, että muissa tilanteissa tarinan lukeminen voi olla vaikeampaa. Tätä ominaisuutta ei tueta pienissä näytöissä.",
       "autoplayExplain2": "Kun tämä tila on käytössä, tarinan voi toistaa tai keskeyttää tai sen nopeutta voi säätää ohjausobjekteilla.",
       "linksupdated": "Linkit on päivitetty."
+    },
+    "theme": {
+      "lightLabel": "Vaalea",
+      "darkLabel": "Tumma"
     }
   }
 });

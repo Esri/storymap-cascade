@@ -35,12 +35,15 @@ define({
       "builderSupport1": "Besitęsiančių žemėlapių pasakojimų kūrimo priemonė palaikoma tik ${CHROME} ir ${SAFARI}. Tačiau besitęsiančius pasakojimus, sukurtus naudojant kūrimo priemonę, galima peržiūrėti ir naudojant Internet Explorer 11+ bei Firefox.",
       "builderSupport2": "Besitęsiančių žemėlapių pasakojimų kūrimo priemonė nepalaikoma naudojant iPad. Tačiau jūsų sukurtos ir bendrinamos aplikacijos šiuose įrenginiuose veiks.",
       "builderSupport3": "Besitęsiančius žemėlapių pasakojimus galima peržiūrėti naudojant Chrome, Safari, Firefox ir Internet Explorer 11+ naršykles, tačiau šios aplikacijos kūrimo priemonė palaikoma tik ${CHROME} ir ${SAFARI}.",
-      "builderSupport4": "Besitęsiančius žemėlapių pasakojimus galima peržiūrėti naudojant Chrome, Safari, Firefox ir Internet Explorer 11+ naršykles, tačiau šios aplikacijos kūrimo priemonė palaikoma tik ${CHROME} ir ${SAFARI}.<br><br>Jei norite kūrimo priemonę naudoti kitoje naršyklėje, kreipkitės į ${ESRI-SUPPORT} arba atiduokite savo balsą čia: ${FIREFOX-BUILDER} | ${IE-BUILDER}.",
+      "builderSupport4": "Besitęsiančių žemėlapių pasakojimus galima peržiūrėti bet kurioje šiuolaikinėje interneto naršyklėje, tačiau jų kūrimo priemonė palaikoma tik ${CHROME} ir ${SAFARI}.<br><br>Jei norite besitęsiančių žemėlapių pasakojimų kūrimo priemonę naudoti kitoje naršyklėje, kreipkitės į ${ESRI-SUPPORT} arba ${BROWSER-SUPPORT-VOTE}.",
       "sorry": "Dėmesio!"
     },
     "mobileWarning": {
       "message1": "Jūs peržiūrėjote mobiliąją šio pasakojimo versiją. Norėdami pamatyti daugiau medijos elementų, atsidarykite ją kompiuteryje.",
       "email": "Siųsti nuorodą į šį pasakojimą el. paštu"
+    },
+    "cover": {
+      "iosEmbedLink": "Bakstelėkite, kad peržiūrėtumėte pasakojimą"
     },
     "media": {
       "captionPlaceholder": "Įrašykite antraštę...",
@@ -70,6 +73,10 @@ define({
       "autoplayExplain1": "Veikiant automatinio paleidimo režimu, jūsų pasakojimas bus pateikiamas reguliariais intervalais. Tai puikiai tinkama parinktis informaciniuose terminaluose arba viešuosiuose ekranuose, tačiau nepamirškite, kad kitais atvejais pasakojimą gali būti sudėtinga perskaityti. Ši funkcija nepalaikoma mažuose ekranuose.",
       "autoplayExplain2": "Kai šis režimas aktyvus, yra valdikliai, kuriais galima leisti / pristabdyti pasakojimą ir reguliuoti naršymo greitį.",
       "linksupdated": "Nuorodos atnaujintos!"
+    },
+    "theme": {
+      "lightLabel": "Šviesi",
+      "darkLabel": "Tamsi"
     }
   }
 });

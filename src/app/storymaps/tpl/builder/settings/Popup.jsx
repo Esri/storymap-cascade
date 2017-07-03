@@ -3,6 +3,7 @@ import Media from 'storymaps-react/tpl/view/media/Media';
 import viewTpl from 'lib-build/hbars!./Popup';
 import logoSharingTpl from 'lib-build/hbars!./LogoSharing';
 import bookmarkTpl from 'lib-build/hbars!./Bookmark';
+import themeTpl from 'lib-build/hbars!./Appearance';
 import CommonHelper from 'storymaps/common/utils/CommonHelper';
 
 import i18n from 'lib-build/i18n!resources/tpl/builder/nls/app';
@@ -17,6 +18,7 @@ class SettingsPopup {
     this.esriLogoUrl = 'resources/tpl/viewer/icons/esri-logo.png';
     this.esriLogoLink = 'https://www.esri.com';
     this.backupLogoUrl = this.esriLogoUrl; // by default the backup can be the default.
+    this.backupLogoLink = this.esriLogoLink;
 
     this.reject = null;
     this.resolve = null;
@@ -29,6 +31,55 @@ class SettingsPopup {
     this.container.append(viewTpl(dialogData));
 
     this.attachModalEvents();
+  }
+
+  getColors(colorId) {
+    const themeSettings = this.data.settings.themeData;
+    // given what we're passing in here, appThemeId should always exist at this point
+    var appThemeId = lang.getObject('currentTheme.colors.id', false, themeSettings);
+    var colorArr = themeSettings.colorOptions;
+    colorArr.forEach(colorObj => {
+      colorObj.selected = (appThemeId === colorObj.id);
+    });
+    if (!colorId) {
+      return colorArr;
+    }
+
+    if (colorId === 'current') {
+      colorId = appThemeId;
+    }
+
+    var targetColor;
+    colorArr.some((colorObj) => {
+      if (colorObj.id === colorId) {
+        targetColor = colorObj;
+        return true;
+      }
+      return false;
+    });
+    return targetColor;
+  }
+
+  getFonts(fontId) {
+    const themeSettings = this.data.settings.themeData;
+    // given what we're passing in here, titleFont and bodyFont should always exist at this point
+    var titleFont = lang.getObject('currentTheme.fonts.titleFont', false, themeSettings);
+    var bodyFont = lang.getObject('currentTheme.fonts.bodyFont', false, themeSettings);
+    var fontArr = themeSettings.fontOptions;
+    if (!fontId) {
+      return {fontArr, titleFont, bodyFont};
+    }
+
+    var targetFont;
+    fontArr.some((fontObj) => {
+      if (fontObj.label === fontId) {
+        targetFont = fontObj;
+        return true;
+      }
+      return false;
+    });
+    return targetFont;
+
   }
 
   attachModalEvents() {
@@ -53,6 +104,7 @@ class SettingsPopup {
       // apply all of the changes
       this.applyBookmarkChanges();
       this.applyLogoSharingChanges();
+      this.applyThemeChanges();
 
       this.resolve && this.resolve(this.data.settings);
 
@@ -136,6 +188,14 @@ class SettingsPopup {
     this.data.settings.link.url = linkURL;
   }
 
+  applyThemeChanges() {
+    this.data.settings.themeData.currentTheme.colors = this.tempThemeSettings.colors;
+    this.data.settings.themeData.currentTheme.fonts = {
+      titleFont: this.tempThemeSettings.titleFont,
+      bodyFont: this.tempThemeSettings.bodyFont
+    };
+  }
+
   attachToggleEvents() {
     let toggles = this.container.find('.toggle');
     let selectedClass = 'selected';
@@ -154,6 +214,53 @@ class SettingsPopup {
 
   attachBookmarkEvents() {
     this.attachEnableBookmarkEvent();
+  }
+
+  attachThemeEvents() {
+    var self = this;
+    var colorConfigs = this.container.find('.color-list .config-item');
+    colorConfigs.on('click', function(/*evt*/) {
+      colorConfigs.removeClass('selected');
+      $(this).addClass('selected');
+      var selectedColors = self.getColors($(this).data('colorid'));
+      self.updateTempTheme({colors: selectedColors});
+      self.updatePreview();
+    });
+
+    this.container.find('.font-list .dropdown-menu a').on('click', function() {
+      var newFontLabel = $(this).data('fontid');
+      var newFont = self.getFonts(newFontLabel);
+      var ddParent = $(this).parents('.dropdown');
+      // idk why jq.css() wasn't working here, but it wasn't, so using attr style.
+      ddParent.find('.font-label').text(newFontLabel)
+        .attr('style', `font-family: ${newFont.fontFamily}`);
+      var ddMenu = ddParent.find('.dropdown-menu').data('selected-font', newFontLabel);
+      var targetKey = ddMenu.hasClass('title-font-list') ? 'titleFont' : 'bodyFont';
+      self.updateTempTheme({[targetKey]: newFont});
+      self.updatePreview();
+    });
+
+  }
+
+  updateTempTheme(params) {
+    Object.assign(this.tempThemeSettings, params);
+  }
+
+  updatePreview() {
+    var preview = this.container.find('.appearance-preview');
+    var settings = this.tempThemeSettings;
+    if (settings.colors) {
+      var colorStyle = `color: ${settings.colors.textMain}; background-color: ${settings.colors.bgMain};`;
+      preview.find('.font-sample').attr('style', colorStyle);
+    }
+
+    if (settings.titleFont) {
+      preview.find('.title-sample').attr('style', `font-family: ${settings.titleFont.fontFamily};`);
+    }
+
+    if (settings.bodyFont) {
+      preview.find('.body-sample').attr('style', `font-family: ${settings.bodyFont.fontFamily};`);
+    }
   }
 
   attachLogoSharingEvents() {
@@ -180,9 +287,11 @@ class SettingsPopup {
       if (target.is(':checked')) {
         // set the backup logo URL to whatever was set before you checked to use the org
         this.backupLogoUrl = this.data.settings.logo.url;
+        this.backupLogoLink = this.data.settings.logo.link;
 
         logoValue = this.data.settings.orgLogoSettings.orgLogo;
         this.container.find('.hc-logo').attr('src', logoValue);
+        this.container.find('.hc-text-input.logo-link').val(this.backupLogoLink);
         this.enableLogo();
 
         if (CommonHelper.isDefaultLogoLink(logoLinkNode.val())) {
@@ -406,12 +515,28 @@ class SettingsPopup {
         strings: i18n.builder.headerConfig.bookmarks
       };
 
+      const themeData = {
+        strings: i18n.builder.headerConfig.appearance,
+        colors: this.getColors(),
+        fonts: this.getFonts()
+      };
+
       this.container.find('.modal-tab[data-tab="logo-sharing"]').html(logoSharingTpl(logoSharingData));
 
       this.container.find('.modal-tab[data-tab="bookmarks"]').html(bookmarkTpl(bookmarkData));
 
+      this.container.find('.modal-tab[data-tab="theme"]').html(themeTpl(themeData));
+
+      this.tempThemeSettings = {
+        colors: this.getColors('current'),
+        titleFont: themeData.fonts.titleFont,
+        bodyFont: themeData.fonts.bodyFont
+      };
+      this.updatePreview();
+
       this.attachBookmarkEvents();
       this.attachLogoSharingEvents();
+      this.attachThemeEvents();
 
       this.container.modal();
 

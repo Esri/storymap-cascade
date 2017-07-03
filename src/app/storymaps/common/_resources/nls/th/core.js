@@ -1,14 +1,15 @@
 /* eslint quotes: ["error", "double"] */
-/* strings files need to be double quotes */
 define({
   "commonCore": {
     "builderPanel": {
+      "builderNamePrefix": "",
+      "builderNameSuffix": "ตัวสร้าง",
       "buttonSaving": "กำลังบันทึก",
       "buttonSaved": "บันทึก",
       "buttonError": "บันทึกล้มเหลว",
       "buttonShare": "แบ่งปัน",
       "buttonSettings": "การตั้งค่า",
-      "buttonHelp": "ช่วยเหลือ",
+      "buttonHelp": "รับความช่วยเหลือหรือส่งความเห็นเกี่ยวกับ GeoNet",
       "buttonPreview": "แสดงสตอรี่",
       "buttonHealth": "รายงานสุขภาพ",
       "manageStories": "รายงานสุขภาพ",
@@ -31,7 +32,13 @@ define({
     "share": {
       "btnPrivate": "ส่วนตัว",
       "btnOrg": "องค์กร",
-      "btnPublic": "สาธารณะ"
+      "btnPublic": "สาธารณะ",
+      "btnEveryone": "ใครก็ตาม"
+    },
+    "portal": {
+      "disconnected": "พอร์ทัลนี้ไม่ได้เชื่อมต่อกับอินเทอร์เน็ต",
+      "portal": "พอร์ทัล",
+      "portalArcGIS": "Portal for ArcGIS"
     }
   }
 });

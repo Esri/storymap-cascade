@@ -13,13 +13,14 @@ define({
     "headerConfig": {
       "toggles": {
         "bookmarks": "Bladwijzers",
-        "logoSharing": "Logo & Delen"
+        "logoSharing": "Logo & Delen",
+        "theme": "Weergave"
       },
       "bookmarks": {
         "title": "Sectie",
         "bookmark": "Bladwijzer",
         "intro": "Bladwijzers zijn links naar verhaalsecties die worden getoond in de header. Het creëren van beknopte bladwijzers voor de belangrijkste onderdelen van uw verhaal helpt lezers zich te oriënteren.",
-        "sequentialDefault": "Sequentiële sectie (geen tekst gevonden)",
+        "sequentialDefault": "Verhaalsectie (geen tekst gevonden)",
         "immersiveDefault": "Meeslepende sectie (geen tekst gevonden)",
         "titleDefault": "Titelsectie (geen tekst gevonden)",
         "coverDefault": "Omslagsectie (geen tekst gevonden)",
@@ -38,6 +39,15 @@ define({
         "taglineLinkDisabledTooltip": "Voer een tagline in om de koppeling in te schakelen",
         "link": "Taglinekoppeling",
         "enableSocialSharing": "Knop Delen weergeven"
+      },
+      "appearance": {
+        "themeLabel": "Thema",
+        "fontLabel": "Lettertypen",
+        "previewLabel": "Voorbeeld",
+        "fontsTitleLabel": "Titels",
+        "fontsBodyLabel": "Hoofdtekst",
+        "loremTitle": "Lorem Ipsum",
+        "loremBody": "Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor. Mauris consequat orci nec magna facilisis bibendum at eget libero."
       }
     },
     "builderPanel": {
@@ -47,7 +57,7 @@ define({
       "betaNote": "Laat ons weten wat u denkt van ${APP_NAME} of als er iets niet werkt zoals u verwacht.",
       "notSharedNote": "Uw verhaal is niet gedeeld, alleen u kunt het zien",
       "organizationWarning": "Om ervoor te zorgen dat dit verhaal kan worden bekeken door anderen moet u ook de scenes, scenelagen en embedded apps delen met uw organisatie. Kaarten en kaartlagen worden automatisch gedeeld.",
-      "publicWarning": "Om ervoor te zorgen dat dit verhaal kan worden bekeken door anderen moet u ook de scenes, scenelagen en embedded apps openbaar delen. Kaarten en kaartlagen worden automatisch gedeeld.",
+      "publicWarning": "Om ervoor te zorgen dat dit verhaal kan worden bekeken door anderen moet u ook de scenes, scenelagen en embedded apps delen met Iedereen. Kaarten en kaartlagen worden automatisch gedeeld.",
       "addTitleNote": "Voeg een titel toe aan de omslag om op te slaan",
       "saveError": "Er is een fout opgetreden met het opslaan van uw verhaal.",
       "duplicate": "Dupliceren",
@@ -77,6 +87,7 @@ define({
         "manage": "Beheren",
         "size": "Grootte",
         "background": "Achtergrond",
+        "mobile": "Mobiel",
         "issues": "Problemen",
         "fixIssues": "Problemen oplossen"
       },
@@ -112,15 +123,23 @@ define({
       "size": {
         "small": "Klein",
         "medium": "Middel",
-        "large": "Groot"
+        "large": "Groot",
+        "noCrop": "Hoge afbeeldingen niet bijsnijden",
+        "noCropTallTooltip": "Hoge afbeeldingen niet bijsnijden creëert een dramatisch effect voor lezers zodat ze moeten scrollen om de gehele afbeelding te kunnen zien."
       },
       "background": {
-        "noCrop": "Afbeelding niet bijsnijden",
+        "noCrop": "Niet bijsnijden",
         "mostImportantPart": "Kies het belangrijkste punt",
-        "cropExplanationImmersive": "Selecteer een punt op de afbeelding om te kiezen hoe uw afbeelding wordt bijgesneden op verschillende schermformaten. Het punt dat u selecteert zal altijd zichtbaar zijn. Kijk hieronder het vakje aan als uw media volledig zichtbaar moet zijn.",
+        "cropExplanationImmersive": "Selecteer een punt op de afbeelding om te kiezen hoe uw afbeelding wordt bijgesneden op verschillende schermformaten. Het punt dat u selecteert zal altijd zichtbaar zijn. Vink 'Niet bijsnijden' aan als uw afbeelding volledig zichtbaar moet zijn.",
         "cropExplanation": "Selecteer een punt op de afbeelding om te kiezen hoe uw afbeelding wordt bijgesneden op verschillende schermformaten. Het punt dat u selecteert zal altijd zichtbaar zijn.",
         "color": "Kleur",
         "previews": "Voorbeelden"
+      },
+      "altMedia": {
+        "alternativeMedia": "Alternatieve media",
+        "explanation": "Bepaalde media wordt niet ondersteund of werkt mogelijk niet goed op mobiele apparaten. Gebruik dit paneel om een alternatief, meer mobielvriendelijk alternatief te kiezen dat in plaats van deze media getoond zal worden als uw verhaal op een telefoon of tablet weergegeven wordt.",
+        "changeAltImage": "Afbeelding wijzigen",
+        "uploadAltImage": "Afbeelding toevoegen"
       }
     },
     "imageGallery": {
@@ -174,9 +193,9 @@ define({
       "undo": "Ongedaan maken"
     },
     "sections": {
-      "sequence": "Narratieve sectie",
-      "immersive": "Meeslepende sectie",
-      "title": "Titelsectie"
+      "sequence": "Verhaal",
+      "immersive": "Meeslepend",
+      "title": "Titel"
     },
     "mediaErrors": {
       "mediaTypes": {
@@ -184,19 +203,27 @@ define({
         "webmap": "kaart",
         "webscene": "scene",
         "video": "video",
-        "content": "inhoud",
+        "content": "content",
         "webpage": "webpagina"
       },
       "placeholders": {
-        "generic": "Deze inhoud is niet toegankelijk.",
-        "deleted": "Dit ${media-type} is verwijderd.",
-        "inaccessible": "Dit ${media-type} is niet toegankelijk.",
-        "unauthorized": "U bent niet gemachtigd om dit ${media-type} te bekijken.",
-        "unshared": "Dit ${media-type} wordt niet hetzelfde gedeeld als uw verhaal.",
-        "othersUnshared": "Dit ${media-type} wordt niet hetzelfde gedeeld als uw verhaal.",
-        "subscriptionContent": "Dit ${media-type} bevat een abonneelaag.",
-        "premiumContent": "Dit ${media-type} bevat een premium laag.",
-        "secureService": "Dit ${media-type} bevat een beveiligde laag."
+        "generic": "Deze content is niet toegankelijk.",
+        "deleted": "Dit item is verwijderd.",
+        "inaccessible": "Deze content is niet toegankelijk.",
+        "unauthorized": "U bent niet gemachtigd om deze content te bekijken.",
+        "unshared": "Dit item wordt niet hetzelfde gedeeld als uw verhaal.",
+        "othersUnshared": "Dit item wordt niet hetzelfde gedeeld als uw verhaal.",
+        "subscriptionContent": "Deze kaart bevat een abonnementlaag.",
+        "premiumContent": "Deze kaart bevat een premiumlaag.",
+        "secureService": "Deze kaart bevat een beveiligde laag."
+      },
+      "contentIssues": {
+        "noAltImage": "Media niet ondersteund op mobiele apparaten",
+        "altImageBroken": "De alternatieve afbeelding die gedefinieerd is voor dit media-item is niet toegankelijk"
+      },
+      "contentWarnings": {
+        "noAltImage": "Dit type van media wordt niet ondersteund op mobiele apparaten. Selecteer een alternatieve afbeelding die getoond zal worden als het verhaal wordt weergegeven op mobiele apparaten.",
+        "noAltImageAlt": "Dit type van media wordt niet ondersteund op mobiele apparaten. Selecteer in het tabblad Mobiel een alternatieve afbeelding die getoond zal worden als het verhaal wordt weergegeven op mobiele apparaten."
       },
       "mapIssues": {
         "fixButton": "Problemen oplossen",
@@ -216,13 +243,13 @@ define({
           "unshared": "Deze content wordt niet hetzelfde gedeeld als uw verhaal.",
           "othersUnshared": "Deze content is van iemand anders en wordt niet hetzelfde gedeeld als uw verhaal.",
           "othersUnsharedAuthorized": "Deze content is van iemand anders, maar u mag het delen.",
-          "inaccessible": "Deze inhoud is niet toegankelijk.",
-          "deleted": "Deze inhoud is verwijderd.",
+          "inaccessible": "Deze content is niet toegankelijk.",
+          "deleted": "Deze content is verwijderd.",
           "unauthorized": "U bent niet gemachtigd om deze content te bekijken.",
           "popupFeatureLayer": "De pop-ups van een tiled laag komen uit een objectlaag die niet hetzelfde wordt gedeeld als uw verhaal.",
           "subscriptionContent": "U moet abonneecontent voor openbaar gebruik toestaan.",
           "premiumContent": "U moet premium content voor openbaar gebruik toestaan.",
-          "secureService": "Beveiligde inhoud is niet toegankelijk voor uw lezers.",
+          "secureService": "Beveiligde content is niet toegankelijk voor uw lezers.",
           "missingItemWarning": "Het item geassocieerd met deze laag is verwijderd."
         },
         "tooltips": {

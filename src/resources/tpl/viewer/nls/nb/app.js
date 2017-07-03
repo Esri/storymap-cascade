@@ -35,12 +35,15 @@ define({
       "builderSupport1": "Byggeverktøyet Story Cascade støttes bare i ${CHROME} og ${SAFARI}. Imidlertid kan Cascade-historier som du oppretter med byggeverktøyet vises i disse nettleserne, Internet Explorer 11+ og Firefox.",
       "builderSupport2": "Byggeverktøyet Story Cascade støttes ikke på iPad. Cascade-historier som du oppretter og deler, vil fungere på iPad.",
       "builderSupport3": "Cascade-historier kan vises i Chrome, Safari, Firefox og Internet Explorer 11+, men byggeverktøyet Story Cascade støttes bare i ${CHROME} og ${SAFARI}.",
-      "builderSupport4": "Cascade-historier kan vises i Chrome, Safari, Firefox og Internet Explorer 11+, men byggeverktøyet Story Cascade støttes bare i ${CHROME} og ${SAFARI}.<br><br>Hvis du har behov for at byggeverktøyet Cascade skal støtte en annen leser, tar du kontakt med ${ESRI-SUPPORT} eller klikker for å stemme: ${FIREFOX-BUILDER} | ${IE-BUILDER}.",
+      "builderSupport4": "Cascade-historier kan vises i vanlige nettlesere, men byggeverktøyet Story Cascade støttes bare i ${CHROME} og ${SAFARI}.<br><br>Hvis du har behov for at byggeverktøyet Cascade skal støtte en annen leser, kontakter du ${ESRI-SUPPORT} eller ${BROWSER-SUPPORT-VOTE}.",
       "sorry": "Obs:"
     },
     "mobileWarning": {
       "message1": "Du har lest den mobile versjonen av denne historien. For den fulle versjonen, som har rikere medieelementer, kan du bruke en stasjonær datamaskin.",
       "email": "Send en kobling til denne historien på e-post"
+    },
+    "cover": {
+      "iosEmbedLink": "Trykk for å lese hele historien"
     },
     "media": {
       "captionPlaceholder": "Din bildetekst her ...",
@@ -70,6 +73,10 @@ define({
       "autoplayExplain1": "Automatisk avspillingsmodus går videre i historien med gitte intervaller. Dette fungerer utmerket til kiosker eller informasjonsskjermer, men kan i andre situasjoner gjøre det vanskeligere å lese historien. Denne funksjonen støttes ikke på små skjermer.",
       "autoplayExplain2": "Når denne modusen er aktivert, vises det kontroller for å spille av/pause historien og justere navigeringshastigheten.",
       "linksupdated": "Koblingene ble oppdatert"
+    },
+    "theme": {
+      "lightLabel": "Lys",
+      "darkLabel": "Mørk"
     }
   }
 });

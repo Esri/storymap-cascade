@@ -8,7 +8,8 @@ export default {
   },
   content: {
     unshared: 'content/unshared',
-    othersUnshared: 'content/othersUnshared'
+    othersUnshared: 'content/othersUnshared',
+    noAlternateMedia: 'content/noAlternateMedia'
   },
   layers: {
     deleted: 'layers/deleted',
@@ -22,6 +23,9 @@ export default {
   },
   images: {
     inaccessible: 'images/inaccessible'
+  },
+  audio: {
+    inaccessible: 'audio/inaccessible'
   },
   videos: {
     inaccessible: 'videos/inaccessible'

@@ -7,8 +7,8 @@ define({
     "blockAdd": {
       "text": "Teksti",
       "media": "Media",
-      "title": "Otsikko-osio",
-      "immersive": "Immersiivinen osio"
+      "title": "Otsikko",
+      "immersive": "Immersiivinen"
     },
     "link": {
       "invite": "Liitä tai kirjoita linkki..."

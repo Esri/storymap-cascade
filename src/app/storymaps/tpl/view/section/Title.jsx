@@ -61,7 +61,9 @@ export default class Title {
     //
 
     // TODO: this is broken, only cover and Thin implement
-    this._backgroundMedia = SectionCommon.initMedia(background);
+    this._backgroundMedia = SectionCommon.initMedia({
+      media: background
+    });
 
     return viewTpl({
       classes: ['section', 'section-layout-title'].concat(classes).join(' '),
@@ -87,24 +89,6 @@ export default class Title {
       applySectionConfig: app.isInBuilder ? this._applySectionConfig.bind(this) : null,
       sectionType: 'title'
     });
-
-    /*
-    $(window).scroll(function() {
-      if (this._isElementInViewport($('#' + this.id))) {
-        if (this._section.background.type != 'color') {
-          var pos = this._getElementPos($('#' + this.id));
-
-          if (pos > document.documentElement.clientHeight - 270) {
-            pos = document.documentElement.clientHeight - 270;
-          }
-
-          //$('#' + _id).find('.image').css('backgroundPositionY', - pos);
-          //$('#' + _id).find('.map').css('marginTop', - pos);
-          //$('#' + _id).find('.video').css('marginTop', - pos);
-        }
-      }
-    }.bind(this));
-    */
 
     this._applyConfig();
   }
@@ -150,33 +134,4 @@ export default class Title {
   //
   // Private
   //
-
-  /*
-  _isElementInViewport(el) {
-    //special bonus for those using jQuery
-    if (typeof jQuery === 'function' && el instanceof jQuery) {
-      el = el[0];
-    }
-
-    var rect = el.getBoundingClientRect();
-
-    return (
-      rect.top >= 0 &&
-      rect.left >= 0 &&
-      rect.bottom <= app.display.windowHeight,
-      rect.right <= app.display.windowWidth
-    );
-  }
-
-  _getElementPos(el) {
-    //special bonus for those using jQuery
-    if (typeof jQuery === 'function' && el instanceof jQuery) {
-      el = el[0];
-    }
-
-    var rect = el.getBoundingClientRect();
-
-    return rect.top;
-  }
-  */
 }

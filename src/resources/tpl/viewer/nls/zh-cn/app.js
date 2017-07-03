@@ -35,12 +35,15 @@ define({
       "builderSupport1": "Story Map Cascade 构建器仅受 ${CHROME} 和 ${SAFARI} 支持。但可在 Internet Explorer 11+、Firefox 等其他浏览器中查看使用构建器创建的 Cascade 故事。",
       "builderSupport2": "iPad 不支持 Story Map Cascade 构建器。但创建和共享的 Cascade 故事可在 iPad 上运行。",
       "builderSupport3": "可在 Chrome、Safari、Firefox 和 Internet Explorer 11+ 中查看 Cascade 故事，但 Story Map Cascade 构建器仅支持 ${CHROME} 和 ${SAFARI}。",
-      "builderSupport4": "可在 Chrome、Safari、Firefox 和 Internet Explorer 11+ 中查看 Cascade 故事，但 Story Map Cascade 构建器仅支持 ${CHROME} 和 ${SAFARI}。<br><br>如果您需要 Cascade 构建器支持其他浏览器，请联系 ${ESRI-SUPPORT} 或单击以投票：${FIREFOX-BUILDER} | ${IE-BUILDER}。",
+      "builderSupport4": "可在所有常用的 Web 浏览器中查看 Cascade 故事，但 Story Map Cascade 构建器只支持 ${CHROME} 和 ${SAFARI}。<br><br>如果您希望 Cascade 构建器支持其他浏览器，请联系 ${ESRI-SUPPORT} 或 ${BROWSER-SUPPORT-VOTE}。",
       "sorry": "注意："
     },
     "mobileWarning": {
       "message1": "您已阅读此故事的移动版本。有关含丰富媒体元素的完整版本，请尝试使用台式电脑。",
       "email": "使用电子邮件发送此故事"
+    },
+    "cover": {
+      "iosEmbedLink": "点击以读取完整故事"
     },
     "media": {
       "captionPlaceholder": "您的此处标题...",
@@ -70,6 +73,10 @@ define({
       "autoplayExplain1": "自动播放模式将以定期的时间间隔播放您的故事。该模式是自助服务或公共显示屏的理想选择，但请注意，在其他情景下会使故事难以阅读。小型显示器不支持该功能。",
       "autoplayExplain2": "激活此模式时，可使用控件播放/暂停故事和调整导航速度。",
       "linksupdated": "链接已更新!"
+    },
+    "theme": {
+      "lightLabel": "浅色",
+      "darkLabel": "暗色"
     }
   }
 });

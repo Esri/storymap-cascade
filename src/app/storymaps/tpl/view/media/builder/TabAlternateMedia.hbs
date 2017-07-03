@@ -1,0 +1,26 @@
+<div class="builder-config-section alt-media">
+  <h4 class="title">{{strings.altMedia.alternativeMedia}}</h4>
+  <div class="section-content button">
+    <div class="alt-image-swap config-item button btn btn-bw" data-action="swap">
+      <span class="fa fa-image fa-lg"/>
+      {{strings.altMedia.changeAltImage}}
+    </div>
+  </div>
+  <div class="section-content button">
+    <div class="alt-image-remove config-item button btn btn-bw" data-action="remove">
+      <i class="config-icon fa fa-trash-o fa-lg"></i>
+      {{strings.manage.remove}}
+    </div>
+  </div>
+  <span class="alt-image-tooltip fa fa-info-circle fa-lg" data-toggle="tooltip" data-placement="top" title="{{strings.altMedia.explanation}}"></span>
+</div>
+{{#if hasError}}
+<div class="builder-config-section centered">
+  <div class="tab-alternate-issue block-media show-loading-error error">
+    {{{errorTemplate}}}
+  </div>
+  <span class="fa fa-info-circle" data-toggle="tooltip" data-placement="top" title="{{errorTooltip}}"></span>
+</div>
+{{else}}
+  {{{backgroundTpl}}}
+{{/if}}

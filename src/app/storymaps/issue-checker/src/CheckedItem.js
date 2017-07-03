@@ -3,6 +3,7 @@ export default class CheckedItem {
     this.id = id;
     this.mediaType = type;
     this.errors = [];
+    this.warnings = [];
     this.details = {};
   }
 }

@@ -35,12 +35,15 @@ define({
       "builderSupport1": "Story Map Cascade-Builder wird nur in ${CHROME} und ${SAFARI} unterstützt. Cascade-Storys, die Sie mit Builder erstellen, können jedoch in diesen Browsern, Internet Explorer 11+ und Firefox, angezeigt werden.",
       "builderSupport2": "Story Map Cascade-Builder wird nicht auf dem iPad unterstützt. Cascade-Storys, die Sie laden und freigeben hingegen schon.",
       "builderSupport3": "Erstellte und freigegebene Cascade-Storys können in Chrome, Safari, Internet Explorer 11+ angezeigt werden, Story Map Cascade-Builder wird in ${CHROME} und ${SAFARI} jedoch nicht unterstützt.",
-      "builderSupport4": "Cascade-Storys können in Chrome, Safari, Firefox und Internet Explorer 11+ angezeigt werden, Story Map Cascade-Builder wird jedoch nur in ${CHROME} und ${SAFARI} unterstützt.<br><br>Falls Cascade-Builder einen anderen Browser unterstützen soll, wenden Sie sich an den ${ESRI-SUPPORT}, oder klicken Sie, um Folgendes auszuwählen: ${FIREFOX-BUILDER} | ${IE-BUILDER}.",
+      "builderSupport4": "Cascade-Storys können in jedem modernen Webbrowser angezeigt werden. Story Map Cascade-Builder wird jedoch nur in ${CHROME} und ${SAFARI} unterstützt.<br><br>Falls Cascade-Builder einen anderen Browser unterstützen soll, wenden Sie sich an den ${ESRI-SUPPORT} oder ${BROWSER-SUPPORT-VOTE}.",
       "sorry": "Achtung:"
     },
     "mobileWarning": {
       "message1": "Sie haben die mobile Version dieser Story angezeigt. Die vollständige Version mit umfangreicheren Medienelementen können Sie auf einem Desktop-Computer testen.",
       "email": "Einen Link zu dieser App per E-Mail senden"
+    },
+    "cover": {
+      "iosEmbedLink": "Hier tippen, um mehr zu erfahren"
     },
     "media": {
       "captionPlaceholder": "Ihre Beschriftung hier...",
@@ -70,6 +73,10 @@ define({
       "autoplayExplain1": "Im Modus für automatische Wiedergabe wird die Story regelmäßig fortgesetzt. Er ist ideal für Kiosks oder öffentliche Monitore. In anderen Situationen wird dadurch allerdings die Lesbarkeit der Story beeinträchtigt. Dieses Feature wird für kleine Anzeigegrößen nicht unterstützt.",
       "autoplayExplain2": "Ist dieser Modus aktiviert, stehen Steuerelemente für Wiedergabe/Pause der Story und zum Einstellen der Navigationsgeschwindigkeit zur Verfügung.",
       "linksupdated": "Links wurden aktualisiert!"
+    },
+    "theme": {
+      "lightLabel": "Hell",
+      "darkLabel": "Dunkel"
     }
   }
 });

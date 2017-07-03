@@ -13,13 +13,14 @@ define({
     "headerConfig": {
       "toggles": {
         "bookmarks": "Knjižne oznake",
-        "logoSharing": "Logotip i dijeljenje"
+        "logoSharing": "Logotip i dijeljenje",
+        "theme": "Izgled"
       },
       "bookmarks": {
         "title": "Odjeljak",
         "bookmark": "Knjižna oznaka",
         "intro": "Knjižne su oznake poveznice s dijelovima priče koji su prikazani u zaglavlju. Stvaranje preciznih knjižnih oznaka za glavne dijelove vaše priče pomoći će čitateljima u snalaženju.",
-        "sequentialDefault": "Sekvencijalni dio (nema pronađenog teksta)",
+        "sequentialDefault": "Narativni dio (nema pronađenog teksta)",
         "immersiveDefault": "Prožimajući dio (nema pronađenog teksta)",
         "titleDefault": "Dio s naslovom (nema pronađenog teksta)",
         "coverDefault": "Dio naslovnice (nema pronađenog teksta)",
@@ -38,6 +39,15 @@ define({
         "taglineLinkDisabledTooltip": "Unesite dodatni tekst za omogućivanje poveznice",
         "link": "Poveznica dodatnog teksta",
         "enableSocialSharing": "Prikaži gumb za dijeljenje"
+      },
+      "appearance": {
+        "themeLabel": "Tema",
+        "fontLabel": "Fontovi",
+        "previewLabel": "Pretpregled",
+        "fontsTitleLabel": "Nazivi",
+        "fontsBodyLabel": "Tijelo",
+        "loremTitle": "Lorem Ipsum",
+        "loremBody": "Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor. Mauris consequat orci nec magna facilisis bibendum at eget libero."
       }
     },
     "builderPanel": {
@@ -47,7 +57,7 @@ define({
       "betaNote": "Recite nam što mislite o ${APP_NAME} ili ako nešto ne radi kako ste očekivali.",
       "notSharedNote": "Vaša priča nije podijeljena, samo je vi možete vidjeti",
       "organizationWarning": "Kako biste osigurali da priču mogu vidjeti drugi također morate podijeliti scene, slojeve scene i umetnute appove sa svojom organizacijom. Karte i slojevi karte dijele se automatski.",
-      "publicWarning": "Kako biste osigurali da priču mogu vidjeti drugi također morate javno podijeliti scene, slojeve scene i umetnute appove. Karte i slojevi karte dijele se automatski.",
+      "publicWarning": "Kako biste osigurali da priču mogu vidjeti drugi, također morate podijeliti scene, slojeve scene i umetnute appove sa svima. Karte i slojevi karte dijele se automatski.",
       "addTitleNote": "Da biste spremili dodajte naslov za naslovnicu",
       "saveError": "Došlo je do pogreške pri spremanju vaše priče.",
       "duplicate": "Dupliciraj",
@@ -77,6 +87,7 @@ define({
         "manage": "Upravljaj",
         "size": "Veličina",
         "background": "Pozadina",
+        "mobile": "Mobile",
         "issues": "Problemi",
         "fixIssues": "Popravi probleme"
       },
@@ -112,15 +123,23 @@ define({
       "size": {
         "small": "Malo",
         "medium": "Srednje",
-        "large": "Veliko"
+        "large": "Veliko",
+        "noCrop": "Nemoj obrezati visoke slike",
+        "noCropTallTooltip": "Ako ne obrežete visoku sliku, proizvest ćete dramatični efekt za čitatelje koji će se trebati pomicati prema dolje kako bi vidjeli čitavu sliku."
       },
       "background": {
-        "noCrop": "Nemojte obrezati sliku",
+        "noCrop": "Nemoj obrezati",
         "mostImportantPart": "Odaberite najvažniju točku",
-        "cropExplanationImmersive": "Odaberite točku na slici kako biste odabrali način na koji će se obrezati slika za različite veličine zaslona. Točka koju odaberete uvijek će biti vidljiva. Označite okvir u nastavku ako vaši mediji trebaju biti potpuno vidljivi.",
+        "cropExplanationImmersive": "Odaberite točku na slici kako biste odabrali način na koji će se obrezati slika za različite veličine zaslona. Točka koju odaberete uvijek će biti vidljiva. Označite „Nemoj obrezati” ako vaša slika treba biti potpuno vidljiva.",
         "cropExplanation": "Odaberite točku na slici kako biste odabrali način na koji će se obrezati slika za različite veličine zaslona. Točka koju odaberete uvijek će biti vidljiva.",
         "color": "Boja",
         "previews": "Pretpregledi"
+      },
+      "altMedia": {
+        "alternativeMedia": "Alternativni mediji",
+        "explanation": "Neki mediji nisu podržani ili možda neće raditi dobro na mobilnim uređajima. Upotrijebite ovu ploču za odabir alternativne stavke koja će biti pristupačnija vašem mobilnom uređaju i koja će se prikazati umjesto ovog medija kada se vaša priča prikazuje na telefonu ili tabletu.",
+        "changeAltImage": "Promijeni sliku",
+        "uploadAltImage": "Dodaj sliku"
       }
     },
     "imageGallery": {
@@ -174,9 +193,9 @@ define({
       "undo": "Poništi"
     },
     "sections": {
-      "sequence": "Narativni odjeljak",
-      "immersive": "Prožimajući odjeljak",
-      "title": "Naslov odjeljka"
+      "sequence": "Priča",
+      "immersive": "Prožimanje",
+      "title": "Naziv"
     },
     "mediaErrors": {
       "mediaTypes": {
@@ -189,14 +208,22 @@ define({
       },
       "placeholders": {
         "generic": "Ovaj sadržaj nije dostupan.",
-        "deleted": "Ovaj je ${media-type} izbrisan.",
-        "inaccessible": "Ovaj ${media-type} nije dostupan.",
-        "unauthorized": "Niste ovlašteni za prikaz ovog ${media-type}.",
-        "unshared": "Ovaj ${media-type} nije podijeljen kao i vaša priča.",
-        "othersUnshared": "Ovaj ${media-type} nije podijeljen kao i vaša priča.",
-        "subscriptionContent": "Ovaj ${media-type} sadrži pretplatnički sloj.",
-        "premiumContent": "Ovaj ${media-type} sadrži premium sloj.",
-        "secureService": "Ovaj ${media-type} sadrži sigurni sloj."
+        "deleted": "Ova je stavka izbrisana.",
+        "inaccessible": "Ovaj sadržaj nije dostupan.",
+        "unauthorized": "Niste ovlašteni za pregled ovog sadržaja.",
+        "unshared": "Ova stavka nije podijeljena kao ni vaša priča.",
+        "othersUnshared": "Ova stavka nije podijeljena kao ni vaša priča.",
+        "subscriptionContent": "Ova karta sadrži pretplatnički sloj.",
+        "premiumContent": "Ova karta sadrži premium sloj.",
+        "secureService": "Ova karta sadrži sigurni sloj."
+      },
+      "contentIssues": {
+        "noAltImage": "Medij nije podržan na mobilnim uređajima",
+        "altImageBroken": "Određena alternativna slika za ovu stavku medija nije dostupna"
+      },
+      "contentWarnings": {
+        "noAltImage": "Ova vrsta medija nije podržana na mobilnim uređajima. Navedite alternativnu sliku koja će se prikazati kada se priča gleda na mobilnom uređaju.",
+        "noAltImageAlt": "Ova vrsta medija nije podržana na mobilnim uređajima. Na kartici mobilnog uređaja navedite alternativnu sliku koja će se prikazati kada se priča gleda na mobilnom uređaju."
       },
       "mapIssues": {
         "fixButton": "Popravi probleme",

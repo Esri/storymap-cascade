@@ -51,8 +51,13 @@ export default class Panel {
         container: this._node,
         onToggleMediaConfig: app.isInBuilder ? this._onToggleMediaConfig.bind(this) : null,
         onConfigAction: app.isInBuilder ? this._onMediaConfigAction.bind(this) : null,
-        builderConfigurationTabs: this._mediaConfigurationTabs
+        builderConfigurationTabs: this._mediaConfigurationTabs,
+        sectionType: 'immersive'
       });
+
+      if (!app.isInBuilder) {
+        block._node && block._node.addClass('bring-in');
+      }
     }
 
     // In builder - hide the panel if panel has only one empty text block
@@ -83,11 +88,12 @@ export default class Panel {
     }
 
     // windowHeight as this is in Immersive and scroll beneath the header and builder panel
-    var sectionHeight = app.display.windowHeight,
-        scrollTop = params.currentSectionScroll % sectionHeight,
-        scrollProgress = scrollTop / sectionHeight,
-        panelPos = null,
-        panelOpa = 1;
+    const sectionHeight = app.display.windowHeight;
+    const scrollTop = params.currentSectionScroll % sectionHeight;
+    const scrollingViewIndex = Math.floor(params.currentSectionScroll / sectionHeight);
+    const scrollProgress = scrollTop / sectionHeight;
+    let panelPos = null;
+    let panelOpa = 1;
 
     /*
      * Scroll full is a simple postion:relative element that scroll along with the page
@@ -139,6 +145,22 @@ export default class Panel {
         opacity: panelOpa,
         visibility: 'visible'
       });
+    }
+    else {
+      if (!app.isInBuilder && this._node) {
+        if (!this._node.hasClass('bring-in') && scrollProgress > 0.05) {
+          this._node.addClass('bring-in');
+        }
+        // for some reason, the last view's panel can have the scrollProgress of 0 again... after it's scrolled all teh way up.
+        // We don't want to remove the bring-in class in that case... so ew make sure it only happens
+        // when the scrollProgress 0 is "when the element is below screen".
+        // we use the panelIndex and compare that with how far the immersive section has been scrolled -- i.e.
+        // how many "views-worth" of immersive has been scrolled. If it's more than the index,
+        // we know we've scrolled THROUGH the last view, and so we don't want to remove the class.
+        else if (scrollProgress < 0.05 && scrollingViewIndex === params.panelIndex) {
+          this._node.removeClass('bring-in');
+        }
+      }
     }
   }
 

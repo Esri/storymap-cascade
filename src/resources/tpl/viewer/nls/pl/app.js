@@ -35,12 +35,15 @@ define({
       "builderSupport1": "Kreator Kaskada map narracyjnych jest obsługiwany tylko w przeglądarkach ${CHROME} i ${SAFARI}. Narracje kaskadowe utworzone za pomocą tego kreatora można jednak wyświetlać zarówno w wymienionych przeglądarkach, jak i w programie Internet Explorer 11+ i Firefox.",
       "builderSupport2": "Kreator Kaskada map narracyjnych nie jest obsługiwany na tablecie iPad. Utworzone i udostępnione narracje kaskadowe będą działały na tablecie iPad.",
       "builderSupport3": "Narracje kaskadowe można wyświetlać w przeglądarkach Chrome, Safari, Firefox i Internet Explorer 11+, ale kreator Kaskada map narracyjnych jest obsługiwany tylko w przeglądarkach ${CHROME} i ${SAFARI}.",
-      "builderSupport4": "Narracje kaskadowe można wyświetlać w przeglądarkach Chrome, Safari, Firefox i Internet Explorer 11+, ale kreator Kaskada map narracyjnych jest obsługiwany tylko w przeglądarkach ${CHROME} i ${SAFARI}.<br><br>Jeśli chcesz, aby kreator Kaskada obsługiwał inną przeglądarkę, skontaktuj się z działem ${ESRI-SUPPORT} lub kliknij, aby zagłosować: ${FIREFOX-BUILDER} | ${IE-BUILDER}.",
+      "builderSupport4": "Narracje kaskadowe można wyświetlać we wszystkich współczesnych przeglądarkach internetowych, ale kreator Story Map Cascade (Mapa narracyjna — Kaskada) jest obsługiwany tylko w przeglądarkach ${CHROME} i ${SAFARI}.<br><br>Jeśli chcesz, aby kreator kaskad obsługiwał inną przeglądarkę, skontaktuj się z działem ${ESRI-SUPPORT} lub ${BROWSER-SUPPORT-VOTE}.",
       "sorry": "Uwaga:"
     },
     "mobileWarning": {
       "message1": "Przeczytano mobilną wersję tej narracji. Pełną wersję z bogatszymi elementami multimedialnymi można wypróbować na komputerze stacjonarnym.",
       "email": "Wyślij wiadomość e-mail z łączem do tej narracji"
+    },
+    "cover": {
+      "iosEmbedLink": "Naciśnij, aby przeczytać całą narrację"
     },
     "media": {
       "captionPlaceholder": "Twój podpis tutaj...",
@@ -70,6 +73,10 @@ define({
       "autoplayExplain1": "W trybie automatycznego odtwarzania narracja jest prezentowana w stałym tempie. Ten tryb doskonale nadaje się do monitora kiosku internetowego lub wyświetlacza publicznego, ale należy pamiętać, że w innych sytuacjach może pogorszyć czytelność narracji. Ta funkcja nie jest obsługiwana na małych wyświetlaczach.",
       "autoplayExplain2": "Po włączeniu tego trybu udostępniane są elementy sterujące do włączania odtwarzania/wstrzymywania narracji oraz do regulacji szybkości nawigacji.",
       "linksupdated": "Zaktualizowano łącza!"
+    },
+    "theme": {
+      "lightLabel": "Jasny",
+      "darkLabel": "Ciemny"
     }
   }
 });

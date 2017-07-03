@@ -35,12 +35,15 @@ define({
       "builderSupport1": "Story Map Cascade-builder-programmet understøttes kun af ${CHROME} og ${SAFARI}. Men de Cascade-historier, du opretter med builder-programmet kan vises i disse browsere samt i Internet Explorer 11+ og Firefox.",
       "builderSupport2": "Story Map Cascade-builder-programmet understøttes ikke på iPad. De Cascade-historier, du opretter og deler, vil fungere på iPad.",
       "builderSupport3": "Cascade-historier kan vises i Chrome, Safari, Firefox og Internet Explorer 11+, men Story Map Cascade-builder-programmet understøttes kun af ${CHROME} og ${SAFARI}.",
-      "builderSupport4": "Cascade-historier kan vises i Chrome, Safari, Firefox og Internet Explorer 11+, men Story Map Cascade-builder-programmet understøttes kun af ${CHROME} og ${SAFARI}.<br><br>Hvis du har brug for, at Cascade-builder-programmet skal understøtte en anden browser, skal du kontakte ${ESRI-SUPPORT} eller klikke for at stemme: ${FIREFOX-BUILDER} | ${IE-BUILDER}.",
+      "builderSupport4": "Cascade-historier kan vises i en hvilken som helst webbrowser, men Story Map Cascade-builder-programmet understøttes kun af ${CHROME} og ${SAFARI}.<br><br>Hvis du har brug for, at Cascade-builder-programmet skal understøtte en anden browser, bedes du kontakte ${ESRI-SUPPORT} eller ${BROWSER-SUPPORT-VOTE}.",
       "sorry": "Bemærk:"
     },
     "mobileWarning": {
       "message1": "Du har læst den mobile version af denne historie. For at få vist den fulde historie med mere avancerede medieelementer skal du prøve at læse den på en stationær computer.",
       "email": "Send en e-mail med et link til denne historie"
+    },
+    "cover": {
+      "iosEmbedLink": "Tryk for at læse hele historien"
     },
     "media": {
       "captionPlaceholder": "Din billedtekst her...",
@@ -70,6 +73,10 @@ define({
       "autoplayExplain1": "Autoplay-tilstand vil gå frem igennem din historie med et regelmæssigt interval. Dette er ideelt på en kiosk-skærm eller offentlig tilgængelig skærm, men du skal være opmærksom på, at dette kan gøre din historie vanskeligere at læse i andre situationer. Denne funktion understøttes ikke på små skærme.",
       "autoplayExplain2": "Når denne tilstand er aktiv, er der knapper til at afspille din historie eller sætte den på pause og til at justere navigationshastigheden.",
       "linksupdated": "Links opdateret!"
+    },
+    "theme": {
+      "lightLabel": "Lys",
+      "darkLabel": "Mørk"
     }
   }
 });

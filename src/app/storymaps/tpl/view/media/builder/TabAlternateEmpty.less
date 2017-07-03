@@ -1,0 +1,80 @@
+@import '../../../core/Variables';
+
+.builder-config-section.alt-media-empty {
+
+  cursor: default;
+  padding: 0 10px;
+
+  .section-content {
+    height: 100%;
+  }
+
+  .warning-summary {
+    height: 100%;
+    flex: 1;
+  }
+
+  // widths of summary and items. add to 94.
+  .warning-summary {
+    background: #f9f9f9;
+    width: 90%;
+  }
+
+  // .issue-items {
+  //   width: 59%;
+  //   @media (max-width: @screen-md) {
+  //     width: 54%;
+  //   }
+  // }
+
+  .warning-summary {
+    position: relative;
+
+    .title-wrapper {
+      top: 0;
+      bottom: 40px;
+      padding: 10px 20px;
+      width: 100%;
+    }
+
+    .warning-title {
+      line-height: 1.1em;
+      color: @Calcite_Orange_a150;
+      padding-bottom: 5px;
+      width: 100%;
+      font-size: 24px;
+      margin: 0;
+    }
+
+    .warning-description {
+      line-height: 1.2em;
+      font-size: 12px;
+    }
+
+    @media (max-width: @screen-md) {
+      .title {
+        font-size: 20px;
+      }
+      .description {
+        font-size: 12px;
+      }
+    }
+
+    @media (max-width: ((@screen-md + @screen-sm) / 2)) {
+      .title {
+        font-size: 18px;
+      }
+      .description {
+        font-size: 10px;
+      }
+    }
+
+    .fix-btn {
+      display: block;
+      bottom: 0;
+      width: 100%;
+      left: 2%;
+      z-index: 2;
+    }
+  }
+}

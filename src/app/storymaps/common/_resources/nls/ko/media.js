@@ -1,4 +1,3 @@
-// nls expects double quotes
 /*eslint quotes:[2, 'double'] */
 define({
   "mediaPicker": {
@@ -65,15 +64,15 @@ define({
             "embedProtocolWarning3": "대신 이야기에 링크를 추가하여 새 브라우저 탭에서 페이지를 여십시오. ${linkText}",
             "linkText": "자세한 정보."
           },
-          "placeholder": "${https://}... or ${http://}... or ${<iframe>}",
+          "placeholder": "${https://}... 또는 ${http://}... 또는 ${<iframe>}",
           "uploadErrors": {
             "generic": "입력한 주소에 문제가 발생했습니다. 다시 시도하세요.",
             "imageOnly1": "스토리의 이 부분에서 이미지를 사용해야 합니다.",
             "imageOnly2": "이미지(.jpg, .png, .gif)의 링크를 제공하거나 ${ArcGIS}, ${Flickr}, ${Google+} 또는 ${Unsplash}에서 이미지를 선택하세요.",
             "imageAndVideo1": "스토리의 이 부분에서 이미지 또는 비디오를 사용해야 합니다.",
             "imageAndVideo2": "이미지(.jpg, .png, .gif) 링크 또는 ${YouTube}나 ${Vimeo}의 비디오 링크를 제공하거나 ${ArcGIS}, ${Flickr}, ${Google+} 또는 ${Unsplash}에서 이미지를 선택하세요.",
-            "badFormat": "추가하려는 ${media-type}의 링크는 형식이 잘못되었습니다.",
-            "inaccessible": "추가하려는 ${media-type}은(는) 누락되었거나 접근할 수 없습니다.",
+            "badFormat": "추가하려는 파일의 링크는 형식이 잘못되었습니다.",
+            "inaccessible": "추가하려는 파일은 누락되었거나 접근할 수 없습니다.",
             "tryAgain": "주소를 확인하고 다시 시도하세요.",
             "mediaTypes": {
               "VIDEO": "비디오",
@@ -125,6 +124,8 @@ define({
           "searchLocation": {
             "thisStory": "이 스토리",
             "agol": "ArcGIS Online",
+            "portalArcGIS": "Portal for ArcGIS",
+            "portal": "포털",
             "myOrg": "${orgname} 기관",
             "myContent": "내 콘텐츠"
           },

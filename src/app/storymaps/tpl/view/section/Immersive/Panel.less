@@ -9,6 +9,25 @@
  *  for the builder UI, see PanelBuilder > updateBuilderEditorPlacementRules
  */
 
+ @keyframes fade-in-media {
+   0% {
+     opacity: 0;
+   }
+   100% {
+     opacity: 1;
+   }
+ }
+
+ body:not(.builder-mode) .layout-scroll-full {
+   .imm-panel:not(.bring-in) {
+     opacity: 0;
+   }
+
+   .imm-panel.bring-in {
+     animation: fade-in-media 1s;
+   }
+ }
+
 .imm-panel {
   min-height: 100vh;
   width: 0;
@@ -30,6 +49,26 @@
 
     .block-type-video .block-media {
       padding-top: 50% !important;
+    }
+  }
+
+  &.size-large {
+    .blocks {
+      .portrait {
+        .block-media, .block-caption {
+            width: 70%;
+        }
+      }
+    }
+  }
+
+  &.size-medium {
+    .blocks {
+      .portrait {
+        .block-media, .block-caption {
+            width: 80%;
+        }
+      }
     }
   }
 
@@ -138,14 +177,6 @@
   }
 }
 
-body:not(.builder-mode) .layout-scroll-full .imm-panel {
-  &.view-transition-swipe-vertical, &.view-transition-swipe-horizontal {
-    .blocksWrapper {
-      margin-top: 180px;
-    }
-  }
-}
-
 /*
  * Scroll partial
  */
@@ -170,18 +201,6 @@ body:not(.builder-mode) .layout-scroll-full .imm-panel {
       .blocksWrapper {
         width: 100%;
       }
-
-
-      /* less and calc */
-      /*min-height: calc(~"100vh - 50px");*/
-
-      /*
-      .block {
-        background-color: rgba(0,0,0,0.4);
-        color: #FFF;
-        border-radius: 2px;
-      }
-      */
 
       /*
        * Size
@@ -260,8 +279,14 @@ body:not(.builder-mode) .layout-scroll-full .imm-panel {
  */
 
 body.mobile-view .imm-panel {
- .blocks {
-   padding: 5px;
+  .blocksWrapper {
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+  }
+    .blocks {
+     padding: 5px;
  }
 }
 

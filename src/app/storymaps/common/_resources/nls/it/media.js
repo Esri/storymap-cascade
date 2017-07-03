@@ -1,4 +1,3 @@
-// nls expects double quotes
 /*eslint quotes:[2, 'double'] */
 define({
   "mediaPicker": {
@@ -65,15 +64,15 @@ define({
             "embedProtocolWarning3": "In alternativa, aggiungere un collegamento al racconto per aprire la pagina in una nuova scheda del browser. ${linkText}",
             "linkText": "Ulteriori informazioni."
           },
-          "placeholder": "${https://}... or ${http://}... or ${<iframe>}",
+          "placeholder": "${https://}... o ${http://}... o ${<iframe>}",
           "uploadErrors": {
             "generic": "Si è verificato un errore con l'indirizzo immesso. Riprovare.",
             "imageOnly1": "Utilizzare un'immagine in questa parte della storia.",
             "imageOnly2": "Fornire un collegamento a un'immagine (.jpg, .png, .gif) o scegliere un'immagine da ${ArcGIS}, ${Flickr}, ${Google+} o ${Unsplash}.",
             "imageAndVideo1": "Utilizzare un'immagine o un video in questa parte della storia.",
             "imageAndVideo2": "Fornire un collegamento a un'immagine (.jpg, .png, .gif) o a un video su ${YouTube} o ${Vimeo} o scegliere un'immagine da ${ArcGIS}, ${Flickr}, ${Google+} o ${Unsplash}.",
-            "badFormat": "Il collegamento al ${media-type} che si sta cercando di aggiungere non è formattato correttamente.",
-            "inaccessible": "Il ${media-type} che si sa cercando di aggiungere manca o non è accessibile.",
+            "badFormat": "Il collegamento al file che si sta cercando di aggiungere non è formattato correttamente.",
+            "inaccessible": "Il file che si sta cercando di aggiungere è mancante o non accessibile.",
             "tryAgain": "Verificare l'indirizzo e riprovare.",
             "mediaTypes": {
               "VIDEO": "video",
@@ -125,6 +124,8 @@ define({
           "searchLocation": {
             "thisStory": "Questa storia",
             "agol": "ArcGIS Online",
+            "portalArcGIS": "Portal for ArcGIS",
+            "portal": "Portale",
             "myOrg": "Organizzazione ${orgname",
             "myContent": "Contenuto personale"
           },

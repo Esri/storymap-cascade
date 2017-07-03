@@ -1,14 +1,15 @@
 /* eslint quotes: ["error", "double"] */
-/* strings files need to be double quotes */
 define({
   "commonCore": {
     "builderPanel": {
+      "builderNamePrefix": "",
+      "builderNameSuffix": "बिल्डर",
       "buttonSaving": "सहेजा जा रहा है",
       "buttonSaved": "सहेजा गया",
       "buttonError": "सहेजना विफल रहा",
       "buttonShare": "साझा करें",
       "buttonSettings": "सेटिंग्स",
-      "buttonHelp": "सहायता",
+      "buttonHelp": "सहायता प्राप्त करें या GeoNet पर फ़ीडबैक सबमिट करें",
       "buttonPreview": "कहानी देखें",
       "buttonHealth": "स्वास्थ रिपोर्ट",
       "manageStories": "मेरी कहानियों का प्रबंधन करें",
@@ -31,7 +32,13 @@ define({
     "share": {
       "btnPrivate": "निजी",
       "btnOrg": "संगठन",
-      "btnPublic": "सार्वजनिक"
+      "btnPublic": "सार्वजनिक",
+      "btnEveryone": "हर कोई"
+    },
+    "portal": {
+      "disconnected": "यह पोर्टल इंटरनेट से कनेक्ट नहीं है",
+      "portal": "पोर्टल",
+      "portalArcGIS": "ArcGIS का पोर्टल"
     }
   }
 });

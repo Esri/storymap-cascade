@@ -1,4 +1,3 @@
-// nls expects double quotes
 /*eslint quotes:[2, 'double'] */
 define({
   "mediaPicker": {
@@ -65,15 +64,15 @@ define({
             "embedProtocolWarning3": "Alternatywnie można dodać w narracji łącze umożliwiające otwarcie tej strony na nowej karcie przeglądarki. ${linkText}",
             "linkText": "Dowiedz się więcej."
           },
-          "placeholder": "${https://}... or ${http://}... or ${<iframe>}",
+          "placeholder": "${https://}... lub ${http://}... lub ${<iframe>}",
           "uploadErrors": {
             "generic": "Wystąpił problem z wprowadzonym adresem. Spróbuj ponownie.",
             "imageOnly1": "W tej części narracji należy użyć obrazu.",
             "imageOnly2": "Podaj łącze do obrazu (.jpg, .png, .gif) lub wybierz obraz z serwisu ${ArcGIS}, ${Flickr}, ${Google+} bądź ${Unsplash}.",
             "imageAndVideo1": "W tej części narracji należy użyć obrazu lub filmu.",
             "imageAndVideo2": "Podaj łącze do obrazu (.jpg, .png, .gif) lub filmu w serwisie ${YouTube} bądź ${Vimeo} albo wybierz obraz z serwisu ${ArcGIS}, ${Flickr}, ${Google+} bądź ${Unsplash}.",
-            "badFormat": "Łącze do zasobu ${media-type}, które próbujesz dodać, jest niepoprawnie sformatowane.",
-            "inaccessible": "Brak zasobu ${media-type}, który próbujesz dodać, lub jest on niedostępny.",
+            "badFormat": "Łącze do pliku, które próbujesz dodać, jest niepoprawnie sformatowane.",
+            "inaccessible": "Plik, który próbujesz dodać, nie istnieje lub jest niedostępny.",
             "tryAgain": "Sprawdź adres i spróbuj ponownie.",
             "mediaTypes": {
               "VIDEO": "wideo",
@@ -125,6 +124,8 @@ define({
           "searchLocation": {
             "thisStory": "Ta narracja",
             "agol": "ArcGIS Online",
+            "portalArcGIS": "Portal for ArcGIS",
+            "portal": "Portal",
             "myOrg": "Instytucja ${orgname}",
             "myContent": "Moje zasoby"
           },

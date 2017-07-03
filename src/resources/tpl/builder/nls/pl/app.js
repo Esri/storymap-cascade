@@ -13,13 +13,14 @@ define({
     "headerConfig": {
       "toggles": {
         "bookmarks": "Zakładki",
-        "logoSharing": "Logotyp i udostępnianie"
+        "logoSharing": "Logotyp i udostępnianie",
+        "theme": "Wygląd"
       },
       "bookmarks": {
         "title": "Sekcja",
         "bookmark": "Zakładka",
         "intro": "Zakładki to łącza do sekcji narracji widoczne w nagłówku. Utworzenie podręcznych zakładek do głównych sekcji narracji ułatwia czytelnikom orientację.",
-        "sequentialDefault": "Sekcja sekwencyjna (nie znaleziono tekstu)",
+        "sequentialDefault": "Sekcja narracji (nie znaleziono tekstu)",
         "immersiveDefault": "Sekcja imersyjna (nie znaleziono tekstu)",
         "titleDefault": "Sekcja tytułu (nie znaleziono tekstu)",
         "coverDefault": "Sekcja okładki (nie znaleziono tekstu)",
@@ -38,6 +39,15 @@ define({
         "taglineLinkDisabledTooltip": "Wprowadź motto, aby włączyć łącze",
         "link": "Łącze do motta",
         "enableSocialSharing": "Wyświetl przycisk udostępniania"
+      },
+      "appearance": {
+        "themeLabel": "Motyw",
+        "fontLabel": "Czcionki",
+        "previewLabel": "Zobacz podgląd",
+        "fontsTitleLabel": "Tytuły",
+        "fontsBodyLabel": "Treść",
+        "loremTitle": "Lorem Ipsum",
+        "loremBody": "Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor. Mauris consequat orci nec magna facilisis bibendum at eget libero."
       }
     },
     "builderPanel": {
@@ -47,7 +57,7 @@ define({
       "betaNote": "Przekaż nam swoją opinię o aplikacji ${APP_NAME} lub poinformuj nas, jeśli jakieś funkcje nie działają zgodnie z oczekiwaniami.",
       "notSharedNote": "Twoja narracja nie jest udostępniana. Tylko Ty ją widzisz",
       "organizationWarning": "Aby się upewnić, że ta narracja może być wyświetlana przez inne osoby, musisz także udostępnić w swojej instytucji jej sceny, warstwy scen i osadzone aplikacje. Mapy i warstwy map są udostępniane automatycznie.",
-      "publicWarning": "Aby się upewnić, że ta narracja może być wyświetlana przez inne osoby, musisz także udostępnić publicznie jej sceny, warstwy scen i osadzone aplikacje. Mapy i warstwy map są udostępniane automatycznie.",
+      "publicWarning": "Aby się upewnić, że ta narracja może być wyświetlana przez inne osoby, musisz także udostępnić wszystkim użytkownikom jej sceny, warstwy scen i osadzone aplikacje. Mapy i warstwy map są udostępniane automatycznie.",
       "addTitleNote": "Dodaj tytuł do okładki, aby zapisać",
       "saveError": "Wystąpił błąd podczas zapisywania narracji.",
       "duplicate": "Duplikuj",
@@ -77,6 +87,7 @@ define({
         "manage": "Zarządzaj",
         "size": "Rozmiar",
         "background": "Tło",
+        "mobile": "Mobilne",
         "issues": "Problemy",
         "fixIssues": "Rozwiąż problemy"
       },
@@ -112,15 +123,23 @@ define({
       "size": {
         "small": "Mały",
         "medium": "Średnie",
-        "large": "Duży"
+        "large": "Duży",
+        "noCrop": "Nie przycinaj wysokich obrazów",
+        "noCropTallTooltip": "Nieprzycinanie wysokich obrazów tworzy interesujący efekt i zachęca czytelników do przewinięcia ekranu w celu wyświetlenia całego obrazu."
       },
       "background": {
-        "noCrop": "Nie przycinaj obrazu",
+        "noCrop": "Nie przycinaj",
         "mostImportantPart": "Wybierz najważniejszy punkt",
-        "cropExplanationImmersive": "Zaznacz punkt na obrazie, aby wybrać sposób przycięcia obrazu w zależności od różnych rozmiarów ekranu. Wybrany punkt będzie zawsze widoczny. Zaznacz poniższe pole, jeśli multimedia muszą być widoczne w całości.",
-        "cropExplanation": "Zaznacz punkt na obrazie, aby wybrać sposób przycięcia obrazu w zależności od różnych rozmiarów ekranu. Wybrany punkt będzie zawsze widoczny.",
+        "cropExplanationImmersive": "Zaznacz punkt na obrazie, aby wybrać sposób przycięcia obrazu w zależności od rozmiaru ekranu. Wybrany punkt będzie zawsze widoczny. Zaznacz opcję 'Nie przycinaj', jeśli obraz ma być widoczny w całości.",
+        "cropExplanation": "Zaznacz punkt na obrazie, aby wybrać sposób przycięcia obrazu w zależności od rozmiaru ekranu. Wybrany punkt będzie zawsze widoczny.",
         "color": "Kolor",
         "previews": "Widoki podglądu"
+      },
+      "altMedia": {
+        "alternativeMedia": "Alternatywne multimedia",
+        "explanation": "Niektóre elementy multimedialne mogą nie działać poprawnie na urządzeniach przenośnych. Ten panel umożliwia wybranie alternatywnego, obsługiwanego przez urządzenia przenośne elementu, który będzie widoczny zamiast tego elementu multimedialnego podczas wyświetlania narracji na telefonie lub tablecie.",
+        "changeAltImage": "Zmień obraz",
+        "uploadAltImage": "Dodaj obraz"
       }
     },
     "imageGallery": {
@@ -174,9 +193,9 @@ define({
       "undo": "Cofnij"
     },
     "sections": {
-      "sequence": "Sekcja narracji",
-      "immersive": "Sekcja imersyjna",
-      "title": "Sekcja tytułu"
+      "sequence": "Narracyjne",
+      "immersive": "Imersyjne",
+      "title": "Tytuł"
     },
     "mediaErrors": {
       "mediaTypes": {
@@ -189,14 +208,22 @@ define({
       },
       "placeholders": {
         "generic": "Te zasoby są niedostępne.",
-        "deleted": "Ten typ multimediów (${media-type}) został usunięty.",
-        "inaccessible": "Ten typ multimediów (${media-type}) jest niedostępny.",
-        "unauthorized": "Nie masz uprawnień do wyświetlania tego typu multimediów (${media-type}).",
-        "unshared": "Ten typ multimediów (${media-type}) nie jest udostępniany w taki sam sposób jak narracja.",
-        "othersUnshared": "Ten typ multimediów (${media-type}) nie jest udostępniany w taki sam sposób jak narracja.",
-        "subscriptionContent": "Ten typ multimediów (${media-type}) zawiera warstwę subskrybenta.",
-        "premiumContent": "Ten typ multimediów (${media-type}) zawiera warstwę premium.",
-        "secureService": "Ten typ multimediów (${media-type}) zawiera warstwę zabezpieczoną."
+        "deleted": "Ten element został usunięty.",
+        "inaccessible": "Te zasoby są niedostępne.",
+        "unauthorized": "Nie masz uprawnień do wyświetlania tych zasobów.",
+        "unshared": "Ten element nie jest udostępniany w taki sam sposób jak narracja.",
+        "othersUnshared": "Ten element nie jest udostępniany w taki sam sposób jak narracja.",
+        "subscriptionContent": "Ta mapa zawiera warstwę subskrybenta.",
+        "premiumContent": "Ta mapa zawiera warstwę premium.",
+        "secureService": "Ta mapa zawiera warstwę zabezpieczoną."
+      },
+      "contentIssues": {
+        "noAltImage": "Multimedia nieobsługiwane na urządzeniach przenośnych",
+        "altImageBroken": "Obraz alternatywny zdefiniowany dla tego elementu multimedialnego jest niedostępny"
+      },
+      "contentWarnings": {
+        "noAltImage": "Ten typ multimediów nie jest obsługiwany na urządzeniach przenośnych. Zdefiniuj obraz alternatywny, który będzie widoczny podczas wyświetlania narracji na urządzeniach przenośnych.",
+        "noAltImageAlt": "Ten typ multimediów nie jest obsługiwany na urządzeniach przenośnych. Na karcie Mobilne zdefiniuj obraz alternatywny, który będzie widoczny podczas wyświetlania narracji na urządzeniach przenośnych."
       },
       "mapIssues": {
         "fixButton": "Rozwiąż problemy",

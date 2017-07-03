@@ -18,7 +18,7 @@ export default class CoverBuilder extends Cover {
       hasWarnings: false
     };
 
-    this.MEDIA_BUILDER_TABS_BACKGROUND = ['section-appearance', 'background', 'manage'];
+    this.MEDIA_BUILDER_TABS_BACKGROUND = ['section-appearance', 'background', 'manage', 'alternate'];
   }
 
   render() {
@@ -141,21 +141,13 @@ export default class CoverBuilder extends Cover {
       this._node.find('.cover-media-placeholder').addClass('active');
       this._node.find('.cover-media-placeholder-wrapper').click(this._onEditPlaceholderMedia.bind(this));
     }
-
-    /*
-    if (! this._section.foreground.title) {
-      setTimeout(function() {
-        this._node.find('.cover-title').focus().focus();
-      }.bind(this), 100);
-    }
-    */
   }
 
-  serialize() {
+  serialize(includeInstanceID) {
     if (this._node) {
       this._section.foreground.title = $('<div>' + this._node.find('.cover-title').text() + '</div>').text();
       this._section.foreground.subtitle = $('<div>' + this._node.find('.cover-subtitle').text() + '</div>').text();
-      this._section.background = this._backgroundMedia.serialize();
+      this._section.background = this._backgroundMedia.serialize(includeInstanceID);
     }
 
     return lang.clone(this._section);
@@ -171,6 +163,28 @@ export default class CoverBuilder extends Cover {
   showTitleError() {
     this._node.find('.cover-title').addClass('title-error');
     this._node.find('.title-error-container').removeClass('hidden');
+  }
+
+  getScanResults() {
+    return this.scanResults;
+  }
+
+  setScanResults(hasErrors, hasWarnings) {
+    Object.assign(this.scanResults, {hasErrors}, {hasWarnings});
+  }
+
+  addContextSpecificIssues(scannedMedia) {
+    // loop thru and see if they have alts. if not, they're in trouble!
+    const instanceID = this._backgroundMedia._instanceID;
+
+    const media = scannedMedia[instanceID];
+
+    if (media && media.mediaType === 'video') {
+      if (!media.alternateMedia) {
+        // add an issue here.
+        media.scanResult.warnings.push('content/noAlternateMedia');
+      }
+    }
   }
 
   //
@@ -203,24 +217,50 @@ export default class CoverBuilder extends Cover {
   }
 
   _onMediaConfigAction(params = {}) {
-    if (! params.action || ! params.media) {
+    // if there's no action OR (there's no media AND the action isn't alt media add)
+    // in other words, we need an action, and we need a media unless action is alt media add.
+    if (!params.action || (!params.media && params.action !== 'alternate-media-add')) {
       return;
     }
 
-    if (params.action == 'swap') {
+    if (params.action === 'swap' || params.action === 'alternate-media-swap' || params.action === 'alternate-media-add') {
+      const isAlternate = params.action.indexOf('alternate-') !== -1;
+      const mediaIsEmpty = params.action === 'alternate-media-add';
+      const authorizedMedia = isAlternate ? ['image'] : ['image', 'video'];
+
       app.builder.mediaPicker.open({
-        mode: 'edit',
-        media: params.media.serialize(),
-        authorizedMedia: ['image', 'video']
+        mode: mediaIsEmpty ? 'add' : 'edit',
+        media: mediaIsEmpty ? null : params.media.serialize(false),
+        authorizedMedia: authorizedMedia
       }).then(
         function(newMedia) {
-          this._onToggleMediaConfig();
-          this._onEditMedia(params.media, newMedia);
+          if (isAlternate) {
+            // only part of the recipe will apply to this
+            SectionCommon.onEditMediaAlternate({
+              mainMedia: params.mainMedia,
+              newMediaJSON: newMedia,
+              oldMedia: params.media,
+              sectionType: 'cover'
+            });
+            this._onContentChange();
+          }
+          else {
+            this._onToggleMediaConfig();
+            this._onEditMedia(params.media, newMedia);
+          }
         }.bind(this),
         function() {
           //
         }
       );
+    }
+
+    else if (params.action === 'alternate-media-remove') {
+      SectionCommon.onRemoveMediaAlternate({
+        mainMedia: params.mainMedia,
+        media: params.media,
+        sectionType: 'cover'
+      });
     }
 
     this._onContentChange();
@@ -232,7 +272,10 @@ export default class CoverBuilder extends Cover {
   }
 
   _onEditMedia(media, newMediaJSON) {
-    let newMedia = SectionCommon.initMedia(newMediaJSON);
+    let newMedia = SectionCommon.initMedia({
+      media: newMediaJSON,
+      isNewMedia: true
+    });
 
     // Delete actual background
     this._node.find('.background').remove();
@@ -305,13 +348,5 @@ export default class CoverBuilder extends Cover {
     var image = images[Math.floor(Math.random() * images.length)];
 
     return 'resources/tpl/viewer/cover-placeholder/' + image;
-  }
-
-  getScanResults() {
-    return this.scanResults;
-  }
-
-  setScanResults(hasErrors, hasWarnings) {
-    Object.assign(this.scanResults, {hasErrors}, {hasWarnings});
   }
 }

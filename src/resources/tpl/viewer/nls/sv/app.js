@@ -35,12 +35,15 @@ define({
       "builderSupport1": "Byggverktyget Story Map Cascade stöds endast i ${CHROME} och ${SAFARI}. Men Cascade-berättelser som du skapar med byggverktyget kan visas i de webbläsarna samt Internet Explorer 11+ och Firefox.",
       "builderSupport2": "Byggverktyget Story Map Cascade stöds inte för iPad, men Cascade-berättelser som du skapar och delar fungerar ändå på iPad.",
       "builderSupport3": "Cascade-berättelser kan visas i Chrome, Safari, Firefox och Internet Explorer 11+, men byggverktyget Story Map Cascade stöds endast i ${CHROME} och ${SAFARI}.",
-      "builderSupport4": "Cascade-berättelser kan visas i Chrome, Safari, Firefox och Internet Explorer 11+, men byggverktyget Story Map Cascade stöds endast i ${CHROME} och ${SAFARI}.<br><br>Om du vill att Cascade-byggverktyget ska stödja en annan webbläsare, kontaktar du ${ESRI-SUPPORT} eller klickar för att rösta: ${FIREFOX-BUILDER} | ${IE-BUILDER}.",
+      "builderSupport4": "Cascade-berättelser kan visas i alla moderna webbläsare, men byggverktyget Story Map Cascade stöds endast i ${CHROME} och ${SAFARI}.<br><br>Om du vill att Cascade-byggverktyget ska stödja en annan webbläsare, kontaktar du ${ESRI-SUPPORT} eller ${BROWSER-SUPPORT-VOTE}.",
       "sorry": "Obs!"
     },
     "mobileWarning": {
       "message1": "Du har läst den mobila versionen av den här berättelsen. Om du vill ta del av den fullständiga versionen, med fylligare medieelement, provar du på en stationär dator.",
       "email": "Skicka en länk till berättelsen med e-post"
+    },
+    "cover": {
+      "iosEmbedLink": "Klicka för att läsa hela berättelsen"
     },
     "media": {
       "captionPlaceholder": "Din bildtext här...",
@@ -70,6 +73,10 @@ define({
       "autoplayExplain1": "Autouppspelningsläge kommer att köras på din berättelse med ett regelbundet intervall. Detta är idealiskt för informationskiosker och offentliga bildskärmar, men du bör vara medveten om att det i andra situationer kan göra berättelsen svårare att läsa. Funktionen stöds inte på små skärmar.",
       "autoplayExplain2": "När läget är aktivt finns det kontroller för att spela upp/pausa berättelsen och anpassa navigeringshastigheten.",
       "linksupdated": "Länkarna har uppdaterats"
+    },
+    "theme": {
+      "lightLabel": "Ljus",
+      "darkLabel": "Mörk"
     }
   }
 });

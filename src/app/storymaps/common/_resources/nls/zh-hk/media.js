@@ -1,4 +1,3 @@
-// nls expects double quotes
 /*eslint quotes:[2, 'double'] */
 define({
   "mediaPicker": {
@@ -65,15 +64,15 @@ define({
             "embedProtocolWarning3": "替代方案是在敘述中新增連結，以便在新的瀏覽器頁籤中開啟網頁。${linkText}",
             "linkText": "瞭解詳細資訊。"
           },
-          "placeholder": "${https://}... or ${http://}... or ${<iframe>}",
+          "placeholder": "${https://}... 或 ${http://}... 或 ${<iframe>}",
           "uploadErrors": {
             "generic": "輸入的位址發生了一些錯誤。請再試一次。",
             "imageOnly1": "您必須在故事的此部分中使用圖像。",
             "imageOnly2": "請提供圖像 (.jpg、.png、.gif) 的連結，或從 ${ArcGIS}、${Flickr}、${Google+} 或 ${Unsplash} 選擇圖像。",
             "imageAndVideo1": "您必須在故事的此部分中使用圖像或影片。",
             "imageAndVideo2": "請提供圖像 (.jpg、.png、.gif)，或 ${YouTube} 或 ${Vimeo} 上影片的連結，或從 ${ArcGIS}、${Flickr}、${Google+} 或 ${Unsplash} 選擇圖像。",
-            "badFormat": "您正嘗試新增的 ${media-type} 之連結格式不正確。",
-            "inaccessible": "您正嘗試新增的 ${media-type} 遺失或無法存取。",
+            "badFormat": "您正嘗試新增的檔案之連結格式不正確。",
+            "inaccessible": "您正嘗試新增的檔案遺失或無法存取。",
             "tryAgain": "請檢查位址並重試。",
             "mediaTypes": {
               "VIDEO": "video",
@@ -125,6 +124,8 @@ define({
           "searchLocation": {
             "thisStory": "此故事",
             "agol": "ArcGIS Online",
+            "portalArcGIS": "Portal for ArcGIS",
+            "portal": "入口網站",
             "myOrg": "${orgname} 組織",
             "myContent": "我的內容"
           },

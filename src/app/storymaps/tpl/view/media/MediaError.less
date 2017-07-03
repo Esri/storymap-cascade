@@ -81,6 +81,10 @@ body:not(.builder-mode) {
     }
   }
 
+  &.mobile-view .section-layout-sequence .block-audio .block-media.error {
+    width: 80%;
+  }
+
   .block-media.error:not(.minimize-on-viewer) {
     .loading-error {
       top: 20px;
@@ -122,6 +126,7 @@ body:not(.builder-mode) {
     .loading-error {
       width: auto;
       color: @sm-danger-text;
+      z-index: 1;
     }
 
     &.show-loading-error {
@@ -178,6 +183,75 @@ body:not(.builder-mode) {
     }
   }
 
+  .block-media.warning,
+  .background.warning,
+  .ug-thumb-wrapper.warning {
+    border-left: 10px solid @Calcite_Orange_a150;
+
+    &, .map {
+      background: #eee;
+    }
+
+    .loading-warning {
+      width: auto;
+      color: @Calcite_Orange_a150;
+    }
+
+    &.show-loading-warning {
+      .loading-error {
+        display: block;
+      }
+    }
+
+    .scene ~ .loading-warning {
+      left: 60px;
+    }
+
+    .builder-invite-background {
+      border-bottom-color: @Calcite_Orange_a150;
+    }
+
+    .ig-media-swap {
+
+      .ig-action-icon {
+        color: white !important;
+      }
+
+      .ig-background {
+        border-bottom-color: @Calcite_Orange_a150 !important; // this already has *six* class selectors elsewhere :\
+      }
+    }
+
+    .video ~ .media-cfg-invite .builder-invite-background {
+      background-color: @Calcite_Orange_a150 !important; // it already had important elsewhere
+    }
+
+    .builder-invite-open {
+      color: white;
+    }
+
+    // put a border on the "Manage" and "Issues" tabs and
+    // adjust the padding of the other tabs to preserve alignment
+    // in .block-media, the .media-cfg-panel is a sibling, but in
+    // .background.error, the .media-cfg-panel is a descendent.
+    & ~ .media-cfg-panel,
+    .media-cfg-panel {
+      .tab {
+        padding-left: 5px;
+
+        .border-warning {
+          top: -1px;
+          bottom: 0;
+          width: 5px;
+          background: @Calcite_Orange_a150;
+          position: absolute;
+          left: -5px;
+        }
+      }
+    }
+  }
+
+
   // just sequential and panel errors
   .block-media.error {
     height: auto;
@@ -204,11 +278,40 @@ body:not(.builder-mode) {
     }
   }
 
+  .block-media.warning {
+    height: auto;
+    border-left-color: fade(@Calcite_Orange_a150, 80%);
+
+    &:hover {
+      border-left-color: @Calcite_Orange_a150;
+    }
+
+    .loading-warning {
+      top: 20px;
+    }
+
+    // if the image has an error on it, but it was a short image,
+    // you need this much height to get to the edit and delete buttons
+    // and to notice you've got a problem in the first place
+    .image-container {
+      display: block;
+      min-height: 180px;
+    }
+
+    .media-cfg-invite {
+      opacity: 0.85;
+    }
+  }
+
   // keep opacity of left border on config panel open
   // (above it's just on hover, but the config panel is
   // below the image, so hover won't work here)
   .block.config-panel-active .block-media.error {
     border-left-color: @sm-danger-text;
+  }
+
+  .block.config-panel-active .block-media.warning {
+    border-left-color: @Calcite_Orange_a150;
   }
 
   // just image galleries
@@ -222,4 +325,8 @@ body:not(.builder-mode) {
 
 .op-item-main.error {
   border-left: 10px solid @sm-danger-text;
+}
+
+.op-item-main.warning {
+  border-left: 10px solid @Calcite_Orange_a150;
 }

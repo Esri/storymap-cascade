@@ -31,7 +31,9 @@ export default class Credits {
       return '';
     }
 
-    this._backgroundMedia = SectionCommon.initMedia(background);
+    this._backgroundMedia = SectionCommon.initMedia({
+      media: background
+    });
 
     for (let panel of foreground.panels) {
       if (panel.type === 'blocks') {
@@ -47,7 +49,10 @@ export default class Credits {
         creditsOutput += blockOutput;
       }
       else if (panel.type === 'credits') {
-        let credits = SectionCommon.initMedia(panel, null);
+        let credits = SectionCommon.initMedia({
+          media: panel,
+          mediaCache: null
+        });
 
         this._panels.push({
           type: 'credits',
@@ -71,6 +76,10 @@ export default class Credits {
 
   postCreate(sectionContainer) {
     this._node = sectionContainer;
+
+    if (this._backgroundMedia.postCreate) {
+      this._backgroundMedia.postCreate({container: this._node});
+    }
 
     for (let panel of this._panels) {
       if (panel.type === 'blocks') {

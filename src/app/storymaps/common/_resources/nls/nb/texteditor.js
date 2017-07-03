@@ -7,8 +7,8 @@ define({
     "blockAdd": {
       "text": "Tekst",
       "media": "Medier",
-      "title": "Tittelseksjon",
-      "immersive": "Inngående seksjon"
+      "title": "Tittel",
+      "immersive": "Dyptgående"
     },
     "link": {
       "invite": "Lim inn eller skriv inn en kobling..."

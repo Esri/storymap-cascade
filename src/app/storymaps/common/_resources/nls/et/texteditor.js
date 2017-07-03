@@ -7,8 +7,8 @@ define({
     "blockAdd": {
       "text": "Tekst",
       "media": "Meedia",
-      "title": "Pealkirja jaotis",
-      "immersive": "Detailne jaotis"
+      "title": "Pealkiri",
+      "immersive": "Detailne"
     },
     "link": {
       "invite": "Kleepige või tippige link."

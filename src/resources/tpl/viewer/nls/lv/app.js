@@ -35,12 +35,15 @@ define({
       "builderSupport1": "Story Map Cascade veidotāju atbalsta tikai pārlūkā ${CHROME} un ${SAFARI}. Taču Cascade stāstus, ko izveido ar veidotāju, var skatīt arī Internet Explorer 11+ un Firefox.",
       "builderSupport2": "Story Map Cascade veidotāju neatbalsta iPad, bet iPad ierīcēs darbosies stāsti, kurus izveidojat un kopīgojat.",
       "builderSupport3": "Cascade stāstus var skatīt pārlūkā Chrome, Safari, Firefox un Internet Explorer 11+, bet Story Map Cascade veidotāju atbalsta tikai ${CHROME} un ${SAFARI}.",
-      "builderSupport4": "Cascade stāstus var skatīt pārlūkā Chrome, Safari, Firefox un Internet Explorer 11+, bet Story Map Cascade veidotāju atbaslta tikai ${CHROME} un ${SAFARI}.<br><br>Ja nepieciešams, lai Cascade veidotājs tiktu atbalstīts citā pārlūkā, sazinieties ar ${ESRI-SUPPORT} vai noklikšķiniet, lai nobalsotu: ${FIREFOX-BUILDER} | ${IE-BUILDER}.",
+      "builderSupport4": "Cascade stāstus var skatīt jebkurā mūsdienīgā pārlūkā, bet Story Map Cascade veidotāju atbalsta tikai ${CHROME} un ${SAFARI}.<br><br>Ja nepieciešams, lai Cascade veidotājs tiktu atbalstīts citā pārlūkā, sazinieties ar ${ESRI-SUPPORT} vai ${BROWSER-SUPPORT-VOTE}.",
       "sorry": "Uzmanību!"
     },
     "mobileWarning": {
       "message1": "Jūs lasījāt šī stāsta mobilo versiju. Lai skatītu pilno versiju ar bagātīgāku multivides satura klāstu, atveriet to galddatorā.",
       "email": "Nosūtīt e-pastā saiti uz šo stāstu"
+    },
+    "cover": {
+      "iosEmbedLink": "Pieskarieties, lai izlasītu visu rakstu"
     },
     "media": {
       "captionPlaceholder": "Vieta parakstam...",
@@ -70,6 +73,10 @@ define({
       "autoplayExplain1": "Automātiskās demonstrēšanas režīms jūsu stāstu parādīs ar regulāriem intervāliem. Tas lieliski noder rādīšanai stendos vai publiskās demonstrēšanas monitorā, bet ņemiet vērā, ka citās situācijās šis režīms var padarīt stāstu grūtāk lasāmu. Šī funkcija netiek atbalstīta maza izmēra displejos.",
       "autoplayExplain2": "Pēc šī režīma aktivizēšanas ir pieejamas vadīklas stāsta demonstrēšanai/pauzēšanai un navigācijas ātruma regulēšanai.",
       "linksupdated": "Saites ir atjaunotas."
+    },
+    "theme": {
+      "lightLabel": "Gaišs",
+      "darkLabel": "Tumšs"
     }
   }
 });

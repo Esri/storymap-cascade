@@ -1,4 +1,3 @@
-// nls expects double quotes
 /*eslint quotes:[2, 'double'] */
 define({
   "mediaPicker": {
@@ -65,15 +64,15 @@ define({
             "embedProtocolWarning3": "Umjesto toga, dodajte poveznicu u priču za otvaranje stranice u novoj kartici preglednika. ${linkText}",
             "linkText": "Saznajte više."
           },
-          "placeholder": "${https://}... or ${http://}... or ${<iframe>}",
+          "placeholder": "${https://}... ili ${http://}... ili ${<iframe>}",
           "uploadErrors": {
             "generic": "Nešto je pošlo krivo s unesenom adresom. Pokušajte ponovno kasnije.",
             "imageOnly1": "Morate upotrijebiti sliku u ovom dijelu priče.",
             "imageOnly2": "Stavite poveznicu na sliku (.jpg, .png, .gif) ili izaberite sliku s usluge ${ArcGIS}, ${Flickr}, ${Google+} ili ${Unsplash}.",
             "imageAndVideo1": "Morate upotrijebiti sliku ili videozapis u ovom dijelu priče.",
             "imageAndVideo2": "Stavite poveznicu na sliku (.jpg, .png, .gif) ili videozapis na ${YouTube} ili ${Vimeo} ili izaberite sliku s usluge ${ArcGIS}, ${Flickr}, ${Google+} ili ${Unsplash}.",
-            "badFormat": "Poveznica na ${media-type} koju pokušavate dodati nije ispravno formatirana.",
-            "inaccessible": "${media-type} koju pokušavate dodati nedostaje ili nije dostupna.",
+            "badFormat": "Poveznica na datoteku koju pokušavate dodati nije ispravno formatirana.",
+            "inaccessible": "Datoteka koju pokušavate dodati nedostaje ili nije dostupna.",
             "tryAgain": "Provjerite adresu i pokušajte ponovno.",
             "mediaTypes": {
               "VIDEO": "videozapis",
@@ -125,6 +124,8 @@ define({
           "searchLocation": {
             "thisStory": "Ova priča",
             "agol": "ArcGIS Online",
+            "portalArcGIS": "Portal for ArcGIS",
+            "portal": "Portal",
             "myOrg": "Organizacija ${orgname}",
             "myContent": "Moj sadržaj"
           },

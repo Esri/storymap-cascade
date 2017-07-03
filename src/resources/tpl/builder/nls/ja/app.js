@@ -13,13 +13,14 @@ define({
     "headerConfig": {
       "toggles": {
         "bookmarks": "ブックマーク",
-        "logoSharing": "ロゴと共有"
+        "logoSharing": "ロゴと共有",
+        "theme": "表示設定"
       },
       "bookmarks": {
         "title": "セクション",
         "bookmark": "ブックマーク",
         "intro": "ブックマークは、ヘッダーに表示されるストーリー セクションへのリンクです。ストーリーのメイン セクションに簡潔なブックマークを作成すると、ユーザーが使いやすくなります。",
-        "sequentialDefault": "連続型セクション (テキストが見つかりません)",
+        "sequentialDefault": "注釈セクション (テキストが見つかりません)",
         "immersiveDefault": "没入型セクション (テキストが見つかりません)",
         "titleDefault": "タイトル セクション (テキストが見つかりません)",
         "coverDefault": "カバー セクション (テキストが見つかりません)",
@@ -38,6 +39,15 @@ define({
         "taglineLinkDisabledTooltip": "タグラインを入力してリンクを有効化",
         "link": "タグラインのリンク",
         "enableSocialSharing": "共有ボタンの表示"
+      },
+      "appearance": {
+        "themeLabel": "テーマ",
+        "fontLabel": "フォント",
+        "previewLabel": "プレビュー",
+        "fontsTitleLabel": "タイトル",
+        "fontsBodyLabel": "ボディ",
+        "loremTitle": "Lorem Ipsum",
+        "loremBody": "Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor. Mauris consequat orci nec magna facilisis bibendum at eget libero."
       }
     },
     "builderPanel": {
@@ -47,7 +57,7 @@ define({
       "betaNote": "${APP_NAME} に対するご意見をお聞かせください。または、正常に動作していない場合はご連絡ください。",
       "notSharedNote": "ストーリーは共有されていません。あなただけこのストーリを見れます。",
       "organizationWarning": "このストーリーを他のユーザーが表示できるようにするには、そのシーン、シーン レイヤー、および埋め込みアプリを組織で共有する必要もあります。マップとマップ レイヤーは自動的に共有されます。",
-      "publicWarning": "このストーリーを他のユーザーが表示できるようにするには、そのシーン、シーン レイヤー、および埋め込みアプリをパブリックに共有する必要もあります。マップとマップ レイヤーは自動的に共有されます。",
+      "publicWarning": "このストーリーを他のユーザーが表示できるようにするには、そのシーン、シーン レイヤー、および埋め込みアプリをすべてのユーザーと共有する必要もあります。マップとマップ レイヤーは自動的に共有されます。",
       "addTitleNote": "保存するカバーにタイトルを追加",
       "saveError": "ストーリーの保存中にエラーが発生しました。",
       "duplicate": "複製",
@@ -77,6 +87,7 @@ define({
         "manage": "管理",
         "size": "サイズ",
         "background": "背景",
+        "mobile": "モバイル",
         "issues": "問題",
         "fixIssues": "問題の解決"
       },
@@ -112,15 +123,23 @@ define({
       "size": {
         "small": "小",
         "medium": "中",
-        "large": "大"
+        "large": "大",
+        "noCrop": "縦長の画像をトリミングしない",
+        "noCropTallTooltip": "縦長の画像をトリミングしない場合、画像全体を表示するためにスクロールする必要があるため、読者に大きな影響があります。"
       },
       "background": {
-        "noCrop": "画像をトリミングしない",
+        "noCrop": "トリミングしない",
         "mostImportantPart": "最も重要なポイントを選択",
-        "cropExplanationImmersive": "画像上のポイントを選択して、画像を異なる画面サイズでトリミングする方法を選択します。選択したポイントは常に表示されます。メディアを完全に表示する必要がある場合は、以下のボックスをオンにします。",
-        "cropExplanation": "画像上のポイントを選択して、画像を異なる画面サイズでトリミングする方法を選択します。選択したポイントは常に表示されます。",
+        "cropExplanationImmersive": "画像上のポイントを選択して、画像を異なる画面サイズでトリミングする方法を選択します。 選択したポイントは常に表示されます。 画像を完全に表示する必要がある場合は、[トリミングしない] をオンにします。",
+        "cropExplanation": "画像上のポイントを選択して、画像を異なる画面サイズでトリミングする方法を選択します。 選択したポイントは常に表示されます。",
         "color": "色",
         "previews": "プレビュー"
+      },
+      "altMedia": {
+        "alternativeMedia": "代替メディア",
+        "explanation": "一部のメディアは、モバイル デバイスでサポートされていないか、うまく動作しない可能性があります。 このパネルを使用して、ストーリーを電話またはタブレットで表示するときに、このメディアの場所に表示されるモバイルに適した代替アイテムを選択します。",
+        "changeAltImage": "イメージの変更",
+        "uploadAltImage": "画像の追加"
       }
     },
     "imageGallery": {
@@ -174,9 +193,9 @@ define({
       "undo": "元に戻す"
     },
     "sections": {
-      "sequence": "注釈セクション",
-      "immersive": "没入型セクション",
-      "title": "タイトル セクション"
+      "sequence": "注釈",
+      "immersive": "没入型",
+      "title": "タイトル"
     },
     "mediaErrors": {
       "mediaTypes": {
@@ -189,14 +208,22 @@ define({
       },
       "placeholders": {
         "generic": "このコンテンツにアクセスできません。",
-        "deleted": "この ${media-type} は削除されました。",
-        "inaccessible": "この ${media-type} にアクセスできません。",
-        "unauthorized": "この ${media-type} を表示する権限がありません。",
-        "unshared": "この ${media-type} はストーリーと同じように共有されていません。",
-        "othersUnshared": "この ${media-type} はストーリーと同じように共有されていません。",
-        "subscriptionContent": "この ${media-type} には登録者のレイヤーが含まれています。",
-        "premiumContent": "この ${media-type} にはプレミアム レイヤーが含まれています。",
-        "secureService": "この ${media-type} には保護されたレイヤーが含まれています。"
+        "deleted": "このアイテムは削除されました。",
+        "inaccessible": "このコンテンツにアクセスできません。",
+        "unauthorized": "このコンテンツを表示する権限がありません。",
+        "unshared": "このアイテムはストーリーと同じように共有されていません。",
+        "othersUnshared": "このアイテムはストーリーと同じように共有されていません。",
+        "subscriptionContent": "このマップには登録者のレイヤーが含まれています。",
+        "premiumContent": "このマップにはプレミアム レイヤーが含まれています。",
+        "secureService": "このマップには保護されたレイヤーが含まれています。"
+      },
+      "contentIssues": {
+        "noAltImage": "メディアがモバイル デバイスでサポートされていません",
+        "altImageBroken": "このメディア アイテムに定義されている代替画像にアクセスできません"
+      },
+      "contentWarnings": {
+        "noAltImage": "このメディアのタイプは、モバイル デバイスでサポートされていません。 ストーリーをモバイル デバイスで表示するときに表示される代替画像を指定します。",
+        "noAltImageAlt": "このメディアのタイプは、モバイル デバイスでサポートされていません。 モバイル タブで、ストーリーをモバイル デバイスで表示するときに表示される代替画像を指定します。"
       },
       "mapIssues": {
         "fixButton": "問題の解決",

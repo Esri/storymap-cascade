@@ -1,7 +1,8 @@
 import SectionCommon from 'storymaps/tpl/view/section/Common';
 import UIUtils from 'storymaps/tpl/utils/UI';
 
-import i18n from 'lib-build/i18n!resources/tpl/builder/nls/app';
+import i18nBuilder from 'lib-build/i18n!resources/tpl/builder/nls/app';
+import i18nViewer from 'lib-build/i18n!resources/tpl/viewer/nls/app';
 
 import CoverStyleFactory from 'storymaps/tpl/view/section/Cover/CoverStyleFactory';
 
@@ -24,7 +25,9 @@ export default class Cover {
   }
 
   render() {
-    this._backgroundMedia = SectionCommon.initMedia(this._section.background);
+    this._backgroundMedia = SectionCommon.initMedia({
+      media: this._section.background
+    });
 
     return viewTpl({
       classes: ['section', 'section-layout-cover', this._section.layout, this._cover.layoutType].join(' '),
@@ -37,7 +40,7 @@ export default class Cover {
       showSubtitle: this._section.foreground.subtitle || app.isInBuilder,
       creditsLeft: this._section.foreground['credits-left'],
       creditsRight: this._section.foreground['credits-right'],
-      strings: i18n.builder.cover
+      strings: Object.assign({},i18nBuilder.builder.cover,i18nViewer.viewer.cover)
     });
   }
 
@@ -118,7 +121,7 @@ export default class Cover {
     return {
       status: bookmark.enabled ? 'visible' : 'disabled',
       title: this.getPreviewText ? this.getPreviewText() : '',
-      bookmark: bookmark.title || (this.getPreviewText && this.getPreviewText())
+      bookmark: bookmark.title || ('')
     };
   }
 

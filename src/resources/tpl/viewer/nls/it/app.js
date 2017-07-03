@@ -35,12 +35,15 @@ define({
       "builderSupport1": "Il generatore Cascade Story Map è supportato solo in ${CHROME} e ${SAFARI}. Tuttavia, è possibile visualizzare le storie Cascade create con il generatore anche con Internet Explorer 11+ e Firefox.",
       "builderSupport2": "Il generatore Cascade Story Map non è supportato su iPad. Le storie Cascade create e condivise funzioneranno su iPad.",
       "builderSupport3": "È possibile visualizzare le storie Cascade in Chrome, Safari, Firefox e Internet Explorer 11+, ma il generatore Cascade Story Map è supportato solo in ${CHROME} e ${SAFARI}.",
-      "builderSupport4": "È possibile visualizzare le storie Cascade in Chrome, Safari, Firefox e Internet Explorer 11+, ma il generatore Cascade Story Map è supportato solo in ${CHROME} e ${SAFARI}.<br><br>Se è necessario che il generatore Cascade supporti un browser diverso, contattare ${ESRI-SUPPORT} o fare clic per votare: ${FIREFOX-BUILDER} | ${IE-BUILDER}",
+      "builderSupport4": "È possibile visualizzare le storie Cascade in qualsiasi browser moderno, tuttavia il generatore Cascade Story Map è supportato solo in ${CHROME} e ${SAFARI}.<br><br>Se è necessario che il generatore Cascade supporti un browser diverso, contattare ${ESRI-SUPPORT} o fare clic per votare: ${BROWSER-SUPPORT-VOTE}.",
       "sorry": "Attenzione:"
     },
     "mobileWarning": {
       "message1": "Il testo della storia è stato adattato per i dispositivi mobili. Per la versione completa, con elementi multimediali avanzati, utilizzare un computer desktop.",
       "email": "Invia un collegamento a questa storia tramite e-mail"
+    },
+    "cover": {
+      "iosEmbedLink": "Toccare per leggere la storia completa"
     },
     "media": {
       "captionPlaceholder": "Immetti la didascalia qui...",
@@ -70,6 +73,10 @@ define({
       "autoplayExplain1": "La modalità di riproduzione automatica consente di avanzare nella storia a intervalli regolari. Questa soluzione è ideale in un chiosco o monitor pubblico, ma occorre tenere presente che in altre situazioni potrebbe creare problemi di lettura della storia. Questa funzione non è supportata su display di piccole dimensioni.",
       "autoplayExplain2": "Quando questa modalità è attiva, sono disponibili controlli per riprodurre/sospendere la storia e regolare la velocità di navigazione.",
       "linksupdated": "Collegamenti aggiornati"
+    },
+    "theme": {
+      "lightLabel": "Chiaro",
+      "darkLabel": "Scuro"
     }
   }
 });

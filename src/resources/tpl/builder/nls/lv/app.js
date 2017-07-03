@@ -13,13 +13,14 @@ define({
     "headerConfig": {
       "toggles": {
         "bookmarks": "Grāmatzīmes",
-        "logoSharing": "Logotips un koplietošana"
+        "logoSharing": "Logotips un koplietošana",
+        "theme": "Izskats"
       },
       "bookmarks": {
         "title": "Sadaļa",
         "bookmark": "Grāmatzīme",
         "intro": "Grāmatzīmes ir saites uz galvenē rādītajām stāsta sadaļām. Ja izveidojat lakoniskas stāsta galveno sadaļu grāmatzīmes, lasītājiem ir vieglāk orientēties.",
-        "sequentialDefault": "Secīgā sadaļa (teksts nav atrasts)",
+        "sequentialDefault": "Virsraksta sadaļa (teksts nav atrasts)",
         "immersiveDefault": "Imersīvā sadaļa (teksts nav atrasts)",
         "titleDefault": "Virsraksta sadaļa (teksts nav atrasts)",
         "coverDefault": "Vāka sadaļa (teksts nav atrasts)",
@@ -38,6 +39,15 @@ define({
         "taglineLinkDisabledTooltip": "Ievadiet devīzi, lai aktivizētu saiti",
         "link": "Devīzes saite",
         "enableSocialSharing": "Rādīt koplietošanas pogu"
+      },
+      "appearance": {
+        "themeLabel": "Motīvs",
+        "fontLabel": "Fonti",
+        "previewLabel": "Priekšskatījums",
+        "fontsTitleLabel": "Virsraksts",
+        "fontsBodyLabel": "Pamatteksts",
+        "loremTitle": "Lorem Ipsum",
+        "loremBody": "Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor. Mauris consequat orci nec magna facilisis bibendum at eget libero."
       }
     },
     "builderPanel": {
@@ -47,7 +57,7 @@ define({
       "betaNote": "Lūdzu, dariet mums zināmu savu viedokli par ${APP_NAME} vai pastāstiet, ja kaut kas nedarbojās tā, kā vajadzētu.",
       "notSharedNote": "Jūsu stāsts nav kopīgots; to varat redzēt tikai jūs pats.",
       "organizationWarning": "Lai šo stāstu varētu skatīt arī citi, jums jākopīgo ar organizāciju arī tā scēnas, scēnu slāņi un iedarinātās lietotnes. Kartes un karšu slāņi tiek kopīgoti automātiski.",
-      "publicWarning": "Lai šo stāstu varētu skatīt arī citi, jums publiski jākopīgo arī tā scēnas, scēnu slāņi un iedarinātās lietotnes. Kartes un karšu slāņi tiek kopīgoti automātiski.",
+      "publicWarning": "Lai pārliecinātos, vai šo stāstu var skatīt citi, nepieciešams kopīgot arī tā scēnas, scēnu slāņus un iegultās lietotnes, izmantojot iestatījumu Ikviens. Kartes un karšu slāņi tiek kopīgoti automātiski.",
       "addTitleNote": "Lai saglabātu, uz vāka pievienojiet virsrakstu",
       "saveError": "Saglabājot jūsu stāstu, radās kļūda.",
       "duplicate": "Dublēt",
@@ -77,6 +87,7 @@ define({
         "manage": "Pārvaldīt",
         "size": "Izmērs",
         "background": "Fons",
+        "mobile": "Mobilās ierīces",
         "issues": "Problēmas",
         "fixIssues": "Problēmu novēršana"
       },
@@ -112,15 +123,23 @@ define({
       "size": {
         "small": "Mazs",
         "medium": "Vidējs",
-        "large": "Liels"
+        "large": "Liels",
+        "noCrop": "Neapgriezt garus attēlus",
+        "noCropTallTooltip": "Ja gari attēli netiek apgriezti, var panākt dramatisku efektu, jo lasītājiem ir jāritina, lai skatītu visu attēlu."
       },
       "background": {
-        "noCrop": "Neapgriezt attēlu",
+        "noCrop": "Neapgriezt",
         "mostImportantPart": "Izvēlieties vissvarīgāko punktu",
-        "cropExplanationImmersive": "Attēlā izvēlieties punktu, lai izskatītu, kā attēls tiek apgriezts dažādu izmēru ekrānos. Izvēlētais punkts vienmēr būs redzams. Ja multivides saturam ir jābūt redzamam pilnībā, atzīmējiet izvēles rūtiņu.",
-        "cropExplanation": "Attēlā izvēlieties punktu, lai izskatītu, kā attēls tiek apgriezts dažādu izmēru ekrānos. Izvēlētais punkts vienmēr būs redzams.",
+        "cropExplanationImmersive": "Attēlā izvēlieties punktu, lai redzētu, kā attēls tiks apgriezts dažādu izmēru ekrānos. Izvēlētais punkts vienmēr būs redzams. Atzīmējiet ‘Neapgriezt’, ja attēlam jābūt pilnībā redzamam.",
+        "cropExplanation": "Attēlā izvēlieties punktu, lai redzētu, kā tas tiks apgriezts dažādu izmēru ekrānos. Izvēlētais punkts vienmēr būs redzams.",
         "color": "Krāsa",
         "previews": "Priekšskatījumi"
+      },
+      "altMedia": {
+        "alternativeMedia": "Alternatīvs saturs",
+        "explanation": "Noteikta veida saturs mobilajās ierīcēs netiek atbalstīts vai var nedarboties pareizi. Izmantojiet šo paneli, lai izvēlētos alternatīvu un mobilām ierīcēm piemērotāku materiālu, kas tiks rādīts šī satura vietā, kad stāsts tiks skatīts tālrunī vai planšetdatorā.",
+        "changeAltImage": "Mainīt attēlu",
+        "uploadAltImage": "Pievienot attēlu"
       }
     },
     "imageGallery": {
@@ -174,9 +193,9 @@ define({
       "undo": "Atsaukt"
     },
     "sections": {
-      "sequence": "Stāstījuma sadaļa",
-      "immersive": "Imersīvā sadaļa",
-      "title": "Virsraksta sadaļa"
+      "sequence": "Stāsts",
+      "immersive": "Iekļaujošs",
+      "title": "Virsraksts"
     },
     "mediaErrors": {
       "mediaTypes": {
@@ -189,14 +208,22 @@ define({
       },
       "placeholders": {
         "generic": "Šim saturam nevar piekļūt.",
-        "deleted": "Šis ${media-type} ir izdzēsts.",
-        "inaccessible": "Šis ${media-type} nav pieejams.",
-        "unauthorized": "Jums nav tiesību skatīt šo ${media-type}.",
-        "unshared": "Šis ${media-type} nav kopīgots tāpat kā jūsu stāsts.",
-        "othersUnshared": "Šis ${media-type} nav kopīgots tāpat kā jūsu stāsts.",
-        "subscriptionContent": "Šajā ${media-type} ir abonenta slānis.",
-        "premiumContent": "Šajā ${media-type} ir augstākā līmeņa slānis.",
-        "secureService": "Šajā ${media-type} ir drošais slānis."
+        "deleted": "Šī vienība ir izdzēsta.",
+        "inaccessible": "Šim saturam nevar piekļūt.",
+        "unauthorized": "Jums nav tiesību skatīt šo saturu.",
+        "unshared": "Šī vienība nav kopīgota tāpat kā jūsu stāsts.",
+        "othersUnshared": "Šī vienība nav kopīgota tāpat kā jūsu stāsts.",
+        "subscriptionContent": "Šajā kartē ir abonenta slānis.",
+        "premiumContent": "Šajā kartē ir augstākās klases slānis.",
+        "secureService": "Šajā kartē ir drošs slānis."
+      },
+      "contentIssues": {
+        "noAltImage": "Multivides saturs mobilajās ierīces netiek atbalstīts",
+        "altImageBroken": "Šī satura vienībai definētais alternatīvais attēls nav pieejams"
+      },
+      "contentWarnings": {
+        "noAltImage": "Šī veida saturs mobilajās ierīcēs netiek atbalstīts. Norādiet alternatīvu attēlu, kas tiks parādīts, kad stāsts tiks skatīts no mobilajām ierīcēm.",
+        "noAltImageAlt": "Šī veida saturs mobilajās ierīcēs netiek atbalstīts. Mobilo ierīču cilnē norādiet alternatīvu attēlu, kas tiks parādīts, kad stāsts tiks skatīts no mobilajām ierīcēm."
       },
       "mapIssues": {
         "fixButton": "Problēmu novēršana",

@@ -2,6 +2,26 @@
  * Simple aspect ratio for the media height
  */
 
+body.mobile-view.touch {
+  .block-webpage {
+    &, figure {
+      overflow-y: hidden;
+    }
+    &.interaction-enabled {
+      &, figure {
+        overflow-y: auto;
+      }
+      figure {
+        -webkit-overflow-scrolling: touch;
+        min-height: 50vh;
+      }
+    }
+  }
+  .interaction-container {
+    bottom: 2em;
+  }
+}
+
 .block-webpage {
   .webpage {
     position: absolute;

@@ -35,12 +35,15 @@ define({
       "builderSupport1": "O builder Story Map Cascade é apenas suportado no ${CHROME} e no ${SAFARI}. No entando, as histórias do Cascade que cria com o builder podem ser visualizadas nesses navegadores, no Internet Explorer 11+ e no Firefox.",
       "builderSupport2": "O builder Story Map Cascade não é suportados em iPad. As histórias do Cascade que cria e partilha funcionam no iPad.",
       "builderSupport3": "As histórias do Cascade podem ser visualizadas em Chrome, Safari e Internet Explorer 11+, mas o builder do Story Maps Cascade  é suportado apenas no ${CHROME} e no ${SAFARI}.",
-      "builderSupport4": "As histórias do Cascade podem ser visualizadas em Chrome, Safari, Firefox e Internet Explorer 11+, mas o builder do Story Map Cascade é suportado apenas em ${CHROME} e ${SAFARI}.<br><br>Caso necessite que o builder do cascade suporte outro navegador, por favor contacte ${ESRI-SUPPORT} ou clique para votar: ${FIREFOX-BUILDER} | ${IE-BUILDER}.",
+      "builderSupport4": "As histórias do Cascade podem ser visualizadas em qualquer navegador web moderno, mas o builder do Story Map Cascade é suportado apenas em ${CHROME} e ${SAFARI}.<br><br>Caso necessite que o builder do Cascade suporte outro navegador, por favor contacte ${ESRI-SUPPORT} ou ${BROWSER-SUPPORT-VOTE}.",
       "sorry": "Atenção:"
     },
     "mobileWarning": {
       "message1": "Já leu a versão desta história para dispositivo móvel. Para aceder à versão completa, com elementos audiovisuais mais completos, execute-o num computador desktop.",
       "email": "Enviar uma ligação a esta história por correio eletrónico"
+    },
+    "cover": {
+      "iosEmbedLink": "Tocar para ler a história completa"
     },
     "media": {
       "captionPlaceholder": "A sua legenda aqui...",
@@ -70,6 +73,10 @@ define({
       "autoplayExplain1": "Modo reprodução automática irá avançar através da sua história em intervalos regulares. Isto é ideal num monitor de quiosque ou exibição pública, mas esteja ciente de que noutras situações pode tornar a história mais difícil de ler. Este elemento não é suportado em écrans pequenos.",
       "autoplayExplain2": "Quando este modo está activo existem controles para reproduzir/pausar a história e ajustar a velocidade de navegação.",
       "linksupdated": "Links actualizados!"
+    },
+    "theme": {
+      "lightLabel": "Claro",
+      "darkLabel": "Escuro"
     }
   }
 });

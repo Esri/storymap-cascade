@@ -1,14 +1,15 @@
 /* eslint quotes: ["error", "double"] */
-/* strings files need to be double quotes */
 define({
   "commonCore": {
     "builderPanel": {
+      "builderNamePrefix": "",
+      "builderNameSuffix": "Alatka za izradu",
       "buttonSaving": "Čuvanje",
       "buttonSaved": "Sačuvano",
       "buttonError": "Čuvanje nije uspelo",
       "buttonShare": "Podeli",
       "buttonSettings": "Postavke",
-      "buttonHelp": "Pomoć",
+      "buttonHelp": "Potražite pomoć ili prosledite povratne informacije u vezi sa GeoNet",
       "buttonPreview": "Prikaži priču",
       "buttonHealth": "Izveštaj o zdravlju",
       "manageStories": "Upravljaj mojim pričama",
@@ -31,7 +32,13 @@ define({
     "share": {
       "btnPrivate": "Privatni",
       "btnOrg": "Organizacija",
-      "btnPublic": "Javni"
+      "btnPublic": "Javni",
+      "btnEveryone": "Svi"
+    },
+    "portal": {
+      "disconnected": "Ovaj Portal nije povezan na internet",
+      "portal": "Portal",
+      "portalArcGIS": "Portal for ArcGIS"
     }
   }
 });

@@ -7,8 +7,8 @@ define({
     "blockAdd": {
       "text": "Teksts",
       "media": "Mediji",
-      "title": "Virsraksta sadaļa",
-      "immersive": "Imersīvā sadaļa"
+      "title": "Virsraksts",
+      "immersive": "Iekļaujošs"
     },
     "link": {
       "invite": "Ielīmējiet vai ierakstiet saiti..."

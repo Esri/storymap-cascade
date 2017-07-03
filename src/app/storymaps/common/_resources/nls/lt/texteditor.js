@@ -8,7 +8,7 @@ define({
       "text": "Tekstas",
       "media": "Medija",
       "title": "Pavadinimas",
-      "immersive": "Fiksuota skiltis"
+      "immersive": "Fiksuotas"
     },
     "link": {
       "invite": "Įklijuokite arba įrašykite nuorodą..."

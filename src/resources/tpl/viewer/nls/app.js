@@ -37,12 +37,15 @@ define({
         builderSupport1: "Story Map Cascade builder is supported only in ${CHROME} and ${SAFARI}. However, Cascade stories that you create with builder can be viewed those browsers, Internet Explorer 11+, and Firefox.",
         builderSupport2: "Story Map Cascade builder is not supported on iPad. Cascade stories that you create and share will work on iPad.",
         builderSupport3: "Cascade stories can be viewed in Chrome, Safari, Firefox, and Internet Explorer 11+, but Story Map Cascade builder is supported only in ${CHROME} and ${SAFARI}.",
-        builderSupport4: "Cascade stories can be viewed in Chrome, Safari, Firefox, and Internet Explorer 11+, but Story Map Cascade builder is supported only in ${CHROME} and ${SAFARI}.<br><br>If you need Cascade builder to support a different browser, please contact ${ESRI-SUPPORT} or click to vote: ${FIREFOX-BUILDER} | ${IE-BUILDER}.",
+        builderSupport4: "Cascade stories can be viewed in any modern web browser, but Story Map Cascade builder is supported only in ${CHROME} and ${SAFARI}.<br><br>If you need Cascade builder to support a different browser, please contact ${ESRI-SUPPORT} or ${BROWSER-SUPPORT-VOTE}.",
         sorry: "Attention:"
       },
       mobileWarning: {
         message1: "You've read the mobile version of this story. For the full version, with richer media elements try it out on a desktop computer.",
         email: "Email a link to this story"
+      },
+      cover: {
+        iosEmbedLink: "Tap to read full story",
       },
       media: {
         captionPlaceholder: "Your caption here...",
@@ -72,6 +75,10 @@ define({
         autoplayExplain1: "Autoplay mode will advance through your story at a regular interval. This is ideal on a kiosk or public display monitor, but be aware that in other situations it may make the story harder to read. This feature isn't supported on small displays.",
         autoplayExplain2: "When this mode is active there are controls to play/pause the story and adjust the navigation speed.",
         linksupdated: "Links updated!"
+      },
+      theme: {
+        lightLabel: "Light",
+        darkLabel: "Dark"
       }
     }
   }),

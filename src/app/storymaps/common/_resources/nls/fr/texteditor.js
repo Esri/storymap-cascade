@@ -7,8 +7,8 @@ define({
     "blockAdd": {
       "text": "Texte",
       "media": "Elément multimédia",
-      "title": "Section de titre",
-      "immersive": "Section immersive"
+      "title": "Titre",
+      "immersive": "Immersif"
     },
     "link": {
       "invite": "Collez ou saisissez un lien..."

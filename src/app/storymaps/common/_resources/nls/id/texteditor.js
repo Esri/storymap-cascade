@@ -7,8 +7,8 @@ define({
     "blockAdd": {
       "text": "Teks",
       "media": "Media",
-      "title": "Bagian Judul",
-      "immersive": "Bagian Imersif"
+      "title": "Judul",
+      "immersive": "Imersif"
     },
     "link": {
       "invite": "Tempel atau ketik tautan..."

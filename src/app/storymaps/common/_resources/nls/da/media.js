@@ -1,4 +1,3 @@
-// nls expects double quotes
 /*eslint quotes:[2, 'double'] */
 define({
   "mediaPicker": {
@@ -65,15 +64,15 @@ define({
             "embedProtocolWarning3": "Som alternativ kan du tilføje et link i din fortælling for at åbne siden i en ny browserfane. ${linkText}",
             "linkText": "Lær mere."
           },
-          "placeholder": "${https://}... or ${http://}... or ${<iframe>}",
+          "placeholder": "${https://}... eller ${http://}... eller ${<iframe>}",
           "uploadErrors": {
             "generic": "Noget gik galt med den angivne adresse. Prøv igen.",
             "imageOnly1": "Du skal bruge et billede i denne del af historien.",
             "imageOnly2": "Indsæt et link til et billede (.jpg, .png, .gif), eller vælg et billede fra ${ArcGIS}, ${Flickr}, ${Google+} eller ${Unsplash}.",
             "imageAndVideo1": "Du skal bruge et billede eller en video i denne del af historien.",
             "imageAndVideo2": "Indsæt et link til et billede (.jpg, .png, .gif) eller en video på ${YouTube} eller ${Vimeo}, eller vælg et billede fra ${ArcGIS}, ${Flickr}, ${Google+} eller ${Unsplash}.",
-            "badFormat": "Linket til den ${media-type}, du forsøger at tilføje, er formateret forkert.",
-            "inaccessible": "Den ${media-type}, du forsøger at tilføje, mangler eller er utilgængelig.",
+            "badFormat": "Linket til den fil, du forsøger at tilføje, er formateret forkert.",
+            "inaccessible": "Den fil, du forsøger at tilføje, mangler eller er utilgængelig.",
             "tryAgain": "Tjek adressen, og prøv igen.",
             "mediaTypes": {
               "VIDEO": "video",
@@ -125,6 +124,8 @@ define({
           "searchLocation": {
             "thisStory": "Denne historie",
             "agol": "ArcGIS Online",
+            "portalArcGIS": "Portal for ArcGIS",
+            "portal": "Portal",
             "myOrg": "${orgname} organisation",
             "myContent": "Mit indhold"
           },

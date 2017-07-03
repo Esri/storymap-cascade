@@ -1,0 +1,52 @@
+.block.block-audio .block-media {
+  min-height: 100px;
+  width: 60%;
+
+  .audio {
+    height: auto;
+    background: transparent;
+    position: relative;
+    z-index: 3; // over the invites, which below get z-index 2
+  }
+
+  audio {
+    width: 67%;
+    margin-top: 25px;
+  }
+
+  &.error {
+    .loading-error {
+      top: 5px;
+      z-index: 1;
+      margin-left: 0;
+      left: 16.5%;
+      width: 67%;
+      text-align: center;
+    }
+    audio {
+      margin-top: 50px;
+    }
+  }
+
+  .media-cfg-invite .builder-invite-background {
+    z-index: 2;
+  }
+
+}
+
+.imm-panel .block.block-audio .block-media {
+  text-align: center;
+
+  &.error {
+    .loading-error {
+      width: 100%;
+      text-align: center;
+      left: 0;
+      margin-left: 0;
+      font-size: 0.8em;
+      top: 5px;
+      text-shadow: none;
+      padding: 0 20px;
+    }
+  }
+}

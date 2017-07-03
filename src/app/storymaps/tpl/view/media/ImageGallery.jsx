@@ -1,3 +1,4 @@
+import UIUtils from 'storymaps/tpl/utils/UI';
 import Media from './Media';
 import CommonHelper from 'storymaps/common/utils/CommonHelper';
 
@@ -26,6 +27,8 @@ export default class ImageGallery extends Media {
           image.thumbUrl = CommonHelper.fixUploadedImageUrl(image.thumbUrl);
         }
       }
+      // add the instanceID property for scanning
+      image.instanceID = UIUtils.getUID();
     });
 
     super({

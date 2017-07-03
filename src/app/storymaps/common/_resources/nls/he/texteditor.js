@@ -7,8 +7,8 @@ define({
     "blockAdd": {
       "text": "טקסט",
       "media": "מדיה",
-      "title": "קטע כותרת",
-      "immersive": "קטע סוחף"
+      "title": "כותרת",
+      "immersive": "סוחף"
     },
     "link": {
       "invite": "הדבק או הזן קישור..."

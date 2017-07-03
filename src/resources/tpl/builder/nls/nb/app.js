@@ -13,13 +13,14 @@ define({
     "headerConfig": {
       "toggles": {
         "bookmarks": "Bokmerker",
-        "logoSharing": "Logo og deling"
+        "logoSharing": "Logo og deling",
+        "theme": "Utseende"
       },
       "bookmarks": {
         "title": "Seksjon",
         "bookmark": "Bokmerke",
         "intro": "Bokmerker er koblinger til historiedeler som vises i overskriften. Ved å opprette konsise bokmerker for de viktigste seksjonene i historien hjelper du leserne med å orientere seg.",
-        "sequentialDefault": "Sekvensiell seksjon (ingen tekst funnet)",
+        "sequentialDefault": "Fortellingsavsnitt (ingen tekst funnet)",
         "immersiveDefault": "Inngående seksjon (ingen tekst funnet)",
         "titleDefault": "Tittelseksjon (ingen tekst funnet)",
         "coverDefault": "Forsideseksjon (ingen tekst funnet)",
@@ -38,16 +39,25 @@ define({
         "taglineLinkDisabledTooltip": "Skriv inn et slagord for å aktivere koblingen",
         "link": "Slagordkobling",
         "enableSocialSharing": "Vis deleknapp"
+      },
+      "appearance": {
+        "themeLabel": "Tema",
+        "fontLabel": "Skrifter",
+        "previewLabel": "Forhåndsvisning",
+        "fontsTitleLabel": "Titler",
+        "fontsBodyLabel": "Brødtekst",
+        "loremTitle": "Lorem Ipsum",
+        "loremBody": "Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor. Mauris consequat orci nec magna facilisis bibendum at eget libero."
       }
     },
     "builderPanel": {
       "coverLabel": "Forside",
-      "creditsLabel": "Credits",
+      "creditsLabel": "Krediteringer",
       "betaFeedback": "Tilbakemelding",
       "betaNote": "Gi oss tilbakemelding om hva du synes om ${APP_NAME} eller om noe ikke fungerer som ventet.",
       "notSharedNote": "Historien er ikke delt. Det er bare du som kan se den.",
       "organizationWarning": "For å sikre at denne historien kan bli sett av andre, må du også dele historiens scener, scenelag, og innebygde apper med organisasjonen. Kart og kartlag deles automatisk.",
-      "publicWarning": "For å sikre at denne historien kan bli sett av andre, må du også dele historiens scener, scenelag, og innebygde apper offentlig. Kart og kartlag deles automatisk.",
+      "publicWarning": "For å sikre at denne historien kan bli sett av andre, må du også dele historiens scener, scenelag, og innebygde apper med alle. Kart og kartlag deles automatisk.",
       "addTitleNote": "Legg til en tittel på forsiden for å lagre",
       "saveError": "Det oppstod en feil ved lagring av historien din.",
       "duplicate": "Dupliser",
@@ -77,6 +87,7 @@ define({
         "manage": "Administrer",
         "size": "Størrelse",
         "background": "Bakgrunn",
+        "mobile": "Mobil",
         "issues": "Problemer",
         "fixIssues": "Løs problemer"
       },
@@ -112,15 +123,23 @@ define({
       "size": {
         "small": "Liten",
         "medium": "Middels",
-        "large": "Stor"
+        "large": "Stor",
+        "noCrop": "Ikke beskjær høye bilder",
+        "noCropTallTooltip": "Hvis du ikke beskjærer et høyt bilde, blir leserne nødt til å rulle for å kunne se hele bildet."
       },
       "background": {
-        "noCrop": "Ikke beskjær bildet",
+        "noCrop": "Ikke beskjær",
         "mostImportantPart": "Velg det viktigste punktet",
-        "cropExplanationImmersive": "Velg et punkt på bildet for å velge hvordan bildet skal beskjæres på ulike skjermstørrelser. Punktet du velger, vil alltid være synlig. Kryss av i boksen nedenfor hvis mediene må være fullt synlige.",
+        "cropExplanationImmersive": "Velg et punkt på bildet for å velge hvordan det skal beskjæres på ulike skjermstørrelser. Punktet du velger, vil alltid være synlig. Merk av for Ikke beskjær hvis bildene må være fullt synlige.",
         "cropExplanation": "Velg et punkt på bildet for å velge hvordan bildet skal beskjæres på ulike skjermstørrelser. Punktet du velger, vil alltid være synlig.",
         "color": "Farge",
         "previews": "Forhåndsvisninger"
+      },
+      "altMedia": {
+        "alternativeMedia": "Alternativt medium",
+        "explanation": "Enkelte medier støttes ikke eller fungerer ikke så godt på mobile enheter. Bruk dette panelet til å velge et alternativt og mer mobilvennlig element som skal vises i stedet for dette mediet når historien vises på en telefon eller et nettbrett.",
+        "changeAltImage": "Endre bilde",
+        "uploadAltImage": "Legg til bilde"
       }
     },
     "imageGallery": {
@@ -174,9 +193,9 @@ define({
       "undo": "Angre"
     },
     "sections": {
-      "sequence": "Fortellende seksjon",
-      "immersive": "Inngående seksjon",
-      "title": "Tittelseksjon"
+      "sequence": "Fortelling",
+      "immersive": "Dyptgående",
+      "title": "Tittel"
     },
     "mediaErrors": {
       "mediaTypes": {
@@ -189,14 +208,22 @@ define({
       },
       "placeholders": {
         "generic": "Dette innholdet er ikke tilgjengelig.",
-        "deleted": "Denne ${media-type} er blitt slettet.",
-        "inaccessible": "Denne ${media-type} er ikke tilgjengelig.",
-        "unauthorized": "Du har ikke tilgang til å vise denne ${media-type}.",
-        "unshared": "Denne ${media-type} deles ikke på samme måte som historien din.",
-        "othersUnshared": "Denne ${media-type} deles ikke på samme måte som historien din.",
-        "subscriptionContent": "Denne ${media-type} inneholder et abonnentlag.",
-        "premiumContent": "Denne ${media-type} inneholder et premiumlag.",
-        "secureService": "Denne ${media-type} inneholder et sikkert lag."
+        "deleted": "Dette elementet er blitt slettet.",
+        "inaccessible": "Dette innholdet er ikke tilgjengelig.",
+        "unauthorized": "Du har ikke tilgang til å vise dette innholdet.",
+        "unshared": "Dette elementet deles ikke på samme måte som historien din.",
+        "othersUnshared": "Dette elementet deles ikke på samme måte som historien din.",
+        "subscriptionContent": "Dette kartet inneholder et abonnentlag.",
+        "premiumContent": "Dette kartet inneholder et premiumlag.",
+        "secureService": "Dette kartet inneholder et sikkert lag."
+      },
+      "contentIssues": {
+        "noAltImage": "Mediet støttes ikke på mobile enheter",
+        "altImageBroken": "Det alternative bildet som er definert for dette elementet, er ikke tilgjengelig"
+      },
+      "contentWarnings": {
+        "noAltImage": "Denne medietypen støttes ikke på mobile enheter. Angi et alternativt bilde som skal vises når historien vises på mobile enheter.",
+        "noAltImageAlt": "Denne medietypen støttes ikke på mobile enheter. I fanen for mobil angir du et alternativt bilde som skal vises når historien vises på mobile enheter."
       },
       "mapIssues": {
         "fixButton": "Løs problemer",

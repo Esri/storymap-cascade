@@ -35,16 +35,19 @@ define({
       "builderSupport1": "Story Map Cascade-builder wordt alleen ondersteund in ${CHROME} en ${SAFARI}. Echter, Cascade verhalen die u maakt met builder kunnen bekeken worden met die browsers, Internet Explorer 11+, en Firefox.",
       "builderSupport2": "Story Map Cascade-builder wordt niet ondersteund op de iPad. Cascade-verhalen die u maakt en deelt werken op de iPad.",
       "builderSupport3": "Cascade-verhalen kunnen worden bekeken in Chrome, Safari, Firefox en Internet Explorer 11+, maar Story Map Cascade-builder wordt alleen ondersteund in ${CHROME} en ${SAFARI}.",
-      "builderSupport4": "Cascade-verhalen kunnen worden bekeken in Chrome, Safari, Firefox en Internet Explorer 11+, maar Story Map Cascade-builder wordt alleen ondersteund in ${CHROME} en ${SAFARI}.<br><br>Als u Cascade-builder nodig hebt om een andere browser te ondersteunen, neem dan contact op met ${ESRI-SUPPORT} of klik om te stemmen: $ {FIREFOX-BUILDER} | ${IE-BUILDER}.",
+      "builderSupport4": "Cascade-verhalen kunnen worden bekeken in alle moderne browsers, maar Story Map Cascade-builder wordt alleen ondersteund in ${CHROME} en ${SAFARI}.<br><br>Als u Cascade-builder nodig hebt om een andere browser te ondersteunen, neem dan contact op met ${ESRI-SUPPORT} of ${BROWSER-SUPPORT-VOTE}.",
       "sorry": "Let op:"
     },
     "mobileWarning": {
       "message1": "U hebt de mobiele versie van dit verhaal gelezen. Lees de volledige versie, met rijkere media-elementen, op een desktopcomputer.",
       "email": "E-mail een koppeling naar dit verhaal"
     },
+    "cover": {
+      "iosEmbedLink": "Tik om hele verhaal te lezen"
+    },
     "media": {
       "captionPlaceholder": "Uw titel hier...",
-      "loadingError": "Sorry, deze inhoud is niet toegankelijk",
+      "loadingError": "Sorry, deze content is niet toegankelijk",
       "explore": "Verkennen",
       "exploreMap": "Kaart verkennen",
       "exploreStop": "Stop met verkennen",
@@ -70,6 +73,10 @@ define({
       "autoplayExplain1": "Autoplaymodus speelt uw verhaal regelmatig af. Dit is ideaal voor een kiosk of monitor in een openbare ruimte, maar houd er rekening mee dat het verhaal in andere situaties moeilijker te lezen is. Deze functie wordt niet ondersteund op kleine schermen.",
       "autoplayExplain2": "Wanneer deze modus actief is, kan het verhaal worden afgespeeld en gepauzeerd en kan de navigatiesnelheid worden aangepast.",
       "linksupdated": "Links bijgewerkt!"
+    },
+    "theme": {
+      "lightLabel": "Licht",
+      "darkLabel": "Donker"
     }
   }
 });

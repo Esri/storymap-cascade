@@ -46,6 +46,37 @@
   }
 }
 
+@keyframes fade-in-section {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+
+body:not(.builder-mode) {
+  .section.section-layout-title:not(.bring-in) > *, .section.section-immersive:not(.bring-in) > .background.first-view {
+     opacity: 0;
+   }
+
+   .section.section-layout-title, .section.section-immersive {
+     background: white !important;
+   }
+
+   &.theme-major-dark {
+     .section.section-layout-title, .section.section-immersive {
+       background: black !important;
+     }
+   }
+
+   // only do this to the first view in immersive  -- if we have 20 views, we don't want to animate all of them!
+   .section.section-layout-title.bring-in > *, .section.section-immersive > .background.first-view {
+     animation: fade-in-section 1s;
+   }
+}
+
 .is-mac-os .section::before {
   /* 2px difference on text positioning for Safari and Chrone on mac */
   background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' height='100%' width='100%'><line x1='0%' y1='15px' x2='100%' y2='15px' style='stroke: rgb(224, 224, 224); stroke-width: 2;'></line><circle cx='50%' cy='15' r='14' fill='white' stroke='black' stroke-width='1' /><text x='50%' y='22px' text-anchor='middle' font-size='28' font-weight='bold'>+</text></svg>");
@@ -76,7 +107,10 @@
   height: 100%;
   pointer-events: none;
   background-color: #FFF;
+}
 
+// when they're on screen, add GPU acceleration to immersive and title backgrounds, as as cover
+.section.section-on-screen .background, .section.section-layout-cover.active .background {
   -ms-transform: translateZ(0);
   -webkit-transform: translateZ(0);
   transform: translateZ(0);

@@ -63,7 +63,6 @@ export default class Header {
       .toggleClass('active', !! social.enabled)
       .off('keypress')
       .on('keypress', function(evt) {
-        console.debug('hello keypress');
         if (evt.keyCode === 13 && !!social.enabled) {
           this._onShareBtnClick();
         }

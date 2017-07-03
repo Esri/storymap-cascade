@@ -16,19 +16,26 @@ export default class SequenceBuilder extends Sequence {
       hasWarnings: false
     };
 
-    this.MEDIA_BUILDER_TABS = ['size', 'appearance', 'manage'];
+    this.MEDIA_BUILDER_TABS = ['size', 'appearance', 'manage', 'alternate'];
   }
 
   render() {
     if (! this._section.background || ! this._section.foreground
         || ! this._section.foreground.blocks || ! this._section.foreground.blocks.length) {
+
+      let bgColor = '#FFF';
+      let x = app.data.appItem.data.values.settings.theme;
+      if (x && (x = x.colors) && (x = x.bgMain)) {
+        bgColor = x;
+      }
+
       this._section = {
         type: 'sequence',
         layout: 'sequence-1',
         background: {
           type: 'color',
           color: {
-            value: '#FFF'
+            value: bgColor
           }
         },
         foreground: {
@@ -90,7 +97,8 @@ export default class SequenceBuilder extends Sequence {
         container: this._node,
         onToggleMediaConfig: app.isInBuilder ? this._onToggleMediaConfig.bind(this) : null,
         onConfigAction: app.isInBuilder ? this._onMediaConfigAction.bind(this) : null,
-        builderConfigurationTabs: this.MEDIA_BUILDER_TABS
+        builderConfigurationTabs: this.MEDIA_BUILDER_TABS,
+        sectionType: 'sequence'
       });
       block.load();
 
@@ -124,7 +132,7 @@ export default class SequenceBuilder extends Sequence {
   }
 
   _onContentChange() {
-    this.serialize();
+    this.serialize(false);
     topic.publish('builder-section-update');
   }
 
@@ -150,7 +158,10 @@ export default class SequenceBuilder extends Sequence {
   }
 
   _onEditMedia(media, newMediaJSON) {
-    let newMedia = SectionCommon.initMedia(newMediaJSON);
+    let newMedia = SectionCommon.initMedia({
+      media: newMediaJSON,
+      isNewMedia: true
+    });
 
     media.getNode().before(newMedia.render({
       placement: 'block'
@@ -163,7 +174,8 @@ export default class SequenceBuilder extends Sequence {
       container: this._node,
       onToggleMediaConfig: app.isInBuilder ? this._onToggleMediaConfig.bind(this) : null,
       onConfigAction: app.isInBuilder ? this._onMediaConfigAction.bind(this) : null,
-      builderConfigurationTabs: this.MEDIA_BUILDER_TABS
+      builderConfigurationTabs: this.MEDIA_BUILDER_TABS,
+      sectionType: 'sequence'
     });
 
     if (createResults && createResults.isAsync) {
@@ -188,28 +200,52 @@ export default class SequenceBuilder extends Sequence {
   }
 
   _onMediaConfigAction(params = {}) {
-    if (! params.action || ! params.media) {
+    if (!params.action || (!params.media && params.action !== 'alternate-media-add')) {
       return;
     }
 
-    if (params.action == 'remove') {
+    if (params.action === 'remove') {
       params.media.remove();
       this._blocks.splice(this._blocks.indexOf(params.media), 1);
     }
-    else if (params.action == 'swap') {
+    else if (params.action === 'swap' || params.action === 'alternate-media-swap' || params.action === 'alternate-media-add') {
+      const mediaIsEmpty = params.action === 'alternate-media-add';
+      const isAlternate = params.action.indexOf('alternate-') !== -1;
+      const authorizedMedia = isAlternate ? ['image'] : null;
+
       app.builder.mediaPicker.open({
-        mode: 'edit',
-        media: params.media.serialize()
+        mode: mediaIsEmpty ? 'add' : 'edit',
+        media: mediaIsEmpty ? null : params.media.serialize(false),
+        authorizedMedia: authorizedMedia
       }).then(
         function(newMedia) {
-          this._onEditMedia(params.media, newMedia);
+          if (isAlternate) {
+            SectionCommon.onEditMediaAlternate({
+              mainMedia: params.mainMedia,
+              newMediaJSON: newMedia,
+              oldMedia: params.media,
+              sectionType: 'sequence'
+            });
+            this._onContentChange();
+          }
+          else {
+            this._onEditMedia(params.media, newMedia);
+          }
         }.bind(this),
         function() {
           //
         }
       );
     }
-    else if (params.action == 'image-to-image-gallery') {
+    else if (params.action === 'alternate-media-remove') {
+      SectionCommon.onRemoveMediaAlternate({
+        mainMedia: params.mainMedia,
+        media: params.media,
+        sectionType: 'sequence'
+      });
+      this._onContentChange();
+    }
+    else if (params.action === 'image-to-image-gallery') {
       app.builder.mediaPicker.open({
         mode: 'add',
         authorizedMedia: ['image']
@@ -219,7 +255,7 @@ export default class SequenceBuilder extends Sequence {
             return;
           }
 
-          var firstImage = params.media.serialize();
+          var firstImage = params.media.serialize(false);
           this._onEditMedia(
             params.media,
             {
@@ -243,8 +279,8 @@ export default class SequenceBuilder extends Sequence {
         }
       );
     }
-    else if (params.action == 'image-gallery-to-image') {
-      let serializedMedia = params.media.serialize()['image-gallery'];
+    else if (params.action === 'image-gallery-to-image') {
+      let serializedMedia = params.media.serialize(false)['image-gallery'];
       var firstImage = serializedMedia.images[0];
 
       this._onEditMedia(
@@ -307,9 +343,9 @@ export default class SequenceBuilder extends Sequence {
     }
   }
 
-  serialize() {
+  serialize(includeInstanceID) {
     if (this._editor) {
-      var blocks = this._editor.serialize();
+      var blocks = this._editor.serialize(includeInstanceID);
 
       for (var i=0; i < blocks.length; i++) {
         var editorBlock = blocks[i];
@@ -317,7 +353,7 @@ export default class SequenceBuilder extends Sequence {
         if (editorBlock.type == 'media') {
           var block = this.findBlock(editorBlock.id);
           if (block) {
-            blocks[i] = block.serialize();
+            blocks[i] = block.serialize(includeInstanceID);
           }
         }
       }
@@ -338,12 +374,12 @@ export default class SequenceBuilder extends Sequence {
 
   // TODO: generic empty method in Section.jsx
   requireSplitAt(startBlock) {
-    return startBlock < this.serialize().foreground.blocks.length - 1;
+    return startBlock < this.serialize(false).foreground.blocks.length - 1;
   }
 
   // TODO: generic empty method in Section.jsx
   serializePartially(startBlock, endBlock) {
-    var json = this.serialize();
+    var json = this.serialize(false);
 
     if (endBlock === undefined) {
       endBlock = json.foreground.blocks.length;
@@ -355,8 +391,8 @@ export default class SequenceBuilder extends Sequence {
   }
 
   mergeAndSerialize(followingSection) {
-    var json1 = this.serialize();
-    var json2 = followingSection.serialize();
+    var json1 = this.serialize(false);
+    var json2 = followingSection.serialize(false);
 
     json1.foreground.blocks = json1.foreground.blocks.concat(json2.foreground.blocks);
 
@@ -376,5 +412,21 @@ export default class SequenceBuilder extends Sequence {
 
   setScanResults(hasErrors, hasWarnings) {
     Object.assign(this.scanResults, {hasErrors}, {hasWarnings});
+  }
+
+  addContextSpecificIssues(scannedMedia) {
+    // loop thru and see if they have alts. if not, they're in trouble!
+    for (const blockMedia of this._blocks) {
+      const instanceID = blockMedia._instanceID;
+
+      const media = scannedMedia[instanceID];
+
+      if (media && !media.alternateMedia) {
+        if (media.mediaType === 'scene' || media.mediaType === 'webpage') {
+          // add an issue here.
+          media.scanResult.warnings.push('content/noAlternateMedia');
+        }
+      }
+    }
   }
 }

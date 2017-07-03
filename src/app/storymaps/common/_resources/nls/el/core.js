@@ -1,14 +1,15 @@
 /* eslint quotes: ["error", "double"] */
-/* strings files need to be double quotes */
 define({
   "commonCore": {
     "builderPanel": {
+      "builderNamePrefix": "",
+      "builderNameSuffix": "Εργαλείο δημιουργίας",
       "buttonSaving": "Αποθήκευση",
       "buttonSaved": "Αποθηκεύτηκε",
       "buttonError": "Αποθήκευση απέτυχε",
       "buttonShare": "Κοινοποίηση",
       "buttonSettings": "Ρυθμίσεις",
-      "buttonHelp": "Βοήθεια",
+      "buttonHelp": "Λήψη βοήθειας ή υποβολή σχολίων στο GeoNet",
       "buttonPreview": "Προβολή αφήγησης",
       "buttonHealth": "Αναφορά εύρυθμης λειτουργίας",
       "manageStories": "Διαχείριση των Αφηγήσεων",
@@ -31,7 +32,13 @@ define({
     "share": {
       "btnPrivate": "Ιδιωτικά",
       "btnOrg": "Του οργανισμού",
-      "btnPublic": "Δημόσιο"
+      "btnPublic": "Δημόσιο",
+      "btnEveryone": "Όλους"
+    },
+    "portal": {
+      "disconnected": "Αυτό το Portal δεν είναι συνδεδεμένο στο Internet",
+      "portal": "Πύλη",
+      "portalArcGIS": "Portal for ArcGIS"
     }
   }
 });

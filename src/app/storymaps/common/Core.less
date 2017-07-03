@@ -49,6 +49,13 @@
     color: #fff;
   }
 
+  &.inverse.darker {
+    background-color: @gray-base;
+    &:hover, &:focus {
+      color: @gray-lighter;
+    }
+  }
+
   &.inverse:active {
     background-color: black;
   }
@@ -88,6 +95,21 @@
 
   &.lighter {
     color: @gray-dark;
+  }
+
+  &.lightest {
+    color: #fff;
+    &:hover, &:focus {
+      color: @gray-lighter;
+    }
+    &:active {
+      color: @gray-light;
+    }
+  }
+
+  &:focus, &.active:focus {
+    outline-width: thin;
+    outline-color: @link-color;
   }
 
   &:hover, &:focus {
@@ -162,26 +184,43 @@
 .tooltip-danger {
 
   .tooltip-inner {
-    background: fade(@sm-brand-danger, 80%);
+    background: fade(@sm-brand-danger, 95%);
     color: @btn-danger-color;
   }
 
   &.bottom .tooltip-arrow {
-    border-bottom-color: fade(@sm-brand-danger, 80%);
+    border-bottom-color: fade(@sm-brand-danger, 95%);
   }
 
   &.right .tooltip-arrow {
-    border-right-color: fade(@sm-brand-danger, 80%);
+    border-right-color: fade(@sm-brand-danger, 95%);
   }
 
   &.left .tooltip-arrow {
-    border-left-color: fade(@sm-brand-danger, 80%);
+    border-left-color: fade(@sm-brand-danger, 95%);
   }
 
   &.top .tooltip-arrow {
-    border-top-color: fade(@sm-brand-danger, 80%);
+    border-top-color: fade(@sm-brand-danger, 95%);
   }
 
+}
+
+.blue-text {
+  color: @link-color;
+  font-weight: bold;
+}
+
+.white-text {
+  color: white;
+}
+
+// TODO: I worry this is too specific a selector for just a link.
+.theme-contrast-light .section-layout-sequence a {
+  color: @lighter-link;
+  &:hover, &:active {
+    color: @lighter-link-hover;
+  }
 }
 
 #fatalError > table {

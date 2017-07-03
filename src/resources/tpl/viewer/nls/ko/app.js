@@ -35,12 +35,15 @@ define({
       "builderSupport1": "Story Map Cascade 빌더는 ${CHROME}과 ${SAFARI}에서만 지원됩니다. 하지만 빌더로 생성한 Cascade 스토리는 이러한 브라우저, Internet Explorer 11 이상, Firefox에서 볼 수 있습니다.",
       "builderSupport2": "Story Map Cascade 빌더는 iPad에서 지원되지 않습니다. 생성한 후 공유하는 Cascade 스토리는 iPad에서 작동됩니다.",
       "builderSupport3": "Cascade 스토리는 Chrome, Safari, Firefox, Internet Explorer 11 이상에서 볼 수 있지만 Story Map Cascade 빌더는 ${CHROME}과 ${SAFARI}에서만 지원됩니다.",
-      "builderSupport4": "Cascade 스토리는 Chrome, Safari, Firefox, Internet Explorer 11 이상에서 볼 수 있지만 Story Map Cascade 빌더는 ${CHROME}과 ${SAFARI}에서만 지원됩니다.<br><br>다른 브라우저를 지원하는 Cascade 빌더가 필요한 경우 ${ESRI-SUPPORT}에 문의하거나 ${FIREFOX-BUILDER} | ${IE-BUILDER} 중에서 클릭하여 투표하세요.",
+      "builderSupport4": "Cascade 스토리는 모든 최신 웹 브라우저에서 볼 수 있지만 Story Map Cascade 빌더는 ${CHROME}과 ${SAFARI}에서만 지원됩니다.<br><br>다른 브라우저를 지원하는 Cascade 빌더가 필요한 경우 ${ESRI-SUPPORT} 또는 ${BROWSER-SUPPORT-VOTE}에 문의하세요.",
       "sorry": "주의:"
     },
     "mobileWarning": {
       "message1": "이 스토리의 모바일 버전을 읽었습니다. 더 다양한 미디어 요소로 구성된 정식 버전을 알아보려면 데스크톱 컴퓨터에서 사용해 보세요.",
       "email": "이 스토리에 대한 링크를 이메일로 보내기"
+    },
+    "cover": {
+      "iosEmbedLink": "눌러서 전체 스토리 확인"
     },
     "media": {
       "captionPlaceholder": "캡션은 여기에 나타남...",
@@ -70,6 +73,10 @@ define({
       "autoplayExplain1": "자동 재생 모드를 사용하면 스토리가 주기적으로 진행됩니다. 이 기능은 키오스크 또는 공공의 디스플레이 모니터에는 적합하지만 그 이외의 환경에서는 스토리 읽기가 더욱 어려워질 수 있습니다. 소형 디스플레이에서는 이 기능이 지원되지 않습니다.",
       "autoplayExplain2": "이 모드가 활성화되면 스토리를 재생/일시 중지하고 탐색 속도를 조정하는 컨트롤이 나타납니다.",
       "linksupdated": "링크가 업데이트되었습니다!"
+    },
+    "theme": {
+      "lightLabel": "밝게",
+      "darkLabel": "어둡게"
     }
   }
 });

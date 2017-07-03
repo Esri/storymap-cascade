@@ -1,4 +1,4 @@
-<div class="builder-config-section">
+<div class="builder-config-section size-image">
   <ul class="section-content horizontal">
     <li class="config-item" data-type="size" data-value="small">
       <img class="config-image" src="resources/tpl/builder/icons/media-config/small.png">
@@ -11,14 +11,10 @@
     <li class="config-item" data-type="size" data-value="large">
       <img class="config-image" src="resources/tpl/builder/icons/media-config/large.png">
       <span class="config-label">{{strings.large}}</span>
+      <div class="section-content crop-tall centered">
+        <span class="tall-crop-info fa fa-info-circle" data-toggle="tooltip" data-placement="top" title="{{strings.noCropTallTooltip}}"></span>
+        <label class="check"><input class="crop-tall-checkbox" type="checkbox" value="fit"> {{strings.noCrop}}</label>
+      </div>
     </li>
-    <!--<li class="config-item" data-type="size" data-value="title">
-      <img class="config-image" src="resources/tpl/builder/icons/media-config/title.png">
-      <span class="config-label">Title</span>
-    </li>
-    <li class="config-item" data-type="size" data-value="immersive">
-      <img class="config-image" src="resources/tpl/builder/icons/media-config/immersive.png">
-      <span class="config-label">Immersive...</span>
-    </li>-->
   </ul>
 </div>

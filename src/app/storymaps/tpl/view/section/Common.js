@@ -8,16 +8,15 @@ function(
   topic
 ) {
   return {
-    initMedia: function(media, mediaCache) {
-      return app.ui.MediaFactory.createInstance(media, mediaCache);
+    initMedia: function(params) {
+      return app.ui.MediaFactory.createInstance({
+        mediaJSON: params.media,
+        mediaCache: params.mediaCache,
+        isNewMedia: params.isNewMedia
+      });
     },
     checkErrors: function(config, section, index) {
       var hasError = false;
-
-      //
-      // TODO for the prototype, would be best if the message was displayed on screen
-      //  instead of in the console
-      //
 
       // cover, sequence, snap-caption, credits
       if (section.background && section.foreground) {
@@ -59,7 +58,9 @@ function(
           style = '';
 
       $.each(blocksJSON, function(i, blockJSON) {
-        block = app.ui.MediaFactory.createInstance(blockJSON);
+        block = app.ui.MediaFactory.createInstance({
+          mediaJSON: blockJSON
+        });
         style = blockJSON[blockJSON.type].style || [];
 
         if (! block) {
@@ -87,7 +88,10 @@ function(
     },
 
     createBlock: function(media) {
-      var block = app.ui.MediaFactory.createInstance(media);
+      var block = app.ui.MediaFactory.createInstance({
+        mediaJSON: media,
+        isNewMedia: true
+      });
       return block;
     },
 
@@ -99,11 +103,6 @@ function(
 
       if (! params.media) {
         return output;
-      }
-
-      // from now alternate is only for mobile
-      if (UIUtils.isMobileBrowser() && params.media.getAlternate && params.media.getAlternate()) {
-        params.media = params.media.getAlternate();
       }
 
       if (! params.noBackgroundTag) {
@@ -161,6 +160,11 @@ function(
               foundMediaIndexes.push(index);
             }
           }
+          else if (media.type == 'audio') {
+            if (media.id == mediaSearchedInfos.url) {
+              foundMediaIndexes.push(index);
+            }
+          }
           else if (media.type == 'video') {
             if (media.id == mediaSearchedInfos.source + '-' + mediaSearchedInfos.id) {
               foundMediaIndexes.push(index);
@@ -179,31 +183,33 @@ function(
 
     //resizeSnapSection2: resizeSnapSection2,
     resize: function() {
-      /*
-       * Set the correct snapping position for Snap section
-       */
-      // TODO snap baseclass
-      /*$('.section-immersive').each(function() {
-        resizeSnapSection($(this));
-      });*/
 
-      /*
-      $('.section-immersive .background-type-image').each(function(i, screen) {
-        var bgCaption = $(this).find('.background .caption');
+    },
 
-        if (bgCaption.length) {
-          bgCaption.css('top', app.display.sectionHeight - 200);
-        }
+    onEditMediaAlternate: function(params) {
+      var newMedia = this.initMedia({
+        media: params.newMediaJSON,
+        isNewMedia: true
       });
-      */
 
-      /*
-      UIUtils.addCSSRule(
-        // - 100 to make sure in all scroll condition, all the image would be visible
-        '.image.block.size-small { max-height: ' + (app.display.sectionHeight - 100) + 'px; }',
-        'image-block'
-      );
-      */
+      // also, how get it its caption that it'll need?
+      params.mainMedia.setAlternate(newMedia);
+
+      newMedia.postCreate();
+
+      newMedia.load();
+
+      params.oldMedia && params.oldMedia.destroy();
+
+      this.checkMedia(params.newMediaJSON);
+    },
+
+    onRemoveMediaAlternate: function(params) {
+      // not only destroy the media, but tell the parent to remove it so it won't be serialized.
+      params.mainMedia.removeAlternate();
+
+      params.media && params.media.destroy();
+      this.checkMedia();
     },
 
     _applyTitleBackground: function(style, backgroundNode) {
@@ -257,11 +263,11 @@ function(
     },
 
     checkMedia: function(item) {
-      if (item.type === 'image-gallery') {
+      if (item && item.type === 'image-gallery') {
         return;
       }
 
-      if (item.type === 'image' && item.image.uploadDeferred) {
+      if (item && item.type === 'image' && item.image.uploadDeferred) {
         item.image.uploadDeferred.then(
           function() {
             // do an issue check

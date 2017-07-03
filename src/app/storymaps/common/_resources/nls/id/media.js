@@ -1,4 +1,3 @@
-// nls expects double quotes
 /*eslint quotes:[2, 'double'] */
 define({
   "mediaPicker": {
@@ -65,15 +64,15 @@ define({
             "embedProtocolWarning3": "Sebagai alternatif, tambahkan tautan di narasi Anda untuk membuka halaman di tab browser baru. ${linkText}",
             "linkText": "Pelajari Selengkapnya."
           },
-          "placeholder": "${https://}... or ${http://}... or ${<iframe>}",
+          "placeholder": "${https://}... atau ${http://}... atau ${<iframe>}",
           "uploadErrors": {
             "generic": "Ada yang tidak beres dengan alamat yang dimasukkan. Coba lagi.",
             "imageOnly1": "Anda harus menggunakan gambar pada bagian cerita ini.",
             "imageOnly2": "Berikan tautan ke gambar (.jpg, .png, .gif), atau pilih gambar dari ${ArcGIS}, ${Flickr}, ${Google+}, atau ${Unsplash}.",
             "imageAndVideo1": "Anda harus menggunakan gambar atau video pada bagian cerita ini.",
             "imageAndVideo2": "Berikan tautan ke gambar (.jpg, .png, .gif) atau video di ${YouTube} atau ${Vimeo}, atau pilih gambar dari ${ArcGIS}, ${Flickr}, ${Google+}, atau ${Unsplash}.",
-            "badFormat": "Tautan ke ${media-type} yang coba Anda tambahkan memiliki format yang salah.",
-            "inaccessible": "${media-type} yang coba Anda tambahkan tidak ada atau tidak dapat diakses.",
+            "badFormat": "Tautan ke file yang ingin Anda tambahkan tidak diformat dengan benar.",
+            "inaccessible": "File yang ingin Anda tambahkan hilang atau tidak dapat diakses.",
             "tryAgain": "Periksa alamat dan coba lagi.",
             "mediaTypes": {
               "VIDEO": "video",
@@ -125,6 +124,8 @@ define({
           "searchLocation": {
             "thisStory": "Cerita Ini",
             "agol": "ArcGIS Online",
+            "portalArcGIS": "Portal for ArcGIS",
+            "portal": "Portal",
             "myOrg": "Organisasi ${orgname}",
             "myContent": "Konten Saya"
           },

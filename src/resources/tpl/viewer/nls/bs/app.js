@@ -35,12 +35,15 @@ define({
       "builderSupport1": "Sastavljač Story Map Cascade podržan je samo u ${CHROME} i ${SAFARI}. Međutim, Cascade priče koje izradite sa sastavljačem mogu se prikazati u tim preglednicima, Internet Exploreru 11+ i Firefoxu.",
       "builderSupport2": "Sastavljač Story Map Cascade nije podržan za iPad. Cascade priče koje izradite i podijelite radit će na iPadu.",
       "builderSupport3": "Cascade priče mogu se prikazati u preglednicima Chrome, Safari, Firefox i Internet Explorer 11+, ali sastavljač Story Map Cascade podržan je samo u ${CHROME} i ${SAFARI}.",
-      "builderSupport4": "Cascade priče mogu se prikazati u preglednicima Chrome, Safari, Firefox i Internet Explorer 11+, ali sastavljač Story Map Cascade podržan je samo u ${CHROME} i ${SAFARI}.<br><br>Ako trebate sastavljač Cascade za podržavanje drugog preglednika, obratite se ${ESRI-SUPPORT} ili kliknite za glasanje: ${FIREFOX-BUILDER} | ${IE-BUILDER}.",
+      "builderSupport4": "Cascade priče mogu se prikazati u bilo kojem modernom internetskom pregledniku, ali sastavljač Story Map Cascade podržan je samo u ${CHROME} i ${SAFARI}.<br><br>Ako trebate sastavljač Cascade za podržavanje drugog preglednika, obratite se ${ESRI-SUPPORT} ili ${BROWSER-SUPPORT-VOTE}.",
       "sorry": "Pozor:"
     },
     "mobileWarning": {
       "message1": "Pročitali ste mobilnu verziju ove priče. Za cijelu verziju s bogatijim elementima medija isprobajte je na stolnom računalu.",
       "email": "Pošaljite poveznicu na ovu priču e-poštom"
+    },
+    "cover": {
+      "iosEmbedLink": "Dodirnite za čitanje cijele priče"
     },
     "media": {
       "captionPlaceholder": "Vaš natpis ovdje...",
@@ -70,6 +73,10 @@ define({
       "autoplayExplain1": "Način automatske reprodukcije napredovat će kroz vašu priču u redovitim intervalima. To je idealno za kiosk ili javno prikazani zaslon, no budite svjesni da će se u drugim situacijama priča možda teže čitati. Ova značajka nije podržana na malim zaslonima.",
       "autoplayExplain2": "Uredite trenutačni obuhvat",
       "linksupdated": "Poveznice ažurirane!"
+    },
+    "theme": {
+      "lightLabel": "Svijetlo",
+      "darkLabel": "Tamno"
     }
   }
 });

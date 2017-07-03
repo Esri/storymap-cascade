@@ -8,11 +8,32 @@
   position: relative;
 }
 
+@keyframes fade-in-media {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 .media-media {
   /* to avoid issue with map popup
    * TODO: why is that needed? */
   line-height: normal;
   background-color: #FFF;
+}
+
+.theme-major-dark .media-media {
+  background-color: #0E0E0E;
+}
+
+.media-item:not(.bring-in) {
+  opacity: 0;
+}
+
+.media-item.bring-in {
+  animation: fade-in-media 1s;
 }
 
 body.mobile-view .block-media {
@@ -30,7 +51,7 @@ body.mobile-view .block-media {
   width: 100%;
   height: 100%;
   background-color: #EEE;
-  z-index: 1;
+  z-index: 0;
 }
 
 .media-loading .large-loader {
@@ -58,6 +79,7 @@ body.mobile-view .block-media {
 
 body.mobile-view .block-caption {
   font-size: 12px;
+  line-height: 16px;
 }
 
 body.builder-mode .block-caption {
@@ -250,7 +272,7 @@ body.builder-mode .builder-ui {
   position: absolute;
   top: 0;
   right: 0;
-  z-index: 2;
+  z-index: 4;
   opacity: 0;
   font-size: 24px;
   color: #000;

@@ -13,13 +13,14 @@ define({
     "headerConfig": {
       "toggles": {
         "bookmarks": "Segnalibri",
-        "logoSharing": "Logo e condivisione"
+        "logoSharing": "Logo e condivisione",
+        "theme": "Aspetto"
       },
       "bookmarks": {
         "title": "Sezione",
         "bookmark": "Segnalibro",
         "intro": "I segnalibri sono collegamenti a sezioni di storie mostrati nell'intestazione. La creazione di segnalibri concisi per le sezioni principali della storia aiuta i lettori a orientarsi.",
-        "sequentialDefault": "Sezione sequenziale (testo non trovato)",
+        "sequentialDefault": "Sezione narrativa (testo non trovato)",
         "immersiveDefault": "Sezione immersiva (testo non trovato)",
         "titleDefault": "Sezione del titolo (testo non trovato)",
         "coverDefault": "Sezione della copertina (testo non trovato)",
@@ -38,6 +39,15 @@ define({
         "taglineLinkDisabledTooltip": "Inserire uno slogan per abilitare il collegamento",
         "link": "Collegamento allo slogan",
         "enableSocialSharing": "Visualizza il pulsante di condivisione"
+      },
+      "appearance": {
+        "themeLabel": "Tema",
+        "fontLabel": "Caratteri",
+        "previewLabel": "Anteprima",
+        "fontsTitleLabel": "Titoli",
+        "fontsBodyLabel": "Corpo",
+        "loremTitle": "Lorem Ipsum",
+        "loremBody": "Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor. Mauris consequat orci nec magna facilisis bibendum at eget libero."
       }
     },
     "builderPanel": {
@@ -47,7 +57,7 @@ define({
       "betaNote": "Esprimi la tua opinione su ${APP_NAME} oppure indica se qualcosa non funziona come previsto.",
       "notSharedNote": "La storia non è condivisa, è visualizzabile solo dall'utente corrente.",
       "organizationWarning": "Affinché la storia possa essere visualizzata da altri, è anche necessario condividerne scene, layer delle scene e app integrate della propria organizzazione. Le mappe e i layer delle mappe vengono condivisi automaticamente.",
-      "publicWarning": "Affinché la storia possa essere visualizzata dagli altri, è anche necessario condividerne scene, layer delle scene e app integrate pubblicamente. Le mappe e i layer delle mappe vengono condivisi automaticamente.",
+      "publicWarning": "Affinché la storia possa essere visualizzata dagli altri, è anche necessario condividerne scene, layer delle scene e app integrate con tutti. Le mappe e i layer delle mappe vengono condivisi automaticamente.",
       "addTitleNote": "Aggiungi un titolo alla copertina da salvare",
       "saveError": "Si è verificato un errore durante il salvataggio della storia.",
       "duplicate": "Duplica",
@@ -77,6 +87,7 @@ define({
         "manage": "Gestisci",
         "size": "Dimensione",
         "background": "Sfondo",
+        "mobile": "Mobile",
         "issues": "Problemi",
         "fixIssues": "Risolvi i problemi"
       },
@@ -112,15 +123,23 @@ define({
       "size": {
         "small": "Piccolo",
         "medium": "Medio",
-        "large": "Grande"
+        "large": "Grande",
+        "noCrop": "Non tagliare immagini alte",
+        "noCropTallTooltip": "La mancata riduzione in altezza di immagini grandi è un fattore di disturbo per i lettori, che devono così scorrere l'immagine per visualizzarla per intero."
       },
       "background": {
-        "noCrop": "Non ritagliare l'immagine",
+        "noCrop": "Non ritagliare",
         "mostImportantPart": "Scegliere il punto più importante",
-        "cropExplanationImmersive": "Scegliere un punto sull'immagine per scegliere in che modo questa verrà ritagliata in base alle diverse dimensioni dello schermo. Il punto selezionato sarà sempre visibile. Selezionare la casella in basso se è necessario che gli elementi multimediali siano completamente visibili.",
-        "cropExplanation": "Scegliere un punto sull'immagine per scegliere in che modo questa verrà ritagliata in base alle diverse dimensioni dello schermo. Il punto selezionato sarà sempre visibile.",
+        "cropExplanationImmersive": "Selezionare un punto sull'immagine per decidere in che modo sarà ritagliata in base alle diverse dimensioni dello schermo. Il punto selezionato sarà sempre visibile. Selezionare la casella Non ritagliare se è necessario visualizzare l'immagine intera.",
+        "cropExplanation": "Selezionare un punto sull'immagine per decidere in che modo sarà ritagliata in base alle diverse dimensioni dello schermo. Il punto selezionato sarà sempre visibile.",
         "color": "Colore",
         "previews": "Anteprime"
+      },
+      "altMedia": {
+        "alternativeMedia": "File multimediali alternativi",
+        "explanation": "Alcuni file multimediali non sono supportati o potrebbero non funzionare correttamente sui dispositivi mobili. Impiegare questo riquadro per selezionare un elemento alternativo e compatibile con i dispositivi mobili, che sarà mostrato al posto di questi file multimediali quando la storia viene visualizzata su un telefono o un tablet.",
+        "changeAltImage": "Modifica immagine",
+        "uploadAltImage": "Aggiungi immagine"
       }
     },
     "imageGallery": {
@@ -174,9 +193,9 @@ define({
       "undo": "Annulla"
     },
     "sections": {
-      "sequence": "Sezione narrativa",
-      "immersive": "Sezione immersiva",
-      "title": "Sezione del titolo"
+      "sequence": "Narrativo",
+      "immersive": "A schermo intero",
+      "title": "Titolo"
     },
     "mediaErrors": {
       "mediaTypes": {
@@ -189,14 +208,22 @@ define({
       },
       "placeholders": {
         "generic": "Il contenuto non è accessibile.",
-        "deleted": "${media-type} è stato eliminato.",
-        "inaccessible": "${media-type} non è accessibile.",
-        "unauthorized": "Non si dispone dell'autorizzazione per visualizzare ${media-type}.",
-        "unshared": "${media-type} non è condiviso nello stesso modo della storia.",
-        "othersUnshared": "${media-type} non è condiviso nello stesso modo della storia.",
-        "subscriptionContent": "${media-type} contiene un layer abbonati.",
-        "premiumContent": "${media-type} contiene un layer Premium.",
-        "secureService": "${media-type} contiene un layer di protezione."
+        "deleted": "Questo elemento è stato eliminato.",
+        "inaccessible": "Il contenuto non è accessibile.",
+        "unauthorized": "Non si è autorizzati a visualizzare questo contenuto.",
+        "unshared": "Questo elemento non è condiviso come la storia.",
+        "othersUnshared": "Questo elemento non è condiviso come la storia.",
+        "subscriptionContent": "Questa mappa contiene un layer abbonati.",
+        "premiumContent": "Questa mappa contiene un layer premium.",
+        "secureService": "Questa mappa contiene un layer di protezione."
+      },
+      "contentIssues": {
+        "noAltImage": "File multimediale non supportato sui dispositivi mobili",
+        "altImageBroken": "L'immagine alternativa definita per quest'elemento multimediale non è accessibile"
+      },
+      "contentWarnings": {
+        "noAltImage": "Questo tipo di elemento multimediale non è supportato sui dispositivi mobili. Fornire un'immagine alternativa da mostrare quando la storia viene visualizzata sui dispositivi mobili.",
+        "noAltImageAlt": "Questo tipo di elemento multimediale non è supportato sui dispositivi mobili. Nella scheda dei dispositivi mobili, fornire un'immagine alternativa da mostrare quando la storia viene visualizzata sui dispositivi mobili."
       },
       "mapIssues": {
         "fixButton": "Risolvi i problemi",

@@ -13,13 +13,14 @@ define({
     "headerConfig": {
       "toggles": {
         "bookmarks": "Géosignets",
-        "logoSharing": "Logo et partage"
+        "logoSharing": "Logo et partage",
+        "theme": "Apparence"
       },
       "bookmarks": {
         "title": "Section",
         "bookmark": "Géosignet",
         "intro": "Les géosignets sont des liens vers les sections de récits affichés dans l’en-tête. La création de géosignets concis pour les principales sections de votre récit permet aux lecteurs de s’orienter.",
-        "sequentialDefault": "Section séquentielle (aucun texte trouvé)",
+        "sequentialDefault": "Section narrative (aucun texte trouvé)",
         "immersiveDefault": "Section immersive (aucun texte trouvé)",
         "titleDefault": "Section de titre (aucun texte trouvé)",
         "coverDefault": "Section de couverture (aucun texte trouvé)",
@@ -38,6 +39,15 @@ define({
         "taglineLinkDisabledTooltip": "Saisissez une balise pour activer le lien",
         "link": "Lien vers la balise",
         "enableSocialSharing": "Afficher le bouton de partage"
+      },
+      "appearance": {
+        "themeLabel": "Thème",
+        "fontLabel": "Polices",
+        "previewLabel": "Aperçu",
+        "fontsTitleLabel": "Titres",
+        "fontsBodyLabel": "Corps",
+        "loremTitle": "Lorem Ipsum",
+        "loremBody": "Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor. Mauris consequat orci nec magna facilisis bibendum at eget libero."
       }
     },
     "builderPanel": {
@@ -47,7 +57,7 @@ define({
       "betaNote": "Faites-nous part de vos remarques concernant ${APP_NAME} ou informez-nous si quelque chose ne fonctionne pas comme prévu.",
       "notSharedNote": "Votre récit n'est pas partagé, vous seul pouvez le voir.",
       "organizationWarning": "Pour vous assurer que d’autres utilisateurs peuvent afficher ce récit, vous devez également partager ses scènes, couches de scène et applications intégrées dans votre organisation. Les cartes et les couches de carte sont partagées automatiquement.",
-      "publicWarning": "Pour vous assurer que d’autres utilisateurs peuvent afficher ce récit, vous devez également partager ses scènes, couches de scène et applications intégrées publiquement. Les cartes et les couches de carte sont partagées automatiquement.",
+      "publicWarning": "Pour vous assurer que d’autres utilisateurs peuvent afficher ce récit, vous devez également partager ses scènes, couches de scène et applications intégrées avec tout le monde. Les cartes et les couches de carte sont partagées automatiquement.",
       "addTitleNote": "Ajouter un titre sur la couverture pour enregistrer",
       "saveError": "Erreur d’enregistrement de votre récit.",
       "duplicate": "Dupliquer",
@@ -77,11 +87,12 @@ define({
         "manage": "Gérer",
         "size": "Taille",
         "background": "Arrière-plan",
+        "mobile": "Mobile",
         "issues": "Problèmes",
         "fixIssues": "Résoudre les problèmes"
       },
       "manage": {
-        "changeMedia": "Modifier l\\'élément multimédia",
+        "changeMedia": "Modifier l'élément multimédia",
         "edit": "Modifier",
         "editAside": "S’ouvre dans un nouvel onglet de navigateur. Après avoir enregistré vos modifications, enregistrez et rechargez ce récit pour voir vos changements",
         "remove": "Supprimer"
@@ -112,15 +123,23 @@ define({
       "size": {
         "small": "Petite",
         "medium": "Moyenne",
-        "large": "Grande"
+        "large": "Grande",
+        "noCrop": "Ne pas rogner les grandes images",
+        "noCropTallTooltip": "Si vous ne rognez pas une grande image, les lecteurs devront faire défiler la page pour voir l'image dans son intégralité."
       },
       "background": {
-        "noCrop": "Ne pas rogner l’image",
+        "noCrop": "Ne pas rogner",
         "mostImportantPart": "Choisir le point le plus important",
-        "cropExplanationImmersive": "Sélectionnez un point sur l’image pour choisir la façon dont l'image sera rognée à différentes tailles d’écran. Le point que vous sélectionnez sera toujours visible. Activez la case à cocher ci-après si votre support doit être visible dans sa totalité.",
-        "cropExplanation": "Sélectionnez un point sur l’image pour choisir la façon dont l'image sera rognée à différentes tailles d’écran. Le point que vous sélectionnez sera toujours visible.",
+        "cropExplanationImmersive": "Sélectionnez un point sur l'image pour choisir la façon dont elle sera rognée à différentes tailles d'écran. Le point que vous sélectionnez sera toujours visible. Activez la case à cocher \"Ne pas rogner\" si votre image doit être visible dans sa totalité.",
+        "cropExplanation": "Sélectionnez un point sur l'image pour choisir la façon dont elle sera rognée à différentes tailles d'écran. Le point que vous sélectionnez sera toujours visible.",
         "color": "Couleur",
         "previews": "Aperçus"
+      },
+      "altMedia": {
+        "alternativeMedia": "Autre média",
+        "explanation": "Certains médias ne sont pas pris en charge ou risquent de ne pas fonctionner correctement sur les appareils mobiles. Utilisez ce volet pour choisir un autre élément plus adapté aux mobiles, qui s'affichera à la place de ce média lorsque votre récit sera visualisé sur un téléphone ou une tablette.",
+        "changeAltImage": "Modifier l'image",
+        "uploadAltImage": "Ajouter une image"
       }
     },
     "imageGallery": {
@@ -174,9 +193,9 @@ define({
       "undo": "Annuler"
     },
     "sections": {
-      "sequence": "Section de récit",
-      "immersive": "Section immersive",
-      "title": "Section de titre"
+      "sequence": "Narratif",
+      "immersive": "Immersif",
+      "title": "Titre"
     },
     "mediaErrors": {
       "mediaTypes": {
@@ -189,14 +208,22 @@ define({
       },
       "placeholders": {
         "generic": "Ce contenu n’est pas accessible.",
-        "deleted": "Ce ${media-type} a été supprimé.",
-        "inaccessible": "Ce ${media-type} n’est pas accessible.",
-        "unauthorized": "Vous n’êtes pas autorisé à visualiser ce ${media-type}.",
-        "unshared": "Ce ${media-type} n’est pas partagé de la même façon que votre récit.",
-        "othersUnshared": "Ce ${media-type} n’est pas partagé de la même façon que votre récit.",
-        "subscriptionContent": "Ce ${media-type} contient une couche abonné.",
-        "premiumContent": "Ce ${media-type} contient une couche premium.",
-        "secureService": "Ce ${media-type} contient une couche sécurisée."
+        "deleted": "Cet élément a été supprimé.",
+        "inaccessible": "Ce contenu n’est pas accessible.",
+        "unauthorized": "Vous n'êtes pas autorisé à afficher ce contenu.",
+        "unshared": "Cet élément n'est pas partagé de la même façon que votre récit.",
+        "othersUnshared": "Cet élément n'est pas partagé de la même façon que votre récit.",
+        "subscriptionContent": "Cette carte contient une couche abonné.",
+        "premiumContent": "Cette carte contient une couche premium.",
+        "secureService": "Cette carte contient une couche sécurisée."
+      },
+      "contentIssues": {
+        "noAltImage": "Média non pris en charge sur les appareils mobiles",
+        "altImageBroken": "L'autre image définie pour cet élément multimédia n'est pas accessible"
+      },
+      "contentWarnings": {
+        "noAltImage": "Ce type de média n'est pas pris en charge sur les appareils mobiles. Indiquez une autre image qui s'affichera lorsque le récit sera visualisé sur des appareils mobiles.",
+        "noAltImageAlt": "Ce type de média n'est pas pris en charge sur les appareils mobiles. Dans l'onglet Mobile, indiquez une autre image qui s'affichera lorsque le récit sera visualisé sur des appareils mobiles."
       },
       "mapIssues": {
         "fixButton": "Résoudre les problèmes",

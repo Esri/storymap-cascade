@@ -8,8 +8,8 @@ define({
       blockAdd: {
         text: "Text",
         media: "Media",
-        title: "Title Section",
-        immersive: "Immersive Section"
+        title: "Title",
+        immersive: "Immersive"
       },
       link: {
         invite: "Paste or type a link..."

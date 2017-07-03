@@ -35,12 +35,15 @@ define({
       "builderSupport1": "Kaardilugude kaudu kaskaadi loomine on toetatud ainult brauserites ${CHROME} ja ${SAFARI}. Koosturi abil loodud kaskaadlugusid saab aga lisaks nendele brauseritele kuvada ka brauseris Internet Explorer 11 ja uuemates versioonides ning Firefoxis.",
       "builderSupport2": "iPadis kaardilugude koosturit ei toetata. Eelnevalt koostatud ja jagatud kaskaadlood iPadis toimivad.",
       "builderSupport3": "Kaskaadlugusid saab kuvada Chrome’is, Firefoxis ning brauseris Internet Explorer 11 ja uuemates versioonides. Kaardilugude kaskaadikoosturit toetatakse aga üksnes brauserites ${CHROME} ja ${SAFARI}.",
-      "builderSupport4": "Kaskaadlugusid saab kuvada Chrome’is, Firefoxis ning brauseris Internet Explorer 11 ja uuemates versioonides. Kaardilugude kaskaadikoosturit toetatakse aga üksnes brauserites ${CHROME} ja ${SAFARI}.<br><br>Juhul kui soovite, et kaskaadikoosturit toetataks ka muudes brauserites, võtke ühendust toega ${ESRI-SUPPORT} või klõpsake hääletamiseks: ${FIREFOX-BUILDER} | ${IE-BUILDER}.",
+      "builderSupport4": "Kaskaadi alusel koostatud kaardilugusid saab kuvada kõikides tänapäevastes veebibrauserites, aga kaardilugude kaskaadi koostamise moodul on toetatud üksnes järgnevates brauserites ${CHROME} ja ${SAFARI}.<br><br>Juhul kui soovite, et kaskaadi koostamise moodul oleks toetatud ka muudes brauserites, võtke ühendust toega ${ESRI-SUPPORT} või klõpsake hääletamiseks: ${BROWSER-SUPPORT-VOTE}.",
       "sorry": "Tähelepanu!"
     },
     "mobileWarning": {
       "message1": "Lugesite seda lugu mobiilivaates. Rohkemate meediaelementidega täisloo lugemiseks saate kasutada lauaarvutit.",
       "email": "Saada selle loo link meilisõnumiga"
+    },
+    "cover": {
+      "iosEmbedLink": "Kogu loo lugemiseks puudutage"
     },
     "media": {
       "captionPlaceholder": "Sisestage pealkiri siia...",
@@ -70,6 +73,10 @@ define({
       "autoplayExplain1": "Automaatesituse režiimis keritakse teie lugu kindla ajavahemiku järel edasi. Seda on hea kasutada kioskite või avalike kohtade ekraanidel, kuid arvestage, et muudel juhtudel võib see raskendada teie loo lugemist. See funktsioon pole väikestel ekraanidel toetatud.",
       "autoplayExplain2": "Kui see režiim on aktiveeritud, saate kasutada loo esitamise või peatamise ja liikumiskiiruse reguleerimise juhtelemente.",
       "linksupdated": "Lingid on värskendatud!"
+    },
+    "theme": {
+      "lightLabel": "Hele",
+      "darkLabel": "Tume"
     }
   }
 });

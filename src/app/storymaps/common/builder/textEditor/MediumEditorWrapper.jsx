@@ -217,7 +217,7 @@ export default function(params = {}) {
   // List of media element that:
   // - cannot be deleted with backspace from the next block
   // - are serialized by their parent section or panel
-  var mediaElements = '.image-gallery, .image, .block-type-webmap, .block-webpage, .block-type-webscene, .block-type-video';
+  var mediaElements = '.image-gallery, .image, .block-type-webmap, .block-webpage, .block-type-webscene, .block-type-video, .block-audio';
 
   //
   // Control what features are exposed

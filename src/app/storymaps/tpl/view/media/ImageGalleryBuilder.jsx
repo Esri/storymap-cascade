@@ -1,3 +1,4 @@
+import UIUtils from 'storymaps/tpl/utils/UI';
 import Media from './Media';
 import ImageGallery from './ImageGallery';
 import i18n from 'lib-build/i18n!resources/tpl/builder/nls/app';
@@ -6,7 +7,6 @@ import CancelNotification from '../../builder/notification/Cancel';
 
 import {} from 'lib-build/less!./ImageGalleryBuilder';
 
-import lang from 'dojo/_base/lang';
 import topic from 'dojo/topic';
 
 import issues from '../../builder/Issues';
@@ -104,7 +104,8 @@ export default class ImageGalleryBuilder extends ImageGallery {
       // Add image with dataUrl
       this._images.images[index] = {
         url: url,
-        dataUrl: image.dataUrl
+        dataUrl: image.dataUrl,
+        instanceID: UIUtils.getUID()
       };
 
       this._onUploadStart(index);
@@ -125,7 +126,8 @@ export default class ImageGalleryBuilder extends ImageGallery {
         this._images.images[index] = {
           height: height,
           width: width,
-          url: url
+          url: url,
+          instanceID: UIUtils.getUID()
         };
 
         this._update();
@@ -333,43 +335,24 @@ export default class ImageGalleryBuilder extends ImageGallery {
     this._addBuilderEvents();
 
     for (let image of this._images.images) {
-      topic.subscribe('scan/images/' + image.url, (scanResult) => {
+      topic.subscribe('scan/images/' + image.instanceID, (scanResult) => {
         let index = this._images.images.findIndex(item => {
           return item.url === image.url;
         });
 
-        this.checkErrors(scanResult, index);
+        this.checkErrors(scanResult, { index });
       });
     }
   }
 
-  checkErrors(scanResult, index) {
-    // update the map UI based on the scan results
-    const errorIds = this.mapErrors(scanResult);
-    if (!errorIds) {
-      this.removeError();
-      return;
-    }
-
-    const unfixableOptions = this.isUnfixableError(errorIds, index);
-    if (unfixableOptions) {
-      this.setError(unfixableOptions);
-      return;
-    }
-
-    // TODO: something different here?
-    this.setError({errors: scanResult.errors});
-
-  }
-
-  isUnfixableError(errorIds, index) {
+  isUnfixableError(errorIds, params) {
     var errorText = i18n.builder.mediaErrors;
     if (errorIds.indexOf(issues.images.inaccessible) >= 0) {
       return {
         msg: errorText.placeholders.inaccessible.replace('${media-type}', errorText.mediaTypes.image),
         unfixable: true,
         showLoadingError: true,
-        galleryIndex: index
+        galleryIndex: params.index
       };
     }
     return false;
@@ -380,16 +363,14 @@ export default class ImageGalleryBuilder extends ImageGallery {
       this._images.caption = this._node.find('.block-caption').html();
     }
 
-    for (var image of this._images.images) {
+    for (const image of this._images.images) {
       delete image.dataUrl;
       // That would mean game over if saving while an upload is in progress
       //delete image.uploadDeferred;
       delete image.adjustedHeight;
     }
 
-    return lang.clone({
-      type: 'image-gallery',
-      'image-gallery': this._images
-    });
+    // instanceID is sent with the images, not the gallery, so we won't want to tack one on here.
+    return super.serialize('image-gallery', this._images, false);
   }
 }

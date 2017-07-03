@@ -3,7 +3,6 @@ import CommonHelper from 'storymaps/common/utils/CommonHelper';
 
 import viewTpl from 'lib-build/hbars!./CreditsItemBuilder';
 import i18n from 'lib-build/i18n!resources/tpl/builder/nls/app';
-import lang from 'dojo/_base/lang';
 
 export default class CreditsBuilder extends Credits {
   constructor(credits) {
@@ -345,9 +344,7 @@ export default class CreditsBuilder extends Credits {
       this._credits.push(credit);
     }
 
-    return lang.clone({
-      type: 'credits',
-      credits: this._credits
-    });
+    // we don't want the instanceID put on and credits aren't handled like other media
+    return super.serialize('credits', this._credits, false);
   }
 }

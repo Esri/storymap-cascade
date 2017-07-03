@@ -1,4 +1,3 @@
-// nls expects double quotes
 /*eslint quotes:[2, 'double'] */
 define({
   "mediaPicker": {
@@ -65,15 +64,15 @@ define({
             "embedProtocolWarning3": "Alternatiivne võimalus on lisada loole link, mis avaneb eraldi brauseriaknas. ${linkText}",
             "linkText": "Lisateave."
           },
-          "placeholder": "${https://}... or ${http://}... or ${<iframe>}",
+          "placeholder": "${https://}... või ${http://}... või ${<iframe>}",
           "uploadErrors": {
             "generic": "Sisestatud aadressiga läks midagi valesti. Proovige uuesti.",
             "imageOnly1": "Loo selles osas tuleb kasutada pilti.",
             "imageOnly2": "Lisage pildi (.jpg, .png, .gif) link või valige pilt rakendusest ${ArcGIS}, ${Flickr}, ${Google+}, või ${Unsplash}.",
             "imageAndVideo1": "Loo selles osas tuleb kasutada pilti või videot.",
             "imageAndVideo2": "Lisage pildi (.jpg, .png, .gif) link või valige video rakendusest ${ArcGIS} või ${Flickr} või valige pilt rakendusest ${ArcGIS}, ${Flickr}, ${Google+} või ${Unsplash}.",
-            "badFormat": "Meedia ${Media-type} link, mida lisada püüate, ei ole õiges vormingus.",
-            "inaccessible": "Meedia ${media-type} link, mida lisada püüate, ei ole leitav või avatav.",
+            "badFormat": "Faili link, mida lisada püüate, ei ole õiges vormingus.",
+            "inaccessible": "Fail, mida lisada püüate, ei ole leitav või avatav.",
             "tryAgain": "Kontrollige aadressi ja proovige uuesti.",
             "mediaTypes": {
               "VIDEO": "videomaterjalide",
@@ -125,6 +124,8 @@ define({
           "searchLocation": {
             "thisStory": "See lugu",
             "agol": "ArcGIS Online",
+            "portalArcGIS": "Portal for ArcGIS",
+            "portal": "Portal",
             "myOrg": "Ettevõte ${orgname}",
             "myContent": "Minu sisu"
           },

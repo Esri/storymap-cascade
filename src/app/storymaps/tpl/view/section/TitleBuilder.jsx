@@ -70,13 +70,13 @@ export default class TitleBuilder extends Title {
       .attr('contenteditable', true)
       .attr('placeholder', i18n.builder.title.placeholder)
       .on('blur keyup', function() {
-        this.serialize();
+        this.serialize(false);
         this._onContentChange();
       }.bind(this))
       .on('paste', function() {
         setTimeout(function() {
           this._node.find('.fg-title').html($('<div>' + this._node.find('.fg-title').text() + '</div>').text());
-          this.serialize();
+          this.serialize(false);
           this._onContentChange();
         }.bind(this), 0);
       }.bind(this))
@@ -104,8 +104,8 @@ export default class TitleBuilder extends Title {
     }.bind(this), 50);
   }
 
-  serialize() {
-    this._section.background = this._backgroundMedia.serialize();
+  serialize(includeInstanceID) {
+    this._section.background = this._backgroundMedia.serialize(includeInstanceID);
     this._section.foreground.title = $('<div>' + this._node.find('.fg-title').text() + '</div>').text();
 
     return lang.clone(this._section);
@@ -117,6 +117,22 @@ export default class TitleBuilder extends Title {
       title: bookmark.bookmark
     };
   }
+
+  getScanResults() {
+    return this.scanResults;
+  }
+
+  setScanResults(hasErrors, hasWarnings) {
+    Object.assign(this.scanResults, {hasErrors}, {hasWarnings});
+  }
+
+  addContextSpecificIssues() {
+    //
+  }
+
+  //
+  // PRIVATE
+  //
 
   _onContentChange() {
     topic.publish('builder-section-update');
@@ -161,11 +177,11 @@ export default class TitleBuilder extends Title {
     }
 
     if (params.action == 'swap') {
-      var mediaIsEmpty = params.media.serialize().type == 'empty';
+      var mediaIsEmpty = params.media.serialize(false).type == 'empty';
 
       app.builder.mediaPicker.open({
         mode: mediaIsEmpty ? 'add' : 'edit',
-        media: mediaIsEmpty ? null : params.media.serialize(),
+        media: mediaIsEmpty ? null : params.media.serialize(false),
         authorizedMedia: ['image']
       }).then(
         function(newMedia) {
@@ -186,7 +202,10 @@ export default class TitleBuilder extends Title {
   }
 
   _onEditMedia(media, newMediaJSON) {
-    let newMedia = SectionCommon.initMedia(newMediaJSON);
+    let newMedia = SectionCommon.initMedia({
+      media: newMediaJSON,
+      isNewMedia: true
+    });
 
     // Delete actual background
     this._node.find('.background').remove();
@@ -219,13 +238,5 @@ export default class TitleBuilder extends Title {
 
     SectionCommon.checkMedia(newMediaJSON);
     this._applySectionConfig();
-  }
-
-  getScanResults() {
-    return this.scanResults;
-  }
-
-  setScanResults(hasErrors, hasWarnings) {
-    Object.assign(this.scanResults, {hasErrors}, {hasWarnings});
   }
 }

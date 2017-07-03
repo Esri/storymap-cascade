@@ -6,6 +6,8 @@ import BuilderConfigTabSize from './builder/TabSize';
 import BuilderConfigTabManage from './builder/TabManage';
 import BuilderConfigTabWebMap from './builder/TabWebMap';
 import BuilderConfigTabIssues from './builder/TabIssues';
+import BuilderConfigTabAlternateMedia from './builder/TabAlternateMedia';
+import BuilderConfigTabAlternateEmpty from './builder/TabAlternateEmpty';
 
 import MapEditor from './WebMapEditor';
 
@@ -24,56 +26,39 @@ export default class WebMapBuilder extends WebMap {
 
     this._configTabWebMap = null;
     this._configTabIssues = null;
+
     this._configTabManage = null;
+    this._configTabAlternate = null;
     this._isMultiViewSection = false;
     this._onToggleMediaConfig = null;
+    this._sectionType = null;
   }
 
   postCreate(params) {
     super.postCreate(params);
 
     this._onToggleMediaConfig = params.onToggleMediaConfig;
+    this._sectionType = params.sectionType;
 
     if (! params.delayBuilderInit) {
       this._initConfigPanel();
     }
 
     // listen to when THIS SPECIFIC map gets scanned
-    topic.subscribe('scan/maps/' + this._webmap.id, lang.hitch(this, this.checkErrors));
+    topic.subscribe('scan/maps/' + this._instanceID, lang.hitch(this, this.checkErrors));
 
     this.initBuilderUI();
 
     this._node.find('.media-media').attr('data-builder-invite', i18n.builder.mediaConfig.appearance.mapExtentPrompt);
   }
 
-  checkErrors(scanResult) {
-    // update the map UI based on the scan results
-
-    this.errorIds = this.mapErrors(scanResult);
-    if (!this.errorIds) {
-      this.removeError(scanResult);
-    }
-    else {
-      const unfixableOptions = this.isUnfixableError(this.errorIds);
-      if (unfixableOptions) {
-        this.setError(unfixableOptions);
-      }
-      else {
-        this.setError({
-          scanResult: scanResult,
-          errors: scanResult.errors
-        });
-      }
-    }
-    if (this.builderConfig && this._node.hasClass('builder-config-open') && this._configTabIssues && this.errorIds) {
-      this._configTabIssues.errorIds = this.errorIds;
-      this.builderConfig.renderTab(this._configTabIssues);
-    }
-    else {
-      this._destroyConfigPanel();
-      this._initConfigPanel();
+  load(params = {}) {
+    const alternateMedia = this.getAlternate();
+    if (alternateMedia) {
+      alternateMedia.load();
     }
 
+    return super.load(params);
   }
 
   isUnfixableError(errorIds = []) {
@@ -99,40 +84,42 @@ export default class WebMapBuilder extends WebMap {
 
   performAction(params = {}) {
     if (params.performBuilderInit) {
-      this._destroyConfigPanel();
-      this._initConfigPanel();
+      if (this._builderConfigPanel) {
+        this._destroyConfigTabs();
+        this._refreshConfigTabs();
+      }
+      else {
+        this._initConfigPanel();
+      }
     }
 
     return super.performAction(params);
   }
 
-  serialize() {
+  serialize(includeInstanceID) {
     if (this._node) {
       this._webmap.caption = this._node.find('.block-caption').html();
     }
+    // we don't pass this._webmap since the webmap.jsx will pass them -- both are working off of the class-member variable this._webmap.
+    return super.serialize(includeInstanceID);
+  }
 
-    return lang.clone({
-      type: 'webmap',
-      webmap: this._webmap
-    });
+  getMapName(mapObj) {
+    if (!mapObj) {
+      return '';
+    }
+    const mapItem = mapObj.itemInfo && mapObj.itemInfo.item;
+    if (!mapItem) {
+      return '';
+    }
+    return mapItem.title || mapItem.name;
   }
 
   //
   // Private
   //
 
-  _destroyConfigPanel() {
-    if (this.builderConfig && this.builderConfig._tabs) {
-      var activeTab = this.builderConfig._tabs.find(function(tab) {
-        return tab._isActive;
-      });
-      if (activeTab) {
-        this.builderConfig.destroyTab(activeTab);
-      }
-    }
-  }
-
-  _initConfigPanel() {
+  _initConfigTabs() {
     let tabs = [];
 
     this._configTabWebMap = new BuilderConfigTabWebMap({
@@ -155,29 +142,35 @@ export default class WebMapBuilder extends WebMap {
         tabs.push(this._configTabWebMap);
       }
       else if (tab == 'manage') {
-        let mapName = this.getMapName(this._cache[this.id]);
-        this._configTabManage = new BuilderConfigTabManage({
-          hideRemove: this._placement == 'background',
-          mediaType: 'webmap',
-          mediaId: this.id,
-          mapName
-        });
-        tabs.push(this._configTabManage);
+        const manageTab = this._createManageTab();
+        tabs.push(manageTab);
+      }
+      else if (tab == 'alternate') {
+        const alternateTab = this._createAlternateTab(this._sectionType);
+        tabs.push(alternateTab);
       }
     }
 
-    if (this.scanResults && this.scanResults.hasErrors && !this.scanResults.unfixable) {
+    const errors = lang.getObject('scanResults.errors', false, this);
+    // if there are errors and any are unfixable and there are errors besides alternate errors
+    if (this.scanResults && this.scanResults.hasErrors && !this.scanResults.unfixable && errors && errors.filter(error => !error.isAlternate).length) {
       this._configTabIssues = new BuilderConfigTabIssues({
         map: this._cache[this.id],
         scanResults: this.scanResults,
-        errorIds: this.errorIds
+        errorIds: this.scanResults.errors.map(error => error.id)
       });
       tabs.push(this._configTabIssues);
     }
 
-    this.builderConfig = new BuilderConfig({
+    return tabs;
+  }
+
+  _initConfigPanel() {
+    super._initConfigPanel();
+
+    this._builderConfigPanel = new BuilderConfig({
       containerMedia: this._node,
-      tabs: tabs,
+      tabs: this._initConfigTabs(),
       media: this._webmap,
       onChange: this._onConfigChange.bind(this),
       onAction: this._onAction.bind(this),
@@ -203,15 +196,48 @@ export default class WebMapBuilder extends WebMap {
     }
   }
 
-  getMapName(mapObj) {
-    if (!mapObj) {
-      return '';
+  _createAlternateTab(sectionType) {
+    const alternateMedia = this.getAlternate();
+    let alternateTab = null;
+    const errors = lang.getObject('scanResults.errors', false, this);
+    let alternateError = errors ? this.scanResults.errors.find(error => error.isAlternate) : null;
+
+    if (alternateMedia) {
+      alternateTab = new BuilderConfigTabAlternateMedia({
+        sectionType: sectionType,
+        media: alternateMedia._image,
+        errorId: alternateError ? alternateError.id : null,
+        showErrors: alternateError,
+        placement: this._placement
+      });
     }
-    const mapItem = mapObj.itemInfo && mapObj.itemInfo.item;
-    if (!mapItem) {
-      return '';
+    else {
+      alternateTab = new BuilderConfigTabAlternateEmpty({
+        // it's ok to not have alt media for maps, anywhere.
+        showWarnings: false
+      });
     }
-    return mapItem.title || mapItem.name;
+
+    this._configTabAlternate = alternateTab;
+
+    return this._configTabAlternate;
+  }
+
+  _createManageTab() {
+    let mapName = this.getMapName(this._cache[this.id]);
+
+    const errors = lang.getObject('scanResults.errors', false, this);
+
+    this._configTabManage = new BuilderConfigTabManage({
+      hideRemove: this._placement == 'background',
+      mediaType: 'webmap',
+      mediaId: this.id,
+      // only show errors if there are unfixable scan results (if there are fixable ones, they'll go on the issues tab)
+      showErrors: errors && errors.filter(error => !error.isAlternate).length && this.scanResults.unfixable,
+      mapName
+    });
+
+    return this._configTabManage;
   }
 
   _openEditor() {

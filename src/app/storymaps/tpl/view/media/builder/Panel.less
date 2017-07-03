@@ -130,37 +130,18 @@
           border-bottom-color: #E8E8E8;
         }
 
-        &.selected:after {
-          content: '';
-          position: absolute;
-          top: 50%;
-          transform: translateY(-50%);
-          right: -15px;
-          border-bottom: 15px solid transparent;
-          border-top: 15px solid transparent;
-          border-left: 15px solid white;
-          z-index: 2;
-
-          @media (max-width: @screen-md) {
-            right: -10px;
-            border-width: 10px;
-          }
-        }
-
         &.selected:before {
           content: '';
           position: absolute;
-          top: 50%;
-          transform: translateY(-50%);
-          right: -17px;
-          border-bottom: 17px solid transparent;
-          border-top: 17px solid transparent;
-          border-left: 17px solid #CCC;
+          right: 0px;
+          top: 0px;
+          border-bottom: 50px solid @Calcite_Highlight_Blue_350;
+          border-left: 6px solid @Calcite_Highlight_Blue_350;
           z-index: 1;
 
           @media (max-width: @screen-md) {
-            right: -12px;
-            border-width: 12px;
+            border-left: 4px solid @Calcite_Highlight_Blue_350;
+            border-bottom: 40px solid @Calcite_Highlight_Blue_350
           }
         }
 
@@ -248,4 +229,37 @@
 
 .config-panel-active .block-caption {
   display: none;
+}
+
+.fa-mobile-phone::before {
+  margin-right: 3px;
+  margin-left: 3px;
+}
+
+.add-alt-image {
+  margin-bottom: 12px;
+  margin-top: 20px;
+  width: 50%;
+  align-self: center;
+}
+
+.alt-image-swap {
+  margin-bottom: 12px;
+  align-self: center;
+  width: 80%;
+}
+
+.alt-image-remove {
+  margin-bottom: 12px;
+  align-self: center;
+  width: 80%;
+}
+
+.alt-image-tooltip {
+  color: #666
+}
+
+.mobile-tab-help {
+  line-height: 1.3em;
+  padding-bottom: 10px;
 }

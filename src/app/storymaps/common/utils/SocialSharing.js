@@ -63,6 +63,7 @@ define([
       });
     },
     */
+    /*
     requestBitly: function(url) {
       var bitlyUrls = [
             'http://api.bitly.com/v3/shorten?callback=?',
@@ -92,6 +93,32 @@ define([
 
       return resultDeferred;
     },
+
+    */
+    requestShortUrl: function(url) {
+      var esriUrlShortener = 'https://arcg.is/prod/shorten?callback=?',
+          targetUrl = url || document.location.href,
+          resultDeferred = new Deferred();
+
+      $.getJSON(
+        esriUrlShortener,
+        {
+          'longUrl': targetUrl
+        },
+        function(response) {
+          console.log(response);
+          if(! response || ! response || ! response.data.url) {
+            resultDeferred.reject();
+          }
+          else {
+            resultDeferred.resolve(response.data.url);
+          }
+        }
+      );
+
+      return resultDeferred;
+    },
+
     cleanURL: function(url, noEncoding) {
       var urlParams = urlUtils.urlToObject(url);
       var newUrl = urlParams.path;

@@ -7,8 +7,8 @@ define({
     "blockAdd": {
       "text": "Metin",
       "media": "Ortam",
-      "title": "Başlık Bölümü",
-      "immersive": "Ayrıntılı Bölüm"
+      "title": "Başlık",
+      "immersive": "Ayrıntılar"
     },
     "link": {
       "invite": "Bir bağlantı yapıştırın veya yazın..."
