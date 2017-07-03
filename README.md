@@ -37,7 +37,7 @@ Once your story is ready, you have to find its ID in ArcGIS Online. The ID is a 
 
 1. [Download the application](http://links.esri.com/storymaps/story_map_cascade_zip)
 2. Deploy the application on your webserver. See [FAQ](#how-to-deploy-the-application-on-a-web-server) for details
-3. Edit index.html, find the configuration section on line 47 and paste in your application ID
+3. Edit index.html, find the configuration section on line 44 and paste in your application ID
 4. Navigate to index.html (e.g., `http://127.0.0.1/Cascade/index.html`)
 
 Enjoy!
@@ -81,7 +81,7 @@ When you share your story through the Cascade builder, its maps and layers will 
 #### Can I use private webmaps or layers?
 Yes.
 
-When the story is hosted in ArcGIS Online or Portal for ArcGIS, users that don't have access to the story or a webmap used in the story will be redirected to the ArcGIS Online sign-in page. It is not possible to display an authentication dialog in the application when it's hosted in ArcGIS Online.
+When the story is hosted in ArcGIS Online or Portal for ArcGIS, users who don't have access to the story or a webmap used in the story will be redirected to the ArcGIS Online sign-in page. It is not possible to display an authentication dialog in the application when it's hosted in ArcGIS Online.
 
 When the story is hosted on your web server, by default an authentication dialog will appear inside the application. But we recommend that you configure the application to use OAuth. OAuth 2.0 based authentication is available for ArcGIS Online and Portal for ArcGIS users with developer or organizational accounts. Follow [this procedure](http://doc.arcgis.com/en/arcgis-online/share-maps/add-items.htm#ESRI_SECTION1_0D1B620254F745AE84F394289F8AF44B) to add and register an application to get an OAuth application ID. Once you have that application, open `index.html`, locate the `configOptions` section and fill the `oAuthAppId` property.
 
@@ -91,7 +91,7 @@ If you are using secured services but don't want users to have to authenticate, 
 Deploying a Cascade story requires use of ArcGIS Online or Portal for ArcGIS. The Cascade content must be created using the Cascade builder and will live in a Web Application Item.
 
 #### Can I use the template without ArcGIS Online or Portal for ArcGIS?
-This is not a supported use case at that time. Please let us know if you are interested by such a scenario.
+This is not a supported use case at this time. Please let us know if you are interested in such a scenario.
 Cascade relies heavily on the Portal for ArcGIS API but it is doable to modify the application to support other scenarios.
 
 #### Where is the data stored?
