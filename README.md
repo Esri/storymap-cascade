@@ -293,7 +293,7 @@ Some open-source components of this project are licensed under other License ter
 | Bootstrap 			      | MIT 		  |
 | jQuery 				        | MIT 		  |
 | MediumEditor          | MIT       |
-| React                 | BSD       |
+| React                 | [BSD with patent grant](https://github.com/facebook/react#license)       |
 | React-redux           | MIT       |
 | Redux                 | MIT       |
 | Fluidbox              | MIT       |
