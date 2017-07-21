@@ -146,6 +146,7 @@
           stripBanners: true,
           banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - '
               + '<%= grunt.template.today("yyyy-mm-dd, hh:MM:ss TT") %> - '
+              + 'Copyright \u00A9 2016, 2017 Esri \n'
               + 'This application is released under the Apache License V2.0 by Esri http://www.esri.com/ - '
               + 'https://github.com/Esri/story-map-cascade */'
         },
