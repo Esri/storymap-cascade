@@ -146,7 +146,7 @@ export default class WebMap extends Media {
   _applyInteraction() {
     let interaction = this._webmap.options.interaction;
 
-    if (app.isMobileView || UIUtils.isMobileBrowser()) {
+    if (interaction === 'enabled' && (app.isMobileView || UIUtils.isMobileBrowser())) {
       interaction = 'button';
     }
 
@@ -806,11 +806,12 @@ export default class WebMap extends Media {
         this._applyPopupConfigurationStep2Alt(map, popupCfg, serviceId, layerIdx, layerUrl);
       }
       // On FS the layer will be null until loaded...
-      else
-        var handle = map.on('update-end', function() {
-          this._applyPopupConfiguration(map, popupCfg);
+      else {
+        var handle = map.on('update-end', () => {
           handle.remove();
+          this._applyPopupConfiguration(map, popupCfg);
         });
+      }
     }
   }
 

@@ -77,6 +77,11 @@ define({
     "theme": {
       "lightLabel": "Gaišs",
       "darkLabel": "Tumšs"
+    },
+    "autoplay": {
+      "speedFast": "Ātri",
+      "speedMedium": "Vidēji",
+      "speedSlow": "Lēni"
     }
   }
 });

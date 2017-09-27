@@ -77,6 +77,11 @@ define({
     "theme": {
       "lightLabel": "Açık",
       "darkLabel": "Koyu"
+    },
+    "autoplay": {
+      "speedFast": "Hızlı",
+      "speedMedium": "Orta",
+      "speedSlow": "Yavaş"
     }
   }
 });

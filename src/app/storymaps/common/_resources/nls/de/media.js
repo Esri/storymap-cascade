@@ -50,12 +50,12 @@ define({
             "imageAndVideo": "Link zu einem Bild oder Video im Web"
           },
           "linkText": {
-            "imageOnly": "Im Feld oben können Sie einen direkten Link zu Fotos bereitstellen.",
-            "imageAndVideo1": "Im Feld oben können Sie Links oder iframe-Code für Videos aus ${YouTube} und ${Vimeo} einfügen.",
-            "imageAndVideo2": "Sie können auch direkte Links zu Fotos bereitstellen.",
-            "imageVideoWebpage1": "Im Feld oben können Sie Links oder iframe-Code für Videos aus ${YouTube} und ${Vimeo} einfügen.",
-            "imageVideoWebpage2": "Sie können auch direkte Links zu Fotos, Webseiten oder Webanwendungen bereitstellen.",
-            "ender": "Verwenden Sie nach Möglichkeit sichere Links (HTTPS)."
+            "imageOnly": "Im Feld oben können Sie einen direkten Link zu einem Foto bereitstellen.",
+            "imageAndVideo1": "Im Feld oben können Sie einen Link oder iframe-Code für ein Video aus ${YouTube} oder ${Vimeo} einfügen.",
+            "imageAndVideo2": "Sie können auch einen direkten Link zu einem Foto bereitstellen.",
+            "imageVideoWebpage1": "Im Feld oben können Sie einen Link oder iframe-Code für Webinhalt wie ein dynamisches Diagramm oder ein Video aus ${YouTube} oder ${Vimeo} einfügen.",
+            "imageVideoWebpage2": "Sie können auch einen direkten Link zu einem Foto, einem Video, einer Audiodatei, einer Webseite oder einer Web-App bereitstellen.",
+            "ender": "Verwenden Sie immer sichere Links (HTTPS). Wenn der Inhalt HTTPS nicht unterstützt, fügen Sie im Text der Story einen entsprechenden Link hinzu, damit die Leser ihn auf einer neuen Browser-Registerkarte anzeigen können."
           },
           "embedProtocol": {
             "embedProtocolLabel": "Seite über eine sichere Verbindung (HTTPS) laden",

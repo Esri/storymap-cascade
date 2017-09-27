@@ -68,6 +68,7 @@ define({
     },
     "immersiveViewPanel": {
       "transition": "Transition",
+      "chooseTransition": "Choisir la transition",
       "fade": "Fondu",
       "fadeSlow": "Fondu lent",
       "swipeVertical": "Balayage vertical",
@@ -136,10 +137,10 @@ define({
         "previews": "Aperçus"
       },
       "altMedia": {
-        "alternativeMedia": "Autre média",
-        "explanation": "Certains médias ne sont pas pris en charge ou risquent de ne pas fonctionner correctement sur les appareils mobiles. Utilisez ce volet pour choisir un autre élément plus adapté aux mobiles, qui s'affichera à la place de ce média lorsque votre récit sera visualisé sur un téléphone ou une tablette.",
+        "alternativeMedia": "Autre image pour le mobile",
+        "explanation": "Certains médias ne sont pas pris en charge ou risquent de ne pas fonctionner correctement sur les appareils mobiles. Utilisez ce volet pour spécifier l’image à afficher à la place de ce média lors de la visualisation de votre récit sur un téléphone ou une tablette.",
         "changeAltImage": "Modifier l'image",
-        "uploadAltImage": "Ajouter une image"
+        "uploadAltImage": "Ajouter une autre image"
       }
     },
     "imageGallery": {
@@ -218,12 +219,16 @@ define({
         "secureService": "Cette carte contient une couche sécurisée."
       },
       "contentIssues": {
-        "noAltImage": "Média non pris en charge sur les appareils mobiles",
+        "noAltImage": "Média risquant de ne pas fonctionner sur un mobile",
+        "noAltImageUnsupported": "Média non pris en charge sur un mobile",
+        "noAltImageWarning": "Média risquant de ne pas fonctionner sur un mobile",
         "altImageBroken": "L'autre image définie pour cet élément multimédia n'est pas accessible"
       },
       "contentWarnings": {
-        "noAltImage": "Ce type de média n'est pas pris en charge sur les appareils mobiles. Indiquez une autre image qui s'affichera lorsque le récit sera visualisé sur des appareils mobiles.",
-        "noAltImageAlt": "Ce type de média n'est pas pris en charge sur les appareils mobiles. Dans l'onglet Mobile, indiquez une autre image qui s'affichera lorsque le récit sera visualisé sur des appareils mobiles."
+        "noAltImage": "Prenez soin de tester votre récit sur des appareils mobiles avant de le partager. Si ce média ne fonctionne pas comme prévu, utilisez le bouton ci-dessous pour ajouter l’image alternative à afficher lors de la visualisation du récit sur un téléphone ou une tablette.",
+        "noAltImageUnsupported": "Ce média ne fonctionne pas sur les appareils mobiles. Utilisez le bouton ci-dessous pour ajouter l’image alternative à afficher lors de la visualisation du récit sur un téléphone ou une tablette.",
+        "noAltImageWarning": "Prenez soin de tester votre récit sur des appareils mobiles avant de le partager. Si ce média ne fonctionne pas comme prévu, utilisez le bouton ci-dessous pour ajouter l’image alternative à afficher lors de la visualisation du récit sur un téléphone ou une tablette.",
+        "noAltImageAlt": "Ce type de média n’est pas pris en charge ou risque de ne pas fonctionner correctement sur les appareils mobiles. Dans l’onglet Mobile, spécifiez l’image alternative à afficher lors de la visualisation du récit sur un téléphone ou une tablette."
       },
       "mapIssues": {
         "fixButton": "Résoudre les problèmes",

@@ -342,7 +342,7 @@ define([
 
         IdentityManager.registerOAuthInfos([info]);
 
-        IdentityManager.checkSignInStatus(info.portalUrl).then(
+        IdentityManager.checkSignInStatus(info.portalUrl + '/sharing/rest').then(
           function() {
             // User has signed-in using oAuth
             if (! builder) {
@@ -364,6 +364,8 @@ define([
         );
       }
       else {
+        //if not using oauth,  tell API to grab token from the cookie to use later (avoid login loops). We already call it if you are using oauth.
+        IdentityManager.checkSignInStatus('https:' + app.indexCfg.sharingurl.split('/sharing/')[0] + '/sharing/rest');
         initStep2();
       }
     });
@@ -477,25 +479,26 @@ define([
         app.userCanEdit = CommonHelper.userIsAppOwner();
 
         // Prevent app from accessing the cookie in viewer when user is not the owner
-        if (! app.isInBuilder && ! app.userCanEdit) {
-          if (! document.__defineGetter__) {
-            Object.defineProperty(document, 'cookie', {
-              get: function() {
-                return '';
-              },
-              set: function() {
-                return true;
-              }
-            });
-          }
-          else {
-            document.__defineGetter__('cookie', function() {
-              return '';
-            });
-            document.__defineSetter__('cookie', function() {
-            });
-          }
-        }
+        //
+        // if (! app.isInBuilder && ! app.userCanEdit) {
+        //   if (! document.__defineGetter__) {
+        //     Object.defineProperty(document, 'cookie', {
+        //       get: function() {
+        //         return '';
+        //       },
+        //       set: function() {
+        //         return true;
+        //       }
+        //     });
+        //   }
+        //   else {
+        //     document.__defineGetter__('cookie', function() {
+        //       return '';
+        //     });
+        //     document.__defineSetter__('cookie', function() {
+        //     });
+        //   }
+        // }
 
         if (app.indexCfg.authorizedOwners && app.indexCfg.authorizedOwners.length > 0 && app.indexCfg.authorizedOwners[0]) {
           var owner = itemRq.owner,

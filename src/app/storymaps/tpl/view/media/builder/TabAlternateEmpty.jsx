@@ -14,11 +14,15 @@ export default class TabAlternateEmpty extends Tab {
   }
 
   render() {
+    const { noAltImageUnsupported: unsupportedTitle, noAltImageWarning: partialSupportTitle } = i18n.builder.mediaErrors.contentIssues;
+    const { noAltImageUnsupported: unsupportedDescription, noAltImageWarning: partialSupportDescription } = i18n.builder.mediaErrors.contentWarnings;
+
     return viewTpl({
       strings: i18n.builder.mediaConfig.altMedia,
-      stringsIssues: i18n.builder.mediaErrors.contentIssues,
-      stringsWarnings: i18n.builder.mediaErrors.contentWarnings,
-      hasWarnings: this.showWarnings
+      hasWarnings: this.showWarnings,
+      warningTitle: this.mobileSupported ? partialSupportTitle: unsupportedTitle,
+      warningDescription: this.mobileSupported ? partialSupportDescription : unsupportedDescription ,
+      emptyWarningDescription: partialSupportDescription
     });
   }
 

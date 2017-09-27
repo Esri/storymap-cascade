@@ -68,6 +68,7 @@ define({
     },
     "immersiveViewPanel": {
       "transition": "Przejście",
+      "chooseTransition": "Wybierz przejście",
       "fade": "Wygaszanie",
       "fadeSlow": "Wygaszanie powolne",
       "swipeVertical": "Zwijanie pionowe",
@@ -136,10 +137,10 @@ define({
         "previews": "Widoki podglądu"
       },
       "altMedia": {
-        "alternativeMedia": "Alternatywne multimedia",
-        "explanation": "Niektóre elementy multimedialne mogą nie działać poprawnie na urządzeniach przenośnych. Ten panel umożliwia wybranie alternatywnego, obsługiwanego przez urządzenia przenośne elementu, który będzie widoczny zamiast tego elementu multimedialnego podczas wyświetlania narracji na telefonie lub tablecie.",
+        "alternativeMedia": "Obraz alternatywny dla urządzenia przenośnego",
+        "explanation": "Niektóre elementy multimedialne mogą nie być obsługiwane lub nie działać poprawnie na urządzeniach przenośnych. Ten panel umożliwia wybranie obrazu, który będzie widoczny zamiast tego elementu multimedialnego podczas wyświetlania narracji na telefonie lub tablecie.",
         "changeAltImage": "Zmień obraz",
-        "uploadAltImage": "Dodaj obraz"
+        "uploadAltImage": "Dodaj obraz alternatywny"
       }
     },
     "imageGallery": {
@@ -218,12 +219,16 @@ define({
         "secureService": "Ta mapa zawiera warstwę zabezpieczoną."
       },
       "contentIssues": {
-        "noAltImage": "Multimedia nieobsługiwane na urządzeniach przenośnych",
+        "noAltImage": "Multimedia mogą nie działać na urządzeniu przenośnym",
+        "noAltImageUnsupported": "Multimedia nieobsługiwane na urządzeniu przenośnym",
+        "noAltImageWarning": "Multimedia mogą nie działać na urządzeniu przenośnym",
         "altImageBroken": "Obraz alternatywny zdefiniowany dla tego elementu multimedialnego jest niedostępny"
       },
       "contentWarnings": {
-        "noAltImage": "Ten typ multimediów nie jest obsługiwany na urządzeniach przenośnych. Zdefiniuj obraz alternatywny, który będzie widoczny podczas wyświetlania narracji na urządzeniach przenośnych.",
-        "noAltImageAlt": "Ten typ multimediów nie jest obsługiwany na urządzeniach przenośnych. Na karcie Mobilne zdefiniuj obraz alternatywny, który będzie widoczny podczas wyświetlania narracji na urządzeniach przenośnych."
+        "noAltImage": "Przed udostępnieniem narracji sprawdź ją na urządzeniach przenośnych. Jeżeli element multimedialny nie będzie działać prawidłowo, za pomocą przycisku poniżej można dodać obraz alternatywny, który będzie widoczny podczas wyświetlania narracji na telefonie lub tablecie.",
+        "noAltImageUnsupported": "Ten element multimedialny nie będzie działać na urządzeniach przenośnych. Za pomocą przycisku poniżej można dodać obraz alternatywny, który będzie widoczny podczas wyświetlania narracji na telefonie lub tablecie.",
+        "noAltImageWarning": "Przed udostępnieniem narracji sprawdź ją na urządzeniach przenośnych. Jeżeli element multimedialny nie będzie działać prawidłowo, za pomocą przycisku poniżej można dodać obraz alternatywny, który będzie widoczny podczas wyświetlania narracji na telefonie lub tablecie.",
+        "noAltImageAlt": "Ten typ multimediów nie jest obsługiwany lub może nie działać prawidłowo na urządzeniach przenośnych. Na karcie Mobilne zdefiniuj obraz alternatywny, który będzie widoczny podczas wyświetlania narracji na telefonie lub tablecie."
       },
       "mapIssues": {
         "fixButton": "Rozwiąż problemy",

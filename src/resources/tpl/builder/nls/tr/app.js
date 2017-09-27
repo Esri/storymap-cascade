@@ -68,6 +68,7 @@ define({
     },
     "immersiveViewPanel": {
       "transition": "Geçiş",
+      "chooseTransition": "İşlem Seç",
       "fade": "Sönümle",
       "fadeSlow": "Yavaş Sönümle",
       "swipeVertical": "Dikey Kaydır",
@@ -136,10 +137,10 @@ define({
         "previews": "Önizlemeler"
       },
       "altMedia": {
-        "alternativeMedia": "Alternatif Ortam",
-        "explanation": "Bazı ortamlar mobil cihazlarda desteklenmez veya düzgün çalışmayabilir. Bu paneli kullanarak hikayeniz bir telefonda veya tablette görüntülendiğinde bu ortamın yerine gösterilecek alternatif ve daha kullanıcı dostu bir öge belirleyebilirsiniz.",
+        "alternativeMedia": "Görüntüyü Mobil için Değiştir",
+        "explanation": "Bazı ortamlar mobil cihazlarda desteklenmez veya düzgün çalışmayabilir. Bu paneli kullanarak hikayeniz bir telefonda veya tablette görüntülendiğinde bu ortamın yerine gösterilecek bir görüntü belirleyebilirsiniz.",
         "changeAltImage": "Görüntüyü değiştir",
-        "uploadAltImage": "Görüntü ekle"
+        "uploadAltImage": "Alternatif bir görüntü ekle"
       }
     },
     "imageGallery": {
@@ -218,12 +219,16 @@ define({
         "secureService": "Bu haritada güvenli bir katman var."
       },
       "contentIssues": {
-        "noAltImage": "Ortam Mobil Cihazlarda Desteklenmiyor",
+        "noAltImage": "Ortam Mobil Üzerinde Çalışmayabilir",
+        "noAltImageUnsupported": "Ortam Mobil Üzerinde Desteklenmiyor",
+        "noAltImageWarning": "Ortam Mobil Üzerinde Çalışmayabilir",
         "altImageBroken": "Bu medya ortamı için tanımlanan alternatif görüntü erişilebilir değil"
       },
       "contentWarnings": {
-        "noAltImage": "Bu ortam türü mobil cihazlarda desteklenmiyor. Hikaye mobil cihazlarda görüntülendiğinde gösterilecek alternatif bir görüntü sağlayın.",
-        "noAltImageAlt": "Bu ortam türü mobil cihazlarda desteklenmiyor. Mobil sekmesinden hikaye mobil cihazlarda görüntülendiğinde gösterilecek alternatif bir görüntü sağlayın."
+        "noAltImage": "Hikayenizi paylaşmadan önce taşınabilir cihazlarda test ettiğinizden emin olun. Bu ortam beklendiği gibi çalışmazsa, hikaye bir telefonda veya tablette görüntülendiğinde gösterilecek alternatif bir görüntü eklemek için aşağıdaki düğmeyi kullanın.",
+        "noAltImageUnsupported": "Bu ortam türü mobil cihazlarda çalışmayacak. Hikaye telefon veya tablette görüntülendiğinde gösterilecek alternatif bir görüntü eklemek için bu düğmeyi kullanın.",
+        "noAltImageWarning": "Hikayenizi paylaşmadan önce taşınabilir cihazlarda test ettiğinizden emin olun. Bu ortam beklendiği gibi çalışmazsa, hikaye bir telefonda veya tablette görüntülendiğinde gösterilecek alternatif bir görüntü eklemek için aşağıdaki düğmeyi kullanın.",
+        "noAltImageAlt": "Bu ortam türü mobil cihazlarda desteklenmiyor veya çalışmayabilir. Mobil sekmesinden hikaye telefon veya tablette görüntülendiğinde gösterilecek alternatif bir görüntü sağlayın."
       },
       "mapIssues": {
         "fixButton": "Sorunları Gider",

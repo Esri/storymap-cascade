@@ -68,6 +68,7 @@ define({
     },
     "immersiveViewPanel": {
       "transition": "Transizione",
+      "chooseTransition": "Scegli transizione",
       "fade": "Dissolvenza",
       "fadeSlow": "Dissolvenza lenta",
       "swipeVertical": "Scorrimento verticale",
@@ -136,10 +137,10 @@ define({
         "previews": "Anteprime"
       },
       "altMedia": {
-        "alternativeMedia": "File multimediali alternativi",
-        "explanation": "Alcuni file multimediali non sono supportati o potrebbero non funzionare correttamente sui dispositivi mobili. Impiegare questo riquadro per selezionare un elemento alternativo e compatibile con i dispositivi mobili, che sarà mostrato al posto di questi file multimediali quando la storia viene visualizzata su un telefono o un tablet.",
+        "alternativeMedia": "Immagine alternativa per dispositivi mobili",
+        "explanation": "Alcuni file multimediali non sono supportati o potrebbero non funzionare correttamente sui dispositivi mobili. Impiegare questo riquadro per specificare un’immagine che sarà mostrata al posto di questi file multimediali quando la storia viene visualizzata su un telefono o un tablet.",
         "changeAltImage": "Modifica immagine",
-        "uploadAltImage": "Aggiungi immagine"
+        "uploadAltImage": "Aggiungi immagine alternativa"
       }
     },
     "imageGallery": {
@@ -218,12 +219,16 @@ define({
         "secureService": "Questa mappa contiene un layer di protezione."
       },
       "contentIssues": {
-        "noAltImage": "File multimediale non supportato sui dispositivi mobili",
+        "noAltImage": "Il file multimediale potrebbe non funzionare sul dispositivo mobile",
+        "noAltImageUnsupported": "File multimediale non supportato sui dispositivi mobili",
+        "noAltImageWarning": "Il file multimediale potrebbe non funzionare sul dispositivo mobile",
         "altImageBroken": "L'immagine alternativa definita per quest'elemento multimediale non è accessibile"
       },
       "contentWarnings": {
-        "noAltImage": "Questo tipo di elemento multimediale non è supportato sui dispositivi mobili. Fornire un'immagine alternativa da mostrare quando la storia viene visualizzata sui dispositivi mobili.",
-        "noAltImageAlt": "Questo tipo di elemento multimediale non è supportato sui dispositivi mobili. Nella scheda dei dispositivi mobili, fornire un'immagine alternativa da mostrare quando la storia viene visualizzata sui dispositivi mobili."
+        "noAltImage": "Assicurarsi di provare la storia sui dispositivi mobili prima di condividerla. Se il file multimediale non funziona come previsto, utilizzare il tasto di seguito per aggiungere un’immagine alternativa da mostrare quando la storia viene visualizzata su un telefono o un tablet.",
+        "noAltImageUnsupported": "Questo file multimediale non funziona sui dispositivi mobili. Utilizzare il tasto di seguito per aggiungere un'immagine alternativa da mostrare quando la Story Map viene visualizzata sui dispositivi mobili.",
+        "noAltImageWarning": "Assicurarsi di provare la storia sui dispositivi mobili prima di condividerla. Se il file multimediale non funziona come previsto, utilizzare il tasto di seguito per aggiungere un’immagine alternativa da mostrare quando la storia viene visualizzata su un telefono o un tablet.",
+        "noAltImageAlt": "Questo tipo di elemento multimediale non è supportato o potrebbe non funzionare sui dispositivi mobili. Nella scheda dei dispositivi mobili, fornire un'immagine alternativa da mostrare quando la Story Map viene visualizzata su un telefono o un tablet."
       },
       "mapIssues": {
         "fixButton": "Risolvi i problemi",

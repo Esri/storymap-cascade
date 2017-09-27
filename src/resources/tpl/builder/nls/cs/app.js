@@ -68,6 +68,7 @@ define({
     },
     "immersiveViewPanel": {
       "transition": "Přechod",
+      "chooseTransition": "Zvolte přechod",
       "fade": "Stmívání",
       "fadeSlow": "Pomalé stmívání",
       "swipeVertical": "Vertikální překrytí",
@@ -136,10 +137,10 @@ define({
         "previews": "Náhledy"
       },
       "altMedia": {
-        "alternativeMedia": "Alternativní médium",
-        "explanation": "Některá média nejsou podporována nebo nemusejí na mobilních zařízeních fungovat správně. Na tomto panelu zvolte alternativní vhodnější položku, která se zobrazí namísto tohoto média při prohlížení vašeho příběhu na telefonu nebo tabletu.",
+        "alternativeMedia": "Alternativní obrázek pro mobilní zařízení",
+        "explanation": "Některá média nejsou podporována nebo nemusejí na mobilních zařízeních fungovat správně. Na tomto panelu zvolte obrázek, který se zobrazí namísto tohoto média při prohlížení vašeho příběhu na telefonu nebo tabletu.",
         "changeAltImage": "Změnit obrázek",
-        "uploadAltImage": "Přidat obrázek"
+        "uploadAltImage": "Přidat alternativní obrázek"
       }
     },
     "imageGallery": {
@@ -218,12 +219,16 @@ define({
         "secureService": "Tato mapa obsahuje zabezpečenou vrstvu."
       },
       "contentIssues": {
-        "noAltImage": "Médium není podporováno na mobilních zařízeních",
+        "noAltImage": "Médium nemusí pracovat na mobilním zařízení",
+        "noAltImageUnsupported": "Médium není podporováno na mobilních zařízeních",
+        "noAltImageWarning": "Médium nemusí pracovat na mobilním zařízení",
         "altImageBroken": "Alternativní obrázek definovaný pro toto médium je nedostupný."
       },
       "contentWarnings": {
-        "noAltImage": "Tento typ média není podporován na mobilních zařízeních. Poskytněte alternativní obrázek, který se zobrazí při prohlížení příběhu na mobilních zařízeních.",
-        "noAltImageAlt": "Tento typ média není podporován na mobilních zařízeních. Na záložce pro mobilní zařízení poskytněte alternativní obrázek, který se zobrazí při prohlížení příběhu na mobilních zařízeních."
+        "noAltImage": "Před sdílením vašeho příběhu jej vyzkoušejte na mobilních zařízeních. Pokud toto médium nefunguje podle očekávání, použijte tlačítko níže pro přidání alternativního obrázku, který bude zobrazen při zobrazení příběhu na mobilním telefonu či tabletu.",
+        "noAltImageUnsupported": "Toto médium není podporováno na mobilních zařízeních. Použijte tlačítko níže pro přidání alternativního obrázku, který bude zobrazen při zobrazení příběhu na mobilním telefonu či tabletu.",
+        "noAltImageWarning": "Před sdílením vašeho příběhu jej vyzkoušejte na mobilních zařízeních. Pokud toto médium nefunguje podle očekávání, použijte tlačítko níže pro přidání alternativního obrázku, který bude zobrazen při zobrazení příběhu na mobilním telefonu či tabletu.",
+        "noAltImageAlt": "Tento typ média není podporován nebo nemusí fungovat správně na mobilních zařízeních. Na záložce pro mobilní zařízení poskytněte alternativní obrázek, který se zobrazí při prohlížení příběhu na mobilním telefonu nebo tabletu."
       },
       "mapIssues": {
         "fixButton": "Vyřešit problémy",

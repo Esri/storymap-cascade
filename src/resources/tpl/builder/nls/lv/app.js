@@ -68,6 +68,7 @@ define({
     },
     "immersiveViewPanel": {
       "transition": "Pāreja",
+      "chooseTransition": "Izvēlēties pāreju",
       "fade": "Izgaišana",
       "fadeSlow": "Lēna izgaišana",
       "swipeVertical": "Vertikāla pārvilkšana",
@@ -136,10 +137,10 @@ define({
         "previews": "Priekšskatījumi"
       },
       "altMedia": {
-        "alternativeMedia": "Alternatīvs saturs",
-        "explanation": "Noteikta veida saturs mobilajās ierīcēs netiek atbalstīts vai var nedarboties pareizi. Izmantojiet šo paneli, lai izvēlētos alternatīvu un mobilām ierīcēm piemērotāku materiālu, kas tiks rādīts šī satura vietā, kad stāsts tiks skatīts tālrunī vai planšetdatorā.",
+        "alternativeMedia": "Alternatīvs attēls mobilajai ierīcei",
+        "explanation": "Noteikta veida saturs mobilajās ierīcēs netiek atbalstīts vai var nedarboties pareizi. Izmantojiet šo paneli, lai norādītu attēlu, kas tiks rādīts šī satura vietā, kad stāsts tiks skatīts tālrunī vai planšetdatorā.",
         "changeAltImage": "Mainīt attēlu",
-        "uploadAltImage": "Pievienot attēlu"
+        "uploadAltImage": "Pievienot alternatīvu attēlu"
       }
     },
     "imageGallery": {
@@ -218,12 +219,16 @@ define({
         "secureService": "Šajā kartē ir drošs slānis."
       },
       "contentIssues": {
-        "noAltImage": "Multivides saturs mobilajās ierīces netiek atbalstīts",
+        "noAltImage": "Saturs var nedarboties mobilajā ierīcē",
+        "noAltImageUnsupported": "Saturs mobilajā ierīcē netiek atbalstīts",
+        "noAltImageWarning": "Saturs var nedarboties mobilajā ierīcē",
         "altImageBroken": "Šī satura vienībai definētais alternatīvais attēls nav pieejams"
       },
       "contentWarnings": {
-        "noAltImage": "Šī veida saturs mobilajās ierīcēs netiek atbalstīts. Norādiet alternatīvu attēlu, kas tiks parādīts, kad stāsts tiks skatīts no mobilajām ierīcēm.",
-        "noAltImageAlt": "Šī veida saturs mobilajās ierīcēs netiek atbalstīts. Mobilo ierīču cilnē norādiet alternatīvu attēlu, kas tiks parādīts, kad stāsts tiks skatīts no mobilajām ierīcēm."
+        "noAltImage": "Pirms kopīgošanas noteikti pārbaudiet savu stāstu mobilajās ierīcēs. Ja šis saturs nedarbojas, kā nākas, izmantojiet šo pogu un pievienojiet alternatīvu attēlu, kas tiks parādīts, kad stāsts tiks skatīts tālrunī vai planšetdatorā.",
+        "noAltImageUnsupported": "Šis saturs mobilajās ierīcēs nedarbosies. Izmantojiet šo pogu un pievienojiet alternatīvu attēlu, kas tiks parādīts, kad stāsts tiks skatīts tālrunī vai planšetdatorā.",
+        "noAltImageWarning": "Pirms kopīgošanas noteikti pārbaudiet savu stāstu mobilajās ierīcēs. Ja šis saturs nedarbojas, kā nākas, izmantojiet šo pogu un pievienojiet alternatīvu attēlu, kas tiks parādīts, kad stāsts tiks skatīts tālrunī vai planšetdatorā.",
+        "noAltImageAlt": "Šī tipa saturs mobilajās ierīcēs netiek atbalstīts, vai arī tas mobilajās ierīcēs nedarbosies. Mobilo ierīču cilnē norādiet alternatīvu attēlu, kas tiks parādīts, kad stāsts tiks skatīts tālrunī vai planšetdatorā."
       },
       "mapIssues": {
         "fixButton": "Problēmu novēršana",

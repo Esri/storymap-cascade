@@ -77,6 +77,11 @@ define({
     "theme": {
       "lightLabel": "فاتح",
       "darkLabel": "داكن"
+    },
+    "autoplay": {
+      "speedFast": "سريع",
+      "speedMedium": "متوسط",
+      "speedSlow": "بطيء"
     }
   }
 });

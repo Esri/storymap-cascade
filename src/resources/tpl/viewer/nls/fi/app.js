@@ -77,6 +77,11 @@ define({
     "theme": {
       "lightLabel": "Vaalea",
       "darkLabel": "Tumma"
+    },
+    "autoplay": {
+      "speedFast": "Nopea",
+      "speedMedium": "Keskitaso",
+      "speedSlow": "Hidas"
     }
   }
 });

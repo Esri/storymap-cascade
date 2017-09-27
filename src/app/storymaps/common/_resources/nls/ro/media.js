@@ -50,12 +50,12 @@ define({
             "imageAndVideo": "Link către o imagine sau un videoclip de pe web"
           },
           "linkText": {
-            "imageOnly": "În caseta de mai sus, puteţi face o legătură directă la fotografii.",
-            "imageAndVideo1": "În caseta de mai sus, puteţi lipi linkuri sau cod iframe din videoclipuri de pe ${YouTube} şi ${Vimeo}.",
-            "imageAndVideo2": "De asemenea, puteţi face o legătură directă la fotografii.",
-            "imageVideoWebpage1": "În caseta de mai sus, puteţi lipi linkuri sau cod iframe din videoclipuri de pe ${YouTube} şi ${Vimeo}.",
-            "imageVideoWebpage2": "De asemenea, puteţi face o legătură directă la fotografii, pagini web sau aplicaţii web.",
-            "ender": "Dacă este posibil, folosiţi linkuri sigure (https)."
+            "imageOnly": "În caseta de mai sus, puteţi realiza o legătură directă cu o fotografie.",
+            "imageAndVideo1": "În caseta de mai sus, puteţi lipi o legătură sau un cod iframe pentru un material video de pe ${YouTube} sau ${Vimeo}.",
+            "imageAndVideo2": "Puteţi de asemenea realiza o legătură directă cu o fotografie.",
+            "imageVideoWebpage1": "În caseta de mai sus, puteţi lipi o legătură sau un cod iframe pentru un conținut web, sub formă de diagramă dinamică sau material video de pe ${YouTube} şi ${Vimeo}.",
+            "imageVideoWebpage2": "Puteţi de asemenea realiza o legătură directă cu o fotografie, un material video, un fișier audio sau o aplicație web.",
+            "ender": "Utilizați întotdeauna legături (https) securizate. Dacă conținutul dumneavoastră nu suportă https-uri, adăugați o legătură pentru acesta în textul povestirii dumneavoastră, în așa fel încât cititorii să o poată vizualiza într-o nouă filă de browser."
           },
           "embedProtocol": {
             "embedProtocolLabel": "Încărcaţi pagina printr-o conexiune securizată (https)",

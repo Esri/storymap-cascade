@@ -1,11 +1,13 @@
 define([
   'esri/urlUtils',
+  'esri/arcgis/utils',
   'dojo/cookie',
   'dojo/_base/Color',
   './SocialSharing'
 ],
 function(
   urlUtils,
+  arcgisUtils,
   cookie,
   Color,
   SocialSharing
@@ -85,6 +87,9 @@ function(
       if(app.indexCfg.authorizedOwners && app.indexCfg.authorizedOwners.length > 0 && app.indexCfg.authorizedOwners[0]) {
         return urlParams.webmap;
       }
+    },
+    getPortalURL: function() {
+      return arcgisUtils.arcgisUrl.split('/sharing/')[0];
     },
     getPortalUser: function() {
       var esriCookie = cookie('esri_auth');

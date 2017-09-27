@@ -12,8 +12,8 @@ define({
     },
     "headerConfig": {
       "toggles": {
-        "bookmarks": "Žymės",
-        "logoSharing": "Logotipas ir bendrinimas",
+        "bookmarks": "Žymos",
+        "logoSharing": "Logotipas",
         "theme": "Išvaizda"
       },
       "bookmarks": {
@@ -68,6 +68,7 @@ define({
     },
     "immersiveViewPanel": {
       "transition": "Perėjimas",
+      "chooseTransition": "Pasirinkite perėjimą",
       "fade": "Išnykimas",
       "fadeSlow": "Lėtas išnykimas",
       "swipeVertical": "Perbraukimas vertikaliai",
@@ -136,10 +137,10 @@ define({
         "previews": "Peržiūros"
       },
       "altMedia": {
-        "alternativeMedia": "Alternatyvi medija",
-        "explanation": "Tam tikra medija nepalaikoma arba gali tinkamai neveikti mobiliuosiuose įrenginiuose. Pasirinkite alternatyvų labiau pritaikytą elementą, kurį galima rodyti vietoje šios medijos, kai pasakojimas peržiūrimas telefone arba planšetiniame kompiuteryje.",
+        "alternativeMedia": "Alternatyvus atvaizdas, skirtas mobiliesiems įrenginiams",
+        "explanation": "Mobilieji įrenginiai nepalaiko kai kurių medijų arba jos gali būti rodomos netinkamai. Naudodami šį skydelį, nurodykite atvaizdą, kuris bus rodomas vietoje šios medijos, kai jūsų pasakojimas bus peržiūrimas naudojant telefoną ar planšetę.",
         "changeAltImage": "Keisti atvaizdą",
-        "uploadAltImage": "Pridėti atvaizdą"
+        "uploadAltImage": "Pridėti alternatyvų atvaizdą"
       }
     },
     "imageGallery": {
@@ -218,12 +219,16 @@ define({
         "secureService": "Šiame žemėlapyje yra saugaus sluoksnis."
       },
       "contentIssues": {
-        "noAltImage": "Medija nepalaikoma mobiliuosiuose įrenginiuose",
+        "noAltImage": "Naudojant mobilųjį įrenginį, medija gali neveikti",
+        "noAltImageUnsupported": "Mobilusis įrenginys gali nepalaikyti šios medijos",
+        "noAltImageWarning": "Naudojant mobilųjį įrenginį, medija gali neveikti",
         "altImageBroken": "Alternatyvus apibrėžtas šios medijos elemento atvaizdas nepasiekiamas"
       },
       "contentWarnings": {
-        "noAltImage": "Šio tipo medija nepalaikoma mobiliuosiuose įrenginiuose. Pateikite alternatyvų atvaizdą,kuris bus rodomas, kai mobiliuosiuose įrenginiuose bus peržiūrimas pasakojimas.",
-        "noAltImageAlt": "Šio tipo medija nepalaikoma mobiliuosiuose įrenginiuose. Mobiliojo įrenginio skirtuke pateikite alternatyvų atvaizdą, kuris bus rodomas, kai mobiliuosiuose įrenginiuose bus peržiūrimas pasakojimas."
+        "noAltImage": "Prieš bendrindami savo pasakojimą, būtinai patikrinkite jį naudodami mobiliuosius įrenginius. Jei ši medija neveikia taip, kaip tikėjotės, paspaudę mygtuką žemiau, pridėkite alternatyvų atvaizdą, kuris bus rodomas, kai jūsų pasakojimas bus peržiūrimas naudojant telefoną ar planšetę.",
+        "noAltImageUnsupported": "Ši medija neveiks naudojant mobiliuosius įrenginius. Paspaudę mygtuką žemiau, pridėkite alternatyvų atvaizdą, kuris bus rodomas, kai jūsų pasakojimas bus peržiūrimas naudojant telefoną ar planšetę.",
+        "noAltImageWarning": "Prieš bendrindami savo pasakojimą, būtinai patikrinkite jį naudodami mobiliuosius įrenginius. Jei ši medija neveikia taip, kaip tikėjotės, paspaudę mygtuką žemiau, pridėkite alternatyvų atvaizdą, kuris bus rodomas, kai jūsų pasakojimas bus peržiūrimas naudojant telefoną ar planšetę.",
+        "noAltImageAlt": "Šio tipo medija nepalaikoma arba gali tinkamai neveikti naudojant mobiliuosius įrenginius. Mobiliųjų įrenginių skirtuke pridėkite alternatyvų atvaizdą, kuris bus rodomas, kai jūsų pasakojimas bus peržiūrimas naudojant telefoną ar planšetę."
       },
       "mapIssues": {
         "fixButton": "Taisyti klaidas",

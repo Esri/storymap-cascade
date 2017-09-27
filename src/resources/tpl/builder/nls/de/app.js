@@ -68,6 +68,7 @@ define({
     },
     "immersiveViewPanel": {
       "transition": "Übergang",
+      "chooseTransition": "Übergang auswählen",
       "fade": "Überblenden",
       "fadeSlow": "Langsam überblenden",
       "swipeVertical": "Vertikal überblenden",
@@ -136,10 +137,10 @@ define({
         "previews": "Vorschau"
       },
       "altMedia": {
-        "alternativeMedia": "Alternative Medien",
-        "explanation": "Einige Medien werden nicht unterstützt oder laufen möglicherweise nicht gut auf Mobilgeräten. Verwenden Sie dieses Fenster, um ein alternatives, für mobile Geräte optimiertes Element festzulegen, das anstelle dieses Mediums bei der Anzeige Ihrer Story auf einem Telefon oder Tablet dargestellt wird.",
+        "alternativeMedia": "Alternatives Bild für mobile Geräte",
+        "explanation": "Einige Medien werden nicht unterstützt oder funktionieren möglicherweise auf mobilen Geräten nicht gut. Verwenden Sie dieses Fenster, um ein alternatives Bild festzulegen, das anstelle dieser Medien bei der Anzeige Ihrer Story auf einem Smartphone oder Tablet dargestellt wird.",
         "changeAltImage": "Bild ändern",
-        "uploadAltImage": "Bild hinzufügen"
+        "uploadAltImage": "Alternatives Bild hinzufügen"
       }
     },
     "imageGallery": {
@@ -218,12 +219,16 @@ define({
         "secureService": "Diese Karte enthält einen sicheren Layer."
       },
       "contentIssues": {
-        "noAltImage": "Medien werden auf Mobilgeräten nicht unterstützt",
+        "noAltImage": "Medien funktionieren möglicherweise auf mobilen Geräten nicht",
+        "noAltImageUnsupported": "Auf mobilen Geräten nicht unterstützte Medien",
+        "noAltImageWarning": "Medien funktionieren möglicherweise auf mobilen Geräten nicht",
         "altImageBroken": "Auf das für diese Medien definierte alternative Bild kann nicht zugegriffen werden."
       },
       "contentWarnings": {
-        "noAltImage": "Dieser Medientyp wird auf Mobilgeräten nicht unterstützt. Legen Sie ein alternatives Bild fest, das bei der Anzeige der Story auf Mobilgeräten dargestellt wird.",
-        "noAltImageAlt": "Dieser Medientyp wird auf Mobilgeräten nicht unterstützt. Legen Sie auf der Registerkarte \"Mobil\" ein alternatives Bild fest, das bei der Anzeige der Story auf Mobilgeräten dargestellt wird."
+        "noAltImage": "Sie sollten die Story vor der Freigabe auf mobilen Geräten testen. Wenn diese Medien nicht wie erwartet funktionieren, verwenden Sie die Schaltfläche unten, um ein alternatives Bild hinzuzufügen, das bei der Anzeige Ihrer Story auf einem Smartphone oder Tablet dargestellt wird.",
+        "noAltImageUnsupported": "Diese Medien funktionieren auf mobilen Geräten nicht. Verwenden Sie die Schaltfläche unten, um ein alternatives Bild hinzuzufügen, das bei der Anzeige Ihrer Story auf einem Smartphone oder Tablet dargestellt wird.",
+        "noAltImageWarning": "Sie sollten die Story vor der Freigabe auf mobilen Geräten testen. Wenn diese Medien nicht wie erwartet funktionieren, verwenden Sie die Schaltfläche unten, um ein alternatives Bild hinzuzufügen, das bei der Anzeige Ihrer Story auf einem Smartphone oder Tablet dargestellt wird.",
+        "noAltImageAlt": "Dieser Medientyp wird auf mobilen Geräten nicht unterstützt oder funktioniert auf mobilen Geräten möglicherweise nicht richtig. Legen Sie auf der Registerkarte \"Mobil\" ein alternatives Bild fest, das bei der Anzeige der Story auf einem Smartphone oder Tablet dargestellt wird."
       },
       "mapIssues": {
         "fixButton": "Probleme beheben",

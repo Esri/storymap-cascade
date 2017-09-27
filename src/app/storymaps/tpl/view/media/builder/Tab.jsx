@@ -11,6 +11,7 @@ export default class Tab {
     this._onOpen = params.onOpen;
     this.showErrors = params.showErrors;
     this.showWarnings = params.showWarnings;
+    this.mobileSupported = params.mobileSupported;
   }
 
   onChange() {

@@ -50,12 +50,12 @@ define({
             "imageAndVideo": "Koppelen met een afbeelding of video op het web"
           },
           "linkText": {
-            "imageOnly": "In het bovenstaande vak kunt u een rechtstreekse koppeling maken met foto's.",
-            "imageAndVideo1": "In het bovenstaande vak kunt u koppelingen of iframe-codes voor video's van ${YouTube} en ${Vimeo} plakken.",
-            "imageAndVideo2": "U kunt ook een rechtstreekse koppeling maken met foto's.",
-            "imageVideoWebpage1": "In het bovenstaande vak kunt u koppelingen of iframe-codes voor video's van ${YouTube} en ${Vimeo} plakken.",
-            "imageVideoWebpage2": "U kunt ook een rechtstreekse koppeling maken met foto's, webpagina's of webapplicaties.",
-            "ender": "Indien mogelijk, gebruik beveiligde (https) koppelingen."
+            "imageOnly": "In het bovenstaande vak kunt u een rechtstreekse koppeling maken met een foto.",
+            "imageAndVideo1": "In het bovenstaande vak kunt u een koppeling of iframe-code plakken voor een video op ${YouTube} of ${Vimeo}.",
+            "imageAndVideo2": "U kunt ook een rechtstreekse koppeling maken met een foto.",
+            "imageVideoWebpage1": "In het bovenstaande vak kunt u een koppeling of iframe-code plakken voor web content zoals een dynamische grafiek of video op ${YouTube} of ${Vimeo}.",
+            "imageVideoWebpage2": "U kunt ook een rechtstreekse koppeling maken met een foto, video, geluidsbestand, internetpagina of webapplicatie.",
+            "ender": "Gebruik altijd veilige (https) links. Als uw content geen https ondersteunt, voeg dan een link toe in de tekst van uw verhaal, zodat de lezers het op een nieuw browsertabblad kunnen bekijken."
           },
           "embedProtocol": {
             "embedProtocolLabel": "Pagina laden d.m.v. een beveiligde verbinding (https)",

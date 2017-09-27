@@ -51,11 +51,11 @@ define({
           },
           "linkText": {
             "imageOnly": "Pada kotak di atas, Anda dapat menautkan langsung ke foto.",
-            "imageAndVideo1": "Pada kotak di atas, Anda dapat menempel tautan atau kode iframe untuk video dari ${YouTube} dan ${Vimeo}.",
+            "imageAndVideo1": "Pada kotak di atas, Anda dapat menempel tautan atau kode iframe untuk video di ${YouTube} atau ${Vimeo}.",
             "imageAndVideo2": "Anda juga dapat menautkan langsung ke foto.",
-            "imageVideoWebpage1": "Pada kotak di atas, Anda dapat menempel tautan atau kode iframe untuk video dari ${YouTube} dan ${Vimeo}.",
-            "imageVideoWebpage2": "Anda juga dapat menautkan langsung ke foto, halaman web, atau aplikasi web.",
-            "ender": "Jika memungkinkan, gunakan tautan (https) yang aman."
+            "imageVideoWebpage1": "Pada kotak di atas, Anda dapat menempel tautan atau kode iframe untuk konten web seperti bagan dinamis atau video di ${YouTube} atau ${Vimeo}.",
+            "imageVideoWebpage2": "Anda juga dapat menautkan langsung ke foto, video, file audio, halaman web, atau aplikasi web.",
+            "ender": "Selalu gunakan tautan yang aman (https). Jika konten Anda tidak mendukung https, tambahkan tautan ke konten dalam teks cerita Anda, agar pembaca dapat melihatnya di tab browser baru."
           },
           "embedProtocol": {
             "embedProtocolLabel": "Muat halaman pada koneksi yang aman (https)",

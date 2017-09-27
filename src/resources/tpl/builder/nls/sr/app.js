@@ -68,6 +68,7 @@ define({
     },
     "immersiveViewPanel": {
       "transition": "Prelaz",
+      "chooseTransition": "Odaberite prelaz",
       "fade": "Bledi",
       "fadeSlow": "Bledi polako",
       "swipeVertical": "Vertikalno prevlačenje",
@@ -136,10 +137,10 @@ define({
         "previews": "Pregledi"
       },
       "altMedia": {
-        "alternativeMedia": "Alternativni mediji",
-        "explanation": "Neki mediji nisu podržani ili ne rade dobro na mobilnim uređajima. Koristite ovu tablu kako biste odabrali alternativne stavke koje su pogodne za mobilne uređaje i koje će se pokazivati na mestu ovih medija kada se vaša priča pregleda na telefonu ili tabletu.",
+        "alternativeMedia": "Alternativni snimak za mobilnu aplikaciju",
+        "explanation": "Neki mediji nisu podržani ili ne rade dobro na mobilnim uređajima. Koristite ovu tablu kako biste odredili snima koji će se pokazivati umesto ovih medija kada se vaša priča pregleda na telefonu ili tabletu.",
         "changeAltImage": "Promeni sliku",
-        "uploadAltImage": "Dodaj sliku"
+        "uploadAltImage": "Dodaj alternativni snimak"
       }
     },
     "imageGallery": {
@@ -218,12 +219,16 @@ define({
         "secureService": "Ova mapa sadrži siguran sloj."
       },
       "contentIssues": {
-        "noAltImage": "Mediji nisu podržani na mobilnim uređajima",
+        "noAltImage": "Mediji možda neće raditi na mobilnim uređajima",
+        "noAltImageUnsupported": "Mediji nisu podržani na mobilnim uređajima",
+        "noAltImageWarning": "Mediji možda neće raditi na mobilnim uređajima",
         "altImageBroken": "Alternativna slika definisana za ovu stavku medija nije pristupačna"
       },
       "contentWarnings": {
-        "noAltImage": "Ovaj tip medija nije podržan na mobilnim uređajima. Obezbedite alternativnu sliku koja će da bude prikazana kada se priča pregleda na mobilnim uređajima.",
-        "noAltImageAlt": "Ovaj tip medija nije podržan na mobilnim uređajima. Na mobilnoj kartici obezbedite alternativnu sliku koja će da bude prikazana kada se priča pregleda na mobilnim uređajima."
+        "noAltImage": "Obavezno testirajte svoju priču na mobilnim uređajima pre deljenja. Ako ovi mediji ne rade kao što je očekivano, koristite dugme ispod za dodavanje alternativnog snimka koji će biti prikazan kada se priča pregleda na mobilnim uređajima.",
+        "noAltImageUnsupported": "Ovi mediji neće raditi na mobilnim uređajima. Koristite dugme ispod za dodavanje alternativnog snimka koji će biti prikazan kada se priča pregleda na mobilnim uređajima.",
+        "noAltImageWarning": "Obavezno testirajte svoju priču na mobilnim uređajima pre deljenja. Ako ovi mediji ne rade kao što je očekivano, koristite dugme ispod za dodavanje alternativnog snimka koji će biti prikazan kada se priča pregleda na mobilnim uređajima.",
+        "noAltImageAlt": "Ovaj tip medija nije podržan ili možda neće dobro raditi na mobilnim uređajima. Na mobilnoj kartici obezbedite alternativnu sliku koja će da bude prikazana kada se priča pregleda na telefonu ili tabletu."
       },
       "mapIssues": {
         "fixButton": "Popravi probleme",

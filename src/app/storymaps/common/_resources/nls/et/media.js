@@ -50,12 +50,12 @@ define({
             "imageAndVideo": "Link pildile või videole veebis"
           },
           "linkText": {
-            "imageOnly": "Ülal oleval väljal saate lisada fotodele otselingi.",
-            "imageAndVideo1": "Ülal olevale väljale saate kleepida rakenduste ${YouTube} ja ${Vimeo} video lingi või IFrame’i koodi.",
-            "imageAndVideo2": "Fotode jaoks saab lisada ka otselingi.",
-            "imageVideoWebpage1": "Ülal olevale väljale saate kleepida rakenduste ${YouTube} ja ${Vimeo} video lingi või IFrame’i koodi.",
-            "imageVideoWebpage2": "Fotode, veebilehtede või veebirakenduste jaoks saab lisada ka otselingi.",
-            "ender": "Võimalusel kasutage turvalisi (https) linke."
+            "imageOnly": "Ülalolevale väljale saate fotole lisada otselingi.",
+            "imageAndVideo1": "Ülal olevale väljale saate kleepida rakenduste ${YouTube} või ${Vimeo} video lingi või IFrame’i koodi.",
+            "imageAndVideo2": "Foto jaoks saab lisada ka otselingi.",
+            "imageVideoWebpage1": "Ülalolevale väljale saate kleepida rakenduste ${YouTube} või ${Vimeo} veebisisu (nt dünaamiline diagramm või video) lingi või IFrame’i koodi.",
+            "imageVideoWebpage2": "Foto, video, helifaili, veebilehe või veebirakenduse jaoks saab lisada ka otselingi.",
+            "ender": "Kasutage alati turvalisi (https) linke. Kui sisu ei toeta https-i, lisage selle link oma loo teksti, et lugejad saaksid seda lugeda brauseri uuel vahekaardil."
           },
           "embedProtocol": {
             "embedProtocolLabel": "Lehe laadimine turvalise ühendusega (https)",

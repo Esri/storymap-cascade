@@ -50,12 +50,12 @@ define({
             "imageAndVideo": "Lien vers une image ou une vidéo sur le web"
           },
           "linkText": {
-            "imageOnly": "Dans la zone ci-dessus, vous pouvez établir un lien direct vers des photos.",
-            "imageAndVideo1": "Dans la zone ci-dessus, vous pouvez coller des liens ou un code iframe pour les vidéos de ${YouTube} et ${Vimeo}.",
-            "imageAndVideo2": "Vous pouvez également établir un lien direct vers des photos.",
-            "imageVideoWebpage1": "Dans la zone ci-dessus, vous pouvez coller des liens ou un code iframe pour les vidéos de ${YouTube} et ${Vimeo}.",
-            "imageVideoWebpage2": "Vous pouvez également établir un lien direct vers des photos, des pages web ou des applications web.",
-            "ender": "Lorsque cela est possible, utilisez des liens sécurisés (https)."
+            "imageOnly": "Dans la zone ci-dessus, vous pouvez établir un lien direct vers une photo.",
+            "imageAndVideo1": "Dans la zone ci-dessus, vous pouvez coller le lien ou le code iframe d’une vidéo sur ${YouTube} ou ${Vimeo}.",
+            "imageAndVideo2": "Vous pouvez également établir un lien direct vers une photo.",
+            "imageVideoWebpage1": "Dans la zone ci-dessus, vous pouvez coller le lien ou le code iframe d’un contenu Web comme un diagramme dynamique ou une vidéo sur ${YouTube} ou ${Vimeo}.",
+            "imageVideoWebpage2": "Vous pouvez également établir un lien direct vers une photo, un fichier audio une page Web ou une application Web.",
+            "ender": "Utilisez toujours des connexions sécurisées (https). Si votre contenu ne prend pas en charge les connexions https, ajoutez un lien dans le texte de votre récit pour permettre la consultation du contenu dans un nouvel onglet de navigateur."
           },
           "embedProtocol": {
             "embedProtocolLabel": "Charger la page via une connexion sécurisée (https)",

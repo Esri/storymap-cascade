@@ -59,14 +59,9 @@ const createNewImage = function(file) {
  * if the gif conforms to width/height/size parameters, upload to agol.
  */
 const handleGifFile = function handleGifFile(file, img) {
-  return new Promise((resolve, reject) => {
-    // do some client-side checking to make sure the gif isn't too big
-    // (we already checked file size, so just check img dimensions);
-
-    if (!validateDimensions(img)) {
-      reject({reason: 'gif dimensions'});
-      return;
-    }
+  return new Promise((resolve/*, reject*/) => {
+    // (we already checked file size, and we got complaints that the image width check was too narrow,
+    // so just go for it -- upload whatever);
 
     // no more processing available or checking needed, resolve w details
     resolve({

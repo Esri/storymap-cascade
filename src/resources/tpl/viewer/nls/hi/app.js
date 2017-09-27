@@ -77,6 +77,11 @@ define({
     "theme": {
       "lightLabel": "रोशनी",
       "darkLabel": "गहरा"
+    },
+    "autoplay": {
+      "speedFast": "तेज़",
+      "speedMedium": "मध्यम",
+      "speedSlow": "धीमी"
     }
   }
 });

@@ -68,6 +68,7 @@ define({
     },
     "immersiveViewPanel": {
       "transition": "Övergång",
+      "chooseTransition": "Välj övergång",
       "fade": "Tona",
       "fadeSlow": "Tona långsamt",
       "swipeVertical": "Svep lodrätt",
@@ -136,10 +137,10 @@ define({
         "previews": "Förhandsgranskningar"
       },
       "altMedia": {
-        "alternativeMedia": "Alternativt mediematerial",
-        "explanation": "Vissa medier stöds inte eller fungerar inte så bra på mobila enheter. Använd denna panel för att välja ett alternativt, mer mobilvänligt objekt som visas i stället för detta mediematerial när din berättelse visas på en telefon eller surfplatta.",
+        "alternativeMedia": "Alternativ bild för mobil",
+        "explanation": "Vissa mediematerial stöds inte eller fungerar inte så bra på mobila enheter. Använd denna panel för att välja en bild som ska visas i stället för detta mediematerial när din berättelse visas på en telefon eller surfplatta.",
         "changeAltImage": "Ändra bild",
-        "uploadAltImage": "Lägg till bild"
+        "uploadAltImage": "Lägg till alternativ bild"
       }
     },
     "imageGallery": {
@@ -218,12 +219,16 @@ define({
         "secureService": "Den här kartan innehåller ett säkert lager."
       },
       "contentIssues": {
-        "noAltImage": "Mediematerialet stöds inte på mobila enheter",
+        "noAltImage": "Mediematerialet kanske inte fungerar på mobil",
+        "noAltImageUnsupported": "Mediematerialet kanske inte stöds på mobil",
+        "noAltImageWarning": "Mediematerialet kanske inte fungerar på mobil",
         "altImageBroken": "Den alternativa bild som definierats för detta medieobjekt är inte tillgänglig"
       },
       "contentWarnings": {
-        "noAltImage": "Denna typ av mediematerial stöds inte på mobila enheter. Ange en alternativ bild som ska visas när berättelsen visas på mobila enheter.",
-        "noAltImageAlt": "Denna typ av mediematerial stöds inte på mobila enheter. Ange en alternativ bild på mobilfliken som ska visas när berättelsen visas på mobila enheter."
+        "noAltImage": "Se till att testa din berättelse på mobila enheter innan du delar den. Om detta mediematerial inte fungerar som förväntat, kan du använda knappen nedan för att lägga till en alternativ bild som ska visas när berättelsen visas på en telefon eller surfplatta.",
+        "noAltImageUnsupported": "Denna typ av mediematerial fungerar inte på mobila enheter. Använd knappen nedan för att lägga till en alternativ bild som ska visas när berättelsen visas på en telefon eller surfplatta.",
+        "noAltImageWarning": "Se till att testa din berättelse på mobila enheter innan du delar den. Om detta mediematerial inte fungerar som förväntat, kan du använda knappen nedan för att lägga till en alternativ bild som ska visas när berättelsen visas på en telefon eller surfplatta.",
+        "noAltImageAlt": "Denna typ av mediematerial stöds inte eller fungerar kanske inte som den ska på mobila enheter. Ange en alternativ bild som ska visas när berättelsen visas på en telefon eller surfplatta."
       },
       "mapIssues": {
         "fixButton": "Åtgärda problem",

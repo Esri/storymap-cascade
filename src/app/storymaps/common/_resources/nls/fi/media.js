@@ -50,12 +50,12 @@ define({
             "imageAndVideo": "Linkki verkossa olevaan valokuvaan tai videoon"
           },
           "linkText": {
-            "imageOnly": "Yllä olevassa ruudussa voit luoda linkin suoraan valokuviin.",
-            "imageAndVideo1": "Yllä olevassa ruudussa voit liittää ${YouTube}- ja ${Vimeo}-videoiden linkkejä tai iframe-koodeja.",
-            "imageAndVideo2": "Voit myös luoda linkkejä suoraan valokuviin.",
-            "imageVideoWebpage1": "Yllä olevassa ruudussa voit liittää ${YouTube}- ja ${Vimeo}-videoiden linkkejä tai iframe-koodeja.",
-            "imageVideoWebpage2": "Voit myös luoda linkkejä suoraan valokuviin, verkkosivuihin tai web-sovelluksiin.",
-            "ender": "Käytä mahdollisuuksien mukaan suojattuja (https) linkkejä."
+            "imageOnly": "Yllä olevassa ruudussa voit luoda linkin suoraan valokuvaan.",
+            "imageAndVideo1": "Yllä olevassa ruudussa voit liittää linkin tai iframe-koodin ${YouTube}- tai ${Vimeo}-videota varten.",
+            "imageAndVideo2": "Voit myös luoda linkin suoraan valokuvaan.",
+            "imageVideoWebpage1": "Yllä olevassa ruudussa voit liittää linkin tai iframe-koodin verkkosisältöä, kuten dynaamista kaaviota tai ${YouTube}- ja ${Vimeo}-videota varten.",
+            "imageVideoWebpage2": "Voit myös luoda linkin suoraan valokuvaan, videoon, äänitiedostoon, verkkosivuun tai web-sovellukseen.",
+            "ender": "Käytä aina suojattuja (HTTPS) linkkejä. Jos sisältösi ei tue HTTPS-protokollaa, lisää linkki tarinasi tekstiin, jotta lukijat voivat tarkastella sitä uudessa selainikkunassa."
           },
           "embedProtocol": {
             "embedProtocolLabel": "Lataa sivu suojatun yhteyden kautta (https)",

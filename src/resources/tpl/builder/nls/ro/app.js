@@ -68,6 +68,7 @@ define({
     },
     "immersiveViewPanel": {
       "transition": "Tranziţie",
+      "chooseTransition": "Alegere tranziție",
       "fade": "Estompare",
       "fadeSlow": "Estompare înceată",
       "swipeVertical": "Trageţi pe verticală",
@@ -136,10 +137,10 @@ define({
         "previews": "Examinări"
       },
       "altMedia": {
-        "alternativeMedia": "Multimedia alternativă",
-        "explanation": "Unele materiale multimedia nu sunt acceptate sau este posibil să nu funcţioneze bine pe dispozitive mobile. Folosiţi acest panou pentru a alege un element alternativ, compatibil cu mediul mobil, care să fie prezentat în locul acestui material multimedia atunci când povestea dvs. este vizualizată pe un telefon sau pe o tabletă.",
+        "alternativeMedia": "Imagine alternativă pentru dispozitiv mobil",
+        "explanation": "Unele materiale media nu sunt suportate sau este posibil să nu funcţioneze bine pe dispozitivele mobile. Utilizați acest panou pentru a specifica o imagine care urmează a se afișa în locul acestui material media atunci când povestirea dumneavoastră se vizualizează pe un telefon sau pe o tabletă.",
         "changeAltImage": "Modificare imagine",
-        "uploadAltImage": "Adăugare imagine"
+        "uploadAltImage": "Adăugare imagine alternativă"
       }
     },
     "imageGallery": {
@@ -218,12 +219,16 @@ define({
         "secureService": "Această hartă conţine un strat tematic securizat."
       },
       "contentIssues": {
-        "noAltImage": "Material multimedia neacceptat pe dispozitive mobile",
+        "noAltImage": "Este posibil ca materialul media să nu funcţioneze bine pe dispozitivele mobile",
+        "noAltImageUnsupported": "Material media nesuportat pe dispozitivele mobile",
+        "noAltImageWarning": "Este posibil ca materialul media să nu funcţioneze bine pe dispozitivele mobile",
         "altImageBroken": "Imaginea alternativă definită pentru acest element multimedia nu este accesibilă"
       },
       "contentWarnings": {
-        "noAltImage": "Acest tip de material multimedia nu este acceptat pe dispozitive mobile. Furnizaţi o imagine alternativă, care să fie afişată atunci când povestea este vizualizată pe dispozitive mobile.",
-        "noAltImageAlt": "Acest tip de material multimedia nu este acceptat pe dispozitive mobile. În fila pentru mobile, furnizaţi o imagine alternativă, care să fie afişată atunci când povestea este vizualizată pe dispozitive mobile."
+        "noAltImage": "Asigurați-vă de faptul că testați povestea dumneavoastră pe dispozitivele mobile, înainte de a o partaja. Dacă acest material media nu funcționează așa cum se așteaptă, utilizați butonul de mai jos pentru a adăuga o imagine alternativă care urmează a se afișa atunci când povestirea dumneavoastră se vizualizează pe un telefon sau pe o tabletă.",
+        "noAltImageUnsupported": "Acest tip de material media nu funcționează pe dispozitive mobile. Utilizați butonul de mai jos pentru a adăuga o imagine alternativă care urmează a se afișa atunci când povestirea dumneavoastră se vizualizează pe un telefon sau pe o tabletă.",
+        "noAltImageWarning": "Asigurați-vă de faptul că testați povestea dumneavoastră pe dispozitivele mobile, înainte de a o partaja. Dacă acest material media nu funcționează așa cum se așteaptă, utilizați butonul de mai jos pentru a adăuga o imagine alternativă care urmează a se afișa atunci când povestirea dumneavoastră se vizualizează pe un telefon sau pe o tabletă.",
+        "noAltImageAlt": "Acest tip de material media nu este suportat sau este posibil să nu funcționeze bine pe dispozitivele mobile. În fila pentru dispozitive mobile, furnizaţi o imagine alternativă, care urmează a se afișa atunci când povestirea dumneavoastră se vizualizează pe un telefon sau pe o tabletă."
       },
       "mapIssues": {
         "fixButton": "Rezolvare probleme",

@@ -77,6 +77,11 @@ define({
     "theme": {
       "lightLabel": "Светлая",
       "darkLabel": "Темная"
+    },
+    "autoplay": {
+      "speedFast": "Быстро",
+      "speedMedium": "Среднее",
+      "speedSlow": "Медленно"
     }
   }
 });

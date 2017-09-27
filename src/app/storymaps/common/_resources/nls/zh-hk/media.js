@@ -51,11 +51,11 @@ define({
           },
           "linkText": {
             "imageOnly": "在上述方塊中，您可以直接連結至相片。",
-            "imageAndVideo1": "在上述方塊中，您可以從 ${YouTube} 和 ${Vimeo} 貼上影片的連結或 iframe 代碼。",
+            "imageAndVideo1": "在上述方塊中，您可以在 ${YouTube} 和 ${Vimeo} 貼上影片的連結或 iframe 代碼。",
             "imageAndVideo2": "您也可以直接連結到相片。",
-            "imageVideoWebpage1": "在上述方塊中，您可以從 ${YouTube} 和 ${Vimeo} 貼上影片的連結或 iframe 代碼。",
-            "imageVideoWebpage2": "您也可以直接連結到相片、網頁或 Web 應用程式。",
-            "ender": "可行的話，使用安全 (https) 連結。"
+            "imageVideoWebpage1": "在上述方塊中，您可以在 ${YouTube} 和 ${Vimeo} 上，貼上 Web 內容 (如動態圖表或影片) 的連結或 iframe 代碼。",
+            "imageVideoWebpage2": "您也可以直接連結到相片、影片、音訊檔、網頁或 Web 應用程式。",
+            "ender": "一律使用安全 (https) 連結。如果內容不支援 https，請在您故事的文字中新增其連結，讓讀者能在新瀏覽器頁籤中檢視它。"
           },
           "embedProtocol": {
             "embedProtocolLabel": "透過安全連線 (https) 載入頁面",

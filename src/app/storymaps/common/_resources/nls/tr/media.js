@@ -50,12 +50,12 @@ define({
             "imageAndVideo": "Web’deki görüntüye veya videoya bağlanın"
           },
           "linkText": {
-            "imageOnly": "Yukarıdaki kutudan doğrudan fotoğraflara bağlanabilirsiniz.",
-            "imageAndVideo1": "Yukarıdaki kutudan ${YouTube} ve ${Vimeo} videoları için bağlantı veya iframe kodu yapıştırabilirsiniz.",
-            "imageAndVideo2": "Ayrıca doğrudan fotoğraflara da bağlanabilirsiniz.",
-            "imageVideoWebpage1": "Yukarıdaki kutudan ${YouTube} ve ${Vimeo} videoları için bağlantı veya iframe kodu yapıştırabilirsiniz.",
-            "imageVideoWebpage2": "Ayrıca doğrudan fotoğraflara, web sayfalarına veya web uygulamalarına da bağlanabilirsiniz.",
-            "ender": "Mümkün olduğu kadar güvenli (https) bağlantı kullanın."
+            "imageOnly": "Yukarıdaki kutudan doğrudan fotoğrafa bağlanabilirsiniz.",
+            "imageAndVideo1": "Yukarıdaki kutudan bir ${YouTube} veya ${Vimeo} videosuna bir bağlantı veya iframe kodu yapıştırabilirsiniz.",
+            "imageAndVideo2": "Ayrıca doğrudan bir fotoğrafa da bağlanabilirsiniz.",
+            "imageVideoWebpage1": "Yukarıdaki kutudan dinamik şemalar gibi web içeriği veya ${YouTube} veya ${Vimeo} videolarına bir bağlantı veya iframe kodu yapıştırabilirsiniz.",
+            "imageVideoWebpage2": "Ayrıca doğrudan bir fotoğrafa, videoya, ses dosyasına, web sayfasına veya web uygulamasına da bağlanabilirsiniz.",
+            "ender": "Her zaman güvenli (https) bağlantıları kullanın. İçeriğiniz https'yi desteklemiyorsa, okuyucuların yeni bir tarayıcı sekmesinde görüntüleyebilmesi için hikayenizin metninde ona bir bağlantı ekleyin."
           },
           "embedProtocol": {
             "embedProtocolLabel": "Sayfayı bir güvenli bağlantı (https) üzerinden yükleyin",

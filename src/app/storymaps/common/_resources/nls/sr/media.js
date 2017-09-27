@@ -50,12 +50,12 @@ define({
             "imageAndVideo": "Link za snimak ili video zapis na vebu"
           },
           "linkText": {
-            "imageOnly": "U polju iznad možete da postavite direktan link za fotografije.",
-            "imageAndVideo1": "U polju iznad možete da nalepite linkove ili iframe kôd za video snimke sa ${YouTube} i ${Vimeo}.",
-            "imageAndVideo2": "Takođe možete i da postavite direktan link za fotografije.",
-            "imageVideoWebpage1": "U polju iznad možete da nalepite linkove ili iframe kôd za video snimke sa ${YouTube} i ${Vimeo}.",
-            "imageVideoWebpage2": "Takođe možete i da postavite direktan link za fotografije, veb stranice ili veb aplikacije.",
-            "ender": "Koristite bezbedne (https) linkove kada je to moguće."
+            "imageOnly": "U polju iznad možete da postavite direktan link za fotografiju.",
+            "imageAndVideo1": "U polju iznad možete da nalepite link ili iframe kôd za video snimke sa ${YouTube} ili ${Vimeo}.",
+            "imageAndVideo2": "Takođe možete i da postavite direktan link za fotografiju.",
+            "imageVideoWebpage1": "U polju iznad možete da nalepite link ili iframe kôd za veb sadržaj, poput dinamičkih grafikona ili video snimaka sa ${YouTube} ili ${Vimeo}.",
+            "imageVideoWebpage2": "Takođe možete i da postavite direktan link za fotografiju, video snimak, audio datoteku, veb stranicu ili veb aplikaciju.",
+            "ender": "Uvek koristite bezbedne (https) linkove. Ako vaš sadržaj ne podržava https, dodajte link do njega u tekstu priče, kako bi čitaoci mogli da ga prikažu u novoj kartici pregledača."
           },
           "embedProtocol": {
             "embedProtocolLabel": "Učitaj stranicu preko bezbedne veze (https)",

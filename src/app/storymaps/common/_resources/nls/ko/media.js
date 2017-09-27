@@ -51,11 +51,11 @@ define({
           },
           "linkText": {
             "imageOnly": "위의 상자에서 직접 사진에 연결할 수 있습니다.",
-            "imageAndVideo1": "위의 상자에서 ${YouTube} 및 ${Vimeo}의 비디오에 대한 링크 또는 iframe 코드를 붙여넣을 수 있습니다.",
+            "imageAndVideo1": "위의 상자에서 ${YouTube} 또는 ${Vimeo} 비디오에 대한 링크 또는 iframe 코드를 붙여넣을 수 있습니다.",
             "imageAndVideo2": "사진에 직접 연결할 수도 있습니다.",
-            "imageVideoWebpage1": "위의 상자에서 ${YouTube} 및 ${Vimeo}의 비디오에 대한 링크 또는 iframe 코드를 붙여넣을 수 있습니다.",
-            "imageVideoWebpage2": "사진, 웹 페이지 또는 웹 응용프로그램에 직접 연결할 수도 있습니다.",
-            "ender": "가능한 경우 보안(https) 링크를 사용합니다."
+            "imageVideoWebpage1": "위의 상자에서 ${YouTube} 또는 ${Vimeo}의 동적 차트나 비디오와 같은 웹 콘텐츠에 대한 링크 또는 iframe 코드를 붙여넣을 수 있습니다.",
+            "imageVideoWebpage2": "사진, 비디오, 오디오 파일, 웹 페이지 또는 웹 앱에 직접 연결할 수도 있습니다.",
+            "ender": "항상 보안(https) 링크를 사용해야 합니다. https가 지원되지 않는 콘텐츠인 경우에는 독자가 새 브라우저 탭에서 볼 수 있도록 스토리 텍스트에 해당 링크를 추가하세요."
           },
           "embedProtocol": {
             "embedProtocolLabel": "보안 연결(https)을 통해 페이지 불러오기",

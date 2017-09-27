@@ -77,6 +77,11 @@ define({
     "theme": {
       "lightLabel": "Terang",
       "darkLabel": "Gelap"
+    },
+    "autoplay": {
+      "speedFast": "Cepat",
+      "speedMedium": "Sedang",
+      "speedSlow": "Lambat"
     }
   }
 });

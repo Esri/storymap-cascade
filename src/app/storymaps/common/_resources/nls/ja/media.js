@@ -51,11 +51,11 @@ define({
           },
           "linkText": {
             "imageOnly": "上のボックスで写真に直接リンクできます。",
-            "imageAndVideo1": "上のボックスで、${YouTube} および ${Vimeo} からビデオのリンクまたは iframe コードを貼り付けることができます。",
+            "imageAndVideo1": "上のボックスで、${YouTube} または ${Vimeo} のビデオのリンクまたは iframe コードを貼り付けることができます。",
             "imageAndVideo2": "また、写真に直接リンクすることもできます。",
-            "imageVideoWebpage1": "上のボックスで、${YouTube} および ${Vimeo} からビデオのリンクまたは iframe コードを貼り付けることができます。",
-            "imageVideoWebpage2": "また、写真、Web ページ、または Web アプリケーションに直接リンクすることもできます。",
-            "ender": "可能な場合、セキュリティで保護された (https) リンクを使用します。"
+            "imageVideoWebpage1": "上のボックスで、動的なチャートなどの Web コンテンツのリンクまたは iframe コードや、${YouTube} または ${Vimeo} のビデオのリンクまたは iframe コードを貼り付けることができます。",
+            "imageVideoWebpage2": "写真、ビデオ、音声ファイル、Web ページ、または Web アプリに直接リンクすることもできます。",
+            "ender": "必ずセキュアな (https) リンクを使用してください。コンテンツが https をサポートしていない場合、リンクをストーリーのテキスト内のコンテンツに追加し、ユーザーがブラウザーの新しいタブでコンテンツを表示できるようにします。"
           },
           "embedProtocol": {
             "embedProtocolLabel": "セキュリティで保護された接続 (https) を介してページを読み込みます",

@@ -77,6 +77,11 @@ define({
     "theme": {
       "lightLabel": "Ljus",
       "darkLabel": "Mörk"
+    },
+    "autoplay": {
+      "speedFast": "Snabb",
+      "speedMedium": "Medium",
+      "speedSlow": "Långsamt"
     }
   }
 });

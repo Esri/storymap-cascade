@@ -50,12 +50,12 @@ define({
             "imageAndVideo": "Collega a un'immagine o video sul Web"
           },
           "linkText": {
-            "imageOnly": "Nella casella precedente, è possibile collegarsi direttamente a foto.",
-            "imageAndVideo1": "Nella casella precedente, è possibile incollare collegamenti o codice iframe per video da ${YouTube} e ${Vimeo}.",
-            "imageAndVideo2": "È anche possibile collegarsi direttamente alle foto.",
-            "imageVideoWebpage1": "Nella casella precedente, è possibile incollare collegamenti o codice iframe per video da ${YouTube} e ${Vimeo}.",
-            "imageVideoWebpage2": "È anche possibile collegarsi direttamente a foto, pagine Web o applicazioni Web.",
-            "ender": "Quando possibile, utilizzare collegamenti sicuri (https)."
+            "imageOnly": "Nella casella precedente, è possibile collegarsi direttamente a una foto.",
+            "imageAndVideo1": "Nella casella precedente, è possibile incollare un collegamento o un codice iframe per un video su ${YouTube} o ${Vimeo}.",
+            "imageAndVideo2": "È anche possibile collegarsi direttamente a una foto.",
+            "imageVideoWebpage1": "Nella casella precedente, è possibile incollare un collegamento o un codice iframe per un contenuto Web come un grafico dinamico o un video su ${YouTube} o ${Vimeo}.",
+            "imageVideoWebpage2": "È anche possibile collegarsi direttamente a una foto, un video, un file audio, una pagina Web o un’applicazione Web.",
+            "ender": "Utilizzare sempre collegamenti sicuri (https). Se il contenuto non supporta https, integrare un collegamento nel testo della Story Map in modo che i lettori possano visualizzarla in una nuova scheda browser."
           },
           "embedProtocol": {
             "embedProtocolLabel": "Carica pagina su una connessione protetta (https)",

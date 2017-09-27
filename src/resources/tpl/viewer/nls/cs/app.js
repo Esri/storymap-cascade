@@ -77,6 +77,11 @@ define({
     "theme": {
       "lightLabel": "Světlý",
       "darkLabel": "Tmavý"
+    },
+    "autoplay": {
+      "speedFast": "Rychle",
+      "speedMedium": "Střední",
+      "speedSlow": "Pomalu"
     }
   }
 });

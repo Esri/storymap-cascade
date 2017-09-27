@@ -187,7 +187,8 @@ export default class WebSceneBuilder extends WebScene {
     }
     else {
       alternateTab = new BuilderConfigTabAlternateEmpty({
-        showWarnings: showWarnings
+        showWarnings: showWarnings,
+        mobileSupported: false
       });
     }
 

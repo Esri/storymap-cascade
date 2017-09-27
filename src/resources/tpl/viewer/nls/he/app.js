@@ -77,6 +77,11 @@ define({
     "theme": {
       "lightLabel": "בהיר",
       "darkLabel": "כהה"
+    },
+    "autoplay": {
+      "speedFast": "מהיר",
+      "speedMedium": "בינונית",
+      "speedSlow": "איטי"
     }
   }
 });

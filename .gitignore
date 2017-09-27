@@ -2,6 +2,9 @@ deploy/
 build/
 node_modules/
 
+# Needed for CI
+src/lib/
+
 #################
 ## Eclipse
 #################
@@ -196,7 +199,7 @@ $RECYCLE.BIN/
 # Packages
 *.egg
 *.egg-info
-#dist/
+dist/
 build/
 eggs/
 parts/

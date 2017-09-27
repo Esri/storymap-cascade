@@ -50,12 +50,12 @@ define({
             "imageAndVideo": "Link til et billede eller en video på internettet"
           },
           "linkText": {
-            "imageOnly": "I boksen ovenfor kan du linke direkte til fotos.",
-            "imageAndVideo1": "I boksen ovenfor kan du indsætte links eller iframe-kode til videoer på ${YouTube} og ${Vimeo}.",
-            "imageAndVideo2": "Du kan også linke direkte til fotos.",
-            "imageVideoWebpage1": "I boksen ovenfor kan du indsætte links eller iframe-kode til videoer på ${YouTube} og ${Vimeo}.",
-            "imageVideoWebpage2": "Du kan også linke direkte til fotos, websider eller webapplikationer.",
-            "ender": "Brug sikre (https) links, når det er muligt."
+            "imageOnly": "I boksen ovenfor kan du linke direkte til et foto.",
+            "imageAndVideo1": "I boksen ovenfor kan du indsætte et link eller en iframe-kode til en video på ${YouTube} og ${Vimeo}.",
+            "imageAndVideo2": "Du kan også linke direkte til et foto.",
+            "imageVideoWebpage1": "I boksen ovenfor kan du indsætte et link eller en iframe-kode til webindhold, såsom et dynamisk diagram eller en video på ${YouTube} og ${Vimeo}.",
+            "imageVideoWebpage2": "Du kan også linke direkte til et foto, en video, en lydfil, en webside eller en webapplikation.",
+            "ender": "Brug altid sikre (https)-links. Hvis dit indhold ikke understøtter https, skal du tilføje et link til det i din histories tekst, så læserne kan få indholdet vist i en ny browserfane."
           },
           "embedProtocol": {
             "embedProtocolLabel": "Indlæs side via en sikker forbindelse (https)",

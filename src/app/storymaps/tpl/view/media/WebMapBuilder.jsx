@@ -214,7 +214,8 @@ export default class WebMapBuilder extends WebMap {
     else {
       alternateTab = new BuilderConfigTabAlternateEmpty({
         // it's ok to not have alt media for maps, anywhere.
-        showWarnings: false
+        showWarnings: false,
+        mobileSupported: true
       });
     }
 

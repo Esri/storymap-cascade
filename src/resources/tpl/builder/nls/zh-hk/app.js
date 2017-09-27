@@ -68,6 +68,7 @@ define({
     },
     "immersiveViewPanel": {
       "transition": "轉換",
+      "chooseTransition": "選擇轉換",
       "fade": "淡化",
       "fadeSlow": "緩慢淡化",
       "swipeVertical": "垂直滑動",
@@ -136,10 +137,10 @@ define({
         "previews": "預覽"
       },
       "altMedia": {
-        "alternativeMedia": "替代媒體",
-        "explanation": "部分媒體不受支援，或可能無法在行動裝置上順暢運作。使用此面板來選擇更方便在行動時使用的替代項目，以便在手機或平板電腦上檢視您的故事時，顯示該項目來取代此媒體。",
+        "alternativeMedia": "行動的替代圖片",
+        "explanation": "部分媒體不受支援，或可能無法在行動裝置上順暢運作。使用此面板來指定圖片，以便在手機或平板電腦上檢視您的故事時，顯示該圖片來取代此媒體。",
         "changeAltImage": "變更圖片",
-        "uploadAltImage": "新增圖片"
+        "uploadAltImage": "新增替代圖片"
       }
     },
     "imageGallery": {
@@ -218,12 +219,16 @@ define({
         "secureService": "此地圖包含安全圖層。"
       },
       "contentIssues": {
-        "noAltImage": "媒體在行動裝置上不受支援",
+        "noAltImage": "媒體可能無法在行動裝置上工作",
+        "noAltImageUnsupported": "媒體不受行動裝置支援",
+        "noAltImageWarning": "媒體可能無法在行動裝置上工作",
         "altImageBroken": "無法存取為此媒體項目定義的替代圖片"
       },
       "contentWarnings": {
-        "noAltImage": "行動裝置不支援此媒體類型。提供在行動裝置上檢視故事時將顯示的替代圖片。",
-        "noAltImageAlt": "行動裝置不支援此媒體類型。在行動頁籤上，提供在行動裝置上檢視故事時將顯示的替代圖片。"
+        "noAltImage": "請務必先在行動裝置上測試您的故事再分享它。如果此媒體未依預期運作，請使用下列按鈕來新增替代圖片，以便在手機或平板電腦上檢視故事時顯示該圖片。",
+        "noAltImageUnsupported": "此媒體不會在行動裝置上運作。使用下列按鈕來新增替代圖片，以便在手機或平板電腦上檢視故事時顯示該圖片。",
+        "noAltImageWarning": "請務必先在行動裝置上測試您的故事再分享它。如果此媒體未依預期運作，請使用下列按鈕來新增替代圖片，以便在手機或平板電腦上檢視故事時顯示該圖片。",
+        "noAltImageAlt": "此媒體類型不受支援，或可能無法在行動裝置上順暢運作。在行動頁籤上，提供在手機或平板電腦上檢視故事時將顯示的替代圖片。"
       },
       "mapIssues": {
         "fixButton": "修復問題",

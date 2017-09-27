@@ -68,6 +68,7 @@ define({
     },
     "immersiveViewPanel": {
       "transition": "Overgang",
+      "chooseTransition": "Vælg Overgang",
       "fade": "Udtoning",
       "fadeSlow": "Langsom udtoning",
       "swipeVertical": "Stryg lodret",
@@ -136,10 +137,10 @@ define({
         "previews": "Forhåndsvisninger"
       },
       "altMedia": {
-        "alternativeMedia": "Alternative medier",
-        "explanation": "Nogle medier understøttes ikke eller fungerer måske ikke godt på mobile enheder. Brug dette panel til at vælge et alternativt, mere mobilvenligt element, som vil blive vist i stedet for dette medie, når din historie vises på en telefon eller tablet.",
+        "alternativeMedia": "Alternativt billede til mobil enhed",
+        "explanation": "Nogle medier understøttes ikke eller fungerer måske ikke godt på mobile enheder. Brug dette panel til at vælge et billede, som vil blive vist i stedet for disse medier, når din historie vises på en telefon eller tablet.",
         "changeAltImage": "Skift billede",
-        "uploadAltImage": "Tilføj billede"
+        "uploadAltImage": "Tilføj alternativt billede"
       }
     },
     "imageGallery": {
@@ -218,12 +219,16 @@ define({
         "secureService": "Dette kort indeholder et sikkert lag."
       },
       "contentIssues": {
-        "noAltImage": "Medier, der ikke understøttes på mobile enheder",
+        "noAltImage": "Medier fungerer muligvis ikke på mobile enheder",
+        "noAltImageUnsupported": "Medier, der ikke understøttes på mobile enheder",
+        "noAltImageWarning": "Medier fungerer muligvis ikke på mobile enheder",
         "altImageBroken": "Det alternative billede, der er defineret for dette medieelement, er ikke tilgængeligt"
       },
       "contentWarnings": {
-        "noAltImage": "Denne type medier understøttes ikke på mobile enheder. Angiv et alternativt billede, som skal vises, når historien vises på mobile enheder.",
-        "noAltImageAlt": "Denne type medier understøttes ikke på mobile enheder. På den mobile fane skal du angive et alternativt billede, som skal vises, når historien vises på mobile enheder."
+        "noAltImage": "Sørg for at teste din historie på mobile enheder, inden du begynder at dele den. Hvis disse medier ikke fungerer som forventet, skal du bruge knappen nedenfor til at tilføje et alternativt billede, som vil blive vist, når historien vises på en telefon eller tablet.",
+        "noAltImageUnsupported": "Disse medier understøttes ikke på mobile enheder. Brug knappen nedenfor til at tilføje et alternativt billede, som vil blive vist, når historien vises på en telefon eller tablet.",
+        "noAltImageWarning": "Sørg for at teste din historie på mobile enheder, inden du begynder at dele den. Hvis disse medier ikke fungerer som forventet, skal du bruge knappen nedenfor til at tilføje et alternativt billede, som vil blive vist, når historien vises på en telefon eller tablet.",
+        "noAltImageAlt": "Denne type medier understøttes ikke eller fungerer måske ikke godt på mobile enheder. På den mobile fane skal du angive et alternativt billede, som skal vises, når historien vises på en telefon eller tablet."
       },
       "mapIssues": {
         "fixButton": "Løs problemer",

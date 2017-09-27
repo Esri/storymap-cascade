@@ -50,12 +50,12 @@ define({
             "imageAndVideo": "Länka till en bild eller video på webben"
           },
           "linkText": {
-            "imageOnly": "I rutan ovan kan du länka direkt till foton.",
-            "imageAndVideo1": "I rutan ovan kan du klistra in länkar eller iframe-kod för videor från ${YouTube} och ${Vimeo}.",
-            "imageAndVideo2": "Du kan också länka direkt till foton.",
-            "imageVideoWebpage1": "I rutan ovan kan du klistra in länkar eller iframe-kod för videor från ${YouTube} och ${Vimeo}.",
-            "imageVideoWebpage2": "Du kan också länka direkt till foton, webbsidor eller webbapplikationer.",
-            "ender": "Använd säkra länkar (https) om möjligt."
+            "imageOnly": "I rutan ovan kan du länka direkt till ett foto.",
+            "imageAndVideo1": "I rutan ovan kan du klistra in en länk eller iframe-kod för en video på ${YouTube} eller ${Vimeo}.",
+            "imageAndVideo2": "Du kan också länka direkt till ett foto.",
+            "imageVideoWebpage1": "I rutan ovan kan du klistra in en länk eller iframe-kod för webbinnehåll, till exempel en dynamisk tabell eller video på ${YouTube} eller ${Vimeo}.",
+            "imageVideoWebpage2": "Du kan också länka direkt till ett foto, en video, en ljudfil, en webbsida eller en webbapp.",
+            "ender": "Använd alltid säkra (https) länkar. Om innehållet inte har stöd för https lägger du till en länk i texten för berättelsen så att läsarna kan visa den på en ny flik i webbläsaren."
           },
           "embedProtocol": {
             "embedProtocolLabel": "Läs in sidan via en säker anslutning (https)",

@@ -77,6 +77,11 @@ define({
     "theme": {
       "lightLabel": "โทนสว่าง",
       "darkLabel": "โทนมืด"
+    },
+    "autoplay": {
+      "speedFast": "เร็ว",
+      "speedMedium": "กลาง",
+      "speedSlow": "ช้า"
     }
   }
 });

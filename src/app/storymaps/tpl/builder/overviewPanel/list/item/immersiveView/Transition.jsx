@@ -4,6 +4,8 @@ import { Overlay } from 'react-bootstrap';
 
 import TransitionOverlay from './TransitionOverlay';
 
+import i18n from 'lib-build/i18n!resources/tpl/builder/nls/app';
+
 import {} from 'lib-build/less!./Transition';
 
 class Transition extends React.Component {
@@ -64,7 +66,7 @@ class Transition extends React.Component {
           <div
             ref="target"
             className={transitionClass}
-            title="Choose transition"
+            title={i18n.builder.immersiveViewPanel.chooseTransition}
             onClick={event => {
               this.togglePopover();
               event.stopPropagation();

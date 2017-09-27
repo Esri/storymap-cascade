@@ -1,6 +1,8 @@
 import viewTpl from 'lib-build/hbars!./Autoplay';
 import {} from 'lib-build/less!./Autoplay';
 
+import viewerI18n from 'lib-build/i18n!resources/tpl/viewer/nls/app';
+
 import {} from 'lib/seiyria-bootstrap-slider/dist/bootstrap-slider.min';
 import {} from 'lib-build/css!lib/seiyria-bootstrap-slider/dist/css/bootstrap-slider.min';
 
@@ -167,9 +169,9 @@ export default class Autoplay {
     }
 
     const speedLabels = {
-      '1': 'Slow',
-      '2': 'Medium',
-      '3': 'Fast'
+      '1': viewerI18n.viewer.autoplay.speedSlow,
+      '2': viewerI18n.viewer.autoplay.speedMedium,
+      '3': viewerI18n.viewer.autoplay.speedFast
     };
 
     // Slider

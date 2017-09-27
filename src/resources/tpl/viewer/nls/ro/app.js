@@ -77,6 +77,11 @@ define({
     "theme": {
       "lightLabel": "Deschis",
       "darkLabel": "Închis"
+    },
+    "autoplay": {
+      "speedFast": "Rapid",
+      "speedMedium": "Medie",
+      "speedSlow": "Lent"
     }
   }
 });

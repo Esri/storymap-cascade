@@ -50,12 +50,12 @@ define({
             "imageAndVideo": "Vínculo a una imagen o un vídeo de la Web"
           },
           "linkText": {
-            "imageOnly": "En el cuadro anterior, puede vincular directamente con fotografías.",
-            "imageAndVideo1": "En el cuadro anterior, puede pegar vínculos o código de iframe para vídeos de ${YouTube} y ${Vimeo}.",
-            "imageAndVideo2": "También puede vincular directamente con fotografías.",
-            "imageVideoWebpage1": "En el cuadro anterior, puede pegar vínculos o código de iframe para vídeos de ${YouTube} y ${Vimeo}.",
-            "imageVideoWebpage2": "También puede vincular directamente con fotografías, páginas web o aplicaciones web.",
-            "ender": "Siempre que sea posible, use vínculos seguros (https)."
+            "imageOnly": "En el cuadro anterior, puede vincular directamente con una foto.",
+            "imageAndVideo1": "En el cuadro anterior, puede pegar un vínculo o código de iframe para un vídeo de ${YouTube} o ${Vimeo}.",
+            "imageAndVideo2": "También puede vincular directamente con una fotografía.",
+            "imageVideoWebpage1": "En el cuadro anterior, puede pegar un vínculo o código de iframe para contenidos web, tales como un gráfico dinámico o un vídeo de ${YouTube} o ${Vimeo}.",
+            "imageVideoWebpage2": "También puede vincular directamente con una fotografía, vídeo, archivo de audio, página web o aplicación web.",
+            "ender": "Utilice siempre vínculos seguros (https). Si su contenido no es compatible con https, agréguele un vínculo en el texto de su historia para que los lectores puedan visualizarlo en una nueva pestaña de navegador."
           },
           "embedProtocol": {
             "embedProtocolLabel": "Cargar la página a través de una conexión segura (https)",

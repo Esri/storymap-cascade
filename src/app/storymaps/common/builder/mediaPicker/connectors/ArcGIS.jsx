@@ -35,7 +35,7 @@ var ArcGISConnector = (function() {
   var getSharingUrl = function() {
     const portal = (_portal || getPortal());
 
-    _sharingUrl = '//' + portal.portalHostname.replace(/\/$/, '') + '/sharing/rest';
+    _sharingUrl = 'https://' + portal.portalHostname.replace(/\/$/, '') + '/sharing/rest';
 
     return _sharingUrl;
   };

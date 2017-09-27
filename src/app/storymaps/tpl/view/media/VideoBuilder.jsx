@@ -163,7 +163,11 @@ export default class VideoBuilder extends Video {
     }
     else {
       alternateTab = new BuilderConfigTabAlternateEmpty({
-        showWarnings: showWarnings
+        showWarnings: showWarnings,
+        // it's supported on mobile if there aren't warnings
+        // (video is supported on mobile on narrative sections/narrative panels, unsupported in cover/immersive backgrounds)
+        // "block" placement is narrtive section and panel
+        mobileSupported: this._placement === 'block'
       });
     }
 

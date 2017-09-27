@@ -50,12 +50,12 @@ define({
             "imageAndVideo": "链接到 Web 上的图像或视频"
           },
           "linkText": {
-            "imageOnly": "在上面的框中，可直接链接到照片。",
-            "imageAndVideo1": "在上面的框中，您可以粘贴来自 ${YouTube} 和 ${Vimeo} 的视频链接或 iframe 代码。",
-            "imageAndVideo2": "您也可以直接链接到照片。",
-            "imageVideoWebpage1": "在上面的框中，您可以粘贴来自 ${YouTube} 和 ${Vimeo} 的视频链接或 iframe 代码。",
-            "imageVideoWebpage2": "您也可以直接链接到照片、Web 页面或 Web 应用程序。",
-            "ender": "适用时，请使用安全 (https) 链接。"
+            "imageOnly": "在上面的框中，您可以直接链接到照片。",
+            "imageAndVideo1": "在上面的框中，您可以粘贴来自 ${YouTube} 或 {Vimeo} 的视频链接或 iframe 代码。",
+            "imageAndVideo2": "您还可以直接链接到照片。",
+            "imageVideoWebpage1": "在上面的框中，您可以粘贴来自 web 内容的链接或 iframe 代码，如 ${YouTube} 或 ${Vimeo} 的动态图表或视频。",
+            "imageVideoWebpage2": "您也可以直接链接到照片、视频、音频文件、web 页面或 web 应用程序。",
+            "ender": "请始终使用安全(https)链接。如果您的内容不支持 https，则在故事的文本中添加一个 https 链接，以便读者可以在新的浏览器选项卡中查看。"
           },
           "embedProtocol": {
             "embedProtocolLabel": "通过安全连接 (https) 加载页面。",

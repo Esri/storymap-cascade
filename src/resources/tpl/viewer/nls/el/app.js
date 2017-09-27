@@ -77,6 +77,11 @@ define({
     "theme": {
       "lightLabel": "Ανοιχτό",
       "darkLabel": "Σκούρο"
+    },
+    "autoplay": {
+      "speedFast": "Γρήγορα",
+      "speedMedium": "Μεσαία ταχύτητα",
+      "speedSlow": "Αργά"
     }
   }
 });

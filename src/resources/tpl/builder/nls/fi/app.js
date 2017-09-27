@@ -68,6 +68,7 @@ define({
     },
     "immersiveViewPanel": {
       "transition": "Siirtymä",
+      "chooseTransition": "Valitse siirtymä",
       "fade": "Häivytä",
       "fadeSlow": "Häivytä hitaasti",
       "swipeVertical": "Pyyhkäise pystysuunnassa",
@@ -136,10 +137,10 @@ define({
         "previews": "Esikatselut"
       },
       "altMedia": {
-        "alternativeMedia": "Vaihtoehtoinen media",
-        "explanation": "Joitakin mediatyyppejä ei tueta tai ne eivät toimi hyvin mobiililaitteissa. Tässä paneelissa voit valita vaihtoehtoisen, mobiiliystävällisemmän kohteen, joka näytetään tämän median tilalla, kun tarinaasi tarkastellaan puhelimessa tai tabletilla.",
+        "alternativeMedia": "Vaihtoehtoinen kuva mobiilikäyttöä varten",
+        "explanation": "Joitakin mediatyyppejä ei tueta tai ne eivät toimi hyvin mobiililaitteissa. Tässä paneelissa voit määrittää kuvan, joka näytetään tämän median tilalla, kun tarinaasi tarkastellaan puhelimessa tai tabletilla.",
         "changeAltImage": "Vaihda kuva",
-        "uploadAltImage": "Lisää kuva"
+        "uploadAltImage": "Lisää vaihtoehtoinen kuva"
       }
     },
     "imageGallery": {
@@ -218,12 +219,16 @@ define({
         "secureService": "Tämä kartta sisältää suojatun karttatason."
       },
       "contentIssues": {
-        "noAltImage": "Mobiililaitteet eivät tue mediaa",
+        "noAltImage": "Media ei ehkä toimi mobiililaitteessa",
+        "noAltImageUnsupported": "Mobiililaite ei tue mediaa",
+        "noAltImageWarning": "Media ei ehkä toimi mobiililaitteessa",
         "altImageBroken": "Tälle medialle määritetty vaihtoehtoinen kuva ei ole käytettävissä"
       },
       "contentWarnings": {
-        "noAltImage": "Mobiililaitteet eivät tue tämäntyyppistä mediaa. Määritä vaihtoehtoinen kuva, joka näytetään, kun tarinaa tarkastellaan mobiililaitteissa.",
-        "noAltImageAlt": "Mobiililaitteet eivät tue tämäntyyppistä mediaa. Määritä mobiilivälilehdellä vaihtoehtoinen kuva, joka näytetään, kun tarinaa tarkastellaan mobiililaitteissa."
+        "noAltImage": "Testaa tarinasi mobiililaitteissa ennen sen jakamista. Jos media ei toimi odotetulla tavalla, lisää alla olevan painikkeen avulla vaihtoehtoinen kuva, joka näytetään, kun tarinaa tarkastellaan puhelimessa tai tabletilla.",
+        "noAltImageUnsupported": "Tämäntyyppinen media ei toimi mobiililaitteissa. Lisää alla olevan painikkeen avulla vaihtoehtoinen kuva, joka näytetään, kun tarinaa tarkastellaan puhelimessa tai tabletilla.",
+        "noAltImageWarning": "Testaa tarinasi mobiililaitteissa ennen sen jakamista. Jos media ei toimi odotetulla tavalla, lisää alla olevan painikkeen avulla vaihtoehtoinen kuva, joka näytetään, kun tarinaa tarkastellaan puhelimessa tai tabletilla.",
+        "noAltImageAlt": "Mobiililaitteet eivät tue tämäntyyppistä mediaa tai se ei toimi kunnolla. Määritä mobiilivälilehdellä vaihtoehtoinen kuva, joka näytetään, kun tarinaa tarkastellaan puhelimessa tai tabletilla."
       },
       "mapIssues": {
         "fixButton": "Korjaa ongelmat",

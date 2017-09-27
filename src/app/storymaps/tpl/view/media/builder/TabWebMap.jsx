@@ -314,19 +314,28 @@ export default class TabWebMap extends TabArcGIS {
       return null;
     }
 
-    var objectIdFields = $.grep(fields, field => {
-      return field.type === 'esriFieldTypeOID';
-    });
+    var objectIdFields;
 
-    if (layer && fields && !objectIdFields.length) {
+    if (layer.objectIdField) {
+      objectIdFields = [{
+        name: layer.objectIdField
+      }];
+    }
+    else {
       objectIdFields = $.grep(fields, field => {
-        return field.name === 'OBJECTID' || field.name === 'FID' || field.name === 'objectId';
+        return field.type === 'esriFieldTypeOID';
       });
 
-      if (!objectIdFields.length) {
+      if (layer && fields && !objectIdFields.length) {
         objectIdFields = $.grep(fields, field => {
-          return field.type === 'esriFieldTypeInteger';
+          return field.name === 'OBJECTID' || field.name === 'FID' || field.name === 'objectId';
         });
+
+        if (!objectIdFields.length) {
+          objectIdFields = $.grep(fields, field => {
+            return field.type === 'esriFieldTypeInteger';
+          });
+        }
       }
     }
 

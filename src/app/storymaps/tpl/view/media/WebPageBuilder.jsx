@@ -117,7 +117,8 @@ export default class WebPageBuilder extends WebPage {
     }
     else {
       alternateTab = new BuilderConfigTabAlternateEmpty({
-        showWarnings: showWarnings
+        showWarnings: showWarnings,
+        mobileSupported: true
       });
     }
 

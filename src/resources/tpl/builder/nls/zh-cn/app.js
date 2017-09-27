@@ -68,6 +68,7 @@ define({
     },
     "immersiveViewPanel": {
       "transition": "过渡",
+      "chooseTransition": "选择过渡",
       "fade": "渐变",
       "fadeSlow": "缓慢淡化",
       "swipeVertical": "垂直滑动",
@@ -136,10 +137,10 @@ define({
         "previews": "预览"
       },
       "altMedia": {
-        "alternativeMedia": "备用介质",
-        "explanation": "有些介质可能不受支持，或无法在移动设备上正常工作。使用此面板可选择更适于移动的备用项目，在手机或平板电脑上查看故事时，将使用该项目替换该介质。",
+        "alternativeMedia": "移动设备的备用图像",
+        "explanation": "有些介质可能不受支持，或无法在移动设备上正常工作。使用此面板可指定一张图像，在手机或平板电脑上查看故事时，将使用该图像替换该介质。",
         "changeAltImage": "更改图像",
-        "uploadAltImage": "添加图像"
+        "uploadAltImage": "添加备选图像"
       }
     },
     "imageGallery": {
@@ -218,12 +219,16 @@ define({
         "secureService": "此地图包含安全图层。"
       },
       "contentIssues": {
-        "noAltImage": "介质不支持移动设备",
+        "noAltImage": "介质可能无法用于移动设备",
+        "noAltImageUnsupported": "介质不支持移动设备",
+        "noAltImageWarning": "介质可能无法用于移动设备",
         "altImageBroken": "无法访问为此介质定义的备用图像"
       },
       "contentWarnings": {
-        "noAltImage": "此介质类型不支持移动设备。请提供在移动设备上查看故事时显示的备用图像。",
-        "noAltImageAlt": "此介质类型不支持移动设备。请在移动选项卡上提供在移动设备上查看故事时显示的备用图像。"
+        "noAltImage": "请确保在共享故事前先在移动设备上测试故事。如果该介质没有按预期运作，请使用以下按钮添加备选图像，在手机或平板电脑上查看故事时将显示该图像。",
+        "noAltImageUnsupported": "此介质无法用于移动设备。请使用以下按钮添加备选图像，在手机或平板电脑上查看故事时将显示该图像。",
+        "noAltImageWarning": "请确保在共享故事前先在移动设备上测试故事。如果该介质没有按预期运作，请使用以下按钮添加备选图像，在手机或平板电脑上查看故事时将显示该图像。",
+        "noAltImageAlt": "此介质类型不受支持或无法用于移动设备。请在移动选项卡上提供一张备选图像，在手机或平板电脑上查看故事时将显示该图像。"
       },
       "mapIssues": {
         "fixButton": "修复问题",

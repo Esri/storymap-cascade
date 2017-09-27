@@ -77,6 +77,11 @@ define({
     "theme": {
       "lightLabel": "Sáng",
       "darkLabel": "Đậm"
+    },
+    "autoplay": {
+      "speedFast": "Nhanh",
+      "speedMedium": "Trung bình",
+      "speedSlow": "Chậm"
     }
   }
 });

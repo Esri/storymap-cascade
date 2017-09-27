@@ -313,22 +313,29 @@ export default class Media {
     }
 
     let token = '';
+    let portalUrl = CommonHelper.getPortalURL();
+    let idCredential = IdentityManager.findCredential(portalUrl);
 
     if (app.portal && app.portal.getPortalUser()) {
       token = app.portal.getPortalUser().credential.token;
     }
-    else if (IdentityManager.findCredential(document.location.origin)) {
-      token = IdentityManager.findCredential(document.location.origin).token;
+    else if (idCredential) {
+      token = idCredential.token;
     }
     else {
       token = CommonHelper.getCookieToken();
     }
 
     if (url.match(new RegExp('\/sharing\/rest\/content\/items\/' + app.data.appItem.item.id + '\/resources\/'))) {
-      return url + '?token=' + token;
+      return this.forceHttps(url) + '?token=' + token;
     }
 
     return url;
+  }
+
+  static forceHttps(url) {
+    var urlWithoutProtocol = url.replace(/^.*?\/\//, '');
+    return 'https://' + urlWithoutProtocol;
   }
 
   static findCropDistance(item, container, offsetRatio) {

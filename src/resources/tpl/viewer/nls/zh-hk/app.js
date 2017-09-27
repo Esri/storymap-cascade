@@ -77,6 +77,11 @@ define({
     "theme": {
       "lightLabel": "淺色",
       "darkLabel": "深色"
+    },
+    "autoplay": {
+      "speedFast": "較快",
+      "speedMedium": "中",
+      "speedSlow": "較慢"
     }
   }
 });

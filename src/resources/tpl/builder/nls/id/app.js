@@ -68,6 +68,7 @@ define({
     },
     "immersiveViewPanel": {
       "transition": "Transisi",
+      "chooseTransition": "Pilih Transisi",
       "fade": "Menghilang",
       "fadeSlow": "Menghilang Perlahan",
       "swipeVertical": "Geser Vertikal",
@@ -136,10 +137,10 @@ define({
         "previews": "Pratinjau"
       },
       "altMedia": {
-        "alternativeMedia": "Media Alternatif",
-        "explanation": "Beberapa media tidak didukung atau mungkin tidak berfungsi dengan baik pada perangkat seluler. Gunakan panel ini untuk memilih item lain yang lebih ramah seluler yang akan ditampilkan menggantikan media ini saat cerita Anda dilihat di ponsel atau tablet.",
+        "alternativeMedia": "Gambar Alternatif untuk Seluler",
+        "explanation": "Beberapa media tidak didukung atau mungkin tidak berfungsi dengan baik pada perangkat seluler. Gunakan panel ini untuk menetapkan gambar yang akan ditampilkan di tempat media ini ketika cerita Anda ditampilkan di ponsel atau tablet.",
         "changeAltImage": "Ubah gambar",
-        "uploadAltImage": "Tambahkan gambar"
+        "uploadAltImage": "Tambahkan gambar alternatif"
       }
     },
     "imageGallery": {
@@ -218,12 +219,16 @@ define({
         "secureService": "Peta ini berisi layer yang aman."
       },
       "contentIssues": {
-        "noAltImage": "Media Tidak Didukung pada Perangkat Seluler",
+        "noAltImage": "Media Mungkin Tidak Berfungsi di Seluler",
+        "noAltImageUnsupported": "Media Tidak Didukung di Seluler",
+        "noAltImageWarning": "Media Mungkin Tidak Berfungsi di Seluler",
         "altImageBroken": "Gambar alternatif yang ditentukan untuk item media ini tidak dapat diakses"
       },
       "contentWarnings": {
-        "noAltImage": "Jenis media ini tidak didukung pada perangkat seluler. Sediakan gambar alternatif yang akan ditampilkan saat cerita dilihat pada perangkat seluler.",
-        "noAltImageAlt": "Jenis media ini tidak didukung pada perangkat seluler. Pada tab seluler, sediakan gambar alternatif yang akan ditampilkan saat cerita dilihat pada perangkat seluler."
+        "noAltImage": "Pastikan untuk menguji cerita Anda di perangkat seluler sebelum membagikannya. Jika media ini tidak berfungsi sebagaimana mestinya, gunakan tombol bagian bawah untuk menambahkan gambar alternatif yang akan ditampilkan ketika cerita dilihat di ponsel atau tablet.",
+        "noAltImageUnsupported": "Media ini tidak akan berfungsi sebagaimana mestinya. Gunakan tombol bagian bawah untuk menambahkan gambar alternatif yang akan ditampilkan ketika cerita dilihat di ponsel atau tablet.",
+        "noAltImageWarning": "Pastikan untuk menguji cerita Anda di perangkat seluler sebelum membagikannya. Jika media ini tidak berfungsi sebagaimana mestinya, gunakan tombol bagian bawah untuk menambahkan gambar alternatif yang akan ditampilkan ketika cerita dilihat di ponsel atau tablet.",
+        "noAltImageAlt": "Jenis media ini tidak didukung atau mungkin tidak berfungsi pada perangkat seluler. Pada tab seluler, sediakan gambar alternatif yang akan ditampilkan saat cerita dilihat pada perangkat seluler."
       },
       "mapIssues": {
         "fixButton": "Perbaiki Masalah",

@@ -77,6 +77,11 @@ define({
     "theme": {
       "lightLabel": "Šviesi",
       "darkLabel": "Tamsi"
+    },
+    "autoplay": {
+      "speedFast": "Greitai",
+      "speedMedium": "Vidutiniškas",
+      "speedSlow": "Lėtai"
     }
   }
 });

@@ -68,6 +68,7 @@ define({
     },
     "immersiveViewPanel": {
       "transition": "Transitie",
+      "chooseTransition": "Kies overgang",
       "fade": "Vervagen",
       "fadeSlow": "Langzaam vervagen",
       "swipeVertical": "Verticaal vegen",
@@ -136,10 +137,10 @@ define({
         "previews": "Voorbeelden"
       },
       "altMedia": {
-        "alternativeMedia": "Alternatieve media",
-        "explanation": "Bepaalde media wordt niet ondersteund of werkt mogelijk niet goed op mobiele apparaten. Gebruik dit paneel om een alternatief, meer mobielvriendelijk alternatief te kiezen dat in plaats van deze media getoond zal worden als uw verhaal op een telefoon of tablet weergegeven wordt.",
+        "alternativeMedia": "Alternatieve afbeelding voor mobiel",
+        "explanation": "Bepaalde media worden niet ondersteund of werken mogelijk niet goed op mobiele apparaten. Gebruik dit paneel om een afbeelding te kiezen die in plaats van deze media getoond zal worden als uw verhaal op een telefoon of tablet weergegeven wordt.",
         "changeAltImage": "Afbeelding wijzigen",
-        "uploadAltImage": "Afbeelding toevoegen"
+        "uploadAltImage": "Andere afbeelding toevoegen"
       }
     },
     "imageGallery": {
@@ -203,7 +204,7 @@ define({
         "webmap": "kaart",
         "webscene": "scene",
         "video": "video",
-        "content": "content",
+        "content": "inhoud",
         "webpage": "webpagina"
       },
       "placeholders": {
@@ -218,12 +219,16 @@ define({
         "secureService": "Deze kaart bevat een beveiligde laag."
       },
       "contentIssues": {
-        "noAltImage": "Media niet ondersteund op mobiele apparaten",
+        "noAltImage": "Media werken mogelijk niet op mobiele apparaten",
+        "noAltImageUnsupported": "Media niet ondersteund op mobiele apparaten",
+        "noAltImageWarning": "Media werken mogelijk niet op mobiele apparaten",
         "altImageBroken": "De alternatieve afbeelding die gedefinieerd is voor dit media-item is niet toegankelijk"
       },
       "contentWarnings": {
-        "noAltImage": "Dit type van media wordt niet ondersteund op mobiele apparaten. Selecteer een alternatieve afbeelding die getoond zal worden als het verhaal wordt weergegeven op mobiele apparaten.",
-        "noAltImageAlt": "Dit type van media wordt niet ondersteund op mobiele apparaten. Selecteer in het tabblad Mobiel een alternatieve afbeelding die getoond zal worden als het verhaal wordt weergegeven op mobiele apparaten."
+        "noAltImage": "Zorg ervoor dat u uw verhaal op mobiele apparaten test voordat u het deelt. Als deze media niet werken zoals verwacht, gebruik dan de onderstaande knop om een ​​alternatieve afbeelding toe te voegen die wordt weergegeven wanneer het verhaal wordt bekeken op een telefoon of tablet.",
+        "noAltImageUnsupported": "Deze media werken niet op mobiele apparaten. Gebruik de onderstaande knop om een alternatieve afbeelding toe te voegen die getoond zal worden als het verhaal wordt weergegeven op een telefoon of tablet.",
+        "noAltImageWarning": "Zorg ervoor dat u uw verhaal op mobiele apparaten test voordat u het deelt. Als deze media niet werken zoals verwacht, gebruik dan de onderstaande knop om een ​​alternatieve afbeelding toe te voegen die wordt weergegeven wanneer het verhaal wordt bekeken op een telefoon of tablet.",
+        "noAltImageAlt": "Dit type media wordt niet ondersteund of werkt mogelijk niet goed op mobiele apparaten. Selecteer in het tabblad Mobiel een alternatieve afbeelding die getoond zal worden als het verhaal wordt weergegeven op een telefoon of tablet."
       },
       "mapIssues": {
         "fixButton": "Problemen oplossen",

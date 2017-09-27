@@ -68,6 +68,7 @@ define({
     },
     "immersiveViewPanel": {
       "transition": "Üleminek",
+      "chooseTransition": "Vali üleminek",
       "fade": "Hajutus",
       "fadeSlow": "Aeglane hajutamine",
       "swipeVertical": "Vertikaalne rullimine",
@@ -136,10 +137,10 @@ define({
         "previews": "Eelvaated"
       },
       "altMedia": {
-        "alternativeMedia": "Alternatiivne meedia",
-        "explanation": "Teatud meedia ei pruugi olla toetatud või ei pruugi töötada hästi mobiilsideseadmetes. Kasutage seda paneeli alternatiivsete, mobiilsideseadmetele paremini sobivate üksuste valimiseks, mida näidatakse selle meedia asemel, kui teie lugu vaadatakse mobiiltelefonis või tahvelarvutis.",
+        "alternativeMedia": "Mobiiliseadme alternatiivne pilt",
+        "explanation": "Teatud meediumisisu ei pruugi olla toetatud või ei pruugi töötada hästi mobiilsideseadmetes. Kasutage seda paneeli selle pildi määratlemiseks, mis kuvataks selle meediumisisu asemel, kui teie lugu vaadatakse mobiiltelefonis või tahvelarvutis.",
         "changeAltImage": "Muuda pilt",
-        "uploadAltImage": "Lisa pilt"
+        "uploadAltImage": "Lisa alternatiivne pilt"
       }
     },
     "imageGallery": {
@@ -218,12 +219,16 @@ define({
         "secureService": "See kaart sisaldab kaitstud kihti."
       },
       "contentIssues": {
-        "noAltImage": "Meedia pole mobiilsidega seadmetes toetatud",
+        "noAltImage": "Meediumisisu ei pruugi mobiilis töötada",
+        "noAltImageUnsupported": "Meediumisisu ei toetata mobiilis",
+        "noAltImageWarning": "Meediumisisu ei pruugi mobiilis töötada",
         "altImageBroken": "Selle meediaüksuse jaoks määratud alternatiivne pilt pole ligipääsetav"
       },
       "contentWarnings": {
-        "noAltImage": "Seda tüüpi meedia pole mobiilsidega seadmetes toetatud. Määrake alternatiivne pilt, mida näidatakse, kui lugu kuvatakse mobiilsidega seadmetes.",
-        "noAltImageAlt": "Seda tüüpi meedia pole mobiilsidega seadmetes toetatud. Määrake vahekaardil Mobiil alternatiivne pilt, mida näidatakse, kui lugu kuvatakse mobiilsidega seadmetes."
+        "noAltImage": "Enne jagamist kontrollige oma lugu kindlasti mobiilsideseadmes. Kui see meediumisisu ei tööta eeldatult, kasutage allolevat nuppu alternatiivse pildi lisamiseks, mis kuvatakse telefonis või tahvelarvutis loo vaatamisel.",
+        "noAltImageUnsupported": "Mobiilsideseadmed ei toeta seda meediumisisu. Määrake vahekaardil Mobiil alternatiivne pilt, mida näidatakse, kui lugu kuvatakse mobiilsidega seadmetes. Kasutage allolevat nuppu alternatiivse pildi lisamiseks, mis kuvatakse telefonis või tahvelarvutis loo vaatamisel.",
+        "noAltImageWarning": "Enne jagamist kontrollige oma lugu kindlasti mobiilsideseadmes. Kui see meediumisisu ei tööta eeldatult, kasutage allolevat nuppu alternatiivse pildi lisamiseks, mis kuvatakse telefonis või tahvelarvutis loo vaatamisel.",
+        "noAltImageAlt": "Seda tüüpi meediumisisu ei pruugi olla toetatud või ei pruugi töötada hästi mobiilsideseadmetes. Sisestage vahekaardil Mobiil alternatiivne pilt, mis kuvataks selle meediumisisu asemel, kui teie lugu vaadatakse mobiiltelefonis või tahvelarvutis."
       },
       "mapIssues": {
         "fixButton": "Teemade lahendamine",

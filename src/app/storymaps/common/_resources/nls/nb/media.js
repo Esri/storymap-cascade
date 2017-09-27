@@ -50,12 +50,12 @@ define({
             "imageAndVideo": "Opprett kobling til et bilde eller en video på nettet"
           },
           "linkText": {
-            "imageOnly": "I boksen over kan du opprette en kobling direkte til bilder.",
-            "imageAndVideo1": "I boksen over kan du lime inn koblinger eller iframe-kode for videoer fra ${YouTube} og ${Vimeo}.",
-            "imageAndVideo2": "Du kan også opprette en kobling direkte til bilder.",
-            "imageVideoWebpage1": "I boksen over kan du lime inn koblinger eller iframe-kode for videoer fra ${YouTube} og ${Vimeo}.",
-            "imageVideoWebpage2": "Du kan også opprette en kobling direkte til bilder, nettsider eller nettprogrammer.",
-            "ender": "Bruk sikre koblinger (https) når det er mulig."
+            "imageOnly": "I boksen over kan du opprette en kobling direkte til et bilde.",
+            "imageAndVideo1": "I boksen over kan du lime inn en kobling eller iframe-kode for en video fra ${YouTube} eller ${Vimeo}.",
+            "imageAndVideo2": "Du kan også opprette en kobling direkte til et bilde.",
+            "imageVideoWebpage1": "I boksen over kan du lime inn en kobling eller iframe-kode for webinnhold, f.eks. et dynamisk diagram eller en video på ${YouTube} eller ${Vimeo}.",
+            "imageVideoWebpage2": "Du kan også opprette en kobling direkte til et bilde, en video, lydfil, webside eller en webapplikasjon.",
+            "ender": "Bruk alltid sikre (https)-koblinger. Hvis innholdet ditt ikke støtter https, legger du til en kobling til det i teksten i historien din, slik at leserne kan se det i en ny webleserfane."
           },
           "embedProtocol": {
             "embedProtocolLabel": "Last inn siden med en sikker tilkobling (https)",

@@ -68,6 +68,7 @@ define({
     },
     "immersiveViewPanel": {
       "transition": "Transição",
+      "chooseTransition": "Selecionar Transição",
       "fade": "Desvanecer",
       "fadeSlow": "Desvanecer Lento",
       "swipeVertical": "Deslizar Vertical",
@@ -136,10 +137,10 @@ define({
         "previews": "Pré-visualizações"
       },
       "altMedia": {
-        "alternativeMedia": "Media Alternativos",
-        "explanation": "Alguns media não são suportados ou podem não funcionar bem em dispositivos móveis. Recorra a este painel para selecionar um item alternativo, mais adequado a ambientes móveis, que será exibido ao invés deste media quando a sua história é visualizada num telefone ou num tablet.",
+        "alternativeMedia": "Alternar imagem para Dispositivo Móvel",
+        "explanation": "Alguns media não são suportados ou poderão não funcionar corretamente em dispositivos móveis. Utilize este painel para especificar uma imagem que será exibida em substituição destes media quando a sua história é visualizada num telefone ou tablet.",
         "changeAltImage": "Alterar imagem",
-        "uploadAltImage": "Adicionar imagem"
+        "uploadAltImage": "Adicionar imagem alternativa"
       }
     },
     "imageGallery": {
@@ -218,12 +219,16 @@ define({
         "secureService": "Este mapa contém uma camada segura."
       },
       "contentIssues": {
-        "noAltImage": "Media Não Suportado em Dispositivos Móveis",
+        "noAltImage": "Media Poderá Não Funcionar em Dispositivo Móvel",
+        "noAltImageUnsupported": "Media Não Suportado em Dispositivo Móvel",
+        "noAltImageWarning": "Media Poderá Não Funcionar em Dispositivo Móvel",
         "altImageBroken": "A imagem alternativa definida para este item de media não se encontra acessível."
       },
       "contentWarnings": {
-        "noAltImage": "Este tipo de media não é suportado em dispositivos móveis. Introduza uma imagem alternativa que será exibida quando a história for visualizada em dispositivos móveis.",
-        "noAltImageAlt": "Este tipo de media não é suportado em dispositivos móveis. No separador móvel, introduza uma imagem alternativa que será exibida quando a história for visualizada em dispositivos móveis."
+        "noAltImage": "Assegure-se de testar as sua história em dispositivos móveis antes de partilhá-la. Caso este media não funcione como seria de esperar, recorra ao botão abaixo para adicionar uma imagem alternativa que será exibida quando a sua história é visualizada num telefone ou num tablet.",
+        "noAltImageUnsupported": "Este media não irá funcionar em dispositivos móveis. Recorra ao botão abaixo para adicionar uma imagem alternativa que será exibida quando a sua história é visualizada num telefone ou num tablet.",
+        "noAltImageWarning": "Assegure-se de testar as sua história em dispositivos móveis antes de partilhá-la. Caso este media não funcione como seria de esperar, recorra ao botão abaixo para adicionar uma imagem alternativa que será exibida quando a sua história é visualizada num telefone ou num tablet.",
+        "noAltImageAlt": "Este tipo de media não é suportado ou poderá não funcionar corretamente em dispositivos móveis. No separador móvel, adicione uma imagem alternativa que será exibida quando a sua história é visualizada num telefone ou num tablet."
       },
       "mapIssues": {
         "fixButton": "Corrigir Problemas",

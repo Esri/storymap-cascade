@@ -50,12 +50,12 @@ define({
             "imageAndVideo": "Nuoroda į atvaizdą arba vaizdo įrašą internete"
           },
           "linkText": {
-            "imageOnly": "Aukščiau pateiktame laukelyje galite tiesiogiai nurodyti nuotraukas.",
-            "imageAndVideo1": "Aukščiau pateiktame laukelyje galite įklijuoti nuorodas arba vaizdo įrašų iš ${YouTube} ir ${Vimeo} „iframe“ kodą.",
-            "imageAndVideo2": "Galite tiesiogiai nurodyti nuotraukas.",
-            "imageVideoWebpage1": "Aukščiau pateiktame laukelyje galite įklijuoti nuorodas arba vaizdo įrašų iš ${YouTube} ir ${Vimeo} „iframe“ kodą.",
-            "imageVideoWebpage2": "Galite tiesiogiai nurodyti nuotraukas, tinklalapius arba internetines aplikacijas.",
-            "ender": "Kur galima, naudokite saugias (https) nuorodas."
+            "imageOnly": "Aukščiau pateiktame laukelyje galite nurodyti tiesioginę nuorodą į nuotrauką.",
+            "imageAndVideo1": "Aukščiau pateiktame laukelyje galite įklijuoti nuorodą arba vaizdo įrašo iframe kodą svetainėse ${YouTube} ar ${Vimeo}.",
+            "imageAndVideo2": "Taip pat galite pateikti tiesioginę nuorodą į nuotrauką.",
+            "imageVideoWebpage1": "Aukščiau pateiktame laukelyje galite įklijuoti nuorodą arba internetinio turinio pvz., dinaminės diagramos ar vaizdo įrašo iframe kodą svetainėse ${YouTube} ar ${Vimeo}.",
+            "imageVideoWebpage2": "Taip pat galite pateikti tiesioginę nuorodą į nuotrauką, vaizdo įrašą, garso failą, svetainę ar internetinę aplikaciją.",
+            "ender": "Visada naudokite saugias (https) nuorodas. Jei jūsų turinys nepalaiko https, nukreipiančią nuorodą įtraukite į savo pasakojimo tekstą, kad skaitytojai galėtų peržiūrėti jį naujame naršyklės lange."
           },
           "embedProtocol": {
             "embedProtocolLabel": "Įkelkite puslapį naudojant saugų ryšį (https)",

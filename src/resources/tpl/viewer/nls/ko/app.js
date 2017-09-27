@@ -77,6 +77,11 @@ define({
     "theme": {
       "lightLabel": "밝게",
       "darkLabel": "어둡게"
+    },
+    "autoplay": {
+      "speedFast": "빠르게",
+      "speedMedium": "중형",
+      "speedSlow": "느리게"
     }
   }
 });

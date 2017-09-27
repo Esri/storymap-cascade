@@ -68,6 +68,7 @@ define({
     },
     "immersiveViewPanel": {
       "transition": "Chuyển tiếp",
+      "chooseTransition": "Chọn điểm chuyển tiếp",
       "fade": "Mờ",
       "fadeSlow": "Mờ Dần",
       "swipeVertical": "Trượt Dọc",
@@ -136,10 +137,10 @@ define({
         "previews": "Xem trước"
       },
       "altMedia": {
-        "alternativeMedia": "Truyền thông khác",
-        "explanation": "Một số truyền thông không được hỗ trợ hoặc có thể không hoạt động tốt trên thiết bị di động. Sử dụng bảng này để chọn một truyền thông khác, mục dễ dùng cho di động hơn sẽ được hiển thị ở chỗ truyền thông này khi câu chuyện của bạn được xem trên điện thoại hoặc máy tính bảng.",
+        "alternativeMedia": "Hình ảnh thay thế cho thiết bị di động",
+        "explanation": "Một số phương tiện không được hỗ trợ hoặc có thể không hoạt động tốt trên thiết bị di động. Sử dụng bảng thông tin này để xác định hình ảnh sẽ được hiển thị khi câu chuyện của bạn được xem trên điện thoại di động hoặc máy tính bảng.",
         "changeAltImage": "Thay đổi hình ảnh",
-        "uploadAltImage": "Thêm hình ảnh"
+        "uploadAltImage": "Thêm vào hình ảnh thay thế"
       }
     },
     "imageGallery": {
@@ -218,12 +219,16 @@ define({
         "secureService": "Bản đồ này chứa lớp bảo mật."
       },
       "contentIssues": {
-        "noAltImage": "Truyền thông không được hỗ trợ trên thiết bị di động",
+        "noAltImage": "Phương tiện có thể không hoạt động được trên thiết bị di động",
+        "noAltImageUnsupported": "Phương tiện không được hỗ trợ trên thiết bị di động",
+        "noAltImageWarning": "Phương tiện có thể không hoạt động trên thiết bị di động",
         "altImageBroken": "Hình ảnh khác được xác định cho mục truyền thông này không thể truy cập được"
       },
       "contentWarnings": {
-        "noAltImage": "Loại truyền thông này không được hỗ trợ trên thiết bị di động. Cung cấp một hình khác sẽ được hiển thị khi câu chuyện được xem trên thiết bị di động.",
-        "noAltImageAlt": "Loại truyền thông này không được hỗ trợ trên thiết bị di động. Trong tab di động, cung cấp một hình ảnh khác sẽ được hiển thị khi câu chuyện được xem trên thiết bị di động."
+        "noAltImage": "Hãy nhớ kiểm tra câu chuyện của bạn trên thiết bị di động trước khi chia sẻ. Nếu phương tiện này không hoạt động theo mong đợi, hãy sử dụng nút dưới đây để thêm vào một hình ảnh sẽ được hiển thị thay thế khi câu chuyện được xem trên điện thoại hoặc máy tính bảng.",
+        "noAltImageUnsupported": "Phương tiện này sẽ không hoạt động trên thiết bị di động. Sử dụng nút dưới đây để thêm vào hình ảnh thay thế sẽ được hiển thị khi câu chuyện được xem trên điện thoại hoặc máy tính bảng.",
+        "noAltImageWarning": "Hãy nhớ kiểm tra câu chuyện của bạn trên thiết bị di động trước khi chia sẻ. Nếu phương tiện này không hoạt động theo như mong đợi, hãy sử dụng nút dưới đây để thêm vào hình ảnh thay thế sẽ được hiển thị khi câu chuyện của bạn được xem trên điện thoại hoặc máy tính bảng.",
+        "noAltImageAlt": "Loại phương tiện này không được hỗ trợ hoặc có thể không hoạt động tốt trên thiết bị di động. Trong tab di động, cung cấp hình ảnh thay thế sẽ được hiển thị khi câu chuyện của bạn được xem trên điện thoại hoặc máy tính bảng."
       },
       "mapIssues": {
         "fixButton": "Khắc phục Vấn đề",

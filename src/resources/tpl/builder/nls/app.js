@@ -72,6 +72,7 @@ define({
       },
       immersiveViewPanel: {
         transition: "Transition",
+        chooseTransition: "Choose Transition",
         fade: "Fade",
         fadeSlow: "Fade Slow",
         swipeVertical: "Swipe Vertical",
@@ -140,10 +141,10 @@ define({
           previews: "Previews"
         },
         altMedia: {
-          alternativeMedia: "Alternate Media",
-          explanation: "Some media are not supported or may not work well on mobile devices. Use this panel to choose an alternate, more mobile-friendly item that will be shown in place of this media when your story is viewed on a phone or tablet.",
+          alternativeMedia: "Alternate Image for Mobile",
+          explanation: "Some media are not supported or may not work well on mobile devices. Use this panel to specify an image that will be shown in place of this media when your story is viewed on a phone or tablet.",
           changeAltImage: "Change image",
-          uploadAltImage: "Add image"
+          uploadAltImage: "Add alternate image"
         }
       },
       imageGallery: {
@@ -222,12 +223,16 @@ define({
           secureService: "This map contains a secure layer."
         },
         contentIssues: {
-          noAltImage: "Media Not Supported on Mobile Devices",
+          noAltImage: "Media May Not Work on Mobile",
+          noAltImageUnsupported: "Media Not Supported on Mobile",
+          noAltImageWarning: "Media May Not Work on Mobile",
           altImageBroken: "The alternate image defined for this media item is not accessible"
         },
         contentWarnings: {
-          noAltImage: "This type of media is not supported on mobile devices. Provide an alternate image that will be shown when the story is viewed on mobile devices.",
-          noAltImageAlt: "This type of media is not supported on mobile devices. On the mobile tab, provide an alternate image that will be shown when the story is viewed on mobile devices."
+          noAltImage: "Be sure to test your story on mobile devices before sharing it. If this media does not work as expected, use the button below to add an alternate image that will be shown when the story is viewed on a phone or tablet.",
+          noAltImageUnsupported: "This media will not work on mobile devices. Use the button below to add an alternate image that will be shown when the story is viewed on a phone or tablet.",
+          noAltImageWarning: "Be sure to test your story on mobile devices before sharing it. If this media does not work as expected, use the button below to add an alternate image that will be shown when the story is viewed on a phone or tablet.",
+          noAltImageAlt: "This type of media is not supported or may not work well on mobile devices. On the mobile tab, provide an alternate image that will be shown when the story is viewed on a phone or tablet."
         },
         mapIssues: {
           fixButton: "Fix Issues",

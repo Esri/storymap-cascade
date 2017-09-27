@@ -77,6 +77,11 @@ define({
     "theme": {
       "lightLabel": "Hele",
       "darkLabel": "Tume"
+    },
+    "autoplay": {
+      "speedFast": "Kiire",
+      "speedMedium": "Keskmine",
+      "speedSlow": "Aeglane"
     }
   }
 });

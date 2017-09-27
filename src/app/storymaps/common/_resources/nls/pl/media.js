@@ -50,12 +50,12 @@ define({
             "imageAndVideo": "Łącze do zdjęcia lub filmu w Internecie"
           },
           "linkText": {
-            "imageOnly": "W powyższym polu możesz utworzyć łącza bezpośrednio do zdjęć.",
-            "imageAndVideo1": "W powyższym polu możesz wkleić łącza lub kod ramki iFrame dla filmów z serwisów ${YouTube} i ${Vimeo}.",
-            "imageAndVideo2": "Możesz także utworzyć łącza bezpośrednio do zdjęć.",
-            "imageVideoWebpage1": "W powyższym polu możesz wkleić łącza lub kod ramki iFrame dla filmów z serwisów ${YouTube} i ${Vimeo}.",
-            "imageVideoWebpage2": "Możesz także utworzyć łącza bezpośrednio do zdjęć, stron internetowych lub aplikacji internetowych.",
-            "ender": "Jeśli to możliwe, używaj bezpiecznych łączy (https)."
+            "imageOnly": "W powyższym polu można wstawić bezpośrednie łącze do zdjęcia.",
+            "imageAndVideo1": "W powyższym polu można wkleić łącze lub kod ramki iframe filmu w witrynie ${YouTube} lub ${Vimeo}.",
+            "imageAndVideo2": "Można także wstawić bezpośrednie łącze do zdjęcia.",
+            "imageVideoWebpage1": "W powyższym polu można wkleić łącze lub kod ramki iframe zasobu internetowego, takiego jak diagram dynamiczny lub film w witrynie ${YouTube} lub ${Vimeo}.",
+            "imageVideoWebpage2": "Można także wstawić bezpośrednie łącze do zdjęcia, filmu, pliku dźwiękowego, strony internetowej lub aplikacji internetowej.",
+            "ender": "Zawsze korzystaj z bezpiecznych łączy (https). Jeśli dany zasób nie obsługuje protokołu https, dodaj łącze do zasobu w tekście narracji, aby czytelnicy mogli wyświetlić go na nowej karcie przeglądarki."
           },
           "embedProtocol": {
             "embedProtocolLabel": "Wczytaj stronę przez bezpieczne połączenie (https)",

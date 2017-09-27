@@ -50,12 +50,12 @@ define({
             "imageAndVideo": "Liên kết đến hình ảnh hoặc video trên trang web"
           },
           "linkText": {
-            "imageOnly": "Trong ô nói trên, bạn có thể liên kết trực tiếp đến hình ảnh.",
-            "imageAndVideo1": "Trong ô nói trên, bạn có thể dán đường liên kết hoặc mã iframe cho video từ ${YouTube} và ${Vimeo}.",
+            "imageOnly": "Trong hộp thoại nói trên, bạn có thể liên kết trực tiếp đến hình ảnh.",
+            "imageAndVideo1": "Trong hộp thoại nói trên, bạn có thể dán đường dẫn hoặc mã iframe cho video trên ${YouTube} hoặc ${Vimeo}.",
             "imageAndVideo2": "Bạn cũng có thể liên kết trực tiếp đến hình ảnh.",
-            "imageVideoWebpage1": "Trong ô nói trên, bạn có thể dán đường liên kết hoặc mã iframe cho video từ ${YouTube} và ${Vimeo}.",
-            "imageVideoWebpage2": "Bạn cũng có thể liên kết trực tiếp đến hình ảnh, trang web, hoặc ứng dụng web.",
-            "ender": "Sử dụng đường liên kết an toàn (https) nếu có thể."
+            "imageVideoWebpage1": "Trong hộp thoại nói trên, bạn có thể dán đường dẫn hoặc mã iframe cho nội dung web như biểu đồ động hoặc video trên ${YouTube} hoặc ${Vimeo}.",
+            "imageVideoWebpage2": "Bạn cũng có thể liên kết trực tiếp đến hình ảnh, video, tập tin âm thanh, trang web, hoặc ứng dụng web.",
+            "ender": "Luôn sử dụng các đường liên kết an toàn (https). Nếu nội dung của bạn không hỗ trợ https, thêm đường liên kết vào đó trong nội dung câu chuyện của bạn để người đọc có thể xem trong tab trình duyệt mới."
           },
           "embedProtocol": {
             "embedProtocolLabel": "Tải trang qua kết nối bảo mật (https)",

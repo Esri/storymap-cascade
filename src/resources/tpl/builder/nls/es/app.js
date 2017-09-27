@@ -68,6 +68,7 @@ define({
     },
     "immersiveViewPanel": {
       "transition": "Transición",
+      "chooseTransition": "Elegir transición",
       "fade": "Fundido",
       "fadeSlow": "Fundido lento",
       "swipeVertical": "Barrido vertical",
@@ -136,10 +137,10 @@ define({
         "previews": "Vistas previas"
       },
       "altMedia": {
-        "alternativeMedia": "Alternar contenido multimedia",
-        "explanation": "Algunos contenidos multimedia no se admiten o pueden no funcionar bien en los dispositivos móviles. Use este panel para elegir un elemento alternativo que se adapte mejor a los dispositivos móviles y que se mostrará en lugar de este contenido multimedia cuando la historia se visualice en un teléfono o en una tablet.",
+        "alternativeMedia": "Imagen alternativa para móvil",
+        "explanation": "Algunos contenidos multimedia no son compatibles o pueden no funcionar bien en los dispositivos móviles. Use este panel para especificar una imagen que se mostrará en lugar de este contenido multimedia cuando la historia se visualice en un teléfono o tablet.",
         "changeAltImage": "Cambiar imagen",
-        "uploadAltImage": "Agregar imagen"
+        "uploadAltImage": "Agregar imagen alternativa"
       }
     },
     "imageGallery": {
@@ -218,12 +219,16 @@ define({
         "secureService": "Este mapa contiene una capa segura."
       },
       "contentIssues": {
-        "noAltImage": "El contenido multimedia no se admite en los dispositivos móviles",
+        "noAltImage": "El contenido multimedia podría no funcionar en un móvil",
+        "noAltImageUnsupported": "Contenido multimedia no compatible en un móvil",
+        "noAltImageWarning": "El contenido multimedia podría no funcionar en un móvil",
         "altImageBroken": "La imagen alternativa definida para este elemento multimedia no está disponible"
       },
       "contentWarnings": {
-        "noAltImage": "Este tipo de contenido multimedia no se admite en los dispositivos móviles. Proporcione una imagen alternativa que se mostrará cuando la historia se visualice en dispositivos móviles.",
-        "noAltImageAlt": "Este tipo de contenido multimedia no se admite en los dispositivos móviles. En la pestaña Móvil, proporcione una imagen alternativa que se mostrará cuando la historia se visualice en dispositivos móviles."
+        "noAltImage": "Asegúrese de probarlo en dispositivos móviles antes de compartirlo. Si este contenido multimedia no funciona de la forma esperada, utilice el botón que aparece a continuación para agregar una imagen alternativa que se visualizará cuando la historia se visualice en un teléfono o tablet.",
+        "noAltImageUnsupported": "El contenido multimedia no funcionará en dispositivos móviles, utilice el botón que aparece a continuación para agregar una imagen alternativa que se mostrará cuando la historia se visualice en un teléfono o tablet.",
+        "noAltImageWarning": "Asegúrese de probarlo en dispositivos móviles antes de compartirlo. Si este contenido multimedia no funciona de la forma esperada, utilice el botón que aparece a continuación para agregar una imagen alternativa que se visualizará cuando la historia se visualice en un teléfono o tablet.",
+        "noAltImageAlt": "Este tipo de contenido multimedia no es compatible o podría no funcionar bien en los dispositivos móviles. En la pestaña Móvil, proporcione una imagen alternativa que se mostrará cuando la historia se visualice en un teléfono o tablet."
       },
       "mapIssues": {
         "fixButton": "Solucionar problemas",

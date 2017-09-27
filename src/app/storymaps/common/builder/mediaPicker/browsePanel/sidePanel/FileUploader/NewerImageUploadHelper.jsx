@@ -41,11 +41,8 @@ const handleGifFile = function(file, isSingle) {
     // we make it into an Image object and wait for it to load...
 
     createNewImage(file).then((img) => {
-      // now we have the dimensions, so we can validate them client-side.
-      if (!validateDimensions(img)) {
-        reject({reason: 'gif dimensions'});
-        return;
-      }
+      // (we already checked file size, and we got complaints that the image width check was too narrow,
+      // so just go for it -- upload whatever);
 
       // we pass the dimensions back to the requesting function.
       resolveWithData({file, img, dataUrl: isSingle ? null : constants.blankBackground}, resolve);

@@ -50,12 +50,12 @@ define({
             "imageAndVideo": "Saite uz attēlu vai video tīmeklī"
           },
           "linkText": {
-            "imageOnly": "Augstāk esošajā lodziņā varat piesaistīt tieši fotoattēliem.",
-            "imageAndVideo1": "Augstāk esošajā lodziņā varat ielīmēt saites vai iframe kodu videoklipiem no ${YouTube} un ${Vimeo}.",
-            "imageAndVideo2": "Varat arī piesaistīt tieši fotoattēliem.",
-            "imageVideoWebpage1": "Augstāk esošajā lodziņā varat ielīmēt saites vai iframe kodu videoklipiem no ${YouTube} un ${Vimeo}.",
-            "imageVideoWebpage2": "Varat arī piesaistīt tieši fotoattēliem, tīmekļa lapām vai tīmekļa lietotnēm.",
-            "ender": "Ja iespējams, izmantojiet drošās (https) saites."
+            "imageOnly": "Augstāk esošajā lodziņā varat izveidot saiti tieši uz fotoattēlu.",
+            "imageAndVideo1": "Augstāk esošajā lodziņā varat ielīmēt videoklipa no ${YouTube} vai ${Vimeo} saiti vai iframe kodu.",
+            "imageAndVideo2": "Varat arī izveidot saiti tieši uz fotoattēlu.",
+            "imageVideoWebpage1": "Augstāk esošajā lodziņā varat ielīmēt tīmekļa satura, piemēram, dinamiskas diagrammas vai videoklipa no ${YouTube} vai ${Vimeo} saiti vai iframe kodu.",
+            "imageVideoWebpage2": "Varat arī izveidot saiti tieši uz fotoattēlu, videoklipu, audio failu, tīmekļa lapu vai tīmekļa lietotni.",
+            "ender": "Noteikti izmantojiet drošas (https) saites. Ja jūsu saturs neatbalsta https, pievienojiet tiem saiti stāsta tekstā, lai lasītāji to varētu skatīt jaunā pārlūka cilnē."
           },
           "embedProtocol": {
             "embedProtocolLabel": "Ielādēt lapu, izmantojot drošu savienojumu (https)",

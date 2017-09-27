@@ -50,12 +50,12 @@ define({
             "imageAndVideo": "Poveznica na sliku ili videozapis na webu"
           },
           "linkText": {
-            "imageOnly": "U prethodnom okviru možete staviti poveznicu izravno na fotografije.",
-            "imageAndVideo1": "U prethodnom okviru možete zalijepiti poveznice ili koda iframea za videozapise s usluga ${YouTube} i ${Vimeo}.",
-            "imageAndVideo2": "Također možete stavit poveznicu izravno na fotografije.",
-            "imageVideoWebpage1": "U prethodnom okviru možete zalijepiti poveznice ili koda iframea za videozapise s usluga ${YouTube} i ${Vimeo}.",
-            "imageVideoWebpage2": "Također možete staviti poveznicu izravno na fotografije, web-stranice ili web-aplikacije.",
-            "ender": "Kada je moguće, upotrijebite, sigurne (https) poveznice."
+            "imageOnly": "U prethodnom okviru možete staviti poveznicu izravno na fotografiju.",
+            "imageAndVideo1": "U prethodnom okviru možete zalijepiti poveznicu ili kod iframea za videozapis s usluga ${YouTube} ili ${Vimeo}.",
+            "imageAndVideo2": "Također možete stavit poveznicu izravno na fotografiju.",
+            "imageVideoWebpage1": "U prethodnom okviru možete zalijepiti poveznicu ili kod iframea za web-sadržaj kao što je dinamični grafikon ili videozapis s usluga ${YouTube} ili ${Vimeo}.",
+            "imageVideoWebpage2": "Također možete staviti poveznicu izravno na fotografiju, videozapis, zvučnu datoteku, web-stranicu ili web-app.",
+            "ender": "Uvijek se koristite sigurnim (https) poveznicama. Ako vaš sadržaj ne podržava https, dodajte mu poveznicu u tekstu priče tako da ga čitatelji mogu prikazati u novoj kartici preglednika."
           },
           "embedProtocol": {
             "embedProtocolLabel": "Učitajte stranicu preko sigurne veze (https)",

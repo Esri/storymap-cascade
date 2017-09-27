@@ -8,7 +8,7 @@ The Story Map Cascade℠ app lets you combine narrative text with maps, images, 
 [Download](http://links.esri.com/storymaps/story_map_cascade_zip) |
 [Cascade page on Esri Story Maps website](https://storymaps.arcgis.com/en/app-list/cascade/)
 
-**Latest release is version 1.4.2**, if you want to be informed of new releases, we recommend you watch this repository ([see GitHub help](https://help.github.com/articles/watching-repositories)). See the [release page](https://github.com/Esri/story-map-cascade/releases) for release notes.
+**Latest release is version 1.5.1**, if you want to be informed of new releases, we recommend you watch this repository ([see GitHub help](https://help.github.com/articles/watching-repositories)). See the [release page](https://github.com/Esri/story-map-cascade/releases) for release notes.
 
 ## Help content
 
@@ -30,14 +30,14 @@ This repository provides the application source code for developers who want to 
 For more information about the application, including a gallery of examples and a step-by-step tutorial, please see the [Cascade page](https://storymaps.arcgis.com/en/app-list/cascade/) on the [Esri Story Maps website](https://storymaps.arcgis.com/).
 
 ## Instructions
-First create your Cascade story in ArcGIS using the [step-by-step tutorial](https://storymaps.arcgis.com/en/app-list/cascade/tutorial/).
+First, create your Cascade story in ArcGIS using the [step-by-step tutorial](https://storymaps.arcgis.com/en/app-list/cascade/tutorial/).
 Once your story is ready, you have to find its ID in ArcGIS. The ID is a 32 character string that you will find in your web browser's address bar when you are viewing your story.
 
 ![Screenshot](https://cloud.githubusercontent.com/assets/994078/16124454/e26566ba-33a3-11e6-9be1-8af3f9f86113.png)
 
 1. [Download the application](http://links.esri.com/storymaps/story_map_cascade_zip)
 2. Deploy the application on your webserver. See [FAQ](#how-to-deploy-the-application-on-a-web-server) for details
-3. Edit index.html, find the configuration section on line 44 and paste in your application ID
+3. Edit index.html, find the configuration section on line 47 and paste in your application ID
 4. Navigate to index.html (e.g., `http://127.0.0.1/Cascade/index.html`)
 
 You can continue to use the builder in ArcGIS to modify your story.
@@ -86,7 +86,7 @@ When the story is hosted in ArcGIS Online or ArcGIS Enterprise, users who don't 
 
 When the story is hosted on your web server, by default an authentication dialog will appear inside the application. But we recommend that you configure the application to use OAuth. OAuth 2.0 based authentication is available for ArcGIS Online users with developer or organizational accounts and ArcGIS Enterprise users. Follow [this procedure](http://doc.arcgis.com/en/arcgis-online/share-maps/add-items.htm#ESRI_SECTION1_0D1B620254F745AE84F394289F8AF44B) to add and register an application to get an OAuth application ID. Once you have that application, open `index.html`, locate the `configOptions` section and fill the `oAuthAppId` property.
 
-If you are using secured services but don't want users to have to authenticate, you can use a proxy to store the username/password to be used, see [Working with Proxy Services](https://developers.arcgis.com/authentication/working-with-proxies/#selfhosted-proxy-service), and add a proxy rules to specify what services need to use the proxy by editing `PROXY_RULES` in `app/config.js`.
+If you are using secured services but don't want users to have to authenticate, you can use a proxy to store the username/password to be used, see [Working with Proxy Services](https://developers.arcgis.com/authentication/working-with-proxies/#selfhosted-proxy-service), and add proxy rules to specify what services need to use the proxy by editing `PROXY_RULES` in `app/config.js`.
 
 ### Deployment
 Deploying a Cascade story requires use of ArcGIS Online or ArcGIS Enterprise. The Cascade content must be created using the Cascade builder and will live in a Web Application Item.
@@ -103,7 +103,7 @@ The images, audio, and videos that you include in your story using the builder a
 Yes, Cascade is included with ArcGIS Enterprise starting at version 10.5.1.
 
 #### Can I use the builder if I host the app on my own web server?
-Yes, when the story is configured with an application ID, adding the URL parameter 'edit' will open the builder. You will be prompted for user authentication.
+Yes, when the story is configured with an application ID, adding the URL parameter `edit` will open the builder. You will be prompted for user authentication.
 
 #### How do I deploy the application on a web server?
 If you are not familiar with web servers, here are some solutions:
@@ -132,7 +132,7 @@ In addition to the configuration offered by the builder, the file `app/config.js
 
 Cascade currently offers a light and dark theme and the option to choose between four different fonts. Other look and feel customizations can be done using the [regular application download](http://links.esri.com/storymaps/story_map_cascade_zip) and including the css/html overrides directly into `index.html`. A `style` tag is already present for you in `index.html` (search for `/* CUSTOM CSS RULES */`).
 
-As the application Javascript and CSS are minified, **we don't recommend that you directely edit those files** (e.g. `viewer-min.css`, `viewer-min.js`, ...). In addition to being hard to edit, this will make application update complex for you.
+As the application Javascript and CSS are minified, **we don't recommend that you directly edit those files** (e.g. `viewer-min.css`, `viewer-min.js`, ...). In addition to being hard to edit, this will make application update complex for you.
 
 If you want to change the behavior of one functionality or want to add new one, follow the [developer guide](#developer-guide) below.
 
@@ -146,11 +146,11 @@ It requires knowledge of HTML, Javascript and CSS languages.
 For more infomation about using and customizing Esri's Storytelling Apps follow the [Story Maps Developers' Corner](https://developerscorner.storymaps.arcgis.com).
 
 ### Application life cycle
-Cascade fires events that allow customization with loose integration. This mean that you don't need to understand the application internals to implement simple extensions.
+Cascade fires events that allow customization with loose integration. This means that you don't need to understand the application internals to implement simple extensions.
 
 To try those events, look in the file `src/app/custom-scripts.js`.
 
-```
+```javascript
 require(['dojo/topic'], function(topic) {
   /*
    * Custom Javascript to be executed while the application is initializing goes here
@@ -178,7 +178,7 @@ require(['dojo/topic'], function(topic) {
 ### Developer helpers
 In addition to the events described above, the story data, configuration and useful helpers functions can be accessed through the global variable `app`.
 
-```
+```javascript
 console.log("Story title", app.Controller.getStoryTitle());
 console.log("Sections objects", app.data.sections);
 console.log("First section bookmark", app.data.sections[0].getBookmark());

@@ -52,7 +52,7 @@ define({
     },
     "builderPanel": {
       "coverLabel": "Forside",
-      "creditsLabel": "Krediteringer",
+      "creditsLabel": "Credits",
       "betaFeedback": "Tilbakemelding",
       "betaNote": "Gi oss tilbakemelding om hva du synes om ${APP_NAME} eller om noe ikke fungerer som ventet.",
       "notSharedNote": "Historien er ikke delt. Det er bare du som kan se den.",
@@ -68,6 +68,7 @@ define({
     },
     "immersiveViewPanel": {
       "transition": "Overgang",
+      "chooseTransition": "Velg overgang",
       "fade": "Fade",
       "fadeSlow": "Fade sakte",
       "swipeVertical": "Sveip loddrett",
@@ -136,10 +137,10 @@ define({
         "previews": "Forhåndsvisninger"
       },
       "altMedia": {
-        "alternativeMedia": "Alternativt medium",
-        "explanation": "Enkelte medier støttes ikke eller fungerer ikke så godt på mobile enheter. Bruk dette panelet til å velge et alternativt og mer mobilvennlig element som skal vises i stedet for dette mediet når historien vises på en telefon eller et nettbrett.",
+        "alternativeMedia": "Alternativt bilde for mobil",
+        "explanation": "Enkelte medier støttes ikke eller fungerer ikke så godt på mobile enheter. Bruk dette panelet til å spesifisere et bilde som skal vises i stedet for dette mediet når historien vises på en telefon eller et nettbrett.",
         "changeAltImage": "Endre bilde",
-        "uploadAltImage": "Legg til bilde"
+        "uploadAltImage": "Legg til et alternativt bilde"
       }
     },
     "imageGallery": {
@@ -218,12 +219,16 @@ define({
         "secureService": "Dette kartet inneholder et sikkert lag."
       },
       "contentIssues": {
-        "noAltImage": "Mediet støttes ikke på mobile enheter",
+        "noAltImage": "Mediet fungerer kanskje ikke på mobil",
+        "noAltImageUnsupported": "Mediet støttes ikke på mobil",
+        "noAltImageWarning": "Mediet fungerer kanskje ikke på mobil",
         "altImageBroken": "Det alternative bildet som er definert for dette elementet, er ikke tilgjengelig"
       },
       "contentWarnings": {
-        "noAltImage": "Denne medietypen støttes ikke på mobile enheter. Angi et alternativt bilde som skal vises når historien vises på mobile enheter.",
-        "noAltImageAlt": "Denne medietypen støttes ikke på mobile enheter. I fanen for mobil angir du et alternativt bilde som skal vises når historien vises på mobile enheter."
+        "noAltImage": "Pass på å teste historien din på mobile enheter før du deler den. Hvis dette mediet ikke virker som forventet, bruker du knappen nedenfor til å legge til et alternativt bilde som vil bli vist når historien vises på en telefon eller nettbrett.",
+        "noAltImageUnsupported": "Dette mediet fungerer ikke på mobile enheter. Bruk knappen nedenfor til å legge til et alternativt bilde som vil bli vist når historien vises på en telefon eller nettbrett.",
+        "noAltImageWarning": "Pass på å teste historien din på mobile enheter før du deler den. Hvis dette mediet ikke virker som forventet, bruker du knappen nedenfor til å legge til et alternativt bilde som vil bli vist når historien vises på en telefon eller nettbrett.",
+        "noAltImageAlt": "Denne medietypen støttes ikke eller fungerer dårlig på mobile enheter. I fanen for mobil angir du et alternativt bilde som skal vises når historien vises på en telefon eller et nettbrett."
       },
       "mapIssues": {
         "fixButton": "Løs problemer",

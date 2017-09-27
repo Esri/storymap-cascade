@@ -51,12 +51,12 @@ define({
               imageAndVideo: "Link to an image or video on the web"
             },
             linkText: {
-              imageOnly: "In the box above, you can link directly to photos.",
-              imageAndVideo1: "In the box above, you can paste links or iframe code for videos from ${YouTube} and ${Vimeo}.",
-              imageAndVideo2: "You can also link directly to photos.",
-              imageVideoWebpage1: "In the box above, you can paste links or iframe code for videos from ${YouTube} and ${Vimeo}.",
-              imageVideoWebpage2: "You can also link directly to photos, web pages, or web applications.",
-              ender: "When possible, use secure (https) links."
+              imageOnly: "In the box above, you can link directly to a photo.",
+              imageAndVideo1: "In the box above, you can paste a link or iframe code for a video on ${YouTube} or ${Vimeo}.",
+              imageAndVideo2: "You can also link directly to a photo.",
+              imageVideoWebpage1: "In the box above, you can paste a link or iframe code for web content like a dynamic chart or video on ${YouTube} or ${Vimeo}.",
+              imageVideoWebpage2: "You can also link directly to a photo, video, audio file, web page, or web app.",
+              ender: "Always use secure (https) links. If your content does not support https add a link to it in the text of your story so readers can view it in a new browser tab."
             },
             embedProtocol: {
               embedProtocolLabel: "Load page over a secure connection (https)",

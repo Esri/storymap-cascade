@@ -50,12 +50,12 @@ define({
             "imageAndVideo": "Propojit s obrázkem nebo videem na webu"
           },
           "linkText": {
-            "imageOnly": "V poli výše můžete vytvořit propojení přímo na fotografie.",
-            "imageAndVideo1": "V poli výše můžete vložit propojení nebo kód iframe pro videa ze služeb ${YouTube} a ${Vimeo}.",
-            "imageAndVideo2": "Můžete také vytvořit propojení přímo na fotografie.",
-            "imageVideoWebpage1": "V poli výše můžete vložit propojení nebo kód iframe pro videa ze služeb ${YouTube} a ${Vimeo}.",
-            "imageVideoWebpage2": "Můžete také vložit propojení přímo na fotografie, webové stránky nebo webové aplikace.",
-            "ender": "Je-li to možné, použijte zabezpečená propojení (https)."
+            "imageOnly": "V poli výše můžete vložit odkaz přímo na fotografii.",
+            "imageAndVideo1": "V poli výše můžete vložit odkaz nebo kód iframe pro videa na ${YouTube} nebo ${Vimeo}.",
+            "imageAndVideo2": "Můžete se také odkazovat přímo na fotografie.",
+            "imageVideoWebpage1": "V poli výše můžete vložit odkaz nebo kód iframe pro webový obsah jako dynamický graf nebo video na ${YouTube} nebo ${Vimeo}.",
+            "imageVideoWebpage2": "Můžete se také odkazovat přímo na fotografii, video, audio soubor, webovou stránku nebo webovou aplikaci.",
+            "ender": "Vždy používejte zabezpečené připojení (odkazy s https). Pokud váš obsah nepodporuje https, přidejte k němu odkaz v textu vašeho příběhu, aby si jej čtenáři mohli zobrazit v nové záložce prohlížeče."
           },
           "embedProtocol": {
             "embedProtocolLabel": "Nahrát stránku přes zabezpečené připojení (https)",
