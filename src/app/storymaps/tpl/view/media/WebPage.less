@@ -4,16 +4,18 @@
 
 body.mobile-view.touch {
   .block-webpage {
-    &, figure {
+    &, .block-media-wrapper, figure {
       overflow-y: hidden;
     }
     &.interaction-enabled {
-      &, figure {
+      &, .block-media-wrapper, figure {
         overflow-y: auto;
+      }
+      .block-media-wrapper {
+        min-height: 50vh;
       }
       figure {
         -webkit-overflow-scrolling: touch;
-        min-height: 50vh;
       }
     }
   }
@@ -23,7 +25,14 @@ body.mobile-view.touch {
 }
 
 .block-webpage {
+  position: relative;
+
   .webpage {
+    width: 100%;
+    height: 100%;
+  }
+
+  .block-media {
     position: absolute;
     top: 0px;
     left: 0px;
@@ -33,15 +42,16 @@ body.mobile-view.touch {
     height: 100%;
   }
 
-  .block-media {
+  .block-media-wrapper {
     padding-top: 50%;
+    position: relative;
   }
 
-  &.block-size-small .block-media {
+  &.block-size-small .block-media-wrapper {
     padding-top: 30%;
   }
 
-  &.block-size-large .block-media {
+  &.block-size-large .block-media-wrapper {
     padding-top: calc(~"100vh - 120px");
   }
 
@@ -72,4 +82,8 @@ body.mobile-view.touch {
 
 .scroll-off:not(.interaction-button) .webpage {
   pointer-events: none;
+}
+
+body.mobile-view .block-webpage.block-size-small .block-media-wrapper {
+  padding-top: 50%;
 }

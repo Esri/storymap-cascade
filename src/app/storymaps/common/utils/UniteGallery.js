@@ -30,7 +30,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 -------------------------------------------------------------------
 
-/* Adapted by Esri Story Maps team (fewer source files included in minified build, 3-5 functions' behavior modified)
+/* Adapted by Esri Story Maps team (fewer source files included in minified build, 4-6 functions' behavior modified)
 The modified changes are released under the Apache License V2.0 by Esri http://www.esri.com/ - https://github.com/Esri/story-map-cascade
 
 A custom build was made of the unite gallery; only these source files were included:
@@ -50,6 +50,7 @@ Change summary:
 1) Allow backup dimensions for broken images
 2) Added on load event
 3) Removed references to lightbox
+4) Overrode default background tile color
 */
 
 
@@ -5176,11 +5177,13 @@ function UGTileDesign(){
 			tile_visible_before_image:false,		//tile visible before image load
 
 			tile_enable_background:true,			//enable backgruond of the tile
-			tile_background_color: "#F0F0F0",		//tile background color
-
+			/******************* STEVEN KITTERMAN CHANGE -- OVERRODE DEFAULT BACKGROUND COLOR (WAS #F0F0F0) *******************/
+			tile_background_color: "rgb(0,0,0,0)",		//tile background color
+			/******************* END CHANGE -- *************************/
+			
 			tile_enable_border:false,				//enable border of the tile
-			tile_border_width:3,					//tile border width
-			tile_border_color:"#F0F0F0",			//tile border color
+			tile_border_width:3,					//tile border width			
+			tile_border_color:"#F0F0F0",			//tile border color			
 			tile_border_radius:0,					//tile border radius (applied to border only, not to outline)
 
 			tile_enable_outline: false,				//enable outline of the tile (works only together with the border)

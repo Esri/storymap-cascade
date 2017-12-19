@@ -63,7 +63,7 @@ function defineDojoConfig() {
     },
     map: {
       'esri4/core/workers/JobProxy': {
-        'dojo/dojo.js': '../4.3/dojo/dojo.js'
+        'dojo/dojo.js': '../' + app.jsapi4Version + '/dojo/dojo.js'
       }
     },
     packages: [

@@ -42,15 +42,28 @@
     padding: 15px;
 
     /* no size config yet */
-    .block-media,
+    .block-media-wrapper,
     .block-caption {
       width: 100%;
+      position: relative;
+      max-width: none !important;
     }
 
-    .block-type-video .block-media {
-      padding-top: 50% !important;
+    .block-type-video .block-media-wrapper {
+      padding-top: 56% !important;
+      position: relative;
     }
   }
+
+    .block-type-video .block-media {
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      right: 0px;
+      bottom: 0px;
+      width: 100%;
+      height: 100%;
+    }
 
   &.size-large {
     .blocks {

@@ -7,6 +7,7 @@
 .cr-list {
   list-style-type: none;
   padding-left: 0;
+  padding-top: 20px;
 }
 
 .cr-item {
@@ -17,6 +18,7 @@
 .cr-item-main {
   display: flex;
   justify-content: center;
+  padding: 3px;
 }
 
 .cr-input-container {
@@ -36,16 +38,17 @@
     cursor: text;
 
     &.cr-content {
-      color: #CCC;
+      color: @Calcite_Gray_100;
       text-align: right;
+      font-size: 14px;
     }
 
     &.cr-source {
       text-align: left;
+      font-size: 14px;
     }
 
     &.cr-link {
-      text-decoration: underline;
       color: @brand-info;
     }
 
@@ -80,8 +83,9 @@
 .cr-pipe {
   flex: 0 0 0;
   align-self: stretch;
-  border-left: 2px solid #AAA;
+  border-left: 2px solid @Calcite_Gray_600;
   margin: 0 5px;
+  margin-bottom: -10px;
 }
 
 .cr-item-remove {
@@ -144,7 +148,7 @@
    width: 20px;
    border-radius: 15px;
    position: relative;
-   box-shadow: 0px 0px 0px 3px black;
+   box-shadow: 0px 0px 0px 3px @Calcite_Gray_700;
 
    &:hover {
      background: white;
@@ -160,7 +164,7 @@
      top: 50%;
      left: 50%;
      z-index: 0;
-     transform: translate(-50%, -50%);
+     transform: translate(-47%, -47%);
    }
 }
 
@@ -206,5 +210,12 @@
         cursor: pointer;
       }
     }
+  }
+}
+
+body.mobile-view .section-layout-credits {
+  .cr-item,
+  .cr-item-input {
+    padding: 0;
   }
 }

@@ -157,7 +157,7 @@ var URLConnector = (function() {
   };
 
   var getYoutubeEmbed = function(videoId) {
-    return '//www.youtube.com/embed/' + videoId + '?wmode=opaque&rel=0';
+    return '//www.youtube.com/embed/' + videoId + '?wmode=opaque&rel=0&showinfo=0';
   };
 
   var getVimeoVideoEmbed = function(videoId) {

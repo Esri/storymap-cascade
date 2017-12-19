@@ -1,36 +1,62 @@
-@import '../../core/Variables';
+@import '../../core/Variables.less';
 
 .section-layout-credits {
   font-family: 'open_sans', sans-serif;
+  font-size: 18px;
 
   z-index: 500;
 
   .foreground {
     padding: 20px 10px;
+    background-color: @Calcite_Gray_700;
 
     .credits {
-      width: 80%;
       margin: auto;
-      color: #FFF;
+      color: @Calcite_Gray_100;
+      width: 100%;
     }
 
     .blocks {
       /* default alignement - but author can configure */
       text-align: center;
       a {color: @brand-info;};
+      width: 40%;
+      margin: auto;
+      max-width: 768px;
     }
 
     .block {
-      margin-top: 10px;
+      margin-top: 20px;
       padding-bottom: 0;
     }
 
     .block:nth-child(1) {
-      margin-top: 0;
+      margin-top: 20px;
     }
 
     .block-type-credits {
       margin-top: 15px;
+      width: 70%;
+      max-width: 1344px;
     }
+  }
+}
+
+body.tablet-view .section-layout-credits {
+  .foreground .blocks {
+    width: 50%;
+  }
+
+  .foreground .block-type-credits {
+    width: 80%;
+  }
+}
+
+body.mobile-view .section-layout-credits {
+  font-size: 16px;
+
+  .foreground .blocks,
+  .foreground .block-type-credits {
+    width: 90%;
   }
 }

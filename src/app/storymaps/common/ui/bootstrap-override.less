@@ -104,30 +104,16 @@ body {
   float: left;
 }
 
-.modal-footer .btn {
-  text-transform: uppercase;
-}
-
 /*
- * Borderless close/cancel button
+ * Close/cancel button (style updated in Dec 2017)
  */
 
 .btn-naked {
-  border: 0;
-  color: @link-color;
-  outline: none !important;
-  background-color: transparent;
-  box-shadow: none !important;
-}
+  background-color: #eee;
+  color: @Calcite_Gray_550;
 
-.btn-naked:hover {
-  color: darken(@link-color, 10%);
-}
-
-.btn-naked:active, .btn-naked:focus {
-  color: darken(@link-color, 20%);
-}
-
-.btn-naked:focus {
-  outline: 1px solid darken(@link-color, 20%) !important;
+  &:hover, &:active, &:focus {
+    background-color: #ccc;
+    color: @Calcite_Gray_550;
+  }
 }

@@ -1,24 +1,26 @@
 <div id="{{id}}" class="{{classes}}" contenteditable="false">
-  <figure class="block-media">
-    <div class="media-loading">
-      <span class="large-loader"></span>
-    </div>
-    <div class="media-media media-item map" data-builder-invite="" data-id="{{webmapId}}" data-options="{{options}}"></div>
-    <div class="interaction-container">
-      <button class="btn btn-default btn-sm">
-        <span class="int-container-disabled">
-          <span class="glyphicon glyphicon-fullscreen"></span>
-          {{labelExploreStart}}
-        </span>
-        <span class="int-container-enabled">
-          {{labelExploreStop}}
-        </span>
-      </button>
-    </div>
-    <div class="builder-ui media-cfg-invite"></div>
-    <div class="builder-ui media-delete"></div>
-    <div class="layer-list-container"></div>
-  </figure>
+  <div class="block-media-wrapper">
+    <figure class="block-media">
+      <div class="media-loading">
+        <span class="large-loader"></span>
+      </div>
+      <div class="media-media media-item map" data-builder-invite="" data-id="{{webmapId}}" data-options="{{options}}"></div>
+      <div class="interaction-container">
+        <button class="btn btn-default btn-sm">
+          <span class="int-container-disabled">
+            <span class="glyphicon glyphicon-fullscreen"></span>
+            {{labelExploreStart}}
+          </span>
+          <span class="int-container-enabled">
+            {{labelExploreStop}}
+          </span>
+        </button>
+      </div>
+      <div class="builder-ui media-cfg-invite"></div>
+      <div class="builder-ui media-delete"></div>
+      <div class="layer-list-container"></div>
+    </figure>
+  </div>
   <figcaption class="block-caption" data-placeholder="{{placeholder}}" contenteditable="{{captionEditable}}">{{{caption}}}</figcaption>
   <div class="builder-ui media-cfg-panel"></div>
 </div>

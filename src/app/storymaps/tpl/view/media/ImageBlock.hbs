@@ -1,16 +1,18 @@
 <div id="{{id}}" class="{{classes}}" contenteditable="false">
-  <figure class="block-media" style="max-width:{{maxImageWidth}};">
-    <div class="media-loading">
-      <span class="large-loader"></span>
-    </div>
-    <div class="image-container media-item" style="padding-top: {{padding}}%"></div>
-    <div class="builder-ui media-cfg-invite"></div>
-    <div class="builder-ui img-gallery-invite">
-      <div class="img-gallery-invite-background"></div>
-      <i class="img-gallery-add fa fa-plus" aria-hidden="true" data-toggle="tooltip"></i>
-    </div>
-    <div class="builder-ui media-delete"></div>
-  </figure>
+  <div class="block-media-wrapper">
+    <figure class="block-media" style="max-width:{{maxImageWidth}};">
+      <div class="media-loading">
+        <span class="large-loader"></span>
+      </div>
+      <div class="image-container media-item" style="padding-top: {{padding}}%"></div>
+      <div class="builder-ui media-cfg-invite"></div>
+      <div class="builder-ui img-gallery-invite">
+        <div class="img-gallery-invite-background"></div>
+        <i class="img-gallery-add fa fa-plus" aria-hidden="true" data-toggle="tooltip"></i>
+      </div>
+      <div class="builder-ui media-delete"></div>
+    </figure>
+  </div>
   <figcaption class="block-caption" data-placeholder="{{placeholder}}" contenteditable="{{captionEditable}}">{{{caption}}}</figcaption>
   <div class="builder-ui media-cfg-panel"></div>
 </div>

@@ -138,6 +138,10 @@ define([
         $('body').addClass('mobile-view');
         app.isMobileView = true;
       }
+      else if (app.display.browserWidth < 1025) {
+        $('body').addClass('tablet-view');
+        app.isMobileView = true;
+      }
 
       if (has('touch')) {
         $('body').addClass('touch');

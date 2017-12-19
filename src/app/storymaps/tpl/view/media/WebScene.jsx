@@ -214,7 +214,9 @@ export default class WebScene extends Media {
   }
 
   load() {
-    if (! this._node || this._isLoaded || ! this._isSupported) {
+    // if (in builder) the node already has a scene view, don't load (since it's already there!)
+    const nodeAlreadyHasView = this._node && this._node.find('.scene').children().length > 0;
+    if (! this._node || this._isLoaded || ! this._isSupported || nodeAlreadyHasView) {
       return;
     }
 
@@ -232,7 +234,7 @@ export default class WebScene extends Media {
         packages: [
           {
             name: 'esri4',
-            location: 'https://jsdev.arcgis.com/4.4/esri'
+            location: app.pathJSAPI4 + 'esri'
           }
         ]
       };

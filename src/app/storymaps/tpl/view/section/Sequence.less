@@ -17,32 +17,51 @@
   text-align: center;
 }
 
+.theme-major-dark .section-layout-sequence .foreground {
+  background-color: #0e0e0e;
+}
+
 /*
  * Block
  */
 
 .section-layout-sequence p {
-  width: 50%;
+  width: 40%;
   font-size: 20px;
   line-height: 150%;
   margin-left: auto;
   margin-right: auto;
   /*padding-top: 30px;*/
   text-align: left;
+  max-width: 768px;
 }
 
-.section-layout-sequence h1,
-.section-layout-sequence blockquote {
-  width: 45%;
+.section-layout-sequence h1, {
+  width: 40%;
   margin-left: auto;
   margin-right: auto;
+  max-width: 768px;
+  line-height: 110%;
+}
+
+.section-layout-sequence blockquote {
+  width: 35%;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 672px;
+  line-height: 130%;
 }
 
 .section-layout-sequence h2 {
-  width: 50%;
-  line-height: 140%;
+  width: 40%;
+  line-height: 120%;
   margin-left: auto;
   margin-right: auto;
+  max-width: 768px;
+}
+
+.section-layout-sequence a {
+  background: none !important;
 }
 
 
@@ -68,13 +87,13 @@ body:not(.builder-mode) .section-layout-sequence {
 .section-layout-sequence blockquote {
   font-family: 'noto_serif', 'Georgia', 'Hoefler Text', 'Palatino', cursive;
   font-size: 24px;
-  line-height: 30px;
+  line-height: 130%;
   text-align: left;
 }
 
 body.mobile-view .section-layout-sequence blockquote {
   font-size: 20px !important;
-  line-height: 24px;
+  line-height: 130%;
 }
 
 /* TODO: For media but could be used for all? */
@@ -85,48 +104,55 @@ body.mobile-view .section-layout-sequence blockquote {
   width: 100%;
 }
 
-.block-size-small .block-media,
+.block-size-small .block-media-wrapper,
 .block-size-small .block-caption {
   width: 40%;
-  margin-left: auto;
-  margin-right: auto;
+  max-width: 768px;
+  margin: auto;
 }
 
-// portrait images
-.block-size-small.portrait .block-media,
+//portrait images
+.block-size-small.portrait .block-media-wrapper,
 .block-size-small.portrait .block-caption {
   width: 27%;
-  margin-left: auto;
-  margin-right: auto;
+  max-width: 518px;
+  margin: auto;
 }
 
-.block-size-medium .block-media,
+.block-size-medium .block-media-wrapper,
 .block-size-medium .block-caption {
   width: 80%;
-  margin-left: auto;
-  margin-right: auto;
+  max-width: 1536px;
+  margin: auto;
 }
 
-// portrait images
-.block-size-medium.portrait .block-media,
+//portrait images
+.block-size-medium.portrait .block-media-wrapper,
 .block-size-medium.portrait .block-caption {
   width: 57%;
-  margin-left: auto;
-  margin-right: auto;
+  max-width: 1094px;
+  margin: auto;
 }
 
 // large media (including images) will always fill width, regardless of landscape or portrait (images)
-.block-size-large .block-media,
+.block-size-large .block-media {
+  width: 100%;
+}
+
 .block-size-large .block-caption {
   width: 100%;
+  padding: 0 10px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .section-layout-sequence .block.image .block-media {
   min-width: 170px;
 }
 
-.block-caption {
-  padding: 0 5px;
+.block-media {
+  margin: auto;
 }
 
 /*
@@ -143,17 +169,19 @@ body.mobile-view .section-layout-sequence {
     width: 90%;
   }
 
-  h1, blockquote {
-    width: 80%;
+  h1 {
+    width: 90%;
   }
 
+
   blockquote {
+    width: 80%;
     padding: 0 12px;
   }
 
   h1 {
-    font-size: 26px;
-    line-height: 32px;
+    font-size: 30px;
+    line-height: 110%;
   }
 
   h2 {
@@ -161,18 +189,50 @@ body.mobile-view .section-layout-sequence {
     width: 90%;
   }
 
-  .block-media {
+  .block-media-wrapper {
     width: 100%;
   }
 
   .block-caption {
-    line-height: 140%;
+    line-height: 130%;
     width: 90%;
     margin: 5px auto 0;
-}
+    text-align: center;
+    padding: 0;
+  }
 
 }
 
+body.tablet-view .section-layout-sequence {
+
+  p.block {
+    font-size: 20px;
+    width: 50%;
+  }
+
+  blockquote {
+    padding: 0 12px;
+    font-size: 24px;
+    width: 45%;
+  }
+
+  h1 {
+    font-size: 36px;
+    width: 50%;
+  }
+
+  h2 {
+    font-size: 27px;
+    width: 50%;
+  }
+
+  .block-size-small .block-media-wrapper,
+  .block-size-small .block-caption {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
 
 
 

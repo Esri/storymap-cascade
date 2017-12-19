@@ -68,11 +68,23 @@
     -->
 
     <script type="text/javascript">
+      function generateAPIURL(apiVersion, isDev) {
+        var devSuffix = isDev ? 'dev' : '';
+        return 'https://js' + devSuffix + '.arcgis.com/' + apiVersion + '/';
+      }
+
       var app = {
-        version: '1.5.1',
-        pathJSAPI3: 'https://js.arcgis.com/3.22/',
-        pathJSAPI4: 'https://js.arcgis.com/4.5/'
+        version: '1.6.2', // for release, also change this in package.json before building
+        jsapi4Version: '4.6',
+        jsapi3Version: '3.23',
+        jsapiIsDev: false
       };
+
+      // generating these dynamically. Two reasons:
+      // 1) 4.x JSAPI version is needed in a couple of places now
+      // 2) switching from dev/prod versions should be same for 3.x and 4.x; now only needs doing once instead of twice
+      app.pathJSAPI3 = generateAPIURL(app.jsapi3Version, app.jsapiIsDev);
+      app.pathJSAPI4 = generateAPIURL(app.jsapi4Version, app.jsapiIsDev);
     </script>
     <noscript>
       <div style="position: fixed; top: 0px; left: 0px; z-index: 3000;

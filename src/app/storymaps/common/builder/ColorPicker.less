@@ -62,8 +62,32 @@
       top: 18px;
       font-family: open_sans;
       font-size: 14px !important;
-      padding: 12px;
-  }
+      padding: 7px 10px;
+      margin-top: 5px;
+      margin-left: 10px;
+      background-color: @Calcite_Gray_350 !important;
+      color: @Calcite_Gray_650 !important;
+      font-weight: normal;
+      font-size: 20px;
+      border: 0;
+      outline: none !important;
+      order: 1;
+      text-transform: capitalize;
+      margin-right: 10px;
+      transition: all .25s ease;
+      text-decoration: none;
+
+      &:hover, &:active, &:focus {
+        text-decoration: none;
+        color: @Calcite_Gray_650 !important;
+        background-color: @Calcite_Gray_400 !important;
+        transition: all .25s ease;
+      }
+
+      &:focus {
+        outline: -webkit-focus-ring-color auto 5px !important;
+      }
+    }
 
   .sp-input {
       border: none;
@@ -92,10 +116,11 @@
     text-align: inherit;
     text-shadow: inherit;
     font-family: open_sans;
-    text-transform: uppercase;
+    text-transform: capitalize;
+    transition: all .25s ease;
 
-    color: $Calcite_Gray_650;
-    background-color: @Calcite_Gray_350;
+    color: @btn-primary-color !important;
+    background-color: @btn-primary-bg;
     border-color: @btn-primary-border;
 
     padding: 6px 10px;
@@ -105,35 +130,13 @@
     flex: 1;
     order: 0;
 
-    &:hover {
-      color: @Calcite_Highlight_Blue_350;
-      background-color: @Calcite_Gray_350;
+    &:hover, &:active, &:hover {
+      background-color: @link-hover-color;
       background-image: inherit;
       border: inherit;
       border-bottom: inherit;
       text-shadow: inherit;
-    }
-
-    &:active {
-      border: inherit; // otherwise, non-hovered active resizes picker
-    }
-  }
-
-  .sp-cancel {
-    color: @Calcite_Highlight_Blue_400 !important;
-    font-weight: normal;
-    font-size: 20px;
-    border: 0;
-    color: @link-color;
-    outline: none !important;
-    background-color: transparent;
-    order: 1;
-    text-transform: uppercase;
-
-
-    &:hover {
-      text-decoration: none;
-      color: @Calcite_Highlight_Blue_350 !important;
+      transition: all .25s ease;
     }
   }
 

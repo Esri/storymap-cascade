@@ -38,22 +38,18 @@
 
 .section-layout-sequence {
   .block::before {
-    /* half of section */
-    width: calc(~"(100vw - 250px) / 2");
-  }
+      position: absolute;
+      left: 50%;
+      width: calc(~"(100vw / 3)");
+      margin-left: calc(~"(100vw / 6 * -1)");
+    }
 
-  p.block::before {
-    left: 0;
-    /* half the scrollbar, see below for rule for browser without scrollbar */
-    // margin-left: -4.5px;
-  }
-
-  div.block::before,
-  h1.block::before,
-  h2.block::before,
-  blockquote.block::before {
-    left: 50%;
-    margin-left: calc(~"(100vw - 250px) / 4 * -1");
+  @media (min-width: 2560px) {
+    .block::before {
+      width: 768px;
+      left: 50%;
+      margin-left: -384px;
+    }
   }
 
   p.block.block-placeholder:empty {

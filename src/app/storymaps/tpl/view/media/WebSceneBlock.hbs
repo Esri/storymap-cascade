@@ -1,23 +1,25 @@
 <div id="{{id}}" class="block block-type-webscene" contenteditable="false">
-  <figure class="block-media">
-    <div class="media-loading">
-      <span class="large-loader"></span>
-    </div>
-    <div class="media-media media-item scene" data-id="{{websceneId}}"></div>
-    <div class="interaction-container">
-      <button class="btn btn-default btn-sm">
-        <span class="int-container-disabled">
-          <span class="glyphicon glyphicon-fullscreen"></span>
-          {{labelExploreStart}}
-        </span>
-        <span class="int-container-enabled">
-          {{labelExploreStop}}
-        </span>
-      </button>
+  <div class="block-media-wrapper">
+    <figure class="block-media">
+      <div class="media-loading">
+        <span class="large-loader"></span>
+      </div>
+      <div class="media-media media-item scene" data-id="{{websceneId}}"></div>
+      <div class="interaction-container">
+        <button class="btn btn-default btn-sm">
+          <span class="int-container-disabled">
+            <span class="glyphicon glyphicon-fullscreen"></span>
+            {{labelExploreStart}}
+          </span>
+          <span class="int-container-enabled">
+            {{labelExploreStop}}
+          </span>
+        </button>
     </div>
     <div class="builder-ui media-cfg-invite"></div>
     <div class="builder-ui media-delete"></div>
-  </figure>
+    </figure>
+    </div>
   <figcaption class="block-caption" data-placeholder="{{placeholder}}" contenteditable="{{captionEditable}}">{{{caption}}}</figcaption>
   <div class="builder-ui media-cfg-panel"></div>
 </div>

@@ -43,7 +43,7 @@ define({
       "appearance": {
         "themeLabel": "Тема",
         "fontLabel": "Шрифты",
-        "previewLabel": "Предварительный просмотр",
+        "previewLabel": "Просмотр",
         "fontsTitleLabel": "Заголовки",
         "fontsBodyLabel": "Основа",
         "loremTitle": "Lorem Ipsum",

@@ -6,6 +6,11 @@
   position: relative;
 
   .video {
+    width: 100%;
+    height: 100%;
+  }
+
+  .block-media {
     position: absolute;
     top: 0px;
     left: 0px;
@@ -15,15 +20,16 @@
     height: 100%;
   }
 
-  .block-media {
+  .block-media-wrapper {
     padding-top: 50%;
+    position: relative;
   }
 
-  &.block-size-small .block-media {
+  &.block-size-small .block-media-wrapper {
     padding-top: 30%;
   }
 
-  &.block-size-large .block-media {
+  &.block-size-large .block-media-wrapper {
     padding-top: 70%;
   }
 }
@@ -90,6 +96,6 @@
  * Responsive
  */
 
-body.mobile-view .block-type-video .block-media {
+body.mobile-view .block-type-video .block-media-wrapper {
   padding-top: 50%;
 }

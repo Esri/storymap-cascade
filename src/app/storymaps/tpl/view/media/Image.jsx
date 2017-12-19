@@ -313,6 +313,8 @@ export default class Image extends Media {
           const styles = this._computeBlockStyle();
           this._node.find('.image-container').css('padding-top', styles.padding + '%');
           this._node.find('.block-media').css('max-width', styles.maxWidth);
+          this._node.find('.block-caption').css('max-width', styles.maxWidth);
+          this._node.find('.block-caption').css('min-width', '30%');
         }
       }
       this._fadeInMedia();

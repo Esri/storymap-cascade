@@ -54,6 +54,10 @@ body.mobile-view .block-media {
   z-index: 0;
 }
 
+.theme-major-dark .media-loading {
+  background-color: #333;
+}
+
 .media-loading .large-loader {
   position: absolute;
   top: 50%;
@@ -69,17 +73,17 @@ body.mobile-view .block-media {
   outline: none;
   font-family: 'open_sans', sans-serif;
   font-size: 14px;
-  line-height: 22px;
+  line-height: 130%;
   opacity: .65;
   width: 100%;
   text-align: center;
-  padding-top: 5px;
+  /*padding-top: 5px;*/
   margin-top: 5px !important;
 }
 
 body.mobile-view .block-caption {
   font-size: 12px;
-  line-height: 16px;
+  line-height: 130%;
 }
 
 body.builder-mode .block-caption {
@@ -224,6 +228,11 @@ body.builder-mode .block-caption:not(:focus):empty:before {
   width: 90%;
   margin-left: 5%;
   background: #DDD;
+}
+
+.theme-major-dark .media-error {
+  color: lightgray;
+  background: gray !important;
 }
 
 .background .media-error {

@@ -25,6 +25,7 @@ class SettingsPopup {
 
     let dialogData = {
       dialog: i18n.builder.dialog,
+      notification: i18n.builder.notification,
       toggles: i18n.builder.headerConfig.toggles
     };
 

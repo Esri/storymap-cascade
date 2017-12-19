@@ -88,7 +88,7 @@ export default class WebPage extends Media {
       this._node = params.container.find('#' + this._domID);
       this._nodeMedia = this._node.find('iframe');
       if (this._webpage.height) {
-        var fig = this._node.find('.block-media');
+        var fig = this._node.find('.block-media-wrapper');
         if (fig[0].getBoundingClientRect().height > this._webpage.height) {
           fig.css('padding-top', this._webpage.height);
         }

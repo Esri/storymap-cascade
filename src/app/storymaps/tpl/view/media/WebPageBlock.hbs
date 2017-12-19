@@ -1,25 +1,27 @@
 <div id="{{id}}" class="block block-webpage scroll-off" contenteditable="false">
-  <figure class="block-media">
-    <div class="media-loading">
-      <span class="large-loader"></span>
-    </div>
-    <iframe class="media-media media-item webpage" data-src="{{url}}"></iframe>
-    {{#unless isMobile}}
-      <div class="interaction-container">
-        <button class="btn btn-default btn-sm">
-          <span class="int-container-disabled">
-            <span class="glyphicon glyphicon-fullscreen"></span>
-            {{labelExploreStart}}
-          </span>
-          <span class="int-container-enabled">
-            {{labelExploreStop}}
-          </span>
-        </button>
+  <div class="block-media-wrapper">
+    <figure class="block-media">
+      <div class="media-loading">
+        <span class="large-loader"></span>
       </div>
-    {{/unless}}
-    <div class="builder-ui media-cfg-invite"></div>
-    <div class="builder-ui media-delete"></div>
-  </figure>
+      <iframe class="media-media media-item webpage" data-src="{{url}}"></iframe>
+      {{#unless isMobile}}
+        <div class="interaction-container">
+          <button class="btn btn-default btn-sm">
+            <span class="int-container-disabled">
+              <span class="glyphicon glyphicon-fullscreen"></span>
+              {{labelExploreStart}}
+            </span>
+            <span class="int-container-enabled">
+              {{labelExploreStop}}
+            </span>
+          </button>
+        </div>
+      {{/unless}}
+      <div class="builder-ui media-cfg-invite"></div>
+      <div class="builder-ui media-delete"></div>
+    </figure>
+  </div>
   <figcaption class="block-caption" data-placeholder="{{placeholder}}" contenteditable="{{captionEditable}}">{{{caption}}}</figcaption>
   {{#if isMobile}}
     <div class="interaction-container">

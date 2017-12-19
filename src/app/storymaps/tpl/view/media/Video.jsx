@@ -204,7 +204,7 @@ export default class Video extends Media {
       var newMedia = $(viewVideoVimeo({
         domId: 'player-' + this._domID,
         classes: classes + ' initialized',
-        url: 'https://player.vimeo.com/video/' + this._videoid + '?api=1&background=' + opt + '&player_id=player-' + this._domID,
+        url: 'https://player.vimeo.com/video/' + this._videoid + '?transparent=0&api=1&background=' + opt + '&player_id=player-' + this._domID,
         options: this._video.options,
         playerControls: controls
       }));
@@ -229,7 +229,7 @@ export default class Video extends Media {
         videoId: this._videoid,
         playerVars: {
           rel: 0,
-          modestbranding: 1
+          showinfo: 0
         },
         events: {
           onReady: function(e) {

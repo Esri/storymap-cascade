@@ -1,10 +1,5 @@
 @import './../../../Variables';
 
-.overlay-gradient {
-  background: -webkit-linear-gradient(top, white 0%, white 50%, rgba(255,255,255,0) 100%);
-  background: linear-gradient(to bottom, white 0%, white 50%, rgba(255, 255, 255, 0) 100%);
-}
-
 .op-item-main.builder-overview {
   display: block;
   width: 0; /* Prevents the white-space:nowrap property below from making the whole container larger */
@@ -78,7 +73,8 @@
   }
 
   .text-overlay {
-    .overlay-gradient;
+    background: -webkit-linear-gradient(top, white 0%, white 50%, rgba(255,255,255,0) 100%);
+    background: linear-gradient(to bottom, white 0%, white 50%, rgba(255, 255, 255, 0) 100%);
     padding: @item-text-top-padding @item-text-side-padding 20px;
   }
 
@@ -93,4 +89,15 @@
     word-wrap: break-word;
     line-height: @item-overlay-line-height;
   }
+}
+
+.theme-major-dark .text-overlay {
+  background: -webkit-linear-gradient(top, #0E0E0E 0%, #0E0E0E 50%, rgba(0, 0, 0, 0) 100%) !important;
+  background: linear-gradient(to bottom, #0E0E0E 0%, #0E0E0E 50%, rgba(0, 0, 0, 0) 100%) !important;
+  padding: @item-text-top-padding @item-text-side-padding 20px;
+  color: white;
+}
+
+.theme-major-dark .builder-overview {
+  background-color: #333333;
 }

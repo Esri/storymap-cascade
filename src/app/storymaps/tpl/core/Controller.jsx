@@ -697,7 +697,7 @@ export default class Controller {
                 + '<td style="padding-bottom: 10px; padding-left: 13px;">'
                 + i18n.viewer.mobileWarning.message1
                 + '</td></tr><tr>'
-                + '<td colspan="2" style="font-family: open_sans, sans-serif; padding-top: 10px; border-top: 1px solid white; text-align: center;"><a class="btn btn-warning-email" style="background-color: white; color: rgb(171, 60, 22);white-space: normal;" href="' + storyWarningBtn + '"><i class="fa fa-envelope-o" style="margin-right: 5px;color: rgb(171, 60, 22);"></i>'
+                + '<td colspan="2" style="font-family: open_sans, sans-serif; padding-top: 10px; border-top: 1px solid white; text-align: center;"><a class="btn btn-warning-email" style="background-color: white !important; color: rgb(171, 60, 22);white-space: normal;" href="' + storyWarningBtn + '"><i class="fa fa-envelope-o" style="margin-right: 5px;color: rgb(171, 60, 22);"></i>'
                 + i18n.viewer.mobileWarning.email
                 + '</a></td></tr></table></div>'
               }

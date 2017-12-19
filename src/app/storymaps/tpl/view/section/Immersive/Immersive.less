@@ -38,6 +38,10 @@
   background-color: #FFF;
 }
 
+.theme-major-dark .section-immersive .background-filler {
+  background-color: #0E0E0E;
+}
+
 body.builder-mode .section-immersive.active:not(.disable-snap) .background {
   left: @builder-panel-width;
   width: calc(100% ~"-" @builder-panel-width);
@@ -77,7 +81,7 @@ todo: for image only?
   h2 {
     pointer-events: auto;
     font-size: 36px;
-    line-height: 50px;
+    line-height: 105%;
   }
 }
 
@@ -177,7 +181,7 @@ body.builder-mode .section-immersive .blocks {
 
 body.mobile-view .background-title h2 {
   font-size: 1.4em;
-  line-height: 120%;
+  line-height: 105%;
 }
 
 body.mobile-view {
@@ -211,7 +215,7 @@ body.mobile-view {
    */
   &:not(.disable-transition) {
     .background.transition-fade-slow {
-      transition: opacity 1s ease-in-out, visibility 2s ease-in-out;
+      transition: opacity 1.5s ease-in-out, visibility 1.5s ease-in-out;
     }
 
     .background.transition-fade-fast {
@@ -338,7 +342,7 @@ body.mobile-view .section-immersive .imm-panel {
       border-radius: 0 2px 2px 0;
       padding: 5px;
       font-size: 1em;
-      line-height: 145%;
+      line-height: 150%;
       width: 100%;
       color: #373737;
     }
