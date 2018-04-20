@@ -228,19 +228,15 @@ The application is structured as follows:
 | src/											| Main source code folder with index.html					|
 | src/app/										| Javascript and CSS source code 																|
 | src/app/config.js			            		| App configuration file (loaded at execution time) 											|
-| src/app/storymaps/common/				| Modules common across storymaps templates (main module is Core.js)							|
-| src/app/storymaps/common/builder/				| Builder modules (main module is Builder.js)													|
-| src/app/storymaps/common/ui/					| UI components																					|
-| src/app/storymaps/common/utils/				| Utils, sharing, some external libraries																			|
-| src/app/storymaps/common/_resources			| Static resources																				|
 | **src/app/storymaps/tpl/**					| Cascade modules (build configuration files in the root)									|
-| src/app/storymaps/tpl/builder/				| Builder modules (main module is BuilderView.js)												|
-| src/app/storymaps/tpl/core/					| Core modules (main module is MainView.js) 													|
+| src/app/storymaps/tpl/builder/				| Builder modules (main modules are Builder.js, BuilderView.js)												|
+| src/app/storymaps/tpl/core/					| Core modules (main modules are Core.js, MainView.js) 													|
+| src/app/storymaps/tpl/print/					| Print modules 													|
 | src/app/storymaps/tpl/view/						| UI components of the viewer and builder											|
 | **src/app/storymaps/tpl/view/media/**						| Map, Scene, Image, Audio, Video, WebPage, Text											|
 | **src/app/storymaps/tpl/view/section/**					| Cover, Sequence, Immersive and Title sections 										|
 | **src/app/storymaps/tpl/view/ui/**						| Header										|
-| src/app/storymaps/tpl/utils/						| Utils											|
+| src/app/storymaps/tpl/utils/						| Utils, sharing, some external libraries											|
 | src/app/storymaps/issue-checker/ | Issue checking utility (finds errors in story) |
 |src/lib/									| Dependencies (included in the final app)														|
 | src/lib-build/								| Dependencies used by the build (not included in final app)									|
@@ -252,7 +248,7 @@ The main dependencies are:
  * [Bootstrap](http://getbootstrap.com/)
  * [MediumEditor](https://github.com/yabwe/medium-editor)
 
-The application Javascript and CSS are minified into four files:
+The application Javascript and CSS are minified into six files:
 
 | File			        |										                                        |
 | --------------------- | ----------------------------------------------------------------------------- |
@@ -260,6 +256,8 @@ The application Javascript and CSS are minified into four files:
 | app/viewer-min.js	    | Compressed Javascript loaded when accessing the story as a viewer	    |
 | app/builder-min.css	| Compressed CSS loaded when accessing the story as an author		        |
 | app/builder-min.js	| Compressed Javascript loaded when accessing the story as an author	    |
+| app/print-min.css	| Compressed CSS loaded when accessing the story in print mode		        |
+| app/print-min.js	| Compressed Javascript loaded when accessing the story in print mode	    |
 
 Depending on the URL parameters, index.html will load the corresponding files.
 
