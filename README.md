@@ -270,7 +270,7 @@ Find a bug or want to request a new feature?  Please let us know by submitting a
 Esri welcomes contributions from anyone and everyone. Please see our [guidelines for contributing](https://github.com/esri/contributing).
 
 ## Licensing
-Copyright &copy; 2016, 2017 Esri
+Copyright &copy; 2016-2018 Esri
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -296,7 +296,6 @@ Some open-source components of this project are licensed under other License ter
 | React                 | [BSD with patent grant](https://github.com/facebook/react#license)       |
 | React-redux           | MIT       |
 | Redux                 | MIT       |
-| Fluidbox              | MIT       |
 | Froogaloop            | N/A       |
 | youtube-api           | N/A       |
 | Clipboard.js          | MIT       |
