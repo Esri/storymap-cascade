@@ -32,10 +32,11 @@ define({
       "upgradeBrowser": "Mettez à jour votre navigateur",
       "mapLoadingFail": "Une erreur s'est produite et la carte n'a pas été chargée correctement.",
       "signOut": "Se déconnecter",
-      "builderSupport1": "Le générateur Story Map Cascade est pris en charge uniquement dans les navigateurs ${CHROME} et ${SAFARI}. Cependant, les récits Cascade que vous créez avec le générateur peuvent s’afficher dans ces navigateurs, Internet Explorer 11+ et Firefox.",
-      "builderSupport2": "Le générateur Story Map Cascade n’est pas pris en charge sur iPad. Les récits Cascade que vous créez et partagez fonctionneront sur iPad.",
-      "builderSupport3": "Les récits Cascade peuvent être affichés dans Chrome, Safari, Firefox et Internet Explorer 11+, mais le générateur Story Map Cascade est pris en charge uniquement dans ${CHROME} et ${SAFARI}.",
-      "builderSupport4": "Les récits Cascade peuvent être affichés dans tout navigateur web moderne, mais le générateur Story Map Cascade est pris en charge uniquement dans ${CHROME} et ${SAFARI}.<br><br>Si vous avez besoin que le générateur Cascade prenne en charge un autre navigateur, contactez le ${ESRI-SUPPORT} ou ${BROWSER-SUPPORT-VOTE}.",
+      "builderSupportFirefox": "Le générateur de Story Map Cascade prend désormais en charge Firefox !<br><br>La prise en charge de la création d’un récit Cascade dans Firefox est actuellement en version bêta. Essayez-la et signalez tous les problèmes au ${ESRI-SUPPORT} ou à la ${ESRI-COMMUNITY}.",
+      "builderSupportOther": "Les récits Cascade peuvent être affichés dans n’importe quel navigateur web moderne, mais le générateur de Story Map Cascade est pris en charge uniquement dans ${CHROME}, ${SAFARI} et ${FIREFOX} (bêta).<br><br>Si vous avez besoin que le générateur de Cascade prenne en charge un autre navigateur, contactez le ${ESRI-SUPPORT} ou ${BROWSER-SUPPORT-VOTE}.",
+      "builderSupportIpad": "Le générateur Story Map Cascade n’est pas pris en charge sur iPad. Les récits Cascade que vous créez et partagez fonctionneront sur iPad.",
+      "launchBuilder": "Lancer le générateur de Cascade",
+      "notAgain": "Ne plus afficher",
       "sorry": "Attention :"
     },
     "mobileWarning": {
@@ -82,6 +83,40 @@ define({
       "speedFast": "Rapide",
       "speedMedium": "Moyenne",
       "speedSlow": "Lent"
+    }
+  },
+  "print": {
+    "settings": {
+      "pleaseWait": "Attendez que le récit soit entièrement chargé avant de l’imprimer",
+      "printNotes": "Si le chargement de cette page est lent ou si certains supports n’apparaissent pas, essayez de remplacer les supports animés par des images ou d’imprimer une plage de sections plus petite. Dans un souci d’optimisation des résultats, il se peut que vous deviez activer l’impression des éléments d’arrière-plan dans les paramètres d’impression de votre navigateur.",
+      "printOptions": "options",
+      "makeTextBlack": "Mettre tout le texte en noir",
+      "showLinks": "Afficher les URL des liens",
+      "useAltMedia": "Remplacer les supports animés par des images, le cas échéant",
+      "pageBreaks": "Commencer chaque section sur une nouvelle page",
+      "printRange": "Imprimer une partie de ce récit",
+      "sectionStart": "Sections :",
+      "go": "Appliquer",
+      "reset": "Réinitialiser sur la totalité du récit",
+      "print": "Imprimer"
+    },
+    "page": {
+      "appTagline": "Ce récit a été réalisé avec ${CASCADE_LINK_TEXT}.",
+      "cascadeLinkText": "Esri Story Map Cascade",
+      "readItOnline": "À lire sur le Web à l’adresse ${STORY_URL}."
+    },
+    "sections": {
+      "sectionLabel": "Section ${SECTION_NUMBER}"
+    },
+    "media": {
+      "websiteLabel": "Site Web :",
+      "videoLabel": "Vidéo :",
+      "audioLabel": "Audio :"
+    },
+    "bannerNotification": {
+      "learnMore": "En savoir plus",
+      "close": "Fermer",
+      "dontShowAgain": "Ne plus afficher ce message"
     }
   }
 });

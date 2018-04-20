@@ -1,0 +1,76 @@
+.cover {
+  position: relative;
+  height: 4in;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 3em;
+
+  // --- HEADER --- //
+
+  .cover-header {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    padding: 5px 10px 0 10px;
+
+    .logo-img {
+      max-height: 30px;
+      @media screen {
+        filter: drop-shadow(0 0 3px black);
+      }
+    }
+    .tagline {
+      color: #fff;
+      float: right;
+      line-height: 30px;
+      text-shadow: 0 0 8px black;
+    }
+    a {
+      border: none;
+      &:after {
+        content: '';
+      }
+    }
+  }
+
+  // --- TEXT --- //
+
+  .cover-text {
+    position: absolute;
+    text-align: center;
+    padding: 0 20px;
+    z-index: 2;
+
+    h1, h2 {
+      font-weight: inherit;
+      margin: 0;
+    }
+
+    .title, .subtitle {
+      padding: 10px 15px;
+      line-height: 120%;
+    }
+
+    .title {
+      font-size: 30px;
+    }
+
+    .subtitle {
+      font-size: 20px;
+    }
+  }
+
+  // if cover is a video, make the video wrapper fill the whole cover
+  // and put video url below the cover section
+  .video {
+    height: 100%;
+    width: 100%;
+  }
+  figcaption.video-url {
+    position: absolute;
+    right: 0;
+    top: 100%;
+    margin-bottom: 20px;
+  }
+}

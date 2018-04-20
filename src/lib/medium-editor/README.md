@@ -1,14 +1,16 @@
 ﻿# MediumEditor
 
-[![Join the chat at https://gitter.im/yabwe/medium-editor](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/yabwe/medium-editor?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-
 This is a clone of [medium.com](https://medium.com) inline editor toolbar.
 
 MediumEditor has been written using vanilla JavaScript, no additional frameworks required.
 
+[![screenshot](https://raw.github.com/yabwe/medium-editor/master/demo/img/medium-editor.jpg)](http://yabwe.github.io/medium-editor/)
+
+[![Join the chat at https://gitter.im/yabwe/medium-editor](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/yabwe/medium-editor?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 ## Browser Support
 
-[![Sauce Test Status](https://saucelabs.com/browser-matrix/mediumeditor.svg)](https://saucelabs.com/u/mediumeditor)
+[![Saucelabs Build Status](https://saucelabs.com/browser-matrix/mediumeditor.svg)](https://saucelabs.com/beta/dashboard/builds)
 
 ![Supported Browsers](https://cloud.githubusercontent.com/assets/2444240/12874138/d3960a04-cd9b-11e5-8cc5-8136d82cf5f6.png)
 
@@ -21,7 +23,7 @@ MediumEditor has been written using vanilla JavaScript, no additional frameworks
 
 # Basic usage
 
-![screenshot](https://raw.github.com/yabwe/medium-editor/master/demo/img/medium-editor.jpg)
+### Demo
 
 __demo__: [http://yabwe.github.io/medium-editor/](http://yabwe.github.io/medium-editor/)
 
@@ -42,15 +44,15 @@ Run in your console: `npm install medium-editor`
  For the latest version:
 
  ```html
- <script src="//cdn.jsdelivr.net/medium-editor/latest/js/medium-editor.min.js"></script>
- <link rel="stylesheet" href="//cdn.jsdelivr.net/medium-editor/latest/css/medium-editor.min.css" type="text/css" media="screen" charset="utf-8">
+ <script src="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/js/medium-editor.min.js"></script>
+ <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/css/medium-editor.min.css" type="text/css" media="screen" charset="utf-8">
  ```
 
  For a custom one:
 
  ```html
- <script src="//cdn.jsdelivr.net/medium-editor/4.11.1/js/medium-editor.min.js"></script>
- <link rel="stylesheet" href="//cdn.jsdelivr.net/medium-editor/4.11.1/css/medium-editor.min.css" type="text/css" media="screen" charset="utf-8">
+ <script src="//cdn.jsdelivr.net/npm/medium-editor@5.23.2/dist/js/medium-editor.min.js"></script>
+ <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/medium-editor@5.23.2/dist/css/medium-editor.min.css" type="text/css" media="screen" charset="utf-8">
  ```
 
 * Using [CDNJS](https://cdnjs.com/libraries/medium-editor).
@@ -58,6 +60,8 @@ Run in your console: `npm install medium-editor`
 **Manual installation:**
 
 Download the [latest release](https://github.com/yabwe/medium-editor/releases) and attach medium editor's stylesheets to your page:
+
+Find the files to below mentioned linking in the dist folder. (./medium-editor/dist/...)
 
 ```html
 <link rel="stylesheet" href="css/medium-editor.css"> <!-- Core -->
@@ -337,7 +341,8 @@ var editor = new MediumEditor('.editable', {
         cleanPastedHTML: false,
         cleanReplacements: [],
         cleanAttrs: ['class', 'style', 'dir'],
-        cleanTags: ['meta']
+        cleanTags: ['meta'],
+        unwrapTags: []
     }
 });
 ```
@@ -348,6 +353,7 @@ var editor = new MediumEditor('.editable', {
 * __cleanReplacements__: custom pairs (2 element arrays) of RegExp and replacement text to use during paste when __forcePlainText__ or __cleanPastedHTML__ are `true` OR when calling `cleanPaste(text)` helper method.  These replacements are executed _after_ builtin replacements.  Default: `[]`
 * __cleanAttrs__: list of element attributes to remove during paste when __cleanPastedHTML__ is `true` or when calling `cleanPaste(text)` or `pasteHTML(html,options)` helper methods. Default: `['class', 'style', 'dir']`
 * __cleanTags__: list of element tag names to remove during paste when __cleanPastedHTML__ is `true` or when calling `cleanPaste(text)` or `pasteHTML(html,options)` helper methods. Default: `['meta']`
+* __unwrapTags__: list of element tag names to unwrap (remove the element tag but retain its child elements) during paste when __cleanPastedHTML__ is `true` or when calling `cleanPaste(text)` or `pasteHTML(html,options)` helper methods. Default: `[]`
 
 ### KeyboardCommands Options
 
@@ -455,7 +461,8 @@ var editor = new MediumEditor('.editable', {
     paste: {
         cleanPastedHTML: true,
         cleanAttrs: ['style', 'dir'],
-        cleanTags: ['label', 'meta']
+        cleanTags: ['label', 'meta'],
+        unwrapTags: ['sub', 'sup']
     },
     anchorPreview: {
         hideDelay: 300
@@ -511,6 +518,7 @@ These are all the built-in buttons supported by MediumEditor.
 * __h5__
 * __h6__
 * __removeFormat__ (clears inline style formatting, preserves blocks)
+* __html__ (parses selected html and converts into actual html elements)
 
 ## Themes
 
@@ -643,6 +651,13 @@ Check the [documentation](src/js/extensions) in order to learn how to develop ex
 A list of existing extensions and plugins, such as [Images and Media embeds](http://orthes.github.io/medium-editor-insert-plugin/), [Tables](https://github.com/yabwe/medium-editor-tables) and [Markdown](https://github.com/IonicaBizau/medium-editor-markdown) can be found [here](https://github.com/yabwe/medium-editor/wiki/Extensions-Plugins).
 
 ## Development
+
+To run the demo locally:
+
+1. Clone this repo locally
+2. Run `npm install` from your console at the root
+3. Run `node index.js` from the root
+4. Navigate to `http://localhost:8088/demo/index.html` to view the demo
 
 MediumEditor development tasks are managed by Grunt. To install all the necessary packages, just invoke:
 

@@ -32,10 +32,11 @@ define({
       "upgradeBrowser": "Opdater din browser.",
       "mapLoadingFail": "Noget gik galt, kortet blev ikke indlæst korrekt.",
       "signOut": "Log ud",
-      "builderSupport1": "Story Map Cascade-builder-programmet understøttes kun af ${CHROME} og ${SAFARI}. Men de Cascade-historier, du opretter med builder-programmet kan vises i disse browsere samt i Internet Explorer 11+ og Firefox.",
-      "builderSupport2": "Story Map Cascade-builder-programmet understøttes ikke på iPad. De Cascade-historier, du opretter og deler, vil fungere på iPad.",
-      "builderSupport3": "Cascade-historier kan vises i Chrome, Safari, Firefox og Internet Explorer 11+, men Story Map Cascade-builder-programmet understøttes kun af ${CHROME} og ${SAFARI}.",
-      "builderSupport4": "Cascade-historier kan vises i en hvilken som helst webbrowser, men Story Map Cascade-builder-programmet understøttes kun af ${CHROME} og ${SAFARI}.<br><br>Hvis du har brug for, at Cascade-builder-programmet skal understøtte en anden browser, bedes du kontakte ${ESRI-SUPPORT} eller ${BROWSER-SUPPORT-VOTE}.",
+      "builderSupportFirefox": "Story Map Cascade-builder understøtter nu Firefox!<br><br>Understøttelse til oprettelse af Cascade-historier i Firefox er på nuværende tidspunkt i beta. Prøv den, og rapporter eventuelle problemer til ${ESRI-SUPPORT} eller ${ESRI-COMMUNITY}.",
+      "builderSupportOther": "Cascade-historier kan vises i en hvilken som helst webbrowser, men Story Map Cascade-builder-programmet understøttes kun af ${CHROME}, ${SAFARI}, and ${FIREFOX} (beta).<br><br>Hvis du har brug for, at Cascade-builder-programmet skal understøtte en anden browser, bedes du kontakte ${ESRI-SUPPORT} eller ${BROWSER-SUPPORT-VOTE}.",
+      "builderSupportIpad": "Story Map Cascade-builder-programmet understøttes ikke på iPad. De Cascade-historier, du opretter og deler, vil fungere på iPad.",
+      "launchBuilder": "Start Cascade-builder",
+      "notAgain": "Vis ikke dette igen",
       "sorry": "Bemærk:"
     },
     "mobileWarning": {
@@ -82,6 +83,40 @@ define({
       "speedFast": "Hurtigt",
       "speedMedium": "Mellem",
       "speedSlow": "Langsomt"
+    }
+  },
+  "print": {
+    "settings": {
+      "pleaseWait": "Vent, til hele historien er blevet indlæst, før du udskriver",
+      "printNotes": "Hvis denne side indlæses langsomt, eller nogle medier ikke vises, kan du prøve at udskifte live-medier med billeder eller at udskrive færre afsnit. For at opnå de bedste resultater skal du muligvis aktivere udskrivning af baggrundselementer i din browserens udskriftsindstillinger.",
+      "printOptions": "Indstillinger",
+      "makeTextBlack": "Gør al tekst sort",
+      "showLinks": "Vis link-URL’er",
+      "useAltMedia": "Erstat live-medier med billeder, hvis de er tilgængelige",
+      "pageBreaks": "Start hver sektion på en ny side",
+      "printRange": "Udskriv en del af denne historie",
+      "sectionStart": "Afsnit:",
+      "go": "Anvend",
+      "reset": "Nulstil til hele historien",
+      "print": "Udskriv"
+    },
+    "page": {
+      "appTagline": "Denne historie er lavet med ${CASCADE_LINK_TEXT}.",
+      "cascadeLinkText": "Esris Story Map Cascade",
+      "readItOnline": "Læs det på nettet mere på her ${STORY_URL}."
+    },
+    "sections": {
+      "sectionLabel": "Afsnit ${SECTION_NUMBER}"
+    },
+    "media": {
+      "websiteLabel": "Websted:",
+      "videoLabel": "Video",
+      "audioLabel": "Lyd:"
+    },
+    "bannerNotification": {
+      "learnMore": "Yderligere oplysninger",
+      "close": "Luk",
+      "dontShowAgain": "Vis ikke denne meddelelse igen"
     }
   }
 });

@@ -1,0 +1,14 @@
+<div class="issue-items">
+    <div class="webmap-info">
+      <span class="error-icon fa fa-exclamation-triangle"></span>
+      <span>{{webmapLabel}}</span>
+    </div>
+    <div class="layers-info">
+      {{#each layers}}
+        <div class="layer" data-lyr-id="{{id}}">
+          <span class="error-icon fa fa-exclamation-triangle"></span>
+          <span>{{lyrTitle}}</span>
+        </div>
+      {{/each}}
+    </div>
+</div>

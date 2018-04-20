@@ -32,10 +32,11 @@ define({
       "upgradeBrowser": "Vui lòng cập nhật trình duyệt của bạn",
       "mapLoadingFail": "Đã xảy ra lỗi, bản đồ không tải đúng.",
       "signOut": "Đăng Xuất",
-      "builderSupport1": "Bộ thiết lập Story Map Cascade chỉ được hỗ trợ trong ${CHROME} và ${SAFARI}. Tuy nhiên, các câu chuyện Cascade bạn đã tạo ra với bộ thiết lập có thể được xem trên các trình duyệt Internet Explorer 11+ và Firefox.",
-      "builderSupport2": "Bộ thiết lập Story Map Cascade không được hỗ trợ trên iPad. Các câu chuyện Cascade bạn đã tạo ra và chia sẻ sẽ hoạt động được trên iPad.",
-      "builderSupport3": "Các câu chuyện Cascade có thể được xem ở Chrome, Safari, Firefox, và Internet Explorer 11+, nhưng bộ thiết lập Story Map Cascade chỉ được hỗ trợ ở ${CHROME} và ${SAFARI}.",
-      "builderSupport4": "Các câu chuyện Cascade có thể được xem ở bất kỳ trình duyệt web hiện đại nào, nhưng bộ thiết lập Story Map Cascade chỉ được hỗ trợ ở ${CHROME} và ${SAFARI}.<br><br>Nếu bạn cần bộ thiết lập Cascade để hỗ trợ một trình duyệt khác, vui lòng liên lạc ${ESRI-SUPPORT} hoặc ${BROWSER-SUPPORT-VOTE}.",
+      "builderSupportFirefox": "Bộ thiết lập Story Map Cascade hiện đang hỗ trợ trình duyệt Firefox!<br><br>Chức năng hỗ trợ tạo câu chuyện Cascade trong Firefox hiện đang ở bản beta. Xin hãy dùng thử và thông báo mọi vấn đề nếu có với ${ESRI-SUPPORT} hoặc ${ESRI-COMMUNITY}.",
+      "builderSupportOther": "Có thể xem các câu chuyện Cascade trên bất kỳ trình duyệt web hiện đại nào, nhưng bộ thiết lập Story Map Cascade thì chỉ được hỗ trợ trên ${CHROME}, ${SAFARI}, và ${FIREFOX} (beta).<br><br>Nếu bạn cần bộ thiết lập Cascade để hỗ trợ một số trình duyệt khác, vui lòng liên lạc với ${ESRI-SUPPORT} hoặc ${BROWSER-SUPPORT-VOTE}.",
+      "builderSupportIpad": "Bộ thiết lập Story Map Cascade không được hỗ trợ trên iPad. Các câu chuyện Cascade bạn đã tạo ra và chia sẻ sẽ hoạt động được trên iPad.",
+      "launchBuilder": "Khởi chạy Bộ thiết lập Cascade",
+      "notAgain": "Không hiện lại thông báo này",
       "sorry": "Lưu ý:"
     },
     "mobileWarning": {
@@ -82,6 +83,40 @@ define({
       "speedFast": "Nhanh",
       "speedMedium": "Trung bình",
       "speedSlow": "Chậm"
+    }
+  },
+  "print": {
+    "settings": {
+      "pleaseWait": "Vui lòng đợi tải toàn bộ câu chuyện trước khi in",
+      "printNotes": "Nếu trang này tải chậm hoặc một số phương tiện không xuất hiện, hãy thử thay thế phương tiện đang hoạt động bằng các hình ảnh khác hoặc in ấn với một phạm vi nhỏ hơn. Để cho kết quả tốt nhất, bạn có thể bật chế độ in các thành phần nền ở mục thiết lập chế độ in ấn của trình duyệt lên.",
+      "printOptions": "Tùy chọn",
+      "makeTextBlack": "Chuyển tất cả văn bản sang màu đen",
+      "showLinks": "Hiển thị URL liên kết",
+      "useAltMedia": "Thay thế phương tiện đang hoạt động bằng hình ảnh nếu có",
+      "pageBreaks": "Bắt đầu mỗi phần trên trang mới",
+      "printRange": "In một phần của câu chuyện này",
+      "sectionStart": "Các phần:",
+      "go": "Áp dụng",
+      "reset": "Thiết lập lại cho toàn bộ câu chuyện",
+      "print": "In"
+    },
+    "page": {
+      "appTagline": "Câu chuyện này được thực hiện với ${CASCADE_LINK_TEXT}.",
+      "cascadeLinkText": "Story Map Cascade của Esri",
+      "readItOnline": "Đọc trên trang web tại ${STORY_URL}."
+    },
+    "sections": {
+      "sectionLabel": "Phần ${SECTION_NUMBER}"
+    },
+    "media": {
+      "websiteLabel": "Trang web:",
+      "videoLabel": "Video:",
+      "audioLabel": "Âm thanh:"
+    },
+    "bannerNotification": {
+      "learnMore": "Tìm hiểu Thêm",
+      "close": "Đóng",
+      "dontShowAgain": "Không hiện lại thông báo này"
     }
   }
 });

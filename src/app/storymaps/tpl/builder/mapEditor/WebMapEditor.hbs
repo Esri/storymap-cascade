@@ -1,0 +1,30 @@
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h4 class="modal-title">{{strings.dialogTitle}}</h4>
+    </div>
+
+    <div class="modal-body">
+      <div class="loading-container">
+        <div>
+          <img src="resources/tpl/viewer/icons/loading-light.gif" />
+        </div>
+        <div class="loading-lbl">{{strings.loading}}</div>
+      </div>
+      <div class="error-container hide">
+        <div class="error-msg"></div>
+      </div>
+
+      <div class="webmap-builder-container">
+        <iframe class="webmap-builder"></iframe>
+      </div>
+
+    </div>
+
+    <div class="modal-footer">
+      <span class="error"></span>
+      <button class="btnSubmit btn btn-primary hide" ></button>
+      <a role="button" tabindex="0" class="btn btnCancel btn-naked btn-close">{{strings.close}}</a>
+    </div>
+  </div>
+</div>

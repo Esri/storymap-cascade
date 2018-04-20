@@ -32,10 +32,11 @@ define({
       "upgradeBrowser": "Uuendage oma veebibrauserit",
       "mapLoadingFail": "Midagi läks valesti ning kaarti ei laaditud õigesti.",
       "signOut": "Logi välja",
-      "builderSupport1": "Kaardilugude kaudu kaskaadi loomine on toetatud ainult brauserites ${CHROME} ja ${SAFARI}. Koosturi abil loodud kaskaadlugusid saab aga lisaks nendele brauseritele kuvada ka brauseris Internet Explorer 11 ja uuemates versioonides ning Firefoxis.",
-      "builderSupport2": "iPadis kaardilugude koosturit ei toetata. Eelnevalt koostatud ja jagatud kaskaadlood iPadis toimivad.",
-      "builderSupport3": "Kaskaadlugusid saab kuvada Chrome’is, Firefoxis ning brauseris Internet Explorer 11 ja uuemates versioonides. Kaardilugude kaskaadikoosturit toetatakse aga üksnes brauserites ${CHROME} ja ${SAFARI}.",
-      "builderSupport4": "Kaskaadi alusel koostatud kaardilugusid saab kuvada kõikides tänapäevastes veebibrauserites, aga kaardilugude kaskaadi koostamise moodul on toetatud üksnes järgnevates brauserites ${CHROME} ja ${SAFARI}.<br><br>Juhul kui soovite, et kaskaadi koostamise moodul oleks toetatud ka muudes brauserites, võtke ühendust toega ${ESRI-SUPPORT} või klõpsake hääletamiseks: ${BROWSER-SUPPORT-VOTE}.",
+      "builderSupportFirefox": "Kaardilugude kaskaadi koostaja on nüüd toetud ka Firefox brauseris!<br><br>Vastav Firefoxi tugi on praegu kasutatav beetaversioonina. Proovige seda ja kui leiate mõne kitsaskoha, andke sellest kindlasti teada: ${ESRI-SUPPORT} või ${ESRI-COMMUNITY}.",
+      "builderSupportOther": "Kaskaadlugusid saab kuvada kõikide tänapäevaste veebibrauseritega, aga kaardilugude kaskaadi koosturi tugi on üksnes brauseritel ${CHROME}, ${SAFARI} ja ${FIREFOX} (beeta).<br><br>Kui soovite, et kaskaadi koosturi tugi oleks veel mõnel brauseril, võtke ühendust: ${ESRI-SUPPORT} või klõpsake hääletamiseks: ${BROWSER-SUPPORT-VOTE}.",
+      "builderSupportIpad": "iPadis kaardilugude kaskaadi koosturit ei toetata. Eelnevalt koostatud ja jagatud kaskaadlood iPadis toimivad.",
+      "launchBuilder": "Kaskaadi koosturi käivitamine",
+      "notAgain": "Ära seda enam kuva",
       "sorry": "Tähelepanu!"
     },
     "mobileWarning": {
@@ -82,6 +83,40 @@ define({
       "speedFast": "Kiire",
       "speedMedium": "Keskmine",
       "speedSlow": "Aeglane"
+    }
+  },
+  "print": {
+    "settings": {
+      "pleaseWait": "Enne printimist oodake, kuni laaditud on kogu lugu",
+      "printNotes": "Kui lehe laadimine on aeglane või osa meediumist ei kuvata, proovige asendada reaalajas meedium piltidega või printige korraga vähem jaotisi. Parima tulemuse saavutamiseks peate võib-olla lubama brauseri printimissätetes taustaelementide printimise.",
+      "printOptions": "Valikud",
+      "makeTextBlack": "Muuda kogu tekst mustaks",
+      "showLinks": "Kuva linkide URL-id",
+      "useAltMedia": "Asenda reaalajas meedium piltidega, kui olemas",
+      "pageBreaks": "Alusta iga jaotist uuelt lehelt",
+      "printRange": "Prindi osa sellest loost",
+      "sectionStart": "Jaotised:",
+      "go": "Rakenda",
+      "reset": "Lähtesta täismahus loole",
+      "print": "Prindi"
+    },
+    "page": {
+      "appTagline": "Selle loo koostamisel kasutati: ${CASCADE_LINK_TEXT}.",
+      "cascadeLinkText": "Esri kaardilugude kaskaad",
+      "readItOnline": "Lugege seda veebis: ${STORY_URL}."
+    },
+    "sections": {
+      "sectionLabel": "Jaotis ${SECTION_NUMBER}"
+    },
+    "media": {
+      "websiteLabel": "Veebileht:",
+      "videoLabel": "Video:",
+      "audioLabel": "Heli:"
+    },
+    "bannerNotification": {
+      "learnMore": "Lisateave",
+      "close": "Sule",
+      "dontShowAgain": "Ära kuva enam seda teadet"
     }
   }
 });

@@ -32,10 +32,11 @@ define({
       "upgradeBrowser": "Tarayıcınızı güncelleyin",
       "mapLoadingFail": "Hata oluştu, harita düzgün şekilde yüklenmedi.",
       "signOut": "Oturumu Kapat",
-      "builderSupport1": "Story Map Cascade oluşturucu yalnızca ${CHROME} ve ${SAFARI} tarayıcıları tarafından desteklenir. Ancak, oluşturucu ile hazırladığınız Cascade hikayeleri bu tarayıcılar, Internet Explorer 11+ ve Firefox tarafından görüntülenebilir.",
-      "builderSupport2": "Story Map Cascade oluşturucu iPad cihazında desteklenmez. Oluşturduğunuz ve paylaştığınız Cascade hikayeleri iPad üzerinde çalışır.",
-      "builderSupport3": "Cascade hikayeleri Chrome, Safari, Firefox ve Internet Explorer 11+ tarayıcılarında görüntülenebilir, ancak Story Map Cascade oluşturucu yalnızca ${CHROME} ve ${SAFARI} tarafından desteklenir.",
-      "builderSupport4": "Cascade hikayeleri her modern tarayıcıda görüntülenebilir, ancak Story Map Cascade oluşturucu yalnızca ${CHROME} ve ${SAFARI} tarafından desteklenir.<br><br>Cascade oluşturucunun farklı bir tarayıcıyı desteklemesi gerekiyorsa, ${ESRI-SUPPORT} veya ${BROWSER-SUPPORT-VOTE} ile iletişim kurun.",
+      "builderSupportFirefox": "Story Map Cascade oluşturucu artık Firefox'u destekliyor!<br><br>Firefox'ta Cascade hikayelerini yazma desteği beta'da mevcut durumda. Lütfen deneyin ve varsa sorunları ${ESRI-SUPPORT} veya ${ESRI-COMMUNITY} ile iletişim kurun.",
+      "builderSupportOther": "Cascade hikayeleri her modern tarayıcıda görüntülenebilir, ancak Story Map Cascade oluşturucu yalnızca ${CHROME}, ${SAFARI} ve ${FIREFOX} (beta) tarafından desteklenir.<br><br>Cascade oluşturucunun farklı bir tarayıcıyı desteklemesi gerekiyorsa, ${ESRI-SUPPORT} veya ${BROWSER-SUPPORT-VOTE} ile iletişim kurun.",
+      "builderSupportIpad": "Story Map Cascade oluşturucu iPad cihazında desteklenmez. Oluşturduğunuz ve paylaştığınız Cascade hikayeleri iPad üzerinde çalışır.",
+      "launchBuilder": "Cascade oluşturucuyu başlat",
+      "notAgain": "Bunu tekrar gösterme",
       "sorry": "Dikkat:"
     },
     "mobileWarning": {
@@ -82,6 +83,40 @@ define({
       "speedFast": "Hızlı",
       "speedMedium": "Orta",
       "speedSlow": "Yavaş"
+    }
+  },
+  "print": {
+    "settings": {
+      "pleaseWait": "Lütfen yazdırmadan önce tüm hikayenin yüklenmesini bekleyin",
+      "printNotes": "Bu sayfa yavaş yükleniyorsa veya bazı ortamlar görünmüyorsa, canlı ortamı görüntülerle değiştirmeyi veya daha küçük bir bölüm aralığını yazdırmayı deneyin. En iyi sonuçlar için tarayıcınızın yazdırma ayarlarından arka plan öğelerinin yazdırılmasını etkinleştirmeniz gerekebilir.",
+      "printOptions": "Seçenekler",
+      "makeTextBlack": "Metnin tamamını siyah yap",
+      "showLinks": "Bağlantı URL'lerini göster",
+      "useAltMedia": "Canlı ortamı varsa görüntülerle değiştirin",
+      "pageBreaks": "Her bölümü yeni sayfada başlat",
+      "printRange": "Bu hikayenin bir kısmını yazdır",
+      "sectionStart": "Bölümler:",
+      "go": "Uygula",
+      "reset": "Tüm hikayeyi sıfırla",
+      "print": "Yazdır"
+    },
+    "page": {
+      "appTagline": "Bu hikaye ${CASCADE_LINK_TEXT} ile yapıldı.",
+      "cascadeLinkText": "Esri Story Map Cascade",
+      "readItOnline": "Web'de ${STORY_URL} bağlantısından okuyun."
+    },
+    "sections": {
+      "sectionLabel": "Bölüm ${SECTION_NUMBER}"
+    },
+    "media": {
+      "websiteLabel": "Web Sitesi:",
+      "videoLabel": "Video:",
+      "audioLabel": "Ses:"
+    },
+    "bannerNotification": {
+      "learnMore": "Daha Fazla Bilgi",
+      "close": "Kapat",
+      "dontShowAgain": "Bu iletiyi tekrar gösterme"
     }
   }
 });

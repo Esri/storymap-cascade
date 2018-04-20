@@ -2,10 +2,11 @@ import Tab from './Tab';
 
 import viewTpl from 'lib-build/hbars!./TabManage';
 import {} from 'lib-build/less!./Common';
+import {} from 'lib-build/less!./TabManage';
 
 import i18n from 'lib-build/i18n!resources/tpl/builder/nls/app';
 
-import BuilderHelper from 'storymaps/common/builder/BuilderHelper';
+import BuilderHelper from 'storymaps/tpl/builder/BuilderHelper';
 
 export default class TabManage extends Tab {
   constructor(params = {}) {
@@ -18,6 +19,8 @@ export default class TabManage extends Tab {
 
     this._mediaType = params.mediaType;
     this._mediaId = params.mediaId;
+    this._showErrors = params.showErrors;
+    this._mapEditorEnabled = params.mapEditorEnabled;
   }
 
   setMapName(mapName) {
@@ -34,7 +37,9 @@ export default class TabManage extends Tab {
   render() {
     return viewTpl({
       mapName: this.mapName,
-      strings: i18n.builder.mediaConfig.manage
+      strings: i18n.builder.mediaConfig.manage,
+      showErrors: this._showErrors,
+      mapEditorEnabled: this._mapEditorEnabled
     });
   }
 
@@ -55,24 +60,18 @@ export default class TabManage extends Tab {
       this._onAction('remove');
     });
 
-    this._node.find('.config-item[data-action="upload-image"]').on('click', () => {
-      // TODO: Send action
-      console.log('action');
-    });
-
     this._node.find('.config-item[data-action="edit"]').on('click', () => {
       if (! this._mediaType || ! this._mediaId) {
         return;
       }
 
       if (this._mediaType == 'webmap') {
-        window.open(
-          BuilderHelper.getMapViewerLink(this._mediaId),
-          '_blank'
-        );
-
-        // TODO: comment this out when have map viewer
-        // this._onAction('arcgis-edit');
+        if (this._mapEditorEnabled) {
+          this._onAction('arcgis-edit');
+        }
+        else {
+          this._onAction('arcgis-edit-external');
+        }
       }
       else if (this._mediaType == 'webscene') {
         window.open(

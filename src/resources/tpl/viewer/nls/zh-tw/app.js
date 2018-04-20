@@ -32,10 +32,11 @@ define({
       "upgradeBrowser": "請更新您的瀏覽器",
       "mapLoadingFail": "發生了一些錯誤，地圖未正確載入。",
       "signOut": "登出",
-      "builderSupport1": "只有 ${CHROME} 和 ${SAFARI} 支援「故事地圖串流」建立器。不過，那些瀏覽器、Internet Explorer 11+ 和 Firefox 可檢視您使用建立器所建立的串流故事。",
-      "builderSupport2": "iPad 不支援事地圖串流建立器。您建立和分享的串流故事將在 iPad 上運作。",
-      "builderSupport3": "可在 Chrome、Safari、Firefox 和 Internet Explorer 11+ 中檢視串流故事，但故事地圖串流建立器僅受 ${CHROME} 和 $SAFARI} 支援。",
-      "builderSupport4": "可在任何新穎的 Web 瀏覽器中檢視串流故事，但故事地圖串流建立器僅受 ${CHROME} 和 ${SAFARI} 支援。<br><br>如果需要串流建立器來支援不同的瀏覽器，請聯絡 ${ESRI-SUPPORT} 或 ${BROWSER-SUPPORT-VOTE}。",
+      "builderSupportFirefox": "Story Map Cascade 建立器現在支援 Firefox!<br><br>Firefox 支援的 Cascade 故事創作目前處於 beta 階段。請試用並向 ${ESRI-SUPPORT} 或 ${ESRI-COMMUNITY} 報告任何問題。",
+      "builderSupportOther": "可在任何新穎的 Web 瀏覽器中檢視 Cascade 故事，但 Story Map Cascade 建立器僅受 ${CHROME}、${SAFARI} 和 ${FIREFOX} (beta) 支援。<br><br>如果需要 Cascade 建立器來支援不同的瀏覽器，請聯絡 ${ESRI-SUPPORT} 或 ${BROWSER-SUPPORT-VOTE}。",
+      "builderSupportIpad": "iPad 不支援 Story Map Cascade 建立器。您建立和分享的 Cascade 故事將在 iPad 上運作。",
+      "launchBuilder": "啟動 Cascade 建立器",
+      "notAgain": "不再顯示此訊息",
       "sorry": "注意:"
     },
     "mobileWarning": {
@@ -82,6 +83,40 @@ define({
       "speedFast": "較快",
       "speedMedium": "中",
       "speedSlow": "較慢"
+    }
+  },
+  "print": {
+    "settings": {
+      "pleaseWait": "請等到整個故事載入完畢再列印",
+      "printNotes": "如果此頁面載入緩慢或未顯示部分媒體，請試著以圖片取代即時媒體，或列印部分的較小範圍。為了獲得最佳結果，您可能需要在瀏覽器的列印設定中啟用背景元素列印。",
+      "printOptions": "選項",
+      "makeTextBlack": "將所有文字變成黑色",
+      "showLinks": "顯示連結 URL",
+      "useAltMedia": "如果可用，以圖片取代即時媒體",
+      "pageBreaks": "在一個新頁面上開始每個部分",
+      "printRange": "列印此故事的部分",
+      "sectionStart": "部分:",
+      "go": "套用",
+      "reset": "重設為完整故事",
+      "print": "列印"
+    },
+    "page": {
+      "appTagline": "這是使用 ${CASCADE_LINK_TEXT} 所製作的故事。",
+      "cascadeLinkText": "Esri 的 Story Map Cascade",
+      "readItOnline": "在 ${STORY_URL} 的 Web 上讀取它。"
+    },
+    "sections": {
+      "sectionLabel": "第 ${SECTION_NUMBER} 部分"
+    },
+    "media": {
+      "websiteLabel": "網址:",
+      "videoLabel": "影片:",
+      "audioLabel": "音訊:"
+    },
+    "bannerNotification": {
+      "learnMore": "瞭解詳細資訊",
+      "close": "關閉",
+      "dontShowAgain": "請勿再次顯示此訊息"
     }
   }
 });

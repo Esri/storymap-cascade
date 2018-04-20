@@ -32,10 +32,11 @@ define({
       "upgradeBrowser": "Пожалуйста, обновите ваш браузер",
       "mapLoadingFail": "Произошла ошибка, карта загрузилась некорректно.",
       "signOut": "Выйти",
-      "builderSupport1": "Конструктор Story Map Cascade поддерживается только в ${CHROME} и ${SAFARI}. Однако истории Cascade, созданные с помощью конструктора, могут просматриваться браузерами Internet Explorer 11+ и Firefox.",
-      "builderSupport2": "Конструктор Story Map Cascade не поддерживается на iPad. Опубликованные истории Cascade могут просматриваться на iPad.",
-      "builderSupport3": "Истории Cascade можно просматривать браузерами Chrome, Safari, Firefox и Internet Explorer 11+, но конструктор Story Map Cascade поддерживается только в ${CHROME} и ${SAFARI}.",
-      "builderSupport4": "Истории Cascade можно просматривать в любом современном веб-браузер, но конструктор Story Map Cascade поддерживается только в ${CHROME} и ${SAFARI}.<br><br>Если вы хотите поддержку конструктора Cascade на другом браузере, свяжитесь с ${ESRI-SUPPORT} или ${BROWSER-SUPPORT-VOTE}.",
+      "builderSupportFirefox": "Конструктор Story Map Cascade теперь поддерживает Firefox! <br><br>Поддержка создания историй Cascade в Firefox в настоящий момент осуществляется в режиме тестирования. Пожалуйста, изучите и отправляйте сообщения об ошибках в ${ESRI-SUPPORT} или ${ESRI-COMMUNITY}.",
+      "builderSupportOther": "Истории Cascade можно просматривать в любом современном веб-браузере, но конструктор Story Map Cascade поддерживается только в ${CHROME}, ${SAFARI} и ${FIREFOX} (в режиме тестирования).<br><br>Если вам требуется поддержка конструктора Cascade на другом браузере, свяжитесь с ${ESRI-SUPPORT} или ${BROWSER-SUPPORT-VOTE}.",
+      "builderSupportIpad": "Конструктор Story Map Cascade не поддерживается на iPad. Опубликованные истории Cascade могут просматриваться на iPad.",
+      "launchBuilder": "Запуск конструктора Cascade",
+      "notAgain": "Не показывать это сообщение снова",
       "sorry": "Внимание:"
     },
     "mobileWarning": {
@@ -82,6 +83,40 @@ define({
       "speedFast": "Быстро",
       "speedMedium": "Среднее",
       "speedSlow": "Медленно"
+    }
+  },
+  "print": {
+    "settings": {
+      "pleaseWait": "Прежде чем печатать, пожалуйста, подождите, пока загрузится вся история",
+      "printNotes": "Если эта страница загружается медленно или некоторые медиаресурсы не отображаются, попробуйте заменить медиаресурсы в реальном времени изображениями или печать меньшего числа разделов. Лучше всего включить печать фоновых элементов в настройках печати вашего браузера.",
+      "printOptions": "Опции",
+      "makeTextBlack": "Сделать весь текст черным",
+      "showLinks": "Показать URL связи",
+      "useAltMedia": "Заменить, по возможности, медиаресурсы в реальном времени изображениями",
+      "pageBreaks": "Начинать каждый раздел с новой страницы",
+      "printRange": "Напечатать часть этой истории",
+      "sectionStart": "Разделы:",
+      "go": "Применить",
+      "reset": "Сброс до всей истории",
+      "print": "Печать"
+    },
+    "page": {
+      "appTagline": "Эта история создана с ${CASCADE_LINK_TEXT}.",
+      "cascadeLinkText": "Esri's Story Map Cascade",
+      "readItOnline": "Прочитайте в интернете на сайте ${STORY_URL}."
+    },
+    "sections": {
+      "sectionLabel": "Раздел ${SECTION_NUMBER}"
+    },
+    "media": {
+      "websiteLabel": "Веб-сайт:",
+      "videoLabel": "Видео:",
+      "audioLabel": "Аудио:"
+    },
+    "bannerNotification": {
+      "learnMore": "Подробнее",
+      "close": "Закрыть",
+      "dontShowAgain": "Не показывать это сообщение снова"
     }
   }
 });

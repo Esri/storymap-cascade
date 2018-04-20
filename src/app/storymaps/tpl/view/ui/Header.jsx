@@ -2,14 +2,14 @@ import {} from 'lib-build/less!./Header';
 
 import i18n from 'lib-build/i18n!resources/tpl/builder/nls/app';
 
-import CommonHelper from 'storymaps/common/utils/CommonHelper';
+import CommonHelper from 'storymaps/tpl/utils/CommonHelper';
 
 import Media from 'storymaps-react/tpl/view/media/Media';
 import ProgressBar from 'storymaps/tpl/view/ui/ProgressBar';
 import Bookmarks from './Bookmarks';
 
-import ShareDialog from 'storymaps/common/ui/share/ShareDialog';
-import SocialSharing from 'storymaps/common/utils/SocialSharing';
+import ShareDialog from 'storymaps/tpl/view/ui/share/ShareDialog';
+import SocialSharing from 'storymaps/tpl/utils/SocialSharing';
 
 import has from 'dojo/has';
 
@@ -229,7 +229,7 @@ export default class Header {
       .off('click')
       .click(CommonHelper.switchToBuilder);
 
-    if (has('ff') || has('ie') || has('trident') == 7) {
+    if (has('ie') || has('trident') == 7) {
       this._node.find('.header-edit-close').hide();
     }
     else {

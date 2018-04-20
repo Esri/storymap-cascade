@@ -32,10 +32,11 @@ define({
       "upgradeBrowser": "브라우저를 업데이트하세요.",
       "mapLoadingFail": "오류가 발생했습니다. 맵을 올바르게 불러오지 않았습니다.",
       "signOut": "로그아웃",
-      "builderSupport1": "Story Map Cascade 빌더는 ${CHROME}과 ${SAFARI}에서만 지원됩니다. 하지만 빌더로 생성한 Cascade 스토리는 이러한 브라우저, Internet Explorer 11 이상, Firefox에서 볼 수 있습니다.",
-      "builderSupport2": "Story Map Cascade 빌더는 iPad에서 지원되지 않습니다. 생성한 후 공유하는 Cascade 스토리는 iPad에서 작동됩니다.",
-      "builderSupport3": "Cascade 스토리는 Chrome, Safari, Firefox, Internet Explorer 11 이상에서 볼 수 있지만 Story Map Cascade 빌더는 ${CHROME}과 ${SAFARI}에서만 지원됩니다.",
-      "builderSupport4": "Cascade 스토리는 모든 최신 웹 브라우저에서 볼 수 있지만 Story Map Cascade 빌더는 ${CHROME}과 ${SAFARI}에서만 지원됩니다.<br><br>다른 브라우저를 지원하는 Cascade 빌더가 필요한 경우 ${ESRI-SUPPORT} 또는 ${BROWSER-SUPPORT-VOTE}에 문의하세요.",
+      "builderSupportFirefox": "이제 Story Map Cascade 빌더에서 FireFox를 지원합니다!<br><br>Firefox에서 Cascade 스토리 작성은 현재 베타 버전으로 지원됩니다. 사용 후 발견되는 모든 문제는 ${ESRI-SUPPORT} 또는 ${ESRI-COMMUNITY}로 보고해 주시기 바랍니다.",
+      "builderSupportOther": "Cascade 스토리는 모든 최신 웹 브라우저에서 볼 수 있지만 Story Map Cascade 빌더는 ${CHROME}, ${SAFARI} 및 ${FIREFOX}(베타 버전)에서만 지원됩니다.<br><br>다른 브라우저를 지원하는 Cascade 빌더가 필요한 경우 ${ESRI-SUPPORT} 또는 ${BROWSER-SUPPORT-VOTE}에 문의하세요.",
+      "builderSupportIpad": "Story Map Cascade 빌더는 iPad에서 지원되지 않습니다. 생성한 후 공유하는 Cascade 스토리는 iPad에서 작동됩니다.",
+      "launchBuilder": "Cascade 빌더 실행",
+      "notAgain": "다시 표시 안 함",
       "sorry": "주의:"
     },
     "mobileWarning": {
@@ -82,6 +83,40 @@ define({
       "speedFast": "빠르게",
       "speedMedium": "중형",
       "speedSlow": "느리게"
+    }
+  },
+  "print": {
+    "settings": {
+      "pleaseWait": "인쇄하기 전에 전체 스토리를 불러올 때까지 잠시 기다려 주세요.",
+      "printNotes": "이 페이지를 불러오는 데 시간이 오래 걸리거나 일부 미디어가 표시되지 않으면 실시간 미디어를 이미지로 바꾸거나 작은 범위의 섹션을 인쇄해 보세요. 최상의 결과를 위해 브라우저의 인쇄 설정에서 배경 요소 인쇄를 활성화해야 할 수도 있습니다.",
+      "printOptions": "옵션",
+      "makeTextBlack": "모든 텍스트를 검은색으로 설정",
+      "showLinks": "링크 URL 표시",
+      "useAltMedia": "해당하는 경우 실시간 미디어를 이미지로 바꾸기",
+      "pageBreaks": "새 페이지에서 각 섹션 시작",
+      "printRange": "일부 스토리 인쇄",
+      "sectionStart": "섹션:",
+      "go": "적용",
+      "reset": "전체 스토리로 초기화",
+      "print": "인쇄"
+    },
+    "page": {
+      "appTagline": "이 스토리는 ${CASCADE_LINK_TEXT}로 이루어져 있습니다.",
+      "cascadeLinkText": "Esri Story Map Cascade",
+      "readItOnline": "웹(${STORY_URL})에서 읽어보세요."
+    },
+    "sections": {
+      "sectionLabel": "섹션 ${SECTION_NUMBER}"
+    },
+    "media": {
+      "websiteLabel": "웹 사이트:",
+      "videoLabel": "비디오:",
+      "audioLabel": "오디오:"
+    },
+    "bannerNotification": {
+      "learnMore": "자세한 정보",
+      "close": "닫기",
+      "dontShowAgain": "이 메시지를 다시 표시 안 함"
     }
   }
 });

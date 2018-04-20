@@ -1,5 +1,4 @@
 import Share from './Share';
-import appState from './appState';
 
 export default class Fix {
   static fixMapsShare(options) {
@@ -44,9 +43,9 @@ export default class Fix {
     });
   }
 
-  static fixPremiumSubscriptionContent(items) {
+  static fixPremiumSubscriptionContent(items, premiumManager) {
     return new Promise((resolve, reject) => {
-      appState.premiumManager.addProxies(items)
+      premiumManager.addProxies(items)
       .then(results => {
         // boil the results down to just the IDs (that's all we care about passing back)
         let fixedItems = results.map(item => {

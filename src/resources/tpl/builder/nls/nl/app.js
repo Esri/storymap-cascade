@@ -50,7 +50,26 @@ define({
         "loremBody": "Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor. Mauris consequat orci nec magna facilisis bibendum at eget libero."
       }
     },
+    "share": {
+      "btnPrivate": "Privé",
+      "btnOrg": "Organisatie",
+      "btnPublic": "Openbaar",
+      "btnEveryone": "Iedereen"
+    },
     "builderPanel": {
+      "builderNamePrefix": "",
+      "builderNameSuffix": "Builder",
+      "buttonSaving": "Opslaan",
+      "buttonSaved": "Opgeslagen",
+      "buttonError": "Opslaan is mislukt",
+      "buttonShare": "Delen",
+      "buttonSettings": "Instellingen",
+      "settingsLogoError": "Er is een probleem met uw logo. Klik voor meer informatie.",
+      "buttonHelp": "Krijg hulp of Geef feedback op GeoNet",
+      "buttonPreview": "Verhaal bekijken",
+      "buttonHealth": "Gezondheidsrapport",
+      "manageStories": "Mijn Verhalen beheren",
+      "closeWithPendingChange": "Weet u zeker dat u deze actie wilt bevestigen? Uw wijzigingen gaan verloren.",
       "coverLabel": "Omslag",
       "creditsLabel": "Credits",
       "betaFeedback": "Feedback",
@@ -143,6 +162,195 @@ define({
         "uploadAltImage": "Andere afbeelding toevoegen"
       }
     },
+    "mediaPicker": {
+      "browseToggle": {
+        "urls": "Koppelen aan Content",
+        "urls_short": "Koppeling",
+        "contentType": {
+          "error": "Geen geautoriseerde media.",
+          "imageOnly": "In dit deel van het verhaal kunt u een afbeelding toevoegen.",
+          "imageAndVideo": "In dit deel van het verhaal kunt u een afbeelding of een video toevoegen.",
+          "imageVideoWebpage": "In dit deel van het verhaal kunt u een afbeelding, een video of een webpagina toevoegen."
+        }
+      },
+      "browsePanel": {
+        "providers": {
+          "searchingFor": "Zoeken naar \"${searchterm}\"...",
+          "searchedFor": "Zoekenresultaten voor \"${searchterm}\"",
+          "albumsOf": "${username}'s albums",
+          "noPhotosFound": "Er zijn geen foto's die overeenstemmen met uw zoekopdracht. Probeer het nogmaals.",
+          "noItemsFound": "Er zijn geen items die overeenstemmen met uw zoekopdracht. Probeer het nogmaals.",
+          "noItemsInThisStory": "Er is nog geen content van ArcGIS toegevoegd aan dit verhaal.",
+          "limitReached": "Er worden 100 items getoond. Als u niet gevonden hebt wat u zocht, probeer dan te zoeken op een trefwoord.",
+          "galleryItems": {
+            "uploadError": "Onze excuses, dit item kon niet worden geüpload."
+          },
+          "agol": {
+            "remove1": "Verwijder deze ongebruikte afbeelding van uw ArcGIS account.",
+            "remove2": "(Als u ze later wenst te gebruiken, moet u ze opnieuw uploaden.)",
+            "removeFailed": "Verwijder deze niet-toegankelijke afbeelding uit deze lijst.",
+            "modified": "Gewijzigd op ${date}",
+            "uploaded": "Geüploaded op ${date}",
+            "contentByAuthor": "${contentType} door ${author}"
+          },
+          "googlePhotos": {
+            "searchAndBrowse": "Foto's verkennen op ${Picasa} of ${Google+}"
+          },
+          "flickr": {
+            "photostream": "Fotostream",
+            "searchAndBrowse": "Foto's zoeken en verkennen op ${Flickr}",
+            "captionStarter": "Foto door ${USERNAME} op ${Flickr}"
+          },
+          "unsplash": {
+            "searchAndBrowse": "Foto's zoeken op ${Unsplash}",
+            "photoBy": "Foto door ${username}",
+            "userLink": "Ga naar ${username}'s ${Unsplash} pagina",
+            "captionStarter": "Foto door ${USERNAME} op ${Unsplash}"
+          },
+          "urlContent": {
+            "uploadHeaders": {
+              "generic": "Koppelen met content op het web",
+              "imageOnly": "Koppelen met een afbeelding op het web",
+              "imageAndVideo": "Koppelen met een afbeelding of video op het web"
+            },
+            "linkText": {
+              "imageOnly": "In het bovenstaande vak kunt u een rechtstreekse koppeling maken met een foto.",
+              "imageAndVideo1": "In het bovenstaande vak kunt u een koppeling of iframe-code plakken voor een video op ${YouTube} of ${Vimeo}.",
+              "imageAndVideo2": "U kunt ook een rechtstreekse koppeling maken met een foto.",
+              "imageVideoWebpage1": "In het bovenstaande vak kunt u een koppeling of iframe-code plakken voor web content zoals een dynamische grafiek of video op ${YouTube} of ${Vimeo}.",
+              "imageVideoWebpage2": "U kunt ook een rechtstreekse koppeling maken met een foto, video, geluidsbestand, internetpagina of webapplicatie.",
+              "ender": "Gebruik altijd veilige (https) links. Als uw content geen https ondersteunt, voeg dan een link toe in de tekst van uw verhaal, zodat de lezers het op een nieuw browsertabblad kunnen bekijken.",
+              "httpsError": "Koppeling moet beginnen met HTTPS"
+            },
+            "embedProtocol": {
+              "embedProtocolLabel": "Pagina laden d.m.v. een beveiligde verbinding (https)",
+              "embedProtocolWarning1": "Als deze pagina niet in uw verhaal geladen wordt, kan hij geïnbed worden omwille van webbeveiligingsredenen.",
+              "embedProtocolWarning2": "Als deze pagina niet in uw verhaal geladen wordt, vink deze optie dan uit en probeer nogmaals. Als de pagina nog steeds niet geladen kan worden, dan kan het niet geïnbed worden omwille van webbeveiligingsredenen.",
+              "embedProtocolWarning3": "Als alternatief kunt u een koppeling in uw verhaal toevoegen om de pagina te openen in een nieuw browsertabblad. ${linkText}",
+              "linkText": "Meer informatie."
+            },
+            "placeholder": "${https://}... of ${<iframe>}",
+            "uploadErrors": {
+              "generic": "Er is iets misgegaan met het ingevoerde adres. Probeer het nogmaals.",
+              "imageOnly1": "In dit deel van het verhaal moet u een afbeelding gebruiken.",
+              "imageOnly2": "Geef een koppeling naar een afbeelding op (.jpg, .png, .gif), of kies een afbeelding van ${ArcGIS}, ${Flickr}, ${Google+} of ${Unsplash}.",
+              "imageAndVideo1": "In dit deel van het verhaal moet u een afbeelding of video gebruiken.",
+              "imageAndVideo2": "Geef een koppeling naar een afbeelding op (.jpg, .png, .gif) of een video op ${YouTube} of ${Vimeo}, of kies een afbeelding van ${ArcGIS}, ${Flickr}, ${Google+} of ${Unsplash}.",
+              "badFormat": "De koppeling naar het bestand dat u tracht toe te voegen is niet goed geformatteerd.",
+              "inaccessible": "Het bestand dat u tracht toe te voegen ontbreekt of is niet toegankelijk.",
+              "tryAgain": "Controleer het adres en probeer het nogmaals.",
+              "mediaTypes": {
+                "VIDEO": "video",
+                "IMAGE": "image",
+                "generic": "media"
+              }
+            }
+          }
+        },
+        "sidePanel": {
+          "googlePhotos": {
+            "placeholder": "E-mail of ${Picasa}/${Google+} ID",
+            "helpText": "U kunt foto's aan uw verhaal toevoegen die geüploaded zijn naar ${Picasa} of ${Google+}. ${helpLinkText} over het gebruik van afbeeldingen in uw ${Google} account in uw verhalen.",
+            "helpLinkText": "Meer weten",
+            "cannotFindUser": "Kan gebruiker ${username} niet vinden. Probeer het nogmaals."
+          },
+          "unsplash": {
+            "placeholder": "Foto's zoeken",
+            "aboutText": "${Unsplash} is een gratis beheerde verzameling van hoogkwalitatieve foto's.",
+            "copyrightText": "Alle foto's die op ${Unsplash} gepubliceerd zijn, zijn onderhevig aan de ${CC0} Licentie. Voor meer informatie ${moreInfoLink}.",
+            "moreInfoLink": "hier"
+          },
+          "flickr": {
+            "searchType": {
+              "account": "${Flickr} account",
+              "text": "Alle ${Flickr}"
+            },
+            "placeholders": {
+              "user": "Account zoeken",
+              "userText": "Dit account doorzoeken op foto's",
+              "text": "Foto's zoeken"
+            },
+            "errors": {
+              "cannotFindUser": "Kan gebruiker ${username} niet vinden.",
+              "noUserPhotos": "${username} heeft geen openbare foto's.",
+              "didYouMean": "Bedoelde u ${username}?",
+              "generalUserError": "Er ging iets mis bij het zoeken naar gebruiker ${username}."
+            },
+            "licenses": {
+              "licenseLabel": "Licentie: ",
+              "public": "Openbaar domein",
+              "commercial": "OK voor commercieel gebruik",
+              "nonCommercial": "OK voor niet-commercieel gebruik",
+              "reserved": "Alle rechten voorbehouden",
+              "any": "Elke licentie"
+            }
+          },
+          "agol": {
+            "searchLocation": {
+              "thisStory": "Dit verhaal",
+              "agol": "ArcGIS Online",
+              "portalArcGIS": "Portal for ArcGIS",
+              "portal": "Portaal",
+              "myOrg": "${orgname} organisatie",
+              "myContent": "Mijn Content"
+            },
+            "createContent": {
+              "createNewMap": "Een Nieuwe kaart maken",
+              "or": "OF",
+              "dragAndDrop": "Plaats de afbeelding(en) hier",
+              "uploadImage": "Zoeken naar afbeelding(en)",
+              "agolInfo": "Afbeeldingen worden opgeslagen in uw ArcGIS-account en zijn alleen toegankelijk in uw verhaal.",
+              "saveBeforeUpload": "Zodra u dit verhaal opgeslagen hebt, kunt u hier afbeeldingen uploaden naar ArcGIS.",
+              "fileTypesImage": "Ondersteunde bestandstypes: .png, .jpeg, .jpg, .gif, .bmp"
+            },
+            "filterAndSort": {
+              "webmap": "Webmap",
+              "webscene": "Webscene",
+              "image": "Afbeelding",
+              "date": "Datum",
+              "sortByDate": "Sorteren op datum",
+              "title": "Titel",
+              "sortByTitle": "Sorteren op titel",
+              "views": "Weergaven",
+              "search": "Zoeken op trefwoord of ID"
+            }
+          }
+        }
+      }
+    },
+    "mapEditor": {
+      "dialogTitle": "Kaart bewerken",
+      "unauthorizedDomain": "U bevindt zich niet op een gemachtigd domein om de kaarteditor te gebruiken",
+      "loading": "Even geduld terwijl we de kaarteditor laden",
+      "saving": "De kaart opslaan",
+      "success": "Kaart opgeslagen",
+      "cancelTitle": "Niet-bewaarde wijzigingen verwijderen?",
+      "errorSave": "Kan de kaart niet opslaan. Probeer het opnieuw.",
+      "loadFail": "Het spijt ons, de kaarteditor kan niet worden geladen",
+      "close": "Sluiten",
+      "save": "Opslaan",
+      "confirm": "Ja, kaart sluiten",
+      "deny": "Nee, blijf werken"
+    },
+    "textEditor": {
+      "placeholder": {
+        "continueStory": "Ga hier verder met uw verhaal..."
+      },
+      "blockAdd": {
+        "text": "Tekst",
+        "media": "Media",
+        "title": "Titel",
+        "immersive": "Meeslepend"
+      },
+      "link": {
+        "invite": "Plak of typ een koppeling..."
+      },
+      "color": {
+        "choose": "kies",
+        "cancel": "annuleren",
+        "clear": "Kleur wissen"
+      }
+    },
     "imageGallery": {
       "addImage": "Andere afbeelding toevoegen",
       "moveBackward": "Achteruit verplaatsen",
@@ -222,13 +430,55 @@ define({
         "noAltImage": "Media werken mogelijk niet op mobiele apparaten",
         "noAltImageUnsupported": "Media niet ondersteund op mobiele apparaten",
         "noAltImageWarning": "Media werken mogelijk niet op mobiele apparaten",
-        "altImageBroken": "De alternatieve afbeelding die gedefinieerd is voor dit media-item is niet toegankelijk"
+        "altImageBroken": "De alternatieve afbeelding die gedefinieerd is voor dit media-item is niet toegankelijk",
+        "httpMedia": "Onbeveiligde media",
+        "httpContent": "Onbeveiligde content"
       },
       "contentWarnings": {
         "noAltImage": "Zorg ervoor dat u uw verhaal op mobiele apparaten test voordat u het deelt. Als deze media niet werken zoals verwacht, gebruik dan de onderstaande knop om een ​​alternatieve afbeelding toe te voegen die wordt weergegeven wanneer het verhaal wordt bekeken op een telefoon of tablet.",
         "noAltImageUnsupported": "Deze media werken niet op mobiele apparaten. Gebruik de onderstaande knop om een alternatieve afbeelding toe te voegen die getoond zal worden als het verhaal wordt weergegeven op een telefoon of tablet.",
         "noAltImageWarning": "Zorg ervoor dat u uw verhaal op mobiele apparaten test voordat u het deelt. Als deze media niet werken zoals verwacht, gebruik dan de onderstaande knop om een ​​alternatieve afbeelding toe te voegen die wordt weergegeven wanneer het verhaal wordt bekeken op een telefoon of tablet.",
         "noAltImageAlt": "Dit type media wordt niet ondersteund of werkt mogelijk niet goed op mobiele apparaten. Selecteer in het tabblad Mobiel een alternatieve afbeelding die getoond zal worden als het verhaal wordt weergegeven op een telefoon of tablet."
+      },
+      "descriptions": {
+        "httpAudioUnfixable": "Deze audio biedt geen ondersteuning voor HTTPS. Verwijder deze uit uw verhaal of vervang deze door een koppeling.",
+        "httpAudioUncheckable": "Deze audio heeft een onbeveiligde (HTTP) URL. Klik op de onderstaande knop om te proberen om een beveiligde HTTPS URL te gebruiken voor deze audio. Als dat niet werkt, verwijder de audio uit uw verhaal of vervang deze door een hyperlink.",
+        "httpAudioFixable": "Deze audio heeft een onbeveiligde (HTTP) URL. Klik op de onderstaande knop om een beveiligde HTTPS URL te gebruiken voor deze audio.",
+        "httpWebpageUnfixable": "Deze webpagina biedt geen ondersteuning voor HTTPS. Verwijder deze uit uw verhaal of vervang deze door schermafbeelding of een koppeling.",
+        "httpWebpageUncheckable": "Deze webpagina heeft een onbeveiligde (HTTP) URL. Klik op de onderstaande knop om te proberen om een beveiligde HTTPS URL te gebruiken voor deze webpagina. Als dat niet werkt, verwijder de webpagina uit uw verhaal of vervang deze door een hyperlink.",
+        "httpWebpageFixable": "Deze webpagina heeft een onbeveiligde (HTTP) URL. Klik op de onderstaande knop om een beveiligde HTTPS URL te gebruiken voor deze webpagina.",
+        "httpVideoUnfixable": "Deze video biedt geen ondersteuning voor HTTPS. Verwijder deze uit uw verhaal of vervang deze door schermafbeelding of een koppeling.",
+        "httpVideoUncheckable": "Deze video heeft een onbeveiligde (HTTP) URL. Klik op de onderstaande knop om te proberen om een beveiligde HTTPS URL te gebruiken voor deze video. Als dat niet werkt, verwijder de video uit uw verhaal of vervang deze door een hyperlink.",
+        "httpVideoFixable": "Deze video heeft een onbeveiligde (HTTP) URL. Klik op de onderstaande knop om een beveiligde HTTPS URL te gebruiken voor deze video.",
+        "httpImageUnfixable": "Deze afbeelding biedt geen ondersteuning voor HTTPS. Verwijder deze uit uw verhaal of vervang deze door een koppeling.",
+        "httpImageUncheckable": "Deze afbeelding heeft een onbeveiligde (HTTP) URL. Klik op de onderstaande knop om te proberen om een beveiligde HTTPS URL te gebruiken voor deze afbeelding. Als dat niet werkt, verwijder de afbeelding uit uw verhaal of vervang deze door een hyperlink.",
+        "httpImageFixable": "Deze afbeelding heeft een onbeveiligde (HTTP) URL. Klik op de onderstaande knop om een beveiligde HTTPS URL te gebruiken voor deze afbeelding.",
+        "httpLayer": "Deze laag heeft een onbeveiligde (HTTP) URL.",
+        "inaccessibleLogo": "Dit logo is niet toegankelijk. Vervang het door een andere afbeelding.",
+        "httpLogoUnfixable": "Dit logo biedt geen ondersteuning voor HTTPS. Vervang het door een andere afbeelding.",
+        "httpLogoFixable": "Dit logo heeft een onbeveiligde (HTTP) URL. Gebruik een HTTPS URL voor het logo.",
+        "httpLogoUncheckable": "Dit logo heeft een onbeveiligde (HTTP) URL. Gebruik een HTTPS URL voor het logo, of vervang het door een andere afbeelding."
+      },
+      "tooltips": {
+        "httpAudioFixable": "Klik op de knop om een beveiligde HTTPS URL te gebruiken voor deze audio.",
+        "httpAudioUncheckable": "Probeer een beveiligde HTTPS URL te gebruiken voor deze audio. Als dat niet werkt, verwijder de audio uit uw verhaal of vervang deze door een koppeling.",
+        "httpWebpageFixable": "Klik op de knop om een beveiligde HTTPS URL te gebruiken voor deze webpagina.",
+        "httpWebpageUncheckable": "Probeer een HTTPS URL te gebruiken voor deze webpagina. Als dat niet werkt, verwijder de webpagina uit uw verhaal of vervang deze door een schermafbeelding of een koppeling.",
+        "httpVideoFixable": "Klik op de knop om een beveiligde HTTPS URL te gebruiken voor deze video.",
+        "httpVideoUncheckable": "Probeer een HTTPS URL te gebruiken voor deze video. Als dat niet werkt, verwijder de video uit uw verhaal of vervang deze door een schermafbeelding of een koppeling.",
+        "httpImageFixable": "Klik op de knop om een beveiligde HTTPS URL te gebruiken voor deze afbeelding.",
+        "httpImageUncheckable": "Probeer een HTTPS URL te gebruiken voor deze afbeelding. Als dat niet werkt, verwijder de afbeelding uit uw verhaal of vervang deze door een koppeling.",
+        "httpLayerMyMap": "Bezoek de itempagina van de kaart om deze laag bij te werken voor gebruik met HTTPS. Als de laag niet kan worden bijgewerkt, verwijder deze dan uit de kaart.",
+        "httpLayerNotMyMap": "Maak een kopie van de kaart en werk deze laag bij voor gebruik met HTTPS. Als de laag niet kan worden bijgewerkt, verwijder deze dan uit de kaart.",
+        "clickLearnMore": "Klik voor meer informatie wilt."
+      },
+      "fixButtons": {
+        "agolItemPage": "Itempagina",
+        "openTheMap": "Kaart openen",
+        "updateAudio": "Audio URL herstellen",
+        "updateWebpages": "Webpagina URL herstellen",
+        "updateVideos": "Video URL herstellen",
+        "updateImages": "Afbeelding URL herstellen"
       },
       "mapIssues": {
         "fixButton": "Problemen oplossen",
@@ -291,6 +541,31 @@ define({
         "notHealthy": "Problemen oplossen",
         "warnings": "Zie waarschuwingen"
       }
+    },
+    "saveErrorSocial": {
+      "title": "Delen op social media",
+      "panel1": "Uw verhaal wordt mogelijk niet goed weergegeven op social media omdat de titel van uw ArcGIS webapplicatie-item niet dezelfde is als uw verhaaltitel.",
+      "panel1tooltip": "Door het definiëren van een titel, samenvatting en thumbnail-afbeelding, komt uw verhaal er als volgt uit te zien:",
+      "panel2": "Welke titel zou u willen gebruiken op social media:",
+      "panel2q1": "Verhaaltitel (aanbevolen)",
+      "panel2q1tooltip": "Door deze optie te kiezen, wordt uw itemtitel aangepast aan uw verhaaltitel en worden verdere veranderingen in de builder gesynchroniseerd.",
+      "panel2q2": "Itemtitel",
+      "panel3": "Gebruik ${MYSTORIES} om de weergave op social media verder te verbeteren en voeg een samenvatting en thumbnail-afbeelding toe.",
+      "panel4": "Waarschuw me niet opnieuw voor dit verhaal",
+      "save": "Opslaan",
+      "mystories": "My Stories"
+    },
+    "httpsTransitionMessage": {
+      "bannerMsg": "Belangrijk bericht over internetbeveiliging en Story Maps",
+      "s1h1": "Esri verbetert de beveiliging van Story Maps",
+      "s1p1": "Uw Story Maps staan live op het internet en de internetcommunity werkt permanent aan het bepalen en implementeren van betere beveiliging. HTTPS, dat een beveiligde verbinding biedt voor content die over het internet verzonden wordt, wordt meer en meer gebruikt als de manier bij uitstek om content op het internet te openen. De meeste moderne browsers tonen nu waarschuwingsberichten als HTTP wordt gebruikt in plaats van HTTPS. Omwille van deze nieuwe norm, en met ingang van de ArcGIS Online update van juni 2018, moeten uw Story Maps gebruik maken van HTTPS.",
+      "s1p2": "Praktisch betekent dit dat een Story Map en alle content ervan (inclusief afbeeldingen, lagen, geëmbedde apps en websites) moet worden geopend d.m.v. koppelingen die beginnen met HTTPS in plaats van HTTP. Dit garandeert de beste ervaring voor uw lezers, want de meeste webbrowsers zullen aangeven dat uw verhalen beveiligd zijn.",
+      "s2h1": "Wat moet ik doen?",
+      "s2p1": "Esri zorgt er voor dat dit een eenvoudige overgang wordt voor makers en lezers van Story Maps. Er zijn nu tools beschikbaar in Story Map builders en My Stories die u in staat stellen om onbeveiligde content (HTTP) in uw verhalen te vinden en aanbevelingen geven voor het corrigeren ervan. Controleer uw verhalen op onbeveiligde content en werk alles bij naar HTTPS voor juni 2018.",
+      "action1": "Sluiten",
+      "action2": "Controleer nu mijn verhalen",
+      "action3": "Meer weten",
+      "floatingNotification": "Dit verhaal bevat onbeveiligde (HTTP) content. Controleer en corrigeer deze problemen."
     }
   }
 });

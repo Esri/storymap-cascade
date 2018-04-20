@@ -3,7 +3,8 @@ import {} from 'lib-build/less!./CoverBuilder';
 
 import i18n from 'lib-build/i18n!resources/tpl/builder/nls/app';
 
-import SectionCommon from 'storymaps/tpl/view/section/Common';
+import SectionCommon from 'storymaps-react/tpl/view/section/Common';
+import MediaPickerConstants from 'storymaps-react/tpl/builder/mediaPicker/constants';
 import topic from 'dojo/topic';
 
 import lang from 'dojo/_base/lang';
@@ -70,24 +71,32 @@ export default class CoverBuilder extends Cover {
     this._node.find('.cover-title')
       .attr('contenteditable', true)
       .attr('placeholder', i18n.builder.cover.titlePrompt)
-      .on('blur keyup', function(e) {
-        var newTitle = $('<div>' + $(e.target).text() + '</div>').text();
+      .on('blur keyup', e => {
+        if (e.keyCode === 8 || e.keyCode === 46) {
+          // if textContent is empty but innerHTML is not (i.e. there is no text but there is garbage markup like <br>), make the element empty.
+          const element = e.currentTarget;
+          if (!element.textContent && element.innerHTML) {
+            element.innerHTML = '';
+          }
+        }
+
+        const newTitle = $('<div>' + $(e.target).text() + '</div>').text();
 
         if (newTitle != app.Controller.getStoryTitle()) {
           this._section.foreground.title = newTitle;
           topic.publish('builder-story-title-update', newTitle);
           this._onContentChange();
         }
-      }.bind(this))
-      .on('paste', function() {
-        setTimeout(function() {
+      })
+      .on('paste', () => {
+        setTimeout(() => {
           this._node.find('.cover-title').html($('<div>' + this._node.find('.cover-title').text() + '</div>').text());
           let newTitle = this._node.find('.cover-title').text();
           this._section.foreground.title = newTitle;
           topic.publish('builder-story-title-update', newTitle);
           this._onContentChange();
-        }.bind(this), 0);
-      }.bind(this))
+        }, 0);
+      })
       .keydown(e => {
         // Do not allow enter key
         if (e.keyCode === 13) {
@@ -109,15 +118,23 @@ export default class CoverBuilder extends Cover {
     this._node.find('.cover-subtitle')
       .attr('contenteditable', true)
       .attr('placeholder', i18n.builder.cover.subtitlePrompt)
-      .on('blur keyup', function(e) {
-        var newValue = $('<div>' + $(e.target).text() + '</div>').text();
+      .on('blur keyup', e => {
+        if (e.keyCode === 8 || e.keyCode === 46) {
+          // if textContent is empty but innerHTML is not (i.e. there is no text but there is garbage markup like <br>), make the element empty.
+          const element = e.currentTarget;
+          if (!element.textContent && element.innerHTML) {
+            element.innerHTML = '';
+          }
+        }
+
+        const newValue = $('<div>' + $(e.target).text() + '</div>').text();
 
         if (newValue != this._section.foreground.subtitle) {
           this._section.foreground.subtitle = newValue;
           this._onContentChange();
         }
-      }.bind(this))
-      .keydown(function(e) {
+      })
+      .keydown(e => {
         // Do not allow enter key
         if (e.keyCode === 13) {
           return false;
@@ -131,11 +148,11 @@ export default class CoverBuilder extends Cover {
           }
         }
       })
-      .on('paste', function() {
-        setTimeout(function() {
+      .on('paste', () => {
+        setTimeout(() => {
           this._node.find('.cover-subtitle').html($('<div>' + this._node.find('.cover-subtitle').text() + '</div>').text());
-        }.bind(this), 0);
-      }.bind(this));
+        }, 0);
+      });
 
     if (this._backgroundMedia.isPlaceholder()) {
       this._node.find('.cover-media-placeholder').addClass('active');
@@ -203,17 +220,16 @@ export default class CoverBuilder extends Cover {
     app.builder.mediaPicker.open({
       mode: 'add',
       authorizedMedia: ['image', 'video']
-    }).then(
-      function(newMedia) {
-        this._onEditMedia(this._backgroundMedia, newMedia);
-        this._node.find('.cover-media-placeholder').removeClass('active');
+    })
+    .then(newMedia => {
+      this._onEditMedia(this._backgroundMedia, newMedia);
+      this._node.find('.cover-media-placeholder').removeClass('active');
 
-        this._onContentChange();
-      }.bind(this),
-      function() {
-        //
-      }
-    );
+      this._onContentChange();
+    },
+    () => {
+      //
+    });
   }
 
   _onMediaConfigAction(params = {}) {
@@ -223,7 +239,8 @@ export default class CoverBuilder extends Cover {
       return;
     }
 
-    if (params.action === 'swap' || params.action === 'alternate-media-swap' || params.action === 'alternate-media-add') {
+    if (params.action === 'swap' || params.action === 'alternate-media-swap' || params.action === 'alternate-media-add'
+        || params.action === 'https-open-picker') {
       const isAlternate = params.action.indexOf('alternate-') !== -1;
       const mediaIsEmpty = params.action === 'alternate-media-add';
       const authorizedMedia = isAlternate ? ['image'] : ['image', 'video'];
@@ -231,28 +248,33 @@ export default class CoverBuilder extends Cover {
       app.builder.mediaPicker.open({
         mode: mediaIsEmpty ? 'add' : 'edit',
         media: mediaIsEmpty ? null : params.media.serialize(false),
-        authorizedMedia: authorizedMedia
-      }).then(
-        function(newMedia) {
-          if (isAlternate) {
-            // only part of the recipe will apply to this
-            SectionCommon.onEditMediaAlternate({
-              mainMedia: params.mainMedia,
-              newMediaJSON: newMedia,
-              oldMedia: params.media,
-              sectionType: 'cover'
-            });
-            this._onContentChange();
-          }
-          else {
-            this._onToggleMediaConfig();
-            this._onEditMedia(params.media, newMedia);
-          }
-        }.bind(this),
-        function() {
-          //
+        authorizedMedia: authorizedMedia,
+        selectedProvider: params.action === 'https-open-picker' ? MediaPickerConstants.providers.URL : ''
+      }).then(newMedia => {
+        if (isAlternate) {
+          // only part of the recipe will apply to this
+          SectionCommon.onEditMediaAlternate({
+            mainMedia: params.mainMedia,
+            newMediaJSON: newMedia,
+            oldMedia: params.media,
+            sectionType: 'cover'
+          });
+          this._onContentChange();
         }
-      );
+        else if (SectionCommon.isSameMediaWithSecureProtocol(params.media, newMedia)) {
+          // if all that's changed is that the media URL is now https, keep the existing media but change it to be https.
+          // This preserves captions, alt media, and config options.
+          params.media.convertToHttps();
+          topic.publish('builder-should-check-story');
+        }
+        else {
+          this._onToggleMediaConfig();
+          this._onEditMedia(params.media, newMedia);
+        }
+      },
+      () => {
+        //
+      });
     }
 
     else if (params.action === 'alternate-media-remove') {

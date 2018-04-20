@@ -1,12 +1,11 @@
 import viewTpl from 'lib-build/hbars!./BuilderPanel';
 import {} from 'lib-build/less!./BuilderPanel';
 
-import commonCoreI18n from 'lib-build/i18n!commonResources/nls/core';
 import builderI18n from 'lib-build/i18n!resources/tpl/builder/nls/app';
 import viewerI18n from 'lib-build/i18n!resources/tpl/viewer/nls/app';
 
 import OverviewPanel from '../overviewPanel/OverviewPanel';
-import BuilderHelper from 'storymaps/common/builder/BuilderHelper';
+import BuilderHelper from 'storymaps/tpl/builder/BuilderHelper';
 import topic from 'dojo/topic';
 
 export default class BuilderPanel {
@@ -26,8 +25,7 @@ export default class BuilderPanel {
 
     this._node.html(viewTpl({
       btnSave: viewerI18n.viewer.common.save,
-      commonStrings: commonCoreI18n.commonCore.builderPanel,
-      sharingLevelStrings: commonCoreI18n.commonCore.share,
+      sharingLevelStrings: builderI18n.builder.share,
       strings: builderI18n.builder.builderPanel,
       publicWarning: publicWarning,
       organizationWarning: organizationWarning
@@ -93,7 +91,7 @@ export default class BuilderPanel {
     });
 
     this._node.find('.check-tooltip').tooltip({
-      title: i18n.builder.builderPanel.mystoriestooltip,
+      title: builderI18n.builder.builderPanel.mystoriestooltip,
       placement: 'right',
       container: '.section-builder-panel'
     });
@@ -181,7 +179,7 @@ export default class BuilderPanel {
         enableOrg = isOrg && privileges.indexOf('portal:user:shareToOrg') > -1,
         enablePub = ! isOrg ||  privileges.indexOf('portal:user:shareToPublic') > -1,
         storyIsPrivate = sharingLevel == 'private' || sharingLevel == 'shared',
-        storyIsOrg = sharingLevel == 'account',
+        storyIsOrg = sharingLevel === 'account' || sharingLevel === 'org',
         userIsOwner = app.data.appItem.item.owner == app.portal.getPortalUser().username;
 
     // TODO: to review with 4.2
@@ -205,7 +203,7 @@ export default class BuilderPanel {
     }
 
     // TODO: tooltip when org has disabled sharing
-    this._node.find('.btn-share-outer-tooltip[data-level="account"]').toggle(enableOrg);
+    this._node.find('.btn-share-outer-tooltip[data-level="org"]').toggle(enableOrg);
     this._node.find('.btn-share-outer-tooltip[data-level="public"]').toggle(enablePub);
 
     this._node.find('.btn-share-wrapper').click(this._onChangeSharing.bind(this));
@@ -255,6 +253,9 @@ export default class BuilderPanel {
       if (sharingLevel === 'shared') {
         sharingLevel = 'private';
       }
+      if (sharingLevel === 'account' || sharingLevel === 'org') {
+        sharingLevel = 'org';
+      }
 
       this._node.find('.btn-share-container').removeClass('disabled');
       this._node.find('.btn-share-wrapper[data-level=' + sharingLevel + ']').addClass('active');
@@ -271,7 +272,7 @@ export default class BuilderPanel {
   _updatePreviewButton() {
     var sharingLevel = app.data.appItem.item.access,
         isCreated = !! app.data.appItem.item.id,
-        isShared = sharingLevel == 'account' || sharingLevel == 'public',
+        isShared = sharingLevel === 'account' || sharingLevel === 'org' || sharingLevel === 'public',
         previewBtn = this._node.find('.btn-preview');
 
     previewBtn.toggleClass('disabled', ! isCreated);
@@ -279,7 +280,7 @@ export default class BuilderPanel {
     if (isCreated && ! isShared) {
       previewBtn.tooltip({
         title: builderI18n.builder.builderPanel.notSharedNote,
-        placement: 'right',
+        placement: 'bottom',
         container: '.section-builder-panel'
       });
     }
@@ -319,6 +320,18 @@ export default class BuilderPanel {
         checkBtn = this._node.find('.btn-check');
 
     checkBtn.toggleClass('disabled', ! isCreated);
+
+    if (isCreated) {
+      checkBtn.tooltip({
+        title: builderI18n.builder.builderPanel.mystoriestooltip,
+        placement: 'bottom',
+        container: '.section-builder-panel'
+      });
+    }
+    else {
+      checkBtn.tooltip('destroy');
+    }
+
   }
 
   _onCheck(e) {
@@ -354,7 +367,7 @@ export default class BuilderPanel {
       .removeClass('saved')
       .addClass('saving disabled');
 
-    btn.find('.btn-save-label').html(commonCoreI18n.commonCore.builderPanel.buttonSaving);
+    btn.find('.btn-save-label').html(builderI18n.builder.builderPanel.buttonSaving);
 
     this._saveApp();
   }
@@ -365,7 +378,7 @@ export default class BuilderPanel {
     this._node.find('.btn-save')
       .removeClass('saving disabled')
       .addClass('saved');
-    this._node.find('.btn-save-label').html(commonCoreI18n.commonCore.builderPanel.buttonSaved);
+    this._node.find('.btn-save-label').html(builderI18n.builder.builderPanel.buttonSaved);
 
     this._node.find('.btn-save[data-toggle="tooltip"]').tooltip('destroy');
 
@@ -387,7 +400,7 @@ export default class BuilderPanel {
     this._node.find('.btn-save')
       .removeClass('saving')
       .addClass('error');
-    this._node.find('.btn-save-label').html(commonCoreI18n.commonCore.builderPanel.buttonError);
+    this._node.find('.btn-save-label').html(builderI18n.builder.builderPanel.buttonError);
 
     this._node.find('.btn-save[data-toggle="tooltip"]').tooltip({
       trigger: 'manual',

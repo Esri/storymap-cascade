@@ -2,8 +2,9 @@ import Title from './Title';
 import {} from 'lib-build/less!./TitleBuilder';
 import i18n from 'lib-build/i18n!resources/tpl/builder/nls/app';
 
-import SectionCommon from 'storymaps/tpl/view/section/Common';
+import SectionCommon from 'storymaps-react/tpl/view/section/Common';
 import AddMenu from './builder/AddMenu';
+import MediaPickerConstants from 'storymaps-react/tpl/builder/mediaPicker/constants';
 
 import topic from 'dojo/topic';
 import lang from 'dojo/_base/lang';
@@ -69,18 +70,26 @@ export default class TitleBuilder extends Title {
     this._node.find('.fg-title')
       .attr('contenteditable', true)
       .attr('placeholder', i18n.builder.title.placeholder)
-      .on('blur keyup', function() {
+      .on('keyup blur', e => {
+        if (e.keyCode === 8 || e.keyCode === 46) {
+          // if textContent is empty but innerHTML is not (i.e. there is no text but there is garbage markup like <br>), make the element empty.
+          const element = e.currentTarget;
+          if (!element.textContent && element.innerHTML) {
+            element.innerHTML = '';
+          }
+        }
+
         this.serialize(false);
         this._onContentChange();
-      }.bind(this))
-      .on('paste', function() {
-        setTimeout(function() {
+      })
+      .on('paste', () => {
+        setTimeout(() => {
           this._node.find('.fg-title').html($('<div>' + this._node.find('.fg-title').text() + '</div>').text());
           this.serialize(false);
           this._onContentChange();
-        }.bind(this), 0);
-      }.bind(this))
-      .keydown(function(e) {
+        }, 0);
+      })
+      .keydown(e => {
         // Do not allow enter key
         if (e.keyCode === 13) {
           // If pressing enter insert <br> instead of default behavior that is div
@@ -99,9 +108,9 @@ export default class TitleBuilder extends Title {
   }
 
   focus() {
-    setTimeout(function() {
+    setTimeout(() => {
       this._node.find('.fg-title').focus();
-    }.bind(this), 50);
+    }, 50);
   }
 
   serialize(includeInstanceID) {
@@ -176,21 +185,29 @@ export default class TitleBuilder extends Title {
       return;
     }
 
-    if (params.action == 'swap') {
+    if (params.action == 'swap' || params.action === 'https-open-picker') {
       var mediaIsEmpty = params.media.serialize(false).type == 'empty';
 
       app.builder.mediaPicker.open({
         mode: mediaIsEmpty ? 'add' : 'edit',
         media: mediaIsEmpty ? null : params.media.serialize(false),
-        authorizedMedia: ['image']
-      }).then(
-        function(newMedia) {
-          this._onEditMedia(params.media, newMedia);
-        }.bind(this),
-        function() {
-          //
+        authorizedMedia: ['image'],
+        selectedProvider: params.action === 'https-open-picker' ? MediaPickerConstants.providers.URL : ''
+      })
+      .then(newMedia => {
+        if (SectionCommon.isSameMediaWithSecureProtocol(params.media, newMedia)) {
+          // if all that's changed is that the media URL is now https, keep the existing media but change it to be https.
+          // This preserves captions, alt media, and config options.
+          params.media.convertToHttps();
+          topic.publish('builder-should-check-story');
         }
-      );
+        else {
+          this._onEditMedia(params.media, newMedia);
+        }
+      },
+      () => {
+        //
+      });
     }
 
     this._onContentChange();

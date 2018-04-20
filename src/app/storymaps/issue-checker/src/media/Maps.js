@@ -9,11 +9,11 @@ export default class Maps extends AGOLItem {
     return super.check(options, 'maps')
     .then(results => {
       // after you scan the maps, we need to scan the layers as well.
-      return this._checkAllLayers(results, options.appAccess);
+      return this._checkAllLayers(results, options.appAccess, options.premiumManager, options.orgId, options.privileges);
     });
   }
 
-  static _checkAllLayers(results, appAccess) {
+  static _checkAllLayers(results, appAccess, premiumManager, orgId, privileges) {
     // PER MAP,
     // 1) get all of its layers,
     // 2) scan all of its layers.
@@ -28,7 +28,10 @@ export default class Maps extends AGOLItem {
         // check each map's layers
         return Layers.check({
           items: allLayers,
-          appAccess: appAccess
+          appAccess: appAccess,
+          premiumManager: premiumManager,
+          orgId: orgId,
+          privileges: privileges
         });
       }).then(checkedResult => {
         // add the now-checked layers onto the map.

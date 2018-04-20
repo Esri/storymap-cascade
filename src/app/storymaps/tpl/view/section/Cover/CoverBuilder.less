@@ -27,10 +27,24 @@
      margin: auto;
    }
 
-  .cover-title[contenteditable=true]:not(:focus):empty:before {
+   .cover-title[contenteditable=true]:focus:empty {
+     padding-left: 50%;
+     /* in non-firefox browsers, if we don't have it left-aligned when empty the caret will be 3/4 across the title */
+     text-align: left;
+   }
+
+  .cover-title[contenteditable=true]:empty:before {
     display: block;
-    content: attr(placeholder);
     white-space: pre;
+  }
+
+  .cover-title[contenteditable=true]:not(:focus):empty:before {
+    content: attr(placeholder);
+  }
+
+  /* put it before if it is empty but focused... */
+  .cover-title[contenteditable=true]:focus:empty:before {
+    content: '\feff';
   }
 
   .cover-title[contenteditable=true]:focus {
@@ -52,9 +66,22 @@
      line-height: 32px;
    }
 
-  .cover-subtitle[contenteditable=true]:not(:focus):empty:before{
+   .cover-subtitle[contenteditable=true]:focus:empty {
+     padding-left: 50%;
+     /* in non-firefox browsers, if we don't have it left-aligned when empty the caret will be 3/4 across the title */
+     text-align: left;
+   }
+
+  .cover-subtitle[contenteditable=true]:empty:before {
     display: block;
+  }
+
+  .cover-subtitle[contenteditable=true]:not(:focus):empty:before {
     content: attr(placeholder);
+  }
+
+  .cover-subtitle[contenteditable=true]:focus:empty:before {
+    content: '\feff';
   }
 
   .foreground {

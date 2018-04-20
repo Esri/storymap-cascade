@@ -50,7 +50,26 @@ define({
         "loremBody": "Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor. Mauris consequat orci nec magna facilisis bibendum at eget libero."
       }
     },
+    "share": {
+      "btnPrivate": "Asmeninis",
+      "btnOrg": "Organizacija",
+      "btnPublic": "Viešas",
+      "btnEveryone": "Visi"
+    },
     "builderPanel": {
+      "builderNamePrefix": "",
+      "builderNameSuffix": "Kūrimo priemonė",
+      "buttonSaving": "Įrašoma",
+      "buttonSaved": "Išsaugota",
+      "buttonError": "Išsaugoti nepavyko",
+      "buttonShare": "Bendrinti",
+      "buttonSettings": "Parametrai",
+      "settingsLogoError": "Kilo logotipo problema. Spustelėkite ir sužinokite daugiau.",
+      "buttonHelp": "Gaukite pagalbą arba pateikite atsiliepimą GeoNet svetainėje",
+      "buttonPreview": "Žiūrėti pasakojimą",
+      "buttonHealth": "Sveikatos ataskaita",
+      "manageStories": "Valdyti mano pasakojimus",
+      "closeWithPendingChange": "Ar tikrai norite patvirtinti šį veiksmą? Pakeitimai bus prarasti.",
       "coverLabel": "Viršelis",
       "creditsLabel": "Kreditai",
       "betaFeedback": "Atsiliepimai",
@@ -143,6 +162,195 @@ define({
         "uploadAltImage": "Pridėti alternatyvų atvaizdą"
       }
     },
+    "mediaPicker": {
+      "browseToggle": {
+        "urls": "Nuoroda į turinį",
+        "urls_short": "Nuoroda",
+        "contentType": {
+          "error": "Nėra autorizuotos medijos.",
+          "imageOnly": "Šioje pasakojimo dalyje galite pridėti paveikslėlį.",
+          "imageAndVideo": "Šioje pasakojimo dalyje galite pridėti paveikslėlį arba vaizdo įrašą.",
+          "imageVideoWebpage": "Šioje pasakojimo dalyje galite pridėti paveikslėlį, vaizdo įrašą arba tinklalapį."
+        }
+      },
+      "browsePanel": {
+        "providers": {
+          "searchingFor": "Ieškoma ${searchterm}...",
+          "searchedFor": "${searchterm} paieškos rezultatai",
+          "albumsOf": "${username} albumai",
+          "noPhotosFound": "Nėra jūsų paiešką atitinkančių nuotraukų. Bandykite dar kartą.",
+          "noItemsFound": "Nėra jūsų paiešką atitinkančių elementų. Bandykite dar kartą.",
+          "noItemsInThisStory": "Nėra turinio iš ArcGIS, kuris jau būtų įtrauktas į šį pasakojimą.",
+          "limitReached": "Rodoma 100 elementų. Jei nerandate to, ko jums reikia, išbandykite raktažodžių paiešką.",
+          "galleryItems": {
+            "uploadError": "Deja, šio elemento nepavyko įkelti."
+          },
+          "agol": {
+            "remove1": "Panaikinkite šį nenaudojamą paveikslėlį iš ArcGIS paskyros.",
+            "remove2": "(Turėsite vėl jį įkelti, jei nuspręsite naudoti jį vėliau.)",
+            "removeFailed": "Pašalinkite šį nepasiekiamą paveikslėlį iš sąrašo.",
+            "modified": "Keitimo data: ${date}",
+            "uploaded": "Įkėlimo data: ${date}",
+            "contentByAuthor": "${contentType} sukūrė ${author}"
+          },
+          "googlePhotos": {
+            "searchAndBrowse": "Ieškokite nuotraukų ${Picasa} arba ${Google+}"
+          },
+          "flickr": {
+            "photostream": "Nuotraukų srautas",
+            "searchAndBrowse": "Ieškokite ir naršykite nuotraukas ${Flickr}",
+            "captionStarter": "Nuotraukos autorius: ${USERNAME} iš ${Flickr}"
+          },
+          "unsplash": {
+            "searchAndBrowse": "Ieškokite nuotraukų ${Unsplash}",
+            "photoBy": "Nuotrauką sukūrė ${username}",
+            "userLink": "Eikite į ${username} ${Unsplash} puslapį",
+            "captionStarter": "Nuotraukos autorius: ${USERNAME} iš ${Unsplash}"
+          },
+          "urlContent": {
+            "uploadHeaders": {
+              "generic": "Nuoroda į turinį internete",
+              "imageOnly": "Nuoroda į paveikslėlį internete",
+              "imageAndVideo": "Nuoroda į paveikslėlį arba vaizdo įrašą internete"
+            },
+            "linkText": {
+              "imageOnly": "Aukščiau pateiktame laukelyje galite nurodyti tiesioginę nuorodą į nuotrauką.",
+              "imageAndVideo1": "Aukščiau pateiktame laukelyje galite įklijuoti nuorodą arba vaizdo įrašo iframe kodą svetainėse ${YouTube} ar ${Vimeo}.",
+              "imageAndVideo2": "Taip pat galite pateikti tiesioginę nuorodą į nuotrauką.",
+              "imageVideoWebpage1": "Aukščiau pateiktame laukelyje galite įklijuoti nuorodą arba internetinio turinio pvz., dinaminės diagramos ar vaizdo įrašo iframe kodą svetainėse ${YouTube} ar ${Vimeo}.",
+              "imageVideoWebpage2": "Taip pat galite pateikti tiesioginę nuorodą į nuotrauką, vaizdo įrašą, garso failą, svetainę ar internetinę aplikaciją.",
+              "ender": "Visada naudokite saugias (https) nuorodas. Jei jūsų turinys nepalaiko https, nukreipiančią nuorodą įtraukite į savo pasakojimo tekstą, kad skaitytojai galėtų peržiūrėti jį naujame naršyklės lange.",
+              "httpsError": "Nuoroda turi prasidėti HTTPS"
+            },
+            "embedProtocol": {
+              "embedProtocolLabel": "Įkelkite puslapį naudojant saugų ryšį (https)",
+              "embedProtocolWarning1": "Jei šis puslapis neįkelia jūsų pasakojimo, vadinasi, jo negalima įdėti interneto saugos sumetimais.",
+              "embedProtocolWarning2": "Jei šis puslapis neįkelia jūsų pasakojimo, panaikinkite šios parinkties žymėjimą ir bandykite dar kartą. Jei puslapio vis dar negalima įkelti, vadinasi, jo negalima įdėti interneto saugos sumetimais.",
+              "embedProtocolWarning3": "Kaip alternatyvą įtraukite savo pasakojime nuorodą, kad atidarytumėte puslapį naujos naršyklės skirtuke. ${linkText}",
+              "linkText": "Sužinokite daugiau."
+            },
+            "placeholder": "${https://}... arba ${<iframe>}",
+            "uploadErrors": {
+              "generic": "Įvedant adresą įvyko klaida. Bandykite dar kartą.",
+              "imageOnly1": "Šioje pasakojimo dalyje turite naudoti paveikslėlį.",
+              "imageOnly2": "Pateikite nuorodą į paveikslėlį (.jpg, .png, .gif) arba pasirinkite jį iš ${ArcGIS}, ${Flickr}, ${Google+} arba ${Unsplash}.",
+              "imageAndVideo1": "Šioje pasakojimo dalyje turite naudoti paveikslėlį arba vaizdo įrašą.",
+              "imageAndVideo2": "Pateikite nuorodą į paveikslėlį (.jpg, .png, .gif) arba vaizdo įrašą ${YouTube} ar ${Vimeo}, arba pasirinkite paveikslėlį iš ${ArcGIS}, ${Flickr}, ${Google+} ar ${Unsplash}.",
+              "badFormat": "Nuoroda į failą, kurį bandote pridėti, suformatuota netinkamai.",
+              "inaccessible": "Failo, kurį bandote pridėti, trūksta arba jis nepasiekiamas.",
+              "tryAgain": "Patikrinkite adresą ir bandykite iš naujo.",
+              "mediaTypes": {
+                "VIDEO": "vaizdo įrašas",
+                "IMAGE": "paveikslėlis",
+                "generic": "medija"
+              }
+            }
+          }
+        },
+        "sidePanel": {
+          "googlePhotos": {
+            "placeholder": "E. pašto arba ${Picasa} / ${Google+} ID",
+            "helpText": "Į savo pasakojimą galite pridėti nuotraukų, įkeltų į ${Picasa} arba ${Google+}. ${helpLinkText} apie paveikslėlių, saugomų jūsų ${Google} paskyroje, naudojimą jūsų pasakojimuose.",
+            "helpLinkText": "Sužinokite daugiau",
+            "cannotFindUser": "Nepavyko rasti naudotojo ${username}. Bandykite dar kartą."
+          },
+          "unsplash": {
+            "placeholder": "Nuotraukų paieška",
+            "aboutText": "${Unsplash} – tai prižiūrimas nemokamų, aukštos kokybės nuotraukų rinkinys.",
+            "copyrightText": "Visoms nuotraukoms, paskelbtoms ${Unsplash},  suteikta ${CC0} licencija. Daugiau informacijos rasite ${moreInfoLink}.",
+            "moreInfoLink": "čia"
+          },
+          "flickr": {
+            "searchType": {
+              "account": "${Flickr} paskyra",
+              "text": "Visos ${Flickr}"
+            },
+            "placeholders": {
+              "user": "Paskyros paieška",
+              "userText": "Ieškoti šios nuotraukų paskyros",
+              "text": "Nuotraukų paieška"
+            },
+            "errors": {
+              "cannotFindUser": "Nepavyko rasti naudotojo ${username}.",
+              "noUserPhotos": "${username} neturi jokių viešų nuotraukų.",
+              "didYouMean": "Turite omenyje ${username}?",
+              "generalUserError": "Įvyko klaida ieškant naudotojo ${username}."
+            },
+            "licenses": {
+              "licenseLabel": "Licencija: ",
+              "public": "Viešasis domenas",
+              "commercial": "Tinkamas komerciniam naudojimui",
+              "nonCommercial": "Tinkamas nekomerciniam naudojimui",
+              "reserved": "Visos teisės saugomos.",
+              "any": "Bet kokia licencija"
+            }
+          },
+          "agol": {
+            "searchLocation": {
+              "thisStory": "Šis pasakojimas",
+              "agol": "ArcGIS Online",
+              "portalArcGIS": "Portal for ArcGIS",
+              "portal": "Portalas",
+              "myOrg": "${orgname} organizacija",
+              "myContent": "Mano turinys"
+            },
+            "createContent": {
+              "createNewMap": "Kurti naują žemėlapį",
+              "or": "ARBA",
+              "dragAndDrop": "Nuvilkite paveikslėlį (-ius) čia",
+              "uploadImage": "Ieškokite paveikslėlio (-ių)",
+              "agolInfo": "Paveikslėliai bus saugomi jūsų ArcGIS paskyroje ir pasiekiami tik jūsų pasakojimo viduje.",
+              "saveBeforeUpload": "Įrašę šį pasakojimą, galite įkelti paveikslėlius į ArcGIS čia.",
+              "fileTypesImage": "Palaikomi failų tipai: .png, .jpeg, .jpg, .gif, .bmp"
+            },
+            "filterAndSort": {
+              "webmap": "Internetinis žemėlapis",
+              "webscene": "Internetinė scena",
+              "image": "Paveikslėlis",
+              "date": "Data",
+              "sortByDate": "Rūšiuoti pagal datą",
+              "title": "Pavadinimas",
+              "sortByTitle": "Rūšiuoti pagal pavadinimą",
+              "views": "Peržiūros",
+              "search": "Ieškoti pagal raktažodį arba ID"
+            }
+          }
+        }
+      }
+    },
+    "mapEditor": {
+      "dialogTitle": "Redaguoti žemėlapį",
+      "unauthorizedDomain": "Esate ne autorizuotame domene, todėl negalite naudoti žemėlapių rengyklės",
+      "loading": "Palaukite, kol žemėlapių rengyklė pasikraus",
+      "saving": "Įrašomas žemėlapis",
+      "success": "Žemėlapis įrašytas",
+      "cancelTitle": "Atsisakyti neįrašytų pakeitimų?",
+      "errorSave": "Nepavyko išsaugoti žemėlapio. Pabandykite dar kartą.",
+      "loadFail": "Deja, negalima įkelti žemėlapių rengyklės",
+      "close": "Uždaryti",
+      "save": "Išsaugoti",
+      "confirm": "Taip, uždaryti žemėlapį",
+      "deny": "Ne, palikti veikti"
+    },
+    "textEditor": {
+      "placeholder": {
+        "continueStory": "Tęskite savo pasakojimą čia..."
+      },
+      "blockAdd": {
+        "text": "Tekstas",
+        "media": "Daugialypė informacija",
+        "title": "Pavadinimas",
+        "immersive": "Fiksuotas"
+      },
+      "link": {
+        "invite": "Įklijuokite arba įrašykite nuorodą..."
+      },
+      "color": {
+        "choose": "pasirinkti",
+        "cancel": "atšaukti",
+        "clear": "Išvalyti spalvą"
+      }
+    },
     "imageGallery": {
       "addImage": "Pridėti kitą vaizdą",
       "moveBackward": "Judėti atgal",
@@ -222,13 +430,55 @@ define({
         "noAltImage": "Naudojant mobilųjį įrenginį, medija gali neveikti",
         "noAltImageUnsupported": "Mobilusis įrenginys gali nepalaikyti šios medijos",
         "noAltImageWarning": "Naudojant mobilųjį įrenginį, medija gali neveikti",
-        "altImageBroken": "Alternatyvus apibrėžtas šios medijos elemento atvaizdas nepasiekiamas"
+        "altImageBroken": "Alternatyvus apibrėžtas šios medijos elemento atvaizdas nepasiekiamas",
+        "httpMedia": "Nesaugi medija",
+        "httpContent": "Nesaugus turinys"
       },
       "contentWarnings": {
         "noAltImage": "Prieš bendrindami savo pasakojimą, būtinai patikrinkite jį naudodami mobiliuosius įrenginius. Jei ši medija neveikia taip, kaip tikėjotės, paspaudę mygtuką žemiau, pridėkite alternatyvų atvaizdą, kuris bus rodomas, kai jūsų pasakojimas bus peržiūrimas naudojant telefoną ar planšetę.",
         "noAltImageUnsupported": "Ši medija neveiks naudojant mobiliuosius įrenginius. Paspaudę mygtuką žemiau, pridėkite alternatyvų atvaizdą, kuris bus rodomas, kai jūsų pasakojimas bus peržiūrimas naudojant telefoną ar planšetę.",
         "noAltImageWarning": "Prieš bendrindami savo pasakojimą, būtinai patikrinkite jį naudodami mobiliuosius įrenginius. Jei ši medija neveikia taip, kaip tikėjotės, paspaudę mygtuką žemiau, pridėkite alternatyvų atvaizdą, kuris bus rodomas, kai jūsų pasakojimas bus peržiūrimas naudojant telefoną ar planšetę.",
         "noAltImageAlt": "Šio tipo medija nepalaikoma arba gali tinkamai neveikti naudojant mobiliuosius įrenginius. Mobiliųjų įrenginių skirtuke pridėkite alternatyvų atvaizdą, kuris bus rodomas, kai jūsų pasakojimas bus peržiūrimas naudojant telefoną ar planšetę."
+      },
+      "descriptions": {
+        "httpAudioUnfixable": "Šis garso failas nepalaiko HTTPS. Pašalinkite jį iš savo pasakojimo arba pakeiskite jį nuoroda.",
+        "httpAudioUncheckable": "Šio garso įrašo (HTTP) URL yra nesaugus. Spustelėkite mygtuką norėdami naudoti šio garso įrašo HTTPS URL. Jei neveikia, pašalinkite garso įrašą iš savo pasakojimo arba pakeiskite jį hipersaitu.",
+        "httpAudioFixable": "Šio garso įrašo (HTTP) URL yra nesaugus. Spustelėkite toliau esantį mygtuką norėdami naudoti saugų šio garso įrašo HTTPS URL.",
+        "httpWebpageUnfixable": "Šis tinklalapis nepalaiko HTTPS. Pašalinkite jį iš savo pasakojimo arba pakeiskite jį ekrano vaizdu arba nuoroda.",
+        "httpWebpageUncheckable": "Šio tinklalapio (HTTP) URL yra nesaugus. Spustelėkite mygtuką norėdami naudoti šio tinklalapio HTTPS URL. Jei neveikia, pašalinkite tinklalapį iš savo pasakojimo arba pakeiskite jį ekrano vaizdu ar hipersaitu.",
+        "httpWebpageFixable": "Šio tinklalapio (HTTP) URL yra nesaugus. Spustelėkite toliau esantį mygtuką norėdami naudoti saugų šio tinklalapio HTTPS URL.",
+        "httpVideoUnfixable": "Šis vaizdo įrašas nepalaiko HTTPS. Pašalinkite jį iš savo pasakojimo arba pakeiskite jį ekrano vaizdu arba nuoroda.",
+        "httpVideoUncheckable": "Šio vaizdo įrašo (HTTP) URL yra nesaugus. Spustelėkite mygtuką norėdami naudoti šio vaizdo įrašo HTTPS URL. Jei neveikia, pašalinkite vaizdo įrašą iš savo pasakojimo arba pakeiskite jį ekrano vaizdu ar hipersaitu.",
+        "httpVideoFixable": "Šio vaizdo įrašo (HTTP) URL yra nesaugus. Spustelėkite toliau esantį mygtuką norėdami naudoti saugų šio vaizdo įrašo HTTPS URL.",
+        "httpImageUnfixable": "Šis paveikslėlis nepalaiko HTTPS. Pašalinkite jį iš savo pasakojimo arba pakeiskite jį nuoroda.",
+        "httpImageUncheckable": "Šio paveikslėlio (HTTP) URL yra nesaugus. Spustelėkite mygtuką norėdami naudoti šio paveikslėlio HTTPS URL. Jei neveikia, pašalinkite paveikslėlį iš savo pasakojimo arba pakeiskite jį hipersaitu.",
+        "httpImageFixable": "Šio paveikslėlio (HTTP) URL yra nesaugus. Spustelėkite toliau esantį mygtuką norėdami naudoti saugų šio paveikslėlio HTTPS URL.",
+        "httpLayer": "Šio sluoksnio (HTTP) URL yra nesaugus.",
+        "inaccessibleLogo": "Šis logotipas nepasiekiamas. Pakeiskite jį kitu paveikslėliu.",
+        "httpLogoUnfixable": "Šis logotipas nepalaiko HTTPS. Pakeiskite jį kitu paveikslėliu.",
+        "httpLogoFixable": "Šio logotipo (HTTP) URL yra nesaugus. Su logotipu naudokite HTTPS URL.",
+        "httpLogoUncheckable": "Šio logotipo (HTTP) URL yra nesaugus. Su logotipu naudokite HTTPS URL arba pakeiskite jį kitu paveikslėliu."
+      },
+      "tooltips": {
+        "httpAudioFixable": "Spustelėkite mygtuką norėdami naudoti saugų šio garso įrašo HTTPS URL.",
+        "httpAudioUncheckable": "Bandykite naudoti šio garso įrašo HTTPS URL. Jei neveikia, pašalinkite garso įrašą iš savo pasakojimo arba pakeiskite jį nuoroda.",
+        "httpWebpageFixable": "Spustelėkite mygtuką norėdami naudoti saugų šio tinklalapio HTTPS URL.",
+        "httpWebpageUncheckable": "Bandykite naudoti šio tinklalapio HTTPS URL. Jei neveikia, pašalinkite tinklalapį iš savo pasakojimo arba pakeiskite jį ekrano vaizdu ar nuoroda.",
+        "httpVideoFixable": "Spustelėkite mygtuką norėdami naudoti saugų šio vaizdo įrašo HTTPS URL.",
+        "httpVideoUncheckable": "Bandykite naudoti šio vaizdo įrašo HTTPS URL. Jei neveikia, pašalinkite vaizdo įrašą iš savo pasakojimo arba pakeiskite jį ekrano vaizdu ar nuoroda.",
+        "httpImageFixable": "Spustelėkite mygtuką norėdami naudoti saugų šio paveikslėlio HTTPS URL.",
+        "httpImageUncheckable": "Bandykite naudoti šio paveikslėlio HTTPS URL. Jei neveikia, pašalinkite paveikslėlį iš savo pasakojimo arba pakeiskite jį nuoroda.",
+        "httpLayerMyMap": "Norėdami naudoti HTTPS, apsilankykite žemėlapio elemento puslapyje ir atnaujinkite šį sluoksnį. Jei sluoksnio atnaujinti negalima, pašalinkite jį iš žemėlapio.",
+        "httpLayerNotMyMap": "Norėdami naudoti HTTPS, skurkite žemėlapio kopiją ir atnaujinkite šį sluoksnį. Jei sluoksnio atnaujinti negalima, pašalinkite jį iš žemėlapio.",
+        "clickLearnMore": "Spustelėkite ir sužinokite daugiau."
+      },
+      "fixButtons": {
+        "agolItemPage": "Elemento puslapis",
+        "openTheMap": "Atverti žemėlapį",
+        "updateAudio": "Taisyti garso įrašo URL",
+        "updateWebpages": "Taisyti tinklalapio URL",
+        "updateVideos": "Taisyti vaizdo įrašo URL",
+        "updateImages": "Taisyti paveikslėlio URL"
       },
       "mapIssues": {
         "fixButton": "Taisyti klaidas",
@@ -291,6 +541,31 @@ define({
         "notHealthy": "Taisyti klaidas",
         "warnings": "Peržiūrėti įspėjimus"
       }
+    },
+    "saveErrorSocial": {
+      "title": "Bendrinimas socialiniuose tinkluose",
+      "panel1": "Jūsų pasakojimas gali būti netinkamai rodomas socialiniame tinkle, nes ArcGIS internetinės aplikacijos elemento pavadinimas nesutampa su jūsų pasakojimo pavadinimu.",
+      "panel1tooltip": "Pateikus pavadinimą, santrauką ir miniatiūros vaizdą, jūsų pasakojimas atrodys taip:",
+      "panel2": "Kokį pavadinimą norite naudoti socialiniame tinkle:",
+      "panel2q1": "Pasakojimo pavadinimas (rekomenduojama)",
+      "panel2q1tooltip": "Pasirinkus šią parinktį, jūsų elemento antraštė bus modifikuota, kad sutaptų su jūsų pasakojimo pavadinimu, o kiti kūrimo priemonėje atlikti keitimai bus sinchronizuojami.",
+      "panel2q2": "Elemento antraštė",
+      "panel3": "Jei norite toliau tobulinti pasakojimo išvaizdą socialiniame tinkle, naudodami ${MYSTORIES} pridėkite santrauką ir miniatiūros vaizdą.",
+      "panel4": "Nebeįspėti manęs apie šį pasakojimą",
+      "save": "Išsaugoti",
+      "mystories": "Mano pasakojimai"
+    },
+    "httpsTransitionMessage": {
+      "bannerMsg": "Svarbus pranešimas apie žiniatinklio saugą ir žemėlapių pasakojimus",
+      "s1h1": "Esri tobulina žemėlapių pasakojimų saugą",
+      "s1p1": "Žemėlapių pasakojimai veikia žiniatinklyje, o žiniatinklio bendruomenė visuomet stengiasi sukurti ir įdiegti geresnę saugą. HTTPS, suteikianti saugų ryšį perduodant turinį internetu, atrodo kaip patikima žiniatinklio turinio prieiga. Naujausios naršyklės nuo šiol įspėja, jei vietoj HTTPS yra naudojama HTTP. Dėl įsigaliojančio standarto nuo 2018 m. birželio ArcGIS Online naujinimo jūsų žemėlapių pasakojimai naudos HTTPS.",
+      "s1p2": "Praktiškai tai reiškia, kad žemėlapio pasakojimas ir visas jo turinys (įskaitant paveikslėlius, sluoksnius, įdėtąsias aplikacijas ir svetaines) turi būti pasiekiamas naudojant nuorodas, kurios prasideda HTTPS, o ne HTTP. Tai užtikrina geriausią skaitytojų patirtį, nes daugelis naršyklių nurodys, kad jūsų pasakojimai yra saugūs.",
+      "s2h1": "Ką reikia daryti?",
+      "s2p1": "Esri stengiasi, kad žemėlapio pasakojimų autoriams ir skaitytojams pereiti būtų paprasta. Nuo šiol įrankiai yra pasiekiami žemėlapio pasakojimo kūrimo priemonėje ir skyriuje Mano pasakojimai. Taip pasakojimuose bus lengviau rasti nesaugų turinį (HTTP) ir pateikti rekomendacijas, ką daryti. Patikrinkite, ar jūsų pasakojimuose nėra nesaugaus turinio ir iki 2018 m. birželio atnaujinkite jį naudodami HTTPS.",
+      "action1": "Uždaryti",
+      "action2": "Peržiūrėkite savo pasakojimus jau dabar",
+      "action3": "Sužinokite daugiau",
+      "floatingNotification": "Šiame pasakojime yra nesaugaus (HTTP) turinio. Peržiūrėkite ir išspręskite šias problemas."
     }
   }
 });

@@ -50,7 +50,26 @@ define({
         "loremBody": "Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor. Mauris consequat orci nec magna facilisis bibendum at eget libero."
       }
     },
+    "share": {
+      "btnPrivate": "Privat",
+      "btnOrg": "Organisation",
+      "btnPublic": "Offentlig",
+      "btnEveryone": "Alle"
+    },
     "builderPanel": {
+      "builderNamePrefix": "",
+      "builderNameSuffix": "Builder",
+      "buttonSaving": "Gemmer",
+      "buttonSaved": "Gemt",
+      "buttonError": "Blev ikke gemt",
+      "buttonShare": "Opdatér",
+      "buttonSettings": "Indstillinger",
+      "settingsLogoError": "Der er et problem med dit logo. Klik for at få flere oplysninger.",
+      "buttonHelp": "Få hjælp eller send feedback på GeoNet",
+      "buttonPreview": "Vis historie",
+      "buttonHealth": "Tilstandsrapport",
+      "manageStories": "Administrér mine historier",
+      "closeWithPendingChange": "Er du sikker på, at du vil bekræfte denne handling? Dine ændringer vil gå tabt.",
       "coverLabel": "Forside",
       "creditsLabel": "Credits",
       "betaFeedback": "Feedback",
@@ -143,6 +162,195 @@ define({
         "uploadAltImage": "Tilføj alternativt billede"
       }
     },
+    "mediaPicker": {
+      "browseToggle": {
+        "urls": "Link til indhold",
+        "urls_short": "Link",
+        "contentType": {
+          "error": "Ingen autoriserede medier.",
+          "imageOnly": "Du kan tilføje et billede i denne del af din historie.",
+          "imageAndVideo": "Du kan tilføje et billede eller en video i denne del af din historie.",
+          "imageVideoWebpage": "Du kan tilføje et billede, en video eller en webside i denne del af din historie."
+        }
+      },
+      "browsePanel": {
+        "providers": {
+          "searchingFor": "Søger efter \"${searchterm}\"...",
+          "searchedFor": "Søgeresultater for \"${searchterm}\"...",
+          "albumsOf": "${username}s albummer",
+          "noPhotosFound": "Ingen fotos matchede din søgning. Prøv igen.",
+          "noItemsFound": "Ingen elementer matchede din søgning. Prøv igen.",
+          "noItemsInThisStory": "Intet indhold fra ArcGIS er blevet føjet til denne historie endnu.",
+          "limitReached": "Viser 100 elementer. Hvis du ikke fandt det, du søgte, kan du prøve en nøgleordssøgning.",
+          "galleryItems": {
+            "uploadError": "Beklager, dette element kunne ikke overføres."
+          },
+          "agol": {
+            "remove1": "Slet dette ubrugte billede fra din ArcGIS-konto.",
+            "remove2": "(Du skal overføre det igen, hvis du beslutter at bruge det senere).",
+            "removeFailed": "Fjern dette utilgængelige billede fra denne liste.",
+            "modified": "Ændret ${date}",
+            "uploaded": "Overført ${date}",
+            "contentByAuthor": "${contentType} af ${author}"
+          },
+          "googlePhotos": {
+            "searchAndBrowse": "Gennemse fotos på ${Picasa} eller ${Google+}"
+          },
+          "flickr": {
+            "photostream": "Photostream",
+            "searchAndBrowse": "Søg efter og find fotos på ${Flickr}",
+            "captionStarter": "Foto af ${USERNAME} på ${Flickr}"
+          },
+          "unsplash": {
+            "searchAndBrowse": "Søg efter fotos på ${Unsplash}",
+            "photoBy": "Foto af ${username}",
+            "userLink": "Gå til ${username}s ${Unsplash} side",
+            "captionStarter": "Foto af ${USERNAME} på ${Unsplash}"
+          },
+          "urlContent": {
+            "uploadHeaders": {
+              "generic": "Link til indhold på internettet",
+              "imageOnly": "Link til et billede på internettet",
+              "imageAndVideo": "Link til et billede eller en video på internettet"
+            },
+            "linkText": {
+              "imageOnly": "I boksen ovenfor kan du linke direkte til et foto.",
+              "imageAndVideo1": "I boksen ovenfor kan du indsætte et link eller en iframe-kode til en video på ${YouTube} og ${Vimeo}.",
+              "imageAndVideo2": "Du kan også linke direkte til et foto.",
+              "imageVideoWebpage1": "I boksen ovenfor kan du indsætte et link eller en iframe-kode til webindhold, såsom et dynamisk diagram eller en video på ${YouTube} og ${Vimeo}.",
+              "imageVideoWebpage2": "Du kan også linke direkte til et foto, en video, en lydfil, en webside eller en webapplikation.",
+              "ender": "Brug altid sikre (https)-links. Hvis dit indhold ikke understøtter https, skal du tilføje et link til det i din histories tekst, så læserne kan få indholdet vist i en ny browserfane.",
+              "httpsError": "Links skal begynde med HTTPS"
+            },
+            "embedProtocol": {
+              "embedProtocolLabel": "Indlæs side via en sikker forbindelse (https)",
+              "embedProtocolWarning1": "Hvis denne side ikke indlæses i din historie, er det fordi, den ikke kan indlejres af sikkerhedsmæssige årsager.",
+              "embedProtocolWarning2": "Hvis denne side ikke indlæses i din historie, skal du fjerne markeringen af denne indstilling og prøve igen. Hvis siden fortsat ikke indlæses, er det fordi, den ikke kan indlejres af sikkerhedsmæssige årsager.",
+              "embedProtocolWarning3": "Som alternativ kan du tilføje et link i din fortælling for at åbne siden i en ny browserfane. ${linkText}",
+              "linkText": "Lær mere."
+            },
+            "placeholder": "${https://}... eller ${<iframe>}",
+            "uploadErrors": {
+              "generic": "Noget gik galt med den angivne adresse. Prøv igen.",
+              "imageOnly1": "Du skal bruge et billede i denne del af historien.",
+              "imageOnly2": "Indsæt et link til et billede (.jpg, .png, .gif), eller vælg et billede fra ${ArcGIS}, ${Flickr}, ${Google+} eller ${Unsplash}.",
+              "imageAndVideo1": "Du skal bruge et billede eller en video i denne del af historien.",
+              "imageAndVideo2": "Indsæt et link til et billede (.jpg, .png, .gif) eller en video på ${YouTube} eller ${Vimeo}, eller vælg et billede fra ${ArcGIS}, ${Flickr}, ${Google+} eller ${Unsplash}.",
+              "badFormat": "Linket til den fil, du forsøger at tilføje, er formateret forkert.",
+              "inaccessible": "Den fil, du forsøger at tilføje, mangler eller er utilgængelig.",
+              "tryAgain": "Tjek adressen, og prøv igen.",
+              "mediaTypes": {
+                "VIDEO": "video",
+                "IMAGE": "billede",
+                "generic": "medier"
+              }
+            }
+          }
+        },
+        "sidePanel": {
+          "googlePhotos": {
+            "placeholder": "E-mail eller ${Picasa}/${Google+} ID",
+            "helpText": "Du kan tilføje fotos, der er overført til ${Picasa} eller ${Google+}, til din historie. ${helpLinkText} om brug af billeder, der er lagret på din ${Google}-konto i dine historier.",
+            "helpLinkText": "Lær mere",
+            "cannotFindUser": "Kan ikke finde brugeren ${username}. Prøv igen."
+          },
+          "unsplash": {
+            "placeholder": "Søg efter fotos",
+            "aboutText": "${Unsplash} er en opdateret samling af gratis fotos af høj kvalitet.",
+            "copyrightText": "Alle fotos, der er publiceret på ${Unsplash}, er givet i licens i henhold til ${CC0} licensen. Find flere oplysninger på ${moreInfoLink}.",
+            "moreInfoLink": "her"
+          },
+          "flickr": {
+            "searchType": {
+              "account": "${Flickr}-konto",
+              "text": "Alle ${Flickr}"
+            },
+            "placeholders": {
+              "user": "Søg efter konto",
+              "userText": "Søg på denne konto efter fotos",
+              "text": "Søg efter fotos"
+            },
+            "errors": {
+              "cannotFindUser": "Kan ikke finde brugeren ${username}.",
+              "noUserPhotos": "${username} har ikke nogen offentlige fotos.",
+              "didYouMean": "Mente du ${username}?",
+              "generalUserError": "Noget gik galt under søgning efter brugeren ${username}."
+            },
+            "licenses": {
+              "licenseLabel": "Licens: ",
+              "public": "Offentligt domæne",
+              "commercial": "OK for kommerciel anvendelse",
+              "nonCommercial": "OK for ikke-kommerciel anvendelse",
+              "reserved": "Alle rettigheder forbeholdes",
+              "any": "Enhver licens"
+            }
+          },
+          "agol": {
+            "searchLocation": {
+              "thisStory": "Denne historie",
+              "agol": "ArcGIS Online",
+              "portalArcGIS": "Portal for ArcGIS",
+              "portal": "Portal",
+              "myOrg": "${orgname} organisation",
+              "myContent": "Mit indhold"
+            },
+            "createContent": {
+              "createNewMap": "Opret et nyt kort",
+              "or": "ELLER",
+              "dragAndDrop": "Slip billede(r) her",
+              "uploadImage": "Søg efter billede(r)",
+              "agolInfo": "Billeder vil blive gemt på din ArcGIS-konto og kun være tilgængelige inde i din historie.",
+              "saveBeforeUpload": "Når du har gemt denne historie, kan du overføre billeder til ArcGIS her.",
+              "fileTypesImage": "Understøttede fil typer: .png, .jpeg, .jpg, .gif, .bmp"
+            },
+            "filterAndSort": {
+              "webmap": "Webkort",
+              "webscene": "Webscene",
+              "image": "Billede",
+              "date": "Dato",
+              "sortByDate": "Sortér efter dato",
+              "title": "Titel",
+              "sortByTitle": "Sortér efter titel",
+              "views": "Visninger",
+              "search": "Søg efter nøgleord eller ID"
+            }
+          }
+        }
+      }
+    },
+    "mapEditor": {
+      "dialogTitle": "Redigér kort",
+      "unauthorizedDomain": "Du er ikke på et autoriseret domæne til at bruge korteditoren",
+      "loading": "Vent, mens korteditoren indlæses",
+      "saving": "Gemmer kortet",
+      "success": "Kort gemt",
+      "cancelTitle": "Slet eventuelle ikke-gemte ændringer?",
+      "errorSave": "Kan ikke gemme kort. Prøv igen.",
+      "loadFail": "Beklager, korteditoren kan ikke indlæses",
+      "close": "Luk",
+      "save": "Gem",
+      "confirm": "Ja, luk kortet",
+      "deny": "Nej, fortsæt med at arbejde"
+    },
+    "textEditor": {
+      "placeholder": {
+        "continueStory": "Fortsæt din historie her..."
+      },
+      "blockAdd": {
+        "text": "Tekst",
+        "media": "Medier",
+        "title": "Titel",
+        "immersive": "Fordybelse"
+      },
+      "link": {
+        "invite": "Indsæt eller indtast et link..."
+      },
+      "color": {
+        "choose": "vælg",
+        "cancel": "annullér",
+        "clear": "Ryd farve"
+      }
+    },
     "imageGallery": {
       "addImage": "Tilføj endnu et billede",
       "moveBackward": "Gå tilbage",
@@ -222,13 +430,55 @@ define({
         "noAltImage": "Medier fungerer muligvis ikke på mobile enheder",
         "noAltImageUnsupported": "Medier, der ikke understøttes på mobile enheder",
         "noAltImageWarning": "Medier fungerer muligvis ikke på mobile enheder",
-        "altImageBroken": "Det alternative billede, der er defineret for dette medieelement, er ikke tilgængeligt"
+        "altImageBroken": "Det alternative billede, der er defineret for dette medieelement, er ikke tilgængeligt",
+        "httpMedia": "Usikre medier",
+        "httpContent": "Usikkert indhold"
       },
       "contentWarnings": {
         "noAltImage": "Sørg for at teste din historie på mobile enheder, inden du begynder at dele den. Hvis disse medier ikke fungerer som forventet, skal du bruge knappen nedenfor til at tilføje et alternativt billede, som vil blive vist, når historien vises på en telefon eller tablet.",
         "noAltImageUnsupported": "Disse medier understøttes ikke på mobile enheder. Brug knappen nedenfor til at tilføje et alternativt billede, som vil blive vist, når historien vises på en telefon eller tablet.",
         "noAltImageWarning": "Sørg for at teste din historie på mobile enheder, inden du begynder at dele den. Hvis disse medier ikke fungerer som forventet, skal du bruge knappen nedenfor til at tilføje et alternativt billede, som vil blive vist, når historien vises på en telefon eller tablet.",
         "noAltImageAlt": "Denne type medier understøttes ikke eller fungerer måske ikke godt på mobile enheder. På den mobile fane skal du angive et alternativt billede, som skal vises, når historien vises på en telefon eller tablet."
+      },
+      "descriptions": {
+        "httpAudioUnfixable": "Denne lyd understøtter ikke HTTPS. Fjern den fra din historie eller erstat den med et link.",
+        "httpAudioUncheckable": "Denne lyd har en usikker (HTTP) URL. Klik på knappen nedenfor for at bruge en sikker HTTPS URL til denne lyd. Hvis det ikke virker, skal du fjerne lyden fra din historie eller erstatte den med et link.",
+        "httpAudioFixable": "Denne lyd har en usikker (HTTP) URL. Klik på knappen nedenfor for at bruge en sikker HTTPS URL til denne lyd.",
+        "httpWebpageUnfixable": "Denne webside understøtter ikke HTTPS. Fjern den fra din historie eller erstat den med et screenshot eller et link.",
+        "httpWebpageUncheckable": "Denne webside har en usikker (HTTP) URL. Klik på knappen nedenfor for at bruge en sikker HTTPS URL til denne webside. Hvis det ikke virker, skal du fjerne websiden fra din historie eller erstatte den med et screenshot eller et link.",
+        "httpWebpageFixable": "Denne webside har en usikker (HTTP) URL. Klik på knappen nedenfor for at bruge en sikker HTTPS URL til denne webside.",
+        "httpVideoUnfixable": "Denne video understøtter ikke HTTPS. Fjern den fra din historie eller erstat den med et screenshot eller et link.",
+        "httpVideoUncheckable": "Denne video har en usikker (HTTP) URL. Klik på knappen nedenfor for at bruge en sikker HTTPS URL til denne video. Hvis det ikke virker, skal du fjerne videoen fra din historie eller erstatte den med et screenshot eller et link.",
+        "httpVideoFixable": "Denne video har en usikker (HTTP) URL. Klik på knappen nedenfor for at bruge en sikker HTTPS URL til denne video.",
+        "httpImageUnfixable": "Dette billede understøtter ikke HTTPS. Fjern det fra din historie eller erstat det med et link.",
+        "httpImageUncheckable": "Dette billede har en usikker (HTTP) URL. Klik på knappen nedenfor for at bruge en sikker HTTPS URL til dette billede. Hvis det ikke virker, skal du fjerne billedet fra din historie eller erstatte det med et link.",
+        "httpImageFixable": "Dette billede har en usikker (HTTP) URL. Klik på knappen nedenfor for at bruge en sikker HTTPS URL til dette billede.",
+        "httpLayer": "Dette lag har en usikker (HTTP) URL.",
+        "inaccessibleLogo": "Dette logo er ikke tilgængeligt. Erstat det med et andet billede.",
+        "httpLogoUnfixable": "Dette logo understøtter ikke HTTPS. Erstat det med et andet billede.",
+        "httpLogoFixable": "Dette logo har en usikker (HTTP) URL. Brug en HTTPS URL til logoet.",
+        "httpLogoUncheckable": "Dette logo har en usikker (HTTP) URL. Brug en HTTPS URL til logoet, eller erstat det med et andet billede."
+      },
+      "tooltips": {
+        "httpAudioFixable": "Klik på knappen for at bruge en sikker HTTPS URL til denne lyd.",
+        "httpAudioUncheckable": "Prøv at bruge en sikker HTTPS URL til denne lyd. Hvis det ikke virker, skal du fjerne lyden fra din historie eller erstatte den med et link.",
+        "httpWebpageFixable": "Klik på knappen for at bruge en sikker HTTPS URL til denne webside.",
+        "httpWebpageUncheckable": "Prøv at bruge en sikker HTTPS URL til denne webside. Hvis det ikke virker, skal du fjerne websiden fra din historie eller erstatte den med et screenshot eller et link.",
+        "httpVideoFixable": "Klik på knappen for at bruge en sikker HTTPS URL til denne video.",
+        "httpVideoUncheckable": "Prøv at bruge en sikker HTTPS URL til denne video. Hvis det ikke virker, skal du fjerne videoen fra din historie eller erstatte den med et screenshot eller et link.",
+        "httpImageFixable": "Klik på knappen for at bruge en sikker HTTPS URL til dette billede.",
+        "httpImageUncheckable": "Prøv at bruge en sikker HTTPS URL til dette billede. Hvis det ikke virker, skal du fjerne billedet fra din historie eller erstatte det med et link.",
+        "httpLayerMyMap": "Besøg kortets elementoplysningsside for at opdatere dette lag til at bruge HTTPS. Hvis laget ikke kan opdateres, skal du fjerne det fra kortet.",
+        "httpLayerNotMyMap": "Lav en kopi af kortet og og opdater dette lag til at bruge HTTPS. Hvis laget ikke kan opdateres, skal du fjerne det fra kortet.",
+        "clickLearnMore": "Klik for at få flere oplysninger."
+      },
+      "fixButtons": {
+        "agolItemPage": "Elementoplysningsside",
+        "openTheMap": "Åbn kort",
+        "updateAudio": "Ret URL for lyd",
+        "updateWebpages": "Ret URL for webside",
+        "updateVideos": "Ret URL for video",
+        "updateImages": "Ret URL for billede"
       },
       "mapIssues": {
         "fixButton": "Løs problemer",
@@ -291,6 +541,31 @@ define({
         "notHealthy": "Løs problemer",
         "warnings": "Se advarsler"
       }
+    },
+    "saveErrorSocial": {
+      "title": "Deling på sociale medier",
+      "panel1": "Din historie vil muligvis ikke blive vist korrekt på de sociale medier, fordi din ArcGIS-webapplikations elementtitel er ikke identisk med historiens titel.",
+      "panel1tooltip": "Ved at definere en titel, et resumé og et miniaturebillede kan din historie komme til at se sådan ud:",
+      "panel2": "Hvilken titel vil du gerne bruge på de sociale medier:",
+      "panel2q1": "Historietitel (anbefales)",
+      "panel2q1tooltip": "Når du vælger denne indstilling, vil din elementtitel blive ændret, så den matcher din historietitel, og yderligere ændringer i builder-programmet vil blive synkroniserede.",
+      "panel2q2": "Elementtitel",
+      "panel3": "Hvis du vil forbedre visningen af din historie på de sociale medier yderligere, kan du bruge ${MYSTORIES} til at tilføje et resumé og et miniaturebillede.",
+      "panel4": "Giv mig ikke igen besked om denne historie",
+      "save": "Gem",
+      "mystories": "Mine historier"
+    },
+    "httpsTransitionMessage": {
+      "bannerMsg": "Vigtig meddelelse om internetsikkerhed og Story Maps",
+      "s1h1": "Esri forbedrer sikkerheden for Story Maps",
+      "s1p1": "Dine Story Maps lever på nettet, og internetfællesskabet arbejder altid for at skabe og implementere bedre sikkerhed. HTTPS som giver en sikker forbindelse til indhold, der sendes over internettet, bliver den mest almindelige måde at få adgang til webindhold på. De fleste moderne browsere viser nu advarselsmeddelelser, når der bruges HTTP i stedet for HTTPS. På grund af denne nye standard, der starter med opdateringen i juni 2018 til ArcGIS Online, skal dine Story Maps bruge HTTPS.",
+      "s1p2": "I praksis betyder det, at et Story Map og alt dets indhold (herunder billeder, lag, indlejrede apps og websteder) skal åbnes ved hjælp af links, der starter med HTTPS i stedet for HTTP. Det sikrer den bedste oplevelse for dine læsere, fordi de fleste webbrowsere vil vise, at dine historier er sikre.",
+      "s2h1": "Hvad skal jeg gøre?",
+      "s2p1": "Esri arbejder på at gøre overgangen let for Story Map-forfattere og -læsere. Der er værktøjer tilgængelige nu i Story Map builders og Mine historier, der hjælper dig med at finde usikkert indhold (HTTP) i dine historier og giver anbefalinger til, hvordan du ordner det. Kontrollér dine historier for usikkert indhold og opdatér til HTTPS inden juni 2018.",
+      "action1": "Luk",
+      "action2": "Kontrollér mine historier nu",
+      "action3": "Lær mere",
+      "floatingNotification": "Denne historie indeholder usikkert indhold (HTTP). Gennemse og løs disse problemer."
     }
   }
 });

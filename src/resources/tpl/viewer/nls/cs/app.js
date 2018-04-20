@@ -32,10 +32,11 @@ define({
       "upgradeBrowser": "Proveďte prosím aktualizaci prohlížeče.",
       "mapLoadingFail": "Něco se pokazilo, mapa se nenahrála správně.",
       "signOut": "Odhlásit",
-      "builderSupport1": "Nástroj pro tvorbu kaskádové mapy s příběhem je podporován pouze v prohlížečích ${CHROME} a ${SAFARI}. Nicméně kaskádové příběhy, které v nástroji pro tvorbu vytvoříte, lze kromě těchto prohlížečů prohlížet i v prohlížečích Internet Explorer 11+ a Firefox.",
-      "builderSupport2": "Nástroj pro tvorbu kaskádové mapy s příběhem není na iPadu podporován. Vytvořené a sdílené kaskádové příběhy budou na iPadu fungovat.",
-      "builderSupport3": "Kaskádové příběhy lze prohlížet v prohlížečích Chrome, Safari, Firefox a Internet Explorer 11+, ale nástroj pro tvorbu kaskádové mapy s příběhem je podporován pouze v prohlížečích ${CHROME} a ${SAFARI}.",
-      "builderSupport4": "Kaskádové příběhy lze prohlížet v jakémkoliv moderním webovém prohlížeči, ale nástroj pro tvorbu kaskádové mapy s příběhem je podporován pouze v prohlížečích ${CHROME} a ${SAFARI}.<br><br>Pokud potřebujete, aby nástroj pro tvorbu kaskád podporoval jiný prohlížeč, kontaktujte ${ESRI-SUPPORT} nebo ${BROWSER-SUPPORT-VOTE}.",
+      "builderSupportFirefox": "Nástroj pro tvorbu kaskádové mapy s příběhem nyní podporuje Firefox!<br><br>Podpora vytváření kaskádových příběhů ve Firefoxu je momentálně ve verzi beta. Aplikaci si neváhejte vyzkoušet a s případnými problémy se obraťte na ${ESRI-SUPPORT} nebo ${ESRI-COMMUNITY}.",
+      "builderSupportOther": "Kaskádové příběhy lze zobrazit v jakémkoli moderním webovém prohlížeči. Nástroj pro tvorbu kaskádové mapy s příběhem ovšem podporují pouze prohlížeče ${CHROME}, ${SAFARI} a ${FIREFOX} (beta).<br><br>Pokud potřebujete, aby nástroj podporoval jiný prohlížeč, obraťte se prosím na ${ESRI-SUPPORT} nebo ${BROWSER-SUPPORT-VOTE}.",
+      "builderSupportIpad": "Nástroj pro tvorbu kaskádové mapy s příběhem není na iPadu podporován. Vytvořené a sdílené kaskádové příběhy budou na iPadu fungovat.",
+      "launchBuilder": "Spustit nástroj pro tvorbu kaskádové mapy",
+      "notAgain": "Toto dialogové okno příště nezobrazovat",
       "sorry": "Upozornění:"
     },
     "mobileWarning": {
@@ -82,6 +83,40 @@ define({
       "speedFast": "Rychle",
       "speedMedium": "Střední",
       "speedSlow": "Pomalu"
+    }
+  },
+  "print": {
+    "settings": {
+      "pleaseWait": "Před tiskem prosím počkejte, dokud nedojde k načtení celého příběhu",
+      "printNotes": "Pokud se stránka načítá pomalu nebo se některá média nezobrazují, zkuste nahradit videa obrázky nebo tisknout menší část příběhu. Abyste dosáhli co nejlepších výsledků, možná bude třeba povolit tisk prvků pozadí v nastavení tisku v prohlížeči.",
+      "printOptions": "Možnosti",
+      "makeTextBlack": "Zobrazit veškerý text černě",
+      "showLinks": "Zobrazit odkazy URL",
+      "useAltMedia": "Nahraďte video obrázky, jsou-li k dispozici",
+      "pageBreaks": "Zahájit každou část příběhu na nové stránce",
+      "printRange": "Vytisknout část příběhu",
+      "sectionStart": "Části:",
+      "go": "Použít",
+      "reset": "Zvolit celý příběh",
+      "print": "Tisk"
+    },
+    "page": {
+      "appTagline": "Tento příběh byl vytvořen pomocí ${CASCADE_LINK_TEXT}.",
+      "cascadeLinkText": "Kaskádová mapa s příběhem od společnosti Esri",
+      "readItOnline": "Přečtěte si tento příběh na ${STORY_URL}."
+    },
+    "sections": {
+      "sectionLabel": "Část ${SECTION_NUMBER}"
+    },
+    "media": {
+      "websiteLabel": "Webové stránky:",
+      "videoLabel": "Video:",
+      "audioLabel": "Audio:"
+    },
+    "bannerNotification": {
+      "learnMore": "Více informací",
+      "close": "Zavřít",
+      "dontShowAgain": "Toto hlášení příště nezobrazovat"
     }
   }
 });

@@ -32,10 +32,11 @@ define({
       "upgradeBrowser": "يرجى تحديث المستعرض",
       "mapLoadingFail": "‏‏حدث خطأ ما، لم يتم تحميل الخريطة بشكل صحيح.",
       "signOut": "تسجيل الخروج",
-      "builderSupport1": "منشئ \"تتالي خريطة القصة\" مدعوم فقط في ${CHROME} و${SAFARI}. ومع ذلك، يمكن عرض قصص التتالي التي تنشئها باستخدام المنشئ في مستعرضات Internet Explorer 11+ وFirefox.",
-      "builderSupport2": "منشئ \"تتالي خريطة القصة\" غير مدعوم في iPad، وستعمل قصص التتالي التي تنشئها وتشاركها في iPad.",
-      "builderSupport3": "يمكن عرض قصص التتالي في Chrome وSafari وFirefox وInternet Explorer 11+، ولكن منشئ \"تتالي خريطة القصة\" مدعوم فقط في ${CHROME} و${SAFARI}.",
-      "builderSupport4": "يمكن عرض قصص التتالي في أي مستعرض ويب حديث، إلا أن منشئ \"تتالي خريطة القصة\" ليس مدعومًا إلا في ${CHROME} و${SAFARI}.<br><br>إذا أردت أن يدعم منشئ التتالي مستعرضًا آخرًا، يرجى الاتصال بـ ${ESRI-SUPPORT} أو ${BROWSER-SUPPORT-VOTE}.",
+      "builderSupportFirefox": "يدعم الآن منشيء تتالي خريطة القصة!<br><br>الدعم لتأليف تتالي القصص في Forex يكون بالبيتا حاليًا. الرجاء محاولة ورفع تقارير بأي مسائل متعلقة بـ ${ESRI-SUPPORT} أو ${ESRI-COMMUNITY}.",
+      "builderSupportOther": "يمكن عرض قصص التتالي في أي مستعرض ويب حديث، إلا أن منشئ \"تتالي خريطة القصة\" ليس مدعومًا إلا في ${CHROME}، ${SAFARI}، و ${FIREFOX} (بيتا).<br><br>إذا أردت أن يدعم منشئ التتالي مستعرضًا آخرًا، يرجى الاتصال بـ ${ESRI-SUPPORT} أو ${BROWSER-SUPPORT-VOTE}.",
+      "builderSupportIpad": "منشئ \"تتالي خريطة القصة\" غير مدعوم في iPad، وستعمل قصص التتالي التي تنشئها وتشاركها في iPad.",
+      "launchBuilder": "إطلاق \"منشئ التتالي\"",
+      "notAgain": "لا تظهر هذا مرة أخرى",
       "sorry": "انتبه:"
     },
     "mobileWarning": {
@@ -82,6 +83,40 @@ define({
       "speedFast": "سريع",
       "speedMedium": "متوسط",
       "speedSlow": "بطيء"
+    }
+  },
+  "print": {
+    "settings": {
+      "pleaseWait": "الرجاء انتظار القصة بالكامل للتحميل قبل الطباعة",
+      "printNotes": "إذا كانت هذه الصفحة تقوم بالتحميل ببطئ أو لا تظهر بعض الوسائط، حاول استبدال الوسائط المباشرة مع الصور أو طباعة مجموعة أجزاء أصغر. للحصول على أفضل النتائج، قد يتعين عليك تمكين طباعة عناصر الخلفية في إعدادات طباعة المستعرض.",
+      "printOptions": "خيارات",
+      "makeTextBlack": "جعل كل النص باللون الأسود",
+      "showLinks": "إظهار عناوين URL للرابط",
+      "useAltMedia": "استبدل وسائط مباشرة مع الصور، إن توفرت",
+      "pageBreaks": "بدء كل جزء في الصفحة الجديدة",
+      "printRange": "جزء طباعة هذه القصة",
+      "sectionStart": "الأقسام:",
+      "go": "تطبيق",
+      "reset": "إعادة تعيين القصة بالكامل",
+      "print": "طباعة"
+    },
+    "page": {
+      "appTagline": "تم إنشاء هذه القصة مع ${CASCADE_LINK_TEXT}.",
+      "cascadeLinkText": "تتالي خريطة القصة الخاصة بـ Esri",
+      "readItOnline": "يمكنك قراءته على الويب على ${STORY_URL}."
+    },
+    "sections": {
+      "sectionLabel": "القسم ${SECTION_NUMBER}"
+    },
+    "media": {
+      "websiteLabel": "موقع ويب:",
+      "videoLabel": "مقطع فيديو:",
+      "audioLabel": "مقطع صوت:"
+    },
+    "bannerNotification": {
+      "learnMore": "التعرف على المزيد",
+      "close": "إغلاق",
+      "dontShowAgain": "عدم إظهار هذه الرسالة مجددًا"
     }
   }
 });

@@ -1,8 +1,9 @@
 import Sequence from './Sequence';
 import {} from 'lib-build/less!./SequenceBuilder';
 
-import SectionCommon from 'storymaps/tpl/view/section/Common';
-import MediumEditorWrapper from 'storymaps-react/common/builder/textEditor/MediumEditorWrapper';
+import SectionCommon from 'storymaps-react/tpl/view/section/Common';
+import MediaPickerConstants from 'storymaps-react/tpl/builder/mediaPicker/constants';
+import MediumEditorWrapper from 'storymaps-react/tpl/builder/textEditor/MediumEditorWrapper';
 import topic from 'dojo/topic';
 import lang from 'dojo/_base/lang';
 
@@ -208,7 +209,8 @@ export default class SequenceBuilder extends Sequence {
       params.media.remove();
       this._blocks.splice(this._blocks.indexOf(params.media), 1);
     }
-    else if (params.action === 'swap' || params.action === 'alternate-media-swap' || params.action === 'alternate-media-add') {
+    else if (params.action === 'swap' || params.action === 'alternate-media-swap' || params.action === 'alternate-media-add'
+      || params.action === 'https-open-picker') {
       const mediaIsEmpty = params.action === 'alternate-media-add';
       const isAlternate = params.action.indexOf('alternate-') !== -1;
       const authorizedMedia = isAlternate ? ['image'] : null;
@@ -216,9 +218,10 @@ export default class SequenceBuilder extends Sequence {
       app.builder.mediaPicker.open({
         mode: mediaIsEmpty ? 'add' : 'edit',
         media: mediaIsEmpty ? null : params.media.serialize(false),
-        authorizedMedia: authorizedMedia
+        authorizedMedia: authorizedMedia,
+        selectedProvider: params.action === 'https-open-picker' ? MediaPickerConstants.providers.URL : ''
       }).then(
-        function(newMedia) {
+        newMedia => {
           if (isAlternate) {
             SectionCommon.onEditMediaAlternate({
               mainMedia: params.mainMedia,
@@ -228,14 +231,33 @@ export default class SequenceBuilder extends Sequence {
             });
             this._onContentChange();
           }
+          else if (SectionCommon.isSameMediaWithSecureProtocol(params.media, newMedia)) {
+            // if all that's changed is that the media URL is now https, keep the existing media but change it to be https.
+            // This preserves captions, alt media, and config options.
+            params.media.convertToHttps();
+            topic.publish('builder-should-check-story');
+          }
           else {
             this._onEditMedia(params.media, newMedia);
           }
-        }.bind(this),
-        function() {
-          //
+        },
+        message => {
+          if (message === 'swap-map-editor') {
+            SectionCommon.launchMapEditorFromMediaPicker().then(results => {
+              this._onEditMedia(params.media, results);
+            }, () => {
+              //
+            });
+          }
         }
       );
+    }
+    else if (params.action === 'arcgis-edit') {
+      SectionCommon.launchMapEditor(params.media).then(results => {
+        this._onEditMedia(params.media, results);
+      }, () => {
+        //
+      });
     }
     else if (params.action === 'alternate-media-remove') {
       SectionCommon.onRemoveMediaAlternate({

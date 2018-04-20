@@ -32,10 +32,11 @@ define({
       "upgradeBrowser": "Werk uw browser bij",
       "mapLoadingFail": "Er is een probleem opgetreden. De kaart is niet correct geladen.",
       "signOut": "Afmelden",
-      "builderSupport1": "Story Map Cascade-builder wordt alleen ondersteund in ${CHROME} en ${SAFARI}. Echter, Cascade verhalen die u maakt met builder kunnen bekeken worden met die browsers, Internet Explorer 11+, en Firefox.",
-      "builderSupport2": "Story Map Cascade-builder wordt niet ondersteund op de iPad. Cascade-verhalen die u maakt en deelt werken op de iPad.",
-      "builderSupport3": "Cascade-verhalen kunnen worden bekeken in Chrome, Safari, Firefox en Internet Explorer 11+, maar Story Map Cascade-builder wordt alleen ondersteund in ${CHROME} en ${SAFARI}.",
-      "builderSupport4": "Cascade-verhalen kunnen worden bekeken in alle moderne browsers, maar Story Map Cascade-builder wordt alleen ondersteund in ${CHROME} en ${SAFARI}.<br><br>Als u Cascade-builder nodig hebt om een andere browser te ondersteunen, neem dan contact op met ${ESRI-SUPPORT} of ${BROWSER-SUPPORT-VOTE}.",
+      "builderSupportFirefox": "Story Map Cascade-builder biedt nu ondersteuning voor Firefox!<br><br>Ondersteuning voor het schrijven van Cascade-verhalen in Firefox bevindt zich momenteel in de beta-fase. Probeer het en meld alle problemen aan ${ESRI-SUPPORT} of de ${ESRI-COMMUNITY}.",
+      "builderSupportOther": "Cascade-verhalen kunnen worden bekeken in alle moderne browsers, maar Story Map Cascade-builder wordt alleen ondersteund in ${CHROME}, ${SAFARI} en ${FIREFOX}.<br><br>Als u Cascade-builder nodig hebt om een andere browser te ondersteunen, neem dan contact op met ${ESRI-SUPPORT} of ${BROWSER-SUPPORT-VOTE}.",
+      "builderSupportIpad": "Story Map Cascade-builder wordt niet ondersteund op de iPad. Cascade-verhalen die u maakt en deelt werken op de iPad.",
+      "launchBuilder": "Cascade builder starten",
+      "notAgain": "Dit niet meer tonen",
       "sorry": "Let op:"
     },
     "mobileWarning": {
@@ -82,6 +83,40 @@ define({
       "speedFast": "Snel",
       "speedMedium": "Middel",
       "speedSlow": "Langzaam"
+    }
+  },
+  "print": {
+    "settings": {
+      "pleaseWait": "Wacht tot het hele verhaal geladen is voordat u het afdrukt",
+      "printNotes": "Als deze pagina traag geladen wordt of bepaalde media niet verschijnt, probeer dan live media te vervangen door afbeeldingen of een kleinere reeks secties af te drukken. Voor de beste resultaten moet u mogelijk het afdrukken van achtergrondelementen activeren in de afdrukinstellingen van uw browser.",
+      "printOptions": "Opties",
+      "makeTextBlack": "Maak alle tekst zwart",
+      "showLinks": "Koppelings-URL's weergeven",
+      "useAltMedia": "Indien beschikbaar, vervang live media door afbeeldingen",
+      "pageBreaks": "Begin elke sectie op een nieuwe pagina",
+      "printRange": "Een deel van dit verhaal afdrukken",
+      "sectionStart": "Secties:",
+      "go": "Toepassen",
+      "reset": "Resetten naar hele verhaal",
+      "print": "Afdrukken"
+    },
+    "page": {
+      "appTagline": "Dit verhaal werd gemaakt met ${CASCADE_LINK_TEXT}.",
+      "cascadeLinkText": "Esri's Story Map Cascade",
+      "readItOnline": "Lees het op het internet op ${STORY_URL}."
+    },
+    "sections": {
+      "sectionLabel": "Sectie ${SECTION_NUMBER}"
+    },
+    "media": {
+      "websiteLabel": "Website:",
+      "videoLabel": "Video:",
+      "audioLabel": "Audio:"
+    },
+    "bannerNotification": {
+      "learnMore": "Meer informatie",
+      "close": "Sluiten",
+      "dontShowAgain": "Dit bericht niet meer weergeven"
     }
   }
 });

@@ -1,0 +1,72 @@
+.mapEditPopup {
+
+  &.firefox-hide-fix {
+  visibility: hidden;
+  }
+
+  .modal-dialog {
+    padding: 40px;
+    width: 100%;
+    margin: 0;
+    height: 100%;
+  }
+
+  .modal-content {
+    height: 100%;
+  }
+
+  .modal-body {
+    height: calc(~"100% - 110px");
+    padding-bottom: 10px;
+  }
+
+  .embed-title {
+    font-size: 1.3em;
+    color: #4B8BC9;
+    margin: 15px 0 5px 0;
+  }
+
+  .loading-container, .error-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+    font-size: 130%;
+    color: #396e8b;
+  }
+
+  .loading-lbl {
+    margin-top: 10px;
+  }
+
+  .webmap-builder-container {
+    position: absolute;
+    top: 0;
+    left: 0px;
+    right: 0px;
+    bottom: 10px;
+    padding: 0 30px;
+
+    &.hide {
+      display: block !important;
+      visibility: hidden;
+      pointer-events: none;
+    }
+  }
+
+  .webmap-builder {
+    width: 100%;
+    height: 100%;
+    border: none;
+    padding: 0;
+  }
+
+  .modal-footer .error {
+    float: none;
+    margin-right: 10px;
+    font-size: 18px;
+  }
+}

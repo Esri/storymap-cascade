@@ -230,12 +230,23 @@ export default class WebScene extends Media {
       let portalUrl = app.indexCfg.sharingurl.split('/sharing/')[0];
       this._esriConfig.portalUrl = portalUrl;
 
+      this._esriConfig.workers.loaderUrl = app.pathJSAPI4 + 'dojo/dojo.js';
       this._esriConfig.workers.loaderConfig = {
+        baseUrl: app.pathJSAPI4 + 'dojo',
         packages: [
-          {
-            name: 'esri4',
-            location: app.pathJSAPI4 + 'esri'
-          }
+          { name: 'esri4', location: '../esri' },
+          { name: 'esri', location: '../esri' },
+          { name: 'dojo', location: '.' },
+          { name: 'dojox', location: '../dojox' },
+          { name: 'dstore', location: '../dstore' },
+          { name: 'moment', location: '../moment' },
+          { name: '@dojo', location: '../@dojo' },
+          { name: 'cldrjs', location: '../cldrjs', main: 'dist/cldr' },
+          { name: 'globalize', location: '../globalize', main: 'dist/globalize' },
+          { name: 'maquette', location: '../maquette', main: 'dist/maquette.umd' },
+          { name: 'maquette-css-transitions', location: '../maquette-css-transitions', main: 'dist/maquette-css-transitions.umd' },
+          { name: 'maquette-jsx', location: '../maquette-jsx', main: 'dist/maquette-jsx.umd' },
+          { name: 'tslib', location: '../tslib', main: 'tslib' }
         ]
       };
 
@@ -316,7 +327,7 @@ export default class WebScene extends Media {
       view: view
     };
 
-    view.then(function() {
+    view.when(function() {
       this._cache[this.id].initialViewpoint = view.viewpoint;
 
       view.ui.move('zoom', 'bottom-right');
@@ -333,7 +344,7 @@ export default class WebScene extends Media {
     if (this._webscene.slide !== undefined && this._webscene.slide !== -1) {
       this._watchUtils.init(scene, 'presentation.slides', function(slides) {
         if (slides && slides.items && slides.items.length) {
-          view.then(() => {
+          view.when(() => {
             slides.items[this._webscene.slide].applyTo(view, {
               animate: false
             });

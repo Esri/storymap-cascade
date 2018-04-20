@@ -3,11 +3,6 @@ import ServiceLayer from './ServiceLayer';
 
 export default class TiledMapServiceLayer extends ServiceLayer {
   static check(options) {
-    return super.check({
-      layer: options.item,
-      layerResults: options.layerResults,
-      appAccess: options.appAccess,
-      CalledClass: EsriTiledMapServiceLayer
-    });
+    return super.check(Object.assign({}, options, { CalledClass: EsriTiledMapServiceLayer }));
   }
 }

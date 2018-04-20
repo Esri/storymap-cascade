@@ -14,71 +14,88 @@
     height: 100%;
   }
 
-  // widths of summary and items. add to 94.
-  .issue-summary {
-    background: #f9f9f9;
-    width: 35%;
-    @media (max-width: @screen-md) {
-      width: 40%;
-    }
-  }
-
-  .issue-items {
-    width: 59%;
-    @media (max-width: @screen-md) {
-      width: 54%;
-    }
-  }
-
   .issue-summary {
     position: relative;
+    background: #f9f9f9;
+    width: 50%;
+    min-width: 400px;
 
-    .title-wrapper {
-      position: absolute;
-      top: 0;
-      bottom: 40px;
-      padding: 10px 20px;
-      width: 100%;
-    }
+    .item {
+      .title-wrapper {
+        position: absolute;
+        top: 0;
+        bottom: 40px;
+        padding: 10px 20px;
+        width: 100%;
+      }
 
-    .title {
-      line-height: 1.4em;
-      color: @sm-danger-text;
-      padding-bottom: 5px;
-      width: 100%;
-      font-size: 24px;
-      margin: 0;
-    }
-
-    .description {
-      line-height: 1.2em;
-    }
-
-    @media (max-width: @screen-md) {
       .title {
-        font-size: 20px;
+        line-height: 1.4em;
+        padding-bottom: 5px;
+        width: 100%;
+        font-size: 24px;
+        margin: 0;
       }
+
       .description {
-        font-size: 12px;
+        font-size: 14px;
+        line-height: 1.2em;
+      }
+
+      .fix-btn {
+        position: absolute;
+        display: block;
+        bottom: 0;
+        width: 96%;
+        left: 2%;
+        z-index: 2;
+      }
+
+      &.error {
+        .title {
+          color: @sm-danger-text;
+        }
+      }
+
+      &.warning {
+        .title {
+          color: @Calcite_Orange_a150;
+        }
       }
     }
 
-    @media (max-width: ((@screen-md + @screen-sm) / 2)) {
-      .title {
-        font-size: 18px;
+    &.map-issue-summary {
+      width: 35%;
+      min-width: auto;
+      @media (max-width: @screen-md) {
+        width: 40%;
       }
-      .description {
-        font-size: 10px;
-      }
-    }
 
-    .fix-btn {
-      position: absolute;
-      display: block;
-      bottom: 0;
-      width: 96%;
-      left: 2%;
-      z-index: 2;
+      .carousel {
+        max-height: 200px;
+        min-height: 175px;
+      }
+
+
+      .item {
+        @media (max-width: @screen-md) {
+          .title {
+            font-size: 20px;
+          }
+          .description {
+            font-size: 12px;
+          }
+        }
+
+        @media (max-width: ((@screen-md + @screen-sm) / 2)) {
+          .title {
+            font-size: 18px;
+          }
+          .description {
+            font-size: 10px;
+          }
+        }
+      }
     }
   }
 
@@ -115,7 +132,8 @@
     height: 100%;
     width: 100%;
     cursor: default;
-    max-height: 200px;
+    max-height: 225px;
+    min-height: 200px;
 
     // ----- NAV DOTS ----- //
     .carousel-indicators {
@@ -176,60 +194,4 @@
     }
 
   }
-
-  .issue-items {
-    overflow: auto;
-    text-align: left;
-    max-height: 400px;
-    line-height: 1.4em;
-  }
-
-  .webmap-info {
-    padding: 2px 5px;
-    background-color: #cfcfcf;
-    font-size: larger;
-
-    .error-icon {
-      display: none;
-    }
-
-    &.error {
-      // second line doesn't underhang warning triangle
-      text-indent: -12px;
-      padding-left: 30px;
-      .error-icon {
-        display: inline-block;
-      }
-    }
-  }
-
-  .layers-info {
-    .error-icon {
-      visibility: hidden;
-    }
-    .error .error-icon {
-      visibility: visible;
-    }
-  }
-
-  .issue-items .error-icon {
-    margin-right: 3px;
-  }
-
-  .issue-items .error.highlight {
-    color: @sm-danger-text;
-    font-weight: bold;
-  }
-
-  .layers-info .layer {
-    padding: 0 5px 0 45px;
-    background-color: #efefef;
-    text-indent: -10px;
-    color: #BABABA
-  }
-
-  .layers-info .layer:nth-child(odd) {
-    background-color: #fff;
-  }
-
 }

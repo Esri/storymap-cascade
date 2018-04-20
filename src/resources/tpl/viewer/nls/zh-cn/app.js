@@ -32,10 +32,11 @@ define({
       "upgradeBrowser": "请更新您的浏览器",
       "mapLoadingFail": "发生了一些错误，地图未正确加载。",
       "signOut": "登出",
-      "builderSupport1": "Story Map Cascade 构建器仅受 ${CHROME} 和 ${SAFARI} 支持。但可在 Internet Explorer 11+、Firefox 等其他浏览器中查看使用构建器创建的 Cascade 故事。",
-      "builderSupport2": "iPad 不支持 Story Map Cascade 构建器。但创建和共享的 Cascade 故事可在 iPad 上运行。",
-      "builderSupport3": "可在 Chrome、Safari、Firefox 和 Internet Explorer 11+ 中查看 Cascade 故事，但 Story Map Cascade 构建器仅支持 ${CHROME} 和 ${SAFARI}。",
-      "builderSupport4": "可在所有常用的 Web 浏览器中查看 Cascade 故事，但 Story Map Cascade 构建器只支持 ${CHROME} 和 ${SAFARI}。<br><br>如果您希望 Cascade 构建器支持其他浏览器，请联系 ${ESRI-SUPPORT} 或 ${BROWSER-SUPPORT-VOTE}。",
+      "builderSupportFirefox": "Story Map Cascade 构建器现在支持 Firefox!<br><br>Firefox 中对创作 Cascade 故事的支持目前处于测试阶段。请尝试使用，如有任何问题，请报告给 ${ESRI-SUPPORT} 或 ${ESRI-COMMUNITY}。",
+      "builderSupportOther": "可在所有常用的 web 浏览器中查看 Cascade 故事，但 Story Map Cascade 构建器只支持 ${CHROME}、${SAFARI} 和 ${FIREFOX} (beta)。<br><br>如果您希望 Cascade 构建器支持其他浏览器，请联系 ${ESRI-SUPPORT} 或 ${BROWSER-SUPPORT-VOTE}。",
+      "builderSupportIpad": "iPad 不支持 Story Map Cascade 构建器。但创建和共享的 Cascade 故事可在 iPad 上运行。",
+      "launchBuilder": "启动 Cascade 构建器",
+      "notAgain": "不再显示此消息",
       "sorry": "注意："
     },
     "mobileWarning": {
@@ -82,6 +83,40 @@ define({
       "speedFast": "快速",
       "speedMedium": "中等",
       "speedSlow": "慢速"
+    }
+  },
+  "print": {
+    "settings": {
+      "pleaseWait": "请待整个故事加载完毕再进行打印",
+      "printNotes": "如果此页面加载速度缓慢或某些媒体未显示，请尝试将实时媒体替换为图像，或打印较小范围的部分。为获得最佳效果，您可能需要在浏览器的打印设置中启用背景元素的打印。",
+      "printOptions": "选项",
+      "makeTextBlack": "将所有文本设置为黑色",
+      "showLinks": "显示链接 URL",
+      "useAltMedia": "如果可用，请将实时媒体替换为图像",
+      "pageBreaks": "在新页面上开始每个章节",
+      "printRange": "打印此故事的一部分",
+      "sectionStart": "章节：",
+      "go": "应用",
+      "reset": "重置为整个故事",
+      "print": "打印"
+    },
+    "page": {
+      "appTagline": "此故事由 ${CASCADE_LINK_TEXT} 完成。",
+      "cascadeLinkText": "Esri 的 Story Map Cascade",
+      "readItOnline": "请访问 ${STORY_URL} 阅读 web 上的故事"
+    },
+    "sections": {
+      "sectionLabel": "部分 ${SECTION_NUMBER}"
+    },
+    "media": {
+      "websiteLabel": "网址：",
+      "videoLabel": "视频：",
+      "audioLabel": "音频："
+    },
+    "bannerNotification": {
+      "learnMore": "更多信息",
+      "close": "关闭",
+      "dontShowAgain": "不再显示此消息"
     }
   }
 });

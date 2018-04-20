@@ -50,7 +50,26 @@ define({
         "loremBody": "Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor. Mauris consequat orci nec magna facilisis bibendum at eget libero."
       }
     },
+    "share": {
+      "btnPrivate": "Pribadi",
+      "btnOrg": "Organisasi",
+      "btnPublic": "Publik",
+      "btnEveryone": "Semua orang"
+    },
     "builderPanel": {
+      "builderNamePrefix": "",
+      "builderNameSuffix": "Builder",
+      "buttonSaving": "Menyimpan",
+      "buttonSaved": "Tersimpan",
+      "buttonError": "Gagal menyimpan",
+      "buttonShare": "Bagikan",
+      "buttonSettings": "Pengaturan",
+      "settingsLogoError": "Ada masalah dengan logo Anda. Klik untuk mempelajari lebih lanjut.",
+      "buttonHelp": "Dapatkan Bantuan atau Kirim Umpan Balik mengenai GeoNet",
+      "buttonPreview": "Tampilkan Cerita",
+      "buttonHealth": "Laporan Kesehatan",
+      "manageStories": "Kelola Cerita Saya",
+      "closeWithPendingChange": "Anda yakin ingin mengonfirmasi tindakan ini? Perubahan Anda akan hilang.",
       "coverLabel": "Sampul",
       "creditsLabel": "Kredit",
       "betaFeedback": "Tanggapan",
@@ -143,6 +162,195 @@ define({
         "uploadAltImage": "Tambahkan gambar alternatif"
       }
     },
+    "mediaPicker": {
+      "browseToggle": {
+        "urls": "Tautkan ke Konten",
+        "urls_short": "Tautan",
+        "contentType": {
+          "error": "Tidak ada media yang sah.",
+          "imageOnly": "Pada bagian cerita ini, Anda dapat menambahkan gambar.",
+          "imageAndVideo": "Pada bagian cerita ini, Anda dapat menambahkan gambar atau video.",
+          "imageVideoWebpage": "Pada bagian cerita ini, Anda dapat menambahkan gambar, video, atau halaman web."
+        }
+      },
+      "browsePanel": {
+        "providers": {
+          "searchingFor": "Mencari \"${searchterm}\"...",
+          "searchedFor": "Hasil pencarian untuk \"${searchterm}\"",
+          "albumsOf": "Album ${username}",
+          "noPhotosFound": "Tidak ada foto yang cocok dengan pencarian Anda. Coba lagi.",
+          "noItemsFound": "Tidak ada item yang cocok dengan pencarian Anda. Coba lagi.",
+          "noItemsInThisStory": "Belum ada konten dari ArcGIS yang ditambahkan ke cerita ini.",
+          "limitReached": "Menampilkan 100 item. Jika Anda tidak menemukan apa yang Anda perlukan, coba pencarian kata kunci.",
+          "galleryItems": {
+            "uploadError": "Maaf, item ini gagal diunggah."
+          },
+          "agol": {
+            "remove1": "Hapus gambar yang tidak digunakan ini dari akun ArcGIS Anda.",
+            "remove2": "(Anda harus mengunggahnya kembali jika Anda memutuskan untuk menggunakannya nanti.)",
+            "removeFailed": "Hapus gambar yang tidak dapat diakses dari daftar ini.",
+            "modified": "Diubah ${date}",
+            "uploaded": "Diunggah ${date}",
+            "contentByAuthor": "${contentType} oleh ${author}"
+          },
+          "googlePhotos": {
+            "searchAndBrowse": "Telusuri foto di ${Picasa} atau ${Google+}"
+          },
+          "flickr": {
+            "photostream": "Photostream",
+            "searchAndBrowse": "Cari dan telusuri foto di ${Flickr}",
+            "captionStarter": "Foto oleh ${USERNAME} di ${Flickr}"
+          },
+          "unsplash": {
+            "searchAndBrowse": "Cari foto di ${Unsplash}",
+            "photoBy": "Foto oleh ${username}",
+            "userLink": "Buka halaman ${Unsplash} ${username}",
+            "captionStarter": "Foto oleh ${USERNAME} di ${Unsplash}"
+          },
+          "urlContent": {
+            "uploadHeaders": {
+              "generic": "Tautkan ke konten di web",
+              "imageOnly": "Tautkan ke gambar di web",
+              "imageAndVideo": "Tautkan ke gambar atau video di web"
+            },
+            "linkText": {
+              "imageOnly": "Pada kotak di atas, Anda dapat menautkan langsung ke foto.",
+              "imageAndVideo1": "Pada kotak di atas, Anda dapat menempel tautan atau kode iframe untuk video di ${YouTube} atau ${Vimeo}.",
+              "imageAndVideo2": "Anda juga dapat menautkan langsung ke foto.",
+              "imageVideoWebpage1": "Pada kotak di atas, Anda dapat menempel tautan atau kode iframe untuk konten web seperti bagan dinamis atau video di ${YouTube} atau ${Vimeo}.",
+              "imageVideoWebpage2": "Anda juga dapat menautkan langsung ke foto, video, file audio, halaman web, atau aplikasi web.",
+              "ender": "Selalu gunakan tautan yang aman (https). Jika konten Anda tidak mendukung https, tambahkan tautan ke konten dalam teks cerita Anda, agar pembaca dapat melihatnya di tab browser baru.",
+              "httpsError": "Tautan harus diawali dengan HTTPS"
+            },
+            "embedProtocol": {
+              "embedProtocolLabel": "Muat halaman pada koneksi yang aman (https)",
+              "embedProtocolWarning1": "Jika halaman ini tidak dimuat dalam cerita Anda, halaman tersebut tidak dapat disematkan untuk alasan keamanan web.",
+              "embedProtocolWarning2": "Jika halaman ini tidak dimuat dalam cerita Anda, hapus centang opsi ini dan coba lagi. Jika halaman tetap tidak dimuat, halaman tersebut tidak dapat disematkan untuk alasan keamanan web.",
+              "embedProtocolWarning3": "Sebagai alternatif, tambahkan tautan di narasi Anda untuk membuka halaman di tab browser baru. ${linkText}",
+              "linkText": "Pelajari Selengkapnya."
+            },
+            "placeholder": "${https://}... atau ${<iframe>}",
+            "uploadErrors": {
+              "generic": "Ada yang tidak beres dengan alamat yang dimasukkan. Coba lagi.",
+              "imageOnly1": "Anda harus menggunakan gambar pada bagian cerita ini.",
+              "imageOnly2": "Berikan tautan ke gambar (.jpg, .png, .gif), atau pilih gambar dari ${ArcGIS}, ${Flickr}, ${Google+}, atau ${Unsplash}.",
+              "imageAndVideo1": "Anda harus menggunakan gambar atau video pada bagian cerita ini.",
+              "imageAndVideo2": "Berikan tautan ke gambar (.jpg, .png, .gif) atau video di ${YouTube} atau ${Vimeo}, atau pilih gambar dari ${ArcGIS}, ${Flickr}, ${Google+}, atau ${Unsplash}.",
+              "badFormat": "Tautan ke file yang ingin Anda tambahkan tidak diformat dengan benar.",
+              "inaccessible": "File yang ingin Anda tambahkan hilang atau tidak dapat diakses.",
+              "tryAgain": "Periksa alamat dan coba lagi.",
+              "mediaTypes": {
+                "VIDEO": "video",
+                "IMAGE": "gambar",
+                "generic": "media"
+              }
+            }
+          }
+        },
+        "sidePanel": {
+          "googlePhotos": {
+            "placeholder": "Email atau ID ${Picasa}/${Google+}",
+            "helpText": "Anda dapat menambahkan foto yang diunggah ke ${Picasa} atau ${Google+} ke cerita Anda. ${helpLinkText} tentang menggunakan gambar yang disimpan di akun ${Google} di cerita Anda.",
+            "helpLinkText": "Pelajari lebih lanjut",
+            "cannotFindUser": "Tidak dapat menemukan pengguna ${username}. Coba lagi."
+          },
+          "unsplash": {
+            "placeholder": "Cari foto",
+            "aboutText": "${Unsplash} adalah kumpulan kurasi foto berkualitas tinggi dan gratis.",
+            "copyrightText": "Semua foto yang dipublikasikan di ${Unsplash} memiliki lisensi di bawah Lisensi ${CC0}. Temukan informasi selengkapnya ${moreInfoLink}.",
+            "moreInfoLink": "di sini"
+          },
+          "flickr": {
+            "searchType": {
+              "account": "Akun ${Flickr}",
+              "text": "Semua ${Flickr}"
+            },
+            "placeholders": {
+              "user": "Cari akun",
+              "userText": "Cari foto untuk akun ini",
+              "text": "Cari foto"
+            },
+            "errors": {
+              "cannotFindUser": "Tidak dapat menemukan pengguna ${username}.",
+              "noUserPhotos": "${username} tidak memiliki foto publik apa pun.",
+              "didYouMean": "Apakah maksud Anda ${username}?",
+              "generalUserError": "Ada yang tidak beres ketika mencari pengguna ${username}."
+            },
+            "licenses": {
+              "licenseLabel": "Lisensi: ",
+              "public": "Domain Publik",
+              "commercial": "Ya untuk Penggunaan Komersial",
+              "nonCommercial": "Ya untuk Penggunaan Non-Komersial",
+              "reserved": "Semua Hak Dilindungi Undang-Undang",
+              "any": "Lisensi Apa Pun"
+            }
+          },
+          "agol": {
+            "searchLocation": {
+              "thisStory": "Cerita Ini",
+              "agol": "ArcGIS Online",
+              "portalArcGIS": "Portal for ArcGIS",
+              "portal": "Portal",
+              "myOrg": "Organisasi ${orgname}",
+              "myContent": "Konten Saya"
+            },
+            "createContent": {
+              "createNewMap": "Buat Peta Baru",
+              "or": "ATAU",
+              "dragAndDrop": "Masukkan gambar di sini",
+              "uploadImage": "Telusuri gambar",
+              "agolInfo": "Gambar akan disimpan di akun ArcGIS Anda dan dapat diakses hanya dari dalam cerita Anda.",
+              "saveBeforeUpload": "Setelah menyimpan cerita ini, Anda dapat mengunggah gambar ke ArcGIS di sini.",
+              "fileTypesImage": "Mendukung jenis file berikut: .png, .jpeg, .jpg, .gif, .bmp"
+            },
+            "filterAndSort": {
+              "webmap": "Web Map",
+              "webscene": "Web Scene",
+              "image": "Gambar",
+              "date": "Tanggal",
+              "sortByDate": "Urutkan berdasarkan tanggal",
+              "title": "Judul",
+              "sortByTitle": "Urutkan berdasarkan judul",
+              "views": "Tampilan",
+              "search": "Cari menurut kata kunci atau ID"
+            }
+          }
+        }
+      }
+    },
+    "mapEditor": {
+      "dialogTitle": "Edit peta",
+      "unauthorizedDomain": "Anda tidak berada di domain resmi untuk menggunakan editor peta",
+      "loading": "Harap tunggu selagi editor peta sedang dimuat",
+      "saving": "Menyimpan peta",
+      "success": "Peta disimpan",
+      "cancelTitle": "Buang perubahan apa pun yang belum disimpan?",
+      "errorSave": "Tidak dapat menyimpan peta. Coba lagi.",
+      "loadFail": "Maaf, editor peta tidak dapat dimuat",
+      "close": "Tutup",
+      "save": "Simpan",
+      "confirm": "Iya, tutup peta",
+      "deny": "Tidak, tetap bekerja"
+    },
+    "textEditor": {
+      "placeholder": {
+        "continueStory": "Lanjutkan cerita Anda di sini..."
+      },
+      "blockAdd": {
+        "text": "Teks",
+        "media": "Media",
+        "title": "Judul",
+        "immersive": "Imersif"
+      },
+      "link": {
+        "invite": "Tempel atau ketik tautan..."
+      },
+      "color": {
+        "choose": "pilih",
+        "cancel": "batal",
+        "clear": "Hapus warna"
+      }
+    },
     "imageGallery": {
       "addImage": "Tambahkan gambar lain",
       "moveBackward": "Mundur",
@@ -222,13 +430,55 @@ define({
         "noAltImage": "Media Mungkin Tidak Berfungsi di Seluler",
         "noAltImageUnsupported": "Media Tidak Didukung di Seluler",
         "noAltImageWarning": "Media Mungkin Tidak Berfungsi di Seluler",
-        "altImageBroken": "Gambar alternatif yang ditentukan untuk item media ini tidak dapat diakses"
+        "altImageBroken": "Gambar alternatif yang ditentukan untuk item media ini tidak dapat diakses",
+        "httpMedia": "Media Tidak Aman",
+        "httpContent": "Konten Tidak Aman"
       },
       "contentWarnings": {
         "noAltImage": "Pastikan untuk menguji cerita Anda di perangkat seluler sebelum membagikannya. Jika media ini tidak berfungsi sebagaimana mestinya, gunakan tombol bagian bawah untuk menambahkan gambar alternatif yang akan ditampilkan ketika cerita dilihat di ponsel atau tablet.",
         "noAltImageUnsupported": "Media ini tidak akan berfungsi sebagaimana mestinya. Gunakan tombol bagian bawah untuk menambahkan gambar alternatif yang akan ditampilkan ketika cerita dilihat di ponsel atau tablet.",
         "noAltImageWarning": "Pastikan untuk menguji cerita Anda di perangkat seluler sebelum membagikannya. Jika media ini tidak berfungsi sebagaimana mestinya, gunakan tombol bagian bawah untuk menambahkan gambar alternatif yang akan ditampilkan ketika cerita dilihat di ponsel atau tablet.",
         "noAltImageAlt": "Jenis media ini tidak didukung atau mungkin tidak berfungsi pada perangkat seluler. Pada tab seluler, sediakan gambar alternatif yang akan ditampilkan saat cerita dilihat pada perangkat seluler."
+      },
+      "descriptions": {
+        "httpAudioUnfixable": "Audio ini tidak mendukung HTTPS. Hapus dari cerita Anda atau ganti dengan tautan.",
+        "httpAudioUncheckable": "Audio ini memiliki URL tidak aman (HTTP). Klik tombol di bawah untuk mencoba menggunakan URL HTTPS untuk audio ini. Jika tidak berfungsi, hapus audio dari cerita Anda atau ganti dengan hyperlink.",
+        "httpAudioFixable": "Audio ini memiliki URL tidak aman (HTTP). Klik tombol di bawah untuk menggunakan URL HTTPS aman untuk audio ini.",
+        "httpWebpageUnfixable": "Halaman web ini tidak mendukung HTTPS. Hapus dari cerita Anda atau ganti dengan tangkapan layar atau tautan.",
+        "httpWebpageUncheckable": "Halaman web ini memiliki URL tidak aman (HTTP). Klik tombol di bawah untuk mencoba menggunakan URL HTTPS untuk halaman web ini. Jika tidak berfungsi, hapus halaman web dari cerita Anda atau ganti dengan tangkapan layar atau hyperlink.",
+        "httpWebpageFixable": "Halaman web ini memiliki URL tidak aman (HTTP). Klik tombol di bawah untuk menggunakan URL HTTPS aman untuk halaman web ini.",
+        "httpVideoUnfixable": "Video ini tidak mendukung HTTPS. Hapus dari cerita Anda atau ganti dengan tangkapan layar atau tautan.",
+        "httpVideoUncheckable": "Video ini memiliki URL tidak aman (HTTP). Klik tombol di bawah untuk mencoba menggunakan URL HTTPS untuk video ini. Jika tidak berfungsi, hapus video dari cerita Anda atau ganti dengan tangkapan layar atau hyperlink.",
+        "httpVideoFixable": "Video ini memiliki URL tidak aman (HTTP). Klik tombol di bawah untuk menggunakan URL HTTPS aman untuk video ini.",
+        "httpImageUnfixable": "Gambar ini tidak mendukung HTTPS. Hapus dari cerita Anda atau ganti dengan tautan.",
+        "httpImageUncheckable": "Gambar ini memiliki URL tidak aman (HTTP). Klik tombol di bawah untuk mencoba menggunakan URL HTTPS untuk gambar ini. Jika tidak berfungsi, hapus gambar dari cerita Anda atau ganti dengan hyperlink.",
+        "httpImageFixable": "Gambar ini memiliki URL tidak aman (HTTP). Klik tombol di bawah untuk menggunakan URL HTTPS aman untuk gambar ini.",
+        "httpLayer": "Layer ini memiliki URL tidak aman (HTTP).",
+        "inaccessibleLogo": "Logo ini tidak dapat diakses. Ganti dengan gambar lain.",
+        "httpLogoUnfixable": "Logo ini tidak mendukung HTTPS. Ganti dengan gambar lain.",
+        "httpLogoFixable": "Logo ini memiliki URL tidak aman (HTTP). Gunakan URL HTTPS untuk logo tersebut.",
+        "httpLogoUncheckable": "Logo ini memiliki URL tidak aman (HTTP). Gunakan URL HTTPS untuk logo tersebut, atau ganti dengan gambar lain."
+      },
+      "tooltips": {
+        "httpAudioFixable": "Klik tombol untuk menggunakan URL HTTPS aman untuk audio ini.",
+        "httpAudioUncheckable": "Coba gunakan URL HTTPS untuk audio ini. Jika tidak berfungsi, hapus audio dari cerita Anda atau ganti dengan tautan.",
+        "httpWebpageFixable": "Klik tombol untuk menggunakan URL HTTPS aman untuk halaman web ini.",
+        "httpWebpageUncheckable": "Coba gunakan URL HTTPS untuk halaman web ini. Jika tidak berfungsi, hapus halaman web dari cerita Anda atau ganti dengan tangkapan layar atau tautan.",
+        "httpVideoFixable": "Klik tombol untuk menggunakan URL HTTPS aman untuk video ini.",
+        "httpVideoUncheckable": "Coba gunakan URL HTTPS untuk video ini. Jika tidak berfungsi, hapus video dari cerita Anda atau ganti dengan tangkapan layar atau tautan.",
+        "httpImageFixable": "Klik tombol untuk menggunakan URL HTTPS aman untuk gambar ini.",
+        "httpImageUncheckable": "Coba gunakan URL HTTPS untuk gambar ini. Jika tidak berfungsi, hapus gambar dari cerita Anda atau ganti dengan tautan.",
+        "httpLayerMyMap": "Kunjungi halaman item peta untuk memperbarui layer ini untuk menggunakan HTTPS. Jika layer tidak dapat diperbarui, hapus layer tersebut dari peta.",
+        "httpLayerNotMyMap": "Buat salinan peta dan perbarui layer ini untuk menggunakan HTTPS. Jika layer tidak dapat diperbarui, hapus layer tersebut dari peta.",
+        "clickLearnMore": "Klik untuk mempelajari selengkapnya."
+      },
+      "fixButtons": {
+        "agolItemPage": "Halaman Item",
+        "openTheMap": "Buka Peta",
+        "updateAudio": "Perbaiki URL Audio",
+        "updateWebpages": "Perbaiki URL Halaman Web",
+        "updateVideos": "Perbaiki URL Video",
+        "updateImages": "Perbaiki URL Gambar"
       },
       "mapIssues": {
         "fixButton": "Perbaiki Masalah",
@@ -291,6 +541,31 @@ define({
         "notHealthy": "Perbaiki masalah",
         "warnings": "Lihat peringatan"
       }
+    },
+    "saveErrorSocial": {
+      "title": "Berbagi di media sosial",
+      "panel1": "Cerita Anda mungkin tidak ditampilkan dengan benar di media sosial karena judul item aplikasi web ArcGIS Anda tidak sama dengan judul cerita Anda.",
+      "panel1tooltip": "Dengan menentukan judul, ringkasan, dan gambar thumbnail, cerita Anda akan terlihat seperti ini:",
+      "panel2": "Judul mana yang ingin Anda gunakan di media sosial:",
+      "panel2q1": "Judul cerita (disarankan)",
+      "panel2q1tooltip": "Dengan memilih opsi ini, judul item akan diubah agar sama dengan judul cerita Anda dan perubahan lebih lanjut pada penyusun akan diselaraskan.",
+      "panel2q2": "Judul item",
+      "panel3": "Untuk meningkatkan penampilan cerita Anda di media sosial, gunakan ${MYSTORIES} untuk menambahkan ringkasan dan gambar thumbnail.",
+      "panel4": "Jangan ingatkan saya lagi untuk cerita ini",
+      "save": "Simpan",
+      "mystories": "Cerita Saya"
+    },
+    "httpsTransitionMessage": {
+      "bannerMsg": "Pesan Penting mengenai Keamanan Web dan Story Map",
+      "s1h1": "Esri sedang meningkatkan keamanan Story Map",
+      "s1p1": "Story Map Anda berada di web, dan komunitas web selalu berupaya membangun dan mengimplementasikan keamanan yang lebih baik. HTTPS, yang menyediakan koneksi aman untuk konten yang ditransmisikan melalui internet, berkembang sebagai cara yang harapkan untuk mengakses konten web. Sebagian besar browser modern sekarang memperlihatkan pesan peringatan jika yang digunakan adalah HTTP, bukan HTTPS. Karena standar yang berkembang ini, mulai dari pembaruan Juni 2018 untuk ArcGIS Online, Story Map Anda harus menggunakan HTTPS.",
+      "s1p2": "Praktisnya, ini berarti Story Map dan semua kontennya (termasuk gambar, layer, aplikasi yang disematkan, dan situs web) harus diakses menggunakan tautan yang diawali dengan HTTPS, bukan HTTP. Ini memastikan pengalaman terbaik bagi pembaca Anda karena sebagai besar browser web akan menunjukkan bahwa cerita Anda aman.",
+      "s2h1": "Apa yang harus saya lakukan?",
+      "s2p1": "Esri sedang berupaya membuat ini menjadi transisi yang mudah bagi penulis dan pembaca Story Map. Alat sekarang tersedia di builder Story Map dan Cerita Saya yang membantu Anda menemukan konten tidak aman (HTTP) dalam cerita Anda dan memberi rekomendasi cara menanganinya. Harap periksa cerita Anda untuk mengetahui konten tidak aman dan perbarui ke HTTPS sebelum Juni 2018.",
+      "action1": "Tutup",
+      "action2": "Periksa cerita saya sekarang",
+      "action3": "Pelajari lebih lanjut",
+      "floatingNotification": "Cerita ini berisi konten tidak aman (HTTP). Harap tinjau dan atasi masalah tersebut."
     }
   }
 });

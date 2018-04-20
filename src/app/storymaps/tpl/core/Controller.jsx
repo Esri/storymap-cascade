@@ -1,5 +1,5 @@
 /*
-| Copyright 2016, 2017 Esri
+| Copyright 2016-2018 Esri
 |
 | Licensed under the Apache License, Version 2.0 (the "License");
 | you may not use this file except in compliance with the License.
@@ -23,7 +23,7 @@ import Media from 'storymaps-react/tpl/view/media/Media';
 import WebSceneCache from 'storymaps-react/tpl/core/WebSceneCache';
 
 import UIUtils from 'storymaps/tpl/utils/UI';
-import CommonHelper from 'storymaps/common/utils/CommonHelper';
+import CommonHelper from 'storymaps/tpl/utils/CommonHelper';
 
 let storyMap = 'Story Map';
 

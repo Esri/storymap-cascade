@@ -4,7 +4,7 @@ import AddMenu from './builder/AddMenu';
 import i18n from 'lib-build/i18n!resources/tpl/builder/nls/app';
 
 import {} from 'lib-build/less!./CreditsBuilder';
-import MediumEditorWrapper from 'storymaps-react/common/builder/textEditor/MediumEditorWrapper';
+import MediumEditorWrapper from 'storymaps-react/tpl/builder/textEditor/MediumEditorWrapper';
 import lang from 'dojo/_base/lang';
 import topic from 'dojo/topic';
 

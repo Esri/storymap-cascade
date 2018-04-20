@@ -23,7 +23,6 @@ export default class WebPage extends Media {
     });
 
     this._webpage = webpage;
-    this._url = webpage.url;
 
     this._nodeMedia = null;
     this._placement = null;
@@ -53,7 +52,7 @@ export default class WebPage extends Media {
     if (this._placement == 'block') {
       output += viewBlock({
         id: this._domID,
-        url: this._url,
+        url: this._webpage.url,
         caption: this._webpage.caption,
         placeholder: i18n.viewer.media.captionPlaceholder,
         captionEditable: app.isInBuilder,
@@ -67,7 +66,7 @@ export default class WebPage extends Media {
 
       output += viewBackground({
         id: this._domID,
-        url: this._url,
+        url: this._webpage.url,
         classes: 'webpage-container' + optClass,
         labelExploreStart: i18n.viewer.media.explore,
         labelExploreStop: i18n.viewer.media.exploreStop
@@ -95,7 +94,7 @@ export default class WebPage extends Media {
       }
     }
     else {
-      this._nodeMedia = params.container.find('.webpage[data-src="' + this._url + '"]');
+      this._nodeMedia = params.container.find('.webpage[data-src="' + this._webpage.url + '"]');
       this._node = this._nodeMedia.parents('.background').eq(0);
     }
 

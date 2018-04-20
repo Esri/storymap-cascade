@@ -17,9 +17,21 @@
         border: 2px solid rgba(241, 248, 253, 0.14);
       }
 
-      &[contenteditable=true]:not(:focus):empty:before{
+      &[contenteditable=true]:focus:empty {
+        padding-left: 50%;
+        text-align: left;
+      }
+
+      &[contenteditable=true]:empty:before {
         display: block;
+      }
+
+      &[contenteditable=true]:not(:focus):empty:before {
         content: attr(placeholder);
+      }
+
+      &[contenteditable=true]:focus:empty:before {
+        content: '\feff';
       }
 
       &.text-dark {
@@ -54,7 +66,7 @@
 
   .media-cfg-panel {
     position: absolute;
-    bottom: -225px;
+    top: 200px;
     left: 0;
 
     .builder-config {
@@ -70,10 +82,14 @@
     }
   }
 
-
-  .config-panel-active .media-cfg-panel .builder-config {
-    height: 225px;
+.builder-config-section .section-content.two-pane {
+  .content-pane:last-child {
+    margin: auto;
   }
+  .content-pane:first-child {
+    margin-right: unset;
+  }
+}
 
   &.media-config-active {
     z-index: 501;

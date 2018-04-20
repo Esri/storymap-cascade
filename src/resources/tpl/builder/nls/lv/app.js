@@ -50,7 +50,26 @@ define({
         "loremBody": "Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor. Mauris consequat orci nec magna facilisis bibendum at eget libero."
       }
     },
+    "share": {
+      "btnPrivate": "Privāti",
+      "btnOrg": "Organizācija",
+      "btnPublic": "Publisks",
+      "btnEveryone": "Ikviens"
+    },
     "builderPanel": {
+      "builderNamePrefix": "",
+      "builderNameSuffix": "Veidotājs",
+      "buttonSaving": "Saglabā",
+      "buttonSaved": "Saglabāts",
+      "buttonError": "Saglabāšana neizdevās",
+      "buttonShare": "Kopīgošana",
+      "buttonSettings": "Iestatījumi",
+      "settingsLogoError": "Jūsu logotipā ir radusies problēma. Noklikšķiniet, lai uzzinātu vairāk.",
+      "buttonHelp": "Saņemt palīdzību vai iesniegt atsauksmi par GeoNet",
+      "buttonPreview": "Skatīt stāstu",
+      "buttonHealth": "Darbspējas pārskats",
+      "manageStories": "Pārvaldīt manus stāstus",
+      "closeWithPendingChange": "Vai tiešām vēlaties apstiprināt šo darbību? Jūsu veiktās izmaiņas tiks zaudētas.",
       "coverLabel": "Vāks",
       "creditsLabel": "Kredītpunkti",
       "betaFeedback": "Atsauksmes",
@@ -143,6 +162,195 @@ define({
         "uploadAltImage": "Pievienot alternatīvu attēlu"
       }
     },
+    "mediaPicker": {
+      "browseToggle": {
+        "urls": "Saite uz saturu",
+        "urls_short": "Saite",
+        "contentType": {
+          "error": "Nav autorizēta datu nesēja.",
+          "imageOnly": "Šajā stāsta daļā varat pievienot attēlu.",
+          "imageAndVideo": "Šajā stāsta daļā varat pievienot attēlu vai video.",
+          "imageVideoWebpage": "Šajā stāsta daļā varat pievienot attēlu, video vai tīmekļa lapu."
+        }
+      },
+      "browsePanel": {
+        "providers": {
+          "searchingFor": "Tiek meklēts termins \"${searchterm}\"...",
+          "searchedFor": "Termina \"${searchterm}” meklēšanas rezultāti",
+          "albumsOf": "Lietotāja ${Username} albumi",
+          "noPhotosFound": "Neviens fotoattēls neatbilst jūsu meklētajam. Lūdzu, mēģiniet vēlreiz.",
+          "noItemsFound": "Neviena vienība neatbilst jūsu meklētajam. Lūdzu, mēģiniet vēlreiz.",
+          "noItemsInThisStory": "Šim stāstam vēl nav pievienots saturs no ArcGIS.",
+          "limitReached": "Tiek rādītas 100 vienības. Ja neatradāt meklēto, mēģiniet meklēt ar atslēgvārdu.",
+          "galleryItems": {
+            "uploadError": "Diemžēl šo vienību neizdevās augšupielādēt."
+          },
+          "agol": {
+            "remove1": "Izdzēsiet šo neizmantoto attēlu no jūsu ArcGIS konta.",
+            "remove2": "(Ja izlemsiet vēlāk to lietot, tas būs jāaugšupielādē vēlreiz.)",
+            "removeFailed": "Noņemiet no saraksta šo attēlu, kam nevar piekļūt.",
+            "modified": "Mainīšanas datums: ${date}",
+            "uploaded": "Augšupielādes datums: ${date}",
+            "contentByAuthor": "${contentType}, autors ${author}"
+          },
+          "googlePhotos": {
+            "searchAndBrowse": "Pārlūkot fotoattēlus vietnē ${Picasa} vai ${Google+}"
+          },
+          "flickr": {
+            "photostream": "Photostream",
+            "searchAndBrowse": "Meklēt un pārlūkot fotoattēlus vietnē ${Flickr}",
+            "captionStarter": "Fotoattēla autors: ${USERNAME} (${Flickr})"
+          },
+          "unsplash": {
+            "searchAndBrowse": "Meklēt fotoattēlus vietnē ${Unsplash}",
+            "photoBy": "Fotoattēls pēc lietotājvārda ${username}",
+            "userLink": "Doties uz lietotāja ${username} ${Unsplash} lapu",
+            "captionStarter": "Fotoattēla autors: ${USERNAME} (${Unsplash})"
+          },
+          "urlContent": {
+            "uploadHeaders": {
+              "generic": "Saite uz saturu tīmeklī",
+              "imageOnly": "Saite uz attēlu tīmeklī",
+              "imageAndVideo": "Saite uz attēlu vai video tīmeklī"
+            },
+            "linkText": {
+              "imageOnly": "Augstāk esošajā lodziņā varat izveidot saiti tieši uz fotoattēlu.",
+              "imageAndVideo1": "Augstāk esošajā lodziņā varat ielīmēt videoklipa no ${YouTube} vai ${Vimeo} saiti vai iframe kodu.",
+              "imageAndVideo2": "Varat arī izveidot saiti tieši uz fotoattēlu.",
+              "imageVideoWebpage1": "Augstāk esošajā lodziņā varat ielīmēt tīmekļa satura, piemēram, dinamiskas diagrammas vai videoklipa no ${YouTube} vai ${Vimeo} saiti vai iframe kodu.",
+              "imageVideoWebpage2": "Varat arī izveidot saiti tieši uz fotoattēlu, videoklipu, audio failu, tīmekļa lapu vai tīmekļa lietotni.",
+              "ender": "Noteikti izmantojiet drošas (https) saites. Ja jūsu saturs neatbalsta https, pievienojiet tiem saiti stāsta tekstā, lai lasītāji to varētu skatīt jaunā pārlūka cilnē.",
+              "httpsError": "Saitei ir jāsākas ar HTTPS"
+            },
+            "embedProtocol": {
+              "embedProtocolLabel": "Ielādēt lapu, izmantojot drošu savienojumu (https)",
+              "embedProtocolWarning1": "Ja šī lapa jūsu stāstā neielādējas, to nevar iegult tīmekļa drošības iemeslu dēļ.",
+              "embedProtocolWarning2": "Ja šī lapa jūsu stāstā neielādējas, noņemiet atzīmi no šīs iespējas un mēģiniet vēlreiz. Ja lapa joprojām neielādējas, to nevar iegult tīmekļa drošības iemeslu dēļ.",
+              "embedProtocolWarning3": "Alternatīva iespēja — stāstījumam pievienojiet saiti, lai lapu atvērtu jaunā pārlūka cilnē. ${linkText}",
+              "linkText": "Uzziniet vairāk."
+            },
+            "placeholder": "${https://}... vai ${<iframe>}",
+            "uploadErrors": {
+              "generic": "Ar ievadīto adresi radās problēma. Lūdzu, mēģiniet vēlreiz.",
+              "imageOnly1": "Šajā stāsta daļā ir jāizmanto attēls.",
+              "imageOnly2": "Lūdzu, sniedziet saiti uz attēlu (.jpg, .png, .gif) vai izvēlieties attēlu no ${ArcGIS}, ${Flickr}, ${Google+} vai  ${Unsplash}.",
+              "imageAndVideo1": "Šajā stāsta daļā ir jāizmanto attēls vai video.",
+              "imageAndVideo2": "Lūdzu, sagādājiet saiti uz attēlu (.jpg, .png, .gif), uz video vietnē ${YouTube} vai ${Vimeo} vai izvēlieties attēlu no ${ArcGIS}, ${Flickr}, ${Google+} vai ${Unsplash}.",
+              "badFormat": "Saite uz failu, ko mēģināt pievienot, ir nepareizi formatēta.",
+              "inaccessible": "Trūkst faila, ko mēģināt pievienot, vai tam nevar piekļūt.",
+              "tryAgain": "Pārbaudiet ievadīto adresi un mēģiniet vēlreiz.",
+              "mediaTypes": {
+                "VIDEO": "video",
+                "IMAGE": "attēls",
+                "generic": "multivides fails"
+              }
+            }
+          }
+        },
+        "sidePanel": {
+          "googlePhotos": {
+            "placeholder": "E-pasta adrese vai ${Picasa}/${Google+} ID",
+            "helpText": "Savam stāstam varat pievienot ${Picasa} vai ${Google+} augšupielādētos attēlus. ${helpLinkText} par tādu attēlu izmantošanu stāstos, kas ir glabāti jūsu ${Google} kontā.",
+            "helpLinkText": "Uzziniet vairāk",
+            "cannotFindUser": "Nevar atrast lietotāju ${username}. Lūdzu, mēģiniet vēlreiz."
+          },
+          "unsplash": {
+            "placeholder": "Meklēt fotoattēlus",
+            "aboutText": "${Unsplash} ir pārraudzīta bezmaksas, augstas kvalitātes fotoattēlu kolekcija.",
+            "copyrightText": "Visi ${Unsplash} publicētie fotoattēli ir licencēti atbilstoši ${CC0} licencei. Papildinformāciju skatiet saitē ${moreInfoLink}.",
+            "moreInfoLink": "šeit"
+          },
+          "flickr": {
+            "searchType": {
+              "account": "${Flickr} konts",
+              "text": "Viss ${Flickr}"
+            },
+            "placeholders": {
+              "user": "Meklēt kontu",
+              "userText": "Meklēt šajā kontā fotoattēlus",
+              "text": "Meklēt fotoattēlus"
+            },
+            "errors": {
+              "cannotFindUser": "Nevar atrast lietotāju ${username}.",
+              "noUserPhotos": "Lietotājam ${username} nav neviena publiska fotoattēla.",
+              "didYouMean": "Vai domājāt ${username}?",
+              "generalUserError": "Meklējot lietotāju ${username}, radās problēma."
+            },
+            "licenses": {
+              "licenseLabel": "Licence: ",
+              "public": "Neaizsargātie darbi",
+              "commercial": "OK komerciālai lietošanai",
+              "nonCommercial": "OK nekomerciālai lietošanai",
+              "reserved": "Visas tiesības paturētas",
+              "any": "Jebkura licence"
+            }
+          },
+          "agol": {
+            "searchLocation": {
+              "thisStory": "Šis stāsts",
+              "agol": "ArcGIS Online",
+              "portalArcGIS": "Portal for ArcGIS",
+              "portal": "Portal",
+              "myOrg": "Organizācija ${orgname}",
+              "myContent": "Mans Saturs"
+            },
+            "createContent": {
+              "createNewMap": "Izveidot jaunu karti",
+              "or": "VAI",
+              "dragAndDrop": "Nometiet attēlu(s) šeit",
+              "uploadImage": "Pārlūkot attēlu(s)",
+              "agolInfo": "attēli tiks glabāti jūsu ArcGIS kontā un būs pieejami tikai jūsu stāstā.",
+              "saveBeforeUpload": "Pēc šī stāsta saglabāšanas šeit varat augšupielādēt attēlus ArcGIS.",
+              "fileTypesImage": "Atbalstītie failu tipi: .png, .jpeg, .jpg, .gif, .bmp"
+            },
+            "filterAndSort": {
+              "webmap": "Tīmekļa karte",
+              "webscene": "Tīmekļa scēna",
+              "image": "Attēls",
+              "date": "Datums",
+              "sortByDate": "Šķirot pēc datuma",
+              "title": "Virsraksts",
+              "sortByTitle": "Šķirot pēc virsraksta",
+              "views": "Skatījumi",
+              "search": "Meklēt pēc atslēgvārda vai ID"
+            }
+          }
+        }
+      }
+    },
+    "mapEditor": {
+      "dialogTitle": "Kartes rediģēšana",
+      "unauthorizedDomain": "Domēnā, ko izmantojat, nav sankcionēta karšu redaktora izmantošana",
+      "loading": "Pagaidiet, kamēr ielādējas karšu redaktors",
+      "saving": "Saglabā karti",
+      "success": "Karte ir saglabāta",
+      "cancelTitle": "Vai atmest nesaglabātās izmaiņas?",
+      "errorSave": "Neizdevās saglabāt karti. Mēģiniet vēlreiz.",
+      "loadFail": "Diemžēl nevar ielādēt karšu redaktoru",
+      "close": "Aizvērt",
+      "save": "Saglabāt",
+      "confirm": "Jā, aizvērt karti",
+      "deny": "Nē, turpināt darbu"
+    },
+    "textEditor": {
+      "placeholder": {
+        "continueStory": "Turpiniet šeit savu stāstu..."
+      },
+      "blockAdd": {
+        "text": "Teksts",
+        "media": "Informācijas datu nesēji",
+        "title": "Virsraksts",
+        "immersive": "Iekļaujošs"
+      },
+      "link": {
+        "invite": "Ielīmējiet vai ierakstiet saiti..."
+      },
+      "color": {
+        "choose": "izvēlēties",
+        "cancel": "atcelt",
+        "clear": "Notīrīt krāsu"
+      }
+    },
     "imageGallery": {
       "addImage": "Pievienot citu attēlu",
       "moveBackward": "Pārvietot atpakaļ",
@@ -222,13 +430,55 @@ define({
         "noAltImage": "Saturs var nedarboties mobilajā ierīcē",
         "noAltImageUnsupported": "Saturs mobilajā ierīcē netiek atbalstīts",
         "noAltImageWarning": "Saturs var nedarboties mobilajā ierīcē",
-        "altImageBroken": "Šī satura vienībai definētais alternatīvais attēls nav pieejams"
+        "altImageBroken": "Šī satura vienībai definētais alternatīvais attēls nav pieejams",
+        "httpMedia": "Nedrošs multivides saturs",
+        "httpContent": "Nedrošs saturs"
       },
       "contentWarnings": {
         "noAltImage": "Pirms kopīgošanas noteikti pārbaudiet savu stāstu mobilajās ierīcēs. Ja šis saturs nedarbojas, kā nākas, izmantojiet šo pogu un pievienojiet alternatīvu attēlu, kas tiks parādīts, kad stāsts tiks skatīts tālrunī vai planšetdatorā.",
         "noAltImageUnsupported": "Šis saturs mobilajās ierīcēs nedarbosies. Izmantojiet šo pogu un pievienojiet alternatīvu attēlu, kas tiks parādīts, kad stāsts tiks skatīts tālrunī vai planšetdatorā.",
         "noAltImageWarning": "Pirms kopīgošanas noteikti pārbaudiet savu stāstu mobilajās ierīcēs. Ja šis saturs nedarbojas, kā nākas, izmantojiet šo pogu un pievienojiet alternatīvu attēlu, kas tiks parādīts, kad stāsts tiks skatīts tālrunī vai planšetdatorā.",
         "noAltImageAlt": "Šī tipa saturs mobilajās ierīcēs netiek atbalstīts, vai arī tas mobilajās ierīcēs nedarbosies. Mobilo ierīču cilnē norādiet alternatīvu attēlu, kas tiks parādīts, kad stāsts tiks skatīts tālrunī vai planšetdatorā."
+      },
+      "descriptions": {
+        "httpAudioUnfixable": "Šis audio saturs neatbalsta protokolu HTTPS. Noņemiet saturu no sava stāsta vai aizstājiet ar saiti.",
+        "httpAudioUncheckable": "Šī audio satura vietrādis URL ir nedrošs (HTTP). Noklikšķiniet uz zemāk redzamās pogas, lai šim audio saturam izmantotu HTTPS vietrādi URL. Ja tas neizdodas, noņemiet audio saturu no jūsu stāsta vai aizstājiet to ar hipersaiti.",
+        "httpAudioFixable": "Šī audio satura vietrādis URL ir nedrošs (HTTP). Noklikšķiniet uz zemāk redzamās pogas, lai šim audio saturam izmantotu drošu HTTPS vietrādi URL.",
+        "httpWebpageUnfixable": "Šī tīmekļa lapa neatbalsta protokolu HTTPS. Noņemiet tīmekļa lapu no sava stāsta vai aizstājiet ar ekrānuzņēmumu vai saiti.",
+        "httpWebpageUncheckable": "Šīs tīmekļa lapas vietrādis URL ir nedrošs (HTTP). Noklikšķiniet uz zemāk redzamās pogas, lai šai tīmekļa lapai izmantotu HTTPS vietrādi URL. Ja tas neizdodas, noņemiet tīmekļa lapu no jūsu stāsta vai aizstājiet to ar ekrānuzņēmumu vai hipersaiti.",
+        "httpWebpageFixable": "Šīs tīmekļa lapas vietrādis URL ir nedrošs (HTTP). Noklikšķiniet uz zemāk redzamās pogas, lai šai tīmekļa lapai izmantotu drošu HTTPS vietrādi URL.",
+        "httpVideoUnfixable": "Šis video saturs neatbalsta protokolu HTTPS. Noņemiet video saturu no sava stāsta vai aizstājiet ar ekrānuzņēmumu vai saiti.",
+        "httpVideoUncheckable": "Šī video satura vietrādis URL ir nedrošs (HTTP). Noklikšķiniet uz zemāk redzamās pogas, lai šim video saturam izmantotu HTTPS vietrādi URL. Ja tas neizdodas, noņemiet video saturu no jūsu stāsta vai aizstājiet to ar ekrānuzņēmumu vai hipersaiti.",
+        "httpVideoFixable": "Šī video satura vietrādis URL ir nedrošs (HTTP). Noklikšķiniet uz zemāk redzamās pogas, lai šim video saturam izmantotu drošu HTTPS vietrādi URL.",
+        "httpImageUnfixable": "Šis attēls neatbalsta protokolu HTTPS. Noņemiet attēlu no sava stāsta vai aizstājiet ar saiti.",
+        "httpImageUncheckable": "Šī attēla vietrādis URL ir nedrošs (HTTP). Noklikšķiniet uz zemāk redzamās pogas, lai šim attēlam izmantotu HTTPS vietrādi URL. Ja tas neizdodas, noņemiet attēlu no jūsu stāsta vai aizstājiet to ar hipersaiti.",
+        "httpImageFixable": "Šī attēla vietrādis URL ir nedrošs (HTTP). Noklikšķiniet uz zemāk redzamās pogas, lai šim attēlam izmantotu drošu HTTPS vietrādi URL.",
+        "httpLayer": "Šī slāņa vietrādis URL ir nedrošs (HTTP).",
+        "inaccessibleLogo": "Šis logotips nav pieejams. Aizstājiet to ar citu attēlu.",
+        "httpLogoUnfixable": "Šis logotips neatbalsta protokolu HTTPS. Aizstājiet logotipu ar citu attēlu.",
+        "httpLogoFixable": "Šī logotipa vietrādis URL ir nedrošs (HTTP). Logotipam izmantojiet HTTPS vietrādi URL.",
+        "httpLogoUncheckable": "Šī logotipa vietrādis URL ir nedrošs (HTTP). Logotipam izmantojiet HTTPS vietrādi URL vai aizstājiet logotipu ar citu attēlu."
+      },
+      "tooltips": {
+        "httpAudioFixable": "Noklikšķiniet uz pogas, lai šim audio saturam izmantotu drošu HTTPS vietrādi URL.",
+        "httpAudioUncheckable": "Izmantojiet HTTPS vietrādi URL šim audio saturam. Ja tas neizdodas, noņemiet audio saturu no jūsu stāsta vai aizstājiet to ar saiti.",
+        "httpWebpageFixable": "Noklikšķiniet uz pogas, lai šai tīmekļa lapai izmantotu drošu HTTPS vietrādi URL.",
+        "httpWebpageUncheckable": "Izmantojiet HTTPS vietrādi URL šai tīmekļa lapai. Ja tas neizdodas, noņemiet tīmekļa lapu no jūsu stāsta vai aizstājiet to ar ekrānuzņēmumu vai saiti.",
+        "httpVideoFixable": "Noklikšķiniet uz pogas, lai šim video saturam izmantotu drošu HTTPS vietrādi URL.",
+        "httpVideoUncheckable": "Izmantojiet HTTPS vietrādi URL šim video saturam. Ja tas neizdodas, noņemiet video saturu no jūsu stāsta vai aizstājiet to ar ekrānuzņēmumu vai saiti.",
+        "httpImageFixable": "Noklikšķiniet uz pogas, lai šim attēlam izmantotu drošu HTTPS vietrādi URL.",
+        "httpImageUncheckable": "Izmantojiet HTTPS vietrādi URL šim attēlam. Ja tas neizdodas, noņemiet attēlu no jūsu stāsta vai aizstājiet to ar saiti.",
+        "httpLayerMyMap": "Apmeklējiet kartes vienību lapu, lai atjaunotu šo slāni un tajā izmantotu protokolu HTTPS. Ja slāni nevar atjaunot, noņemiet to no kartes.",
+        "httpLayerNotMyMap": "Izveidojiet kartes kopiju un atjaunojiet šo slāni, lai tajā tiktu izmantots protokols HTTPS. Ja slāni nevar atjaunot, noņemiet to no kartes.",
+        "clickLearnMore": "Noklikšķiniet, lai uzzinātu vairāk."
+      },
+      "fixButtons": {
+        "agolItemPage": "Vienību lapa",
+        "openTheMap": "Atvērt karti",
+        "updateAudio": "Salabot audio satura vietrādi URL",
+        "updateWebpages": "Salabot tīmekļa lapas vietrādi URL",
+        "updateVideos": "Salabot video satura vietrādi URL",
+        "updateImages": "Salabot attēla vietrādi URL"
       },
       "mapIssues": {
         "fixButton": "Problēmu novēršana",
@@ -291,6 +541,31 @@ define({
         "notHealthy": "Novērst problēmas",
         "warnings": "Skatīt brīdinājumus"
       }
+    },
+    "saveErrorSocial": {
+      "title": "Sociālās multivides kopīgošana",
+      "panel1": "Jūsu stāsts sociālajā multividē var netikt rādīts pareizi, jo jūsu ArcGIS tīmekļa lietotnes vienības virsraksts atšķiras no stāsta virsraksta.",
+      "panel1tooltip": "Kad būsiet definējis virsrakstu, kopsavilkumu un sīktēla attēlu, jūsu stāsts izskatīsies šādi:",
+      "panel2": "Kādu virsrakstu vēlaties izmantot sociālajā multividē:",
+      "panel2q1": "Stāsta virsraksts (ieteicams)",
+      "panel2q1tooltip": "Ja izvēlēsieties šo opciju, vienības virsraksts tiks modificēts tā, lai atbilstu stāsta virsrakstam, un veidotājā tiks sinhronizētas tālākās izmaiņas.",
+      "panel2q2": "Vienības virsraksts",
+      "panel3": "Ja sociālajā multividē vēlaties vēl vairāk uzlabot stāsta izskatu, izmantojiet ${MYSTORIES}, lai pievienotu kopsavilkumu un sīktēla attēlu.",
+      "panel4": "Vairs nerādīt brīdinājumus par šo stāstu",
+      "save": "Saglabāt",
+      "mystories": "Mani stāsti"
+    },
+    "httpsTransitionMessage": {
+      "bannerMsg": "Svarīgs ziņojums par tīmekļa drošību un Kartes stāstiem (Story Maps)",
+      "s1h1": "Esri uzlabo Kartes stāstu drošību",
+      "s1p1": "Jūsu Kartes stāsta vienības ir pieejamas tiešsaistē tīmeklī, un tīmekļa kopiena pastāvīgi veido un ievieš uzlabotus drošības pasākumus. Protokols HTTPS, kas gādā par drošu savienojumu ar saturu internetā, ir populārākais veids, kā piekļūt tīmekļa saturam. Vairākumā mūsdienīgu pārlūku tagad tiek rādīts brīdinājuma ziņojums, ja vietnē tiek izmantots protokols HTTP, nevis HTTPS. Šī jaunā standarta dēļ jūsu Kartes stāstu vienībās būs jāizmanto protokols HTTPS, sākot ar ArcGIS Online 2018. gada jūnija atjauninājumu.",
+      "s1p2": "Tas nozīmē, ka Kartes stāstu saturam (tostarp attēliem, slāņiem, iegultām lietotnēm un tīmekļa vietnēm) ir jāpiekļūst, izmantojot saites, kas sākas ar HTTPS, nevis HTTP. Tādējādi lasītājiem tiks nodrošināta vislabākā pieredze, jo vairākumā tīmekļa pārlūku lietotājs tiks informēts par to, ka stāsti ir droši.",
+      "s2h1": "Kas man jādara?",
+      "s2p1": "Esri strādā pie tā, lai Kartes stāstu autoriem un lasītājiem pāreja būtu vienkārša. Pašlaik Kartes stāsta veidotājos un sadaļā Mani stāsti ir pieejami rīki, kas palīdz stāstos atrast nedrošu saturu (HTTP), kā arī ir pieejami ieteikumi šo problēmu novēršanai. Pārbaudiet, vai jūsu stāstos nav nedroša satura, un jauniniet uz protokolu HTTPS līdz 2018. gada jūnijam.",
+      "action1": "Aizvērt",
+      "action2": "Pārbaudīt manus stāstus tūlīt",
+      "action3": "Uzziniet vairāk",
+      "floatingNotification": "Šajā stāstā ir ietverts nedrošs (HTTP) saturs. Izskatiet un novērsiet problēmas."
     }
   }
 });

@@ -1,5 +1,4 @@
 import IssueTypes from './../../IssueTypes';
-import appState from './../../appState';
 import Formatter from './../../helpers/Formatter';
 
 export default class ServiceLayer {
@@ -24,14 +23,18 @@ export default class ServiceLayer {
       serviceLayer.on('load', serviceResult => {
         window.clearTimeout(timer);
 
-        let isSecureService = this._checkIfCredentialedLayer(serviceResult.layer);
+        let isSecureService = this._checkIfCredentialedLayer({
+          layer: serviceResult.layer,
+          orgId: options.orgId
+        });
 
         if (isSecureService) {
           return this._checkSecureLayer({
             layer: options.layerResults,
             url: options.layer.url,
             resolve: resolve,
-            appAccess: options.appAccess
+            appAccess: options.appAccess,
+            premiumManager: options.premiumManager
           });
         }
         else {
@@ -48,11 +51,11 @@ export default class ServiceLayer {
 
   static _checkSecureLayer(options) {
     // if the premium manager doesn't exist yet (meaning we haven't yet saved the app), don't call it.
-    if (!appState.premiumManager) {
+    if (!options.premiumManager) {
       return options.resolve(options.layer);
     }
 
-    return appState.premiumManager.checkSecureService(options.url)
+    return options.premiumManager.checkSecureService(options.url)
     .then(premiumResults => {
       // this is only an issue if 1) the app is public, and 2) there isn't already a proxy for the secure content.
       if (options.appAccess === 'public' && !premiumResults.hasProxy) {
@@ -75,8 +78,8 @@ export default class ServiceLayer {
     });
   }
 
-  static _checkIfCredentialedLayer(layer) {
-    if (layer.credential && appState.orgId) {
+  static _checkIfCredentialedLayer({layer, orgId}) {
+    if (layer.credential && orgId) {
       return true;
     }
     else {

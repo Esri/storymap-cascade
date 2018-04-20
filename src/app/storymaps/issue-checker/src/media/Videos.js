@@ -1,30 +1,34 @@
 import esriRequest from 'esri/request';
+import EsriConfig from 'esri/config';
 
 import IssueTypes from './../IssueTypes';
 import Media from './Media';
 
 export default class Videos extends Media {
-  static check(items) {
-    return super.check(items, 'videos');
+  static check(options) {
+    return super.check(Object.assign({}, options, { mediaType: 'videos' }));
   }
 
-  static _checkItem(video) {
-    return new Promise((resolve, reject) => {
-      let youTubeRegex = /(youtube\.com\/(watch\?v\=|embed\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
-    	let vimeoRegex = /^.*(vimeo\.com\/)((video\/))?([0-9]+)/;
+  static _checkItem(options) {
+    return super._checkItem(Object.assign(options))
+    .then(video => {
+      return new Promise(resolve => {
+        let youTubeRegex = /(youtube\.com\/(watch\?v\=|embed\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
+        let vimeoRegex = /^.*(vimeo\.com\/)((video\/))?([0-9]+)/;
 
-      let youTubeTest = youTubeRegex.exec(video.id);
-      let vimeoTest = vimeoRegex.exec(video.id);
-      // is the video youTube or not?
-      if (youTubeTest) {
-        Videos._checkYouTubeVideo(video, youTubeTest, resolve);
-      }
-      else if (vimeoTest) {
-        Videos._checkVimeoVideo(video, vimeoTest, resolve);
-      }
-      else {
-        Videos._onVideoError(video, resolve);
-      }
+        let youTubeTest = youTubeRegex.exec(video.id);
+        let vimeoTest = vimeoRegex.exec(video.id);
+        // is the video youTube or not?
+        if (youTubeTest) {
+          Videos._checkYouTubeVideo(video, youTubeTest, resolve);
+        }
+        else if (vimeoTest) {
+          Videos._checkVimeoVideo(video, vimeoTest, resolve);
+        }
+        else {
+          Videos._onVideoError(video, resolve);
+        }
+      });
     });
   }
 
@@ -63,20 +67,25 @@ export default class Videos extends Media {
     video.details.source = 'vimeo';
 
     if (vimeoTest.length !== 5) {
-			Videos._onVideoError(video, resolve);
+      Videos._onVideoError(video, resolve);
     }
     else {
       let vimeoId = vimeoTest[4];
 
+      if (EsriConfig && EsriConfig.defaults.io.corsEnabledServers.indexOf('vimeo.com') < 0) {
+        EsriConfig.defaults.io.corsEnabledServers.push('vimeo.com');
+      }
+
       esriRequest({
-        url: 'https://api.vimeo.com/videos/' + vimeoId,
-        headers: {
-          'Authorization': 'bearer f22bff482301959a0e18a3257ee8966b',
-          'Accept': 'application/vnd.vimeo.*+json;version=3.2'
-        }
+        url: 'https://vimeo.com/api/oembed.json?url=https%3A//vimeo.com/' + vimeoId,
       })
-      .then(() => {
-        resolve(video);
+      .then((res) => {
+        if (res && res.type === 'video') {
+          resolve(video);
+        }
+        else {
+          Videos._onVideoError(video, resolve);
+        }
       }, () => {
         Videos._onVideoError(video, resolve);
       });

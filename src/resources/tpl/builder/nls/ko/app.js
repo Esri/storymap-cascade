@@ -50,7 +50,26 @@ define({
         "loremBody": "Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor. Mauris consequat orci nec magna facilisis bibendum at eget libero."
       }
     },
+    "share": {
+      "btnPrivate": "비공개",
+      "btnOrg": "기관",
+      "btnPublic": "공용",
+      "btnEveryone": "모든 사람"
+    },
     "builderPanel": {
+      "builderNamePrefix": "",
+      "builderNameSuffix": "빌더",
+      "buttonSaving": "저장 중",
+      "buttonSaved": "저장됨",
+      "buttonError": "저장 실패",
+      "buttonShare": "공유",
+      "buttonSettings": "설정",
+      "settingsLogoError": "로고에 문제가 있습니다. 자세히 알아보려면 클릭하세요.",
+      "buttonHelp": "GeoNet에 대한 도움말 보기 또는 피드백 제출",
+      "buttonPreview": "스토리 보기",
+      "buttonHealth": "상태 보고서",
+      "manageStories": "내 스토리 관리",
+      "closeWithPendingChange": "이 작업을 확인하시겠습니까? 변경 내용이 손실됩니다.",
       "coverLabel": "커버",
       "creditsLabel": "크레딧",
       "betaFeedback": "피드백",
@@ -143,6 +162,195 @@ define({
         "uploadAltImage": "대체 이미지 추가"
       }
     },
+    "mediaPicker": {
+      "browseToggle": {
+        "urls": "콘텐츠에 대한 링크",
+        "urls_short": "링크",
+        "contentType": {
+          "error": "인증되지 않는 미디어입니다.",
+          "imageOnly": "스토리의 이 부분에서는 이미지를 추가할 수 있습니다.",
+          "imageAndVideo": "스토리의 이 부분에서는 이미지 또는 비디오를 추가할 수 있습니다.",
+          "imageVideoWebpage": "스토리의 이 부분에서는 이미지, 비디오 또는 웹 페이지를 추가할 수 있습니다."
+        }
+      },
+      "browsePanel": {
+        "providers": {
+          "searchingFor": "\"${searchterm}\"을(를) 검색하는 중...",
+          "searchedFor": "\"${searchterm}\"에 대한 검색 결과",
+          "albumsOf": "${username}의 앨범",
+          "noPhotosFound": "검색과 일치하는 사진이 없습니다. 다시 시도하세요.",
+          "noItemsFound": "검색과 일치하는 항목이 없습니다. 다시 시도하세요.",
+          "noItemsInThisStory": "ArcGIS의 콘텐츠가 이 스토리에 아직 추가되지 않았습니다.",
+          "limitReached": "100개 항목을 표시하는 중입니다. 필요한 항목을 찾을 수 없으면 키워드 검색을 시도하세요.",
+          "galleryItems": {
+            "uploadError": "죄송합니다. 이 항목을 업로드하지 못했습니다."
+          },
+          "agol": {
+            "remove1": "ArcGIS 계정에서 사용하지 않는 이미지를 삭제합니다.",
+            "remove2": "나중에 사용하려면 다시 업로드해야 합니다.",
+            "removeFailed": "목록에서 이 접근 불가 이미지를 제거합니다.",
+            "modified": "수정 날짜: ${date}",
+            "uploaded": "업로드 날짜: ${date}",
+            "contentByAuthor": "${contentType} 작성자: ${author}"
+          },
+          "googlePhotos": {
+            "searchAndBrowse": "${Picasa} 또는 ${Google+}에서 사진 찾아보기"
+          },
+          "flickr": {
+            "photostream": "Photostream",
+            "searchAndBrowse": "${Flickr}에서 사진 검색 및 찾아보기",
+            "captionStarter": "${Flickr}에 있는 ${USERNAME}의 사진"
+          },
+          "unsplash": {
+            "searchAndBrowse": "${Unsplash}에서 사진 검색",
+            "photoBy": "${username}의 사진",
+            "userLink": "${username}의 ${Unsplash} 페이지로 이동",
+            "captionStarter": "${Unsplash}에 있는 ${USERNAME}의 사진"
+          },
+          "urlContent": {
+            "uploadHeaders": {
+              "generic": "웹의 콘텐츠에 대한 링크",
+              "imageOnly": "웹의 이미지에 대한 링크",
+              "imageAndVideo": "웹의 이미지 또는 비디오에 대한 링크"
+            },
+            "linkText": {
+              "imageOnly": "위의 상자에서 직접 사진에 연결할 수 있습니다.",
+              "imageAndVideo1": "위의 상자에서 ${YouTube} 또는 ${Vimeo} 비디오에 대한 링크 또는 iframe 코드를 붙여넣을 수 있습니다.",
+              "imageAndVideo2": "사진에 직접 연결할 수도 있습니다.",
+              "imageVideoWebpage1": "위의 상자에서 ${YouTube} 또는 ${Vimeo}의 동적 차트나 비디오와 같은 웹 콘텐츠에 대한 링크 또는 iframe 코드를 붙여넣을 수 있습니다.",
+              "imageVideoWebpage2": "사진, 비디오, 오디오 파일, 웹 페이지 또는 웹 앱에 직접 연결할 수도 있습니다.",
+              "ender": "항상 보안(https) 링크를 사용해야 합니다. https가 지원되지 않는 콘텐츠인 경우에는 독자가 새 브라우저 탭에서 볼 수 있도록 스토리 텍스트에 해당 링크를 추가하세요.",
+              "httpsError": "링크는 HTTPS로 시작해야 합니다."
+            },
+            "embedProtocol": {
+              "embedProtocolLabel": "보안 연결(https)을 통해 페이지 불러오기",
+              "embedProtocolWarning1": "스토리에서 이 페이지를 불러오지 않는 경우 웹 보안을 위해 임베드할 수 없습니다.",
+              "embedProtocolWarning2": "스토리에서 이 페이지를 불러오지 않는 경우 이 옵션을 선택 취소하고 다시 시도하세요. 해당 페이지를 여전히 불러올 수 없으면 웹 보안을 위해 임베드할 수 없습니다.",
+              "embedProtocolWarning3": "대신 이야기에 링크를 추가하여 새 브라우저 탭에서 페이지를 여십시오. ${linkText}",
+              "linkText": "자세한 정보."
+            },
+            "placeholder": "${https://}... 또는 ${<iframe>}",
+            "uploadErrors": {
+              "generic": "입력한 주소에 문제가 발생했습니다. 다시 시도하세요.",
+              "imageOnly1": "스토리의 이 부분에서 이미지를 사용해야 합니다.",
+              "imageOnly2": "이미지(.jpg, .png, .gif)의 링크를 제공하거나 ${ArcGIS}, ${Flickr}, ${Google+} 또는 ${Unsplash}에서 이미지를 선택하세요.",
+              "imageAndVideo1": "스토리의 이 부분에서 이미지 또는 비디오를 사용해야 합니다.",
+              "imageAndVideo2": "이미지(.jpg, .png, .gif) 링크 또는 ${YouTube}나 ${Vimeo}의 비디오 링크를 제공하거나 ${ArcGIS}, ${Flickr}, ${Google+} 또는 ${Unsplash}에서 이미지를 선택하세요.",
+              "badFormat": "추가하려는 파일의 링크는 형식이 잘못되었습니다.",
+              "inaccessible": "추가하려는 파일은 누락되었거나 접근할 수 없습니다.",
+              "tryAgain": "주소를 확인하고 다시 시도하세요.",
+              "mediaTypes": {
+                "VIDEO": "비디오",
+                "IMAGE": "이미지",
+                "generic": "미디어"
+              }
+            }
+          }
+        },
+        "sidePanel": {
+          "googlePhotos": {
+            "placeholder": "이메일 또는 ${Picasa}/${Google+} ID",
+            "helpText": "${Picasa} 또는 ${Google+}에 업로드된 사진을 스토리에 추가할 수 있습니다. 스토리의 ${Google} 계정에 저장된 이미지 사용에 대한 정보: ${helpLinkText}.",
+            "helpLinkText": "자세한 정보",
+            "cannotFindUser": "사용자 ${username}을(를) 찾을 수 없습니다. 다시 시도하세요."
+          },
+          "unsplash": {
+            "placeholder": "사진 검색",
+            "aboutText": "${Unsplash}은 고품질 무료 사진의 선별된 컬렉션을 제공합니다.",
+            "copyrightText": "${Unsplash}에서 발행된 모든 사진은 ${CC0} 라이선스에 따라 허가되었습니다. 추가 정보 확인: ${moreInfoLink}",
+            "moreInfoLink": "여기"
+          },
+          "flickr": {
+            "searchType": {
+              "account": "${Flickr} 계정",
+              "text": "모든 ${Flickr}"
+            },
+            "placeholders": {
+              "user": "계정 검색",
+              "userText": "사진에 대해 이 계정 검색",
+              "text": "사진 검색"
+            },
+            "errors": {
+              "cannotFindUser": "${username} 사용자를 찾을 수 없습니다.",
+              "noUserPhotos": "${username}은(는) 공개 사진이 없습니다.",
+              "didYouMean": "${username}을(를) 원하셨습니까?",
+              "generalUserError": "${username} 사용자를 찾는 중에 문제가 발생했습니다."
+            },
+            "licenses": {
+              "licenseLabel": "라이선스: ",
+              "public": "공용 도메인",
+              "commercial": "상업 용도로 허용",
+              "nonCommercial": "비상업 용도로 허용",
+              "reserved": "All Rights Reserved",
+              "any": "모든 라이선스"
+            }
+          },
+          "agol": {
+            "searchLocation": {
+              "thisStory": "이 스토리",
+              "agol": "ArcGIS Online",
+              "portalArcGIS": "Portal for ArcGIS",
+              "portal": "포털",
+              "myOrg": "${orgname} 기관",
+              "myContent": "내 콘텐츠"
+            },
+            "createContent": {
+              "createNewMap": "새 맵 생성",
+              "or": "OR",
+              "dragAndDrop": "여기에 이미지 놓기",
+              "uploadImage": "이미지 찾아보기",
+              "agolInfo": "이미지가 ArcGIS에 저장되며 스토리 내에서만 접근할 수 있습니다.",
+              "saveBeforeUpload": "이 스토리를 저장하면 여기에서 ArcGIS에 이미지를 업로드할 수 있습니다.",
+              "fileTypesImage": "지원되는 파일 유형: .png, .jpeg, .jpg, .gif, .bmp"
+            },
+            "filterAndSort": {
+              "webmap": "웹 맵",
+              "webscene": "웹 씬",
+              "image": "이미지",
+              "date": "날짜",
+              "sortByDate": "날짜별로 정렬",
+              "title": "제목",
+              "sortByTitle": "제목별로 정렬",
+              "views": "뷰",
+              "search": "키워드 또는 ID로 검색"
+            }
+          }
+        }
+      }
+    },
+    "mapEditor": {
+      "dialogTitle": "맵 편집",
+      "unauthorizedDomain": "맵 편집기를 사용하기 위해 인증된 도메인이 아닙니다.",
+      "loading": "맵 편집자를 불러오는 동안 잠시 기다려 주세요.",
+      "saving": "맵을 저장하는 중",
+      "success": "맵 저장됨",
+      "cancelTitle": "저장하지 않은 변경사항을 취소하시겠습니까?",
+      "errorSave": "맵을 저장할 수 없습니다. 다시 시도하세요.",
+      "loadFail": "죄송합니다. 맵 편집기를 불러올 수 없습니다.",
+      "close": "닫기",
+      "save": "저장",
+      "confirm": "예. 맵을 닫습니다.",
+      "deny": "아니요. 계속 작업하겠습니다."
+    },
+    "textEditor": {
+      "placeholder": {
+        "continueStory": "여기에서 스토리 계속..."
+      },
+      "blockAdd": {
+        "text": "텍스트",
+        "media": "미디어",
+        "title": "제목",
+        "immersive": "몰입형"
+      },
+      "link": {
+        "invite": "링크를 붙여넣거나 입력..."
+      },
+      "color": {
+        "choose": "선택",
+        "cancel": "취소",
+        "clear": "색상 지우기"
+      }
+    },
     "imageGallery": {
       "addImage": "다른 이미지 추가",
       "moveBackward": "뒤로 이동",
@@ -222,13 +430,55 @@ define({
         "noAltImage": "모바일에서 미디어가 작동하지 않을 수 있음",
         "noAltImageUnsupported": "모바일에서 미디어가 작동하지 않음",
         "noAltImageWarning": "모바일에서 미디어가 작동하지 않을 수 있음",
-        "altImageBroken": "이 미디어 항목에 대해 정의된 대체 이미지에 접근할 수 없음"
+        "altImageBroken": "이 미디어 항목에 대해 정의된 대체 이미지에 접근할 수 없음",
+        "httpMedia": "안전하지 않은 미디어",
+        "httpContent": "안전하지 않은 콘텐츠"
       },
       "contentWarnings": {
         "noAltImage": "스토리를 공유하기 전에 모바일 기기에서 해당 스토리를 테스트해야 합니다. 이 미디어가 제대로 작동되지 않으면 아래의 버튼을 사용하여, 휴대폰이나 태블릿에서 스토리를 볼 때 나타나는 대체 이미지를 추가하세요.",
         "noAltImageUnsupported": "이 미디어는 모바일 기기에서 작동되지 않습니다. 아래의 버튼을 사용하여, 휴대폰이나 태블릿에서 스토리를 볼 때 나타나는 대체 이미지를 추가하세요.",
         "noAltImageWarning": "스토리를 공유하기 전에 모바일 기기에서 해당 스토리를 테스트해야 합니다. 이 미디어가 제대로 작동되지 않으면 아래의 버튼을 사용하여, 휴대폰이나 태블릿에서 스토리를 볼 때 나타나는 대체 이미지를 추가하세요.",
         "noAltImageAlt": "이 미디어 유형은 모바일 기기에서 지원되지 않거나 올바르게 작동하지 않을 수 있습니다. 스토리를 휴대폰이나 태블릿에서 볼 때 나타나는 대체 이미지를 모바일 탭에서 제공하세요."
+      },
+      "descriptions": {
+        "httpAudioUnfixable": "이 오디오는 HTTPS를 지원하지 않습니다. 스토리에서 오디오를 제거하거나 링크로 바꾸세요.",
+        "httpAudioUncheckable": "이 오디오에는 안전하지 않은(HTTP) URL이 있습니다. 아래 버튼을 클릭하여 이 오디오에 HTTPS URL을 사용해 보세요. 작동하지 않으면 스토리에서 오디오를 제거하거나 하이퍼링크로 바꾸세요.",
+        "httpAudioFixable": "이 오디오에는 안전하지 않은(HTTP) URL이 있습니다. 아래 버튼을 클릭하여 이 오디오에 안전한 HTTPS URL을 사용하세요.",
+        "httpWebpageUnfixable": "이 웹 페이지는 HTTPS를 지원하지 않습니다. 스토리에서 웹 페이지를 제거하거나 스크린샷 또는 링크로 바꾸세요.",
+        "httpWebpageUncheckable": "이 웹 페이지에는 안전하지 않은(HTTP) URL이 있습니다. 아래 버튼을 클릭하여 이 웹 페이지에 HTTPS URL을 사용해 보세요. 작동하지 않으면 스토리에서 웹 페이지를 제거하거나 스크린샷 또는 하이퍼링크로 바꾸세요.",
+        "httpWebpageFixable": "이 웹 페이지에는 안전하지 않은(HTTP) URL이 있습니다. 아래 버튼을 클릭하여 웹 페이지에 안전한 HTTPS URL을 사용하세요.",
+        "httpVideoUnfixable": "이 비디오는 HTTPS를 지원하지 않습니다. 스토리에서 비디오를 제거하거나 스크린샷 또는 링크로 바꾸세요.",
+        "httpVideoUncheckable": "이 비디오에는 안전하지 않은(HTTP) URL이 있습니다. 아래 버튼을 클릭하여 이 비디오에 HTTPS URL을 사용해 보세요. 작동하지 않으면 스토리에서 비디오를 제거하거나 스크린샷 또는 하이퍼링크로 바꾸세요.",
+        "httpVideoFixable": "이 비디오에는 안전하지 않은(HTTP) URL이 있습니다. 아래 버튼을 클릭하여 이 비디오에 안전한 HTTPS URL을 사용하세요.",
+        "httpImageUnfixable": "이 이미지는 HTTPS를 지원하지 않습니다. 스토리에서 이미지를 제거하거나 링크로 바꾸세요.",
+        "httpImageUncheckable": "이 이미지에는 안전하지 않은(HTTP) URL이 있습니다. 아래 버튼을 클릭하여 이 이미지에 HTTPS URL을 사용해 보세요. 작동하지 않으면 스토리에서 이미지를 제거하거나 하이퍼링크로 바꾸세요.",
+        "httpImageFixable": "이 이미지에는 안전하지 않은(HTTP) URL이 있습니다. 아래 버튼을 클릭하여 이 이미지에 안전한 HTTPS URL을 사용하세요.",
+        "httpLayer": "이 레이어에는 안전하지 않은(HTTP) URL이 있습니다.",
+        "inaccessibleLogo": "이 로고에 접근할 수 없습니다. 로고를 다른 이미지로 바꾸세요.",
+        "httpLogoUnfixable": "이 로고는 HTTPS를 지원하지 않습니다. 로고를 다른 이미지로 바꾸세요.",
+        "httpLogoFixable": "이 로고에는 안전하지 않은(HTTP) URL이 있습니다. 로고에 HTTPS URL을 사용하세요.",
+        "httpLogoUncheckable": "이 로고에는 안전하지 않은(HTTP) URL이 있습니다. 로고에 HTTPS URL을 사용하거나 로고를 다른 이미지로 바꾸세요."
+      },
+      "tooltips": {
+        "httpAudioFixable": "버튼을 클릭하여 이 오디오에 안전한 HTTPS URL을 사용하세요.",
+        "httpAudioUncheckable": "이 오디오에 HTTPS URL을 사용해 보세요. 작동하지 않으면 스토리에서 오디오를 제거하거나 링크로 바꾸세요.",
+        "httpWebpageFixable": "버튼을 클릭하여 웹 페이지에 안전한 HTTPS URL을 사용하세요.",
+        "httpWebpageUncheckable": "이 웹 페이지에 HTTPS URL을 사용해 보세요. 작동하지 않으면 스토리에서 웹 페이지를 제거하거나 스크린샷 또는 링크로 바꾸세요.",
+        "httpVideoFixable": "버튼을 클릭하여 이 비디오에 안전한 HTTPS URL을 사용하세요.",
+        "httpVideoUncheckable": "이 비디오에 HTTPS URL을 사용해 보세요. 작동하지 않으면 스토리에서 비디오를 제거하거나 스크린샷 또는 링크로 바꾸세요.",
+        "httpImageFixable": "버튼을 클릭하여 이 이미지에 안전한 HTTPS URL을 사용하세요.",
+        "httpImageUncheckable": "이 이미지에 HTTPS URL을 사용해 보세요. 작동하지 않으면 스토리에서 이미지를 제거하거나 링크로 바꾸세요.",
+        "httpLayerMyMap": "맵의 항목 페이지를 방문하여 HTTPS를 사용하도록 이 레이어를 업데이트합니다. 레이어를 업데이트할 수 없으면 맵에서 레이어를 제거하세요.",
+        "httpLayerNotMyMap": "맵의 복사본을 만들고 HTTPS를 사용하도록 이 레이어를 업데이트합니다. 레이어를 업데이트할 수 없으면 맵에서 레이어를 제거하세요.",
+        "clickLearnMore": "자세히 알아보려면 클릭하세요."
+      },
+      "fixButtons": {
+        "agolItemPage": "항목 페이지",
+        "openTheMap": "맵 열기",
+        "updateAudio": "오디오 URL 수정",
+        "updateWebpages": "웹 페이지 URL 수정",
+        "updateVideos": "비디오 URL 수정",
+        "updateImages": "이미지 URL 수정"
       },
       "mapIssues": {
         "fixButton": "문제 해결",
@@ -291,6 +541,31 @@ define({
         "notHealthy": "문제 해결",
         "warnings": "경고 확인"
       }
+    },
+    "saveErrorSocial": {
+      "title": "소셜 미디어 공유",
+      "panel1": "ArcGIS 웹 응용프로그램 항목 제목이 스토리 제목과 같지 않으므로 소셜 미디어에서 스토리의 외관이 제대로 표시되지 않을 수 있습니다.",
+      "panel1tooltip": "제목, 요약 및 섬네일 이미지를 정의하면 스토리가 다음과 같이 보입니다:",
+      "panel2": "소셜 미디어에서 사용할 제목:",
+      "panel2q1": "스토리 제목(권장됨)",
+      "panel2q1tooltip": "이 옵션을 선택하면 항목 제목이 스토리 제목과 일치하도록 수정되며 빌더에서의 후속 변경 사항이 동기화됩니다.",
+      "panel2q2": "항목 제목",
+      "panel3": "소셜 미디어에서의 스토리의 외관을 더욱 향상시키려면 ${MYSTORIES}을(를) 사용하여 요약 및 섬네일 이미지를 추가합니다.",
+      "panel4": "이 스토리에 대해 다시 경고 안 함",
+      "save": "저장",
+      "mystories": "내 스토리"
+    },
+    "httpsTransitionMessage": {
+      "bannerMsg": "웹 보안 및 스토리맵에 대한 중요 메시지",
+      "s1h1": "Esri는 스토리맵의 보안을 지속적으로 강화하고 있습니다.",
+      "s1p1": "스토리맵은 웹에서 실행되며 웹 커뮤니티는 더 강화된 보안을 설정하고 구현하기 위해 항상 노력하고 있습니다. 인터넷을 통해 전송되는 콘텐츠의 보안 연결을 제공하는 HTTPS는 웹 콘텐츠에 접근하는 필수 방법으로 부각되고 있습니다. 현재 대부분의 최신 브라우저에서는 HTTPS가 아닌 HTTP를 사용하는 경우 경고 메시지가 표시됩니다. 이 새로운 표준을 따라 ArcGIS Online 2018년 6월 업데이트부터는 스토리맵에서 HTTPS를 사용해야 합니다.",
+      "s1p2": "이는 스토리맵의 모든 콘텐츠가 HTTP가 아닌 HTTPS로 시작하는 링크를 사용하여 접근해야 함을 의미합니다(이미지, 레이어, 임베드된 앱, 웹 사이트). HTTPS를 사용하면 대부분의 웹 브라우저에서 내 스토리가 안전한 것으로 나타나므로 독자에게 최상의 환경이 제공됩니다.",
+      "s2h1": "해야 할 일",
+      "s2p1": "Esri는 스토리맵 작성자와 독자가 쉽게 HTTPS로 전환할 수 있도록 노력하고 있습니다. 이제, 스토리맵 빌더 및 내 스토리에서 안전하지 않은 콘텐츠(HTTP)를 찾고 이를 해결하기 위한 권장 사항을 제시하는 도구를 제공합니다. 내 스토리에서 안전하지 않은 콘텐츠를 확인하고 2018년 6월 전에 HTTPS로 업데이트하세요.",
+      "action1": "닫기",
+      "action2": "내 스토리 지금 확인",
+      "action3": "자세한 정보",
+      "floatingNotification": "이 스토리에는 안전하지 않은(HTTP) 콘텐츠가 포함되어 있습니다. 검토하고 해당 문제를 해결하세요."
     }
   }
 });

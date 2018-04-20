@@ -2,7 +2,7 @@ import Tab from './Tab';
 
 import viewTpl from 'lib-build/hbars!./TabManageScene';
 
-import BuilderHelper from 'storymaps/common/builder/BuilderHelper';
+import BuilderHelper from 'storymaps/tpl/builder/BuilderHelper';
 import {} from 'lib-build/less!./Common';
 
 import i18n from 'lib-build/i18n!resources/tpl/builder/nls/app';
@@ -65,18 +65,10 @@ export default class TabManageScene extends Tab {
         return;
       }
 
-      if (this._mediaType == 'webmap') {
-        window.open(
-          BuilderHelper.getMapViewerLink(this._mediaId),
-          '_blank'
-        );
-      }
-      else if (this._mediaType == 'webscene') {
-        window.open(
-          BuilderHelper.getSceneViewerLink(this._mediaId),
-          '_blank'
-        );
-      }
+      window.open(
+        BuilderHelper.getSceneViewerLink(this._mediaId),
+        '_blank'
+      );
     });
 
     this._node.find('.config-item[data-action="swap"]').on('click', () => {

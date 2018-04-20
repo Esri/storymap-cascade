@@ -6,12 +6,12 @@ import NormalizeHelper from './helpers/NormalizeHelper';
 import Images from './media/Images';
 import Videos from './media/Videos';
 import Audio from './media/Audio';
+import Webpages from './media/Webpages';
 import Maps from './media/Maps';
 import Issue from './Issue';
 import Share from './Share';
 import Fix from './Fix';
 import Privileges from './Privileges';
-import appState from './appState';
 import PremiumManager from './PremiumManager';
 
 /** An issue finder and fixer. */
@@ -19,16 +19,16 @@ export default class IssueChecker {
   /**
   * @param {object} options - The parameters.
   * @param {string} options.owner - The owner of the app.
+  * @param {object} options.portal - The ArcGIS Portal instance used in the app.
   * @param {string} [options.appId] - the AGOL ID of the app, if available at init-time.
   * @param {string} [options.appUrl] - the URL of the app, if available at init-time.
   * @param {string} [options.proxyUrl] - The proxy URL to be used for the app.
   * @param {string} [options.arcgisUrl] - The arcgisUrl to be used for the app.
+  * @param {boolean} [options.disablePremiumManager] - Whether or not to disable the premium manager.
   */
   constructor(options) {
     this.owner = options ? options.owner : '';
-    let privileges = options && options.portal ? Privileges.findPrivileges(options.portal) : null;
-
-    appState.privileges = privileges;
+    this.privileges = options && options.portal ? Privileges.findPrivileges(options.portal) : null;
 
     if (options) {
       if (options.proxyUrl) {
@@ -37,17 +37,23 @@ export default class IssueChecker {
       if (options.arcgisUrl) {
         ArcGISUtils.arcgisUrl = options.arcgisUrl;
       }
-      if (options.appId && options.appUrl) {
-        appState.premiumManager = new PremiumManager(options.appId, options.appUrl);
+      if (options.appUrl) {
+        this.appUrl = options.appUrl;
+      }
+      if (options.appId && options.appUrl && !options.disablePremiumManager) {
+        this.premiumManager = new PremiumManager(options.appId, options.appUrl);
       }
       if (options.portal) {
-        appState.orgId = options.portal.user ? options.portal.user.orgId : '';
+        this.portal = options.portal;
+      }
+      if (options.disablePremiumManager) {
+        this.disablePremiumManager = options.disablePremiumManager;
       }
     }
 
     // there is no "default" proxy URL, so if not provided or set by the parent app, we'll give a default here.
     if (!EsriConfig.defaults.io.proxyUrl) {
-      EsriConfig.defaults.io.proxyUrl = 'http://www.arcgis.com/sharing/proxy';
+      EsriConfig.defaults.io.proxyUrl = 'https://www.arcgis.com/sharing/proxy';
     }
   }
 
@@ -60,7 +66,10 @@ export default class IssueChecker {
   * @param {string} options.appUrl - the URL of the app.
   */
   onFirstAppSave(options) {
-    appState.premiumManager = new PremiumManager(options.appId, options.appUrl);
+    if (!this.disablePremiumManager) {
+      this.premiumManager = new PremiumManager(options.appId, options.appUrl);
+    }
+    this.appUrl = options.appUrl;
   }
 
   /**
@@ -76,18 +85,40 @@ export default class IssueChecker {
     let result = new Result(options.media);
 
     let allImages = NormalizeHelper.getAllItems(result.media.images);
-    let imagesCheck = Images.check(allImages);
+    let imagesCheck = Images.check({
+      items: allImages,
+      appUrl: this.appUrl,
+      portal: this.portal
+    });
 
     let allVideos = NormalizeHelper.getAllItems(result.media.videos);
-    let videosCheck = Videos.check(allVideos);
+    let videosCheck = Videos.check({
+      items: allVideos,
+      appUrl: this.appUrl,
+      portal: this.portal
+    });
 
     let allAudio = NormalizeHelper.getAllItems(result.media.audio);
-    let audioCheck = Audio.check(allAudio);
+    let audioCheck = Audio.check({
+      items: allAudio,
+      appUrl: this.appUrl,
+      portal: this.portal
+    });
+
+    let allWebpages = NormalizeHelper.getAllItems(result.media.webpages);
+    let webpagesCheck = Webpages.check({
+      items: allWebpages,
+      appUrl: this.appUrl,
+      portal: this.portal
+    });
 
     let allMaps = NormalizeHelper.getAllItems(result.media.maps);
     let mapsCheck = Maps.check({
       items: allMaps,
-      appAccess: options.appAccess
+      appAccess: options.appAccess,
+      premiumManager: this.premiumManager,
+      orgId: this.portal.user.orgId,
+      privileges: this.privileges
     })
     .then(checkedMaps => {
       this._groomMapLayerData(result, checkedMaps);
@@ -95,12 +126,13 @@ export default class IssueChecker {
       return checkedMaps;
     });
 
-    let mediaChecks = [imagesCheck, videosCheck, audioCheck, mapsCheck];
+    let mediaChecks = [imagesCheck, videosCheck, audioCheck, webpagesCheck, mapsCheck];
     return Promise.all(mediaChecks).then(() => {
       // let's handle the errors here, then return the result.
       // I'm using "result.media" instead of the parameters to this .then function
       // so that we can check layers as first-class citizens, instead of having to deal with maps -> layers.
-      result.errors = this._compileIssues(result.media, result.errors);
+      result.errors = this._compileIssues(result.media, result.errors, 'errors');
+      result.warnings = this._compileIssues(result.media, result.warnings, 'warnings');
 
       return result;
     });
@@ -118,31 +150,31 @@ export default class IssueChecker {
     }
   }
 
-  _compileIssues(resultMedia, errors) {
+  _compileIssues(resultMedia, issues, severityLevel) {
     for (let media in resultMedia) {
       if (resultMedia.hasOwnProperty(media)) {
         let allItems = NormalizeHelper.getAllItems(resultMedia[media]);
 
         for (let item of allItems) {
-          this._compileItemErrors(item, errors);
+          this._compileItemIssues(item.id, issues, item[severityLevel]);
         }
       }
     }
 
-    return errors;
+    return issues;
   }
 
-  _compileItemErrors(item, errors) {
-    for (let error of item.errors) {
+  _compileItemIssues(id, issues, itemIssues) {
+    for (let issue of itemIssues) {
       // either add the issue, or simply add to it if it already exists.
-      let existingError = errors.byId[error];
-      if (existingError) {
-        existingError.media.push(item.id);
+      let existingIssue = issues.byId[issue];
+      if (existingIssue) {
+        existingIssue.media.push(id);
       }
       else {
-        let issue = new Issue(error, [item.id]);
+        let newIssue = new Issue(issue, [id]);
 
-        NormalizeHelper.addEntry(errors, error, issue);
+        NormalizeHelper.addEntry(issues, issue, newIssue);
       }
     }
   }
@@ -165,7 +197,7 @@ export default class IssueChecker {
       });
     }
     else if (options.action === 'layers/sharePremiumContent' || options.action === 'layers/shareSubscriptionContent') {
-      return Fix.fixPremiumSubscriptionContent(options.items);
+      return Fix.fixPremiumSubscriptionContent(options.items, this.premiumManager);
     }
     else {
       return Promise.reject({
@@ -187,7 +219,12 @@ export default class IssueChecker {
   * if rejected: Share or scan couldn't complete, returns {@link IncompleteShare}.
   */
   share(options) {
-    let modifiedParameters = Object.assign({}, options, { owner: this.owner });
+    let modifiedParameters = Object.assign({}, options, {
+      owner: this.owner,
+      premiumManager: this.premiumManager,
+      orgId: this.portal.user.orgId,
+      privileges: this.privileges
+    });
     return Share.shareApp(modifiedParameters);
   }
 }

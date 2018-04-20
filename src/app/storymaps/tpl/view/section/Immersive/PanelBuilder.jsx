@@ -1,7 +1,8 @@
 import Panel from './Panel';
 
-import SectionCommon from 'storymaps/tpl/view/section/Common';
-import MediumEditorWrapper from 'storymaps-react/common/builder/textEditor/MediumEditorWrapper';
+import SectionCommon from 'storymaps-react/tpl/view/section/Common';
+import MediaPickerConstants from 'storymaps-react/tpl/builder/mediaPicker/constants';
+import MediumEditorWrapper from 'storymaps-react/tpl/builder/textEditor/MediumEditorWrapper';
 
 import {} from 'lib-build/less!./PanelBuilder';
 import viewTpl from 'lib-build/hbars!./PanelBuilder';
@@ -285,8 +286,8 @@ export default class PanelBuilder extends Panel {
         mediaBBOX = mediaNode.getBoundingClientRect(),
         scrollOffset = 0;
 
-    // Closing the media config
-    if (! media.getNode().hasClass('config-panel-active')) {
+    // If the media config isn't open, OR if it is open but the same media is getting passed in, close the config panel.
+    if (! media.getNode().hasClass('config-panel-active') || (this._configPanelIsOpen && media === this._configPanelMedia)) {
       mediaCfg.css('top', '');
       this._configPanelIsOpen = false;
       this._configPanelMedia = null;
@@ -364,7 +365,8 @@ export default class PanelBuilder extends Panel {
       params.media.remove();
       this._blocks.splice(this._blocks.indexOf(params.media), 1);
     }
-    else if (params.action == 'swap' || params.action === 'alternate-media-swap' || params.action === 'alternate-media-add') {
+    else if (params.action === 'swap' || params.action === 'alternate-media-swap' || params.action === 'alternate-media-add'
+      || params.action === 'https-open-picker') {
       const mediaIsEmpty = params.action === 'alternate-media-add';
       const isAlternate = params.action.indexOf('alternate-') !== -1;
       const authorizedMedia = isAlternate ? ['image'] : ['image', 'audio', 'video', 'webpage'];
@@ -372,7 +374,8 @@ export default class PanelBuilder extends Panel {
       app.builder.mediaPicker.open({
         mode: mediaIsEmpty ? 'add' : 'edit',
         media: mediaIsEmpty ? null : params.media.serialize(false),
-        authorizedMedia: authorizedMedia
+        authorizedMedia: authorizedMedia,
+        selectedProvider: params.action === 'https-open-picker' ? MediaPickerConstants.providers.URL : ''
       }).then(
         function(newMedia) {
           if (isAlternate) {
@@ -383,6 +386,12 @@ export default class PanelBuilder extends Panel {
               sectionType: 'narrative-panel'
             });
             this._onContentChange();
+          }
+          else if (SectionCommon.isSameMediaWithSecureProtocol(params.media, newMedia)) {
+            // if all that's changed is that the media URL is now https, keep the existing media but change it to be https.
+            // This preserves captions, alt media, and config options.
+            params.media.convertToHttps();
+            topic.publish('builder-should-check-story');
           }
           else {
             this._onToggleMediaConfig(params.media);

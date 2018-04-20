@@ -6,10 +6,10 @@ import {} from 'lib-build/less!./Common';
 
 import has from 'dojo/sniff';
 
-import ColorPicker from 'storymaps-react/common/builder/ColorPicker';
+import ColorPicker from 'storymaps-react/tpl/builder/ColorPicker';
 import i18n from 'lib-build/i18n!resources/tpl/builder/nls/app';
 import {} from 'lib/color-thief/dist/color-thief.min';
-import {} from 'storymaps/common/utils/ColorThiefOverrides';
+import {} from 'storymaps/tpl/utils/ColorThiefOverrides';
 
 export default class TabBackground extends Tab {
   constructor(params) {

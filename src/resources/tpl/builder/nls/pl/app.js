@@ -50,7 +50,26 @@ define({
         "loremBody": "Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor. Mauris consequat orci nec magna facilisis bibendum at eget libero."
       }
     },
+    "share": {
+      "btnPrivate": "Prywatna",
+      "btnOrg": "Instytucja",
+      "btnPublic": "Publiczna",
+      "btnEveryone": "Wszyscy"
+    },
     "builderPanel": {
+      "builderNamePrefix": "",
+      "builderNameSuffix": "Kreator",
+      "buttonSaving": "Zapisywanie",
+      "buttonSaved": "Zapisano",
+      "buttonError": "Zapisywanie się nie powiodło",
+      "buttonShare": "Udostępnianie",
+      "buttonSettings": "Parametry",
+      "settingsLogoError": "Wystąpił problem z logotypem. Kliknij, aby dowiedzieć się więcej.",
+      "buttonHelp": "Uzyskaj pomoc lub prześlij opinię na temat GeoNet",
+      "buttonPreview": "Wyświetl narrację",
+      "buttonHealth": "Raport dotyczący stanu",
+      "manageStories": "Zarządzaj moimi narracjami",
+      "closeWithPendingChange": "Czy na pewno chcesz potwierdzić tę operację? Zmiany zostaną utracone.",
       "coverLabel": "Okładka",
       "creditsLabel": "Kredyty",
       "betaFeedback": "Opinia",
@@ -143,6 +162,195 @@ define({
         "uploadAltImage": "Dodaj obraz alternatywny"
       }
     },
+    "mediaPicker": {
+      "browseToggle": {
+        "urls": "Łącze do zasobów",
+        "urls_short": "Połącz",
+        "contentType": {
+          "error": "Brak autoryzowanego zasobu multimedialnego.",
+          "imageOnly": "W tej części narracji można dodać obraz.",
+          "imageAndVideo": "W tej części narracji można dodać obraz lub film.",
+          "imageVideoWebpage": "W tej części narracji można dodać obraz, film lub witrynę internetową."
+        }
+      },
+      "browsePanel": {
+        "providers": {
+          "searchingFor": "Wyszukiwanie słowa kluczowego „${searchterm}”...",
+          "searchedFor": "Wyniki wyszukiwania słowa kluczowego „${searchterm}”",
+          "albumsOf": "Albumy użytkownika ${username}",
+          "noPhotosFound": "Brak zdjęć spełniających kryteria wyszukiwania. Spróbuj ponownie.",
+          "noItemsFound": "Brak elementów spełniających kryteria wyszukiwania. Spróbuj ponownie.",
+          "noItemsInThisStory": "Do tej narracji nie dodano jeszcze żadnych zasobów z platformy ArcGIS.",
+          "limitReached": "Wyświetlanie 100 elementów. Jeśli nie znaleziono potrzebnych informacji, spróbuj wyszukiwania według słów kluczowych.",
+          "galleryItems": {
+            "uploadError": "Niestety ten element nie został przesłany."
+          },
+          "agol": {
+            "remove1": "Usuń ten nieużywany obraz z konta na platformie ArcGIS.",
+            "remove2": "(Jeśli zdecydujesz się używać go w przyszłości, konieczne będzie ponowne jego przesłanie).",
+            "removeFailed": "Usuń ten niedostępny obraz z listy.",
+            "modified": "Data modyfikacji: ${date}",
+            "uploaded": "Data przesłania: ${date}",
+            "contentByAuthor": "Zasób: ${contentType}, autor: ${author}"
+          },
+          "googlePhotos": {
+            "searchAndBrowse": "Przeglądanie zdjęć w serwisie ${Picasa} lub ${Google+}"
+          },
+          "flickr": {
+            "photostream": "Strumień zdjęć",
+            "searchAndBrowse": "Wyszukiwanie i przeglądanie zdjęć w serwisie ${Flickr}",
+            "captionStarter": "Autor zdjęcia: ${USERNAME} w serwisie ${Flickr}"
+          },
+          "unsplash": {
+            "searchAndBrowse": "Wyszukiwanie zdjęć w serwisie ${Unsplash}",
+            "photoBy": "Autor zdjęcia: ${username}",
+            "userLink": "Przejdź na stronę użytkownika ${username} w serwisie ${Unsplash}",
+            "captionStarter": "Autor zdjęcia: ${USERNAME} w serwisie ${Unsplash}"
+          },
+          "urlContent": {
+            "uploadHeaders": {
+              "generic": "Łącze do zasobu w Internecie",
+              "imageOnly": "Łącze do zdjęcia w Internecie",
+              "imageAndVideo": "Łącze do zdjęcia lub filmu w Internecie"
+            },
+            "linkText": {
+              "imageOnly": "W powyższym polu można wstawić bezpośrednie łącze do zdjęcia.",
+              "imageAndVideo1": "W powyższym polu można wkleić łącze lub kod ramki iframe filmu w witrynie ${YouTube} lub ${Vimeo}.",
+              "imageAndVideo2": "Można także wstawić bezpośrednie łącze do zdjęcia.",
+              "imageVideoWebpage1": "W powyższym polu można wkleić łącze lub kod ramki iframe zasobu internetowego, takiego jak diagram dynamiczny lub film w witrynie ${YouTube} lub ${Vimeo}.",
+              "imageVideoWebpage2": "Można także wstawić bezpośrednie łącze do zdjęcia, filmu, pliku dźwiękowego, strony internetowej lub aplikacji internetowej.",
+              "ender": "Zawsze korzystaj z bezpiecznych łączy (https). Jeśli dany zasób nie obsługuje protokołu https, dodaj łącze do zasobu w tekście narracji, aby czytelnicy mogli wyświetlić go na nowej karcie przeglądarki.",
+              "httpsError": "Łącze musi rozpoczynać się od HTTPS"
+            },
+            "embedProtocol": {
+              "embedProtocolLabel": "Wczytaj stronę przez bezpieczne połączenie (https)",
+              "embedProtocolWarning1": "Jeśli ta strona nie jest wczytywana w narracji, nie można jej osadzać ze względów bezpieczeństwa internetowego.",
+              "embedProtocolWarning2": "Jeśli ta strona nie jest wczytywana w narracji, wyłącz zaznaczenie tej opcji i spróbuj ponownie. Jeśli ta strona nadal nie jest wczytywana, nie można jej osadzać ze względów bezpieczeństwa internetowego.",
+              "embedProtocolWarning3": "Alternatywnie można dodać w narracji łącze umożliwiające otwarcie tej strony na nowej karcie przeglądarki. ${linkText}",
+              "linkText": "Dowiedz się więcej."
+            },
+            "placeholder": "${https://}... lub ${<iframe>}",
+            "uploadErrors": {
+              "generic": "Wystąpił problem z wprowadzonym adresem. Spróbuj ponownie.",
+              "imageOnly1": "W tej części narracji należy użyć obrazu.",
+              "imageOnly2": "Podaj łącze do obrazu (.jpg, .png, .gif) lub wybierz obraz z serwisu ${ArcGIS}, ${Flickr}, ${Google+} bądź ${Unsplash}.",
+              "imageAndVideo1": "W tej części narracji należy użyć obrazu lub filmu.",
+              "imageAndVideo2": "Podaj łącze do obrazu (.jpg, .png, .gif) lub filmu w serwisie ${YouTube} bądź ${Vimeo} albo wybierz obraz z serwisu ${ArcGIS}, ${Flickr}, ${Google+} bądź ${Unsplash}.",
+              "badFormat": "Łącze do pliku, które próbujesz dodać, jest niepoprawnie sformatowane.",
+              "inaccessible": "Plik, który próbujesz dodać, nie istnieje lub jest niedostępny.",
+              "tryAgain": "Sprawdź adres i spróbuj ponownie.",
+              "mediaTypes": {
+                "VIDEO": "wideo",
+                "IMAGE": "image",
+                "generic": "multimedia"
+              }
+            }
+          }
+        },
+        "sidePanel": {
+          "googlePhotos": {
+            "placeholder": "Adres e-mail lub identyfikator w serwisie ${Picasa}/${Google+}",
+            "helpText": "Możesz dodać do narracji zdjęcia przesłane do serwisu ${Picasa} lub ${Google+}. ${helpLinkText} na temat używania w narracji obrazów przechowywanych na koncie ${Google}.",
+            "helpLinkText": "Dowiedz się więcej",
+            "cannotFindUser": "Nie można znaleźć użytkownika ${username}. Spróbuj ponownie."
+          },
+          "unsplash": {
+            "placeholder": "Wyszukaj zdjęcia",
+            "aboutText": "Serwis ${Unsplash} jest obsługiwanym zbiorem starannie wybranych bezpłatnych zdjęć wysokiej jakości.",
+            "copyrightText": "Wszystkie zdjęcia opublikowane w serwisie ${Unsplash} podlegają warunkom licencji ${CC0}. Więcej informacji: ${moreInfoLink}.",
+            "moreInfoLink": "tutaj"
+          },
+          "flickr": {
+            "searchType": {
+              "account": "Konto ${Flickr}",
+              "text": "Cały serwis ${Flickr}"
+            },
+            "placeholders": {
+              "user": "Wyszukaj konto",
+              "userText": "Wyszukaj zdjęcia na tym koncie",
+              "text": "Wyszukaj zdjęcia"
+            },
+            "errors": {
+              "cannotFindUser": "Nie można znaleźć użytkownika ${username}.",
+              "noUserPhotos": "Użytkownik ${username} nie ma żadnych publicznych zdjęć.",
+              "didYouMean": "Czy masz na myśli użytkownika ${username}?",
+              "generalUserError": "Wystąpił problem podczas wyszukiwania użytkownika ${username}."
+            },
+            "licenses": {
+              "licenseLabel": "Licencja: ",
+              "public": "Domena publiczna",
+              "commercial": "Dostępne do użytku komercyjnego",
+              "nonCommercial": "Dostępne do użytku niekomercyjnego",
+              "reserved": "Wszelkie prawa zastrzeżone.",
+              "any": "Dowolna licencja"
+            }
+          },
+          "agol": {
+            "searchLocation": {
+              "thisStory": "Ta narracja",
+              "agol": "ArcGIS Online",
+              "portalArcGIS": "Portal for ArcGIS",
+              "portal": "Portal",
+              "myOrg": "Instytucja ${orgname}",
+              "myContent": "Moje zasoby"
+            },
+            "createContent": {
+              "createNewMap": "Utwórz nową mapę",
+              "or": "OR",
+              "dragAndDrop": "Upuść obrazy tutaj",
+              "uploadImage": "Przeglądaj w poszukiwaniu obrazów",
+              "agolInfo": "Obrazy zostaną zapisane na Twoim koncie na platformie ArcGIS i będą dostępne tylko w narracji.",
+              "saveBeforeUpload": "Po zapisaniu tej narracji można w tym miejscu przesyłać obrazy na platformę ArcGIS.",
+              "fileTypesImage": "Obsługiwane typy plików: .png, .jpeg, .jpg, .gif, .bmp"
+            },
+            "filterAndSort": {
+              "webmap": "mapa internetowa",
+              "webscene": "Scena internetowa",
+              "image": "Obraz",
+              "date": "Data",
+              "sortByDate": "Sortuj wg daty",
+              "title": "Tytuł",
+              "sortByTitle": "Sortuj wg tytułu",
+              "views": "Liczba wyświetleń",
+              "search": "Szukaj według słowa kluczowego lub identyfikatora"
+            }
+          }
+        }
+      }
+    },
+    "mapEditor": {
+      "dialogTitle": "Edytuj mapę",
+      "unauthorizedDomain": "Nie znajdujesz się w domenie, która jest autoryzowana do korzystania z edytora map",
+      "loading": "Trwa wczytywanie edytora map. Czekaj.",
+      "saving": "Trwa zapisywanie mapy",
+      "success": "Mapa została zapisana",
+      "cancelTitle": "Odrzucić wszystkie niezapisane zmiany?",
+      "errorSave": "Nie można zapisać mapy. Spróbuj ponownie.",
+      "loadFail": "Niestety, nie można wczytać edytora map",
+      "close": "Zamknij",
+      "save": "Zapisz",
+      "confirm": "Tak, zamknij mapę",
+      "deny": "Nie, nie przerywaj pracy"
+    },
+    "textEditor": {
+      "placeholder": {
+        "continueStory": "Kontynuuj narrację tutaj..."
+      },
+      "blockAdd": {
+        "text": "Tekst",
+        "media": "Nośnik",
+        "title": "Tytuł",
+        "immersive": "Imersyjne"
+      },
+      "link": {
+        "invite": "Wklej lub wpisz łącze..."
+      },
+      "color": {
+        "choose": "wybierz",
+        "cancel": "anuluj",
+        "clear": "Wyczyść kolor"
+      }
+    },
     "imageGallery": {
       "addImage": "Dodaj inny obraz",
       "moveBackward": "Wstecz",
@@ -222,13 +430,55 @@ define({
         "noAltImage": "Multimedia mogą nie działać na urządzeniu przenośnym",
         "noAltImageUnsupported": "Multimedia nieobsługiwane na urządzeniu przenośnym",
         "noAltImageWarning": "Multimedia mogą nie działać na urządzeniu przenośnym",
-        "altImageBroken": "Obraz alternatywny zdefiniowany dla tego elementu multimedialnego jest niedostępny"
+        "altImageBroken": "Obraz alternatywny zdefiniowany dla tego elementu multimedialnego jest niedostępny",
+        "httpMedia": "Niezabezpieczone multimedia",
+        "httpContent": "Niezabezpieczony zasób"
       },
       "contentWarnings": {
         "noAltImage": "Przed udostępnieniem narracji sprawdź ją na urządzeniach przenośnych. Jeżeli element multimedialny nie będzie działać prawidłowo, za pomocą przycisku poniżej można dodać obraz alternatywny, który będzie widoczny podczas wyświetlania narracji na telefonie lub tablecie.",
         "noAltImageUnsupported": "Ten element multimedialny nie będzie działać na urządzeniach przenośnych. Za pomocą przycisku poniżej można dodać obraz alternatywny, który będzie widoczny podczas wyświetlania narracji na telefonie lub tablecie.",
         "noAltImageWarning": "Przed udostępnieniem narracji sprawdź ją na urządzeniach przenośnych. Jeżeli element multimedialny nie będzie działać prawidłowo, za pomocą przycisku poniżej można dodać obraz alternatywny, który będzie widoczny podczas wyświetlania narracji na telefonie lub tablecie.",
         "noAltImageAlt": "Ten typ multimediów nie jest obsługiwany lub może nie działać prawidłowo na urządzeniach przenośnych. Na karcie Mobilne zdefiniuj obraz alternatywny, który będzie widoczny podczas wyświetlania narracji na telefonie lub tablecie."
+      },
+      "descriptions": {
+        "httpAudioUnfixable": "Te dane audio nie obsługują protokołu HTTPS. Usuń je z narracji lub zastąp łączem.",
+        "httpAudioUncheckable": "Te dane audio mają niezabezpieczony adres URL (HTTP). Kliknij poniższy przycisk, aby spróbować użyć adresu URL HTTPS tych danych audio. Jeśli to nie zadziała, usuń dane audio z narracji lub zastąp je hiperłączem.",
+        "httpAudioFixable": "Te dane audio mają niezabezpieczony adres URL (HTTP). Kliknij poniższy przycisk, aby użyć bezpiecznego adresu URL HTTPS tych danych audio.",
+        "httpWebpageUnfixable": "Ta witryna internetowa nie obsługuje protokołu HTTPS. Usuń ją z narracji lub zastąp zrzutem ekranu albo łączem.",
+        "httpWebpageUncheckable": "Ta witryna internetowa ma niezabezpieczony adres URL (HTTP). Kliknij poniższy przycisk, aby spróbować użyć adresu URL HTTPS tej witryny internetowej. Jeśli to nie zadziała, usuń witrynę internetową z narracji lub zastąp ją zrzutem ekranu albo hiperłączem.",
+        "httpWebpageFixable": "Ta witryna internetowa ma niezabezpieczony adres URL (HTTP). Kliknij poniższy przycisk, aby użyć bezpiecznego adresu URL HTTPS tej witryny internetowej.",
+        "httpVideoUnfixable": "Te dane wideo nie obsługują protokołu HTTPS. Usuń je z narracji lub zastąp zrzutem ekranu albo łączem.",
+        "httpVideoUncheckable": "Te dane wideo mają niezabezpieczony adres URL (HTTP). Kliknij poniższy przycisk, aby spróbować użyć adresu URL HTTPS tych danych wideo. Jeśli to nie zadziała, usuń dane wideo z narracji lub zastąp je zrzutem ekranu albo hiperłączem.",
+        "httpVideoFixable": "Te dane wideo mają niezabezpieczony adres URL (HTTP). Kliknij poniższy przycisk, aby użyć bezpiecznego adresu URL HTTPS tych danych wideo.",
+        "httpImageUnfixable": "Ten obraz nie obsługuje protokołu HTTPS. Usuń go z narracji lub zastąp łączem.",
+        "httpImageUncheckable": "Ten obraz ma niezabezpieczony adres URL (HTTP). Kliknij poniższy przycisk, aby spróbować użyć adresu URL HTTPS tego obrazu. Jeśli to nie zadziała, usuń obraz z narracji lub zastąp go hiperłączem.",
+        "httpImageFixable": "Ten obraz ma niezabezpieczony adres URL (HTTP). Kliknij poniższy przycisk, aby użyć bezpiecznego adresu URL HTTPS tego obrazu.",
+        "httpLayer": "Ta warstwa ma niezabezpieczony adres URL (HTTP).",
+        "inaccessibleLogo": "Ten logotyp jest niedostępny. Zastąp go innym obrazem.",
+        "httpLogoUnfixable": "Ten logotyp nie obsługuje protokołu HTTPS. Zastąp go innym obrazem.",
+        "httpLogoFixable": "Ten logotyp ma niezabezpieczony adres URL (HTTP). Użyj adresu URL HTTPS logotypu.",
+        "httpLogoUncheckable": "Ten logotyp ma niezabezpieczony adres URL (HTTP). Użyj adresu URL HTTPS logotypu lub zastąp go innym obrazem."
+      },
+      "tooltips": {
+        "httpAudioFixable": "Kliknij przycisk, aby użyć bezpiecznego adresu URL HTTPS tych danych audio.",
+        "httpAudioUncheckable": "Spróbuj użyć bezpiecznego adresu URL HTTPS tych danych audio. Jeśli to nie zadziała, usuń dane audio z narracji lub zastąp je łączem.",
+        "httpWebpageFixable": "Kliknij przycisk, aby użyć bezpiecznego adresu URL HTTPS tej witryny internetowej.",
+        "httpWebpageUncheckable": "Spróbuj użyć adresu URL HTTPS tej witryny internetowej. Jeśli to nie zadziała, usuń witrynę internetową z narracji lub zastąp ją zrzutem ekranu albo łączem.",
+        "httpVideoFixable": "Kliknij przycisk, aby użyć bezpiecznego adresu URL HTTPS tych danych wideo.",
+        "httpVideoUncheckable": "Spróbuj użyć bezpiecznego adresu URL HTTPS tych danych wideo. Jeśli to nie zadziała, usuń dane wideo z narracji lub zastąp je zrzutem ekranu albo łączem.",
+        "httpImageFixable": "Kliknij przycisk, aby użyć bezpiecznego adresu URL HTTPS tego obrazu.",
+        "httpImageUncheckable": "Spróbuj użyć bezpiecznego adresu URL HTTPS tego obrazu. Jeśli to nie zadziała, usuń obraz z narracji lub zastąp go łączem.",
+        "httpLayerMyMap": "Odwiedź stronę elementów mapy, aby zaktualizować tę warstwę do użycia protokołu HTTPS. Jeśli nie można zaktualizować warstwy, usuń ją z mapy.",
+        "httpLayerNotMyMap": "Utwórz kopię mapy i zaktualizuj tę warstwę do wersji wykorzystującej protokół HTTPS. Jeśli nie można zaktualizować warstwy, usuń ją z mapy.",
+        "clickLearnMore": "Kliknij, aby dowiedzieć się więcej."
+      },
+      "fixButtons": {
+        "agolItemPage": "Strona elementów",
+        "openTheMap": "Otwórz mapę",
+        "updateAudio": "Napraw adres URL danych audio",
+        "updateWebpages": "Napraw adres URL witryny internetowej",
+        "updateVideos": "Napraw adres URL danych wideo",
+        "updateImages": "Napraw adres URL obrazu"
       },
       "mapIssues": {
         "fixButton": "Rozwiąż problemy",
@@ -291,6 +541,31 @@ define({
         "notHealthy": "Rozwiąż problemy",
         "warnings": "Zobacz ostrzeżenia"
       }
+    },
+    "saveErrorSocial": {
+      "title": "Udostępnianie w serwisach społecznościowych",
+      "panel1": "Wygląd narracji w serwisach społecznościowych może być niepoprawny, ponieważ tytuł elementu aplikacji internetowej ArcGIS jest inny niż tytuł narracji.",
+      "panel1tooltip": "Po zdefiniowaniu tytułu, podsumowania i obrazu miniatury, narracja będzie wyglądała następująco:",
+      "panel2": "Którego tytułu chcesz używać w serwisach społecznościowych:",
+      "panel2q1": "Tytuł narracji (zalecane)",
+      "panel2q1tooltip": "Po wybraniu tej opcji tytuł elementu zostanie zmodyfikowany zgodnie z tytułem narracji, a dodatkowe zmiany w kreatorze zostaną zsynchronizowane.",
+      "panel2q2": "Tytuł elementu",
+      "panel3": "Aby dodatkowo poprawić wygląd narracji w serwisach społecznościowych, użyj karty ${MYSTORIES} w celu dodania podsumowania i obrazu miniatury.",
+      "panel4": "Nie ostrzegaj ponownie dla tej narracji",
+      "save": "Zapisz",
+      "mystories": "Moje narracje"
+    },
+    "httpsTransitionMessage": {
+      "bannerMsg": "Istotny komunikat dotyczący bezpieczeństwa internetowego i aplikacji Story Maps (Mapy narracyjne)",
+      "s1h1": "Firma Esri rozbudowuje zabezpieczenia map narracyjnych (Story Maps)",
+      "s1p1": "Mapy narracyjne funkcjonują w Internecie i społeczność internetowa stale pracuje nad opracowaniem i zaimplementowaniem lepszych zabezpieczeń. Protokół HTTPS, który udostępnia bezpieczne połączenie dla zasobów przesyłanych przez Internet, przedstawia się jako oczekiwany sposób dostępu do zasobów internetowych. Większość nowoczesnych przeglądarek obecnie wyświetla komunikaty ostrzegawcze, gdy jest używany protokół HTTP, a nie HTTPS. Z uwagi na ten nowoczesny standard, począwszy od aktualizacji usługi ArcGIS Online w czerwcu 2018 roku, mapy narracyjne będą wymagać użycia protokołu HTTPS.",
+      "s1p2": "W praktyce oznacza to, że dostęp do mapy narracyjnej i jej zasobów (w tym obrazów, warstw, osadzonych aplikacji i witryn internetowych) musi być uzyskiwany za pomocą łączy rozpoczynających się od HTTPS, a nie od HTTP. Jest to najlepsze rozwiązanie dla czytelników, ponieważ większość przeglądarek internetowych wskaże, że narracje są bezpieczne.",
+      "s2h1": "Co mam zrobić?",
+      "s2p1": "Firma Esri pracuje nad tym, aby niniejsza zmiana w jak najmniejszym stopniu wpływała na pracę autorów i użytkowników map narracyjnych. Obecnie w kreatorach map narracyjnych i w elemencie Moje narracje są dostępne narzędzia pomagające znaleźć niezabezpieczone zasoby (HTTP) w narracjach i przedstawiające zalecenia dotyczące ich zmiany. Należy sprawdzić narracje pod kątem niezabezpieczonych zasobów i zaktualizować je do protokołu HTTPS przed upływem czerwca 2018 roku.",
+      "action1": "Zamknij",
+      "action2": "Sprawdź teraz moje narracje",
+      "action3": "Dowiedz się więcej",
+      "floatingNotification": "Ta narracja zawiera niezabezpieczone zasoby (HTTP). Przejrzyj te problemy i zajmij się nimi."
     }
   }
 });

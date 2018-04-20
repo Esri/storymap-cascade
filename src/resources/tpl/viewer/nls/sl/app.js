@@ -32,10 +32,11 @@ define({
       "upgradeBrowser": "Nadgradite svoj brskalnik",
       "mapLoadingFail": "Nekaj ni v redu, karta se ni pravilno naložila.",
       "signOut": "Odjava",
-      "builderSupport1": "Graditelj Kaskadnih kart z zgodbo je podprt samo v brskalnikih ${CHROME} in ${SAFARI}. Kaskadne zgodbe, ki jih ustvarite z graditeljem, si boste vseeno lahko ogledali v brskalnikih Internet Explorer 11+ in Firefox.",
-      "builderSupport2": "Graditelj Kaskadnih kart z zgodbo ni podprt na iPadu. Na iPadu bodo delovale kaskadne zgodbe, ki jih boste ustvarili ali delili.",
-      "builderSupport3": "Kaskadne zgodbe si bo mogoče ogledati v brskalnikih Chrome, Safari, Firefox in Internet Explorer 11+, vendar je graditelj Kaskadnih kart z zgodbo podprt samo v brskalnikih ${CHROME} in ${SAFARI}.",
-      "builderSupport4": "Kaskadne zgodbe si lahko ogledate v katerem koli sodobnem spletnem brskalniku, vendar je graditelj Kaskadnih kart z zgodbo podprt samo v brskalnikih ${CHROME} in ${SAFARI}.<br><br>Če potrebujete kaskadnega graditelja za podporo drugemu brskalniku, se obrnite na ${ESRI-SUPPORT} ali ${BROWSER-SUPPORT-VOTE}.",
+      "builderSupportFirefox": "Graditelj kaskadnih kart z zgodbo sedaj podpira Firefox!<br><br>Podpora za ustvarjanje kaskadnih zgodb v Firefoxu je trenutno v beta. Preizkusite jo in prijavite morebitne težave na ${ESRI-SUPPORT} ali ${ESRI-COMMUNITY}.",
+      "builderSupportOther": "Kaskadne zgodbe si lahko ogledate v katerem koli sodobnem spletnem brskalniku, vendar je graditelj Kaskadnih kart z zgodbo podprt samo v brskalnikih ${CHROME}, ${SAFARI} in ${FIREFOX} (beta).<br><br>Če potrebujete kaskadnega graditelja za podporo drugemu brskalniku, se obrnite na ${ESRI-SUPPORT} ali ${BROWSER-SUPPORT-VOTE}.",
+      "builderSupportIpad": "Graditelj Kaskadnih kart z zgodbo ni podprt na iPadu. Na iPadu bodo delovale kaskadne zgodbe, ki jih boste ustvarili ali delili.",
+      "launchBuilder": "Zaženi kaskadnega graditelja",
+      "notAgain": "Tega ne kaži več",
       "sorry": "Pozor:"
     },
     "mobileWarning": {
@@ -82,6 +83,40 @@ define({
       "speedFast": "Hitro",
       "speedMedium": "Srednje",
       "speedSlow": "Počasi"
+    }
+  },
+  "print": {
+    "settings": {
+      "pleaseWait": "Pred tiskanjem počakajte, da se naloži celotna zgodba",
+      "printNotes": "Če se ta stran nalaga počasi ali se nekateri mediji ne prikažejo, poskusite zamenjati žive medije s slikami ali natisnite manjši obseg odsekov. Za najboljše rezultate boste morda morali omogočiti tiskanje elementov v ozadju v nastavitvah tiskanja vašega brskalnika.",
+      "printOptions": "Možnosti",
+      "makeTextBlack": "Počrnite vso besedilo",
+      "showLinks": "Prikaži URL povezave",
+      "useAltMedia": "Zamenjaj žive medije s slikami, če so na voljo",
+      "pageBreaks": "Začnite vsak razdelek na novi strani",
+      "printRange": "Natisni del te zgodbe",
+      "sectionStart": "Razdelki:",
+      "go": "Uporabi",
+      "reset": "Ponastavi na celotno zgodbo",
+      "print": "Tiskanje"
+    },
+    "page": {
+      "appTagline": "Ta zgodba je bila narejena z ${CASCADE_LINK_TEXT}.",
+      "cascadeLinkText": "Kaskadna karta z zgodbo podjetja Esri",
+      "readItOnline": "Preberite na spletu na ${STORY_URL}."
+    },
+    "sections": {
+      "sectionLabel": "Razdelek ${SECTION_NUMBER}"
+    },
+    "media": {
+      "websiteLabel": "Spletna stran:",
+      "videoLabel": "Video:",
+      "audioLabel": "Zvok:"
+    },
+    "bannerNotification": {
+      "learnMore": "Izvedi več",
+      "close": "Zapri",
+      "dontShowAgain": "Tega sporočila ne kaži več"
     }
   }
 });

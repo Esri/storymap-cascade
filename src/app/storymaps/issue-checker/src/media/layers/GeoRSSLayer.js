@@ -3,12 +3,9 @@ import ServiceLayer from './ServiceLayer';
 
 export default class GeoRSSLayer extends ServiceLayer {
   static check(options) {
-    return super.check({
-      layer: options.item,
-      layerResults: options.layerResults,
-      appAccess: options.appAccess,
+    return super.check(Object.assign({}, options, {
       CalledClass: EsriGeoRSSLayer,
       keepProtocol: true
-    });
+    }));
   }
 }

@@ -32,10 +32,11 @@ define({
       "upgradeBrowser": "Atjaunojiet savu pārlūku.",
       "mapLoadingFail": "Radās kļūda — karte netika ielādēta pareizi.",
       "signOut": "Izrakstīties",
-      "builderSupport1": "Story Map Cascade veidotāju atbalsta tikai pārlūkā ${CHROME} un ${SAFARI}. Taču Cascade stāstus, ko izveido ar veidotāju, var skatīt arī Internet Explorer 11+ un Firefox.",
-      "builderSupport2": "Story Map Cascade veidotāju neatbalsta iPad, bet iPad ierīcēs darbosies stāsti, kurus izveidojat un kopīgojat.",
-      "builderSupport3": "Cascade stāstus var skatīt pārlūkā Chrome, Safari, Firefox un Internet Explorer 11+, bet Story Map Cascade veidotāju atbalsta tikai ${CHROME} un ${SAFARI}.",
-      "builderSupport4": "Cascade stāstus var skatīt jebkurā mūsdienīgā pārlūkā, bet Story Map Cascade veidotāju atbalsta tikai ${CHROME} un ${SAFARI}.<br><br>Ja nepieciešams, lai Cascade veidotājs tiktu atbalstīts citā pārlūkā, sazinieties ar ${ESRI-SUPPORT} vai ${BROWSER-SUPPORT-VOTE}.",
+      "builderSupportFirefox": "Kartes stāsta kaskādes veidotājs tagad atbalsta Firefox!<br><br>Kaskādes stāstu izveide pārlūkā Firefox pašlaik ir pieejama beta versijā. Izmēģiniet to un ziņojiet par problēmām ${ESRI-SUPPORT} vai ${ESRI-COMMUNITY}.",
+      "builderSupportOther": "Kaskādes stāstus var skatīt jebkurā mūsdienīgā pārlūkā, bet Kartes stāsta kaskādes veidotāju atbalsta tikai ${CHROME}, ${SAFARI} un ${FIREFOX} (beta versijā).<br><br>Ja nepieciešams, lai Kaskādes veidotājs tiktu atbalstīts citā pārlūkā, sazinieties ar ${ESRI-SUPPORT} vai ${BROWSER-SUPPORT-VOTE}.",
+      "builderSupportIpad": "Kartes stāsta kaskādes veidotāju neatbalsta iPad, bet iPad ierīcēs darbosies stāsti, kurus izveidojat un kopīgojat.",
+      "launchBuilder": "Palaist Kaskādes veidotāju",
+      "notAgain": "Vairs nerādīt šo saturu",
       "sorry": "Uzmanību!"
     },
     "mobileWarning": {
@@ -82,6 +83,40 @@ define({
       "speedFast": "Ātri",
       "speedMedium": "Vidēji",
       "speedSlow": "Lēni"
+    }
+  },
+  "print": {
+    "settings": {
+      "pleaseWait": "Pirms drukāšanas uzgaidiet, līdz tiks ielādēts viss stāsts",
+      "printNotes": "Ja šīs lapas ielāde ir lēna vai dažas multivides vienības netiek parādītas, mēģiniet aizstāt tiešsaistes multividi ar attēliem vai drukāt mazāku sadaļu diapazonu. Lai iegūtu labākos rezultātus, iespējams, sava pārlūka drukāšanas iestatījumos ir jāaktivizē fona elementu drukāšana.",
+      "printOptions": "Varianti",
+      "makeTextBlack": "Iekrāsot visu tekstu melnu",
+      "showLinks": "Rādīt saišu vietrāžus URL",
+      "useAltMedia": "Aizstāt tiešsaistes multividi ar attēliem (ja tie ir pieejami)",
+      "pageBreaks": "Sāciet katru sadaļu jaunā lapā",
+      "printRange": "Izdrukāt šī stāsta daļu",
+      "sectionStart": "Sadaļas:",
+      "go": "Lietot",
+      "reset": "Atiestatīt uz pilno stāstu",
+      "print": "Drukāt"
+    },
+    "page": {
+      "appTagline": "Šis stāsts tika izveidots, izmantojot ${CASCADE_LINK_TEXT}.",
+      "cascadeLinkText": "Esri Kartes stāsta kaskāde",
+      "readItOnline": "Izlasiet to tīmekļa vietnē ${STORY_URL}."
+    },
+    "sections": {
+      "sectionLabel": "${SECTION_NUMBER}. sadaļa"
+    },
+    "media": {
+      "websiteLabel": "Tīmekļa vietne:",
+      "videoLabel": "Video",
+      "audioLabel": "Audio"
+    },
+    "bannerNotification": {
+      "learnMore": "Uzzināt vairāk",
+      "close": "Aizvērt",
+      "dontShowAgain": "Nerādīt šo ziņojumu vēlreiz"
     }
   }
 });

@@ -14,12 +14,21 @@
 </div>
 <div class="builder-config-section larger">
   <div class="section-content button">
-    <div class="config-item button btn btn-bw" data-action="edit">
-      <i class="config-icon fa fa-external-link"></i>
+    <div class="config-item button btn btn-bw{{#if showErrors}} disabled{{/if}}" data-action="edit">
+      {{#if mapEditorEnabled}}
+        <span class="config-icon fa-stack">
+          <i class="fa fa-map-o"></i>
+          <i class="fa fa-pencil overlaid-icon"></i>
+        </span>
+      {{else}}
+        <i class="config-icon fa fa-external-link"></i>
+      {{/if}}
       {{strings.edit}}
     </div>
   </div>
-  <span class="aside">{{strings.editAside}}</span>
+  {{#unless mapEditorEnabled}}
+    <span class="aside">{{strings.editAside}}</span>
+  {{/unless}}
 </div>
 <div class="builder-config-section">
   <div class="section-content button">

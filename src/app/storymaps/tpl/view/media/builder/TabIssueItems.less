@@ -1,0 +1,62 @@
+@import '../../../core/Variables';
+
+.builder-config-section.issues {
+  .issue-items {
+    overflow: auto;
+    text-align: left;
+    max-height: 400px;
+    line-height: 1.4em;
+    width: 59%;
+    @media (max-width: @screen-md) {
+      width: 54%;
+    }
+  }
+
+  .webmap-info {
+    padding: 2px 5px;
+    background-color: #cfcfcf;
+    font-size: larger;
+
+    .error-icon {
+      display: none;
+    }
+
+    &.error {
+      // second line doesn't underhang warning triangle
+      text-indent: -12px;
+      padding-left: 30px;
+      .error-icon {
+        display: inline-block;
+      }
+    }
+  }
+
+  .layers-info {
+    .error-icon {
+      visibility: hidden;
+    }
+    .error .error-icon {
+      visibility: visible;
+    }
+  }
+
+  .issue-items .error-icon {
+    margin-right: 3px;
+  }
+
+  .issue-items .error.highlight {
+    color: @sm-danger-text;
+    font-weight: bold;
+  }
+
+  .layers-info .layer {
+    padding: 0 5px 0 45px;
+    background-color: #efefef;
+    text-indent: -10px;
+    color: #BABABA
+  }
+
+  .layers-info .layer:nth-child(odd) {
+    background-color: #fff;
+  }
+}

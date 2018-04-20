@@ -1,13 +1,13 @@
 <div class="builder-config-section issues">
   <div class="section-content horizontal">
-    <div class="issue-summary">
+    <div class="issue-summary{{#if isMap}} map-issue-summary{{/if}}">
 
       <div id="{{carouselId}}" class="issue-summary-wrapper carousel slide" data-interval="false" data-wrap="false" data-ride="carousel">
 
         <!-- Indicators if needed -->
         {{#if needsCarousel}}
           <ol class="carousel-indicators">
-            {{#each errorMsgs}}
+            {{#each issueMessages}}
               <li data-target="#{{../carouselId}}" data-slide-to="{{index}}"></li>
             {{/each}}
           </ol>
@@ -15,20 +15,24 @@
 
         <!-- Content -->
         <div class="carousel-inner {{#if needsCarousel}}is-carousel{{/if}}">
-          {{#each errorMsgs}}
-            <div class="single-issue-summary item" data-target="#{{carouselId}}" data-slide-to="{{index}}">
+          {{#each issueMessages}}
+            <div class="single-issue-summary item{{#if isError}} error{{else}} warning{{/if}}" data-target="#{{../carouselId}}" data-slide-to="{{index}}">
               <div class="title-wrapper">
                 <div class="title">{{banner}}</div>
                 <div class="description">{{description}}</div>
               </div>
-              <div class="fix-btn btn btn-primary">
-                <span class="small-loader hidden"></span>
-                <span>{{button}}</span>
-              </div>
-              <div class="media-info">
-                <div class="media-info-background"></div>
-                <i class="fix-tooltip fa fa-info-circle" aria-hidden="true" title="{{tooltip}}" data-link={{helpLink}}></i>
-              </div>
+              {{#if button}}
+                <div class="fix-btn btn btn-primary">
+                  <span class="small-loader hidden"></span>
+                  <span>{{button}}</span>
+                </div>
+              {{/if}}
+              {{#if tooltip}}
+                <div class="media-info">
+                  <div class="media-info-background"></div>
+                  <i class="fix-tooltip fa fa-info-circle" aria-hidden="true" title="{{tooltip}}" data-link={{helpLink}}></i>
+                </div>
+              {{/if}}
             </div>
           {{/each}}
         </div>
@@ -45,20 +49,6 @@
 
       </div>
     </div>
-
-    <div class="issue-items">
-        <div class="webmap-info">
-          <span class="error-icon fa fa-exclamation-triangle"></span>
-          <span>{{webmapLabel}}</span>
-        </div>
-        <div class="layers-info">
-          {{#each layers}}
-            <div class="layer" data-lyr-id="{{id}}">
-              <span class="error-icon fa fa-exclamation-triangle"></span>
-              <span>{{lyrTitle}}</span>
-            </div>
-          {{/each}}
-        </div>
-    </div>
+    {{{issueItemsTemplate}}}
   </div>
 </div>

@@ -32,10 +32,11 @@ define({
       "upgradeBrowser": "ブラウザーを更新してください",
       "mapLoadingFail": "問題が発生しました。マップを正しく読み込みませんでした。",
       "signOut": "サイン アウト",
-      "builderSupport1": "ストーリー マップ カスケード ビルダーは ${CHROME} および ${SAFARI} でのみサポートされています。ただし、ビルダーで作成したカスケード ストーリーは、それらのブラウザーの他に Internet Explorer 11+ と Firefox でも表示できます。",
-      "builderSupport2": "ストーリー マップ カスケード ビルダーは iPad ではサポートされていません。作成および共有したカスケード ストーリーは iPad 上で動作します。",
-      "builderSupport3": "カスケード ストーリーは、Chrome、Safari、Firefox、および Internet Explorer 11+ で表示できますが、ストーリー マップ カスケード ビルダーは ${CHROME} および ${SAFARI} でのみサポートされています。",
-      "builderSupport4": "カスケード ストーリーは、最新の Web ブラウザーで表示できますが、ストーリー マップ カスケード ビルダーは ${CHROME} および ${SAFARI} でのみサポートされています。<br><br>カスケード ビルダーで別のブラウザーをサポートする必要がある場合は、${ESRI-SUPPORT} または ${BROWSER-SUPPORT-VOTE} にお問い合わせください。",
+      "builderSupportFirefox": "ストーリー マップ カスケード ビルダーで、Firefox がサポートされるようになりました。<br><br>Firefox でのカスケード ストーリーの作成サポートは、現時点ではベータ版です。使用を試して、何か問題がありましたら、${ESRI-SUPPORT} または ${ESRI-COMMUNITY} にご報告ください。",
+      "builderSupportOther": "カスケード ストーリーは、最新の Web ブラウザーで表示できますが、ストーリー マップ カスケード ビルダーは ${CHROME}、${SAFARI}、${FIREFOX} (ベータ版) でのみサポートされています。<br><br>カスケード ビルダーで別のブラウザーをサポートする必要がある場合は、${ESRI-SUPPORT} または ${BROWSER-SUPPORT-VOTE} にお問い合わせください。",
+      "builderSupportIpad": "ストーリー マップ カスケード ビルダーは iPad ではサポートされていません。作成および共有したカスケード ストーリーは iPad 上で動作します。",
+      "launchBuilder": "カスケード ビルダーの起動",
+      "notAgain": "今後このメッセージを表示しない",
       "sorry": "注意:"
     },
     "mobileWarning": {
@@ -82,6 +83,40 @@ define({
       "speedFast": "速い",
       "speedMedium": "中程度",
       "speedSlow": "遅い"
+    }
+  },
+  "print": {
+    "settings": {
+      "pleaseWait": "ストーリー全体の読み込みが終了してから印刷してください",
+      "printNotes": "このページの読み込みが遅い、またはメディアが表示されない場合は、ライブ メディアを画像に変更するか、印刷するセクションの範囲を小さくしてみてください。最善の結果を得るために、ブラウザーの印刷設定で、背景要素の印刷を有効にする必要がある場合もあります。",
+      "printOptions": "オプション",
+      "makeTextBlack": "すべてのテキストを黒くする",
+      "showLinks": "リンク URL の表示",
+      "useAltMedia": "使用可能な場合は、ライブ メディアを画像に変更する",
+      "pageBreaks": "各セクションを新しいページで開始する",
+      "printRange": "このストーリーの印刷部分",
+      "sectionStart": "セクション:",
+      "go": "申請",
+      "reset": "ストーリー全体をリセット",
+      "print": "印刷"
+    },
+    "page": {
+      "appTagline": "このストーリーは ${CASCADE_LINK_TEXT} で作成されました。",
+      "cascadeLinkText": "Esri のストーリー マップ カスケード",
+      "readItOnline": "Web 上の ${STORY_URL} で読み取ります。"
+    },
+    "sections": {
+      "sectionLabel": "セクション ${SECTION_NUMBER}"
+    },
+    "media": {
+      "websiteLabel": "Web サイト:",
+      "videoLabel": "ビデオ:",
+      "audioLabel": "オーディオ:"
+    },
+    "bannerNotification": {
+      "learnMore": "詳細",
+      "close": "閉じる",
+      "dontShowAgain": "今後このメッセージを表示しない"
     }
   }
 });

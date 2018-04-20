@@ -50,7 +50,26 @@ define({
         "loremBody": "Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor. Mauris consequat orci nec magna facilisis bibendum at eget libero."
       }
     },
+    "share": {
+      "btnPrivate": "Privado",
+      "btnOrg": "Organização",
+      "btnPublic": "Público",
+      "btnEveryone": "Todos"
+    },
     "builderPanel": {
+      "builderNamePrefix": "",
+      "builderNameSuffix": "Builder",
+      "buttonSaving": "A Guardar",
+      "buttonSaved": "Guardado",
+      "buttonError": "Não foi possível guardar",
+      "buttonShare": "Partilhar",
+      "buttonSettings": "Configurações",
+      "settingsLogoError": "O seu logo tem um problema. Clique para obter mais informações.",
+      "buttonHelp": "Obter Ajuda ou Submeter Feedback em GeoNet",
+      "buttonPreview": "Visualizar História",
+      "buttonHealth": "Relatório de Saúde",
+      "manageStories": "Gerir as Minhas Histórias",
+      "closeWithPendingChange": "Tem a certeza que pretende confirmar esta ação? As suas alterações serão perdidas.",
       "coverLabel": "Capa",
       "creditsLabel": "Créditos",
       "betaFeedback": "Feedback",
@@ -143,6 +162,195 @@ define({
         "uploadAltImage": "Adicionar imagem alternativa"
       }
     },
+    "mediaPicker": {
+      "browseToggle": {
+        "urls": "Ligação a Conteúdo",
+        "urls_short": "Ligação",
+        "contentType": {
+          "error": "Não existem media autorizados.",
+          "imageOnly": "Nesta parte da história pode adicionar uma imagem.",
+          "imageAndVideo": "Nesta parte da história pode adicionar uma imagem ou um vídeo.",
+          "imageVideoWebpage": "Nesta parte da história pode adicionar uma imagem, um vídeo ou uma página web."
+        }
+      },
+      "browsePanel": {
+        "providers": {
+          "searchingFor": "A pesquisar \"${searchterm}\"...",
+          "searchedFor": "Resultados de pesquisa para \"${searchterm}\"",
+          "albumsOf": "Álbuns de ${username}",
+          "noPhotosFound": "Não existem fotografias que correspondam à sua pesquisa. Por favor, tente novamente.",
+          "noItemsFound": "Não foram encontrados itens que correspondam à sua pesquisa. Por favor, tente novamente.",
+          "noItemsInThisStory": "Ainda não foi adicionado qualquer conteúdo de ArcGIS a esta história.",
+          "limitReached": "A exibir 100 Itens. Se não encontrou aquilo de que necessita, tente uma pesquisa por palavras-chave.",
+          "galleryItems": {
+            "uploadError": "Lamentamos, ocorreu uma falha ao carregar este item."
+          },
+          "agol": {
+            "remove1": "Elimine esta imagem não-utilizada da sua conta ArcGIS.",
+            "remove2": "(Terá de carregá-la novamente caso decida utilizá-la mais tarde.)",
+            "removeFailed": "Remova esta imagem inacessível desta lista.",
+            "modified": "Modificado em ${date}",
+            "uploaded": "Atualizado em ${date}",
+            "contentByAuthor": "${contentType} por ${author}"
+          },
+          "googlePhotos": {
+            "searchAndBrowse": "Procure fotografias no ${Picasa} ou no ${Google+}"
+          },
+          "flickr": {
+            "photostream": "Photostream",
+            "searchAndBrowse": "Pesquise e procure fotos no ${Flickr}",
+            "captionStarter": "Fotografia de ${USERNAME} em ${Flickr}"
+          },
+          "unsplash": {
+            "searchAndBrowse": "Pesquise fotos no ${Unsplash}",
+            "photoBy": "Fotografia de ${username}",
+            "userLink": "Dirija-se à página de ${username} do ${Unsplash}",
+            "captionStarter": "Fotografia de ${USERNAME} em ${Unsplash}"
+          },
+          "urlContent": {
+            "uploadHeaders": {
+              "generic": "Ligar a conteúdo na web",
+              "imageOnly": "Ligar a uma imagem na web",
+              "imageAndVideo": "Ligar a uma imagem ou vídeo na web"
+            },
+            "linkText": {
+              "imageOnly": "Na caixa acima, pode efetuar diretamente a ligação a uma fotografia.",
+              "imageAndVideo1": "Na caixa acima, pode colar uma ligação ou código iframe de um vídeo do ${YouTube} ou ${Vimeo}.",
+              "imageAndVideo2": "Pode ainda ligar diretamente a uma fotografia.",
+              "imageVideoWebpage1": "Na caixa acima, pode colar uma ligação ou código iframe para conteúdo web como um gráfico dinâmico ou um vídeo do ${YouTube} ou ${Vimeo}.",
+              "imageVideoWebpage2": "Pode ainda ligar diretamente a uma foto, vídeo, página web ou aplicação web.",
+              "ender": "Utilize sempre ligações seguras (https). Caso o seu conteúdo não suporte https, adicione uma ligação ao mesmo no texto da sua história para que os leitores possam visualizá-lo num novo separador do navegador.",
+              "httpsError": "A ligação tem de começar com HTTPS"
+            },
+            "embedProtocol": {
+              "embedProtocolLabel": "Carregar página através de uma ligação segura (https)",
+              "embedProtocolWarning1": "Caso a página não seja carregada na sua história, não poderá ser incorporada, por motivos de segurança web.",
+              "embedProtocolWarning2": "Caso esta página não seja carregada na sua história, desmarque esta opção e tente novamente. Caso a página continue a não ser carregada, não poderá ser incorporada, por motivos de segurança web.",
+              "embedProtocolWarning3": "Em alternativa, adicione uma ligação à sua narrativa para abrir a página num novo separador do navegador ${linkText}",
+              "linkText": "Saber Mais."
+            },
+            "placeholder": "${https://}... ou ${<iframe>}",
+            "uploadErrors": {
+              "generic": "Algo correu mal com o endereço introduzido. Por favor, tente novamente.",
+              "imageOnly1": "Tem de utilizar uma imagem nesta parte da história.",
+              "imageOnly2": "Por favor, forneça uma ligação a uma imagem (.jpg, .png, .gif), ou selecione uma imagem de ${ArcGIS}, ${Flickr}, ${Google+}, ou ${Unsplash}.",
+              "imageAndVideo1": "Tem de utilizar uma imagem ou um vídeo nesta parte da história.",
+              "imageAndVideo2": "Por favor, forneça uma ligação a uma imagem (.jpg, .png, .gif) ou um vídeo no ${YouTube} ou ${Vimeo}, ou selecione uma imagem de ${ArcGIS}, ${Flickr}, ${Google+}, ou ${Unsplash}.",
+              "badFormat": "A ligação ao ficheiro que está a tentar adicionar encontra-se incorretamente formatada.",
+              "inaccessible": "O ficheiro que está a tentar adicionar encontra-se em falta ou inacessível.",
+              "tryAgain": "Por favor, verifique o endereço e tente novamente.",
+              "mediaTypes": {
+                "VIDEO": "vídeo",
+                "IMAGE": "Imagem",
+                "generic": "media"
+              }
+            }
+          }
+        },
+        "sidePanel": {
+          "googlePhotos": {
+            "placeholder": "Correio Eletrónico ou ID de ${Picasa}/${Google+}",
+            "helpText": "Pode adicionar fotografias carregadas para ${Picasa} ou ${Google+} à sua história. ${helpLinkText} sobre a utilização de imagens armazenadas na sua conta ${Google} nas suas histórias.",
+            "helpLinkText": "Obter mais informações",
+            "cannotFindUser": "Não é possível encontrar o utilizador ${username}. Por favor, tente novamente."
+          },
+          "unsplash": {
+            "placeholder": "Pesquisar fottografias",
+            "aboutText": "${Unsplash} é uma coleção curada de fotografias gratuitas, de alta qualidade.",
+            "copyrightText": "Todas as fotografias publicadas no ${Unsplash} encontram-se licenciadas através da Licença ${CC0}. Obtenha mais informações ${moreInfoLink}.",
+            "moreInfoLink": "aqui"
+          },
+          "flickr": {
+            "searchType": {
+              "account": "Conta ${Flickr}",
+              "text": "Tudo no ${Flickr}"
+            },
+            "placeholders": {
+              "user": "Pesquisar conta",
+              "userText": "Pesquisar fotografias nesta conta",
+              "text": "Pesquisar fottografias"
+            },
+            "errors": {
+              "cannotFindUser": "Não é possível encontrar o utilizador ${username}.",
+              "noUserPhotos": "${username} não possui quaisquer fotografias públicas.",
+              "didYouMean": "Referia-se a ${username}?",
+              "generalUserError": "Alco correu mal ao pesquisar o utilizador ${username}."
+            },
+            "licenses": {
+              "licenseLabel": "Licença: ",
+              "public": "Domínio Público",
+              "commercial": "OK para Utilização Comercial",
+              "nonCommercial": "OK para Utilização Não-Comercial",
+              "reserved": "Todos os Direitos Reservados",
+              "any": "Qualquer Licença"
+            }
+          },
+          "agol": {
+            "searchLocation": {
+              "thisStory": "Este História",
+              "agol": "ArcGIS Online",
+              "portalArcGIS": "Portal for ArcGIS",
+              "portal": "Portal",
+              "myOrg": "Organização ${orgname}",
+              "myContent": "O Meu Conteúdo"
+            },
+            "createContent": {
+              "createNewMap": "Crie um novo mapa",
+              "or": "OU",
+              "dragAndDrop": "Solte imagem(ens) aqui",
+              "uploadImage": "Procurar imagem(ens)",
+              "agolInfo": "As imagens serão armazenadas na sua conta ArcGIS e estarão acessíveis apenas dentro da sua história.",
+              "saveBeforeUpload": "Após guardar esta história, pode carregar imagens para ArcGIS aqui.",
+              "fileTypesImage": "Tipos de ficheiros suportados: .png, .jpeg, .jpg, .gif, .bmp"
+            },
+            "filterAndSort": {
+              "webmap": "Mapa Web",
+              "webscene": "Web Scene",
+              "image": "Imagem",
+              "date": "Data",
+              "sortByDate": "Ordenar por data",
+              "title": "Título",
+              "sortByTitle": "Ordenar por título",
+              "views": "Visualizações",
+              "search": "Pesquisar por palavra-chave ou ID"
+            }
+          }
+        }
+      }
+    },
+    "mapEditor": {
+      "dialogTitle": "Editar mapa",
+      "unauthorizedDomain": "Não se encontra num domínio autorizado para utilizar o editor de mapas",
+      "loading": "Por favor aguarde enquanto o editor de mapas está a carregar",
+      "saving": "A guardar o mapa",
+      "success": "Mapa guardado",
+      "cancelTitle": "Rejeitar alterações não guardadas?",
+      "errorSave": "Não é possível guardar mapa. Por favor, tente novamente.",
+      "loadFail": "Lamentamos, não é possível carregar o editor de mapas",
+      "close": "Fechar",
+      "save": "Guardar",
+      "confirm": "Sim, fechar mapa",
+      "deny": "Não, continuar a trabalhar"
+    },
+    "textEditor": {
+      "placeholder": {
+        "continueStory": "Continue a sua história aqui..."
+      },
+      "blockAdd": {
+        "text": "Texto",
+        "media": "Imagem",
+        "title": "Título",
+        "immersive": "Imersivo"
+      },
+      "link": {
+        "invite": "Cole ou digite uma ligação..."
+      },
+      "color": {
+        "choose": "selecionar",
+        "cancel": "cancelar",
+        "clear": "Limpar cor"
+      }
+    },
     "imageGallery": {
       "addImage": "Adicionar outra imagem",
       "moveBackward": "Mover para trás",
@@ -222,13 +430,55 @@ define({
         "noAltImage": "Media Poderá Não Funcionar em Dispositivo Móvel",
         "noAltImageUnsupported": "Media Não Suportado em Dispositivo Móvel",
         "noAltImageWarning": "Media Poderá Não Funcionar em Dispositivo Móvel",
-        "altImageBroken": "A imagem alternativa definida para este item de media não se encontra acessível."
+        "altImageBroken": "A imagem alternativa definida para este item de media não se encontra acessível.",
+        "httpMedia": "Media Inseguros",
+        "httpContent": "Conteúdo Inseguro"
       },
       "contentWarnings": {
         "noAltImage": "Assegure-se de testar as sua história em dispositivos móveis antes de partilhá-la. Caso este media não funcione como seria de esperar, recorra ao botão abaixo para adicionar uma imagem alternativa que será exibida quando a sua história é visualizada num telefone ou num tablet.",
         "noAltImageUnsupported": "Este media não irá funcionar em dispositivos móveis. Recorra ao botão abaixo para adicionar uma imagem alternativa que será exibida quando a sua história é visualizada num telefone ou num tablet.",
         "noAltImageWarning": "Assegure-se de testar as sua história em dispositivos móveis antes de partilhá-la. Caso este media não funcione como seria de esperar, recorra ao botão abaixo para adicionar uma imagem alternativa que será exibida quando a sua história é visualizada num telefone ou num tablet.",
         "noAltImageAlt": "Este tipo de media não é suportado ou poderá não funcionar corretamente em dispositivos móveis. No separador móvel, adicione uma imagem alternativa que será exibida quando a sua história é visualizada num telefone ou num tablet."
+      },
+      "descriptions": {
+        "httpAudioUnfixable": "Este áudio não suporta HTTPS. Remova-o da sua história ou substitua-o por uma ligação.",
+        "httpAudioUncheckable": "Este áudio tem um URL inseguro (HTTP). Clique no botão abaixo para tentar utilizar um URL HTTPS para este áudio. Caso não funcione, remova o áudio da sua história ou substitua-o por uma hiperligação.",
+        "httpAudioFixable": "Este áudio tem um URL inseguro (HTTP). Clique no botão abaixo para utilizar um URL HTTPS seguro para este áudio.",
+        "httpWebpageUnfixable": "Esta página web não suporta HTTPS. Remova-a da sua história ou substitua-a por uma captura de ecrã ou ligação.",
+        "httpWebpageUncheckable": "Esta página web tem um URL inseguro (HTTP). Clique no botão abaixo para tentar utilizar um URL HTTPS para esta página web. Caso não funcione, remova a página web da sua história ou substitua-a por uma captura de ecrã ou hiperligação.",
+        "httpWebpageFixable": "Esta página web tem um URL inseguro (HTTP). Clique no botão abaixo para utilizar um URL HTTPS seguro para esta página web.",
+        "httpVideoUnfixable": "Este vídeo não suporta HTTPS. Remova-o da sua história ou substitua-o por uma captura de ecrã ou ligação.",
+        "httpVideoUncheckable": "Este vídeo tem um URL inseguro (HTTP). Clique no botão abaixo para tentar utilizar um URL HTTPS para este vídeo. Caso não funcione, remova o vídeo da sua história ou substitua-o por uma captura de ecrã ou hiperligação.",
+        "httpVideoFixable": "Este vídeo tem um URL inseguro (HTTP). Clique no botão abaixo para utilizar um URL HTTPS seguro para este vídeo.",
+        "httpImageUnfixable": "Esta imagem não suporta HTTPS. Remova-a da sua história ou substitua-a por uma ligação.",
+        "httpImageUncheckable": "Esta imagem tem um URL inseguro (HTTP). Clique no botão abaixo para tentar utilizar um URL HTTPS para esta imagem. Caso não funcione, remova a imagem da sua história ou substitua-a por uma hiperligação.",
+        "httpImageFixable": "Esta imagem tem um URL inseguro (HTTP). Clique no botão abaixo para utilizar um URL HTTPS seguro para esta imagem.",
+        "httpLayer": "Esta camada tem um URL inseguro (HTTP).",
+        "inaccessibleLogo": "Este logo não se encontra acessível. Substitua-o por outra imagem.",
+        "httpLogoUnfixable": "Este logo suporta HTTPS. Substitua-o por outra imagem.",
+        "httpLogoFixable": "Este logo tem um URL inseguro (HTTP). Utilize um URL HTTPS para o logo.",
+        "httpLogoUncheckable": "Este logo tem um URL inseguro (HTTP). Utilize um URL HTTPS para o logo, ou substitua-o por outra imagem."
+      },
+      "tooltips": {
+        "httpAudioFixable": "Clique no botão para utilizar um URL HTTPS seguro para este áudio.",
+        "httpAudioUncheckable": "Tente utilizar um URL HTTPS para este áudio. Caso não funcione, remova o áudio da sua história ou substitua-o por uma ligação.",
+        "httpWebpageFixable": "Clique no botão para utilizar um URL HTTPS seguro para esta página web.",
+        "httpWebpageUncheckable": "Tente utilizar um URL HTTPS para esta página web. Caso não funcione, remova a página web da sua história ou substitua-a por uma captura de ecrã ou ligação.",
+        "httpVideoFixable": "Clique no botão para utilizar um URL HTTPS seguro para este vídeo.",
+        "httpVideoUncheckable": "Tente utilizar um URL HTTPS para este vídeo. Caso não funcione, remova o vídeo da sua história ou substitua-o por uma captura de ecrã ou ligação.",
+        "httpImageFixable": "Clique no botão para utilizar um URL HTTPS seguro para esta imagem.",
+        "httpImageUncheckable": "Tente utilizar um URL HTTPS para esta imagem. Caso não funcione, remova a imagem da sua história ou substitua-a por uma ligação.",
+        "httpLayerMyMap": "Visite a página de item do mapa para atualizar esta camada para que utilize HTTPS. Caso não seja possível atualizar a camada, remova-a do mapa.",
+        "httpLayerNotMyMap": "Faça uma cópia do mapa e atualize esta camada para que utilize HTTPS. Caso não seja possível atualizar a camada, remova-a do mapa.",
+        "clickLearnMore": "Clique para saber mais."
+      },
+      "fixButtons": {
+        "agolItemPage": "Página de item",
+        "openTheMap": "Abrir Mapa",
+        "updateAudio": "Corrigir URL de Áudio",
+        "updateWebpages": "Corrigir URL de Página Web",
+        "updateVideos": "Corrigir URL de Vídeo",
+        "updateImages": "Corrigir URL de Imagem"
       },
       "mapIssues": {
         "fixButton": "Corrigir Problemas",
@@ -291,6 +541,31 @@ define({
         "notHealthy": "Corrigir problemas",
         "warnings": "Visualizar avisos"
       }
+    },
+    "saveErrorSocial": {
+      "title": "Partilha nas Redes Sociais",
+      "panel1": "A sua história pode não surgir de modo apropriado na rede social, já que o título da sua aplicação web ArcGIS não corresponde ao título da sua história.",
+      "panel1tooltip": "Definindo um título, resumo e imagem miniatura, a sua história irá parecer assim:",
+      "panel2": "Que título gostaria de usar nas redes sociais:",
+      "panel2q1": "Título da história (recomendado)",
+      "panel2q1tooltip": "Ao escolher esta opção, o título do seu item irá ser modificado para corresponder ao título da sua história e outras alterações que o edifício será sincronizado.",
+      "panel2q2": "Título de item",
+      "panel3": "Para melhorar a aparência da sua história nas redes sociais use ${MYSTORIES} para adicionar um resumo ou uma imagem miniatura.",
+      "panel4": "Não me avise outra vez para esta história",
+      "save": "Guardar",
+      "mystories": "As Minhas Histórias"
+    },
+    "httpsTransitionMessage": {
+      "bannerMsg": "Mensagem Importante acerca de Segurança na Web e Story Maps",
+      "s1h1": "A Esri está a melhorar a segurança dos Story Maps",
+      "s1p1": "Os seus Story Maps existem na web, e a comunidade da web está sempre a trabalhar para estabelecer e implementar melhor segurança. HTTPS, que fornece uma ligação segura para conteúdo transmitido através da Internet, está a emergir como modo habitual de aceder a conteúdo web. A maioria dos navegadores modernos exibe agora mensagens de aviso quando é utilizado HTTP ao invés de HTTPS. Devido a esta norma emergente, a partir da atualização de junho de 2018 ao ArcGIS Online, será necessário que os seus Story Maps utilizem HTTPS.",
+      "s1p2": "Em termos práticos, isto significa que um Story Map e todo o respetivo conteúdo (incluindo imagens, camadas, aplicações incorporadas e sites web) tem de ser acedido através de ligações que começam com HTTPS ao invés de HTTP. Isto garante uma experiência de maior qualidade para os seus leitores, já que a maioria dos navegadores web indicarão que as suas histórias são seguras.",
+      "s2h1": "O que tenho de fazer?",
+      "s2p1": "A Esri está a trabalhar para que esta transição seja simples para autores e leitores de Story Maps. Encontram-se agora disponíveis ferramentas, nos builders de Story Maps e em As Minhas Histórias, que o ajudam a encontrar conteúdo inseguro (HTTP) nas suas histórias e oferecem recomendações sobre como lidar com isso. Por favor, verifique se as suas histórias têm conteúdo inseguro e atualize para HTTPS antes de junho de 2018.",
+      "action1": "Fechar",
+      "action2": "Verificar as minhas histórias agora",
+      "action3": "Obter mais informações",
+      "floatingNotification": "Esta história contém conteúdo inseguro (HTTP). Por favor, reveja e corrija estes problemas."
     }
   }
 });

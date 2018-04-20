@@ -33,7 +33,7 @@ export default class WebSceneBuilder extends WebScene {
     }
 
     // listen to when THIS SPECIFIC map gets scanned
-    topic.subscribe('scan/scenes/' + this._instanceID, lang.hitch(this, this.checkErrors));
+    this._scanListener = topic.subscribe('scan/scenes/' + this._instanceID, lang.hitch(this, this.checkErrors));
 
     this.initBuilderUI();
 
@@ -147,7 +147,7 @@ export default class WebSceneBuilder extends WebScene {
       return sceneTitle;
     }
     else {
-      sceneItem.then(() => {
+      sceneItem.when(() => {
         sceneTitle = sceneItem.title || sceneItem.name;
         this._configTabManageScene && this._configTabManageScene.setSceneName(sceneTitle);
       });

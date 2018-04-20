@@ -6,10 +6,11 @@ import BuilderConfigTabManageMedia from './builder/TabManageMedia';
 import BuilderConfigTabWebPage from './builder/TabWebPage';
 import BuilderConfigTabAlternateMedia from './builder/TabAlternateMedia';
 import BuilderConfigTabAlternateEmpty from './builder/TabAlternateEmpty';
+import CommonHelper from 'storymaps/tpl/utils/CommonHelper';
 
 import lang from 'dojo/_base/lang';
 import topic from 'dojo/topic';
-import issues from '../../builder/Issues';
+import Issues from '../../builder/Issues';
 
 export default class WebPageBuilder extends WebPage {
 
@@ -28,7 +29,7 @@ export default class WebPageBuilder extends WebPage {
 
     this.initBuilderUI();
 
-    topic.subscribe('scan/webpages/' + this._instanceID, lang.hitch(this, this.checkErrors));
+    this._scanListener = topic.subscribe('scan/webpages/' + this._instanceID, lang.hitch(this, this.checkErrors));
   }
 
   _initConfigTabs() {
@@ -50,6 +51,8 @@ export default class WebPageBuilder extends WebPage {
         tabs.push(alternateTab);
       }
     }
+
+    this._createIssuesTab(tabs);
 
     return tabs;
   }
@@ -104,7 +107,7 @@ export default class WebPageBuilder extends WebPage {
     const errors = lang.getObject('scanResults.errors', false, this);
     const warnings = lang.getObject('scanResults.warnings', false, this);
     const alternateError = errors ? errors.find(error => error.isAlternate) : null;
-    const showWarnings = warnings && warnings.some(error => error.id === issues.content.noAlternateMedia);
+    const showWarnings = warnings && warnings.some(error => error.id === Issues.content.noAlternateMedia);
 
     if (alternateMedia) {
       alternateTab = new BuilderConfigTabAlternateMedia({
@@ -128,7 +131,11 @@ export default class WebPageBuilder extends WebPage {
   _createManageTab() {
     return new BuilderConfigTabManageMedia({
       hideRemove: this._placement == 'background',
-      showErrors: this.scanResults.errors && this.scanResults.errors.length && this.scanResults.errors.filter(error => !error.isAlternate).length
+      showErrors: this.scanResults.errors && this.scanResults.errors.filter(error => !error.isAlternate).length && this.scanResults.unfixable
     });
+  }
+
+  _makeUrlsHttps() {
+    this._webpage.url = CommonHelper.forceHttpsUrl(this._webpage.url);
   }
 }

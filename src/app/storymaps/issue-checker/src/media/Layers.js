@@ -17,7 +17,10 @@ export default class Layers extends Media {
     for (let item of options.items) {
       let itemPromise = this._checkItem({
         item: item,
-        appAccess: options.appAccess
+        appAccess: options.appAccess,
+        premiumManager: options.premiumManager,
+        orgId: options.orgId,
+        privileges: options.privileges
       });
       allPromises.push(itemPromise);
     }
@@ -43,6 +46,7 @@ export default class Layers extends Media {
         id: options.item.id,
         mediaType: 'layer',
         errors: [],
+        warnings: [],
         maps: [],
         details: {
           title: options.item.title
@@ -56,7 +60,8 @@ export default class Layers extends Media {
         layerItem: options.item,
         appAccess: options.appAccess,
         mediaType: 'layers',
-        layerResults: serviceLayer
+        layerResults: serviceLayer,
+        privileges: options.privileges
       });
     }
     else {
@@ -67,6 +72,7 @@ export default class Layers extends Media {
           id: options.item.id,
           mediaType: 'layer',
           errors: [],
+          warnings: [],
           maps: [],
           details: {
             title: options.item.title,
@@ -81,16 +87,21 @@ export default class Layers extends Media {
           return this._checkItemURLService({
             item: options.item,
             appAccess: options.appAccess,
-            layerResults: serviceLayer
+            layerResults: serviceLayer,
+            premiumManager: options.premiumManager,
+            orgId: options.orgId,
+            privileges: options.privileges
           });
         }
         else {
           let serviceLayer = new LayerCheckedItem(options.item.id);
 
           return this._checkURLService({
-            item: options.item,
+            layer: options.item,
             appAccess: options.appAccess,
-            layerResults: serviceLayer
+            layerResults: serviceLayer,
+            premiumManager: options.premiumManager,
+            orgId: options.orgId
           });
         }
       }
@@ -102,7 +113,8 @@ export default class Layers extends Media {
       layerItem: options.item,
       appAccess: options.appAccess,
       mediaType: 'layers',
-      layerResults: options.layerResults
+      layerResults: options.layerResults,
+      privileges: options.privileges
     })
     .then(results => {
       // if the AGOL item is a hosted service or service proxy, we don't need to check the URL... because it's the item that counts.
@@ -119,31 +131,33 @@ export default class Layers extends Media {
         this._removeLayerIssue(results.errors, IssueTypes.layers.unauthorized);
 
         return this._checkURLService({
-          item: options.item,
+          layer: options.item,
           appAccess: options.appAccess,
-          layerResults: results
+          layerResults: results,
+          premiumManager: options.premiumManager,
+          orgId: options.orgId
         });
       }
     });
   }
 
   static _checkURLService(options) {
-    if (options.item.layerType === 'ArcGISFeatureLayer') {
+    if (options.layer.layerType === 'ArcGISFeatureLayer') {
       return FeatureLayer.check(options);
     }
-    else if (options.item.layerType === 'ArcGISImageServiceLayer') {
+    else if (options.layer.layerType === 'ArcGISImageServiceLayer') {
       return ImageServiceLayer.check(options);
     }
-    else if (options.item.layerType === 'ArcGISTiledMapServiceLayer') {
+    else if (options.layer.layerType === 'ArcGISTiledMapServiceLayer') {
       return TiledMapServiceLayer.check(options);
     }
-    else if (options.item.layerType === 'ArcGISMapServiceLayer') {
+    else if (options.layer.layerType === 'ArcGISMapServiceLayer') {
       return DynamicMapServiceLayer.check(options);
     }
-    else if (options.item.layerType === 'VectorTileLayer') {
+    else if (options.layer.layerType === 'VectorTileLayer') {
       return VectorTileLayer.check(options);
     }
-    else if (options.item.layerType === 'GeoRSS') {
+    else if (options.layer.layerType === 'GeoRSS') {
       return GeoRSSLayer.check(options);
     }
     else {

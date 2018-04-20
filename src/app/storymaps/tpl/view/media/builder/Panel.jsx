@@ -27,7 +27,7 @@ export default class BuilderConfig {
     this._onToggle = params.onToggle;
     this._onAction = params.onAction;
     this._closeBtnStyle = params.closeBtnStyle;
-    this._selectedTab = this._tabs[0];
+    this._selectedTab = this._selectDefaultTab();
 
     this.selectedClass = 'selected';
 
@@ -37,10 +37,12 @@ export default class BuilderConfig {
   refreshTabs(tabs) {
     this._tabs = tabs;
 
-    this._selectedTab = this._tabs.find(tab => tab.type === this._selectedTab.type);
+    // tabs can come and go... so if the previously-selected tab is no longer here, we'll just select the default tab
+    this._selectedTab = this._tabs.find(tab => tab.type === this._selectedTab.type) || this._selectDefaultTab();
 
     this._init();
   }
+
   //
   // Private
   //
@@ -57,6 +59,10 @@ export default class BuilderConfig {
       .click(this._toggleConfigPanel.bind(this));
 
     this._renderTabThumbs();
+  }
+
+  _selectDefaultTab() {
+    return this._tabs[0];
   }
 
   _renderTabThumbs() {
@@ -151,9 +157,13 @@ export default class BuilderConfig {
         overrideTab = this._tabs.find(tab => tab.type === 'manage');
       }
     }
-    // if there are warnings but NO issues, we'll show the alt media tab.
+    // if there are warnings but NO issues, we'll show the issues tab if there, otherwise alternate tab.
     else if (this._nodeMedia.hasClass('warning') || this._nodeMedia.find('.warning').length) {
-      overrideTab = this._tabs.find(tab => tab.type === 'alternate');
+      overrideTab = this._tabs.find(tab => tab.type === 'issues');
+
+      if (!overrideTab) {
+        overrideTab = this._tabs.find(tab => tab.type === 'alternate');
+      }
     }
 
     return overrideTab;

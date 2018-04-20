@@ -3,7 +3,6 @@ import ArcGISUtils from 'esri/arcgis/utils';
 import esriRequest from 'esri/request';
 import IdentityManager from 'esri/IdentityManager';
 import IssueTypes from './../IssueTypes';
-import appState from './../appState';
 
 export default class AGOLItem extends Media {
   static check(options, mediaType) {
@@ -14,7 +13,8 @@ export default class AGOLItem extends Media {
       let itemPromise = this._checkItem({
         item: item,
         appAccess: options.appAccess,
-        mediaType: mediaType
+        mediaType: mediaType,
+        privileges: options.privileges
       });
       allPromises.push(itemPromise);
     }
@@ -80,7 +80,7 @@ export default class AGOLItem extends Media {
     let canShare = this._determineCanShare(isOwner, result.itemControl);
 
     options.item.details.privileges = this._findSharingPrivileges({
-      privileges: appState.privileges,
+      privileges: options.privileges,
       canShare: canShare,
       isOwner: isOwner
     });

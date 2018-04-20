@@ -21,12 +21,14 @@
         jsapioptim: [
           'deploy/build-api-viewer.tmp',
           'deploy/build-api-builder.tmp',
+          'deploy/build-api-print.tmp',
           'jsapi-optim-modules-viewer.txt',
+          'jsapi-optim-modules-print.txt',
           'jsapi-optim-modules-builder.txt'
         ],
         fonts: [
-          'deploy/resources/common/fonts/glyphicons-*.*',
-          'deploy/resources/common/fonts/OpenSans-*.*',
+          'deploy/resources/fonts/glyphicons-*.*',
+          'deploy/resources/fonts/OpenSans-*.*',
           'deploy/resources/tpl/viewer/fonts'
         ]
       },
@@ -48,13 +50,13 @@
             /* Ignore modules of the following packages */
             dojo: 'empty:',
             esri: 'empty:',
+            esri4: 'empty:',
             dijit: 'empty:',
             dojox: 'empty:',
             dgrid: 'empty:', // Used by SelectMapWidget
             'put-selector': 'empty:', // Used by SelectMapWidget
 
             lib: '../lib/',
-            commonResources: 'storymaps/common/_resources/',
 
             /* React */
             'storymaps-react': '../../build/app/storymaps/',
@@ -138,6 +140,23 @@
               });
             }
           }
+        },
+        print: {
+          options: {
+            name: 'storymaps/' + TPL_NAME + '/BuildConfigPrint',
+            out: 'deploy/app/print-min.js',
+            onModuleBundleComplete: function(data) {
+              var modules = data.included.filter(function(value) {
+                return ! value.match(/lib-/);
+              });
+
+              fs.writeFile('deploy/build-api-print.tmp', modules.join('\n'), function(err) {
+                if (err) {
+                  console.log(err);
+                }
+              });
+            }
+          }
         }
       },
 
@@ -146,7 +165,7 @@
           stripBanners: true,
           banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - '
               + '<%= grunt.template.today("yyyy-mm-dd, hh:MM:ss TT") %> - '
-              + 'Copyright \u00A9 2016, 2017 Esri \n'
+              + 'Copyright \u00A9 2016-2018 Esri \n'
               + 'This application is released under the Apache License V2.0 by Esri http://www.esri.com/ - '
               + 'https://github.com/Esri/story-map-cascade */'
         },
@@ -157,6 +176,10 @@
         builderJS: {
           src: ['deploy/app/builder-min.js'],
           dest: 'deploy/app/builder-min.js'
+        },
+        printJS: {
+          src: ['deploy/app/print-min.js'],
+          dest: 'deploy/app/print-min.js'
         }
       },
 
@@ -173,6 +196,13 @@
           options: {
             // execute node with additional arguments
             args: ['deploy/build-api-builder.tmp', 'jsapi-optim-modules-builder.txt']
+          }
+        },
+        print: {
+          src: ['src/lib-build/js-api-optimizer.js'],
+          options: {
+            // execute node with additional arguments
+            args: ['deploy/build-api-print.tmp', 'jsapi-optim-modules-print.txt']
           }
         }
       },
@@ -194,20 +224,12 @@
             dest: 'deploy/'
           }]
         },
-        commonResources: {
-          files: [{
-            expand: true,
-            cwd: 'src/app/storymaps/common/_resources/',
-            src: ['**'],
-            dest: 'deploy/resources/common/'
-          }]
-        },
         commonResources4react: {
           files: [{
             expand: true,
-            cwd: 'src/app/storymaps/common/_resources/',
+            cwd: 'src/resources/',
             src: ['**'],
-            dest: 'build/app/storymaps/common/_resources/'
+            dest: 'build/resources/'
           }]
         },
         config: {
@@ -226,16 +248,6 @@
             dest: 'deploy/'
           }]
         },
-        /*
-        commonConfig: {
-          files: [{
-            expand: true,
-            cwd: 'src/app',
-            src: ['commonConfig.js'],
-            dest: 'deploy/app'
-          }]
-        },
-        */
         readme: {
           files: [{
             expand: true,
@@ -250,31 +262,12 @@
               cwd: 'src/lib/font-awesome/fonts/',
               src: ['**'],
               dest: 'deploy/resources/lib/font-awesome/fonts/'
-            }/*,
-
-            {
-              expand: true,
-              cwd: 'src/lib-app/bootstrap/fonts/',
-              src: ['**'],
-              dest: 'deploy/resources/lib/bootstrap/fonts/'
-            },
-            {
-              expand: true,
-              cwd: 'src/lib-app/colorbox/',
-              src: ['colorbox.css', 'images/**'],
-              dest: 'deploy/resources/lib/colorbox/'
-            },
-            {
-              expand: true,
-              cwd: 'src/lib/zero-clipboard/dist',
-              src: ['ZeroClipboard.swf'],
-              dest: 'deploy/resources/lib/zero-clipboard/'
-            }*/
+            }
           ]
         },
         jsapioptim: {
           files: [{
-            src: ['jsapi-optim-modules-viewer.txt', 'jsapi-optim-modules-builder.txt'],
+            src: ['jsapi-optim-modules-viewer.txt', 'jsapi-optim-modules-builder.txt', 'jsapi-optim-modules-print.txt'],
             dest: 'deploy/'
           }]
         },
@@ -319,7 +312,7 @@
         fonts2: {
           files: [{
             expand: true,
-            cwd: 'src/app/storymaps/common/_resources/fonts/',
+            cwd: 'src/resources/fonts/',
             src: ['OpenSans-*.*'],
             dest: 'src/lib/calcite-bootstrap/css/fonts/'
           }]
@@ -327,7 +320,7 @@
         fonts3: {
           files: [{
             expand: true,
-            cwd: 'src/app/storymaps/common/_resources/fonts/',
+            cwd: 'src/resources/fonts/',
             src: ['glyphicons-*.*'],
             dest: 'src/lib/calcite-bootstrap/css/fonts/'
           }]
@@ -376,10 +369,11 @@
           files: [{
             expand: true,
             cwd: 'src/lib/calcite-bootstrap/sass/calcite/',
-            src: ['_variables.scss',
-                  '_colors-default.scss'
+            src: [
+              '_variables.scss',
+              '_colors-default.scss'
             ],
-            dest: 'src/app/storymaps/common/_resources/styles/calcite/',
+            dest: 'src/resources/styles/calcite/',
             rename: function(dest, src) {
               var fileName = src.slice(src.lastIndexOf('/') + 1, src.lastIndexOf('.'));
               if (fileName.charAt(0) === '_') {
@@ -396,16 +390,16 @@
           src: ['deploy/app/*.css'],
           actions: [
             {
-              name: 'Common resources path',
-              search: '([\.a-zA-Z0-9]+/)*common/_resources/',
-              replace: '../resources/common/',
-              flags: 'g'
-            },
-            {
               name: 'Project images path',
               search: '../../(../)*',
               replace: '../',
               flags: 'g'
+            },
+            {
+              name: 'Remove build folder from image path',
+              // remove the root build folder... sometimes css image paths get this for some weird reason. Don't remove other build folders farther along in the path
+              search: '\.\.\/build\/',
+              replace: '../'
             },
             {
               name: 'Font Awesome path',
@@ -419,13 +413,6 @@
               replace: '../resources/lib/calcite-bootstrap/fonts/',
               flags: 'g'
             }
-            /*,
-            {
-              name: 'Bootstrap images path',
-              search: '../lib-app/bootstrap/fonts/',
-              replace: '../resources/lib/bootstrap/fonts/',
-              flags: 'g'
-            }*/
           ]
         },
         js: {
@@ -435,11 +422,6 @@
               name: 'JS isProduction flag',
               search: 'TPL_ENV_DEV',
               replace: 'TPL_ENV_PRODUCTION'
-            },
-            {
-              name: 'JS icons common',
-              search: 'app/storymaps/common/_resources/icons/',
-              replace: 'resources/common/icons/'
             }
           ]
         },
@@ -459,8 +441,7 @@
         'nls-en': {
           files: {
             src: [
-              'src/resources/**/nls/*.js',
-              'src/app/storymaps/common/_resources/nls/*.js'
+              'src/resources/**/nls/*.js'
             ]
           }
         },
@@ -472,7 +453,6 @@
           },
           files: {
             src: [
-              'src/app/storymaps/common/_resources/nls/*/*.js',
               'src/resources/**/nls/*/*.js'
             ]
           }
@@ -512,14 +492,14 @@
           }
         },
         others: {
-          files: ['src/app/**/*.js', 'src/app/**/*.css', 'src/app/**/*.html', '!src/app/storymaps/common/_resources/**/*.js'],
+          files: ['src/app/**/*.js', 'src/app/**/*.css', 'src/app/**/*.html'],
           tasks: [/*'eslint'*/],
           options: {
             livereload: true
           }
         },
         nlsforreact: {
-          files: ['src/app/storymaps/common/_resources/**/*.js'],
+          files: ['src/resources/tpl/**/nls/*.js'],
           tasks: ['copy:commonResources4react'],
           options: {
             livereload: true
@@ -541,8 +521,7 @@
         target: [
           'src/app/storymaps/**/*.js',
           'src/app/storymaps/**/*.jsx',
-          '!src/app/storymaps/common/_resources/**/*.js',
-          '!src/app/storymaps/common/utils/UniteGallery.js',
+          '!src/app/storymaps/tpl/utils/UniteGallery.js',
           // ignore the issue-checker as well as it is an external repo
           '!src/app/storymaps/issue-checker/**/*.js',
         ]
@@ -631,7 +610,6 @@
       // Copy resources
       'copy:config',
       'copy:resources',
-      'copy:commonResources',
 
       // Copy libs resources
       'copy:libsResources',

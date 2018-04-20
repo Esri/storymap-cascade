@@ -50,7 +50,26 @@ define({
         "loremBody": "Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor. Mauris consequat orci nec magna facilisis bibendum at eget libero."
       }
     },
+    "share": {
+      "btnPrivate": "Privat",
+      "btnOrg": "Organisation",
+      "btnPublic": "Öffentlich",
+      "btnEveryone": "Alle"
+    },
     "builderPanel": {
+      "builderNamePrefix": "",
+      "builderNameSuffix": "Builder",
+      "buttonSaving": "Wird gespeichert",
+      "buttonSaved": "Gespeichert",
+      "buttonError": "Speichern fehlgeschlagen",
+      "buttonShare": "Freigeben",
+      "buttonSettings": "Einstellungen",
+      "settingsLogoError": "Bei Ihrem Logo ist ein Problem aufgetreten. Klicken Sie, um weitere Informationen zu erhalten.",
+      "buttonHelp": "Fordern Sie Unterstützung an oder senden Sie Feedback über GeoNet",
+      "buttonPreview": "Story anzeigen",
+      "buttonHealth": "Statusbericht",
+      "manageStories": "Eigene Storys verwalten",
+      "closeWithPendingChange": "Möchten Sie die Aktion wirklich bestätigen? Ihre Änderungen gehen dabei verloren.",
       "coverLabel": "Überdecken",
       "creditsLabel": "Quellennachweis",
       "betaFeedback": "Feedback",
@@ -143,6 +162,195 @@ define({
         "uploadAltImage": "Alternatives Bild hinzufügen"
       }
     },
+    "mediaPicker": {
+      "browseToggle": {
+        "urls": "Link zu Inhalten",
+        "urls_short": "Verknüpfen",
+        "contentType": {
+          "error": "Keine autorisierten Daten.",
+          "imageOnly": "In diesem Teil der Story können Sie ein Bild hinzufügen.",
+          "imageAndVideo": "In diesem Teil der Story können Sie ein Bild oder Video hinzufügen.",
+          "imageVideoWebpage": "In diesem Teil der Story können Sie ein Bild, ein Video oder eine Webseite hinzufügen."
+        }
+      },
+      "browsePanel": {
+        "providers": {
+          "searchingFor": "\"${searchterm}\" wird gesucht...",
+          "searchedFor": "Suchergebnisse für \"${searchterm}\"",
+          "albumsOf": "Alben von ${username}",
+          "noPhotosFound": "Keine Fotos stimmen mit Ihrer Suche überein. Versuchen Sie es erneut.",
+          "noItemsFound": "Keine Elemente stimmen mit Ihrer Suche überein. Versuchen Sie es erneut.",
+          "noItemsInThisStory": "Dieser Story wurde noch kein Inhalt aus ArcGIS hinzugefügt.",
+          "limitReached": "Es werden 100 Elemente angezeigt. Wenn das gewünschte Element nicht gefunden wurde, können Sie es mit einer Schlagwortsuche versuchen.",
+          "galleryItems": {
+            "uploadError": "Dieses Element konnte nicht hochgeladen werden."
+          },
+          "agol": {
+            "remove1": "Löschen Sie dieses nicht verwendete Bild aus Ihrem ArcGIS-Konto.",
+            "remove2": "(Sie müssen es erneut hochladen, wenn Sie es später verwenden möchten.)",
+            "removeFailed": "Entfernen Sie dieses nicht aufrufbare Bild aus dieser Liste.",
+            "modified": "Geändert am ${date}",
+            "uploaded": "Hochgeladen am ${date}",
+            "contentByAuthor": "${contentType} nach ${author}"
+          },
+          "googlePhotos": {
+            "searchAndBrowse": "${Picasa} oder ${Google+} nach Fotos durchsuchen"
+          },
+          "flickr": {
+            "photostream": "Photostream",
+            "searchAndBrowse": "${Flickr} nach Fotos durchsuchen",
+            "captionStarter": "Foto von ${USERNAME} auf ${Flickr}"
+          },
+          "unsplash": {
+            "searchAndBrowse": "${Unsplash} nach Fotos durchsuchen",
+            "photoBy": "Foto nach ${username}",
+            "userLink": "Zur ${Unsplash}-Seite von ${username} wechseln",
+            "captionStarter": "Foto von ${USERNAME} auf ${Unsplash}"
+          },
+          "urlContent": {
+            "uploadHeaders": {
+              "generic": "Link zu Inhalt im Web",
+              "imageOnly": "Link zu einem Bild im Web",
+              "imageAndVideo": "Link zu einem Bild oder Video im Web"
+            },
+            "linkText": {
+              "imageOnly": "Im Feld oben können Sie einen direkten Link zu einem Foto bereitstellen.",
+              "imageAndVideo1": "Im Feld oben können Sie einen Link oder iframe-Code für ein Video aus ${YouTube} oder ${Vimeo} einfügen.",
+              "imageAndVideo2": "Sie können auch einen direkten Link zu einem Foto bereitstellen.",
+              "imageVideoWebpage1": "Im Feld oben können Sie einen Link oder iframe-Code für Webinhalt wie ein dynamisches Diagramm oder ein Video aus ${YouTube} oder ${Vimeo} einfügen.",
+              "imageVideoWebpage2": "Sie können auch einen direkten Link zu einem Foto, einem Video, einer Audiodatei, einer Webseite oder einer Web-App bereitstellen.",
+              "ender": "Verwenden Sie immer sichere Links (HTTPS). Wenn der Inhalt HTTPS nicht unterstützt, fügen Sie im Text der Story einen entsprechenden Link hinzu, damit die Leser ihn auf einer neuen Browser-Registerkarte anzeigen können.",
+              "httpsError": "Link muss mit HTTPS beginnen"
+            },
+            "embedProtocol": {
+              "embedProtocolLabel": "Seite über eine sichere Verbindung (HTTPS) laden",
+              "embedProtocolWarning1": "Wenn diese Seite nicht in Ihre Story geladen werden kann, kann sie aus Gründen der Websicherheit nicht eingebettet werden.",
+              "embedProtocolWarning2": "Wenn diese Seite nicht in Ihre Story geladen werden kann, deaktivieren Sie diese Option, und versuchen Sie es erneut. Wenn die Seite trotzdem nicht geladen werden kann, kann sie aus Gründen der Websicherheit nicht eingebettet werden.",
+              "embedProtocolWarning3": "Alternativ können Sie Ihrer Zusammenfassung einen Link hinzufügen, um die Seite in einer neuen Browser-Registerkarte zu öffnen. ${linkText}",
+              "linkText": "Weitere Informationen."
+            },
+            "placeholder": "${https://}... oder ${<iframe>}",
+            "uploadErrors": {
+              "generic": "Bei der eingegebenen Adresse ist ein Fehler aufgetreten. Versuchen Sie es erneut.",
+              "imageOnly1": "Sie müssen in diesem Teil der Story ein Bild verwenden.",
+              "imageOnly2": "Stellen Sie einen Link zu einem Bild (.jpg, .png, .gif) bereit, oder wählen Sie ein Bild von ${ArcGIS}, ${Flickr}, ${Google+} oder ${Unsplash} aus.",
+              "imageAndVideo1": "Sie müssen in diesem Teil der Story ein Bild oder Video verwenden.",
+              "imageAndVideo2": "Stellen Sie einen Link zu einem Bild (.jpg, .png, .gif) oder Video auf ${YouTube} oder ${Vimeo} bereit, oder wählen Sie ein Bild von ${ArcGIS}, ${Flickr}, ${Google+} oder ${Unsplash} aus.",
+              "badFormat": "Der Link zur hinzuzufügenden Datei ist falsch formatiert.",
+              "inaccessible": "Die Datei, die Sie hinzufügen möchten, fehlt oder es kann nicht darauf zugegriffen werden.",
+              "tryAgain": "Überprüfen Sie die Adresse, und versuchen Sie es erneut.",
+              "mediaTypes": {
+                "VIDEO": "Videosammlung",
+                "IMAGE": "Bild",
+                "generic": "Medien"
+              }
+            }
+          }
+        },
+        "sidePanel": {
+          "googlePhotos": {
+            "placeholder": "E-Mail-Adresse oder ${Picasa}/${Google+}-ID",
+            "helpText": "Sie können Ihrer Story Fotos hinzufügen, die in ${Picasa} oder ${Google+} hochgeladen wurden. Weitere Informationen dazu, wie Sie in Ihrem ${Google}-Konto gespeicherte Bilder in Ihren Storys verwenden, finden Sie unter ${helpLinkText}.",
+            "helpLinkText": "Weitere Informationen",
+            "cannotFindUser": "${username} kann nicht gefunden werden. Versuchen Sie es erneut."
+          },
+          "unsplash": {
+            "placeholder": "Fotos suchen",
+            "aboutText": "${Unsplash} ist eine kuratierte Sammlung kostenloser, qualitativ hochwertiger Fotos.",
+            "copyrightText": "Alle in ${Unsplash} veröffentlichten Fotos sind unter der ${CC0}-Lizenz lizenziert. Weitere Informationen finden Sie unter ${moreInfoLink}.",
+            "moreInfoLink": "hier"
+          },
+          "flickr": {
+            "searchType": {
+              "account": "${Flickr}-Konto",
+              "text": "${Flickr} gesamt"
+            },
+            "placeholders": {
+              "user": "Konto suchen",
+              "userText": "Dieses Konto nach Fotos durchsuchen",
+              "text": "Fotos suchen"
+            },
+            "errors": {
+              "cannotFindUser": "${username} kann nicht gefunden werden.",
+              "noUserPhotos": "${username} verfügt über keine öffentlichen Fotos.",
+              "didYouMean": "Meinten Sie ${username}?",
+              "generalUserError": "Bei der Suche nach ${username} ist ein Fehler aufgetreten."
+            },
+            "licenses": {
+              "licenseLabel": "Lizenz: ",
+              "public": "Öffentliche Domäne",
+              "commercial": "Für kommerzielle Verwendung geeignet",
+              "nonCommercial": "Für nicht kommerzielle Verwendung geeignet",
+              "reserved": "Alle Rechte vorbehalten",
+              "any": "Jede Lizenz"
+            }
+          },
+          "agol": {
+            "searchLocation": {
+              "thisStory": "Diese Story",
+              "agol": "ArcGIS Online",
+              "portalArcGIS": "Portal for ArcGIS",
+              "portal": "Portal",
+              "myOrg": "${orgname}-Organisation",
+              "myContent": "Eigene Inhalte"
+            },
+            "createContent": {
+              "createNewMap": "Eine neue Karte erstellen",
+              "or": "OR",
+              "dragAndDrop": "Bild(er) hier ablegen",
+              "uploadImage": "Bilder suchen",
+              "agolInfo": "Bilder werden in Ihrem ArcGIS-Konto gespeichert und können nur innerhalb Ihrer Story abgerufen werden.",
+              "saveBeforeUpload": "Nachdem Sie diese Story gespeichert haben, können Sie hier Bilder in ArcGIS hochladen.",
+              "fileTypesImage": "Unterstützte Dateitypen: .png, .jpeg, .jpg, .gif, .bmp"
+            },
+            "filterAndSort": {
+              "webmap": "Webkarte",
+              "webscene": "Webszene",
+              "image": "Bilddaten",
+              "date": "Datum",
+              "sortByDate": "Nach Datum sortieren",
+              "title": "Titel",
+              "sortByTitle": "Nach Titel sortieren",
+              "views": "Ansichten",
+              "search": "Nach Schlagwort oder ID suchen"
+            }
+          }
+        }
+      }
+    },
+    "mapEditor": {
+      "dialogTitle": "Karte bearbeiten",
+      "unauthorizedDomain": "Sie befinden sich nicht in einer Domäne, die für die Verwendung des Karten-Editors autorisiert ist",
+      "loading": "Bitte warten. Der Karten-Editor wird geladen.",
+      "saving": "Karte wird gespeichert",
+      "success": "Karte wurde gespeichert",
+      "cancelTitle": "Alle nicht gespeicherten Änderungen verwerfen?",
+      "errorSave": "Die Karte kann nicht gespeichert werden. Versuchen Sie es erneut.",
+      "loadFail": "Der Karten-Editor kann nicht geladen werden",
+      "close": "Schließen",
+      "save": "Speichern",
+      "confirm": "Ja, Karte schließen",
+      "deny": "Nein, weiterarbeiten"
+    },
+    "textEditor": {
+      "placeholder": {
+        "continueStory": "Setzen Sie Ihre Story hier fort..."
+      },
+      "blockAdd": {
+        "text": "Text",
+        "media": "Medien",
+        "title": "Titel",
+        "immersive": "Immersiv"
+      },
+      "link": {
+        "invite": "Fügen oder geben Sie einen Link ein..."
+      },
+      "color": {
+        "choose": "Auswählen",
+        "cancel": "Abbrechen",
+        "clear": "Farbe löschen"
+      }
+    },
     "imageGallery": {
       "addImage": "Ein anderes Bild hinzufügen",
       "moveBackward": "Vorwärts bewegen",
@@ -222,13 +430,55 @@ define({
         "noAltImage": "Medien funktionieren möglicherweise auf mobilen Geräten nicht",
         "noAltImageUnsupported": "Auf mobilen Geräten nicht unterstützte Medien",
         "noAltImageWarning": "Medien funktionieren möglicherweise auf mobilen Geräten nicht",
-        "altImageBroken": "Auf das für diese Medien definierte alternative Bild kann nicht zugegriffen werden."
+        "altImageBroken": "Auf das für diese Medien definierte alternative Bild kann nicht zugegriffen werden.",
+        "httpMedia": "Unsichere Medien",
+        "httpContent": "Unsicherer Inhalt"
       },
       "contentWarnings": {
         "noAltImage": "Sie sollten die Story vor der Freigabe auf mobilen Geräten testen. Wenn diese Medien nicht wie erwartet funktionieren, verwenden Sie die Schaltfläche unten, um ein alternatives Bild hinzuzufügen, das bei der Anzeige Ihrer Story auf einem Smartphone oder Tablet dargestellt wird.",
         "noAltImageUnsupported": "Diese Medien funktionieren auf mobilen Geräten nicht. Verwenden Sie die Schaltfläche unten, um ein alternatives Bild hinzuzufügen, das bei der Anzeige Ihrer Story auf einem Smartphone oder Tablet dargestellt wird.",
         "noAltImageWarning": "Sie sollten die Story vor der Freigabe auf mobilen Geräten testen. Wenn diese Medien nicht wie erwartet funktionieren, verwenden Sie die Schaltfläche unten, um ein alternatives Bild hinzuzufügen, das bei der Anzeige Ihrer Story auf einem Smartphone oder Tablet dargestellt wird.",
         "noAltImageAlt": "Dieser Medientyp wird auf mobilen Geräten nicht unterstützt oder funktioniert auf mobilen Geräten möglicherweise nicht richtig. Legen Sie auf der Registerkarte \"Mobil\" ein alternatives Bild fest, das bei der Anzeige der Story auf einem Smartphone oder Tablet dargestellt wird."
+      },
+      "descriptions": {
+        "httpAudioUnfixable": "Dieses Audio unterstützt HTTPS nicht. Entfernen Sie es aus der Story, oder ersetzen Sie es durch einen Link.",
+        "httpAudioUncheckable": "Dieses Audio hat eine unsichere URL (HTTP). Klicken Sie auf die unten stehende Schaltfläche, um für dieses Audio eine sichere HTTPS-URL zu verwenden. Falls dies nicht funktioniert, entfernen Sie das Audio aus der Story oder ersetzen Sie es durch einen Hyperlink.",
+        "httpAudioFixable": "Dieses Audio hat eine unsichere URL (HTTP). Klicken Sie auf die unten stehende Schaltfläche, um für dieses Audio eine sichere HTTPS-URL zu verwenden.",
+        "httpWebpageUnfixable": "Diese Webseite unterstützt HTTPS nicht. Entfernen Sie sie aus der Story, oder ersetzen Sie sie durch einen Screenshot oder Link.",
+        "httpWebpageUncheckable": "Diese Webseite hat eine unsichere URL (HTTP). Klicken Sie auf die unten stehende Schaltfläche, um für diese Webseite eine sichere HTTPS-URL zu verwenden. Falls dies nicht funktioniert, entfernen Sie die Webseite aus der Story oder ersetzen Sie sie durch einen Screenshot oder Hyperlink.",
+        "httpWebpageFixable": "Diese Webseite hat eine unsichere URL (HTTP). Klicken Sie auf die unten stehende Schaltfläche, um für diese Webseite eine sichere HTTPS-URL zu verwenden.",
+        "httpVideoUnfixable": "Dieses Video unterstützt HTTPS nicht. Entfernen Sie es aus der Story, oder ersetzen Sie es durch einen Screenshot oder Link.",
+        "httpVideoUncheckable": "Dieses Video hat eine unsichere URL (HTTP). Klicken Sie auf die unten stehende Schaltfläche, um für dieses Video eine sichere HTTPS-URL zu verwenden. Falls dies nicht funktioniert, entfernen Sie das Video aus der Story oder ersetzen Sie es durch einen Screenshot oder Hyperlink.",
+        "httpVideoFixable": "Dieses Video hat eine unsichere URL (HTTP). Klicken Sie auf die unten stehende Schaltfläche, um für dieses Video eine sichere HTTPS-URL zu verwenden.",
+        "httpImageUnfixable": "Dieses Bild unterstützt HTTPS nicht. Entfernen Sie es aus der Story, oder ersetzen Sie es durch einen Link.",
+        "httpImageUncheckable": "Dieses Bild hat eine unsichere URL (HTTP). Klicken Sie auf die unten stehende Schaltfläche, um für dieses Bild eine sichere HTTPS-URL zu verwenden. Falls dies nicht funktioniert, entfernen Sie das Bild aus der Story oder ersetzen Sie es durch einen Hyperlink.",
+        "httpImageFixable": "Dieses Bild hat eine unsichere URL (HTTP). Klicken Sie auf die unten stehende Schaltfläche, um für dieses Bild eine sichere HTTPS-URL zu verwenden.",
+        "httpLayer": "Dieser Layer hat eine unsichere URL (HTTP).",
+        "inaccessibleLogo": "Auf dieses Logo kann nicht zugegriffen werden. Ersetzen Sie es durch ein anderes Bild.",
+        "httpLogoUnfixable": "Dieses Logo unterstützt HTTPS nicht. Ersetzen Sie es durch ein anderes Bild.",
+        "httpLogoFixable": "Dieses Logo hat eine unsichere URL (HTTP). Verwenden Sie für das Logo eine HTTPS-URL.",
+        "httpLogoUncheckable": "Dieses Logo hat eine unsichere URL (HTTP). Verwenden Sie für das Logo eine HTTPS-URL, oder ersetzen Sie es durch ein anderes Bild."
+      },
+      "tooltips": {
+        "httpAudioFixable": "Klicken Sie auf die Schaltfläche, um für dieses Audio eine sichere HTTPS-URL zu verwenden.",
+        "httpAudioUncheckable": "Verwenden Sie für dieses Audio eine sichere HTTPS-URL. Falls dies nicht funktioniert, entfernen Sie das Audio aus der Story oder ersetzen Sie es durch einen Link.",
+        "httpWebpageFixable": "Klicken Sie auf die Schaltfläche, um für diese Webseite eine sichere HTTPS-URL zu verwenden.",
+        "httpWebpageUncheckable": "Verwenden Sie für diese Webseite eine sichere HTTPS-URL. Falls dies nicht funktioniert, entfernen Sie die Webseite aus der Story oder ersetzen Sie sie durch einen Screenshot oder Link.",
+        "httpVideoFixable": "Klicken Sie auf die Schaltfläche, um für dieses Video eine sichere HTTPS-URL zu verwenden.",
+        "httpVideoUncheckable": "Verwenden Sie für dieses Video eine sichere HTTPS-URL. Falls dies nicht funktioniert, entfernen Sie das Video aus der Story oder ersetzen Sie es durch einen Screenshot oder Link.",
+        "httpImageFixable": "Klicken Sie auf die Schaltfläche, um für dieses Bild eine sichere HTTPS-URL zu verwenden.",
+        "httpImageUncheckable": "Verwenden Sie für dieses Bild eine sichere HTTPS-URL. Falls dies nicht funktioniert, entfernen Sie das Bild aus der Story oder ersetzen Sie es durch einen Link.",
+        "httpLayerMyMap": "Aktualisieren Sie den Layer auf der Elementseite der Karte, um HTTPS zu verwenden. Falls der Layer nicht aktualisiert werden kann, entfernen Sie ihn aus der Karte.",
+        "httpLayerNotMyMap": "Erstellen Sie eine Kopie der Karte, und aktualisieren Sie den Layer, um HTTPS zu verwenden. Falls der Layer nicht aktualisiert werden kann, entfernen Sie ihn aus der Karte.",
+        "clickLearnMore": "Klicken Sie, um weitere Informationen zu erhalten."
+      },
+      "fixButtons": {
+        "agolItemPage": "Elementseite",
+        "openTheMap": "Karte öffnen",
+        "updateAudio": "Audio-URL korrigieren",
+        "updateWebpages": "Webseiten-URL korrigieren",
+        "updateVideos": "Video-URL korrigieren",
+        "updateImages": "Bild-URL korrigieren"
       },
       "mapIssues": {
         "fixButton": "Probleme beheben",
@@ -291,6 +541,31 @@ define({
         "notHealthy": "Probleme beheben",
         "warnings": "Warnungen anzeigen"
       }
+    },
+    "saveErrorSocial": {
+      "title": "Freigabe für Social Media",
+      "panel1": "Ihre Story wird in Social Media möglicherweise nicht ordnungsgemäß dargestellt, da der Titel Ihres ArcGIS-Webanwendungselements nicht mit dem Titel der Story übereinstimmt.",
+      "panel1tooltip": "Wenn Sie einen Titel, eine Zusammenfassung und eine Miniaturansicht definieren, sieht Ihre Story wie folgt aus:",
+      "panel2": "Welchen Titel möchten Sie in den Social Media verwenden?",
+      "panel2q1": "Titel der Story (empfohlen)",
+      "panel2q1tooltip": "Wenn Sie diese Option wählen, wird der Elementtitel in den Titel Ihrer Story geändert und alle weitere Änderungen im Builder werden synchronisiert.",
+      "panel2q2": "Elementtitel",
+      "panel3": "Wenn Sie das Aussehen Ihrer Story in den Social Media zusätzlich verbessern möchten, fügen Sie mithilfe von ${MYSTORIES} eine Zusammenfassung und eine Miniaturansicht hinzu.",
+      "panel4": "Für diese Story keine Warnmeldung mehr anzeigen",
+      "save": "Speichern",
+      "mystories": "Eigene Storys"
+    },
+    "httpsTransitionMessage": {
+      "bannerMsg": "Wichtige Informationen zur Websicherheit von Story-Maps",
+      "s1h1": "Esri verbessert die Sicherheit von Story-Maps",
+      "s1p1": "Das Internet bildet den Rahmen für Ihre Story-Maps, und daher arbeitet die Web-Community stets daran, bessere Sicherheitsvorkehrungen zu entwickeln und umzusetzen. HTTPS, womit eine sichere Verbindung für im Internet übermittelte Inhalte hergestellt wird, setzt sich zunehmend als die Standardmethode für den Zugriff auf Webinhalte durch. Der Großteil der modernen Browser zeigt nun eine Warnmeldung an, wenn HTTP anstelle von HTTPS verwendet wird. Aufgrund des neuen Standards ist ab der ArcGIS Online-Aktualisierung im Juni 2018 die Verwendung von HTTPS in Ihren Story-Maps verpflichtend.",
+      "s1p2": "Kurz gesagt: Dies bedeutet, dass auf eine Story-Map und alle zugehörigen Inhalte (Bilder, Layer, eingebettete Apps und Websites) über HTTPS-Links anstelle von HTTP-Links zugegriffen werden muss. Auf diese Weise wird eine gute Benutzererfahrung für Ihre Leser sichergestellt, da die meisten Webbrowser anzeigen, dass Ihre Storys sicher sind.",
+      "s2h1": "Was muss ich tun?",
+      "s2p1": "Esri arbeitet daran, einen einfachen Übergang für Autoren und Leser von Story-Maps sicherzustellen. In den Story Map Buildern und in \"Eigene Storys\" stehen nun Werkzeuge zur Verfügung, mit denen Sie unsichere Inhalte (HTTP) in Ihren Storys finden können. Es werden ebenfalls Empfehlungen für die Problembehebung gegeben. Überprüfen Sie Ihre Storys auf unsichere Inhalte, und wechseln Sie vor der Aktualisierung im Juni 2018 zu HTTPS.",
+      "action1": "Schließen",
+      "action2": "Eigene Storys jetzt überprüfen",
+      "action3": "Weitere Informationen",
+      "floatingNotification": "Diese Story enthält unsichere Inhalte (HTTP). Überprüfen und beheben Sie diese Probleme."
     }
   }
 });

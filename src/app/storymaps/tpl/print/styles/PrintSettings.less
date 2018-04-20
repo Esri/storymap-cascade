@@ -1,0 +1,124 @@
+@import '../../view/ui/common-variables';
+
+/*
+  @gray-lightest = gray_300 = #e0e0e0;
+  @gray-light = gray_400 = #a9a9a9
+  @gray = gray_450 = #959595
+  @gray-dark = gray_500 = #828282;
+  @gray-darker = gray_650 = #4c4c4c; -- changed from default 550
+  @gray-black = (custom) = #0e0e0e;
+ */
+
+@gray-dark2: @Calcite_Gray_600; // #595959;
+
+.print-settings {
+  padding: 1.5em 3em;
+  font-family: 'open_sans', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+  margin-bottom: 1em;
+  line-height: 1.5em;
+  position: relative;
+  background: @gray-lightest;
+  color: @gray-dark2;
+
+  .flex-wrapper {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  input[type="checkbox"] {
+    margin: 0 8px 0 0;
+    vertical-align: middle;
+  }
+
+  label {
+    font-weight: bold;
+    color: @gray-black;
+    font-size: 13px;
+  }
+
+  .print-warning {
+    font-size: 1.25em;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 15px;
+  }
+
+  .instructions {
+    font-size: 0.8em;
+    line-height: 150%;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+
+  .heading {
+    font-size: 18px;
+    line-height: 100%;
+    margin-bottom: 12px;
+  }
+
+  .options {
+    max-width: 55%;
+    padding-right: 2em;
+    margin-right: 2em;
+    border-right: 1px solid @gray-light;
+    margin-bottom: 3em; // vertical space for print button to sit below
+
+    label {
+      display: block;
+      padding-left: 20px;
+      text-indent: -20px;
+      margin-top: 3px;
+    }
+
+  }
+
+  .section-numbers {
+
+    label {
+      display: inline-block;
+      margin: 0;
+      font-weight: bold;
+    }
+    input {
+      width: 24px;
+      height: 24px;
+      margin: 0 5px;
+      text-align: center;
+    }
+
+    .section-range {
+      margin-top: 16px;
+    }
+
+    .btn-apply {
+      margin-top: 2px;
+      padding: 2px 5px;
+    }
+
+    .btn-reset {
+      margin-top: 5px;
+      display: block;
+    }
+
+  }
+
+  .print-btn-wrapper {
+    align-self: flex-end;
+    flex-grow: 2;
+    text-align: right;
+    margin-right: -1em;
+  }
+
+  .print-btn {
+    font-size: 1.25em;
+  }
+
+  .half-width {
+    display: inline-block;
+    width: 49%;
+  }
+
+  @media print {
+    display: none;
+  }
+}

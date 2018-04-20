@@ -14,39 +14,39 @@
     margin-top: 25px;
   }
 
-  &.error {
-    .loading-error {
-      top: 5px;
-      z-index: 1;
-      margin-left: 0;
-      left: 16.5%;
-      width: 67%;
-      text-align: center;
-    }
-    audio {
-      margin-top: 50px;
-    }
-  }
-
   .media-cfg-invite .builder-invite-background {
     z-index: 2;
   }
 
 }
 
+.block.block-audio.error .block-media {
+  .loading-error {
+    top: 5px;
+    z-index: 1;
+    margin-left: 0;
+    left: 16.5%;
+    width: 67%;
+    text-align: center;
+  }
+  audio {
+    margin-top: 50px;
+  }
+}
+
 .imm-panel .block.block-audio .block-media {
   text-align: center;
+}
 
-  &.error {
-    .loading-error {
-      width: 100%;
-      text-align: center;
-      left: 0;
-      margin-left: 0;
-      font-size: 0.8em;
-      top: 5px;
-      text-shadow: none;
-      padding: 0 20px;
-    }
+.imm-panel .block.block-audio.error .block-media {
+  .loading-error {
+    width: 100%;
+    text-align: center;
+    left: 0;
+    margin-left: 0;
+    font-size: 0.8em;
+    top: 5px;
+    text-shadow: none;
+    padding: 0 20px;
   }
 }

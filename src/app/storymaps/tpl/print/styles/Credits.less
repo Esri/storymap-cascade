@@ -1,0 +1,50 @@
+@import '../../view/ui/common-variables';
+
+.credits {
+  position: relative;
+  border-top: 1px solid gray;
+  margin-bottom: 1em;
+
+  .block {
+    text-align: center;
+    width: 70%;
+    margin: 1em auto;
+
+    a {
+      color: @brand-info;
+    }
+  }
+
+  .credit-row {
+    width: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    margin: 0.8em 0;
+  }
+
+  .credit-text {
+    display: flex;
+    justify-content: flex-end;
+    text-align: right;
+  }
+
+  .credit-pipe {
+    flex: 0 0 0;
+    align-self: stretch;
+    border-left: 1px solid gray;
+    margin: 0 1em;
+    margin-bottom: -1em;
+  }
+
+  .credit-link {
+    flex: 1 1 0;
+    word-break: break-word;
+    text-align: left;
+  }
+
+  .credit-text, .credit-link {
+    flex: 1 1 0;
+    padding: 2px 0;
+  }
+}

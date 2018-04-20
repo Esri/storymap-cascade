@@ -5,7 +5,6 @@ import Maps from './media/Maps';
 import Result from './Result';
 import NormalizeHelper from './helpers/NormalizeHelper';
 import IssueTypes from './IssueTypes';
-import appState from './appState';
 
 export default class Share {
   static shareApp(options) {
@@ -24,7 +23,7 @@ export default class Share {
       }));
 
       if (options.media.mapIDs) {
-        promises.push(this._shareMaps(options.media, options.sharingLevel));
+        promises.push(this._shareMaps(options.media, options.sharingLevel, options.premiumManager, options.orgId, options.privileges));
       }
 
       Promise.all(promises)
@@ -50,7 +49,7 @@ export default class Share {
     });
   }
 
-  static _shareMaps(media, sharingLevel) {
+  static _shareMaps(media, sharingLevel, premiumManager, orgId, privileges) {
     return new Promise(resolve => {
       // in order to share the maps, we need to know what maps need sharing, and which we CAN share. Quickest way to find this out is by scanning the maps.
       // prep the data for the scan.
@@ -60,7 +59,10 @@ export default class Share {
       // We're "checking" the map against the sharing level we want to share the app to -- quickest way to find out which maps need to/can be shared with the app.
       Maps.check({
         items: allMaps,
-        appAccess: sharingLevel
+        appAccess: sharingLevel,
+        premiumManager,
+        orgId,
+        privileges
       })
       .then(mapResults => {
         // share only those maps with the correct error.
@@ -81,7 +83,8 @@ export default class Share {
             this._shareLayer({
               layer: layer,
               promises: promises,
-              sharingLevel: sharingLevel
+              sharingLevel: sharingLevel,
+              premiumManager: premiumManager
             });
           }
         }
@@ -106,7 +109,7 @@ export default class Share {
 
     if (options.layer.errors.indexOf(IssueTypes.layers.subscriptionContent) !== -1) {
       // this only works for doing one at a time, as the promise.push takes in a sharing of a single item.
-      options.promises.push(appState.premiumManager.addProxies([
+      options.promises.push(options.premiumManager.addProxies([
         {
           id: options.layer.id,
           url: options.layer.details.url

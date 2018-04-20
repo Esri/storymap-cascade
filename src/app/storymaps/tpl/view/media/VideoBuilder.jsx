@@ -8,11 +8,13 @@ import BuilderConfigTabManageMedia from './builder/TabManageMedia';
 import BuilderConfigTabSectionAppearance from './builder/TabSectionAppearance';
 import BuilderConfigTabAlternateMedia from './builder/TabAlternateMedia';
 import BuilderConfigTabAlternateEmpty from './builder/TabAlternateEmpty';
+import CommonHelper from 'storymaps/tpl/utils/CommonHelper';
 
 import lang from 'dojo/_base/lang';
 import topic from 'dojo/topic';
 
-import issues from '../../builder/Issues';
+import issues from 'issue-checker/IssueTypes';
+import cascadeIssues from '../../builder/Issues';
 import i18n from 'lib-build/i18n!resources/tpl/builder/nls/app';
 
 const text = i18n.builder.mediaErrors;
@@ -50,7 +52,7 @@ export default class VideoBuilder extends Video {
     this.initBuilderUI();
 
     // we subscribe to the scan change for this SPECIFIC video only (hence the scan/video/videoID pattern).
-    topic.subscribe('scan/videos/' + this._instanceID, lang.hitch(this, this.checkErrors));
+    this._scanListener = topic.subscribe('scan/videos/' + this._instanceID, lang.hitch(this, this.checkErrors));
   }
 
   load(params = {}) {
@@ -115,6 +117,8 @@ export default class VideoBuilder extends Video {
       }
     }
 
+    this._createIssuesTab(tabs);
+
     return tabs;
   }
 
@@ -142,6 +146,14 @@ export default class VideoBuilder extends Video {
   _onConfigChange() {
     this._applyConfig();
     super._onConfigChange();
+
+    if (this._placement === 'background' && this._sectionType === 'immersive' && this._isVideoLoaded) {
+      this._node.find('.toggle-mute-button').toggleClass('mute-button-active', this._video.options.audio !== 'muted');
+
+      if (this._video.options.audio === 'muted') {
+        this._mute();
+      }
+    }
   }
 
   _createAlternateTab(sectionType) {
@@ -150,7 +162,7 @@ export default class VideoBuilder extends Video {
     const errors = lang.getObject('scanResults.errors', false, this);
     const warnings = lang.getObject('scanResults.warnings', false, this);
     let alternateError = errors ? errors.find(error => error.isAlternate) : null;
-    let showWarnings = warnings && warnings.some(error => error.id === issues.content.noAlternateMedia);
+    let showWarnings = warnings && warnings.some(error => error.id === cascadeIssues.content.noAlternateMedia);
 
     if (alternateMedia) {
       alternateTab = new BuilderConfigTabAlternateMedia({
@@ -178,7 +190,11 @@ export default class VideoBuilder extends Video {
     return new BuilderConfigTabManageMedia({
       hideRemove: this._placement == 'background',
       // show errors if there are errors besides alt media ones
-      showErrors: this.scanResults.errors && this.scanResults.errors.length && this.scanResults.errors.filter(error => !error.isAlternate).length
+      showErrors: this.scanResults.errors && this.scanResults.errors.filter(error => !error.isAlternate).length && this.scanResults.unfixable
     });
+  }
+
+  _makeUrlsHttps() {
+    this._video.url = CommonHelper.forceHttpsUrl(this._video.url);
   }
 }

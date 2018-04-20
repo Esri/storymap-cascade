@@ -37,6 +37,7 @@ export default class Video extends Media {
     this._videoid = video.id;
 
     this._soundLevelPreImmersive = null;
+    this._isMuted = false;
     this._placement = null;
     this._videoPlayer = null;
     this._loadDeferred = null;
@@ -94,7 +95,8 @@ export default class Video extends Media {
       else {
         output += viewBackground({
           domId: this._domID,
-          videoId: this.id
+          videoId: this.id,
+          muteUnmuteString: i18n.viewer.media.videoMuteUnmute
         });
       }
     }
@@ -120,10 +122,24 @@ export default class Video extends Media {
       }
       else {
         this._node = params.container.find('.video[data-id="' + this.id + '"]').parent().parent();
+        this._node.find('.toggle-mute-button').tooltip();
       }
     }
 
     this._nodeMedia = this._node.find('.video-player');
+
+    this._node.find('.toggle-mute-button').on('click', function() {
+      if (!this._isVideoLoaded) {
+        return;
+      }
+
+      if (this._isMuted) {
+        this._unMute();
+      }
+      else {
+        this._mute();
+      }
+    }.bind(this));
 
     this._applyConfig();
   }
@@ -147,20 +163,10 @@ export default class Video extends Media {
     options.size = options.size || 'small';
 
     if (this._isVideoLoaded && options.audio) {
-      var isMuted = this._video.options.audio == 'muted',
-          volume = isMuted ? 0 : 1;
+      var isMuted = this._video.options.audio == 'muted';
+      var volume = isMuted ? 0 : 1;
 
-      try {
-        if (this._video.source == 'vimeo') {
-          this._videoPlayer.api('setVolume', volume);
-        }
-        else {
-          this._videoPlayer.setVolume(volume * 100);
-        }
-      }
-      catch (e) {
-        console.error(e);
-      }
+      this._setVolume(volume);
     }
 
     super._applyConfig(options);
@@ -182,6 +188,11 @@ export default class Video extends Media {
       // TODO: need a more robust system like maps
       this._isVideoLoaded = true;
       return this._loadDeferred;
+    }
+
+    // show the "mute/unmute" button if this is a newly-built video in immersive section with "button to enable" setting for sound
+    if (this._isBuilderAdd && this._sectionType === 'immersive') {
+      this._node.find('.toggle-mute-button').toggleClass('mute-button-active', params.isActive && this._video.options.audio !== 'muted');
     }
 
     // https://developers.google.com/youtube/iframe_api_reference
@@ -229,7 +240,8 @@ export default class Video extends Media {
         videoId: this._videoid,
         playerVars: {
           rel: 0,
-          showinfo: 0
+          showinfo: 0,
+          iv_load_policy: 3
         },
         events: {
           onReady: function(e) {
@@ -283,7 +295,14 @@ export default class Video extends Media {
     // Is Immersive background - On Cover we do nothing about sound
     // TODO: should just store the proper property...
     var isImmersiveBg = params.viewIndex !== undefined,
-        isMuted = this._video.options.audio == 'muted';
+        isMuted = this._video.options.audio === 'muted';
+
+    // the "mute/unmute" button is only visible on immersive sections, when the author has indicated a video may be played with sound,
+    // when the video has been loaded, and when the view is active.
+    // If view is navigated away from, the button hides again.
+    if (isImmersiveBg) {
+      this._node.find('.toggle-mute-button').toggleClass('mute-button-active', params.isActive && this._video.options.audio !== 'muted');
+    }
 
     try {
       if (this._video.source == 'vimeo') {
@@ -298,7 +317,7 @@ export default class Video extends Media {
               }.bind(this));
 
               if (params.visibilityProgress) {
-                this._videoPlayer.api('setVolume', params.visibilityProgress);
+                this._setVolume(params.visibilityProgress);
               }
             }
           }
@@ -308,7 +327,7 @@ export default class Video extends Media {
         else {
           if (this._placement == 'background') {
             if (this._soundLevelPreImmersive != null) {
-              this._videoPlayer.api('setVolume', this._soundLevelPreImmersive);
+              this._setVolume(this._soundLevelPreImmersive);
             }
             this._videoPlayer.api('pause');
           }
@@ -327,7 +346,7 @@ export default class Video extends Media {
                 this._soundLevelPreImmersive = volume;
               }
 
-              this._videoPlayer.setVolume(100);
+              this._setVolume(1);
             }
           }
 
@@ -336,7 +355,7 @@ export default class Video extends Media {
         else {
           if (this._placement == 'background') {
             if (this._soundLevelPreImmersive != null) {
-              this._videoPlayer.setVolume(params.visibilityProgress * 100);
+              this._setVolume(params.visibilityProgress);
             }
             this._videoPlayer.pauseVideo();
           }
@@ -363,27 +382,15 @@ export default class Video extends Media {
       this._videoPlayer.api('pause');
     }
     else {
-      var isMuted = this._video.options.audio == 'muted';
+      this._mute();
 
       if (! this._isBuilderAdd) {
-        this._videoPlayer.api('setVolume', 0);
-
         if (this._sectionType == 'immersive') {
           this._videoPlayer.api('pause');
         }
       }
       else {
-        if (this._sectionType == 'immersive' && ! isMuted) {
-          this._videoPlayer.api('setVolume', 1);
-        }
-        else {
-          this._videoPlayer.api('setVolume', 0);
-        }
-
         this._videoPlayer.api('play');
-
-        // this is called twice when adding in Immersive so can't do that
-        //this._isBuilderAdd = false;
       }
 
       this._videoPlayer.api('setLoop', true);
@@ -405,18 +412,10 @@ export default class Video extends Media {
     this._isVideoLoaded = true;
 
     if (this._placement == 'background') {
+      this._mute();
       this._videoPlayer.setLoop(true);
 
-      if (! this._isBuilderAdd) {
-        this._videoPlayer.setVolume(0);
-      }
-      else {
-        if (this._sectionType == 'immersive') {
-          this._videoPlayer.setVolume(100);
-        }
-        else {
-          this._videoPlayer.setVolume(0);
-        }
+      if (this._isBuilderAdd) {
         this._videoPlayer.playVideo();
       }
     }
@@ -433,6 +432,52 @@ export default class Video extends Media {
     if (this._pendingAction) {
       this.performAction(this._pendingAction);
       this._pendingAction = null;
+    }
+  }
+
+  _mute() {
+    // set sound to zero, then mute.
+    this._setVolume(0);
+
+    if (this._video.source === 'youtube') {
+      this._videoPlayer.mute();
+    }
+
+    this._isMuted = true;
+
+    this._node.find('.toggle-mute-icon').removeClass('glyphicon-volume-up').addClass('glyphicon-volume-off');
+  }
+
+  _unMute() {
+    // unmute, then set sound to 100.
+    this._isMuted = false;
+
+    if (this._video.source === 'youtube') {
+      this._videoPlayer.unMute();
+    }
+
+    this._setVolume(1);
+
+    this._node.find('.toggle-mute-icon').removeClass('glyphicon-volume-off').addClass('glyphicon-volume-up');
+  }
+
+  _setVolume(volume) {
+    // sound should not be set if the player is muted.
+    if (this._isMuted) {
+      return;
+    }
+
+    try {
+      if (this._video.source === 'vimeo') {
+        this._videoPlayer.api('setVolume', volume);
+      }
+      else if (this._video.source === 'youtube') {
+        // YouTube volume goes from 0 - 100, not from 0 - 1
+        this._videoPlayer.setVolume(volume * 100);
+      }
+    }
+    catch (e) {
+      console.error(e);
     }
   }
 

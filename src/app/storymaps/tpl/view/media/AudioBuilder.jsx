@@ -4,11 +4,12 @@ import i18n from 'lib-build/i18n!resources/tpl/builder/nls/app';
 
 import BuilderConfig from './builder/Panel';
 import BuilderConfigTabManageMedia from './builder/TabManageMedia';
+import CommonHelper from 'storymaps/tpl/utils/CommonHelper';
 
 import lang from 'dojo/_base/lang';
 import topic from 'dojo/topic';
 
-import issues from '../../builder/Issues';
+import issues from 'issue-checker/IssueTypes';
 
 const text = i18n.builder;
 
@@ -25,7 +26,7 @@ export default class AudioBuilder extends Audio {
     this._initConfigPanel();
 
     // we subscribe to the scan change for this SPECIFIC image only (hence the scan/image/imageID pattern).
-    topic.subscribe('scan/audio/' + this._instanceID, lang.hitch(this, this.checkErrors));
+    this._scanListener = topic.subscribe('scan/audio/' + this._instanceID, lang.hitch(this, this.checkErrors));
 
     this.initBuilderUI();
   }
@@ -54,10 +55,13 @@ export default class AudioBuilder extends Audio {
       if (tab == 'manage') {
         tabs.push(new BuilderConfigTabManageMedia({
           hideRemove: this._placement == 'background',
-          showErrors: this.scanResults.errors && this.scanResults.errors.length
+          showErrors: this.scanResults.errors && this.scanResults.errors.filter(error => !error.isAlternate).length && this.scanResults.unfixable
         }));
       }
     }
+
+    this._createIssuesTab(tabs);
+
     return tabs;
   }
 
@@ -94,4 +98,7 @@ export default class AudioBuilder extends Audio {
     super._onConfigChange();
   }
 
+  _makeUrlsHttps() {
+    this._audio.url = CommonHelper.forceHttpsUrl(this._audio.url);
+  }
 }

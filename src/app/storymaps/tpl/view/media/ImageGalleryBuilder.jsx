@@ -9,7 +9,7 @@ import {} from 'lib-build/less!./ImageGalleryBuilder';
 
 import topic from 'dojo/topic';
 
-import issues from '../../builder/Issues';
+import issues from 'issue-checker/IssueTypes';
 
 export default class ImageGalleryBuilder extends ImageGallery {
 

@@ -21,12 +21,26 @@ export default {
     secureService: 'layers/secureService'
   },
   images: {
-    inaccessible: 'images/inaccessible'
+    inaccessible: 'images/inaccessible',
+    httpContentFixable: 'images/httpContentFixable',
+    httpContentUnfixable: 'images/httpContentUnfixable',
+    httpContentIndeterminate: 'images/httpContentIndeterminate'
   },
   audio: {
-    inaccessible: 'audio/inaccessible'
+    inaccessible: 'audio/inaccessible',
+    httpContentFixable: 'audio/httpContentFixable',
+    httpContentUnfixable: 'audio/httpContentUnfixable',
+    httpContentIndeterminate: 'audio/httpContentIndeterminate'
   },
   videos: {
-    inaccessible: 'videos/inaccessible'
+    inaccessible: 'videos/inaccessible',
+    httpContentFixable: 'videos/httpContentFixable',
+    httpContentUnfixable: 'videos/httpContentUnfixable',
+    httpContentIndeterminate: 'videos/httpContentIndeterminate'
+  },
+  webpages: {
+    httpContentFixable: 'webpages/httpContentFixable',
+    httpContentUnfixable: 'webpages/httpContentUnfixable',
+    httpContentIndeterminate: 'webpages/httpContentIndeterminate',
   }
 };

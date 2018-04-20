@@ -32,10 +32,11 @@ define({
       "upgradeBrowser": "Oppdater nettleseren din",
       "mapLoadingFail": "Noe gikk galt, og kartet ble ikke lastet inn på riktig måte.",
       "signOut": "Logg av",
-      "builderSupport1": "Byggeverktøyet Story Cascade støttes bare i ${CHROME} og ${SAFARI}. Imidlertid kan Cascade-historier som du oppretter med byggeverktøyet vises i disse nettleserne, Internet Explorer 11+ og Firefox.",
-      "builderSupport2": "Byggeverktøyet Story Cascade støttes ikke på iPad. Cascade-historier som du oppretter og deler, vil fungere på iPad.",
-      "builderSupport3": "Cascade-historier kan vises i Chrome, Safari, Firefox og Internet Explorer 11+, men byggeverktøyet Story Cascade støttes bare i ${CHROME} og ${SAFARI}.",
-      "builderSupport4": "Cascade-historier kan vises i vanlige nettlesere, men byggeverktøyet Story Cascade støttes bare i ${CHROME} og ${SAFARI}.<br><br>Hvis du har behov for at byggeverktøyet Cascade skal støtte en annen leser, kontakter du ${ESRI-SUPPORT} eller ${BROWSER-SUPPORT-VOTE}.",
+      "builderSupportFirefox": "Byggeverktøyet Story Map Cascade støtter nå Firefox!<br><br>Støtte for å opprette Cascade-fortellinger i Firefox er foreløpig i betaversjon. Prøv det, og rapporter eventuelle problem til ${ESRI-SUPPORT} eller ${ESRI-COMMUNITY}.",
+      "builderSupportOther": "Cascade-fortellinger kan vises i vanlige nettlesere, men byggeverktøyet Story Map Cascade støttes bare i ${CHROME}, ${SAFARI} og ${FIREFOX} (beta).<br><br>Hvis du har behov for at byggeverktøyet Cascade skal støtte en annen leser, tar du kontakt med ${ESRI-SUPPORT} eller ${BROWSER-SUPPORT-VOTE}.",
+      "builderSupportIpad": "Byggeverktøyet Story Map Cascade støttes ikke på iPad. Cascade-fortellinger som du oppretter og deler, vil fungere på iPad.",
+      "launchBuilder": "Starter byggeverktøyet Cascade",
+      "notAgain": "Ikke vis igjen",
       "sorry": "Obs:"
     },
     "mobileWarning": {
@@ -82,6 +83,40 @@ define({
       "speedFast": "Raskt",
       "speedMedium": "Middels",
       "speedSlow": "Sakte"
+    }
+  },
+  "print": {
+    "settings": {
+      "pleaseWait": "Vent til hele fortellingen er lastet inn før du skriver ut",
+      "printNotes": "Hvis det tar lang tid å laste inn denne siden eller visse medier ikke vises, kan du prøve å erstatte livemedia med bilder eller skrive ut et mindre antall avsnitt. For å få best resultat kan det hende du må aktivere utskrift av bakgrunnselementer i utskriftsalternativene i nettleseren.",
+      "printOptions": "Alternativer",
+      "makeTextBlack": "Gjør all tekst svart",
+      "showLinks": "Vis koblings-URL-er",
+      "useAltMedia": "Erstatt livemedia med bilder, hvis tilgjengelig",
+      "pageBreaks": "Begynn hver del på en ny side",
+      "printRange": "Skriv ut deler av fortellingen",
+      "sectionStart": "Deler:",
+      "go": "Bruk",
+      "reset": "Tilbakestill hele fortellingen",
+      "print": "Skriv ut"
+    },
+    "page": {
+      "appTagline": "Denne fortellingen ble laget med ${CASCADE_LINK_TEXT}.",
+      "cascadeLinkText": "Esris Story Map Cascade",
+      "readItOnline": "Les det på nettet på ${STORY_URL}."
+    },
+    "sections": {
+      "sectionLabel": "Avsnitt ${SECTION_NUMBER}"
+    },
+    "media": {
+      "websiteLabel": "Webområde:",
+      "videoLabel": "Video:",
+      "audioLabel": "Lyd:"
+    },
+    "bannerNotification": {
+      "learnMore": "Få mer informasjon",
+      "close": "Lukk",
+      "dontShowAgain": "Ikke vis denne meldingen igjen"
     }
   }
 });

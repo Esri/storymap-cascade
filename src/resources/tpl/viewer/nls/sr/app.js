@@ -32,10 +32,11 @@ define({
       "upgradeBrowser": "Ažurirajte pregledač",
       "mapLoadingFail": "Došlo je do greške, mapa se nije učitala pravilno.",
       "signOut": "Odjavite se",
-      "builderSupport1": "Alatka za izradu Story Map Cascade je podržana samo na pregledačima i ${CHROME} i ${SAFARI}. Međutim, kaskadne priče koje kreirate pomoću alatke za izradu mogu da budu pregledane samo u ovim pregledačima, Internet Explorer 11+ i Firefox.",
-      "builderSupport2": "Alatka za izradu Story Map Cascade nije podržana na iPad uređaju. Kaskadne priče koje kreirate i podelite će raditi na iPad uređajima.",
-      "builderSupport3": "Kaskadne priče mogu da budu pregledane na pregledačima Chrome, Safari, Firefox i Internet Explorer 11+, ali alatka za izradu kaskadne priče je podržana samo na pregledačima ${CHROME} i ${SAFARI}.",
-      "builderSupport4": "Cascade priče mogu da budu pregledane u bilo kom novijem veb pregledaču, ali Story Map Cascade alatka za izradu je podržana samo u ${CHROME} i ${SAFARI}.<br><br>Ako vam je potrebna Cascade alatka za izradu kako biste podržali različit pregledač, obratite se ${ESRI-SUPPORT} ili ${BROWSER-SUPPORT-VOTE}.",
+      "builderSupportFirefox": "Story Map Cascade alatka za izradu sada je podržana na Firefox pregledaču!<br><br>Podrška za kreiranje Cascade priča u Firefox pregledači je trenutno u beta verziji. Isprobajte je i prijavite bilo kakve probleme na ${ESRI-SUPPORT} ili na ${ESRI-COMMUNITY}.",
+      "builderSupportOther": "Cascade priče mogu da budu pregledane u bilo kom novijem veb pregledaču, ali Story Map Cascade alatka za izradu je podržana samo u ${CHROME}, ${SAFARI} i ${FIREFOX} (beta).<br><br>Ako vam je potrebna Cascade alatka za izradu kako biste podržali različit pregledač, obratite se ${ESRI-SUPPORT} ili ${BROWSER-SUPPORT-VOTE}.",
+      "builderSupportIpad": "Alatka za izradu Story Map Cascade nije podržana na iPad uređaju. Kaskadne priče koje kreirate i podelite će raditi na iPad uređajima.",
+      "launchBuilder": "Pokretanje Cascade alatke za izradu",
+      "notAgain": "Ne prikazuj ovo ponovo",
       "sorry": "Napomena:"
     },
     "mobileWarning": {
@@ -82,6 +83,40 @@ define({
       "speedFast": "Brzo",
       "speedMedium": "Srednje",
       "speedSlow": "Sporo"
+    }
+  },
+  "print": {
+    "settings": {
+      "pleaseWait": "Sačekajte da se čitava priča učita pre štampe",
+      "printNotes": "Ako se ova stranica učitava sporo ili se neki mediji ne pojave, pokušajte da zamenite medije koji se emituju uživo slikama ili probajte sa štampom manjeg opsega odeljaka. Za bolje rezultate, možda ćete morati da omogućite štampanje pozadinskih elemenata u postavkama štampanja vašeg pregledača.",
+      "printOptions": "Opcije",
+      "makeTextBlack": "Učini sav tekst crnim",
+      "showLinks": "Prikaži linkove URL adresa",
+      "useAltMedia": "Zamenite medije koji se emituju uživo slikama, ako je to moguće",
+      "pageBreaks": "Svaki odeljak počnite na novoj stranici",
+      "printRange": "Odštampaj deo ove priče",
+      "sectionStart": "Odeljci:",
+      "go": "Primeni",
+      "reset": "Resetuj na celu priču",
+      "print": "Štampaj"
+    },
+    "page": {
+      "appTagline": "Ova priča je napravljena pomoću ${CASCADE_LINK_TEXT}.",
+      "cascadeLinkText": "Story Map Cascade kompanije Esri",
+      "readItOnline": "Pročitajte na vebu ${STORY_URL}."
+    },
+    "sections": {
+      "sectionLabel": "Odeljak ${SECTION_NUMBER}"
+    },
+    "media": {
+      "websiteLabel": "Veb sajt:",
+      "videoLabel": "Video zapis:",
+      "audioLabel": "Audio:"
+    },
+    "bannerNotification": {
+      "learnMore": "Saznaj više",
+      "close": "Zatvori",
+      "dontShowAgain": "Ne prikazuj ponovo ovu poruku"
     }
   }
 });

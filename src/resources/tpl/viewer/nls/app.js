@@ -34,10 +34,11 @@ define({
         upgradeBrowser: "Please update your browser",
         mapLoadingFail: "Something went wrong, the map did not load correctly.",
         signOut: "Sign Out",
-        builderSupport1: "Story Map Cascade builder is supported only in ${CHROME} and ${SAFARI}. However, Cascade stories that you create with builder can be viewed those browsers, Internet Explorer 11+, and Firefox.",
-        builderSupport2: "Story Map Cascade builder is not supported on iPad. Cascade stories that you create and share will work on iPad.",
-        builderSupport3: "Cascade stories can be viewed in Chrome, Safari, Firefox, and Internet Explorer 11+, but Story Map Cascade builder is supported only in ${CHROME} and ${SAFARI}.",
-        builderSupport4: "Cascade stories can be viewed in any modern web browser, but Story Map Cascade builder is supported only in ${CHROME} and ${SAFARI}.<br><br>If you need Cascade builder to support a different browser, please contact ${ESRI-SUPPORT} or ${BROWSER-SUPPORT-VOTE}.",
+        builderSupportFirefox: "Story Map Cascade builder now supports Firefox!<br><br>Support for authoring Cascade stories in Firefox is currently in beta. Please try it out and report any issues to ${ESRI-SUPPORT} or the ${ESRI-COMMUNITY}.",
+        builderSupportOther: "Cascade stories can be viewed in any modern web browser, but Story Map Cascade builder is supported only in ${CHROME}, ${SAFARI}, and ${FIREFOX} (beta).<br><br>If you need Cascade builder to support a different browser, please contact ${ESRI-SUPPORT} or ${BROWSER-SUPPORT-VOTE}.",
+        builderSupportIpad: "Story Map Cascade builder is not supported on iPad. Cascade stories that you create and share will work on iPad.",
+        launchBuilder: "Launch Cascade builder",
+        notAgain: "Do not show this again",
         sorry: "Attention:"
       },
       mobileWarning: {
@@ -84,6 +85,40 @@ define({
         speedFast: "Fast",
         speedMedium: "Medium",
         speedSlow: "Slow"
+      }
+    },
+    print: {
+      settings: {
+        pleaseWait: "Please wait for the entire story to load before printing",
+        printNotes: "If this page loads slowly or some media doesn't appear, try replacing live media with images or printing a smaller range of sections. For best results, you may need to enable printing of background elements in your browser's print settings.",
+        printOptions: "Options",
+        makeTextBlack: "Make all text black",
+        showLinks: "Show link URLs",
+        useAltMedia: "Replace live media with images, if available",
+        pageBreaks: "Begin each section on a new page",
+        printRange: "Print part of this story",
+        sectionStart: "Sections:",
+        go: "Apply",
+        reset: "Reset to whole story",
+        print: "Print"
+      },
+      page: {
+        appTagline: "This story was made with ${CASCADE_LINK_TEXT}.",
+        cascadeLinkText: "Esri's Story Map Cascade",
+        readItOnline: "Read it on the web at ${STORY_URL}."
+      },
+      sections: {
+        sectionLabel: "Section ${SECTION_NUMBER}"
+      },
+      media: {
+        websiteLabel: "Website:",
+        videoLabel: "Video:",
+        audioLabel: "Audio:",
+      },
+      bannerNotification: {
+        learnMore: "Learn More",
+        close: "Close",
+        dontShowAgain: "Don't show this message again"
       }
     }
   }),

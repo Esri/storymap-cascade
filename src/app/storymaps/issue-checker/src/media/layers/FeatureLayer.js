@@ -3,11 +3,6 @@ import ServiceLayer from './ServiceLayer';
 
 export default class FeatureLayer extends ServiceLayer {
   static check(options) {
-    return super.check({
-      layer: options.item,
-      layerResults: options.layerResults,
-      appAccess: options.appAccess,
-      CalledClass: EsriFeatureLayer
-    });
+    return super.check(Object.assign({}, options, { CalledClass: EsriFeatureLayer }));
   }
 }

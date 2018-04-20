@@ -32,10 +32,11 @@ define({
       "upgradeBrowser": "Prosimy o zaktualizowanie przeglądarki",
       "mapLoadingFail": "Wystąpił pewien problem, nie wczytano mapy prawidłowo.",
       "signOut": "Wyloguj się",
-      "builderSupport1": "Kreator Kaskada map narracyjnych jest obsługiwany tylko w przeglądarkach ${CHROME} i ${SAFARI}. Narracje kaskadowe utworzone za pomocą tego kreatora można jednak wyświetlać zarówno w wymienionych przeglądarkach, jak i w programie Internet Explorer 11+ i Firefox.",
-      "builderSupport2": "Kreator Kaskada map narracyjnych nie jest obsługiwany na tablecie iPad. Utworzone i udostępnione narracje kaskadowe będą działały na tablecie iPad.",
-      "builderSupport3": "Narracje kaskadowe można wyświetlać w przeglądarkach Chrome, Safari, Firefox i Internet Explorer 11+, ale kreator Kaskada map narracyjnych jest obsługiwany tylko w przeglądarkach ${CHROME} i ${SAFARI}.",
-      "builderSupport4": "Narracje kaskadowe można wyświetlać we wszystkich współczesnych przeglądarkach internetowych, ale kreator Story Map Cascade (Mapa narracyjna — Kaskada) jest obsługiwany tylko w przeglądarkach ${CHROME} i ${SAFARI}.<br><br>Jeśli chcesz, aby kreator kaskad obsługiwał inną przeglądarkę, skontaktuj się z działem ${ESRI-SUPPORT} lub ${BROWSER-SUPPORT-VOTE}.",
+      "builderSupportFirefox": "Kreator Story Map Cascade (Mapa narracyjna — Kaskada) obecnie obsługuje przeglądarkę Firefox!<br><br>Obsługa tworzenia narracji kaskadowych w przeglądarce Firefox jest obecnie w wersji beta. Wypróbuj ją i zgłoś napotkane problemy działowi ${ESRI-SUPPORT} lub ${ESRI-COMMUNITY}.",
+      "builderSupportOther": "Narracje kaskadowe można wyświetlać we wszystkich współczesnych przeglądarkach internetowych, ale kreator Story Map Cascade (Mapa narracyjna — Kaskada) jest obsługiwany tylko w przeglądarkach ${CHROME}, ${SAFARI} oraz ${FIREFOX} (beta).<br><br>Jeśli chcesz, aby kreator kaskad obsługiwał inną przeglądarkę, skontaktuj się z działem ${ESRI-SUPPORT} lub ${BROWSER-SUPPORT-VOTE}.",
+      "builderSupportIpad": "Kreator Kaskada map narracyjnych nie jest obsługiwany na tablecie iPad. Utworzone i udostępnione narracje kaskadowe będą działały na tablecie iPad.",
+      "launchBuilder": "Uruchamianie kreatora kaskadowego",
+      "notAgain": "Nie pokazuj tego ponownie",
       "sorry": "Uwaga:"
     },
     "mobileWarning": {
@@ -82,6 +83,40 @@ define({
       "speedFast": "Szybkie",
       "speedMedium": "Średnie",
       "speedSlow": "Wolne"
+    }
+  },
+  "print": {
+    "settings": {
+      "pleaseWait": "Zaczekaj na wczytanie całej narracji przed wydrukowaniem",
+      "printNotes": "Jeśli strona wolno się wczytuje lub jakieś dane multimedialne nie są wyświetlane, spróbuj zastąpić multimedia na żywo obrazami lub wydrukować węższy zakres sekcji. Aby uzyskać najlepsze efekty, można włączyć drukowanie elementów tła w ustawieniach wydruku przeglądarki.",
+      "printOptions": "Opcje",
+      "makeTextBlack": "Ustaw cały tekst jako czarny",
+      "showLinks": "Pokaż adresy URL łączy",
+      "useAltMedia": "Zastąp multimedia na żywo obrazami, jeśli są dostępne",
+      "pageBreaks": "Zacznij każdą sekcję na nowej stronie",
+      "printRange": "Drukuj część tej narracji",
+      "sectionStart": "Sekcje:",
+      "go": "Zastosuj",
+      "reset": "Przywróć całą narrację",
+      "print": "Drukuj"
+    },
+    "page": {
+      "appTagline": "Ta narracja została utworzona za pomocą ${CASCADE_LINK_TEXT}.",
+      "cascadeLinkText": "Story Map Cascade (Mapa narracyjna — Kaskada) firmy Esri",
+      "readItOnline": "Czytaj ją w Internecie pod adresem ${STORY_URL}."
+    },
+    "sections": {
+      "sectionLabel": "Sekcja ${SECTION_NUMBER}"
+    },
+    "media": {
+      "websiteLabel": "Witryna:",
+      "videoLabel": "Wideo:",
+      "audioLabel": "Audio:"
+    },
+    "bannerNotification": {
+      "learnMore": "Dowiedz się więcej",
+      "close": "Zamknij",
+      "dontShowAgain": "Nie pokazuj tej wiadomości ponownie"
     }
   }
 });

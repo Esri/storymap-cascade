@@ -1,5 +1,5 @@
 /*
-| Copyright 2016, 2017 Esri
+| Copyright 2016-2018 Esri
 |
 | Licensed under the Apache License, Version 2.0 (the "License");
 | you may not use this file except in compliance with the License.
@@ -24,8 +24,8 @@ define([
   'lib-build/i18n!resources/tpl/viewer/nls/app',
 
   'storymaps-react/tpl/core/Controller',
-  'storymaps/common/Core',
-  'storymaps/common/utils/CommonHelper',
+  'storymaps/tpl/core/Core',
+  'storymaps/tpl/utils/CommonHelper',
   'storymaps/tpl/utils/UI',
   'storymaps-react/tpl/utils/IOSEmbedFix',
 
@@ -33,7 +33,7 @@ define([
   'storymaps-react/tpl/view/ui/Autoplay',
 
   'lib/calcite-bootstrap/js/bootstrap.min',
-  'lib-build/css!storymaps/common/utils/SocialSharing',
+  'lib-build/css!storymaps/tpl/utils/SocialSharing',
 
   'esri/arcgis/utils',
   'dojo/_base/Color',

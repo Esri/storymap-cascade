@@ -32,10 +32,11 @@ define({
       "upgradeBrowser": "Harap perbarui browser Anda",
       "mapLoadingFail": "Terjadi gangguan, peta tidak dimuat dengan benar.",
       "signOut": "Keluar",
-      "builderSupport1": "Builder Story Map Cascade hanya didukung di ${CHROME} dan ${SAFARI}. Namun demikian, cerita Cascade yang Anda buat dengan builder dapat dilihat oleh browser tersebut, Internet Explorer 11+, dan Firefox.",
-      "builderSupport2": "Builder Story Map Cascade tidak didukung di iPad. Cerita Cascade yang Anda buat dan bagikan akan berjalan di iPad.",
-      "builderSupport3": "Cerita Cascade dapat dilihat di Chrome, Safari, Firefox, dan Internet Explorer 11+, tetapi builder Story Map Cascade hanya didukung di ${CHROME} dan ${SAFARI}.",
-      "builderSupport4": "Cerita Cascade dapat dilihat di browser web modern mana pun, namun builder Story Map Cascade (Peta Cerita Kaskade) hanya didukung di ${CHROME} dan ${SAFARI}.<br><br>Jika Anda memerlukan builder Cascade untuk mendukung browser lainnya, harap hubungi ${ESRI-SUPPORT} atau ${BROWSER-SUPPORT-VOTE}.",
+      "builderSupportFirefox": "Builder Story Map Cascade sekarang mendukung Firefox!<br><br>Dukungan untuk menulis cerita Cascade di Firefox saat ini dalam status beta. Silakan coba dan laporan masalah apa pun ke ${ESRI-SUPPORT} atau ${ESRI-COMMUNITY}.",
+      "builderSupportOther": "Cerita Cascade dapat dilihat di browser web modern mana pun, namun builder Story Map Cascade hanya didukung di ${CHROME}, ${SAFARI}, dan ${FIREFORX} (beta).<br><br>Jika Anda memerlukan builder Cascade untuk mendukung browser lainnya, harap hubungi ${ESRI-SUPPORT} atau ${BROWSER-SUPPORT-VOTE}.",
+      "builderSupportIpad": "Builder Story Map Cascade tidak didukung di iPad. Cerita Cascade yang Anda buat dan bagikan akan berjalan di iPad.",
+      "launchBuilder": "Jalankan builder Cascade",
+      "notAgain": "Jangan perlihatkan ini lagi",
       "sorry": "Perhatian:"
     },
     "mobileWarning": {
@@ -82,6 +83,40 @@ define({
       "speedFast": "Cepat",
       "speedMedium": "Sedang",
       "speedSlow": "Lambat"
+    }
+  },
+  "print": {
+    "settings": {
+      "pleaseWait": "Harap tunggu sampai seluruh cerita dimuat sebelum mencetak",
+      "printNotes": "Jika halaman ini lambat dimuat atau sebagian media tidak muncul, coba ganti media langsung dengan gambar atau cetak rentang bagian yang lebih kecil. Untuk hasil terbaik, Anda mungkin perlu mengaktifkan pencetakan elemen latar belakang di pengaturan cetak browser Anda.",
+      "printOptions": "Opsi",
+      "makeTextBlack": "Jadikan semua teks berwarna hitam",
+      "showLinks": "Perlihatkan URL tautan",
+      "useAltMedia": "Ganti media langsung dengan gambar, jika tersedia",
+      "pageBreaks": "Mulai setiap bagian di halaman baru",
+      "printRange": "Cetak bagian dari cerita ini",
+      "sectionStart": "Bagian:",
+      "go": "Terapkan",
+      "reset": "Atur ulang ke seluruh cerita",
+      "print": "Cetak"
+    },
+    "page": {
+      "appTagline": "Cerita ini dibuat dengan ${CASCADE_LINK_TEXT}.",
+      "cascadeLinkText": "Cascade Story Map Esri",
+      "readItOnline": "Baca di web di ${STORY_URL}."
+    },
+    "sections": {
+      "sectionLabel": "Bagian ${SECTION_NUMBER}"
+    },
+    "media": {
+      "websiteLabel": "Website:",
+      "videoLabel": "Video:",
+      "audioLabel": "Audio:"
+    },
+    "bannerNotification": {
+      "learnMore": "Pelajari Lebih Lanjut",
+      "close": "Tutup",
+      "dontShowAgain": "Jangan tampilkan pesan ini lagi"
     }
   }
 });

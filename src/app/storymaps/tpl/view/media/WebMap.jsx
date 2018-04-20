@@ -143,16 +143,22 @@ export default class WebMap extends Media {
     );
   }
 
-  _applyInteraction() {
+  _applyInteraction(params) {
     let interaction = this._webmap.options.interaction;
 
     if (interaction === 'enabled' && (app.isMobileView || UIUtils.isMobileBrowser())) {
       interaction = 'button';
     }
 
+    // if the builder config panel is open, always allow interaction, even if it's set to disabled.
+    if (params && params.isBuilder && params.builderConfigOpen) {
+      interaction = 'enabled';
+    }
+
     // TODO: duplicate between map/scene/page should be in Media
     //  store an object for options or always use _media.options???
 
+    // these hide/show the plus or minus buttons
     if (this._webmap.options.interaction) {
       let classes = $.map(this._node.attr('class').split(' '), function(l) {
         return l.match(/interaction-/) ? l : null;
@@ -163,6 +169,51 @@ export default class WebMap extends Media {
         .addClass('interaction-' + interaction);
 
       this._node.find('.interaction-container').removeClass('enabled');
+    }
+
+    const map = this._cache[this.id] ? this._cache[this.id].map : null;
+
+    if (! map) {
+      return;
+    }
+
+    if (interaction === 'disabled' || interaction === 'button') {
+      this._disableMapEvents(map);
+    }
+    else {
+      this._enableMapEvents(map);
+    }
+  }
+
+  _preventMapClick(event) {
+    event.stopPropagation();
+  }
+
+  _enableMapEvents(map) {
+    map.enableMapNavigation();
+    // we still always want scrollwheel and keyboard navigation disabled
+    map.disableScrollWheelZoom();
+    map.disableKeyboardNavigation();
+
+    this._node.find('.media-item.map')[0].removeEventListener('click', this._preventMapClick, true);
+  }
+
+  _disableMapEvents(map) {
+    map.disableMapNavigation();
+
+    // notice 3rd parameter "true" that makes this event fire on the capture phase, not the bubbling phase...
+    // crucial to not let the click pass down from the map container into the map
+    this._node.find('.media-item.map')[0].addEventListener('click', this._preventMapClick, true);
+  }
+
+  _onEnableButtonClick(e, map) {
+    super._onEnableButtonClick(e);
+
+    if (this._node.hasClass('interaction-enabled')) {
+      this._enableMapEvents(map);
+    }
+    else {
+      this._disableMapEvents(map);
     }
   }
 
@@ -235,24 +286,6 @@ export default class WebMap extends Media {
       this._transition = params.transition;
     }
 
-    /*
-    if (! _bookmarks) {
-      return;
-    }
-    */
-
-    /*
-    if (_bookmarks && _currentBookmarkIndex != params.slideIndex) {
-      var bookmark = _bookmarks[params.slideIndex - 1];
-
-      if (bookmark && bookmark.extent) {
-        map.setExtent(new Extent(bookmark.extent), false);
-      }
-
-      _currentBookmarkIndex = params.slideIndex;
-    }
-    */
-
     // TODO: Should only apply changes when changing slide
 
     if (map.infoWindow) {
@@ -290,7 +323,7 @@ export default class WebMap extends Media {
           map.setExtent(extent, false).then(
             function() {
               if (viewInfo.popup) {
-                this._applyPopupConfiguration(map, viewInfo.popup);
+                WebMap._applyPopupConfiguration(map, viewInfo.popup);
               }
 
               resultDeferred.resolve();
@@ -321,7 +354,7 @@ export default class WebMap extends Media {
 
     // Popup
     if (viewInfo.popup && ! hasChangedExtent) {
-      this._applyPopupConfiguration(map, viewInfo.popup);
+      WebMap._applyPopupConfiguration(map, viewInfo.popup);
     }
 
     // Apply layer config if it's a new view
@@ -493,7 +526,9 @@ export default class WebMap extends Media {
       resultDeferred.resolve(this.id);
 
       // The event is only registered once for all views in immersive
-      this._node.find('.interaction-container').click(this._onEnableButtonClick.bind(this));
+      this._node.find('.interaction-container').click(event => {
+        this._onEnableButtonClick(event, map);
+      });
 
       // Customize map commands +/home/- & location
       this._cache[this.id].mapCommand = new MapCommand(
@@ -772,7 +807,7 @@ export default class WebMap extends Media {
   // Popup
   //
 
-  _applyPopupConfiguration(map, popupCfg) {
+  static _applyPopupConfiguration(map, popupCfg) {
     // When an action is performed the popup will be closed
     // But features aren't cleared so it can be restored
     map.infoWindow.hide();
@@ -791,11 +826,11 @@ export default class WebMap extends Media {
         if (layer.updating) {
           let eventListener = layer.on('update-end', () => {
             eventListener.remove();
-            this._applyPopupConfigurationStep2(map, popupCfg);
+            WebMap._applyPopupConfigurationStep2(map, popupCfg);
           });
         }
         else {
-          this._applyPopupConfigurationStep2(map, popupCfg);
+          WebMap._applyPopupConfigurationStep2(map, popupCfg);
         }
       }
       // TODO
@@ -803,19 +838,19 @@ export default class WebMap extends Media {
         var layerIdx = popupCfg.layerId.split('_').slice(-1).join('_'),
             layerUrl = layer2.url + '/' + layerIdx;
 
-        this._applyPopupConfigurationStep2Alt(map, popupCfg, serviceId, layerIdx, layerUrl);
+        WebMap._applyPopupConfigurationStep2Alt(map, popupCfg, serviceId, layerIdx, layerUrl);
       }
       // On FS the layer will be null until loaded...
       else {
         var handle = map.on('update-end', () => {
           handle.remove();
-          this._applyPopupConfiguration(map, popupCfg);
+          WebMap._applyPopupConfiguration(map, popupCfg);
         });
       }
     }
   }
 
-  _applyPopupConfigurationStep2(map, popupCfg) {
+  static _applyPopupConfigurationStep2(map, popupCfg) {
     var query = new Query(),
         layer = map.getLayer(popupCfg.layerId);
 
@@ -839,12 +874,12 @@ export default class WebMap extends Media {
     }
 
     layer.queryFeatures(query).then(function(featureSet) {
-      this._applyPopupConfigurationStep3(map, popupCfg, featureSet.features);
+      WebMap._applyPopupConfigurationStep3(map, popupCfg, featureSet.features);
     }.bind(this));
   }
 
   // TODO
-  _applyPopupConfigurationStep2Alt(map, popupCfg, serviceId, layerIdx, layerUrl) {
+  static _applyPopupConfigurationStep2Alt(map, popupCfg, serviceId, layerIdx, layerUrl) {
     var queryTask = new QueryTask(layerUrl),
         query = new Query(),
         layer = map.getLayer(serviceId);
@@ -860,11 +895,11 @@ export default class WebMap extends Media {
     query.outSpatialReference = map.spatialReference;
 
     queryTask.execute(query, function(featureSet) {
-      this._applyPopupConfigurationStep3(map, popupCfg, featureSet.features, serviceId, layerIdx);
+      WebMap._applyPopupConfigurationStep3(map, popupCfg, featureSet.features, serviceId, layerIdx);
     }.bind(this));
   }
 
-  _applyPopupConfigurationStep3(map, popupCfg, features, serviceId, layerIdx) {
+  static _applyPopupConfigurationStep3(map, popupCfg, features, serviceId, layerIdx) {
     if (! map || ! popupCfg || ! features || ! features.length) {
       return;
     }

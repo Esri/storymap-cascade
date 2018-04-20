@@ -32,10 +32,11 @@ define({
       "upgradeBrowser": "Päivitä selaimesi",
       "mapLoadingFail": "Tapahtui virhe, eikä kartta latautunut oikein.",
       "signOut": "Kirjaudu ulos",
-      "builderSupport1": "Story Map Cascade -luontitoimintoa tuetaan vain ${CHROME}- ja ${SAFARI}-selaimissa. Luontitoiminnon avulla luotuja Cascade-tarinoita voi kuitenkin tarkastella muissa selaimissa, kuten Internet Explorer 11+:ssa ja Firefoxissa.",
-      "builderSupport2": "Story Map Cascade -luontitoimintoa ei tueta iPadissa. Luomasi ja jakamasi Cascade-tarinat toimivat kyllä iPadissa.",
-      "builderSupport3": "Cascade-tarinoita voi tarkastella Chromessa, Safarissa, Firefoxissa ja Internet Explorer 11+:ssa, mutta Story Map Cascade -luontitoimintoa tuetaan vain ${CHROME}- ja ${SAFARI}-selaimissa.",
-      "builderSupport4": "Cascade-tarinoita voi tarkastella missä tahansa verkkoselaimessa, mutta Story Map Cascade -luontitoimintoa tuetaan vain ${CHROME}- ja ${SAFARI}-selaimissa.<br><br>Jos haluat, että Cascade-luontitoiminto tukee eri selainta, ota yhteyttä ${ESRI-SUPPORT} tai ${BROWSER-SUPPORT-VOTE}.",
+      "builderSupportFirefox": "Story Map Cascade -luontitoiminto tukee nyt Firefoxia.<br><br>Cascade-tarinoiden luonnin tuki Firefoxissa on nyt beeta-vaiheessa. Kokeile luontitoimintoa ja kerro mahdollisista ongelmista ${ESRI-SUPPORT} tai ${ESRI-COMMUNITY}.",
+      "builderSupportOther": "Cascade-tarinoita voi tarkastella missä tahansa verkkoselaimessa, mutta Story Map Cascade -luontitoimintoa tuetaan vain ${CHROME}-, ${SAFARI} ja ${FIREFOX}-selaimissa (beeta).<br><br>Jos haluat, että Cascade-luontitoiminto tukee eri selainta, ota yhteyttä ${ESRI-SUPPORT} tai ${BROWSER-SUPPORT-VOTE}.",
+      "builderSupportIpad": "Story Map Cascade -luontitoimintoa ei tueta iPadissa. Luomasi ja jakamasi Cascade-tarinat toimivat kyllä iPadissa.",
+      "launchBuilder": "Käynnistä Cascade-luontitoiminto",
+      "notAgain": "Älä näytä tätä uudelleen",
       "sorry": "Huomio:"
     },
     "mobileWarning": {
@@ -82,6 +83,40 @@ define({
       "speedFast": "Nopea",
       "speedMedium": "Keskitaso",
       "speedSlow": "Hidas"
+    }
+  },
+  "print": {
+    "settings": {
+      "pleaseWait": "Odota, että koko tarina on latautunut, ennen tulostusta",
+      "printNotes": "Jos tämä sivu latautuu hitaasti tai jotkin mediatyypit eivät näyt, yritä korvata reaaliaikainen media kuvilla tai tulosta pienempiä osa-alueita. Parhaan tuloksen saamiseksi joudut ehkä ottamaan taustaelementtien tulostuksen käyttöön selaimesi tulostusasetuksissa.",
+      "printOptions": "Asetukset",
+      "makeTextBlack": "Määritä kaikki teksti mustaksi",
+      "showLinks": "Näytä linkkien URL-osoitteet",
+      "useAltMedia": "Korvaa reaaliaikainen media kuvilla mahdollisuuksien mukaan",
+      "pageBreaks": "Aloita jokainen osa uudelta sivulta",
+      "printRange": "Tulosta osa tästä tarinasta",
+      "sectionStart": "Osat:",
+      "go": "Käytä",
+      "reset": "Palauta koko tarinaksi",
+      "print": "Tulosta"
+    },
+    "page": {
+      "appTagline": "Tämä tarina on luotu kohteella ${CASCADE_LINK_TEXT}.",
+      "cascadeLinkText": "Esrin Story Map Cascade",
+      "readItOnline": "Lue se verkossa osoitteessa ${STORY_URL}."
+    },
+    "sections": {
+      "sectionLabel": "Osa ${SECTION_NUMBER}"
+    },
+    "media": {
+      "websiteLabel": "Web-sivusto:",
+      "videoLabel": "Video:",
+      "audioLabel": "Ääni:"
+    },
+    "bannerNotification": {
+      "learnMore": "Lisätietoja",
+      "close": "Sulje",
+      "dontShowAgain": "Älä näytä tätä viestiä uudelleen"
     }
   }
 });

@@ -12,9 +12,23 @@
   color: #AAA;
 }
 
-.background-title h2[contenteditable=true]:not(:focus):empty:before{
+.background-title h2[contenteditable=true]:focus:empty {
+  /* Keeps caret centered in all browsers (Firefox included); fix based on https://stackoverflow.com/questions/29288975/centering-the-placeholder-caret-in-contenteditable-element */
+  padding-left: 50%;
+  /* in non-firefox browsers, if we don't have it left-aligned when empty the caret will be 3/4 across the title */
+  text-align: left;
+}
+
+.background-title h2[contenteditable=true]:empty:before {
   display: block;
+}
+
+.background-title h2[contenteditable=true]:not(:focus):empty:before {
   content: attr(placeholder);
+}
+
+.background-title h2[contenteditable=true]:focus:empty:before {
+  content: '\feff';
 }
 
 .section-immersive {

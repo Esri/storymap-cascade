@@ -50,7 +50,26 @@ define({
         "loremBody": "Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor. Mauris consequat orci nec magna facilisis bibendum at eget libero."
       }
     },
+    "share": {
+      "btnPrivate": "Riêng tư",
+      "btnOrg": "Tổ chức",
+      "btnPublic": "Công khai",
+      "btnEveryone": "Mọi người"
+    },
     "builderPanel": {
+      "builderNamePrefix": "",
+      "builderNameSuffix": "Bộ thiết lập",
+      "buttonSaving": "Đang lưu",
+      "buttonSaved": "Đã lưu",
+      "buttonError": "Không lưu được",
+      "buttonShare": "Chia sẻ",
+      "buttonSettings": "Thiết lập",
+      "settingsLogoError": "Logo của bạn có vấn đề. Nhấp vào để tìm hiểu thêm.",
+      "buttonHelp": "Được trợ giúp hoặc Gửi ý kiến phản hồi trên GeoNet",
+      "buttonPreview": "Xem Câu chuyện",
+      "buttonHealth": "Báo cáo y tế",
+      "manageStories": "Quản lý câu chuyện của tôi",
+      "closeWithPendingChange": "Bạn có chắc chắn muốn xác nhận hành động này không? Các thay đổi của bạn sẽ bị mất.",
       "coverLabel": "Bìa",
       "creditsLabel": "Điểm dịch vụ",
       "betaFeedback": "Ý kiến phản hồi",
@@ -143,6 +162,195 @@ define({
         "uploadAltImage": "Thêm vào hình ảnh thay thế"
       }
     },
+    "mediaPicker": {
+      "browseToggle": {
+        "urls": "Liên kết đến nội dung",
+        "urls_short": "Liên kết",
+        "contentType": {
+          "error": "Không có mạng truyền thông ủy quyền",
+          "imageOnly": "Trong phần câu chuyện này, bạn có thể thêm hình ảnh.",
+          "imageAndVideo": "Trong phần câu chuyện này, bạn có thể thêm hình ảnh hoặc video.",
+          "imageVideoWebpage": "Trong phần câu chuyện này, bạn có thể thêm hình ảnh, video hoặc trang web."
+        }
+      },
+      "browsePanel": {
+        "providers": {
+          "searchingFor": "Đang tìm kiếm \"${searchterm}\"...",
+          "searchedFor": "Kết quả tìm kiếm cho \"${searchterm}\"",
+          "albumsOf": "Album của ${username}",
+          "noPhotosFound": "Không có hình ảnh nào khớp với tìm kiếm của bạn. Vui lòng thử lại.",
+          "noItemsFound": "Không có mục nào khớp với tìm kiếm của bạn. Vui lòng thử lại.",
+          "noItemsInThisStory": "Chưa có nội dung nào từ ArcGIS được thêm vào câu chuyện này.",
+          "limitReached": "Đang hiển thị 100 mục. Nếu bạn không tìm thấy mục cần thiết, hãy thử tìm từ khóa.",
+          "galleryItems": {
+            "uploadError": "Rất tiếc, mục này không tải lên được."
+          },
+          "agol": {
+            "remove1": "Xóa hình ảnh không được sử dụng này khỏi tài khoản ArcGIS của bạn.",
+            "remove2": "(Bạn sẽ cần tải lên lại nếu sau này quyết định sử dụng nó)",
+            "removeFailed": "Gỡ bỏ hình ảnh không sử dụng được này ra khỏi danh sách này.",
+            "modified": "${date} được sửa đổi",
+            "uploaded": "${date} được tải lên",
+            "contentByAuthor": "${contentType} của ${author}"
+          },
+          "googlePhotos": {
+            "searchAndBrowse": "Duyệt hình trên ${Picasa} hoặc ${Google+}"
+          },
+          "flickr": {
+            "photostream": "Luồng hình ảnh",
+            "searchAndBrowse": "Tìm kiếm và duyệt hình ảnh trên ${Flickr}",
+            "captionStarter": "Hình ảnh của ${USERNAME} trên ${Flickr}"
+          },
+          "unsplash": {
+            "searchAndBrowse": "Tìm hình ảnh trên ${Unsplash}",
+            "photoBy": "Hình ảnh của ${username}",
+            "userLink": "Đến trang ${Unsplash} của ${username}",
+            "captionStarter": "Hình ảnh của ${USERNAME} trên ${Unsplash}"
+          },
+          "urlContent": {
+            "uploadHeaders": {
+              "generic": "Liên kết đến nội dung trên trang web",
+              "imageOnly": "Liên kết đến hình ảnh trên trang web",
+              "imageAndVideo": "Liên kết đến hình ảnh hoặc video trên trang web"
+            },
+            "linkText": {
+              "imageOnly": "Trong hộp thoại nói trên, bạn có thể liên kết trực tiếp đến hình ảnh.",
+              "imageAndVideo1": "Trong hộp thoại nói trên, bạn có thể dán đường dẫn hoặc mã iframe cho video trên ${YouTube} hoặc ${Vimeo}.",
+              "imageAndVideo2": "Bạn cũng có thể liên kết trực tiếp đến hình ảnh.",
+              "imageVideoWebpage1": "Trong hộp thoại nói trên, bạn có thể dán đường dẫn hoặc mã iframe cho nội dung web như biểu đồ động hoặc video trên ${YouTube} hoặc ${Vimeo}.",
+              "imageVideoWebpage2": "Bạn cũng có thể liên kết trực tiếp đến hình ảnh, video, tập tin âm thanh, trang web, hoặc ứng dụng web.",
+              "ender": "Luôn sử dụng các đường liên kết an toàn (https). Nếu nội dung của bạn không hỗ trợ https, thêm đường liên kết vào đó trong nội dung câu chuyện của bạn để người đọc có thể xem trong tab trình duyệt mới.",
+              "httpsError": "Liên kết phải bắt đầu bằng HTTPS"
+            },
+            "embedProtocol": {
+              "embedProtocolLabel": "Tải trang qua kết nối bảo mật (https)",
+              "embedProtocolWarning1": "Nếu trang này không tải trong câu chuyện của bạn, trang này không thể được nhúng vì lý do an ninh trang web.",
+              "embedProtocolWarning2": "Nếu trang này không tải trong câu chuyện của bạn, bỏ chọn tùy chọn này và thử lại. Nếu trang vẫn không tải được, trang này không thể được nhúng vì lý do an ninh trang web.",
+              "embedProtocolWarning3": "Hoặc cách khác, thêm đường liên kết vào câu chuyện của bạn để mở trang trong tab trình duyệt mới. ${linkText}",
+              "linkText": "Tìm hiểu Thêm."
+            },
+            "placeholder": "${https://}... hoặc ${<iframe>}",
+            "uploadErrors": {
+              "generic": "Đã xảy ra lỗi với địa chỉ khi nhập vào. Vui lòng thử lại.",
+              "imageOnly1": "Bạn phải sử dụng một hình ảnh trong phần này của câu chuyện.",
+              "imageOnly2": "Vui lòng cung cấp đường liên kết cho hình ảnh (.jpg, .png, .gif), hoặc chọn hình ảnh từ ${ArcGIS}, ${Flickr}, ${Google+}, hoặc ${Unsplash}.",
+              "imageAndVideo1": "Bạn phải sử dụng một hình ảnh hoặc video trong phần này của câu chuyện.",
+              "imageAndVideo2": "Vui lòng cung cấp đường liên kết cho hình ảnh (.jpg, .png, .gif), hoặc video trên ${YouTube} hoặc ${Vimeo}, hoặc chọn hình ảnh từ ${ArcGIS}, ${Flickr}, ${Google+}, hoặc ${Unsplash}.",
+              "badFormat": "Đường liên kết đến tệp tin mà bạn đang cố gắng thêm vào có định dạng không chính xác.",
+              "inaccessible": "Tệp tin mà bạn đang cố gắng thêm vào bị thiếu hoặc không thể truy cập được.",
+              "tryAgain": "Vui lòng kiểm tra địa chỉ và thử lại.",
+              "mediaTypes": {
+                "VIDEO": "video",
+                "IMAGE": "hình ảnh",
+                "generic": "phương tiện truyền thông"
+              }
+            }
+          }
+        },
+        "sidePanel": {
+          "googlePhotos": {
+            "placeholder": "ID Email hoặc ID ${Picasa}/${Google+}",
+            "helpText": "Bạn có thể thêm hình ảnh đã được tải lên ${Picasa} hoặc ${Google+} vào câu chuyện của bạn. ${helpLinkText} sắp sửa sử dụng hình ảnh được lưu trong tài khoản ${Google} của bạn vào câu chuyện của bạn.",
+            "helpLinkText": "Tìm hiểu thêm",
+            "cannotFindUser": "Không thể tìm thấy người dùng ${username}. Vui lòng thử lại."
+          },
+          "unsplash": {
+            "placeholder": "Tìm kiếm hình ảnh",
+            "aboutText": "${Unsplash} là bộ sưu tập các hình ảnh miễn phí, chất lượng cao.",
+            "copyrightText": "Tất cả các hình ảnh đăng trên ${Unsplash} được cấp phép theo Giấy phép ${CC0}. Tìm hiểu thêm thông tin ${moreInfoLink}.",
+            "moreInfoLink": "ở đây"
+          },
+          "flickr": {
+            "searchType": {
+              "account": "Tài khoản ${Flickr}",
+              "text": "Tất cả các ${Flickr}"
+            },
+            "placeholders": {
+              "user": "Tìm kiếm tài khoản",
+              "userText": "Tìm kiếm tài khoản này cho các hình ảnh",
+              "text": "Tìm kiếm hình ảnh"
+            },
+            "errors": {
+              "cannotFindUser": "Không thể tìm kiếm người dùng ${username}.",
+              "noUserPhotos": "${username} không có bất kỳ hình ảnh công cộng nào.",
+              "didYouMean": "Ý bạn có phải là ${username} không?",
+              "generalUserError": "Đã xảy ra lỗi khi tìm kiếm người dùng ${username}."
+            },
+            "licenses": {
+              "licenseLabel": "Giấy phép: ",
+              "public": "Miền công cộng",
+              "commercial": "Được phép sử dụng cho mục đích thương mại",
+              "nonCommercial": "Được phép sử dụng cho mục đích phi thương mại",
+              "reserved": "Tất cả các quyền đã được bảo hộ.",
+              "any": "Bất kỳ giấy phép nào"
+            }
+          },
+          "agol": {
+            "searchLocation": {
+              "thisStory": "Câu chuyện này",
+              "agol": "ArcGIS Online",
+              "portalArcGIS": "Portal for ArcGIS",
+              "portal": "Cổng thông tin",
+              "myOrg": "Tổ chức ${orgname}",
+              "myContent": "Nội dung của tôi"
+            },
+            "createContent": {
+              "createNewMap": "Tạo Bản đồ mới",
+              "or": "HOẶC",
+              "dragAndDrop": "Thả (các) hình ảnh ở đây",
+              "uploadImage": "Duyệt xem (các) hình ảnh",
+              "agolInfo": "Ảnh sẽ được lưu trong tài khoản ArcGIS và chỉ có thể truy cập bên trong câu chuyện của bạn.",
+              "saveBeforeUpload": "Sau khi bạn đã lưu câu chuyện này, bạn có thể tải hình ảnh lên ArcGIS ở đây.",
+              "fileTypesImage": "Các loại tập tin được hỗ trợ: .png, .jpeg, .jpg, .gif, .bmp"
+            },
+            "filterAndSort": {
+              "webmap": "Bản đồ Web",
+              "webscene": "Web Scene",
+              "image": "Hình ảnh",
+              "date": "Ngày",
+              "sortByDate": "Sắp xếp theo ngày",
+              "title": "Tiêu đề",
+              "sortByTitle": "Sắp xếp theo tiêu đề",
+              "views": "Lượt xem",
+              "search": "Tìm kiếm theo từ khóa hoặc ID"
+            }
+          }
+        }
+      }
+    },
+    "mapEditor": {
+      "dialogTitle": "Chỉnh sửa bản đồ",
+      "unauthorizedDomain": "Bạn không ở trong miền được ủy quyền để sử dụng trình biên tập bản đồ",
+      "loading": "Vui lòng chờ trong khi trình hiệu chỉnh bản đồ đang được tải",
+      "saving": "Đang lưu bản đồ",
+      "success": "Bản đồ đã được lưu",
+      "cancelTitle": "Bạn có muốn hủy mọi thay đổi chưa được lưu không?",
+      "errorSave": "Không thể lưu bản đồ. Vui lòng thử lại.",
+      "loadFail": "Rất tiếc, không thể tải trình biên tập bản đồ",
+      "close": "Đóng",
+      "save": "Lưu",
+      "confirm": "Vâng, đóng bản đồ",
+      "deny": "Không, vẫn làm việc"
+    },
+    "textEditor": {
+      "placeholder": {
+        "continueStory": "Tiếp tục câu chuyện của bạn ở đây..."
+      },
+      "blockAdd": {
+        "text": "Văn bản",
+        "media": "Phương tiện truyền thông",
+        "title": "Tiêu đề",
+        "immersive": "Phong phú"
+      },
+      "link": {
+        "invite": "Dán hoặc gõ đường liên kết..."
+      },
+      "color": {
+        "choose": "chọn",
+        "cancel": "hủy",
+        "clear": "Xóa màu"
+      }
+    },
     "imageGallery": {
       "addImage": "Thêm hình ảnh khác",
       "moveBackward": "Di chuyển về phía sau",
@@ -222,13 +430,55 @@ define({
         "noAltImage": "Phương tiện có thể không hoạt động được trên thiết bị di động",
         "noAltImageUnsupported": "Phương tiện không được hỗ trợ trên thiết bị di động",
         "noAltImageWarning": "Phương tiện có thể không hoạt động trên thiết bị di động",
-        "altImageBroken": "Hình ảnh khác được xác định cho mục truyền thông này không thể truy cập được"
+        "altImageBroken": "Hình ảnh khác được xác định cho mục truyền thông này không thể truy cập được",
+        "httpMedia": "Phương tiện không bảo mật",
+        "httpContent": "Nội dung không bảo mật"
       },
       "contentWarnings": {
         "noAltImage": "Hãy nhớ kiểm tra câu chuyện của bạn trên thiết bị di động trước khi chia sẻ. Nếu phương tiện này không hoạt động theo mong đợi, hãy sử dụng nút dưới đây để thêm vào một hình ảnh sẽ được hiển thị thay thế khi câu chuyện được xem trên điện thoại hoặc máy tính bảng.",
         "noAltImageUnsupported": "Phương tiện này sẽ không hoạt động trên thiết bị di động. Sử dụng nút dưới đây để thêm vào hình ảnh thay thế sẽ được hiển thị khi câu chuyện được xem trên điện thoại hoặc máy tính bảng.",
         "noAltImageWarning": "Hãy nhớ kiểm tra câu chuyện của bạn trên thiết bị di động trước khi chia sẻ. Nếu phương tiện này không hoạt động theo như mong đợi, hãy sử dụng nút dưới đây để thêm vào hình ảnh thay thế sẽ được hiển thị khi câu chuyện của bạn được xem trên điện thoại hoặc máy tính bảng.",
         "noAltImageAlt": "Loại phương tiện này không được hỗ trợ hoặc có thể không hoạt động tốt trên thiết bị di động. Trong tab di động, cung cấp hình ảnh thay thế sẽ được hiển thị khi câu chuyện của bạn được xem trên điện thoại hoặc máy tính bảng."
+      },
+      "descriptions": {
+        "httpAudioUnfixable": "Âm thanh này không hỗ trợ HTTPS. Xóa nó khỏi câu chuyện của bạn hoặc thay thế bằng một liên kết.",
+        "httpAudioUncheckable": "Âm thanh này có URL (HTTP) không bảo mật. Nhấp vào nút dưới để thử sử dụng một URL HTTPS cho âm thanh này. Nếu thao tác này không hoạt động, hãy xóa âm thanh khỏi câu chuyện của bạn và thay bằng một hyperlink.",
+        "httpAudioFixable": "Âm thanh này có URL (HTTP) không bảo mật. Nhấp vào nút dưới để thử sử dụng một URL HTTPS bảo mật cho âm thanh này.",
+        "httpWebpageUnfixable": "Trang web này không hỗ trợ HTTPS. Xóa nó khỏi câu chuyện của bạn hoặc thay thế bằng một liên kết hoặc ảnh chụp màn hình.",
+        "httpWebpageUncheckable": "Trang web này có URL (HTTP) không bảo mật. Nhấp vào nút dưới để thử sử dụng một URL HTTPS cho trang web này. Nếu thao tác này không hoạt động, hãy xóa trang web khỏi câu chuyện của bạn và thay bằng một ảnh chụp màn hình hoặc hyperlink.",
+        "httpWebpageFixable": "Trang web này có URL (HTTP) không bảo mật. Nhấp vào nút dưới để sử dụng một URL HTTPS bảo mật cho trang web này.",
+        "httpVideoUnfixable": "Video này không hỗ trợ HTTPS. Xóa nó khỏi câu chuyện của bạn hoặc thay thế bằng một liên kết hoặc ảnh chụp màn hình.",
+        "httpVideoUncheckable": "Video này có URL (HTTP) không bảo mật. Nhấp vào nút dưới để thử sử dụng một URL HTTPS cho video này. Nếu thao tác này không hoạt động, hãy xóa video khỏi câu chuyện của bạn và thay bằng một ảnh chụp màn hình hoặc hyperlink.",
+        "httpVideoFixable": "Video này có URL (HTTP) không bảo mật. Nhấp vào nút dưới để sử dụng một URL HTTPS bảo mật cho video này.",
+        "httpImageUnfixable": "Hình ảnh này không hỗ trợ HTTPS. Xóa nó khỏi câu chuyện của bạn hoặc thay thế bằng một liên kết.",
+        "httpImageUncheckable": "Hình ảnh này có URL (HTTP) không bảo mật. Nhấp vào nút dưới để thử sử dụng một URL HTTPS cho hình ảnh này. Nếu thao tác này không hoạt động, hãy xóa hình ảnh khỏi câu chuyện của bạn và thay bằng một hyperlink.",
+        "httpImageFixable": "Hình ảnh này có URL (HTTP) không bảo mật. Nhấp vào nút dưới để sử dụng một URL HTTPS bảo mật cho hình ảnh này.",
+        "httpLayer": "Lớp này có URL (HTTP) không bảo mật.",
+        "inaccessibleLogo": "Logo này không thể truy cập được. Thay thế nó bằng hình ảnh khác.",
+        "httpLogoUnfixable": "Logo này không hỗ trợ HTTPS. Thay thế nó bằng hình ảnh khác.",
+        "httpLogoFixable": "Logo này có URL (HTTP) không bảo mật. Sử dụng URL HTTPS cho logo.",
+        "httpLogoUncheckable": "Logo này có URL (HTTP) không bảo mật. Sử dụng URL HTTPS cho logo hoặc thay thế nó bằng hình ảnh khác."
+      },
+      "tooltips": {
+        "httpAudioFixable": "Nhấp vào nút để sử dụng URL HTTPS bảo mật cho âm thanh này.",
+        "httpAudioUncheckable": "Thử sử dụng một URL HTTPS cho âm thanh này. Nếu thao tác này không hoạt động, hãy xóa âm thanh khỏi câu chuyện của bạn và thay bằng một liên kết.",
+        "httpWebpageFixable": "Nhấp vào nút để sử dụng một URL HTTPS bảo mật cho trang web này.",
+        "httpWebpageUncheckable": "Thử sử dụng một URL HTTPS cho trang web này. Nếu thao tác này không hoạt động, hãy xóa trang web khỏi câu chuyện của bạn và thay bằng một ảnh chụp màn hình hoặc liên kết.",
+        "httpVideoFixable": "Nhấp vào nút để sử dụng URL HTTPS bảo mật cho video này.",
+        "httpVideoUncheckable": "Thử sử dụng một URL HTTPS cho video này. Nếu thao tác này không hoạt động, hãy xóa video khỏi câu chuyện của bạn và thay bằng một ảnh chụp màn hình hoặc liên kết.",
+        "httpImageFixable": "Nhấp vào nút để sử dụng URL HTTPS bảo mật cho hình ảnh này.",
+        "httpImageUncheckable": "Thử sử dụng một URL HTTPS cho hình ảnh này. Nếu thao tác này không hoạt động, hãy xóa hình ảnh khỏi câu chuyện của bạn và thay bằng một liên kết.",
+        "httpLayerMyMap": "Truy cập trang mục của bản đồ để cập nhật lớp này để sử dụng HTTPS. Nếu không thể cập nhật lớp, hãy xóa nó khỏi bản đồ.",
+        "httpLayerNotMyMap": "Tạo một bản sao của bản đồ và cập nhật lớp này để sử dụng HTTPS. Nếu không thể cập nhật lớp, hãy xóa nó khỏi bản đồ.",
+        "clickLearnMore": "Nhấp vào để tìm hiểu thêm."
+      },
+      "fixButtons": {
+        "agolItemPage": "Trang mục",
+        "openTheMap": "Mở Bản đồ",
+        "updateAudio": "Sửa URL Âm thanh",
+        "updateWebpages": "Sửa URL Trang web",
+        "updateVideos": "Sửa URL Video",
+        "updateImages": "Sửa URL Hình ảnh"
       },
       "mapIssues": {
         "fixButton": "Khắc phục Vấn đề",
@@ -291,6 +541,31 @@ define({
         "notHealthy": "Khắc phục vấn đề",
         "warnings": "Xem cảnh báo"
       }
+    },
+    "saveErrorSocial": {
+      "title": "Đang chia sẻ trên mạng xã hội",
+      "panel1": "Câu chuyện của bạn có thể hiển thị không đúng cách trên mạng xã hội vì tiêu đề mục ứng dụng web ArcGIS của bạn không giống với tiêu đề câu chuyện của bạn.",
+      "panel1tooltip": "Bằng cách xác định tiêu đề, phần tổng kết và hình thu nhỏ, câu chuyện của bạn sẽ trông như thế này:",
+      "panel2": "Bạn muốn sử dụng tiêu đề nào trên mạng xã hội:",
+      "panel2q1": "Tiêu đề câu chuyện (gợi ý)",
+      "panel2q1tooltip": "Bằng cách chọn tùy chọn này, tiêu đề mục của bạn sẽ được điều chỉnh cho khớp với tiêu đề câu chuyện của bạn và các thay đổi tiếp theo trong bộ thiết lập sẽ được đồng bộ hóa.",
+      "panel2q2": "Tiêu đề mục",
+      "panel3": "Để cải thiện hơn nữa hình dạng của câu chuyện của bạn trên mạng xã hội, hãy sử dụng ${MYSTORIES} để thêm phần tổng kết và hình thu nhỏ.",
+      "panel4": "Không cảnh báo lại đối với câu chuyện này",
+      "save": "Lưu",
+      "mystories": "Câu chuyện của Tôi"
+    },
+    "httpsTransitionMessage": {
+      "bannerMsg": "Thông báo quan trọng về Bảo mật web và Story Maps",
+      "s1h1": "Esri đang ngày càng tăng cường bảo mật cho Story Maps",
+      "s1p1": "Story Maps của bạn đang hoạt động trên nền web và cộng đồng web vẫn luôn nỗ lực để thiết lập và thực thi bảo mật được tốt hơn. Giao thức HTTPS cung cấp kết nối bảo mật để truyền tải nội dung qua internet, nó đang là phương thức tốt để truy cập nội dung web. Hiện nay, hầu hết các trình duyệt hiện đại đều hiển thị thông báo cảnh báo khi sử dụng HTTP thay vì HTTPS. Trong tình hình tiêu chuẩn này ngày càng được mở rộng, Story Maps sẽ cần được sử dụng thông qua HTTPS kể từ tháng 6 năm 2018 trên ArcGIS Online.",
+      "s1p2": "Xét về khía cạnh thực tế, điều này có nghĩa là phải truy cập vào Story Map và nội dung của nó (như hình ảnh, lớp dữ liệu, ứng dụng được nhúng vào và trang web) bằng cách sử dụng liên kết bắt đầu với HTTPS thay vì HTTP. Điều này đảm bảo mang đến trải nghiệm tốt hơn cho người xem bởi câu chuyện của bạn sẽ bảo mật hơn khi mở trên các trình duyệt web.",
+      "s2h1": "Bạn cần làm gì?",
+      "s2p1": "Esri đang nỗ lực làm việc để giúp bước chuyển tiếp được dễ dàng hơn cho các tác giả và người xem của ứng dụng Story Maps. Các công cụ hiện đã có sẵn trong Bộ thiết lập Story Map và phần Câu chuyện của tôi sẽ giúp bạn tìm thấy nội dung không bảo mật (HTTP) trong câu chuyện của mình và đưa ra những khuyến nghị về cách xử lý vấn đề. Vui lòng kiểm tra câu chuyện của bạn để tìm ra nội dung nào không bảo mật và cập nhật thành HTTPS trước tháng 6 năm 2018.",
+      "action1": "Đóng",
+      "action2": "Kiểm tra câu chuyện của tôi ngay",
+      "action3": "Tìm hiểu thêm",
+      "floatingNotification": "Câu chuyện này có chứa nội dung (HTTP) không bảo mật. Vui lòng xem xét và xử lý vấn đề này."
     }
   }
 });

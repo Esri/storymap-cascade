@@ -17,13 +17,13 @@ define({
         "theme": "Videz"
       },
       "bookmarks": {
-        "title": "Odsek",
+        "title": "Razdelek",
         "bookmark": "Zaznamek",
-        "intro": "Zaznamki so oznake povezave do odsekov zgodbe, ki so prikazani v glavi. Z ustvarjanjem natančnih zaznamkov za glavne odseke zgodbe boste bralcem omogočili večjo preglednost.",
-        "sequentialDefault": "Pripovedni odsek (besedilo ni najdeno)",
+        "intro": "Zaznamki so oznake povezave do razdelkov zgodbe, ki so prikazani v glavi. Z ustvarjanjem natančnih zaznamkov za glavne razdelke zgodbe boste bralcem omogočili večjo preglednost.",
+        "sequentialDefault": "Pripovedni razdelek (besedilo ni najdeno)",
         "immersiveDefault": "Potopni razdelek (besedilo ni najdeno)",
-        "titleDefault": "Odsek z imenom (besedilo ni najdeno)",
-        "coverDefault": "Odsek naslovnice (besedilo ni najdeno)",
+        "titleDefault": "Razdelek z imenom (besedilo ni najdeno)",
+        "coverDefault": "Razdelek naslovnice (besedilo ni najdeno)",
         "coverAppendage": "(Naslovnica)"
       },
       "logoSharing": {
@@ -50,7 +50,26 @@ define({
         "loremBody": "Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor. Mauris consequat orci nec magna facilisis bibendum at eget libero."
       }
     },
+    "share": {
+      "btnPrivate": "Zasebno",
+      "btnOrg": "Organizacija",
+      "btnPublic": "Javno",
+      "btnEveryone": "Vsi"
+    },
     "builderPanel": {
+      "builderNamePrefix": "",
+      "builderNameSuffix": "Graditelj",
+      "buttonSaving": "Shranjevanje",
+      "buttonSaved": "Shranjeno",
+      "buttonError": "Shranjevanje ni uspelo",
+      "buttonShare": "Deli",
+      "buttonSettings": "Nastavitve",
+      "settingsLogoError": "Vaš logotip ima težavo. Kliknite, če želite izvedeti več.",
+      "buttonHelp": "Poiščite pomoč ali pošljite povratno informacijo na GeoNet",
+      "buttonPreview": "Ogled zgodbe",
+      "buttonHealth": "Poročilo o zdravju",
+      "manageStories": "Upravljanje Mojih zgodb",
+      "closeWithPendingChange": "Ste prepričani, da želite to dejanje potrditi? Vaše spremembe bodo izgubljene.",
       "coverLabel": "Naslovnica",
       "creditsLabel": "Krediti",
       "betaFeedback": "Povratne informacije",
@@ -63,7 +82,7 @@ define({
       "duplicate": "Podvoji",
       "organize": "Organiziraj",
       "done": "Končano",
-      "invite": "Med izdelovanjem zgodbe se bodo odseki prikazovali tukaj...",
+      "invite": "Med izdelovanjem zgodbe se bodo razdelki prikazovali tukaj ...",
       "mystoriestooltip": "Kaskadni graditelj vas opozarja na težave v vaši zgodbi in vam pomaga pri njihovem odpravljanju. 3D-prizori in vdelane aplikacije ne bodo preverjene, zato jih preverite ročno."
     },
     "immersiveViewPanel": {
@@ -103,7 +122,7 @@ define({
         "audio": "Zvok",
         "on": "Vklop",
         "muted": "Brez zvoka",
-        "volumeAside": "Videoposnetek se bo samodejno predvajal, ko pride bralec do tega pogleda. Če izklopite zvok, ga bralec ne bo mogel omogočiti.",
+        "volumeAside": "Video se bo samodejno predvajal, ko pride bralec do tega pogleda. Če izklopite zvok, ga bralec ne bo mogel omogočiti.",
         "view": "Ogled",
         "resetLocation": "Ponastavi lokacijo",
         "resetLayers": "Ponastavi sloje",
@@ -143,6 +162,195 @@ define({
         "uploadAltImage": "Dodaj dodatno sliko"
       }
     },
+    "mediaPicker": {
+      "browseToggle": {
+        "urls": "Povezava do vsebine",
+        "urls_short": "Povezava",
+        "contentType": {
+          "error": "Ni pooblaščenega medija.",
+          "imageOnly": "V tem delu zgodbe lahko dodate sliko.",
+          "imageAndVideo": "V tem delu zgodbe lahko dodate sliko ali videoposnetek.",
+          "imageVideoWebpage": "V tem delu zgodbe lahko dodate sliko, videoposnetek ali spletno stran."
+        }
+      },
+      "browsePanel": {
+        "providers": {
+          "searchingFor": "Iskanje »${searchterm}« ...",
+          "searchedFor": "Rezultati iskanja za »${searchterm}«",
+          "albumsOf": "Albumi uporabnika ${username}",
+          "noPhotosFound": "Ni slik, ki ustrezajo vaši poizvedbi. Poskusite znova.",
+          "noItemsFound": "Ni elementov, ki ustrezajo vaši poizvedbi. Poskusite znova.",
+          "noItemsInThisStory": "V to zgodbo še ni dodana nobena vsebina ArcGIS.",
+          "limitReached": "Prikazujem 100 elementov. Če niste našli, kar potrebujete, poskusite z iskanjem s ključnimi besedami.",
+          "galleryItems": {
+            "uploadError": "Oprostite, tega elementa ni bilo mogoče naložiti."
+          },
+          "agol": {
+            "remove1": "Izbrišite neuporabljeno sliko z računa ArcGIS.",
+            "remove2": "(Morali jo boste znova naložiti, če se boste kasneje odločili, da jo želite uporabiti.)",
+            "removeFailed": "Odstranite nedostopno sliko s tega seznama.",
+            "modified": "Spremenjeno ${date}",
+            "uploaded": "Naloženo ${date}",
+            "contentByAuthor": "${contentType} od ${author}"
+          },
+          "googlePhotos": {
+            "searchAndBrowse": "Brskajte po fotografijah na straneh ${Picasa} ali ${Google+}"
+          },
+          "flickr": {
+            "photostream": "Photo stream",
+            "searchAndBrowse": "Poiščite in brskajte po fotografijah na strani ${Flickr}",
+            "captionStarter": "Avtor fotografije je ${USERNAME} na ${Flickr}"
+          },
+          "unsplash": {
+            "searchAndBrowse": "Poiščite slike na strani ${Unsplash}",
+            "photoBy": "Avtor fotografije je uporabnik ${username}",
+            "userLink": "Pojdi na stran ${Unsplash} uporabnika ${username}",
+            "captionStarter": "Avtor fotografije je ${USERNAME} na ${Unsplash}"
+          },
+          "urlContent": {
+            "uploadHeaders": {
+              "generic": "Povezava do vsebine na spletu",
+              "imageOnly": "Povezava do slike na spletu",
+              "imageAndVideo": "Povezava do slike ali videoposnetka na spletu"
+            },
+            "linkText": {
+              "imageOnly": "V zgornjem polju lahko določite neposredno povezavo s fotografijo.",
+              "imageAndVideo1": "V zgornjem polju lahko prilepite povezavo ali kodo iframe za video na ${YouTube} in ${Vimeo}.",
+              "imageAndVideo2": "Prav tako lahko določite neposredno povezavo s fotografijo.",
+              "imageVideoWebpage1": "V zgornjem polju lahko prilepite povezavo ali kodo iframe za spletno vsebino, kot npr. dinamični grafikon ali video na ${YouTube} in ${Vimeo}.",
+              "imageVideoWebpage2": "Prav tako lahko določite neposredno povezavo s fotografijo, videom, zvočno datoteko, spletno stranjo ali spletno aplikacijo.",
+              "ender": "Vedno uporabljajte varne (https) povezave. Če jih vaša vsebina ne podpira, v besedilu svoje zgodbe dodajte povezavo, da si jih bodo lahko bralci ogledali v novem zavihku brskalnika.",
+              "httpsError": "Povezava se mora začeti s HTTPS"
+            },
+            "embedProtocol": {
+              "embedProtocolLabel": "Naložite stran prek varne povezave (https)",
+              "embedProtocolWarning1": "Če se stran v vaši zgodbi ne naloži, je ni mogoče vdelati zaradi varnostnih razlogov.",
+              "embedProtocolWarning2": "Če se stran v vaši zgodbi ne naloži, odkljukajte to možnost in poskusite znova. Če se stran še vedno ne naloži, je ni mogoče vdelati zaradi razlogov spletne varnosti.",
+              "embedProtocolWarning3": "Namesto tega dodajte povezavo v zgodbo, da odprete stran v novem zavihku brskalnika. ${linkText}",
+              "linkText": "Izvedi več."
+            },
+            "placeholder": "${https://}... ali ${<iframe>}",
+            "uploadErrors": {
+              "generic": "Nekaj ni v redu z vnesenim naslovom. Poskusite znova.",
+              "imageOnly1": "V tem delu zgodbe morate uporabiti sliko.",
+              "imageOnly2": "Navedite povezavo do slike (.jpg, .png, .gif) ali izberite sliko s strani ${ArcGIS}, ${Flickr}, ${Google+} ali ${Unsplash}.",
+              "imageAndVideo1": "V tem delu zgodbe morate uporabiti sliko ali videoposnetek.",
+              "imageAndVideo2": "Navedite povezavo do slike (.jpg, .png, .gif) ali videoposnetka na strani ${YouTube} ali ${Vimeo} ali izberite sliko s strani ${ArcGIS}, ${Flickr}, ${Google+} ali ${Unsplash}.",
+              "badFormat": "Povezava do datoteke, ki jo poskušate dodati, ni pravilno oblikovana.",
+              "inaccessible": "Ni datoteke, ki jo želite dodati, ali ni dostopna.",
+              "tryAgain": "Preverite naslov in poskusite znova.",
+              "mediaTypes": {
+                "VIDEO": "video",
+                "IMAGE": "slika",
+                "generic": "mediji"
+              }
+            }
+          }
+        },
+        "sidePanel": {
+          "googlePhotos": {
+            "placeholder": "E-pošta ali ID za ${Picasa}/${Google+}",
+            "helpText": "V svojo zgodbo lahko dodate slike, naložene v storitvi ${Picasa} ali ${Google+}. ${helpLinkText} o uporabi slik, shranjenih v vašem računu ${Google} v vaših zgodbah.",
+            "helpLinkText": "Izvedi več",
+            "cannotFindUser": "Uporabnika ${username} ni bilo mogoče najti. Poskusite znova."
+          },
+          "unsplash": {
+            "placeholder": "Poiščite fotografije",
+            "aboutText": "${Unsplash} je skrbno zbrana zbirka brezplačnih fotografij izjemne kakovosti.",
+            "copyrightText": "Vse fotografije, objavljene na ${Unsplash}, so licencirane pod licenco ${CC0}. Več informacij dobite na ${moreInfoLink}.",
+            "moreInfoLink": "tukaj"
+          },
+          "flickr": {
+            "searchType": {
+              "account": "Račun ${Flickr}",
+              "text": "Vse na ${Flickr}"
+            },
+            "placeholders": {
+              "user": "Poiščite račun",
+              "userText": "Poiščite fotografije v tem računu",
+              "text": "Poiščite fotografije"
+            },
+            "errors": {
+              "cannotFindUser": "Uporabnika ${username} ni bilo mogoče najti.",
+              "noUserPhotos": "Uporabnik ${username} nima javnih fotografij.",
+              "didYouMean": "Ste mislili uporabnika ${username}?",
+              "generalUserError": "Prišlo je do težav pri iskanju uporabnika ${username}."
+            },
+            "licenses": {
+              "licenseLabel": "Licenca: ",
+              "public": "Javna domena",
+              "commercial": "V redu za komercialno uporabo",
+              "nonCommercial": "V redu za nekomercialno uporabo",
+              "reserved": "Vse pravice pridržane",
+              "any": "Katera koli licenca"
+            }
+          },
+          "agol": {
+            "searchLocation": {
+              "thisStory": "Ta zgodba",
+              "agol": "ArcGIS Online",
+              "portalArcGIS": "Portal for ArcGIS",
+              "portal": "Portal",
+              "myOrg": "Organizacija ${orgname}",
+              "myContent": "Moja vsebina"
+            },
+            "createContent": {
+              "createNewMap": "Ustvari novo karto",
+              "or": "ALI",
+              "dragAndDrop": "Odložite slike tukaj",
+              "uploadImage": "Poiščite slike",
+              "agolInfo": "Slike bodo shranjene v vašem računu ArcGIS in dostopne samo znotraj vaše zgodbe.",
+              "saveBeforeUpload": "Ko shranite to zgodbo, lahko naložite slike v ArcGIS tukaj.",
+              "fileTypesImage": "Podprte vrste datotek: .png, .jpeg, .jpg, .gif, .bmp"
+            },
+            "filterAndSort": {
+              "webmap": "Spletna karta",
+              "webscene": "Spletni 3D-prizor",
+              "image": "Slika",
+              "date": "Datum",
+              "sortByDate": "Razvrsti po datumu",
+              "title": "Ime",
+              "sortByTitle": "Razvrsti po imenu",
+              "views": "Ogledi",
+              "search": "Iskanje po ključni besedi ali ID-ju"
+            }
+          }
+        }
+      }
+    },
+    "mapEditor": {
+      "dialogTitle": "Uredi karto",
+      "unauthorizedDomain": "Niste na pooblaščeni domeni za uporabo urejevalnika kart",
+      "loading": "Počakajte, da se urejevalnik kart naloži",
+      "saving": "Shranjevanje karte",
+      "success": "Karta je shranjena",
+      "cancelTitle": "Opustim vse neshranjene spremembe?",
+      "errorSave": "Karte ni mogoče shraniti. Poskusite znova.",
+      "loadFail": "Oprostite, urejevalnika kart ni mogoče naložiti",
+      "close": "Zapri",
+      "save": "Shrani",
+      "confirm": "Da, zapri karto",
+      "deny": "Ne, nadaljuj z delom"
+    },
+    "textEditor": {
+      "placeholder": {
+        "continueStory": "Svojo zgodbo nadaljujte tukaj ..."
+      },
+      "blockAdd": {
+        "text": "Besedilo",
+        "media": "Mediji",
+        "title": "Ime",
+        "immersive": "Potopni"
+      },
+      "link": {
+        "invite": "Prilepite ali napišite povezavo ..."
+      },
+      "color": {
+        "choose": "izberi",
+        "cancel": "prekliči",
+        "clear": "Počisti barvo"
+      }
+    },
     "imageGallery": {
       "addImage": "Dodaj novo sliko",
       "moveBackward": "Premakni se nazaj",
@@ -151,16 +359,16 @@ define({
     "cover": {
       "titlePrompt": "Vnesite ime svoje zgodbe...",
       "subtitlePrompt": "Podrsnite navzdol za začetek ali vnesite dodatni podnaslov",
-      "mediaPlaceholder": "Dodajte svojo sliko ali videoposnetek",
+      "mediaPlaceholder": "Dodajte svojo sliko ali video",
       "saveError": "Shranjevanje ni uspelo, ker že imate element s tem imenom"
     },
     "credits": {
-      "sectionInvite": "Dodajte odsek s krediti",
+      "sectionInvite": "Dodajte razdelek s krediti",
       "warning": "Obe polji je treba izpolniti",
       "content": "Vsebina...",
       "source": "Vir...",
       "linkPrompt": "Dodatna povezava...",
-      "introductionPlaceholder": "Vnesite dodatni uvod v odsek s krediti..."
+      "introductionPlaceholder": "Vnesite izbirni uvod v razdelek s krediti ..."
     },
     "immersive": {
       "titleConfig": {
@@ -183,9 +391,9 @@ define({
       "imageUploadFail": "Nalaganje slike ni uspelo"
     },
     "controller": {
-      "sectionOrganize": "Organizirali ste odseke",
+      "sectionOrganize": "Organizirali ste razdelek",
       "immersiveOrganize": "Organizirali ste poglede",
-      "sectionDelete": "Izbrisali ste odsek",
+      "sectionDelete": "Izbrisali ste razdelek",
       "viewDelete": "Izbrisali ste pogled"
     },
     "notification": {
@@ -203,7 +411,7 @@ define({
         "image": "slika",
         "webmap": "karta",
         "webscene": "3D-prizor",
-        "video": "videoposnetek",
+        "video": "video",
         "content": "vsebina",
         "webpage": "spletna stran"
       },
@@ -222,13 +430,55 @@ define({
         "noAltImage": "Medij morda ne bo deloval na mobilni napravi",
         "noAltImageUnsupported": "Medij ni podprt na mobilnih napravah",
         "noAltImageWarning": "Medij morda ne bo deloval na mobilni napravi",
-        "altImageBroken": "Do dodatne slike, določene za ta element medija, ni mogoče dostopati"
+        "altImageBroken": "Do dodatne slike, določene za ta element medija, ni mogoče dostopati",
+        "httpMedia": "Negotovi mediji",
+        "httpContent": "Negotova vsebina"
       },
       "contentWarnings": {
         "noAltImage": "Prikazovanje svoje zgodbe preizkusite na mobilnih napravah, preden jo boste delili. Če ta medij ne deluje po pričakovanjih, s spodnjim gumbom dodajte dodatno sliko, ki bo prikazana ob ogledu zgodbe na telefonu ali tablici.",
         "noAltImageUnsupported": "Ta medij ne bo deloval na mobilnih napravah. S spodnjim gumbom dodajte dodatno sliko, ki se bo prikazovala ob ogledu zgodbe na telefonu ali tablici.",
         "noAltImageWarning": "Prikazovanje svoje zgodbe preizkusite na mobilnih napravah, preden jo boste delili. Če ta medij ne deluje po pričakovanjih, s spodnjim gumbom dodajte dodatno sliko, ki bo prikazana ob ogledu zgodbe na telefonu ali tablici.",
         "noAltImageAlt": "Ta vrsta medija ni podprta in morda ne bo ustrezno delovala na mobilnih napravah. V zavihku mobilne naprave zagotovite dodatno sliko, ki se bo prikazovala ob ogledu zgodbe na telefonu ali tablici."
+      },
+      "descriptions": {
+        "httpAudioUnfixable": "Ta zvočni zapis ne podpira HTTPS. Odstranite ga iz vaše zgodbe ali ga nadomestite s povezavo.",
+        "httpAudioUncheckable": "Ta zvočni zapis ima nezavarovan (HTTP) URL.Kliknite spodnji gumb in poskusite uporabiti HTTPS URL za ta zvočni zapis. Če to ne deluje, zvočni zapis odstranite iz svoje zgodbe ali ga zamenjajte s hiperpovezavo.",
+        "httpAudioFixable": "Ta zvočni zapis ima nezavarovan (HTTP) URL.Kliknite spodnji gumb za uporabo zavarovanega HTTPS URL za ta zvočni zapis.",
+        "httpWebpageUnfixable": "Ta spletna stran ne podpira HTTPS. Odstranite jo iz vaše zgodbe ali jo nadomestite s posnetkom zaslona ali povezavo.",
+        "httpWebpageUncheckable": "Ta spletna stran ima nezavarovan (HTTP) URL.Kliknite spodnji gumb in poskusite uporabiti HTTPS URL za to spletno stran. Če to ne deluje, spletno stran odstranite iz svoje zgodbe ali jo zamenjajte s posnetkom zaslona ali hiperpovezavo.",
+        "httpWebpageFixable": "Ta spletna stran ima nezavarovan (HTTP) URL.Kliknite spodnji gumb za uporabo zavarovanega HTTPS URL za to spletno stran.",
+        "httpVideoUnfixable": "Ta video ne podpira HTTPS. Odstranite ga iz vaše zgodbe ali ga nadomestite s posnetkom zaslona ali povezavo.",
+        "httpVideoUncheckable": "Ta video ima nezavarovan (HTTP) URL.Kliknite spodnji gumb in poskusite uporabiti HTTPS URL za ta video. Če to ne deluje, video odstranite iz svoje zgodbe ali ga zamenjajte s posnetkom zaslona ali hiperpovezavo.",
+        "httpVideoFixable": "Ta video ima nezavarovan (HTTP) URL.Kliknite spodnji gumb za uporabo zavarovanega HTTPS URL za ta video.",
+        "httpImageUnfixable": "Ta slika ne podpira HTTPS. Odstranite jo iz vaše zgodbe ali jo nadomestite s povezavo.",
+        "httpImageUncheckable": "Ta slika ima nezavarovan (HTTP) URL.Kliknite spodnji gumb in poskusite uporabiti HTTPS URL za to sliko. Če to ne deluje, sliko odstranite iz svoje zgodbe ali jo zamenjajte s hiperpovezavo.",
+        "httpImageFixable": "Ta slika ima nezavarovan (HTTP) URL.Kliknite spodnji gumb za uporabo zavarovanega HTTPS URL za to sliko.",
+        "httpLayer": "Ta sloj ima negotov (HTTP) URL.",
+        "inaccessibleLogo": "Do tega logotipa ni mogoče dostopati. Zamenjajte ga z drugo sliko.",
+        "httpLogoUnfixable": "Ta logotip ne podpira HTTPS. Zamenjajte ga z drugo sliko.",
+        "httpLogoFixable": "Ta logotip ima negotov (HTTP) URL. Za logotip uporabite HTTPS URL.",
+        "httpLogoUncheckable": "Ta logotip ima negotov (HTTP) URL. Za logotip uporabite HTTPS URL ali ga zamenjajte z drugo sliko."
+      },
+      "tooltips": {
+        "httpAudioFixable": "Kliknite gumb za uporabo zavarovanega HTTPS URL za ta zvočni zapis.",
+        "httpAudioUncheckable": "Poskusite uporabiti HTTPS URL za ta zvočni zapis. Če to ne deluje, zvočni zapis odstranite iz svoje zgodbe ali ga zamenjajte s povezavo.",
+        "httpWebpageFixable": "Kliknite gumb za uporabo zavarovanega HTTPS URL za to spletno stran.",
+        "httpWebpageUncheckable": "Poskusite uporabiti HTTPS URL za to spletno stran. Če to ne deluje, spletno stran odstranite iz svoje zgodbe ali jo zamenjajte s posnetkom zaslona ali povezavo.",
+        "httpVideoFixable": "Kliknite gumb za uporabo zavarovanega HTTPS URL za ta video.",
+        "httpVideoUncheckable": "Poskusite uporabiti HTTPS URL za ta video. Če to ne deluje, video odstranite iz svoje zgodbe ali ga zamenjajte s posnetkom zaslona ali povezavo.",
+        "httpImageFixable": "Kliknite gumb za uporabo zavarovanega HTTPS URL za to sliko.",
+        "httpImageUncheckable": "Poskusite uporabiti HTTPS URL za to sliko. Če to ne deluje, sliko odstranite iz svoje zgodbe ali jo zamenjajte s povezavo.",
+        "httpLayerMyMap": "Obiščite stran elementov karte za posodobitev tega sloja za uporabo HTTPS. Če sloja ni mogoče posodobiti, ga odstranite s karte.",
+        "httpLayerNotMyMap": "Naredite kopijo karte in posodobite ta sloj za uporabo HTTPS. Če sloja ni mogoče posodobiti, ga odstranite s karte.",
+        "clickLearnMore": "Kliknite, če želite izvedeti več."
+      },
+      "fixButtons": {
+        "agolItemPage": "Stran elementa",
+        "openTheMap": "Odpri karto",
+        "updateAudio": "Popravi URL zvočnega zapisa",
+        "updateWebpages": "Popravi URL spletne strani",
+        "updateVideos": "Popravi URL videa",
+        "updateImages": "Popravi URL slike"
       },
       "mapIssues": {
         "fixButton": "Odpravi težave",
@@ -291,6 +541,31 @@ define({
         "notHealthy": "Odpravi težave",
         "warnings": "Ogled opozoril"
       }
+    },
+    "saveErrorSocial": {
+      "title": "Deljenje na družbenih omrežjih",
+      "panel1": "Vaša zgodba se morda na družbenih omrežjih ne bo pravilno prikazala, saj ime elementa spletne aplikacije ArcGIS ni enako imenu vaše zgodbe.",
+      "panel1tooltip": "Z določitvijo imena, povzetka in sličice bo vaša zgodba videti tako:",
+      "panel2": "Katero ime želite uporabiti na družbenih omrežjih:",
+      "panel2q1": "Ime zgodbe (priporočeno)",
+      "panel2q1tooltip": "Če izberete to možnost, se bo ime vašega elementa spremenilo zaradi ujemanja z imenom vaše zgodbe, dodatne spremembe pa bodo sinhronizirane v graditelju.",
+      "panel2q2": "Ime elementa",
+      "panel3": "Za nadaljnje izboljševanje videza vaše zgodbe na družbenih omrežjih uporabite ${MYSTORIES} in dodajte povzetek in sličico.",
+      "panel4": "Ne opozarjaj me več za to zgodbo",
+      "save": "Shrani",
+      "mystories": "Moje zgodbe"
+    },
+    "httpsTransitionMessage": {
+      "bannerMsg": "Pomembno sporočilo o spletni varnosti in kartah z zgodbo",
+      "s1h1": "Esri izboljšuje varnost kart z zgodbo",
+      "s1p1": "Vaše karte z zgodbo živijo na spletu in spletna skupnost si nenehno prizadeva za vzpostavitev in izvajanje boljše varnosti. HTTPS, ki zagotavlja varno povezavo za vsebino, preneseno prek interneta, se pojavlja kot pričakovani način za dostop do spletnih vsebin. Večina sodobnih brskalnikov sedaj prikazuje opozorilna sporočila, ko je namesto HTTPS uporabljen HTTP. Zaradi tega nastajajočega standarda, ki bo stopil v veljavo junija 2018 s posodobitvijo ArcGIS Online, bodo vaše karte z zgodbo morale uporabljati HTTPS.",
+      "s1p2": "Praktično gledano to pomeni, da bo do karte z zgodbo in vseh njenih vsebin (vključno s slikami, sloji, vdelanimi aplikacijami in spletnimi stranmi) treba dostopati s pomočjo povezav, ki se začnejo s HTTPS in ne s HTTP. To zagotavlja najboljšo izkušnjo vašim bralcem, saj bo večina brskalnikov označevala, da so vaše zgodbe varne.",
+      "s2h1": "Kaj moram storiti?",
+      "s2p1": "Podjetje Esri si prizadeva, da bo to enostaven prehod za avtorje in bralce kart z zgodbo. Sedaj so na voljo orodja v graditeljih kart z zgodbo in mojih zgodbah, ki vam pomagajo najti negotovo vsebino (HTTP) v vaših zgodbah in zagotavljajo priporočila, kako jih obravnavati. Preverite vaše zgodbe za negotovo vsebino in posodobite na HTTPS pred junijem 2018.",
+      "action1": "Trenutna drsnica",
+      "action2": "Preveri moje zgodbe zdaj",
+      "action3": "Izvedi več",
+      "floatingNotification": "Ta zgodba vsebuje negotovo (HTTP) vsebino. Preglejte in obravnavajte te težave."
     }
   }
 });

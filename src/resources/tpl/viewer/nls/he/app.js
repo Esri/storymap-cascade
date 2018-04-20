@@ -32,10 +32,11 @@ define({
       "upgradeBrowser": "עדכן את הדפדפן",
       "mapLoadingFail": "משהו השתבש, המפה לא נטענה באופן תקין.",
       "signOut": "יציאה",
-      "builderSupport1": "אשף הבנייה של מפל מפת סיפור נתמך ב-${CHROME} וב-${SAFARI} בלבד. עם זאת, תוכל להציג סיפורי מפל שתיצור בעזרת אשף הבנייה בדפדפנים הבאים: Internet Explorer 11 ואילך ו-Firefox.",
-      "builderSupport2": "אשף הבנייה של מפל מפת סיפור אינו נתמך ב-iPad. סיפורי מפל שתיצור ותשתף יפעלו ב-iPad.",
-      "builderSupport3": "ניתן להציג סיפורי מפל ב-Chrome, ב-Safari, ב-Firefox וב-Internet Explorer 11 ואילך, עם זאת אשף הבנייה של מפל מפת סיפור נתמך ב-${CHROME} וב-${SAFARI} בלבד.",
-      "builderSupport4": "ניתן להציג סיפורי Cascade בכל דפדפן אינטרנט מודרני. עם זאת, אשף הבנייה של מפת Cascade הסיפור נתמך רק ב-${CHROME} וב-${SAFARI}.<br><br> אם אתה זקוק לאשף בניית סיפור Cascade כדי לתמוך בדפדפן אחר, צור קשר עם ${ESRI-SUPPORT} או ${BROWSER-SUPPORT-VOTE}.",
+      "builderSupportFirefox": "אשף הבנייה של 'מפל מפת סיפור' תומך כעת ב-Firefox!<br><br>התמיכה בכתיבת סיפורי מפל ב-Firefox נמצאת כעת בגרסת בתא. נסה אותה ודווח על כל בעיה ל-${ESRI-SUPPORT} או ל-${ESRI-COMMUNITY}.",
+      "builderSupportOther": "ניתן להציג סיפורי מפל בכל דפדפן אינטרנט מודרני. עם זאת, אשף הבנייה של 'מפל מפת סיפור' נתמך רק ב-${CHROME}, ‏${SAFARI} ו-${FIREFOX}.<br><br> אם אתה צריך שאשף הבנייה של 'מפל' יתמוך בדפדפן אחר, צור קשר עם ${ESRI-SUPPORT} או ${BROWSER-SUPPORT-VOTE}.",
+      "builderSupportIpad": "אשף הבנייה של מפל מפת סיפור אינו נתמך ב-iPad. סיפורי מפל שתיצור ותשתף יפעלו ב-iPad.",
+      "launchBuilder": "הפעל את אשף הבנייה של 'מפל'",
+      "notAgain": "אל תציג הודעה זו שוב",
       "sorry": "שים לב:"
     },
     "mobileWarning": {
@@ -82,6 +83,40 @@ define({
       "speedFast": "מהיר",
       "speedMedium": "בינונית",
       "speedSlow": "איטי"
+    }
+  },
+  "print": {
+    "settings": {
+      "pleaseWait": "לפני שתדפיס, המתן שהסיפור ייטען במלואו",
+      "printNotes": "אם הדף נטען באיטיות או אם מדיה כלשהי לא מופיעה, נסה להחליף את המידה החיה בתמונות או להדפיס קטעים בטווח קטן יותר. לתוצאות הטובות ביותר, ייתכן שתצטרך להפעיל הדפסה של רכיבים ברקע בהגדרות ההדפסה של הדפדפן שלך.",
+      "printOptions": "אפשרויות",
+      "makeTextBlack": "הפוך את כל הטקסט לשחור",
+      "showLinks": "הצג כתובות URL של קישורים",
+      "useAltMedia": "החלף מדיה חיה בתמונות, אם זמינות",
+      "pageBreaks": "התחל כל קטע בדף חדש",
+      "printRange": "הדפס חלק מסיפור זה",
+      "sectionStart": "קטעים:",
+      "go": "בצע",
+      "reset": "אפס את כל הסיפור",
+      "print": "הדפס"
+    },
+    "page": {
+      "appTagline": "סיפור זה נוצר עם ${CASCADE_LINK_TEXT}.",
+      "cascadeLinkText": "מפל מפת הסיפור של Esri",
+      "readItOnline": "קרא אותו באינטרנט, בכתובת ${STORY_URL}."
+    },
+    "sections": {
+      "sectionLabel": "קטע ${SECTION_NUMBER}"
+    },
+    "media": {
+      "websiteLabel": "אתר אינטרנט:",
+      "videoLabel": "וידאו:",
+      "audioLabel": "שמע:"
+    },
+    "bannerNotification": {
+      "learnMore": "לימוד נוסף",
+      "close": "סגור",
+      "dontShowAgain": "אל תציג הודעה זו שוב"
     }
   }
 });

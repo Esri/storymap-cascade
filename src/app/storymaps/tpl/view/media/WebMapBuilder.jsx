@@ -5,16 +5,14 @@ import BuilderConfig from './builder/Panel';
 import BuilderConfigTabSize from './builder/TabSize';
 import BuilderConfigTabManage from './builder/TabManage';
 import BuilderConfigTabWebMap from './builder/TabWebMap';
-import BuilderConfigTabIssues from './builder/TabIssues';
+import BuilderConfigTabIssuesMap from './builder/TabIssuesMap';
 import BuilderConfigTabAlternateMedia from './builder/TabAlternateMedia';
 import BuilderConfigTabAlternateEmpty from './builder/TabAlternateEmpty';
-
-import MapEditor from './WebMapEditor';
 
 import lang from 'dojo/_base/lang';
 import topic from 'dojo/topic';
 
-import issues from '../../builder/Issues';
+import issues from 'issue-checker/IssueTypes';
 import i18n from 'lib-build/i18n!resources/tpl/builder/nls/app';
 
 const text = i18n.builder.mediaErrors;
@@ -45,7 +43,7 @@ export default class WebMapBuilder extends WebMap {
     }
 
     // listen to when THIS SPECIFIC map gets scanned
-    topic.subscribe('scan/maps/' + this._instanceID, lang.hitch(this, this.checkErrors));
+    this._scanListener = topic.subscribe('scan/maps/' + this._instanceID, lang.hitch(this, this.checkErrors));
 
     this.initBuilderUI();
 
@@ -134,7 +132,7 @@ export default class WebMapBuilder extends WebMap {
       }
     });
 
-    for(let tab of this._builderConfigurationTabs) {
+    for (let tab of this._builderConfigurationTabs) {
       if (tab == 'size') {
         tabs.push(new BuilderConfigTabSize());
       }
@@ -152,12 +150,19 @@ export default class WebMapBuilder extends WebMap {
     }
 
     const errors = lang.getObject('scanResults.errors', false, this);
-    // if there are errors and any are unfixable and there are errors besides alternate errors
+    // if there are errors and any are fixable and there are errors besides alternate errors
     if (this.scanResults && this.scanResults.hasErrors && !this.scanResults.unfixable && errors && errors.filter(error => !error.isAlternate).length) {
-      this._configTabIssues = new BuilderConfigTabIssues({
+      this._configTabIssues = new BuilderConfigTabIssuesMap({
         map: this._cache[this.id],
         scanResults: this.scanResults,
-        errorIds: this.scanResults.errors.map(error => error.id)
+        issues: this.scanResults.errors.map(error => {
+          return {
+            id: error.id,
+            severity: 'error'
+          };
+        }),
+        instanceID: this._instanceID,
+        mapEditorEnabled: !app.isSelfHosted
       });
       tabs.push(this._configTabIssues);
     }
@@ -178,6 +183,11 @@ export default class WebMapBuilder extends WebMap {
         // TODO: this could be in BuilderConfig
         this._node.toggleClass('builder-config-open');
         this._onToggleMediaConfig(this);
+
+        this._applyInteraction({
+          isBuilder: true,
+          builderConfigOpen: this._node.hasClass('builder-config-open')
+        });
       }.bind(this),
       closeBtnStyle: this._placement == 'background' ? 'light' : 'standard'
     });
@@ -235,25 +245,11 @@ export default class WebMapBuilder extends WebMap {
       mediaId: this.id,
       // only show errors if there are unfixable scan results (if there are fixable ones, they'll go on the issues tab)
       showErrors: errors && errors.filter(error => !error.isAlternate).length && this.scanResults.unfixable,
-      mapName
+      mapName,
+      mapEditorEnabled: !app.isSelfHosted
     });
 
     return this._configTabManage;
-  }
-
-  _openEditor() {
-    // TODO: add a container to the media to load the editor
-    //   or perhaps flip the media to a new media that will only handle the editing?
-    var mapEditor = new MapEditor({
-      container: $('#mapEditPopup')
-    });
-
-    mapEditor.present({
-      id: this.id
-      // TODO
-      // newMap: true,
-      // title: app.builder.getAddEditEntryTitle()
-    });
   }
 
   _onConfigChange() {

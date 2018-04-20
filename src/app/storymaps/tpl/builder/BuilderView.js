@@ -1,5 +1,5 @@
 /*
-| Copyright 2016, 2017 Esri
+| Copyright 2016-2018 Esri
 |
 | Licensed under the Apache License, Version 2.0 (the "License");
 | you may not use this file except in compliance with the License.
@@ -20,12 +20,13 @@ define([
   'storymaps-react/tpl/builder/Controller',
   'storymaps/tpl/utils/UI',
 
-  'storymaps/common/builder/mediaPicker/MediaPickerPopup',
+  'storymaps/tpl/builder/mediaPicker/MediaPickerPopup',
   'storymaps-react/tpl/builder/settings/Popup',
 
   'storymaps-react/tpl/builder/AppParser',
-  'storymaps/common/utils/CommonHelper',
-  'storymaps/common/builder/BuilderHelper',
+  'storymaps/tpl/utils/CommonHelper',
+  'storymaps/tpl/builder/BuilderHelper',
+  'storymaps/tpl/builder/BannerNotification',
   'issue-checker/helpers/NormalizeHelper',
   'issue-checker/IssueChecker',
 
@@ -34,6 +35,7 @@ define([
   'dojo/topic',
   'dojo/_base/lang',
   'esri/IdentityManager',
+  'esri/arcgis/utils',
   'lib/color-thief/dist/color-thief.min'
 ], function(
   viewTpl,
@@ -47,6 +49,7 @@ define([
 
   CommonHelper,
   BuilderHelper,
+  BannerNotification,
   NormalizeHelper,
   IssueChecker,
 
@@ -54,7 +57,8 @@ define([
   Deferred,
   topic,
   lang,
-  IdentityManager
+  IdentityManager,
+  ArcGISUtils
 ) {
   return function BuilderView(Core, Builder) {
     $('#builder-views').append(viewTpl({ }));
@@ -93,14 +97,57 @@ define([
           owner: appItem.owner || IdentityManager.findCredential(portalUrl).userId,
           portal: app.portal,
           appId: app.builder.isDirectCreationFirstSave ? null : app.data.appItem.item.id,
-          appUrl: app.builder.isDirectCreationFirstSave ? null : app.data.appItem.item.url
+          appUrl: app.builder.isDirectCreationFirstSave ? null : app.data.appItem.item.url,
+          arcgisUrl: ArcGISUtils.arcgisUrl
         });
         this.scanApp();
 
         topic.subscribe('builder-should-check-story', function() {
           this.scanApp();
         }.bind(this));
+
+        if (!app.isPortal) {
+          this.initBannerNotification();
+        }
       }.bind(this));
+    };
+
+    this.initBannerNotification = function() {
+      var strings = i18n.builder.httpsTransitionMessage;
+      new BannerNotification({
+        id: 'httpsTransitionMessage',
+        bannerMsg: strings.bannerMsg,
+        mainMsgHtml: '\
+          <h2 class="banner-notification-text">' + strings.s1h1 + '</h2>\
+          <p class="banner-notification-text">' + strings.s1p1 + '</p>\
+          <p class="banner-notification-text">' + strings.s1p2 + '</p>\
+          <h2 class="banner-notification-text">' + strings.s2h1 + '</h2>\
+          <p class="banner-notification-text">' + strings.s2p1 + '</p>\
+        ',
+        actions: [
+          {
+            primary: true,
+            string: strings.action1,
+            closeOnAction: true
+          },
+          {
+            string: strings.action2,
+            action: function() {
+              window.open('https://storymaps.arcgis.com/en/my-stories/');
+            }
+          },
+          {
+            string: strings.action3,
+            action: function() {
+              window.open('https://links.esri.com/storymaps/web_security_faq');
+            }
+          }
+        ],
+        cookie: {
+          domain: window.location.hostname,
+          maxAge: 60 * 60 * 24 * 365
+        }
+      });
     };
 
     this.appInitComplete = function() {

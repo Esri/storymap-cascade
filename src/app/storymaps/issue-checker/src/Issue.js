@@ -7,12 +7,60 @@ export default class Issue {
         mediaType: 'images',
         actions: []
       },
-      [IssueTypes.videos.inaccessible]: {
-        mediaType: 'videos',
+      [IssueTypes.images.httpContentFixable]: {
+        mediaType: 'images',
+        actions: []
+      },
+      [IssueTypes.images.httpContentUnfixable]: {
+        mediaType: 'images',
+        actions: []
+      },
+      [IssueTypes.images.httpContentIndeterminate]: {
+        mediaType: 'images',
         actions: []
       },
       [IssueTypes.audio.inaccessible]: {
         mediaType: 'audio',
+        actions: []
+      },
+      [IssueTypes.audio.httpContentFixable]: {
+        mediaType: 'audio',
+        actions: []
+      },
+      [IssueTypes.audio.httpContentUnfixable]: {
+        mediaType: 'audio',
+        actions: []
+      },
+      [IssueTypes.audio.httpContentIndeterminate]: {
+        mediaType: 'audio',
+        actions: []
+      },
+      [IssueTypes.videos.inaccessible]: {
+        mediaType: 'videos',
+        actions: []
+      },
+      [IssueTypes.videos.httpContentFixable]: {
+        mediaType: 'videos',
+        actions: []
+      },
+      [IssueTypes.videos.httpContentUnfixable]: {
+        mediaType: 'videos',
+        actions: []
+      },
+      [IssueTypes.videos.httpContentIndeterminate]: {
+        mediaType: 'videos',
+        actions: []
+      },
+      [IssueTypes.webpages.httpContentFixable]: {
+        mediaType: 'webpages',
+        actions: []
+      },
+      [IssueTypes.webpages.httpContentUnfixable]: {
+        mediaType: 'webpages',
+        actions: []
+      },
+      [IssueTypes.webpages.httpContentIndeterminate]: {
+        mediaType: 'webpages',
         actions: []
       },
       [IssueTypes.maps.inaccessible]: {

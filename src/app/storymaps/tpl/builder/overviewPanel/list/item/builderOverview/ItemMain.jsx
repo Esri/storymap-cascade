@@ -58,7 +58,9 @@ function ItemMain(props) {
   };
 
   return (
-    <div style={{ backgroundImage: 'url(' + props.item.thumbnail + ')'}} className={mainClassName}>
+    <div
+      style={props.item.thumbnail ? {backgroundImage: 'url(' + props.item.thumbnail + ')'} : null}
+      className={mainClassName}>
       {renderInnerContent()}
       {renderLabel()}
       <ActionOverlay

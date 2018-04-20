@@ -32,10 +32,11 @@ define({
       "upgradeBrowser": "Actualizaţi browserul",
       "mapLoadingFail": "Ceva nu a mers bine şi harta nu a fost încărcată corect.",
       "signOut": "Ieşire",
-      "builderSupport1": "Aplicaţia de creare Story Map Cascade este disponibilă doar pentru ${CHROME} şi ${SAFARI}. Totuşi, poveştile cascadă pe care le creaţi cu aplicaţia de creare pot fi vizualizate cu acele browsere, cu Internet Explorer 11+ şi cu Firefox.",
-      "builderSupport2": "Aplicaţia de creare Story Map Cascade nu este suportată pe iPad. Poveştile cascadă pe care le creaţi şi partajaţi vor funcţiona pe iPad.",
-      "builderSupport3": "Poveştile cascadă pot fi vizualizate în Chrome, Safari, Firefox şi Internet Explorer 11+, dar aplicaţia de creare Story Map Cascade este suportată doar în ${CHROME} şi ${SAFARI}.",
-      "builderSupport4": "Poveştile cascadă pot fi vizualizate în orice browser modern, dar aplicaţia de creare Story Map Cascade este suportată doar în ${CHROME} şi ${SAFARI}.<br><br>Dacă aveţi nevoie ca aplicaţia de creare cascadă să suporte şi alt browser, vă rugăm să contactaţi ${ESRI-SUPPORT} sau ${BROWSER-SUPPORT-VOTE}.",
+      "builderSupportFirefox": "Aplicaţia de creare Story Map Cascade suportă acum Firefox!<br><br>Suportul pentru autorizarea Poveștilor cascadă în Firefox este oferit în prezent în beta. Vă rugăm să încercaţi şi să raportați orice problemă la ${ESRI-SUPPORT} sau ${ESRI-COMMUNITY}.",
+      "builderSupportOther": "Poveştile cascadă pot fi vizualizate în orice browser modern, dar aplicaţia de creare Story Map Cascade este suportată doar în ${SAFARI} și ${FIREFOX} (beta).<br><br>Dacă aveţi nevoie ca aplicaţia de creare cascadă să suporte şi alt browser, vă rugăm să contactaţi ${ESRI-SUPPORT} sau ${BROWSER-SUPPORT-VOTE}.",
+      "builderSupportIpad": "Aplicaţia de creare Story Map Cascade nu este suportată pe iPad. Poveştile cascadă pe care le creaţi şi partajaţi vor funcţiona pe iPad.",
+      "launchBuilder": "Lansare aplicaţie de creare Cascade",
+      "notAgain": "Nu se mai afişează aceasta",
       "sorry": "Atenţie:"
     },
     "mobileWarning": {
@@ -82,6 +83,40 @@ define({
       "speedFast": "Rapid",
       "speedMedium": "Medie",
       "speedSlow": "Lent"
+    }
+  },
+  "print": {
+    "settings": {
+      "pleaseWait": "Aşteptaţi ca întreaga poveste să se încarce înainte de imprimare",
+      "printNotes": "Dacă această pagină se încarcă încet sau anumite medii nu apar, încercaţi să le înlocuiţi pe cele folosite în varianta curentă cu imagini sau să imprimați o serie mai restrânsă de secţiuni. Pentru rezultate optime, poate fi necesar să activați imprimarea elementelor de fundal în setările de imprimare ale browserului dvs.",
+      "printOptions": "Opţiuni",
+      "makeTextBlack": "Coloraţi tot textul cu negru",
+      "showLinks": "Afişaţi URL-uri link",
+      "useAltMedia": "Înlocuiţi medii din versiunea curentă cu imagini, dacă sunt disponibile",
+      "pageBreaks": "Începeţi fiecare secţiune pe o pagină nouă",
+      "printRange": "Imprimați o parte din această poveste",
+      "sectionStart": "Secţiuni:",
+      "go": "Aplicare",
+      "reset": "Resetare la povestea integrală",
+      "print": "Imprimare"
+    },
+    "page": {
+      "appTagline": "Această poveste a fost creată cu ${CASCADE_LINK_TEXT}.",
+      "cascadeLinkText": "Story Map Cascade de la Esri",
+      "readItOnline": "Consultaţi-o pe internet pe pagina ${STORY_URL}."
+    },
+    "sections": {
+      "sectionLabel": "Secţiune ${SECTION_NUMBER}"
+    },
+    "media": {
+      "websiteLabel": "Site web:",
+      "videoLabel": "Video:",
+      "audioLabel": "Audio:"
+    },
+    "bannerNotification": {
+      "learnMore": "Aflaţi mai multe",
+      "close": "Închidere",
+      "dontShowAgain": "Nu afişa acest mesaj din nou"
     }
   }
 });

@@ -1,5 +1,5 @@
 import Credits from './Credits';
-import CommonHelper from 'storymaps/common/utils/CommonHelper';
+import CommonHelper from 'storymaps/tpl/utils/CommonHelper';
 
 import viewTpl from 'lib-build/hbars!./CreditsItemBuilder';
 import i18n from 'lib-build/i18n!resources/tpl/builder/nls/app';
@@ -206,6 +206,14 @@ export default class CreditsBuilder extends Credits {
     });
 
     element.find('.cr-item-input').on('keyup', event => {
+      if (event.keyCode === 8 || event.keyCode === 46) {
+        // if textContent is empty but innerHTML is not (i.e. there is no text but there is garbage markup like <br>), make the element empty.
+        const element = event.currentTarget;
+        if (!element.textContent && element.innerHTML) {
+          element.innerHTML = '';
+        }
+      }
+
       let parent = $(event.currentTarget).closest('.cr-item');
       let contentInputValue = parent.find('.cr-item-input.cr-content')[0];
       let sourceInputValue = parent.find('.cr-item-input.cr-source')[0];

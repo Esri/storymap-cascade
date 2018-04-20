@@ -1,6 +1,6 @@
 import UIUtils from 'storymaps/tpl/utils/UI';
 import Media from './Media';
-import CommonHelper from 'storymaps/common/utils/CommonHelper';
+import CommonHelper from 'storymaps/tpl/utils/CommonHelper';
 
 import {} from 'lib-build/less!./ImageGallery';
 import viewTpl from 'lib-build/hbars!./ImageGallery';
@@ -10,7 +10,7 @@ import i18n from 'lib-build/i18n!resources/tpl/viewer/nls/app';
 import i18nBuilder from 'lib-build/i18n!resources/tpl/builder/nls/app';
 
 import {} from 'lib/jquery/dist/jquery.min';
-import {} from 'storymaps/common/utils/UniteGallery';
+import {} from 'storymaps/tpl/utils/UniteGallery';
 
 import lang from 'dojo/_base/lang';
 import topic from 'dojo/topic';
@@ -93,7 +93,8 @@ export default class ImageGallery extends Media {
       tile_enable_action: false,
       tile_enable_overlay: false,
       tiles_justified_row_height: baseRowHeight,
-      tiles_justified_space_between: baseGutterWidth
+      tiles_justified_space_between: baseGutterWidth,
+      tile_background_color: 'rgb(0,0,0,0)'
     });
 
     this._isLoaded = true;

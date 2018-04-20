@@ -1,6 +1,7 @@
 deploy/
 build/
 node_modules/
+src/resources/styles/calcite
 
 # Needed for CI
 src/lib/

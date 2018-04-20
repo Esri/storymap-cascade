@@ -1,0 +1,201 @@
+figure {
+  margin: 0;
+}
+
+.media-background,
+.media-wrapper {
+  page-break-inside: avoid;
+
+  // use max- to allow for images of different dimensions to resize
+  // themselves correctly
+  img {
+    max-width: 100%;
+    max-height: 4in;
+    // get rid of 4px bottom margin (?) that's screwing up the height
+    display: block;
+    object-fit: cover;
+    margin: 0 auto;
+    &.contain {
+      object-fit: contain;
+    }
+    &.crop {
+      object-position: 50% 0;
+      max-height: 4in;
+      width: 100%;
+    }
+  }
+}
+
+.media-wrapper {
+  text-align: center;
+  margin: 0 auto;
+
+  // center the stuff inside the media wrapper
+  // figure,
+  // .scene-view,
+  // .map-view {
+  //   margin: 0 auto;
+  // }
+
+  figcaption {
+    // using margin made dark backgrounds overflow :\
+    padding: 5px 0 8px;
+  }
+}
+
+.media-background {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+
+  img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    &.contain {
+      object-fit: contain;
+    }
+  }
+}
+
+// --- MEDIA SIZES --- //
+
+.media-small,
+.media-small ~ .video-url {
+  max-width: 60%;
+}
+
+.media-medium,
+.media-medium ~ .video-url {
+  max-width: 80%;
+}
+
+.media-large,
+.media-large ~ .video-url {
+  max-width: 100%;
+}
+
+.img-portrait img {
+  max-height: 8in;
+}
+
+.img-tall img {
+  max-height: none;
+}
+
+// spacing around media (leave out title section though)
+.immersive,
+.sequence {
+  .media-background,
+  .media-wrapper {
+    margin-top: 25px;
+  }
+}
+
+// --- GALLERY --- //
+.gallery img {
+  max-height: none;
+}
+
+
+// --- WEBPAGE --- //
+
+.webpage-wrapper {
+
+  iframe {
+    width: 100%;
+    overflow: auto;
+    border: none;
+    // allow for iframes with specified heights
+    // to retain those heights
+    &:not(.set-height) {
+      height: 5in;
+    }
+  }
+
+  figcaption {
+    text-align: right;
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 150%; // give room for bottom border of link to show
+    a {
+      color: inherit;
+      &:after {
+        content: '';
+      }
+    }
+  }
+}
+
+// --- VIDEO --- //
+
+.video {
+
+  iframe {
+    width: 100%;
+    overflow: auto;
+    border: none;
+    min-height: 2.5in;
+    max-height: 4in;
+  }
+
+  figcaption.video-url {
+    padding: 5px 0;
+    margin: 0 auto;
+    text-align: right;
+    font-size: 0.9em;
+
+    a {
+      color: inherit;
+      &:after {
+        content: '';
+      }
+    }
+  }
+}
+
+// --- AGOL --- //
+
+.scene-view, .map-view {
+  height: 4in;
+  border: 1px solid silver;
+}
+
+// don't print zoom controls on map or scene
+@media print {
+  .esriSimpleSlider,
+  .esri-ui-corner-container {
+    display: none;
+  }
+}
+
+// --- WEBMAP --- //
+
+// simplify map labels with halos around them
+// because even though they look ok on a webpage,
+// they look *terrible* when actually printed.
+// do this automatically, without asking.
+.map svg text[filter] {
+  filter: none;
+  stroke: white;
+  paint-order: stroke;
+  stroke-opacity: 1;
+  stroke-width: 2;
+  font-weight: normal;
+}
+
+// --- WEBSCENE --- //
+
+.scene-view .esri-ui-bottom-right {
+  // don't use flex layout -- it puts the widgets next to each other
+  // and we want them stacked vertically
+  display: block;
+
+  // better margins now that we're stacking vertically
+  .esri-component {
+    margin-top: 10px;
+    margin-left: 0;
+  }
+}

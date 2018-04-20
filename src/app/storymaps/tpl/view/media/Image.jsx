@@ -1,5 +1,5 @@
 import Media from './Media';
-import CommonHelper from 'storymaps/common/utils/CommonHelper';
+import CommonHelper from 'storymaps/tpl/utils/CommonHelper';
 
 import {} from 'lib-build/less!./Image';
 import viewBlock from 'lib-build/hbars!./ImageBlock';
@@ -91,7 +91,6 @@ export default class Image extends Media {
     });
 
     this._image = image;
-    this._url = image.url;
     this._placement = null;
     this._isNewMedia = isNewMedia;
 
@@ -102,7 +101,7 @@ export default class Image extends Media {
 
     if (image.dataUrl && image.uploadDeferred) {
       this._isUploadPending = true;
-      this._url = image.dataUrl;
+      this._image.url = image.dataUrl;
 
       delete this._image.dataUrl;
 
@@ -283,7 +282,7 @@ export default class Image extends Media {
       }
     }.bind(this);
 
-    im.src = Media.addToken(this._url);
+    im.src = Media.addToken(this._image.url);
 
     return resultDeferred;
   }
@@ -321,10 +320,10 @@ export default class Image extends Media {
     });
 
     if (this._placement == 'block') {
-      this._node.find('.image-container').css('backgroundImage', 'url("' + Media.addToken(this._url) + '")');
+      this._node.find('.image-container').css('backgroundImage', 'url("' + Media.addToken(this._image.url) + '")');
     }
     else {
-      this._node.find('.image-background').css('backgroundImage', 'url("' + Media.addToken(this._url) + '")');
+      this._node.find('.image-background').css('backgroundImage', 'url("' + Media.addToken(this._image.url) + '")');
 
       if (this._image['mobile-pos'] && UIUtils.isMobileBrowser()) {
         this._node.find('.image-background').css('backgroundPositionX', this._image['mobile-pos']);

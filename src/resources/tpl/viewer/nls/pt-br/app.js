@@ -32,10 +32,11 @@ define({
       "upgradeBrowser": "Atualize seu navegador",
       "mapLoadingFail": "Algo deu errado, o mapa não carregou corretamente.",
       "signOut": "Sair",
-      "builderSupport1": "O construtor de Cascata do Mapa Histórico é suportado somente no ${CHROME} e ${SAFARI}. No entanto, as histórias em Cascata que você cria com o construtor podem ser visualizadas nestes navegadores, Internet Explorer 11+ e Firefox.",
-      "builderSupport2": "O construtor de Cascata do Mapa Histórico não é suportado no iPad. As histórias em cascata que você cria e compartilha funcionam no iPad.",
-      "builderSupport3": "As histórias em cascata podem ser visualizadas no Chrome, Safari, Firefox e Internet Explorer 11+, mas o construtor de Cascata do Mapa Histórico é suportado somente no ${CHROME} e ${SAFARI}.",
-      "builderSupport4": "As histórias em cascata podem ser visualizadas em qualquer navegador da web moderno, mas o construtor de Cascata de Mapa Histórico é suportado somente no ${CHROME} e ${SAFARI}.<br><br>Se você precisar do construtor de Cascade para suportar um navegador diferente, entre em contato com ${ESRI-SUPPORT} ou ${BROWSER-SUPPORT-VOTE}.",
+      "builderSupportFirefox": "O construtor de Cascata do Mapa Histórico agora suporta Firefox!<br><br>O suporte para criação de histórias de Cascata no Firefox está atualmente em beta. Teste e reporte quaisquer problemas para ${ESRI-SUPPORT} ou ${ESRI-COMMUNITY}.",
+      "builderSupportOther": "As histórias em cascata podem ser visualizadas em qualquer navegador da web moderno, mas o construtor de Cascata de Mapa Histórico é suportado somente no ${CHROME}, ${SAFARI}, e ${FIREFOX} (beta).<br><br>Se você precisar do construtor de Cascata para suportar um navegador diferente, entre em contato com ${ESRI-SUPPORT} ou ${BROWSER-SUPPORT-VOTE}.",
+      "builderSupportIpad": "O construtor de Cascata do Mapa Histórico não é suportado no iPad. As histórias em cascata que você cria e compartilha funcionam no iPad.",
+      "launchBuilder": "Inicie o construtor de Cascata",
+      "notAgain": "Não mostrar isto novamente",
       "sorry": "Atenção:"
     },
     "mobileWarning": {
@@ -82,6 +83,40 @@ define({
       "speedFast": "Rápido",
       "speedMedium": "Médio",
       "speedSlow": "Lento"
+    }
+  },
+  "print": {
+    "settings": {
+      "pleaseWait": "Espere até a história inteira carregar antes de imprimir",
+      "printNotes": "Se esta página carrega devagar ou alguma mídia não aparece, tente substituir a mídia em tempo real com imagens ou imprimindo uma faixa pequena das seções. Para melhores resultados, você pode precisar ativar a impressão de elementos de plano de fundo nas configurações de impressão do seu navegador.",
+      "printOptions": "Opções",
+      "makeTextBlack": "Tornar todo o texto preto",
+      "showLinks": "Mostrar URLs de links",
+      "useAltMedia": "Substituir mídias em tempo real com imagens, se disponível",
+      "pageBreaks": "Comece cada seção em uma nova página",
+      "printRange": "Imprimir parte de impressão desta história",
+      "sectionStart": "Seções:",
+      "go": "Aplicar",
+      "reset": "Redefinir para história inteira",
+      "print": "Imprimir"
+    },
+    "page": {
+      "appTagline": "Esta história foi feita com ${CASCADE_LINK_TEXT}.",
+      "cascadeLinkText": "Cascata de Mapa Histórico da Esri",
+      "readItOnline": "Leia isto na web em ${STORY_URL}."
+    },
+    "sections": {
+      "sectionLabel": "Seção ${SECTION_NUMBER}"
+    },
+    "media": {
+      "websiteLabel": "Site da Web:",
+      "videoLabel": "Vídeo:",
+      "audioLabel": "Áudio:"
+    },
+    "bannerNotification": {
+      "learnMore": "Obtenha Mais Informações",
+      "close": "Fechar",
+      "dontShowAgain": "Não mostrar esta mensagem novamente"
     }
   }
 });

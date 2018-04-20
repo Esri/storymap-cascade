@@ -1,8 +1,11 @@
 import UIUtils from 'storymaps/tpl/utils/UI';
-import CommonHelper from 'storymaps/common/utils/CommonHelper';
+import CommonHelper from 'storymaps/tpl/utils/CommonHelper';
 import topic from 'dojo/topic';
 import lang from 'dojo/_base/lang';
 import IdentityManager from 'esri/IdentityManager';
+import BuilderHelper from 'storymaps/tpl/builder/BuilderHelper';
+import BuilderConfigTabIssues from './builder/TabIssues';
+import Issues from '../../builder/Issues';
 
 import errorTpl from 'lib-build/hbars!./MediaError';
 import {} from 'lib-build/less!./MediaError';
@@ -21,6 +24,7 @@ export default class Media {
       hasErrors: false,
       hasWarnings: false
     };
+    this._scanListener = null;
 
     /*
      * Cache store media resources to optimize performance when a media can be reused
@@ -57,6 +61,7 @@ export default class Media {
     this._onConfigAction = params.onConfigAction;
     this._onConfigChangeCallback = params.onConfigChange;
     this._sectionType = params.sectionType;
+    this._container = params.container;
 
     const alternateMedia = this.getAlternate();
     if (app.isInBuilder && alternateMedia) {
@@ -212,13 +217,13 @@ export default class Media {
       msgTarget = imageGalleryNode;
     }
     else {
-      errorTarget = this._node.find('.block-media,.background').addBack('.block-media,.background');
-      msgTarget = errorTarget;
+      errorTarget = this._node.find('.block, .background').addBack('.block, .background');
+      msgTarget = errorTarget.hasClass('.background') ? errorTarget : errorTarget.find('.block-media');
     }
     // remove all error/warning classes from media.
     errorTarget.removeClass('error warning');
 
-    errorTarget.toggleClass('minimize-on-viewer', minimizeInViewer).toggleClass('show-loading-error', showError);
+    msgTarget.toggleClass('minimize-on-viewer', minimizeInViewer).toggleClass('show-loading-error', showError);
 
     msgTarget.find('.loading-error').remove();
     if (hasError) {
@@ -244,15 +249,15 @@ export default class Media {
         id: this.id
       }];
     }
-    else if (this.type == 'image') {
-      agolImg = this.getImageArcGISContent(this);
+    else if (this.type == 'image' && this._image) {
+      agolImg = this.getImageArcGISContent(this._image.url);
       if (agolImg) {
         arcgisContent.push(agolImg);
       }
     }
     else if (this.type == 'image-gallery') {
       for (var image of this._images.images) {
-        agolImg = this.getImageArcGISContent(image);
+        agolImg = this.getImageArcGISContent(image.url);
         if (agolImg) {
           arcgisContent.push(agolImg);
         }
@@ -260,8 +265,8 @@ export default class Media {
     }
 
     const altMedia = this.getAlternate();
-    if (altMedia) {
-      agolImg = this.getImageArcGISContent(altMedia);
+    if (altMedia && altMedia._image) {
+      agolImg = this.getImageArcGISContent(altMedia._image.url);
       if (agolImg) {
         arcgisContent.push(agolImg);
       }
@@ -270,13 +275,13 @@ export default class Media {
     return arcgisContent;
   }
 
-  getImageArcGISContent(media) {
-    let arcgisResourceURL = Media.getArcGISItemResourceURL(media._url);
+  getImageArcGISContent(url) {
+    let arcgisResourceURL = Media.getArcGISItemResourceURL(url);
 
     if (arcgisResourceURL) {
       return {
         type: 'item-resource',
-        mediaType: media.type,
+        mediaType: 'image',
         url: arcgisResourceURL.url,
         file: arcgisResourceURL.file
       };
@@ -327,15 +332,10 @@ export default class Media {
     }
 
     if (url.match(new RegExp('\/sharing\/rest\/content\/items\/' + app.data.appItem.item.id + '\/resources\/'))) {
-      return this.forceHttps(url) + '?token=' + token;
+      return CommonHelper.forceHttpsUrl(url) + '?token=' + token;
     }
 
     return url;
-  }
-
-  static forceHttps(url) {
-    var urlWithoutProtocol = url.replace(/^.*?\/\//, '');
-    return 'https://' + urlWithoutProtocol;
   }
 
   static findCropDistance(item, container, offsetRatio) {
@@ -491,10 +491,59 @@ export default class Media {
     return false;
   }
 
+  convertToHttps() {
+    this._onToggleMediaConfig(this);
+
+    // serialize to make sure any caption entered -- but not yet saved -- will be saved.
+    this.serialize();
+
+    // switch any needed urls in the data structure
+    this._makeUrlsHttps();
+
+    this._isLoaded = false;
+
+    if (this._cache && this._cache[this.id]) {
+      this._cache[this.id] = null;
+    }
+
+    // remove the dojo topic that listens for scans
+    this._scanListener.remove();
+
+    const mediaMarkup = this.render({
+      placement: this._placement
+    });
+
+    if (this._placement === 'background') {
+      // replace old markup with new
+      this._node.empty().html(mediaMarkup);
+    }
+    else {
+      // replace old markup with new
+      this._node.replaceWith(mediaMarkup);
+    }
+
+    this.postCreate({
+      container: this._container,
+      onToggleMediaConfig: this._onToggleMediaConfig,
+      builderConfigurationTabs: this._builderConfigurationTabs,
+      onConfigAction: this._onConfigAction,
+      onConfigChange: this._onConfigChangeCallback,
+      sectionType: this._sectionType,
+      foregroundOptions: this._foregroundOptions,
+      applySectionConfig: this._applySectionConfig
+    });
+
+    this.load();
+
+    this.closeConfigPanel();
+    this._node.removeClass('builder-config-open');
+  }
+
   _onAction(action, newMedia) {
     // TODO: does that need to be checked?
     if (action === 'remove' || action === 'swap' || action === 'alternate-media-swap' || action === 'alternate-media-add'
-        || action === 'alternate-media-remove' || action === 'image-to-image-gallery' || action === 'image-gallery-to-image') {
+        || action === 'alternate-media-remove' || action === 'image-to-image-gallery' || action === 'image-gallery-to-image'
+        || action === 'arcgis-edit' || action === 'https-open-picker') {
       let mediaItem = this;
       const isAlternate = action.indexOf('alternate-') !== -1;
 
@@ -510,11 +559,18 @@ export default class Media {
       });
     }
 
-    if (action == 'arcgis-edit') {
-      this._openEditor();
+    if (action === 'arcgis-edit-external') {
+      window.open(
+        BuilderHelper.getMapViewerLink(this.id),
+        '_blank'
+      );
     }
 
-    if (action === 'remove' || action === 'alternate-media-remove') {
+    if (action === 'https-swap') {
+      this.convertToHttps();
+    }
+
+    if (action === 'remove' || action === 'alternate-media-remove' || action === 'https-swap') {
       topic.publish('builder-should-check-story');
     }
 
@@ -563,6 +619,52 @@ export default class Media {
       // this doesn't call our onToggle callback we've set on the media config down below, that's because
       // we shouldn't be "toggling" the panel -- it should just be "keeping it open"
       this._builderConfigPanel.openPanel(true);
+    }
+  }
+
+  _createIssuesTab(tabs) {
+    let issuesTab = null;
+
+    const errors = lang.getObject('scanResults.errors', false, this);
+    const warnings = lang.getObject('scanResults.warnings', false, this);
+    const hasFixableMediaErrors = errors && errors.filter(error => !error.isAlternate).length && !this.scanResults.unfixable;
+    const hasFixableMediaWarnings = warnings && warnings.filter(warning => warning.id !== Issues.content.noAlternateMedia).length && !this.scanResults.unfixable;
+
+    if (hasFixableMediaErrors || hasFixableMediaWarnings) {
+      let tabErrors = [];
+      let tabWarnings = [];
+
+      // if there are breaking isues (i.e. image does not exist), we don't care about smaller issues like that its URL is http.
+      // We won't show the issues tab in that case
+      if (hasFixableMediaErrors) {
+        tabErrors = errors.map(error => {
+          return {
+            id: error.id,
+            severity: 'error'
+          };
+        });
+      }
+
+      if (hasFixableMediaWarnings) {
+        tabWarnings = warnings.map(warning => {
+          return {
+            id: warning.id,
+            severity: 'warning'
+          };
+        }).filter(warning => warning.id !== Issues.content.noAlternateMedia);
+      }
+
+      issuesTab = new BuilderConfigTabIssues({
+        map: this._cache[this.id],
+        scanResults: this.scanResults,
+        // errors should come before warnings
+        issues: tabErrors.concat(tabWarnings),
+        instanceID: this._instanceID
+      });
+    }
+
+    if (issuesTab) {
+      tabs.push(issuesTab);
     }
   }
 

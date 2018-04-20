@@ -9,7 +9,8 @@ export default class AGOLHostedLayer {
     return AGOLItem._checkItem({
       item: options.layerResults,
       appAccess: options.appAccess,
-      mediaType: options.mediaType
+      mediaType: options.mediaType,
+      privileges: options.privileges
     }).then(result => {
       let baseURL = ArcGISUtils.arcgisUrl.split('/sharing/')[0];
       result.details.linkURL = baseURL + '/home/item.html?id=' + result.id;

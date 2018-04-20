@@ -7,13 +7,14 @@ import BuilderConfigTabSizeImage from './builder/TabSizeImage';
 import BuilderConfigTabBackground from './builder/TabBackground';
 import BuilderConfigTabManageImage from './builder/TabManageImage';
 import BuilderConfigTabSectionAppearance from './builder/TabSectionAppearance';
+import CommonHelper from 'storymaps/tpl/utils/CommonHelper';
 
 import CancelNotification from '../../builder/notification/Cancel';
 
 import lang from 'dojo/_base/lang';
 import topic from 'dojo/topic';
 
-import issues from '../../builder/Issues';
+import issues from 'issue-checker/IssueTypes';
 
 const text = i18n.builder;
 
@@ -59,7 +60,7 @@ export default class ImageBuilder extends Image {
     }
 
     // we subscribe to the scan change for this SPECIFIC image only (hence the scan/image/imageID pattern).
-    topic.subscribe('scan/images/' + this._instanceID, lang.hitch(this, this.checkErrors));
+    this._scanListener = topic.subscribe('scan/images/' + this._instanceID, lang.hitch(this, this.checkErrors));
 
     this.initBuilderUI();
   }
@@ -93,6 +94,8 @@ export default class ImageBuilder extends Image {
         tabs.push(manageTab);
       }
     }
+
+    this._createIssuesTab(tabs);
 
     return tabs;
   }
@@ -170,7 +173,6 @@ export default class ImageBuilder extends Image {
 
   _onUploadSuccess(image) {
     this._image.url = image.url;
-    this._url = image.url;
     if (image.thumbUrl) {
       this._image.thumbUrl = image.thumbUrl;
       this.previewThumb = image.thumbUrl;
@@ -227,7 +229,21 @@ export default class ImageBuilder extends Image {
   _createManageTab() {
     return new BuilderConfigTabManageImage({
       hideRemove: this._placement == 'background',
-      showErrors: this.scanResults.errors && this.scanResults.errors.length
+      showErrors: this.scanResults.errors && this.scanResults.errors.filter(error => !error.isAlternate).length && this.scanResults.unfixable
     });
+  }
+
+  _makeUrlsHttps() {
+    this._image.url = CommonHelper.forceHttpsUrl(this._image.url);
+
+    if (this._image.thumbUrl) {
+      this._image.thumbUrl = CommonHelper.forceHttpsUrl(this._image.thumbUrl);
+    }
+
+    if (this._image.sizes && this._image.sizes.length) {
+      for (let size of this._image.sizes) {
+        size.url = CommonHelper.forceHttpsUrl(size.url);
+      }
+    }
   }
 }

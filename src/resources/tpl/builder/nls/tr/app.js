@@ -50,7 +50,26 @@ define({
         "loremBody": "Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor. Mauris consequat orci nec magna facilisis bibendum at eget libero."
       }
     },
+    "share": {
+      "btnPrivate": "Özel",
+      "btnOrg": "Kuruluş",
+      "btnPublic": "Genel",
+      "btnEveryone": "Herkes"
+    },
     "builderPanel": {
+      "builderNamePrefix": "",
+      "builderNameSuffix": "Oluşturucu",
+      "buttonSaving": "Kaydediliyor",
+      "buttonSaved": "Kaydedildi",
+      "buttonError": "Kaydetme başarısız",
+      "buttonShare": "Paylaş",
+      "buttonSettings": "Ayarlar",
+      "settingsLogoError": "Logonuzda bir sorun var. Daha fazla öğrenmek için tıklayın.",
+      "buttonHelp": "GeoNet Üzerinde Yardım Alın veya Geri Bildirim Gönderin",
+      "buttonPreview": "Hikayeyi Görüntüle",
+      "buttonHealth": "Sağlık Raporu",
+      "manageStories": "Hikayelerimi Yönet",
+      "closeWithPendingChange": "Bu eylemi onaylamak istediğinizden emin misiniz? Değişiklikleriniz silinecek.",
       "coverLabel": "Kapak",
       "creditsLabel": "Katkı Yapanlar",
       "betaFeedback": "Geri Bildirim",
@@ -143,6 +162,195 @@ define({
         "uploadAltImage": "Alternatif bir görüntü ekle"
       }
     },
+    "mediaPicker": {
+      "browseToggle": {
+        "urls": "İçerik Bağlantısı",
+        "urls_short": "Bağlantı",
+        "contentType": {
+          "error": "Yetkilendirilmiş ortam yok.",
+          "imageOnly": "Hikayenin bu bölümüne bir görüntü ekleyebilirsiniz.",
+          "imageAndVideo": "Hikayenin bu bölümüne bir görüntü veya video ekleyebilirsiniz.",
+          "imageVideoWebpage": "Hikayenin bu bölümüne bir görüntü, video veya web sayfası ekleyebilirsiniz."
+        }
+      },
+      "browsePanel": {
+        "providers": {
+          "searchingFor": "\"${searchterm}” aranıyor...",
+          "searchedFor": "\"${searchterm}” için arama sonuçları",
+          "albumsOf": "${Username} adlı kişinin albümleri",
+          "noPhotosFound": "Aramanızla eşleşen fotoğraf yok. Yeniden deneyin.",
+          "noItemsFound": "Aramanızla eşleşen öge yok. Yeniden deneyin.",
+          "noItemsInThisStory": "Bu hikayeye henüz herhangi bir ArcGIS içeriği eklenmedi.",
+          "limitReached": "100 öge gösteriliyor. Aradığınızı bulamadıysanız, bir anahtar sözcük araması yapmayı deneyin.",
+          "galleryItems": {
+            "uploadError": "Üzgünüz, bu öge yüklenemedi."
+          },
+          "agol": {
+            "remove1": "Kullanılmayan bu görüntüyü ArcGIS hesabınızdan silin.",
+            "remove2": "(Daha sonra kullanmaya karar verirseniz, söz konusu ögeyi yeniden karşıya yüklemeniz gerekir.)",
+            "removeFailed": "Erişilemeyen bu görüntüyü listeden kaldırın.",
+            "modified": "Değiştirilme tarihi: ${date}",
+            "uploaded": "Yükleme tarihi: ${date}",
+            "contentByAuthor": "${contentType}, yazan: ${author}"
+          },
+          "googlePhotos": {
+            "searchAndBrowse": "${Picasa} veya ${Google+} uygulamalarındaki fotoğraflara göz atın"
+          },
+          "flickr": {
+            "photostream": "Fotoğraf Yayını",
+            "searchAndBrowse": "${Flickr} uygulamasında fotoğraf arayın ve göz atın",
+            "captionStarter": "${Flickr} uygulamasındaki fotoğrafı çeken: ${USERNAME}"
+          },
+          "unsplash": {
+            "searchAndBrowse": "${Unsplash} uygulamasında fotoğraf arayın",
+            "photoBy": "Fotoğrafı çeken: ${username}",
+            "userLink": "${username} adlı kişinin ${Unsplash} sayfasına gidin",
+            "captionStarter": "${Unsplash} uygulamasındaki fotoğrafı çeken: ${USERNAME}"
+          },
+          "urlContent": {
+            "uploadHeaders": {
+              "generic": "Web’deki içeriğe bağlanın",
+              "imageOnly": "Web’deki görüntüye bağlanın",
+              "imageAndVideo": "Web’deki görüntüye veya videoya bağlanın"
+            },
+            "linkText": {
+              "imageOnly": "Yukarıdaki kutudan doğrudan fotoğrafa bağlanabilirsiniz.",
+              "imageAndVideo1": "Yukarıdaki kutudan bir ${YouTube} veya ${Vimeo} videosuna bir bağlantı veya iframe kodu yapıştırabilirsiniz.",
+              "imageAndVideo2": "Ayrıca doğrudan bir fotoğrafa da bağlanabilirsiniz.",
+              "imageVideoWebpage1": "Yukarıdaki kutudan dinamik şemalar gibi web içeriği veya ${YouTube} veya ${Vimeo} videolarına bir bağlantı veya iframe kodu yapıştırabilirsiniz.",
+              "imageVideoWebpage2": "Ayrıca doğrudan bir fotoğrafa, videoya, ses dosyasına, web sayfasına veya web uygulamasına da bağlanabilirsiniz.",
+              "ender": "Her zaman güvenli (https) bağlantıları kullanın. İçeriğiniz https'yi desteklemiyorsa, okuyucuların yeni bir tarayıcı sekmesinde görüntüleyebilmesi için hikayenizin metninde ona bir bağlantı ekleyin.",
+              "httpsError": "Bağlantı HTTPS ile başlamalıdır"
+            },
+            "embedProtocol": {
+              "embedProtocolLabel": "Sayfayı bir güvenli bağlantı (https) üzerinden yükleyin",
+              "embedProtocolWarning1": "Bu sayfa hikayenizde yüklenmiyorsa, web güvenliği nedeniyle sayfayı ekleyemezsiniz.",
+              "embedProtocolWarning2": "Bu sayfa hikayenizde yüklenmiyorsa, bu seçeneğin işaretini kaldırın ve yeniden deneyin. Sayfa yine de yüklenmiyorsa, web güvenliği nedeniyle sayfayı ekleyemezsiniz.",
+              "embedProtocolWarning3": "Alternatif olarak, açıklamanıza bir bağlantı ekleyerek sayfayı yeni bir tarayıcı sekmesinde açabilirsiniz. ${linkText}",
+              "linkText": "Daha Fazla Bilgi Edinin."
+            },
+            "placeholder": "${https://}... veya ${<iframe>}",
+            "uploadErrors": {
+              "generic": "Girilen adresle ilgili bir hata oluştu. Lütfen yeniden deneyin.",
+              "imageOnly1": "Hikayenin bu bölümünde bir görüntü kullanmalısınız.",
+              "imageOnly2": "Bir görüntü dosyası (.jpg, .png, .gif) bağlantısı girin veya ${ArcGIS}, ${Flickr}, ${Google+} veya ${Unsplash} uygulamalarından bir görüntü seçin.",
+              "imageAndVideo1": "Hikayenin bu bölümünde bir görüntü veya video kullanmalısınız.",
+              "imageAndVideo2": "Bir görüntü dosyası (.jpg, .png, .gif) ya da ${YouTube} veya ${Vimeo} uygulamasından bir video bağlantısı girin veya ${ArcGIS}, ${Flickr}, ${Google+} veya ${Unsplash} uygulamalarından bir görüntü seçin.",
+              "badFormat": "Eklemeye çalıştığınız dosya bağlantısı hatalı biçimde yapılandırılmış.",
+              "inaccessible": "Eklemeye çalıştığınız dosya yok veya erişilebilir değil.",
+              "tryAgain": "Lütfen adresi kontrol edin ve yeniden deneyin.",
+              "mediaTypes": {
+                "VIDEO": "video",
+                "IMAGE": "görüntü",
+                "generic": "ortam"
+              }
+            }
+          }
+        },
+        "sidePanel": {
+          "googlePhotos": {
+            "placeholder": "E-posta veya ${Picasa}/${Google+} Kimliği",
+            "helpText": "Hikayenize ${Picasa} veya ${Google+} uygulamasına yüklenmiş olan fotoğraflar ekleyebilirsiniz. Hikayelerinizde ${Google} hesabınızda saklanan görüntüleri kullanma hakkında bilgi edinmek için bkz. ${helpLinkText}.",
+            "helpLinkText": "Daha fazla bilgi",
+            "cannotFindUser": "${Username} kullanıcısı bulunamıyor. Lütfen yeniden deneyin."
+          },
+          "unsplash": {
+            "placeholder": "Fotoğraf arayın",
+            "aboutText": "${Unsplash}; ücretsiz ve kaliteli fotoğraflardan oluşan bir koleksiyondur.",
+            "copyrightText": "${Unsplash} uygulamasında yayınlanmış olan fotoğrafların tümü ${CC0} Lisansı altında korunmaktadır. Daha fazla bilgi için bkz. ${moreInfoLink}.",
+            "moreInfoLink": "buraya"
+          },
+          "flickr": {
+            "searchType": {
+              "account": "${Flickr} Hesabı",
+              "text": "Tüm ${Flickr}"
+            },
+            "placeholders": {
+              "user": "Hesap arayın",
+              "userText": "Bu hesapta fotoğraf arayın",
+              "text": "Fotoğraf arayın"
+            },
+            "errors": {
+              "cannotFindUser": "${username} kullanıcısı bulunamıyor.",
+              "noUserPhotos": "${username} kullanıcısının genel fotoğrafı yok.",
+              "didYouMean": "${username} adlı kişi mi demek istediniz?",
+              "generalUserError": "${username} kullanıcısı aranırken bir hata oluştu."
+            },
+            "licenses": {
+              "licenseLabel": "Lisans: ",
+              "public": "Genel Domain",
+              "commercial": "Ticari Kullanıma Uygun",
+              "nonCommercial": "Ticari Olmayan Kullanıma Uygun",
+              "reserved": "Tüm Hakları Saklıdır",
+              "any": "Herhangi Bir Lisans"
+            }
+          },
+          "agol": {
+            "searchLocation": {
+              "thisStory": "Bu Hikaye",
+              "agol": "ArcGIS Online",
+              "portalArcGIS": "Portal for ArcGIS",
+              "portal": "Portal",
+              "myOrg": "${orgname} Kuruluşu",
+              "myContent": "İçeriğim"
+            },
+            "createContent": {
+              "createNewMap": "Yeni Harita Oluştur",
+              "or": "VEYA",
+              "dragAndDrop": "Görüntüleri buraya bırakın",
+              "uploadImage": "Görüntülere göz atın",
+              "agolInfo": "Görüntüler ArcGIS hesabınızda saklanır ve bunlara yalnızca hikayenizin içinden erişilebilir.",
+              "saveBeforeUpload": "Bu hikayeyi kaydettikten sonra buradan ArcGIS uygulamasına görüntü yükleyebilirsiniz.",
+              "fileTypesImage": "Desteklenen dosya türleri: .png, .jpeg, .jpg, .gif, .bmp"
+            },
+            "filterAndSort": {
+              "webmap": "Web Haritası",
+              "webscene": "Web Görünümü",
+              "image": "Görüntü",
+              "date": "Tarih",
+              "sortByDate": "Tarihe göre sırala",
+              "title": "Başlık",
+              "sortByTitle": "Başlığa göre sırala",
+              "views": "Görünümler",
+              "search": "Anahtar sözcüğe veya kimliğe göre arayın"
+            }
+          }
+        }
+      }
+    },
+    "mapEditor": {
+      "dialogTitle": "Harita düzenle",
+      "unauthorizedDomain": "Harita düzenleyiciyi kullanmak için yetkili bir etki alanında değilsiniz",
+      "loading": "Harita düzenleyici yüklenirken bekleyin",
+      "saving": "Harita kaydediliyor",
+      "success": "Harita kaydedildi",
+      "cancelTitle": "Kaydedilmemiş değişiklikler atılsın mı?",
+      "errorSave": "Harita kaydedilemiyor. Lütfen yeniden deneyin.",
+      "loadFail": "Üzgünüz, harita düzenleyici yüklenemiyor",
+      "close": "Kapat",
+      "save": "Kaydet",
+      "confirm": "Evet, haritayı kapat",
+      "deny": "Hayır, çalışmaya devam et"
+    },
+    "textEditor": {
+      "placeholder": {
+        "continueStory": "Hikayenize burada devam edin..."
+      },
+      "blockAdd": {
+        "text": "Metin",
+        "media": "Ortam",
+        "title": "Başlık",
+        "immersive": "Ayrıntılar"
+      },
+      "link": {
+        "invite": "Bir bağlantı yapıştırın veya yazın..."
+      },
+      "color": {
+        "choose": "seçin",
+        "cancel": "iptal",
+        "clear": "Rengi temizle"
+      }
+    },
     "imageGallery": {
       "addImage": "Başka bir görüntü ekle",
       "moveBackward": "Geriye doğru taşı",
@@ -222,13 +430,55 @@ define({
         "noAltImage": "Ortam Mobil Üzerinde Çalışmayabilir",
         "noAltImageUnsupported": "Ortam Mobil Üzerinde Desteklenmiyor",
         "noAltImageWarning": "Ortam Mobil Üzerinde Çalışmayabilir",
-        "altImageBroken": "Bu medya ortamı için tanımlanan alternatif görüntü erişilebilir değil"
+        "altImageBroken": "Bu medya ortamı için tanımlanan alternatif görüntü erişilebilir değil",
+        "httpMedia": "Güvenli Olmayan Ortam",
+        "httpContent": "Güvenli Olmayan İçerik"
       },
       "contentWarnings": {
         "noAltImage": "Hikayenizi paylaşmadan önce taşınabilir cihazlarda test ettiğinizden emin olun. Bu ortam beklendiği gibi çalışmazsa, hikaye bir telefonda veya tablette görüntülendiğinde gösterilecek alternatif bir görüntü eklemek için aşağıdaki düğmeyi kullanın.",
         "noAltImageUnsupported": "Bu ortam türü mobil cihazlarda çalışmayacak. Hikaye telefon veya tablette görüntülendiğinde gösterilecek alternatif bir görüntü eklemek için bu düğmeyi kullanın.",
         "noAltImageWarning": "Hikayenizi paylaşmadan önce taşınabilir cihazlarda test ettiğinizden emin olun. Bu ortam beklendiği gibi çalışmazsa, hikaye bir telefonda veya tablette görüntülendiğinde gösterilecek alternatif bir görüntü eklemek için aşağıdaki düğmeyi kullanın.",
         "noAltImageAlt": "Bu ortam türü mobil cihazlarda desteklenmiyor veya çalışmayabilir. Mobil sekmesinden hikaye telefon veya tablette görüntülendiğinde gösterilecek alternatif bir görüntü sağlayın."
+      },
+      "descriptions": {
+        "httpAudioUnfixable": "Bu ses dosyası HTTPS'yi desteklemiyor. Hikayenizden kaldırın veya bir bağlantıyla değiştirin.",
+        "httpAudioUncheckable": "Bu ses dosyasının URL'si güvenli değil (HTTP). Bu ses dosyasında bir HTTPS URL'si kullanmak için aşağıdaki düğmeye tıklayın. Bu işe yaramazsa, ses dosyasını hikayenizden kaldırın veya bir köprü bağlantısı ile değiştirin.",
+        "httpAudioFixable": "Bu ses dosyasının URL'si güvenli değil (HTTP). Bu ses dosyasında güvenli bir HTTPS URL'si kullanmak için aşağıdaki düğmeye tıklayın.",
+        "httpWebpageUnfixable": "Bu web sayfası HTTPS'yi desteklemiyor. Hikayenizden kaldırın veya bir ekran görüntüsü veya bağlantıyla değiştirin.",
+        "httpWebpageUncheckable": "Bu web sayfasının URL'si güvenli değil (HTTP). Bu web sayfasında bir HTTPS URL'si kullanmak için aşağıdaki düğmeye tıklayın. Bu işe yaramazsa, web sayfasını hikayenizden kaldırın veya bir ekran görüntüsü ya da köprü bağlantısı ile değiştirin.",
+        "httpWebpageFixable": "Bu web sayfasının URL'si güvenli değil (HTTP). Bu web sayfasında güvenli HTTPS URL'si kullanmak için aşağıdaki düğmeye tıklayın.",
+        "httpVideoUnfixable": "Bu video HTTPS'yi desteklemiyor. Hikayenizden kaldırın veya bir ekran görüntüsü veya bağlantıyla değiştirin.",
+        "httpVideoUncheckable": "Bu videonun URL'si güvenli değil (HTTP). Bu videoda bir HTTPS URL'si kullanmak için aşağıdaki düğmeye tıklayın. Bu işe yaramazsa, videoyu hikayenizden kaldırın veya bir ekran görüntüsü ya da köprü bağlantısı ile değiştirin.",
+        "httpVideoFixable": "Bu videonun URL'si güvenli değil (HTTP). Bu videoda güvenli bir HTTPS URL'si kullanmak için aşağıdaki düğmeye tıklayın.",
+        "httpImageUnfixable": "Bu görüntü HTTPS'yi desteklemiyor. Hikayenizden kaldırın veya bir bağlantıyla değiştirin.",
+        "httpImageUncheckable": "Bu görüntünün URL'si güvenli değil (HTTP). Bu görüntüde bir HTTPS URL'si kullanmak için aşağıdaki düğmeye tıklayın. Bu işe yaramazsa, görüntüyü hikayenizden kaldırın veya bir köprü bağlantısı ile değiştirin.",
+        "httpImageFixable": "Bu görüntünün URL'si güvenli değil (HTTP). Bu görüntüde güvenli bir HTTPS URL'si kullanmak için aşağıdaki düğmeye tıklayın.",
+        "httpLayer": "Bu katmanın URL'si güvenli değil (HTTP).",
+        "inaccessibleLogo": "Bu logo erişilebilir değil. Başka bir görüntüyle değiştirin.",
+        "httpLogoUnfixable": "Bu logo HTTPS'yi desteklemiyor. Başka bir görüntüyle değiştirin.",
+        "httpLogoFixable": "Bu logonun URL'si güvenli değil (HTTP). Logo için bir HTTPS URL kullanın.",
+        "httpLogoUncheckable": "Bu logonun URL'si güvenli değil (HTTP). Logo için bir HTTPS URL kullanın veya başka bir görüntüyle değiştirin."
+      },
+      "tooltips": {
+        "httpAudioFixable": "Bu ses dosyasında güvenli HTTPS URL'si kullanmak için düğmeye tıklayın.",
+        "httpAudioUncheckable": "Bu ses dosyasında bir HTTPS URL'si kullanmayı deneyin. Bu işe yaramazsa, ses dosyasını hikayenizden kaldırın veya bir bağlantı ile değiştirin.",
+        "httpWebpageFixable": "Bu web sayfasında güvenli HTTPS URL'si kullanmak için düğmeye tıklayın.",
+        "httpWebpageUncheckable": "Bu web sayfasında bir HTTPS URL'si kullanmayı deneyin. Bu işe yaramazsa, web sayfasını hikayenizden kaldırın veya bir ekran görüntüsü ya da bağlantı ile değiştirin.",
+        "httpVideoFixable": "Bu videoda güvenli HTTPS URL'si kullanmak için düğmeye tıklayın.",
+        "httpVideoUncheckable": "Bu videoda bir HTTPS URL'si kullanmayı deneyin. Bu işe yaramazsa, videoyu hikayenizden kaldırın veya bir ekran görüntüsü ya da bağlantı ile değiştirin.",
+        "httpImageFixable": "Bu görüntüde güvenli HTTPS URL'si kullanmak için düğmeye tıklayın.",
+        "httpImageUncheckable": "Bu görüntüde bir HTTPS URL'si kullanmayı deneyin. Bu işe yaramazsa, görüntüyü hikayenizden kaldırın veya bir bağlantı ile değiştirin.",
+        "httpLayerMyMap": "HTTPS kullanmak amacıyla bu katmanı güncellemek için haritanın öğe sayfasını ziyaret edin. Katman güncellenemiyorsa, haritadan kaldırın.",
+        "httpLayerNotMyMap": "Haritanın bir kopyasını alın ve HTTPS kullanmak için bu katmanı güncelleyin. Katman güncellenemiyorsa, haritadan kaldırın.",
+        "clickLearnMore": "Daha fazla öğrenmek için tıklayın."
+      },
+      "fixButtons": {
+        "agolItemPage": "Öğe Sayfası",
+        "openTheMap": "Haritayı Aç",
+        "updateAudio": "Ses Dosyasının URL'sini Düzelt",
+        "updateWebpages": "Web Sayfasının URL'sini Düzelt",
+        "updateVideos": "Videonun URL'sini Düzelt",
+        "updateImages": "Görüntünün URL'sini Düzelt"
       },
       "mapIssues": {
         "fixButton": "Sorunları Gider",
@@ -291,6 +541,31 @@ define({
         "notHealthy": "Sorunları gider",
         "warnings": "Uyarıları incele"
       }
+    },
+    "saveErrorSocial": {
+      "title": "Sosyal medya paylaşımı",
+      "panel1": "ArcGIS web uygulaması ögenizin başlığı hikaye başlığınızla aynı olmadığından hikayeniz sosyal medyada düzgün görünmeyebilir.",
+      "panel1tooltip": "Bir başlık, özet ve küçük resim tanımlandıktan sonra hikayeniz şöyle görüntülenir:",
+      "panel2": "Sosyal medyada hangi başlığı kullanmak istersiniz?",
+      "panel2q1": "Hikaye başlığı (önerilen)",
+      "panel2q1tooltip": "Bu seçeneği tercih ettiğinizde, öğenizin başlığı hikaye başlığınızla eşleşecek biçimde değiştirilir ve oluşturucudaki ilave değişiklikler senkronize olacaktır.",
+      "panel2q2": "Öge başlığı",
+      "panel3": "Hikayenizin sosyal medyada görüntülenme biçimini daha da iyileştirmek için ${MYSTORIES} kullanarak bir özet ve küçük resim ekleyin.",
+      "panel4": "Bu hikaye için beni bir daha uyarma",
+      "save": "Kaydet",
+      "mystories": "Hikayelerim"
+    },
+    "httpsTransitionMessage": {
+      "bannerMsg": "Web Güvenliği ve Story Maps hakkında Önemli İleti",
+      "s1h1": "Esri, Story Maps'in güvenliğini geliştiriyor",
+      "s1p1": "Story Maps'iniz web'de yayınlanır ve web topluluğu her zaman daha iyi güvenlik sağlamak ve uygulamak için çalışmaktadır. İnternet üzerinden iletilen içerik için güvenli bir bağlantı sağlayan HTTPS, web içeriğine erişmenin birincil yolu olarak kullanılmaktadır. Çoğu modern tarayıcı artık, HTTPS yerine HTTP kullanıldığında uyarı mesajları göstermektedir. Bu yeni geliştirilen standart nedeniyle Haziran 2018 ArcGIS Online güncellemesinden itibaren Story Maps'te HTTPS kullanılması gerekecektir.",
+      "s1p2": "Pratik olarak bu, bir Story Map demektir ve tüm içeriğine (görüntüler, katmanlar, gömülü uygulamalar ve web siteleri dahil) HTTP yerine HTTPS ile başlayan bağlantılar kullanılarak erişim sağlanmalıdır. Bu, okuyucularınız için en iyi deneyimi sağlar; çünkü çoğu web tarayıcısında bu, hikayelerinizin güvenli olduğu anlamına gelir.",
+      "s2h1": "Ne yapmam gerekiyor?",
+      "s2p1": "Esri, Story Map yazarları ve okuyucuları için bu geçişi kolaylaştırmaya çalışmaktadır. Artık Story Map oluşturucuları ve Hikayelerim'de, hikayelerinizdeki güvensiz içeriği (HTTP) bulmanıza yardımcı olacak ve bunları nasıl ele alacağınıza dair tavsiyelerde bulunacak araçlar mevcuttur. Lütfen hikayenizi güvenli olmayan içeriklere karşı kontrol edin ve Haziran 2018'den önce HTTPS'ye güncelleyin.",
+      "action1": "Kapat",
+      "action2": "Hikayelerimi şimdi kontrol et",
+      "action3": "Daha fazla bilgi",
+      "floatingNotification": "Bu hikaye güvenli olmayan (HTTP) içerik içeriyor. Lütfen inceleyin ve bu sorunları ele alın."
     }
   }
 });

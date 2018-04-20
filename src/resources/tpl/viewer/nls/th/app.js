@@ -32,10 +32,11 @@ define({
       "upgradeBrowser": "โปรดอัปเดตเบราว์เซอร์",
       "mapLoadingFail": "มีบางอย่างไม่ถูกต้อง โหลดแผนที่ไม่ถูกต้อง",
       "signOut": "ลงชื่อออก",
-      "builderSupport1": "เครื่องมือสร้างแผนที่เรื่องราวแบบคาสเคต สนับสนุนเฉพาะใน ${CHROME} และ ${SAFARI} อย่างไรก็ตามแผนที่เรื่องราวแบบคาสเคด ที่คุณสร้างขึ้น สามารถดูได้ด้วยเบราว์เซอร์ Internet Explorer 11 + และ Firefox",
-      "builderSupport2": "เครื่องมือสร้างแผนที่เรื่องราวแบบคาสเคส ไม่รองรับบน iPad แต่แผนที่เรื่องราวแบบคาสเคดที่คุณสร้างสามารถใช้ได้บน iPad",
-      "builderSupport3": "แผนที่เรื่องราวแบบคาสเคส สามารถดูได้ใน Chrome, Safari, Firefox และ Internet Explorer 11 + แต่เครื่องมือสร้างแผนที่เรื่องราวแบบคาสเคส สนับสนุนเฉพาะใน ${CHROME} และ ${SAFARI}",
-      "builderSupport4": "เรื่องราว Cascade สามารถดูได้ในเว็บเบราเซอร์สมัยใหม่ใด ๆ แต่ Story Map Cascade builder ได้รับการสนับสนุนเท่านั้น ${CHROME} และ ${SAFARI}.<br><br>หากคุณต้องการสร้าง Cascade เพื่อสนับสนุนเบราว์เซอร์อื่นโปรดติดต่อ ${ESRI-SUPPORT} หรือ ${BROWSER-SUPPORT-VOTE}.",
+      "builderSupportFirefox": "ในขณะนี้ตัวสร้าง Story Map Cascade รองรับ Firefox!<br><br>การรองรับสำหรับการเขียนเรื่องราว Cascade ใน Firefox ในปัจจุบันอยู่ในรุ่นเบต้า โปรดลองใช้และรายงานปัญหาต่าง ๆ ไปยัง ${ESRI-SUPPORT} หรือ ${ESRI-COMMUNITY}",
+      "builderSupportOther": "เรื่องราว Cascade สามารถดูได้ในเว็บเบราว์เซอร์สมัยใหม่ แต่เฉพาะ ${CHROME}, ${SAFARI} และ ${FIREFOX} (รุ่นเบต้า) เท่านั้นที่รองรับตัวสร้าง Story Map Cascade<br><br>หากคุณต้องการตัวสร้าง Cascade ให้รองรับเบราว์เซอร์อื่น โปรดติดต่อ ${ESRI-SUPPORT} หรือ ${BROWSER-SUPPORT-VOTE}",
+      "builderSupportIpad": "เครื่องมือสร้างแผนที่เรื่องราวแบบคาสเคส ไม่รองรับบน iPad แต่แผนที่เรื่องราวแบบคาสเคดที่คุณสร้างสามารถใช้ได้บน iPad",
+      "launchBuilder": "เปิดใช้งานตัวสร้าง Cascade",
+      "notAgain": "ไม่ต้องแสดงสิ่งนี้อีก",
       "sorry": "เรียน"
     },
     "mobileWarning": {
@@ -82,6 +83,40 @@ define({
       "speedFast": "เร็ว",
       "speedMedium": "กลาง",
       "speedSlow": "ช้า"
+    }
+  },
+  "print": {
+    "settings": {
+      "pleaseWait": "โปรดรอให้โหลดเรื่องราวทั้งหมดก่อนพิมพ์",
+      "printNotes": "หากหน้านี้โหลดช้าหรือสื่อบางอย่างไม่ปรากฏขึ้น ให้ลองเปลี่ยนสื่อสดด้วยภาพหรือพิมพ์ส่วนต่าง ๆ ที่เล็กลง เพื่อให้ได้ผลลัพธ์ที่ดีที่สุด คุณอาจต้องเปิดใช้งานการพิมพ์องค์ประกอบพื้นหลังในการตั้งค่าการพิมพ์ของเบราว์เซอร์",
+      "printOptions": "ตัวเลือก",
+      "makeTextBlack": "ทำให้ข้อความสีดำทั้งหมด",
+      "showLinks": "แสดง URL ของลิงก์",
+      "useAltMedia": "เปลี่ยนสื่อสดด้วยภาพ หากมี",
+      "pageBreaks": "เริ่มต้นแต่ละส่วนที่หน้าต่างใหม่",
+      "printRange": "พิมพ์ส่วนของเรื่องราวนี้",
+      "sectionStart": "ส่วน:",
+      "go": "ใช้",
+      "reset": "รีเซ็ตเป็นเรื่องราวทั้งหมด",
+      "print": "พิมพ์"
+    },
+    "page": {
+      "appTagline": "เรื่องราวนี้ทำขึ้นด้วย ${CASCADE_LINK_TEXT}",
+      "cascadeLinkText": "Story Map Cascade ของ Esri",
+      "readItOnline": "อ่านได้บนเว็บที่ ${STORY_URL}"
+    },
+    "sections": {
+      "sectionLabel": "ส่วน ${SECTION_NUMBER}"
+    },
+    "media": {
+      "websiteLabel": "เว๊ปไซต์ :",
+      "videoLabel": "วิดีโอ:",
+      "audioLabel": "เสียง:"
+    },
+    "bannerNotification": {
+      "learnMore": "เรียนรู้เพิ่มเติม",
+      "close": "ปิด",
+      "dontShowAgain": "ไม่ต้องแสดงข้อความนี้อีก"
     }
   }
 });

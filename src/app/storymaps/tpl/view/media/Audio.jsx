@@ -21,7 +21,6 @@ export default class Audio extends Media {
     });
 
     this._audio = audio;
-    this._url = audio.url;
 
     this._nodeMedia = null;
     this._placement = null;
@@ -47,8 +46,8 @@ export default class Audio extends Media {
     if (this._placement == 'block') {
       output += viewBlock({
         id: this._domID,
-        url: this._url,
-        mimeType: 'audio/' + this.getMimeType(this._url),
+        url: this._audio.url,
+        mimeType: 'audio/' + this.getMimeType(this._audio.url),
         caption: this._audio.caption,
         placeholder: i18n.viewer.media.captionPlaceholder,
         captionEditable: app.isInBuilder
@@ -58,7 +57,7 @@ export default class Audio extends Media {
 
       output += viewBackground({
         id: this._domID,
-        url: this._url,
+        url: this._audio.url,
         classes: 'audio-container'
       });
     }
@@ -120,7 +119,7 @@ export default class Audio extends Media {
       def.resolve();
     }, 5000);
 
-    aud.src = [this._url];
+    aud.src = [this._audio.url];
 
     return def;
 

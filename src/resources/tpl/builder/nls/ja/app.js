@@ -50,7 +50,26 @@ define({
         "loremBody": "Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor. Mauris consequat orci nec magna facilisis bibendum at eget libero."
       }
     },
+    "share": {
+      "btnPrivate": "プライベート",
+      "btnOrg": "組織",
+      "btnPublic": "パブリック",
+      "btnEveryone": "すべてのユーザー"
+    },
     "builderPanel": {
+      "builderNamePrefix": "",
+      "builderNameSuffix": "ビルダー",
+      "buttonSaving": "保存しています",
+      "buttonSaved": "保存完了",
+      "buttonError": "保存できません",
+      "buttonShare": "共有",
+      "buttonSettings": "設定",
+      "settingsLogoError": "ロゴに問題があります。クリックして詳細を確認してください。",
+      "buttonHelp": "ヘルプを表示または GeoNet にフィードバックを送信",
+      "buttonPreview": "ストーリーの表示",
+      "buttonHealth": "正常性レポート",
+      "manageStories": "マイ ストーリーの管理",
+      "closeWithPendingChange": "このアクションを確認しますか？変更内容は失われます。",
       "coverLabel": "カバー",
       "creditsLabel": "クレジット",
       "betaFeedback": "フィードバック",
@@ -143,6 +162,195 @@ define({
         "uploadAltImage": "代替画像を追加"
       }
     },
+    "mediaPicker": {
+      "browseToggle": {
+        "urls": "コンテンツへのリンク",
+        "urls_short": "リンク",
+        "contentType": {
+          "error": "許可されているメディアがありません。",
+          "imageOnly": "ストーリーのこの部分には、画像を追加できます。",
+          "imageAndVideo": "ストーリーのこの部分には、画像またはビデオを追加できます。",
+          "imageVideoWebpage": "ストーリーのこの部分には、画像、ビデオ、または Web ページを追加できます。"
+        }
+      },
+      "browsePanel": {
+        "providers": {
+          "searchingFor": "\"${searchterm}\" を検索しています...",
+          "searchedFor": "\"${searchterm}\" の検索結果",
+          "albumsOf": "${username} のアルバム",
+          "noPhotosFound": "検索に一致する写真はありませんでした。もう一度やり直してください。",
+          "noItemsFound": "検索に一致するアイテムはありませんでした。もう一度やり直してください。",
+          "noItemsInThisStory": "このストーリーには ArcGIS のコンテンツがまだ追加されていません。",
+          "limitReached": "100 アイテムを表示しています。必要なアイテムが見つからなかった場合は、キーワード検索をお試しください。",
+          "galleryItems": {
+            "uploadError": "このアイテムをアップロードできませんでした。"
+          },
+          "agol": {
+            "remove1": "この未使用の画像を ArcGIS アカウントから削除します",
+            "remove2": "(後で使用する場合は、もう一度アップロードする必要があります)。",
+            "removeFailed": "このアクセスできない画像をこのリストから削除します。",
+            "modified": "${date} を変更しました",
+            "uploaded": "${date} をアップロードしました",
+            "contentByAuthor": "${author} 別の ${contentType}"
+          },
+          "googlePhotos": {
+            "searchAndBrowse": "${Picasa} または ${Google+} の写真を参照"
+          },
+          "flickr": {
+            "photostream": "Photostream",
+            "searchAndBrowse": "${Flickr} の写真を検索および参照",
+            "captionStarter": "${Flickr} の ${USERNAME} の写真"
+          },
+          "unsplash": {
+            "searchAndBrowse": "${Unsplash} の写真を検索",
+            "photoBy": "${username} による写真",
+            "userLink": "${username} の ${Unsplash} ページへ移動",
+            "captionStarter": "${Unsplash} の ${USERNAME} の写真"
+          },
+          "urlContent": {
+            "uploadHeaders": {
+              "generic": "Web 上のコンテンツへのリンク",
+              "imageOnly": "Web 上の画像へのリンク",
+              "imageAndVideo": "Web 上の画像またはビデオへのリンク"
+            },
+            "linkText": {
+              "imageOnly": "上のボックスで写真に直接リンクできます。",
+              "imageAndVideo1": "上のボックスで、${YouTube} または ${Vimeo} のビデオのリンクまたは iframe コードを貼り付けることができます。",
+              "imageAndVideo2": "また、写真に直接リンクすることもできます。",
+              "imageVideoWebpage1": "上のボックスで、動的なチャートなどの Web コンテンツのリンクまたは iframe コードや、${YouTube} または ${Vimeo} のビデオのリンクまたは iframe コードを貼り付けることができます。",
+              "imageVideoWebpage2": "写真、ビデオ、音声ファイル、Web ページ、または Web アプリに直接リンクすることもできます。",
+              "ender": "必ずセキュアな (https) リンクを使用してください。コンテンツが https をサポートしていない場合、リンクをストーリーのテキスト内のコンテンツに追加し、ユーザーがブラウザーの新しいタブでコンテンツを表示できるようにします。",
+              "httpsError": "リンクは、HTTPS で始まる必要があります"
+            },
+            "embedProtocol": {
+              "embedProtocolLabel": "セキュリティで保護された接続 (https) を介してページを読み込みます",
+              "embedProtocolWarning1": "このページがストーリーに読み込まれない場合、Web セキュリティ上の理由からこのページを埋め込むことはできません。",
+              "embedProtocolWarning2": "このページがストーリーに読み込まれない場合、このオプションをオフにしてもう一度試行してください。それでもまだページが読み込まれない場合は、Web セキュリティ上の理由からこのページを埋め込むことはできません。",
+              "embedProtocolWarning3": "代替操作として、注釈のリンクを追加して、新しいブラウザー タブでそのページを開きます。${linkText}",
+              "linkText": "詳細"
+            },
+            "placeholder": "${https://}... または ${<iframe>}",
+            "uploadErrors": {
+              "generic": "入力したアドレスで問題が発生しました。もう一度やり直してください。",
+              "imageOnly1": "ストーリーのこの部分には、画像を使用する必要があります。",
+              "imageOnly2": "画像 (*.jpg、*.png、*.gif) へのリンクを指定するか、${ArcGIS}、${Flickr}、${Google+}、または ${Unsplash} から画像を選択してください。",
+              "imageAndVideo1": "ストーリーのこの部分には、画像またはビデオを使用する必要があります。",
+              "imageAndVideo2": "画像 (*.jpg、*.png、*.gif) または ${YouTube} や ${Vimeo} のビデオへのリンクを指定するか、${ArcGIS}、${Flickr}、${Google+}、または ${Unsplash} から画像を選択してください。",
+              "badFormat": "追加しようとしているファイルへのリンクの書式が正しくありません。",
+              "inaccessible": "追加しようとしているファイルが見つからないか、アクセスできません。",
+              "tryAgain": "アドレスを確認して、もう一度やり直してください。",
+              "mediaTypes": {
+                "VIDEO": "ビデオ",
+                "IMAGE": "画像",
+                "generic": "メディア"
+              }
+            }
+          }
+        },
+        "sidePanel": {
+          "googlePhotos": {
+            "placeholder": "電子メールまたは ${Picasa}/${Google+} ID",
+            "helpText": "${Picasa} または ${Google+} にアップロードされた写真は、ストーリーに追加できます。${Google} アカウントに格納された画像のストーリーでの使用に関する ${helpLinkText}。",
+            "helpLinkText": "詳細",
+            "cannotFindUser": "${username} が見つかりません。もう一度やり直してください。"
+          },
+          "unsplash": {
+            "placeholder": "写真の検索",
+            "aboutText": "${Unsplash} は、無料の高品質な写真コレクションです。",
+            "copyrightText": "${Unsplash} 上に公開されているすべての写真は、${CC0} ライセンスに基づいてライセンスが付与されています。詳細については、${moreInfoLink} をご参照ください。",
+            "moreInfoLink": "こちら"
+          },
+          "flickr": {
+            "searchType": {
+              "account": "${Flickr} アカウント",
+              "text": "すべての ${Flickr}"
+            },
+            "placeholders": {
+              "user": "アカウントの検索",
+              "userText": "このアカウントの写真を検索",
+              "text": "写真の検索"
+            },
+            "errors": {
+              "cannotFindUser": "ユーザー ${username} が見つかりません。",
+              "noUserPhotos": "${username} にパブリックな写真はありません。",
+              "didYouMean": "${username} ですか？",
+              "generalUserError": "ユーザー ${username} の検索中に問題が発生しました。"
+            },
+            "licenses": {
+              "licenseLabel": "ライセンス: ",
+              "public": "パブリック ドメイン",
+              "commercial": "営利利用の場合に OK",
+              "nonCommercial": "個人利用の場合に OK",
+              "reserved": "All rights reserved",
+              "any": "任意のライセンス"
+            }
+          },
+          "agol": {
+            "searchLocation": {
+              "thisStory": "このストーリー",
+              "agol": "ArcGIS Online",
+              "portalArcGIS": "Portal for ArcGIS",
+              "portal": "Portal",
+              "myOrg": "${orgname} の組織サイト",
+              "myContent": "マイ コンテンツ"
+            },
+            "createContent": {
+              "createNewMap": "新しいマップの作成",
+              "or": "OR",
+              "dragAndDrop": "画像をここにドロップ",
+              "uploadImage": "画像の参照",
+              "agolInfo": "画像は、ArcGIS アカウントで格納され、ストーリー内でのみアクセスできます。",
+              "saveBeforeUpload": "このストーリーを保存すると、ここで画像を ArcGIS にアップロードできます。",
+              "fileTypesImage": "サポートされているファイル タイプ: .png、.jpeg、.jpg、.gif、.bmp"
+            },
+            "filterAndSort": {
+              "webmap": "Web マップ",
+              "webscene": "Web シーン",
+              "image": "イメージ",
+              "date": "日付",
+              "sortByDate": "日付で並べ替え",
+              "title": "タイトル",
+              "sortByTitle": "タイトルで並べ替え",
+              "views": "ビュー",
+              "search": "キーワードまたは ID による検索"
+            }
+          }
+        }
+      }
+    },
+    "mapEditor": {
+      "dialogTitle": "マップの編集",
+      "unauthorizedDomain": "認証済みドメイン上にいないため、マップ エディターを使用できません",
+      "loading": "マップ エディターを読み込んでいます。しばらくお待ちください",
+      "saving": "マップを保存しています",
+      "success": "マップが保存されました",
+      "cancelTitle": "保存されていない変更内容をすべて破棄しますか？",
+      "errorSave": "マップを保存できません。もう一度やり直してください。",
+      "loadFail": "マップ エディターを読み込めません",
+      "close": "閉じる",
+      "save": "保存",
+      "confirm": "はい、マップを閉じます",
+      "deny": "いいえ、このまま続行します"
+    },
+    "textEditor": {
+      "placeholder": {
+        "continueStory": "ここでストーリーを続行..."
+      },
+      "blockAdd": {
+        "text": "テキスト",
+        "media": "メディア",
+        "title": "タイトル",
+        "immersive": "没入型"
+      },
+      "link": {
+        "invite": "リンクの貼り付けまたはリンク..."
+      },
+      "color": {
+        "choose": "選択",
+        "cancel": "キャンセル",
+        "clear": "色の消去"
+      }
+    },
     "imageGallery": {
       "addImage": "別の画像を追加",
       "moveBackward": "後方へ移動",
@@ -222,13 +430,55 @@ define({
         "noAltImage": "メディアがモバイル上で動作しない可能性があります",
         "noAltImageUnsupported": "メディアがモバイルでサポートされていません",
         "noAltImageWarning": "メディアがモバイル上で動作しない可能性があります",
-        "altImageBroken": "このメディア アイテムに定義されている代替画像にアクセスできません"
+        "altImageBroken": "このメディア アイテムに定義されている代替画像にアクセスできません",
+        "httpMedia": "安全でないメディア",
+        "httpContent": "安全でないコンテンツ"
       },
       "contentWarnings": {
         "noAltImage": "ストーリーを共有する前に、そのストーリーを必ずモバイル デバイス上でテストしてください。このメディアが期待どおりに動作しない場合は、下のボタンを使用して、ストーリーをスマートフォンまたはタブレットで表示するときに表示される代替画像を追加してください。",
         "noAltImageUnsupported": "このメディアは、モバイル デバイス上では動作しません。下のボタンを使用して、ストーリーをスマートフォンまたはタブレットで表示するときに表示される代替画像を追加してください。",
         "noAltImageWarning": "ストーリーを共有する前に、そのストーリーを必ずモバイル デバイス上でテストしてください。このメディアが期待どおりに動作しない場合は、下のボタンを使用して、ストーリーをスマートフォンまたはタブレットで表示するときに表示される代替画像を追加してください。",
         "noAltImageAlt": "このメディアのタイプは、モバイル デバイスでサポートされていないか、うまく動作しない可能性があります。モバイル タブで、ストーリーをスマートフォンまたはタブレットで表示するときに表示される代替画像を指定してください。"
+      },
+      "descriptions": {
+        "httpAudioUnfixable": "このオーディオは、HTTPS をサポートしていません。ストーリーからこれを削除するか、リンクに置き換えてください。",
+        "httpAudioUncheckable": "このオーディオには安全でない (HTTP) URL があります。下のボタンをクリックして、このオーディオに HTTPS URL を使用してみてください。 動作しない場合は、ストーリーからオーディオを削除するか、ハイパーリンクに置き換えてください。",
+        "httpAudioFixable": "このオーディオには安全でない (HTTP) URL があります。下のボタンをクリックして、このオーディオに安全な HTTPS URL を使用してください。",
+        "httpWebpageUnfixable": "この Web ページは、HTTPS をサポートしていません。ストーリーからこれを削除するか、スクリーンショットまたはリンクに置き換えてください。",
+        "httpWebpageUncheckable": "この Web ページには安全でない (HTTP) URL があります。下のボタンをクリックして、この Web ページに HTTPS URL を使用してみてください。 動作しない場合は、ストーリーから Web ページを削除するか、スクリーンショットまたはハイパーリンクに置き換えてください。",
+        "httpWebpageFixable": "この Web ページには安全でない (HTTP) URL があります。下のボタンをクリックして、この Web ページに安全な HTTPS URL を使用してください。",
+        "httpVideoUnfixable": "このビデオは、HTTPS をサポートしていません。ストーリーからこれを削除するか、スクリーンショットまたはリンクに置き換えてください。",
+        "httpVideoUncheckable": "このビデオには安全でない (HTTP) URL があります。下のボタンをクリックして、このビデオに HTTPS URL を使用してみてください。 動作しない場合は、ストーリーからビデオを削除するか、スクリーンショットまたはハイパーリンクに置き換えてください。",
+        "httpVideoFixable": "このビデオには安全でない (HTTP) URL があります。下のボタンをクリックして、このビデオに安全な HTTPS URL を使用してください。",
+        "httpImageUnfixable": "この画像は、HTTPS をサポートしていません。ストーリーからこれを削除するか、リンクに置き換えてください。",
+        "httpImageUncheckable": "この画像には安全でない (HTTP) URL があります。下のボタンをクリックして、この画像に HTTPS URL を使用してみてください。 動作しない場合は、ストーリーから画像を削除するか、ハイパーリンクに置き換えてください。",
+        "httpImageFixable": "この画像には安全でない (HTTP) URL があります。下のボタンをクリックして、この画像に安全な HTTPS URL を使用してください。",
+        "httpLayer": "このレイヤーには安全でない (HTTP) URL があります。",
+        "inaccessibleLogo": "このロゴにはアクセスできません。別の画像に置き換えてください。",
+        "httpLogoUnfixable": "このロゴは HTTPS をサポートしていません。別の画像に置き換えてください。",
+        "httpLogoFixable": "このロゴには安全でない (HTTP) URL があります。ロゴに HTTPS URL を使用してください。",
+        "httpLogoUncheckable": "このロゴには安全でない (HTTP) URL があります。ロゴに HTTPS URL を使用するか、別の画像に置き換えてください。"
+      },
+      "tooltips": {
+        "httpAudioFixable": "ボタンをクリックして、このオーディオに安全な HTTPS URL を使用してください。",
+        "httpAudioUncheckable": "このオーディオに HTTPS URL を使用してみてください。 動作しない場合は、ストーリーからオーディオを削除するか、リンクに置き換えてください。",
+        "httpWebpageFixable": "ボタンをクリックして、この Web ページに安全な HTTPS URL を使用してください。",
+        "httpWebpageUncheckable": "この Web ページに HTTPS URL を使用してみてください。 動作しない場合は、ストーリーから Web ページを削除するか、スクリーンショットまたはリンクに置き換えてください。",
+        "httpVideoFixable": "ボタンをクリックして、このビデオに安全な HTTPS URL を使用してください。",
+        "httpVideoUncheckable": "このビデオに HTTPS URL を使用してみてください。 動作しない場合は、ストーリーからビデオを削除するか、スクリーンショットまたはリンクに置き換えてください。",
+        "httpImageFixable": "ボタンをクリックして、この画像に安全な HTTPS URL を使用してください。",
+        "httpImageUncheckable": "この画像に HTTPS URL を使用してみてください。 動作しない場合は、ストーリーから画像を削除するか、リンクに置き換えてください。",
+        "httpLayerMyMap": "マップのアイテム ページにアクセスして、HTTPS を使用するようこのレイヤーを更新してください。レイヤーを更新できない場合は、マップから削除します。",
+        "httpLayerNotMyMap": "マップのコピーを作成して、HTTPS を使用するようこのレイヤーを更新してください。レイヤーを更新できない場合は、マップから削除します。",
+        "clickLearnMore": "クリックして詳細を確認してください。"
+      },
+      "fixButtons": {
+        "agolItemPage": "アイテム ページ",
+        "openTheMap": "マップを開く",
+        "updateAudio": "オーディオの URL の解決",
+        "updateWebpages": "Web ページの URL の解決",
+        "updateVideos": "ビデオの URL の解決",
+        "updateImages": "画像の URL の解決"
       },
       "mapIssues": {
         "fixButton": "問題の解決",
@@ -291,6 +541,31 @@ define({
         "notHealthy": "問題の解決",
         "warnings": "警告の表示"
       }
+    },
+    "saveErrorSocial": {
+      "title": "ソーシャル メディアでの共有",
+      "panel1": "ArcGIS Web アプリケーション アイテムのタイトルがストーリーのタイトルと同じでないため、ソーシャル メディアでストーリーが正しく表示されない可能性があります。",
+      "panel1tooltip": "タイトル、サマリー、およびサムネイル画像を定義すると、ストーリーは次のように表示されます。",
+      "panel2": "ソーシャル メディアで使用するタイトル:",
+      "panel2q1": "ストーリーのタイトル (推奨)",
+      "panel2q1tooltip": "このオプションを選択すると、アイテムのタイトルは、ストーリーのタイトルと一致するように変更され、ビルダーでの追加の変更が同期するようになります。",
+      "panel2q2": "アイテムのタイトル",
+      "panel3": "ソーシャル メディアでのストーリーの外観をさらに改善するには、${MYSTORIES} を使用してサマリーとサムネイル画像を追加します。",
+      "panel4": "今後、ストーリーについて警告しない",
+      "save": "保存",
+      "mystories": "マイ ストーリー"
+    },
+    "httpsTransitionMessage": {
+      "bannerMsg": "Web Security とストーリー マップに関する重要なメッセージ",
+      "s1h1": "Esri はストーリー マップのセキュリティ向上に努めています",
+      "s1p1": "Web および Web コミュニティ上のライブのストーリー マップは、常にセキュリティを向上するよう機能しています。HTTPS はインターネット経由で送信されるコンテンツを安全に接続するため、現在、Web コンテンツにアクセスする際に使用すべき手段となっています。最新のブラウザーでは、HTTPS ではなく HTTP が使用されると、警告メッセージが表示されます。これが標準となったことから、ArcGIS Online の 2018 年 6 月の更新版以降は、HTTPS を使用する必要があります。",
+      "s1p2": "事実上、ストーリー マップとそのすべてのコンテンツ (画像、レイヤー、埋め込みアプリ、Web サイトなど) にアクセスするには、HTTP ではなく HTTPS で始まるリンクを使用する必要があります。これにより、ほとんどの Web ブラウザーでストーリーの安全性が示されるため、ユーザーの安全性が最大限に確保されます。",
+      "s2h1": "必要な操作",
+      "s2p1": "Esri では、ストーリー マップの作成者とユーザーの移行操作を容易にするよう努めています。ストーリー マップ ビルダーおよびマイ ストーリー内のツールを使用すると、ストーリー内の安全でないコンテンツ (HTTP) を見つけやすくなり、その場合の対処方法も提示してくれます。2018 年 6 月までに、ストーリー内に安全でないコンテンツがないかを確認し、ある場合は HTTPS に更新してください。",
+      "action1": "クローズ",
+      "action2": "ストーリーを今すぐ確認する",
+      "action3": "詳細",
+      "floatingNotification": "このストーリーには安全でない (HTTP) コンテンツがあります。確認の上、問題を解決してください。"
     }
   }
 });

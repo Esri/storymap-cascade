@@ -32,7 +32,7 @@
     -->
 
     <!--
-      Copyright 2016, 2017 Esri
+      Copyright 2016-2018 Esri
       This application is released under the Apache License V2.0 by Esri http://www.esri.com/
       Checkout the project repository on GitHub to access source code, latest revision, developer documentation, FAQ and tips
       https://github.com/Esri/story-map-cascade
@@ -68,23 +68,11 @@
     -->
 
     <script type="text/javascript">
-      function generateAPIURL(apiVersion, isDev) {
-        var devSuffix = isDev ? 'dev' : '';
-        return 'https://js' + devSuffix + '.arcgis.com/' + apiVersion + '/';
-      }
-
       var app = {
-        version: '1.6.2', // for release, also change this in package.json before building
-        jsapi4Version: '4.6',
-        jsapi3Version: '3.23',
-        jsapiIsDev: false
+        version: '1.7.2',
+        pathJSAPI3: 'https://js.arcgis.com/3.24/',
+        pathJSAPI4: 'https://js.arcgis.com/4.7/'
       };
-
-      // generating these dynamically. Two reasons:
-      // 1) 4.x JSAPI version is needed in a couple of places now
-      // 2) switching from dev/prod versions should be same for 3.x and 4.x; now only needs doing once instead of twice
-      app.pathJSAPI3 = generateAPIURL(app.jsapi3Version, app.jsapiIsDev);
-      app.pathJSAPI4 = generateAPIURL(app.jsapi4Version, app.jsapiIsDev);
     </script>
     <noscript>
       <div style="position: fixed; top: 0px; left: 0px; z-index: 3000;
@@ -141,7 +129,7 @@
 
         #loadingIndicator {
           position: fixed;
-          top: 50%;
+          top: 45%;
           left: 50%;
           z-index: 1101;
           margin-top: -25px;
@@ -199,12 +187,8 @@
         </table>
       </div>
     </div>
+    <div id="print-wrapper"></div>
 
     <script type="text/javascript" src="app/main-config.js"></script>
-    <script type="text/javascript">
-      if (! app.isProduction) {
-        loadJS('//localhost:35729/livereload.js');
-      }
-    </script>
   </body>
 </html>

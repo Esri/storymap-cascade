@@ -4,7 +4,7 @@ import viewTpl from 'lib-build/hbars!./Popup';
 import logoSharingTpl from 'lib-build/hbars!./LogoSharing';
 import bookmarkTpl from 'lib-build/hbars!./Bookmark';
 import themeTpl from 'lib-build/hbars!./Appearance';
-import CommonHelper from 'storymaps/common/utils/CommonHelper';
+import CommonHelper from 'storymaps/tpl/utils/CommonHelper';
 
 import i18n from 'lib-build/i18n!resources/tpl/builder/nls/app';
 

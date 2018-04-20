@@ -1,7 +1,8 @@
 import Immersive from './Immersive';
 import ImmersiveBuilderPanel from './ImmersiveBuilderPanel';
 import ImmersiveTitleConfig from './ImmersiveTitleConfig';
-import SectionCommon from 'storymaps/tpl/view/section/Common';
+import SectionCommon from 'storymaps-react/tpl/view/section/Common';
+import MediaPickerConstants from 'storymaps-react/tpl/builder/mediaPicker/constants';
 import UndoNotification from 'storymaps-react/tpl/builder/notification/Undo';
 import AddMenu from '../builder/AddMenu';
 import topic from 'dojo/topic';
@@ -107,18 +108,26 @@ export default class ImmersiveBuilder extends Immersive {
     this._node.find('.background-title h2')
       .attr('contenteditable', true)
       .attr('placeholder', i18n.builder.title.placeholder)
-      .on('blur keyup', function() {
+      .on('blur keyup', e => {
+        if (e.keyCode === 8 || e.keyCode === 46) {
+          // if textContent is empty but innerHTML is not (i.e. there is no text but there is garbage markup like <br>), make the element empty.
+          const element = e.currentTarget;
+          if (!element.textContent && element.innerHTML) {
+            element.innerHTML = '';
+          }
+        }
+
         this.serialize(false);
         this._onContentChange();
-      }.bind(this))
-      .on('paste', function() {
-        setTimeout(function() {
+      })
+      .on('paste', () => {
+        setTimeout(() => {
           this._node.find('.background-title h2').html($('<div>' + this._node.find('.background-title h2').text()).text());
           this.serialize(false);
           this._onContentChange();
-        }.bind(this), 0);
-      }.bind(this))
-      .keydown(function(e) {
+        }, 0);
+      })
+      .keydown(e => {
         // Do not allow enter key
         if (e.keyCode === 13) {
           // If pressing enter insert <br> instead of default behavior that is div
@@ -384,7 +393,8 @@ export default class ImmersiveBuilder extends Immersive {
       return;
     }
 
-    if (params.action == 'swap' || params.action === 'alternate-media-swap' || params.action === 'alternate-media-add') {
+    if (params.action === 'swap' || params.action === 'alternate-media-swap' || params.action === 'alternate-media-add'
+        || params.action === 'https-open-picker') {
       const mediaIsEmpty = params.action === 'alternate-media-add' || params.media.serialize(false).type == 'empty';
       const isAlternate = params.action.indexOf('alternate-') !== -1;
       const authorizedMedia = isAlternate ? ['image'] : ['image', 'video', 'webpage', 'webmap', 'webscene'];
@@ -392,31 +402,61 @@ export default class ImmersiveBuilder extends Immersive {
       app.builder.mediaPicker.open({
         mode: mediaIsEmpty ? 'add' : 'edit',
         media: mediaIsEmpty ? null : params.media.serialize(false),
-        authorizedMedia: authorizedMedia
-      }).then(
-        function(newMedia) {
-          if (isAlternate) {
-            // check media, then...
-            SectionCommon.onEditMediaAlternate({
-              mainMedia: params.mainMedia,
-              newMediaJSON: newMedia,
-              oldMedia: params.media,
-              sectionType: 'immersive'
-            });
-            this.update();
-          }
-          else {
-            if (params.media.type != 'empty') {
-              this._onToggleMediaConfig();
-            }
-
-            this._onEditMedia(params.media, newMedia);
-          }
-        }.bind(this),
-        function() {
-          //
+        authorizedMedia: authorizedMedia,
+        selectedProvider: params.action === 'https-open-picker' ? MediaPickerConstants.providers.URL : ''
+      })
+      .then(newMedia => {
+        if (isAlternate) {
+          // check media, then...
+          SectionCommon.onEditMediaAlternate({
+            mainMedia: params.mainMedia,
+            newMediaJSON: newMedia,
+            oldMedia: params.media,
+            sectionType: 'immersive'
+          });
+          this.update();
         }
-      );
+        else if (SectionCommon.isSameMediaWithSecureProtocol(params.media, newMedia)) {
+          // if all that's changed is that the media URL is now https, keep the existing media but change it to be https.
+          // This preserves captions, alt media, and config options.
+          params.media.convertToHttps();
+          topic.publish('builder-should-check-story');
+        }
+        else {
+          if (params.media.type != 'empty') {
+            this._onToggleMediaConfig();
+          }
+
+          this._onEditMedia({
+            media: params.media,
+            newMediaJSON: newMedia
+          });
+        }
+      },
+      message => {
+        if (message === 'swap-map-editor') {
+          SectionCommon.launchMapEditorFromMediaPicker().then(results => {
+            this._onEditMedia({
+              media: params.media,
+              newMediaJSON: results
+            });
+          }, () => {
+            //
+          });
+        }
+      });
+    }
+
+    else if (params.action === 'arcgis-edit') {
+      SectionCommon.launchMapEditor(params.media).then(result => {
+        this._onEditMedia({
+          media: params.media,
+          newMediaJSON: result,
+          forceReload: true
+        });
+      }, () => {
+        //
+      });
     }
 
     else if (params.action === 'alternate-media-remove') {
@@ -434,17 +474,23 @@ export default class ImmersiveBuilder extends Immersive {
   }
 
   // TODO: deprecate for _onToggleMediaConfig ???
-  _onEditMedia(media, newMediaJSON) {
-    var mediaIndex = this._medias.indexOf(media),
-        newMedia = SectionCommon.initMedia({
-          media: newMediaJSON,
-          mediaCache: this._mediaCache,
-          isNewMedia: true
-        });
+  _onEditMedia({media, newMediaJSON, forceReload}) {
+    const mediaIndex = this._medias.indexOf(media);
+    const newMedia = SectionCommon.initMedia({
+      media: newMediaJSON,
+      mediaCache: this._mediaCache,
+      isNewMedia: true
+    });
 
-    var isMediaAlreadyLoaded = this.isMediaAlreadyLoaded(newMediaJSON);
-    if (! isMediaAlreadyLoaded) {
+    let isMediaAlreadyLoaded = this.isMediaAlreadyLoaded(newMediaJSON);
+    if (!isMediaAlreadyLoaded) {
       media.getNode().after(SectionCommon.renderBackground({
+        media: newMedia,
+        transition: this._transitions[mediaIndex]
+      }));
+    }
+    else if (forceReload) {
+      media.getNode().replaceWith(SectionCommon.renderBackground({
         media: newMedia,
         transition: this._transitions[mediaIndex]
       }));
@@ -461,7 +507,7 @@ export default class ImmersiveBuilder extends Immersive {
       sectionType: 'immersive'
     });
 
-    if (! isMediaAlreadyLoaded) {
+    if (!isMediaAlreadyLoaded || forceReload) {
       newMedia.load({
         isBuilderAdd: true,
         isUniqueInSection: true
@@ -510,7 +556,7 @@ export default class ImmersiveBuilder extends Immersive {
     // Media
     //
 
-    var media = SectionCommon.initMedia({
+    const media = SectionCommon.initMedia({
       media: {
         type: 'empty',
         empty: 'empty'
@@ -537,7 +583,7 @@ export default class ImmersiveBuilder extends Immersive {
     // Panel
     //
 
-    var panel = app.ui.ImmersivePanelFactory.duplicateWithoutContent(
+    const panel = app.ui.ImmersivePanelFactory.duplicateWithoutContent(
       this._panels[index] ? this._panels[index].serialize(false) : null,
       defaultTransition,
       {

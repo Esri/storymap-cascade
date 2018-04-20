@@ -32,10 +32,11 @@ define({
       "upgradeBrowser": "Prašome atnaujinti naršyklę",
       "mapLoadingFail": "Įvyko klaida ir žemėlapio nepavyko tinkamai įkelti.",
       "signOut": "Atsijungti",
-      "builderSupport1": "Besitęsiančių žemėlapių pasakojimų kūrimo priemonė palaikoma tik ${CHROME} ir ${SAFARI}. Tačiau besitęsiančius pasakojimus, sukurtus naudojant kūrimo priemonę, galima peržiūrėti ir naudojant Internet Explorer 11+ bei Firefox.",
-      "builderSupport2": "Besitęsiančių žemėlapių pasakojimų kūrimo priemonė nepalaikoma naudojant iPad. Tačiau jūsų sukurtos ir bendrinamos aplikacijos šiuose įrenginiuose veiks.",
-      "builderSupport3": "Besitęsiančius žemėlapių pasakojimus galima peržiūrėti naudojant Chrome, Safari, Firefox ir Internet Explorer 11+ naršykles, tačiau šios aplikacijos kūrimo priemonė palaikoma tik ${CHROME} ir ${SAFARI}.",
-      "builderSupport4": "Besitęsiančių žemėlapių pasakojimus galima peržiūrėti bet kurioje šiuolaikinėje interneto naršyklėje, tačiau jų kūrimo priemonė palaikoma tik ${CHROME} ir ${SAFARI}.<br><br>Jei norite besitęsiančių žemėlapių pasakojimų kūrimo priemonę naudoti kitoje naršyklėje, kreipkitės į ${ESRI-SUPPORT} arba ${BROWSER-SUPPORT-VOTE}.",
+      "builderSupportFirefox": "Besitęsiančių žemėlapių pasakojimai nuo šiol palaikomi Firefox!<br><br>Šiuo metu besitęsiančių žemėlapių pasakojimų kūrimas Firefox palaikomas tik beta versijoje. Išbandykite ir apie problemas praneškite ${ESRI-SUPPORT} arba ${ESRI-COMMUNITY}.",
+      "builderSupportOther": "Besitęsiančių žemėlapių pasakojimus galima peržiūrėti bet kurioje šiuolaikinėje interneto naršyklėje, tačiau jų kūrimo priemonė palaikoma tik ${CHROME}, ${SAFARI} ir ${FIREFOX} (beta versija).<br><br>Jei norite besitęsiančių žemėlapių pasakojimų kūrimo priemonę naudoti kitoje naršyklėje, kreipkitės į ${ESRI-SUPPORT} arba ${BROWSER-SUPPORT-VOTE}.",
+      "builderSupportIpad": "Besitęsiančių žemėlapių pasakojimų kūrimo priemonė nepalaikoma naudojant iPad. Tačiau jūsų sukurtos ir bendrinamos aplikacijos šiuose įrenginiuose veiks.",
+      "launchBuilder": "Paleiskite besitęsiančių žemėlapių pasakojimų kūrimo priemonę",
+      "notAgain": "Daugiau nerodyti",
       "sorry": "Dėmesio!"
     },
     "mobileWarning": {
@@ -82,6 +83,40 @@ define({
       "speedFast": "Greitai",
       "speedMedium": "Vidutiniškas",
       "speedSlow": "Lėtai"
+    }
+  },
+  "print": {
+    "settings": {
+      "pleaseWait": "Prieš spausdindami palaukite, kol bus įkeltas visas pasakojimas",
+      "printNotes": "Jei puslapis įkeliamas lėtai ar rodoma ne visa medija, bandykite tiesioginę mediją pakeisti paveikslėliais arba spausdinkite mažesniu skilčių intervalu. Siekdami geriausių rezultatų, naršyklės parametruose gali tekti įgalinti fono elementų spausdinimą.",
+      "printOptions": "Parinktys",
+      "makeTextBlack": "Spalvinti visą tekstą juodai",
+      "showLinks": "Rodyti nuorodos URL",
+      "useAltMedia": "Pakeiskite tiesioginę mediją paveikslėliais, jei įmanoma",
+      "pageBreaks": "Kiekvieną skiltį pradėkite naujame puslapyje",
+      "printRange": "Spausdinkite pasakojimo dalį",
+      "sectionStart": "Skiltys:",
+      "go": "Taikyti",
+      "reset": "Viso pasakojimo nustatymas iš naujo",
+      "print": "Spausdinti"
+    },
+    "page": {
+      "appTagline": "Šis pasakojimas sukurtas naudojant ${CASCADE_LINK_TEXT}.",
+      "cascadeLinkText": "Esri besitęsiančių žemėlapių pasakojimai",
+      "readItOnline": "Skaitykite apie tai žiniatinklyje ${STORY_URL}."
+    },
+    "sections": {
+      "sectionLabel": "Skiltis ${SECTION_NUMBER}"
+    },
+    "media": {
+      "websiteLabel": "Internetinis puslapis:",
+      "videoLabel": "Vaizdo įrašas:",
+      "audioLabel": "Garso įrašas:"
+    },
+    "bannerNotification": {
+      "learnMore": "Sužinokite daugiau",
+      "close": "Uždaryti",
+      "dontShowAgain": "Daugiau nerodyti šio pranešimo"
     }
   }
 });

@@ -32,10 +32,11 @@ define({
       "upgradeBrowser": "Aggiornare il browser",
       "mapLoadingFail": "Si è verificato un errore. La mappa non è stata caricata correttamente.",
       "signOut": "Disconnetti",
-      "builderSupport1": "Il generatore Cascade Story Map è supportato solo in ${CHROME} e ${SAFARI}. Tuttavia, è possibile visualizzare le storie Cascade create con il generatore anche con Internet Explorer 11+ e Firefox.",
-      "builderSupport2": "Il generatore Cascade Story Map non è supportato su iPad. Le storie Cascade create e condivise funzioneranno su iPad.",
-      "builderSupport3": "È possibile visualizzare le storie Cascade in Chrome, Safari, Firefox e Internet Explorer 11+, ma il generatore Cascade Story Map è supportato solo in ${CHROME} e ${SAFARI}.",
-      "builderSupport4": "È possibile visualizzare le storie Cascade in qualsiasi browser moderno, tuttavia il generatore Cascade Story Map è supportato solo in ${CHROME} e ${SAFARI}.<br><br>Se è necessario che il generatore Cascade supporti un browser diverso, contattare ${ESRI-SUPPORT} o fare clic per votare: ${BROWSER-SUPPORT-VOTE}.",
+      "builderSupportFirefox": "Il generatore Story Map Cascade ora supporta Firefox!<br><br>Il supporto per la creazione di storie Cascade in Firefox è attualmente in versione beta. È possibile provarlo e segnalare eventuali problemi a ${ESRI-SUPPORT} o alla ${ESRI-COMMUNITY}.",
+      "builderSupportOther": "È possibile visualizzare le storie Cascade in qualsiasi browser moderno, tuttavia il generatore Cascade Story Map è supportato solo in ${CHROME}, ${SAFARI} e ${FIREFOX}.<br><br>Qualora sia necessario che il generatore Cascade supporti un browser diverso, contattare ${ESRI-SUPPORT} o fare clic per votare: ${BROWSER-SUPPORT-VOTE}.",
+      "builderSupportIpad": "Il generatore Cascade Story Map non è supportato su iPad. Le storie Cascade create e condivise funzioneranno su iPad.",
+      "launchBuilder": "Avvia il generatore Cascade",
+      "notAgain": "Non mostrare più",
       "sorry": "Attenzione:"
     },
     "mobileWarning": {
@@ -82,6 +83,40 @@ define({
       "speedFast": "Veloce",
       "speedMedium": "Medio",
       "speedSlow": "Lento"
+    }
+  },
+  "print": {
+    "settings": {
+      "pleaseWait": "Attendere che il caricamento della storia sia completato prima di stampare",
+      "printNotes": "Se la pagina si carica lentamente o se alcuni file multimediali non vengono visualizzati, provare a sostituire i file multimediali con immagini o stampare una selezione minore di sezioni. Per ottenere risultati ottimali, potrebbe essere necessario abilitare la stampa degli elementi di sfondo nelle impostazioni di stampa del browser.",
+      "printOptions": "Opzioni",
+      "makeTextBlack": "Tutto il testo in nero",
+      "showLinks": "Mostra URL dei link",
+      "useAltMedia": "Sostituisci i file multimediali con immagini, se disponibili",
+      "pageBreaks": "Iniziare ogni sezione su una nuova pagina",
+      "printRange": "Stampa una parte della storia",
+      "sectionStart": "Sezioni:",
+      "go": "Applica",
+      "reset": "Ripristina tutta la storia",
+      "print": "Stampa"
+    },
+    "page": {
+      "appTagline": "Questa storia è stata creata in ${CASCADE_LINK_TEXT}.",
+      "cascadeLinkText": "Story Map Cascade di Esri",
+      "readItOnline": "Leggila sul web all’indirizzo ${STORY_URL}."
+    },
+    "sections": {
+      "sectionLabel": "Sezione ${SECTION_NUMBER}"
+    },
+    "media": {
+      "websiteLabel": "Sito Web:",
+      "videoLabel": "Video:",
+      "audioLabel": "Audio:"
+    },
+    "bannerNotification": {
+      "learnMore": "Ulteriori informazioni",
+      "close": "Chiudi",
+      "dontShowAgain": "Non visualizzare più questo messaggio"
     }
   }
 });

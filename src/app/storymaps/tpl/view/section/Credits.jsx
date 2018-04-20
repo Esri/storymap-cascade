@@ -1,4 +1,4 @@
-import SectionCommon from 'storymaps/tpl/view/section/Common';
+import SectionCommon from 'storymaps-react/tpl/view/section/Common';
 import UIUtils from 'storymaps/tpl/utils/UI';
 
 import viewTpl from 'lib-build/hbars!./Credits';

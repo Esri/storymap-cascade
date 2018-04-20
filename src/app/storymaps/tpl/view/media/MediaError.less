@@ -25,7 +25,7 @@
 
 // both viewer and editor error formatting
 .background.error,
-.block-media.error,
+.block.error .block-media,
 .ug-thumb-wrapper.error {
   background: #f9f9f9;
 
@@ -51,7 +51,7 @@ body:not(.builder-mode) {
     display: block;
   }
 
-  .block-media.error.minimize-on-viewer,
+  .block.error .block-media.minimize-on-viewer,
   .ug-thumb-wrapper.error.minimize-on-viewer {
     height: auto;
     padding-top: 0;
@@ -74,23 +74,22 @@ body:not(.builder-mode) {
   // minimize width of block-media error in sequential section
   // (large images collapse to small width)
   .section-layout-sequence {
-    .block-media.error {
+    .block.error .block-media {
       width: 40%;
       margin-left: auto;
       margin-right: auto;
     }
   }
 
-  &.mobile-view .section-layout-sequence .block-audio .block-media.error {
+  &.mobile-view .section-layout-sequence .block-audio.error .block-media {
     width: 80%;
   }
 
-  .block-media.error:not(.minimize-on-viewer) {
+  .block.error .block-media:not(.minimize-on-viewer) {
     .loading-error {
       top: 20px;
     }
   }
-
 }
 
 
@@ -114,9 +113,10 @@ body:not(.builder-mode) {
 .builder-mode {
 
   // all error types (sequential, cover, title, immersive, panels, image galleries)
-  .block-media.error,
+  .block.error .block-media,
   .background.error,
   .ug-thumb-wrapper.error {
+
     border-left: 10px solid @sm-danger-text;
 
     &, .map {
@@ -161,12 +161,16 @@ body:not(.builder-mode) {
     .builder-invite-open {
       color: white;
     }
+  }
 
+  .block.error,
+  .background.error,
+  .ug-thumb-wrapper.error,
+  .block.warning,
+  .background.warning,
+  .ug-thumb-wrapper.warning {
     // put a border on the "Manage" and "Issues" tabs and
     // adjust the padding of the other tabs to preserve alignment
-    // in .block-media, the .media-cfg-panel is a sibling, but in
-    // .background.error, the .media-cfg-panel is a descendent.
-    & ~ .media-cfg-panel,
     .media-cfg-panel {
       .tab {
         padding-left: 5px;
@@ -179,11 +183,20 @@ body:not(.builder-mode) {
           position: absolute;
           left: -5px;
         }
+
+        .border-warning {
+          top: -1px;
+          bottom: 0;
+          width: 5px;
+          background: @Calcite_Orange_a150;
+          position: absolute;
+          left: -5px;
+        }
       }
     }
   }
 
-  .block-media.warning,
+  .block.warning .block-media,
   .background.warning,
   .ug-thumb-wrapper.warning {
     border-left: 10px solid @Calcite_Orange_a150;
@@ -229,31 +242,10 @@ body:not(.builder-mode) {
     .builder-invite-open {
       color: white;
     }
-
-    // put a border on the "Manage" and "Issues" tabs and
-    // adjust the padding of the other tabs to preserve alignment
-    // in .block-media, the .media-cfg-panel is a sibling, but in
-    // .background.error, the .media-cfg-panel is a descendent.
-    & ~ .media-cfg-panel,
-    .media-cfg-panel {
-      .tab {
-        padding-left: 5px;
-
-        .border-warning {
-          top: -1px;
-          bottom: 0;
-          width: 5px;
-          background: @Calcite_Orange_a150;
-          position: absolute;
-          left: -5px;
-        }
-      }
-    }
   }
 
-
   // just sequential and panel errors
-  .block-media.error {
+  .block.error .block-media {
     height: auto;
     border-left-color: fade(@sm-danger-text, 80%);
 
@@ -278,7 +270,7 @@ body:not(.builder-mode) {
     }
   }
 
-  .block-media.warning {
+  .block.warning .block-media {
     height: auto;
     border-left-color: fade(@Calcite_Orange_a150, 80%);
 
@@ -306,11 +298,11 @@ body:not(.builder-mode) {
   // keep opacity of left border on config panel open
   // (above it's just on hover, but the config panel is
   // below the image, so hover won't work here)
-  .block.config-panel-active .block-media.error {
+  .block.config-panel-active.error .block-media {
     border-left-color: @sm-danger-text;
   }
 
-  .block.config-panel-active .block-media.warning {
+  .block.config-panel-active.warning .block-media {
     border-left-color: @Calcite_Orange_a150;
   }
 

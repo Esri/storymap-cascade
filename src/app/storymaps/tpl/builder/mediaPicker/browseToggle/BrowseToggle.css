@@ -1,0 +1,5 @@
+/* declared in CSS because of a path issue with less */
+
+.browse-toggle.arcgis .provider-logo {
+  background-image: url('../../../../../../resources/tpl/builder/icons/media-picker/grayarcgislogo.png');
+}

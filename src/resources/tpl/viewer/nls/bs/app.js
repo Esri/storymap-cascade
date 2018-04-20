@@ -32,10 +32,11 @@ define({
       "upgradeBrowser": "Ažurirajte svoj preglednik",
       "mapLoadingFail": "Nešto nije u redu, karta se nije točno učitala.",
       "signOut": "Odjava",
-      "builderSupport1": "Sastavljač Story Map Cascade podržan je samo u ${CHROME} i ${SAFARI}. Međutim, Cascade priče koje izradite sa sastavljačem mogu se prikazati u tim preglednicima, Internet Exploreru 11+ i Firefoxu.",
-      "builderSupport2": "Sastavljač Story Map Cascade nije podržan za iPad. Cascade priče koje izradite i podijelite radit će na iPadu.",
-      "builderSupport3": "Cascade priče mogu se prikazati u preglednicima Chrome, Safari, Firefox i Internet Explorer 11+, ali sastavljač Story Map Cascade podržan je samo u ${CHROME} i ${SAFARI}.",
-      "builderSupport4": "Cascade priče mogu se prikazati u bilo kojem modernom internetskom pregledniku, ali sastavljač Story Map Cascade podržan je samo u ${CHROME} i ${SAFARI}.<br><br>Ako trebate sastavljač Cascade za podržavanje drugog preglednika, obratite se ${ESRI-SUPPORT} ili ${BROWSER-SUPPORT-VOTE}.",
+      "builderSupportFirefox": "Sastavljač Story Map Cascade sada podržava Firefox!<br><br>Podrška za izradu Cascade priča u Firefoxu trenutačno je u beta verziji. Isprobajte je i prijavite sve probleme na sljedeće mjesto: ${ESRI-SUPPORT} ili ${ESRI-COMMUNITY}.",
+      "builderSupportOther": "Cascade priče mogu se prikazati u bilo kojem modernom internetskom pregledniku, ali sastavljač Story Map Cascade podržan je samo u preglednicima ${CHROME}, ${SAFARI} i ${FIREFOX} (beta verzija).<br><br>Ako trebate sastavljač Cascade za podržavanje drugog preglednika, obratite se ${ESRI-SUPPORT} ili ${BROWSER-SUPPORT-VOTE}.",
+      "builderSupportIpad": "Sastavljač Story Map Cascade nije podržan za iPad. Cascade priče koje izradite i podijelite radit će na iPadu.",
+      "launchBuilder": "Pokreni sastavljač Cascade",
+      "notAgain": "Ne prikazuj ovo ponovno",
       "sorry": "Pozor:"
     },
     "mobileWarning": {
@@ -82,6 +83,40 @@ define({
       "speedFast": "Brzo",
       "speedMedium": "Srednje",
       "speedSlow": "Sporo"
+    }
+  },
+  "print": {
+    "settings": {
+      "pleaseWait": "Pričekajte da se učita cijela priča prije ispisa",
+      "printNotes": "Ako se ova stranica sporo učitava ili se neki mediji ne pojavljuju, pokušajte zamijeniti medije koji se prikazuju uživo slikama ili ispisom manjeg raspona odjeljaka. Za najbolje rezultate možda ćete trebati omogućiti ispis pozadinskih elemenata u postavkama ispisa preglednika.",
+      "printOptions": "Opcije",
+      "makeTextBlack": "Promijeni cijeli tekst u crno",
+      "showLinks": "Prikaži URL-ove poveznica",
+      "useAltMedia": "Zamijenite medije koji se prikazuju uživo sa slikama ako su dostupne",
+      "pageBreaks": "Započnite svaki dio na novoj stranici",
+      "printRange": "Ispiši dio ove priče",
+      "sectionStart": "Odjeljci:",
+      "go": "Primijeni",
+      "reset": "Vrati na cijelu priču",
+      "print": "Ispis"
+    },
+    "page": {
+      "appTagline": "Ova je priča napravljena pomoću ${CASCADE_LINK_TEXT}.",
+      "cascadeLinkText": "Esrijev Story Map Cascade",
+      "readItOnline": "Pročitajte na internetu na ${STORY_URL}."
+    },
+    "sections": {
+      "sectionLabel": "Odjeljak ${SECTION_NUMBER}"
+    },
+    "media": {
+      "websiteLabel": "Web-mjesto:",
+      "videoLabel": "Videozapis:",
+      "audioLabel": "Audiozapis:"
+    },
+    "bannerNotification": {
+      "learnMore": "Saznaj više",
+      "close": "Zatvori",
+      "dontShowAgain": "Nemoj ponovno prikazati ovu poruku"
     }
   }
 });
