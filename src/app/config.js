@@ -39,11 +39,20 @@ app.cfg = {
       */
     ]
   },
+  MEDIA_KEYS: {
+    FLICKR_API: '750b36a2ac65a72e03cf9cef06d79f45',
+    UNSPLASH_API: '05dea1567391cf2dcdb9bf52016953d1f878eb5a5ec4759cf839cdddebbb6ae2',
+    YOUTUBE_API: 'AIzaSyDevTFP16nz6sA-akiOVi6wWXiplJnQ4qw',
+    YOUTUBE_DISABLE_ON_PORTAL: true
+  },
+
+  // embedded apps created before this date do not get the new embed bar
+  JUNE_CREATED_DATE: 1530072000000,
+
   BUILDER_LINKS: {
     picasaHelp: 'http://links.esri.com/storymaps/google-photos-help',
     unsplashHome: 'https://unsplash.com/',
-    cc0License: 'https://creativecommons.org/publicdomain/zero/1.0/',
-    unsplashLicense: 'https://unsplash.com/license',
+    unsplashLicense: 'https://links.esri.com/cascade-builder-unsplash-license',
     issueHelps: {
       unshared: 'http://links.esri.com/storymaps/cascade-issue-share',
       othersUnshared: 'http://links.esri.com/storymaps/cascade-issue-edit-map',
@@ -55,6 +64,13 @@ app.cfg = {
       unauthorized: 'http://links.esri.com/storymaps/cascade-issue-edit-map',
       mixedContent: 'http://links.esri.com/storymaps/blogs_mixed_content/'
     },
+    TERMS: {
+      flickr: 'http://links.esri.com/storymaps/flickr-terms',
+      google: 'http://links.esri.com/storymaps/google-terms',
+      unsplash: 'http://links.esri.com/storymaps/unsplash-terms',
+      vimeo: 'http://links.esri.com/storymaps/vimeo-terms',
+      youtube: 'http://links.esri.com/storymaps/youtube-terms'
+    }
   },
   // Edit those to set a custom sharing or proxy URL
   // You have to edit those only if your webmap is deployed on Portal for ArcGIS instance and if you are not deploying the template on the Portal webserver

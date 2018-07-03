@@ -60,7 +60,7 @@ define({
     },
     "headerFromCommon": {
       "defaultTagline": "${STORY_MAP}",
-      "share": "分享",
+      "share": "分享或列印",
       "tooltipAutoplayDisabled": "這不適用於自動播放模式"
     },
     "shareFromCommon": {
@@ -83,6 +83,11 @@ define({
       "speedFast": "較快",
       "speedMedium": "中",
       "speedSlow": "較慢"
+    },
+    "bannerNotification": {
+      "learnMore": "瞭解詳細資訊",
+      "close": "關閉",
+      "dontShowAgain": "請勿再次顯示此訊息"
     }
   },
   "print": {
@@ -112,11 +117,6 @@ define({
       "websiteLabel": "網址:",
       "videoLabel": "影片:",
       "audioLabel": "音訊:"
-    },
-    "bannerNotification": {
-      "learnMore": "瞭解詳細資訊",
-      "close": "關閉",
-      "dontShowAgain": "請勿再次顯示此訊息"
     }
   }
 });

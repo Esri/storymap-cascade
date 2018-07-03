@@ -115,7 +115,9 @@ define({
         "changeMedia": "Mainīt multividi",
         "edit": "Labot",
         "editAside": "Tiek atvērts jaunā pārlūka cilnē. Lai redzētu veiktos labojumus, vispirms saglabājiet labojumus, bet pēc tam saglabājiet un atkārtoti ielādējiet šo stāstu.",
-        "remove": "Noņemt"
+        "remove": "Noņemt",
+        "altTextPlaceholder": "Pievienojiet šīs multivides aprakstu lasītājiem ar redzes traucējumiem…",
+        "altTextHelptip": "Alternatīvais teksts ir vizuālas multivides apraksts, ko izmanto palīgtehnoloģijas, piemēram, ekrāna lasītāja programmatūra. Tas nav obligāti, bet ir ieteicama atbilstība tīmekļa pieejamības vadlīnijām, piemēram, WCAG un 508. sadaļai."
       },
       "appearance": {
         "homeView": "Sākotnējais skats",
@@ -248,6 +250,7 @@ define({
           }
         },
         "sidePanel": {
+          "thirdPartyTerms": "Izmantojot šo trešās puses pakalpojumu, jūs piekrītat tā lietošanas noteikumiem. ",
           "googlePhotos": {
             "placeholder": "E-pasta adrese vai ${Picasa}/${Google+} ID",
             "helpText": "Savam stāstam varat pievienot ${Picasa} vai ${Google+} augšupielādētos attēlus. ${helpLinkText} par tādu attēlu izmantošanu stāstos, kas ir glabāti jūsu ${Google} kontā.",
@@ -257,7 +260,7 @@ define({
           "unsplash": {
             "placeholder": "Meklēt fotoattēlus",
             "aboutText": "${Unsplash} ir pārraudzīta bezmaksas, augstas kvalitātes fotoattēlu kolekcija.",
-            "copyrightText": "Visi ${Unsplash} publicētie fotoattēli ir licencēti atbilstoši ${CC0} licencei. Papildinformāciju skatiet saitē ${moreInfoLink}.",
+            "copyrightText": "Visi fotoattēli ir licencēti saskaņā ar ${Unsplash} licenci. Atrodiet papildinformāciju ${moreInfoLink}.",
             "moreInfoLink": "šeit"
           },
           "flickr": {
@@ -558,14 +561,30 @@ define({
     "httpsTransitionMessage": {
       "bannerMsg": "Svarīgs ziņojums par tīmekļa drošību un Kartes stāstiem (Story Maps)",
       "s1h1": "Esri uzlabo Kartes stāstu drošību",
-      "s1p1": "Jūsu Kartes stāsta vienības ir pieejamas tiešsaistē tīmeklī, un tīmekļa kopiena pastāvīgi veido un ievieš uzlabotus drošības pasākumus. Protokols HTTPS, kas gādā par drošu savienojumu ar saturu internetā, ir populārākais veids, kā piekļūt tīmekļa saturam. Vairākumā mūsdienīgu pārlūku tagad tiek rādīts brīdinājuma ziņojums, ja vietnē tiek izmantots protokols HTTP, nevis HTTPS. Šī jaunā standarta dēļ jūsu Kartes stāstu vienībās būs jāizmanto protokols HTTPS, sākot ar ArcGIS Online 2018. gada jūnija atjauninājumu.",
-      "s1p2": "Tas nozīmē, ka Kartes stāstu saturam (tostarp attēliem, slāņiem, iegultām lietotnēm un tīmekļa vietnēm) ir jāpiekļūst, izmantojot saites, kas sākas ar HTTPS, nevis HTTP. Tādējādi lasītājiem tiks nodrošināta vislabākā pieredze, jo vairākumā tīmekļa pārlūku lietotājs tiks informēts par to, ka stāsti ir droši.",
+      "s1p1": "Jūsu Kartes stāsti dzīvo tīmeklī, un tīmekļa kopiena vienmēr strādā, lai nodrošinātu un uzlabotu drošību. HTTPS, kas nodrošina drošu savienojumu ar internetā pārraidītu saturu, tiek parādīts kā paredzētais veids, kā piekļūt tīmekļa saturam. Lielākā daļa moderno pārlūku tagad parāda brīdinājuma ziņojumus, ja tiek izmantots HTTP, nevis HTTPS. Šī jaunā standarta dēļ mēs stingri iesakām izmantot HTTPS saites Kartes stāstu autorēšanai un koplietošanai, kā arī izmantot HTTPS vietrāžus URL, iegulstot tīmekļa saturu vai sasaistot ar attēliem Kartes stāstā.",
+      "s1p2": "Praktiski runājot, tas nozīmē, ka Kartes stāstam un visam tās saturam (ieskaitot attēlus, slāņus, iegultās lietotnes un tīmekļa vietnes), ir jānodrošina piekļuve, izmantojot saites, kas sākas ar HTTPS, nevis HTTP. Tas nodrošina labāko pieredzi jūsu lasītājiem, jo lielākā daļa tīmekļa pārlūku norāda, ka jūsu stāsti ir droši.",
       "s2h1": "Kas man jādara?",
-      "s2p1": "Esri strādā pie tā, lai Kartes stāstu autoriem un lasītājiem pāreja būtu vienkārša. Pašlaik Kartes stāsta veidotājos un sadaļā Mani stāsti ir pieejami rīki, kas palīdz stāstos atrast nedrošu saturu (HTTP), kā arī ir pieejami ieteikumi šo problēmu novēršanai. Pārbaudiet, vai jūsu stāstos nav nedroša satura, un jauniniet uz protokolu HTTPS līdz 2018. gada jūnijam.",
+      "s2p1": "Esri strādā, lai padarītu to par vienkāršu pāreju Kartes stāsta autoriem un lasītājiem. Kartes stāstu veidotājos un Manos stāstos ir pieejami rīki, kas jums palīdzēs atrast nedrošo saturu (HTTP) jūsu stāstos un sniegs ieteikumus, kā to risināt. Lūdzu, pārbaudiet savus stāstus uz nedrošu saturu un pēc iespējas ātrāk atjauniniet HTTPS.",
       "action1": "Aizvērt",
       "action2": "Pārbaudīt manus stāstus tūlīt",
       "action3": "Uzziniet vairāk",
       "floatingNotification": "Šajā stāstā ir ietverts nedrošs (HTTP) saturs. Izskatiet un novērsiet problēmas."
+    },
+    "embedBar": {
+      "share": "Kopīgošana",
+      "fullScreen": "Pilnekrāna režīms",
+      "exitFullScreen": "Iziet no pilnekrāna režīma",
+      "enlarge": "Palielināt",
+      "newTab": "Atvēriet jaunā cilnē",
+      "tagline": "Kartes stāsts"
+    },
+    "june2018SurveyMessage": {
+      "bannerMsg": "Vai varam jums kaut ko pajautāt? Tas palīdzēs veidot Kartes stāstu nākotni.",
+      "s1h1": "Dalieties savās domās, veidojiet nākotni",
+      "s1p1": "Jūsu ieguldījums ir viens no mūsu svarīgākajiem atsauksmju avotiem, pastāstot vairāk, jūs palīdzēsiet mums uzlabot Kartes stāstus. Mēs būtu pateicīgi, ja jūs varētu piedalīties šajā trīs minūšu aptaujā.",
+      "s2p1": "Kā vienmēr, paldies, ka izmantojat Esri Kartes stāstus!",
+      "action1": "Aizvērt",
+      "action2": "Aizpildīt aptauju"
     }
   }
 });

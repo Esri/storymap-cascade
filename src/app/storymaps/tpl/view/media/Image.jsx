@@ -24,6 +24,9 @@ export default class Image extends Media {
         image.thumbUrl = CommonHelper.fixUploadedImageUrl(image.thumbUrl);
       }
     }
+    if (image.url) {
+      image.url = CommonHelper.fixUrlWithMultipleQueryParams(image.url);
+    }
 
     // sizes is an array of objects with {height, width, url}.
     if (image.sizes && image.sizes.length) {
@@ -36,6 +39,7 @@ export default class Image extends Media {
         if (needsFixing) {
           sizeObj.url = CommonHelper.fixUploadedImageUrl(sizeObj.url);
         }
+        sizeObj.url = CommonHelper.fixUrlWithMultipleQueryParams(sizeObj.url);
       });
       image.sizes.sort((a, b) => {
         if (b.longestSide === a.longestSide) {
@@ -143,6 +147,7 @@ export default class Image extends Media {
         classes: ['block', 'image'].concat(options).join(' '),
         padding: style.padding,
         maxImageWidth: style.maxWidth,
+        altText: this._image.altText,
         caption: this._image.caption,
         placeholder: i18n.viewer.media.captionPlaceholder,
         captionEditable: app.isInBuilder
@@ -152,6 +157,7 @@ export default class Image extends Media {
       output += viewBackground({
         id: this._domID,
         classes: ['image', 'image-background'].join(' '),
+        altText: this._image.altText,
         caption: this._image.caption
       });
     }

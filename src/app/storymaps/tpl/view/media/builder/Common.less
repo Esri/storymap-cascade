@@ -1,8 +1,8 @@
 @import '../../../core/Variables';
 
 .builder-config-section {
-  padding: 0 15px;
-  flex: 2 1 0;
+  padding: 0 25px 0 15px;
+  flex: 1 1 0;
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -15,7 +15,7 @@
     justify-content: center;
   }
   &.larger {
-    flex: 3 1 0;
+    flex: 2 1 0;
   }
 
   &.no-spread {
@@ -444,6 +444,41 @@
     font-size: 1.2em;
   }
 }
+
+.alt-text-container {
+  width: 96%;
+  padding: 15px 0 0 0;
+  border-top: 1px solid #ccc;
+  margin: 15px 10px 0 10px;
+  display: flex;
+  // flex: 0 0 auto;
+
+  @media (max-width: @screen-md) {
+    font-size: 1.2em;
+  }
+}
+
+.alt-text-icon {
+  display: flex;
+  margin: 12px 5px;
+}
+
+.alt-text-text {
+  display: flex;
+  padding-left: 10px;
+  width: 100%;
+  resize: vertical;
+  min-height: 50px;
+  max-height: 100px;
+  line-height: 150%;
+  font-size: 14px;
+}
+
+.alt-text-text::placeholder {
+  font-style: italic;
+  color: darkgray;
+}
+
 
 // screwy stuff happening with flex layout in webmap-name,
 // but not webscene, so adjusting...

@@ -361,4 +361,14 @@ export default class SectionCommon {
 
     return oldMediaIsHttp && (sameUrlNowHttps || sameURLNowProtocolRelative);
   }
+
+  static onEditBackgroundVideo(medias, newMediaJSON, newMedia) {
+    const mediaIndexes = this.getMediaIndexes(medias, newMediaJSON);
+    $.each(mediaIndexes, (i, mediaIndex) => {
+      const media = medias[mediaIndex];
+      if (media.updateParams) {
+        media.updateParams(newMedia);
+      }
+    });
+  }
 }

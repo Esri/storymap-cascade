@@ -60,7 +60,7 @@ define({
     },
     "headerFromCommon": {
       "defaultTagline": "O ${STORY_MAP}",
-      "share": "Partajare",
+      "share": "Partajați sau imprimați",
       "tooltipAutoplayDisabled": "Aceasta nu este disponibilă în modul de redare automată"
     },
     "shareFromCommon": {
@@ -83,6 +83,11 @@ define({
       "speedFast": "Rapid",
       "speedMedium": "Medie",
       "speedSlow": "Lent"
+    },
+    "bannerNotification": {
+      "learnMore": "Aflaţi mai multe",
+      "close": "Închidere",
+      "dontShowAgain": "Nu afişa acest mesaj din nou"
     }
   },
   "print": {
@@ -112,11 +117,6 @@ define({
       "websiteLabel": "Site web:",
       "videoLabel": "Video:",
       "audioLabel": "Audio:"
-    },
-    "bannerNotification": {
-      "learnMore": "Aflaţi mai multe",
-      "close": "Închidere",
-      "dontShowAgain": "Nu afişa acest mesaj din nou"
     }
   }
 });

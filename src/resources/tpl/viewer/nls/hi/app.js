@@ -60,7 +60,7 @@ define({
     },
     "headerFromCommon": {
       "defaultTagline": "एक ${STORY_MAP}",
-      "share": "साझा करें",
+      "share": "साझा करें या प्रिंट करें",
       "tooltipAutoplayDisabled": "यह ऑटोप्ले मोड में उपलब्ध नहीं है"
     },
     "shareFromCommon": {
@@ -83,6 +83,11 @@ define({
       "speedFast": "तेज़",
       "speedMedium": "मध्यम",
       "speedSlow": "धीमी"
+    },
+    "bannerNotification": {
+      "learnMore": "और अधिक जानें",
+      "close": "बंद करें",
+      "dontShowAgain": "इस संदेश को पुनः न दिखाएँ"
     }
   },
   "print": {
@@ -112,11 +117,6 @@ define({
       "websiteLabel": "वेबसाइट:",
       "videoLabel": "वीडियो:",
       "audioLabel": "ऑडियो:"
-    },
-    "bannerNotification": {
-      "learnMore": "और अधिक जानें",
-      "close": "बंद करें",
-      "dontShowAgain": "इस संदेश को पुनः न दिखाएँ"
     }
   }
 });

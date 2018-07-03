@@ -60,7 +60,7 @@ define({
     },
     "headerFromCommon": {
       "defaultTagline": "แผนที่ ${STORY_MAP}",
-      "share": "แบ่งปัน",
+      "share": "แชร์หรือพิมพ์",
       "tooltipAutoplayDisabled": "ไม่สามารถโหมดเล่นอัตโนมัติได้"
     },
     "shareFromCommon": {
@@ -83,6 +83,11 @@ define({
       "speedFast": "เร็ว",
       "speedMedium": "กลาง",
       "speedSlow": "ช้า"
+    },
+    "bannerNotification": {
+      "learnMore": "เรียนรู้เพิ่มเติม",
+      "close": "ปิด",
+      "dontShowAgain": "ไม่ต้องแสดงข้อความนี้อีก"
     }
   },
   "print": {
@@ -112,11 +117,6 @@ define({
       "websiteLabel": "เว๊ปไซต์ :",
       "videoLabel": "วิดีโอ:",
       "audioLabel": "เสียง:"
-    },
-    "bannerNotification": {
-      "learnMore": "เรียนรู้เพิ่มเติม",
-      "close": "ปิด",
-      "dontShowAgain": "ไม่ต้องแสดงข้อความนี้อีก"
     }
   }
 });

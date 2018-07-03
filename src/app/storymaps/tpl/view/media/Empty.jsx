@@ -18,16 +18,20 @@ export default class Empty extends Media {
       previewIcon: PREVIEW_ICON
     });
 
+    this._placement = null;
     this._onEdit = null;
   }
 
   render(context) {
+
     if (! context) {
       console.log('Could not render webmap in section');
       return '';
     }
 
-    if (context.placement == 'block') {
+    this._placement = context.placement;
+
+    if (this._placement == 'block') {
       return '';
     }
     else {

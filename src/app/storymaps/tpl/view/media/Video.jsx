@@ -12,7 +12,7 @@ import i18n from 'lib-build/i18n!resources/tpl/viewer/nls/app';
 
 import Deferred from 'dojo/Deferred';
 
-import {} from 'lib/froogaloop/froogaloop';
+import VimeoPlayer from 'lib/vimeo-player-js/dist/player';
 import {} from 'lib/youtube-api/index';
 
 var CONFIG = {
@@ -35,6 +35,8 @@ export default class Video extends Media {
     this._video = video;
     this._source = video.source;
     this._videoid = video.id;
+    this._start = video.start;
+    this._end = video.end;
 
     this._soundLevelPreImmersive = null;
     this._isMuted = false;
@@ -71,6 +73,7 @@ export default class Video extends Media {
         domId: this._domID,
         videoId: this.id,
         caption: this._video.caption,
+        altText: this._video.altText,
         placeholder: i18n.viewer.media.captionPlaceholder,
         captionEditable: app.isInBuilder
       });
@@ -96,6 +99,7 @@ export default class Video extends Media {
         output += viewBackground({
           domId: this._domID,
           videoId: this.id,
+          altText: this._video.altText,
           muteUnmuteString: i18n.viewer.media.videoMuteUnmute
         });
       }
@@ -108,6 +112,9 @@ export default class Video extends Media {
     super.postCreate(params);
 
     this._sectionType = params.sectionType;
+    if (this._sectionType === 'immersive' && !this._placement) {
+      this._placement = 'background';
+    }
 
     if (! params.container) {
       return;
@@ -127,19 +134,6 @@ export default class Video extends Media {
     }
 
     this._nodeMedia = this._node.find('.video-player');
-
-    this._node.find('.toggle-mute-button').on('click', function() {
-      if (!this._isVideoLoaded) {
-        return;
-      }
-
-      if (this._isMuted) {
-        this._unMute();
-      }
-      else {
-        this._mute();
-      }
-    }.bind(this));
 
     this._applyConfig();
   }
@@ -190,6 +184,19 @@ export default class Video extends Media {
       return this._loadDeferred;
     }
 
+    this._node.find('.toggle-mute-button').on('click', function() {
+      if (!this._isVideoLoaded) {
+        return;
+      }
+
+      if (this._isMuted) {
+        this._unMute();
+      }
+      else {
+        this._mute();
+      }
+    }.bind(this));
+
     // show the "mute/unmute" button if this is a newly-built video in immersive section with "button to enable" setting for sound
     if (this._isBuilderAdd && this._sectionType === 'immersive') {
       this._node.find('.toggle-mute-button').toggleClass('mute-button-active', params.isActive && this._video.options.audio !== 'muted');
@@ -198,6 +205,31 @@ export default class Video extends Media {
     // https://developers.google.com/youtube/iframe_api_reference
     // https://developer.vimeo.com/player/js-api
 
+    if (this._source == 'vimeo') {
+      this._videoPlayer = this.constructVimeoPlayer();
+      try {
+        this._onVimeoPlayerReady();
+      }
+      catch (e) {
+        console.error(e);
+      }
+    }
+    else if (this._video.source == 'youtube') {
+      this._videoPlayer = this.constructYoutubePlayer();
+    }
+
+    this._cache[this.id] = {
+      videoPlayer: this._videoPlayer,
+      params: {
+        start: this._start,
+        end: this._end
+      }
+    };
+
+    return this._loadDeferred;
+  }
+
+  constructVimeoPlayer() {
     var opt = '0';
     var controls = '';
 
@@ -209,66 +241,70 @@ export default class Video extends Media {
       controls = '<div class="player-controls"><button class="play">' + i18n.viewer.media.videoPlayPause + '</button>&nbsp;&nbsp;&nbsp;<button class="mute">' + i18n.viewer.media.videoMuteUnmute + '</button></div>';
     }
 
-    if (this._source == 'vimeo') {
-      var classes = this._placement == 'foreground' ? 'video-fg video-player' : 'video';
+    var classes = this._placement == 'foreground' ? 'video-fg video-player' : 'video';
+    var url = 'https://player.vimeo.com/video/' + this._videoid + '?title=0&byline=0&portrait=0&transparent=0&api=1&background=' + opt + '&player_id=player-' + this._domID;
 
-      var newMedia = $(viewVideoVimeo({
-        domId: 'player-' + this._domID,
-        classes: classes + ' initialized',
-        url: 'https://player.vimeo.com/video/' + this._videoid + '?transparent=0&api=1&background=' + opt + '&player_id=player-' + this._domID,
-        options: this._video.options,
-        playerControls: controls
-      }));
+    var newMedia = $(viewVideoVimeo({
+      domId: 'player-' + this._domID,
+      classes: classes + ' initialized',
+      url: url,
+      options: this._video.options,
+      altText: this._video.altText,
+      playerControls: controls,
+      id: this.id
+    }));
 
-      this._nodeMedia.replaceWith(newMedia);
-      this._nodeMedia = newMedia;
+    this._nodeMedia.replaceWith(newMedia);
+    this._nodeMedia = newMedia;
 
-      this._videoPlayer = $f(newMedia[0]); // eslint-disable-line no-undef
+    return new VimeoPlayer(newMedia[0], {
+      background: this._placement === 'background' ? true : false
+    });
 
-      try {
-        this._videoPlayer.addEvent('ready', this._onVimeoPlayerReady.bind(this));
-      }
-      catch (e) {
-        console.error(e);
-      }
-    }
-    else if (this._video.source == 'youtube') {
-      this._videoPlayer = new window.YT.Player(this._node.find('.video-player[data-id=' + this.id + ']')[0], {
-        height: '',
-        width: '',
-        loop: 1,
-        videoId: this._videoid,
-        playerVars: {
-          rel: 0,
-          showinfo: 0,
-          iv_load_policy: 3
-        },
-        events: {
-          onReady: function(e) {
-            try {
-              this._onYoutubePlayerReady(e, this._video.id);
-            }
-            catch (e) {
-              console.error(e);
-            }
-          }.bind(this),
-          onError: function() {
-            if (app.builder) {
-              this.setError({showLoadingError: true});
-            }
-            else {
-              this.setError();
-            }
-          }.bind(this)
-        }
-      });
+  }
+
+  constructYoutubePlayer() {
+    var loop, playlist;
+    if (this._placement === 'background') {
+      loop = 1;
+      playlist = this._videoid;
     }
 
-    this._cache[this.id] = {
-      videoPlayer: this._videoPlayer
-    };
-
-    return this._loadDeferred;
+    return new window.YT.Player(this._node.find('.video-player[data-id=' + this.id + ']')[0], {
+      height: '',
+      width: '',
+      videoId: this._videoid,
+      playerVars: {
+        loop: loop,
+        rel: 0,
+        showinfo: 0,
+        wmode: 'opaque',
+        iv_load_policy: 3,
+        start: this._start,
+        end: this._end,
+        enablejsapi: 1,
+        playlist: playlist
+      },
+      events: {
+        onReady: function(e) {
+          try {
+            this._onYoutubePlayerReady(e, this._video.id);
+          }
+          catch (e) {
+            console.error(e);
+          }
+        }.bind(this),
+        onStateChange: this.onYoutubeStateChange.bind(this),
+        onError: function() {
+          if (app.builder) {
+            this.setError({showLoadingError: true});
+          }
+          else {
+            this.setError();
+          }
+        }.bind(this)
+      }
+    });
   }
 
   resize(params) {
@@ -310,29 +346,30 @@ export default class Video extends Media {
           // Sound
           if (this._placement == 'background') {
             if (isImmersiveBg && ! isMuted) {
-              this._videoPlayer.api('getVolume', function(volume) {
+              this._videoPlayer.getVolume().then(function(volume) {
                 if (volume != 1) {
                   this._soundLevelPreImmersive = volume;
                 }
+                else if (params.visibilityProgress) {
+                  this._setVolume(params.visibilityProgress);
+                }
               }.bind(this));
 
-              if (params.visibilityProgress) {
-                this._setVolume(params.visibilityProgress);
-              }
             }
           }
-
-          this._videoPlayer.api('play');
+          this._videoPlayer.play();
         }
         else {
           if (this._placement == 'background') {
-            if (this._soundLevelPreImmersive != null) {
-              this._setVolume(this._soundLevelPreImmersive);
-            }
-            this._videoPlayer.api('pause');
+            // june 2018 patch d -- stop setting video volumes to 0
+            // when scrolling away
+            // if (this._soundLevelPreImmersive != null) {
+            //   this._setVolume(this._soundLevelPreImmersive);
+            // }
+            this._videoPlayer.pause();
           }
           else {
-            this._videoPlayer.api('pause');
+            this._videoPlayer.pause();
           }
         }
       }
@@ -349,8 +386,9 @@ export default class Video extends Media {
               this._setVolume(1);
             }
           }
-
-          this._videoPlayer.playVideo();
+          if (this._videoPlayer.getPlayerState() !== window.YT.PlayerState.PLAYING) {
+            this._videoPlayer.playVideo();
+          }
         }
         else {
           if (this._placement == 'background') {
@@ -379,22 +417,28 @@ export default class Video extends Media {
     this._isVideoLoaded = true;
 
     if (this._placement == 'block') {
-      this._videoPlayer.api('pause');
+      this._videoPlayer.pause();
     }
     else {
       this._mute();
 
       if (! this._isBuilderAdd) {
         if (this._sectionType == 'immersive') {
-          this._videoPlayer.api('pause');
+          // need a single bound function to be able to remove it later
+          this._cb = this.handleFirstVimeoImmersivePlay.bind(this);
+          this._videoPlayer.on('play', this._cb);
         }
       }
       else {
-        this._videoPlayer.api('play');
+        this._videoPlayer.play();
       }
 
-      this._videoPlayer.api('setLoop', true);
+      this._videoPlayer.setLoop(true);
     }
+
+    // this can't be before the stuff above because of the play event listeners
+    this._videoPlayer.on('play', this.reloadOrReplayVimeoVideo.bind(this));
+    this._videoPlayer.on('seek', this.reloadOrReplayVimeoVideo.bind(this));
 
     this._loadDeferred.resolve();
     this.resize();
@@ -406,6 +450,25 @@ export default class Video extends Media {
       this.performAction(this._pendingAction);
       this._pendingAction = null;
     }
+  }
+
+  reloadOrReplayVimeoVideo(data) {
+    var cachedParams = this.getCachedParams();
+    var thisStart = cachedParams ? cachedParams.start : this._start;
+    if ((!data || data.seconds < 1) && thisStart) {
+      this._videoPlayer.setCurrentTime(thisStart);
+    }
+  }
+
+  // maybe pause this, depending on whether we're pre-loading.
+  // the only way i found to do this was to check dom node classes.
+  // maybe there's a better way... ?
+  handleFirstVimeoImmersivePlay() {
+    this._videoPlayer.off('play', this._cb);
+    if (!this._node.hasClass('active') || !this._node.parents('.section-immersive.active').length) {
+      this._videoPlayer.pause();
+    }
+    this.reloadOrReplayVimeoVideo();
   }
 
   _onYoutubePlayerReady() {
@@ -433,6 +496,35 @@ export default class Video extends Media {
       this.performAction(this._pendingAction);
       this._pendingAction = null;
     }
+  }
+
+  onYoutubeStateChange(state) {
+    if (state.data === window.YT.PlayerState.ENDED) {
+      this.reloadOrReplayYoutubeVideo();
+    }
+  }
+
+  reloadOrReplayYoutubeVideo() {
+    if (!this._videoPlayer) {
+      return;
+    }
+    var cachedParams = this.getCachedParams();
+    var params = {
+      videoId: this._videoid,
+      startSeconds: cachedParams ? cachedParams.start : this._start,
+      endSeconds: cachedParams ? cachedParams.end : this._end
+    };
+    if (this._placement === 'background') {
+      this._videoPlayer.loadVideoById(params);
+    }
+    else {
+      this._videoPlayer.cueVideoById(params);
+    }
+  }
+
+  getCachedParams() {
+    var cached = this._cache ? this._cache[this.id] : null;
+    return cached && cached.params;
   }
 
   _mute() {
@@ -469,9 +561,9 @@ export default class Video extends Media {
 
     try {
       if (this._video.source === 'vimeo') {
-        this._videoPlayer.api('setVolume', volume);
+        this._videoPlayer.setVolume(volume);
       }
-      else if (this._video.source === 'youtube') {
+      else if (this._video.source === 'youtube' && !this._videoPlayer.getVolume()) {
         // YouTube volume goes from 0 - 100, not from 0 - 1
         this._videoPlayer.setVolume(volume * 100);
       }

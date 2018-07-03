@@ -168,6 +168,9 @@ function GalleryItem(props) {
   };
 
   var onImageClicked = function() {
+    if (props.item.onSelected) {
+      props.item.onSelected();
+    }
     if (props.item.getPicUrl) {
       // getPicUrl should return a result with width, height, and url,
       // no matter what. if the network request fails, getPicUrl should

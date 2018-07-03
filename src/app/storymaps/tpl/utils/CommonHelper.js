@@ -33,8 +33,8 @@ function(
       }
     },
     // Get URL parameters IE9 history not supported friendly
-    getUrlParams: function() {
-      var urlParams = urlUtils.urlToObject(document.location.search).query;
+    getUrlParams: function(optionalUrl) {
+      var urlParams = urlUtils.urlToObject(optionalUrl || document.location.search).query;
 
       if (urlParams) {
         return urlParams;
@@ -45,6 +45,15 @@ function(
       }
 
       return {};
+    },
+    getUrlHash: function(optionalUrl) {
+      var urlHash = urlUtils.urlToObject(optionalUrl || document.location).hash;
+
+      if (urlHash) {
+        return urlHash;
+      }
+
+      return '';
     },
     browserSupportHistory: function() {
       return !!(window.history && history.pushState);
@@ -197,6 +206,41 @@ function(
         return url;
       }
       return url.replace(specificPortalUrl, genericPortalUrl);
+    },
+
+    fixUrlWithMultipleQueryParams: function(url) {
+      if (!url) {
+        return url;
+      }
+      // if there aren't multiple query params here, just return the url.
+      var queryCount = url.match(/\?/g);
+      if (!queryCount || queryCount.length < 2) {
+        return url;
+      }
+
+      // replace every ? after the first one with an &
+      var count = 0;
+      url = url.replace(/\?/g, function(match) {
+        count++;
+        return (count > 1) ? '&' : match;
+      });
+
+      // use urlUtils to get the query object. if multiple values for a single key exist,
+      // urlUtils puts them into an array on that key.
+      var urlSplit = urlUtils.urlToObject(url);
+      var queryObj = urlSplit.query;
+      var queryArr = [];
+
+      for (var key in queryObj) {
+        // if it's an array, use the first value as the real value.
+        if ($.isArray(queryObj[key])) {
+          queryObj[key] = queryObj[key][0];
+        }
+        queryArr.push('' + key + '=' + queryObj[key]);
+      }
+
+      // reconstruct the url with a single set of query params.
+      return urlSplit.path + '?' + queryArr.join('&');
     },
 
     fixSizeUrls: function(sizeArr, needsFixing) {

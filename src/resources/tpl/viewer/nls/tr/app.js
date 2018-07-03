@@ -60,7 +60,7 @@ define({
     },
     "headerFromCommon": {
       "defaultTagline": "Bir ${STORY_MAP}",
-      "share": "Paylaş",
+      "share": "Paylaş veya yazdır",
       "tooltipAutoplayDisabled": "Bu özellik otomatik oynatma modunda kullanılamaz"
     },
     "shareFromCommon": {
@@ -83,6 +83,11 @@ define({
       "speedFast": "Hızlı",
       "speedMedium": "Orta",
       "speedSlow": "Yavaş"
+    },
+    "bannerNotification": {
+      "learnMore": "Daha Fazla Bilgi",
+      "close": "Kapat",
+      "dontShowAgain": "Bu iletiyi tekrar gösterme"
     }
   },
   "print": {
@@ -112,11 +117,6 @@ define({
       "websiteLabel": "Web Sitesi:",
       "videoLabel": "Video:",
       "audioLabel": "Ses:"
-    },
-    "bannerNotification": {
-      "learnMore": "Daha Fazla Bilgi",
-      "close": "Kapat",
-      "dontShowAgain": "Bu iletiyi tekrar gösterme"
     }
   }
 });

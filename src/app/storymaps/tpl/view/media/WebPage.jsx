@@ -30,7 +30,7 @@ export default class WebPage extends Media {
     // TODO: shouldn't be needed
     if (! this._webpage.options) {
       this._webpage.options = {
-        interaction: 'enabled'
+        interaction: 'button'
       };
     }
   }
@@ -54,6 +54,7 @@ export default class WebPage extends Media {
         id: this._domID,
         url: this._webpage.url,
         caption: this._webpage.caption,
+        altText: this._webpage.altText,
         placeholder: i18n.viewer.media.captionPlaceholder,
         captionEditable: app.isInBuilder,
         labelExploreStart: i18n.viewer.media.explore,
@@ -68,6 +69,7 @@ export default class WebPage extends Media {
         id: this._domID,
         url: this._webpage.url,
         classes: 'webpage-container' + optClass,
+        altText: this._webpage.altText,
         labelExploreStart: i18n.viewer.media.explore,
         labelExploreStop: i18n.viewer.media.exploreStop
       });
@@ -144,7 +146,13 @@ export default class WebPage extends Media {
       }.bind(this));
     this._node.find('.interaction-container').click(this._onEnableButtonClick.bind(this));
 
-    this._node.on('mouseup touchstart', function() {
+    if (this._webpage.options.interaction === 'mouseover') {
+      this._node.on('mouseenter', function() {
+        this._node.removeClass('scroll-off');
+      }.bind(this));
+    }
+
+    this._node.on('touchstart', function() {
       this._node.addClass('scroll-off');
     }.bind(this));
 

@@ -5,8 +5,6 @@ import {} from 'lib-build/less!./Panel';
 
 import viewTpl from 'lib-build/hbars!./Panel';
 
-const BUILDER_PANEL_HEIGHT = 125;
-
 export default class Panel {
   constructor(panel, transition) {
     this.id = UIUtils.getUID();
@@ -82,85 +80,120 @@ export default class Panel {
     return classes.join(' ');
   }
 
-  updatePosition(params) {
-    if (! params.currentSectionScroll) {
+  _getPanelViewportDistance(clientRect, panelHeight, windowHeight) {
+    const distanceFromTop = clientRect.top;
+    return {
+      top: (distanceFromTop - windowHeight) * -1,
+      bottom: (distanceFromTop + panelHeight - windowHeight) * -1
+    };
+  }
+
+  _determinePartialOpacity(ratio, upperBound, lowerBound, isTop) {
+    // how much distance between opaque and transparent
+    const totalFadeableDistance = upperBound - lowerBound;
+    // how far the panel's edge is from the opaque boundary
+    const distanceFromFullyOpaque = isTop ? upperBound - ratio : ratio - lowerBound;
+
+    // determine opacity level -- how far from opaque (ratio-wise) the panel's edge is.
+    const fadingOpacity = 1 - (distanceFromFullyOpaque / totalFadeableDistance);
+
+    return fadingOpacity;
+  }
+
+  _determineOpacity(topRatio, bottomRatio) {
+    // panels are fully opaque as long as any part of panel is in the "opaque zone" (.45 - .55).
+    // top fades in from .05 to .45, botom fades out from .55 to .95
+    const UPPER_HIDDEN_BOUND = 0.95;
+    const UPPER_OPAQUE_BOUND = 0.55;
+    const LOWER_OPAQUE_BOUND = 0.45;
+    const LOWER_HIDDEN_BOUND = 0.05;
+
+    let opacity = 0;
+
+    // hidden -- bottom is above hidden boundary
+    if (bottomRatio >= UPPER_HIDDEN_BOUND) {
+      opacity = 0;
+    }
+    // fading out -- bottom is between opaque boundary and hidden boundary
+    else if (bottomRatio > UPPER_OPAQUE_BOUND && bottomRatio < UPPER_HIDDEN_BOUND) {
+      opacity = this._determinePartialOpacity(bottomRatio, UPPER_HIDDEN_BOUND, UPPER_OPAQUE_BOUND, false);
+    }
+    // fully opaque (any part of panel is in the "opaque zone")
+    else if (topRatio >= LOWER_OPAQUE_BOUND && bottomRatio <= UPPER_OPAQUE_BOUND) {
+      opacity = 1;
+    }
+    // fading in -- top is between hidden boundary and opaque boundary
+    else if (topRatio > LOWER_HIDDEN_BOUND && topRatio < LOWER_OPAQUE_BOUND) {
+      opacity = this._determinePartialOpacity(topRatio, LOWER_OPAQUE_BOUND, LOWER_HIDDEN_BOUND, true);
+    }
+    // hidden -- top is below hidden boundary
+    else {
+      opacity = 0;
+    }
+
+    return opacity;
+  }
+
+  _updateScrollPartialPosition(params) {
+    if (!this._node) {
       return;
     }
 
-    // windowHeight as this is in Immersive and scroll beneath the header and builder panel
-    const sectionHeight = app.display.windowHeight;
-    const scrollTop = params.currentSectionScroll % sectionHeight;
-    const scrollingViewIndex = Math.floor(params.currentSectionScroll / sectionHeight);
-    const scrollProgress = scrollTop / sectionHeight;
-    let panelPos = null;
-    let panelOpa = 1;
+    const panelNode = this._node.find('.blocks')[0];
 
-    /*
-     * Scroll full is a simple postion:relative element that scroll along with the page
-     */
+    if (!panelNode) {
+      return;
+    }
 
-    if (this.layout == 'scroll-partial') {
-      // Move the panel around the middle of the viewPort
-      // Goal is that the panel is fully opaque at the middle of the screen
-      // The panel only scroll over sectionHeight / 4
-      // 100px is 1/2 of panel height, it should be replaced a real measurement TODO
+    // get the height of the panel
+    const clientRect = panelNode.getBoundingClientRect();
+    const panelHeight = clientRect.height;
+    // find how far from the bottom of the viewport the top and bottom of the panel are.
+    const panelDistances = this._getPanelViewportDistance(clientRect, panelHeight, params.windowHeight);
 
-      // Keep the header on purpose
-      let visibleArea = app.display.windowHeight;
-      if (app.isInBuilder) {
-        visibleArea -= BUILDER_PANEL_HEIGHT;
+    // how far up the viewport the top of the panel is (0 at bottom, 1 at top)
+    const topRatio = panelDistances.top / params.windowHeight;
+
+    // how far up the viewport the bottom of the panel is (0 at bottom, 1 at top)
+    const bottomRatio = panelDistances.bottom / params.windowHeight;
+
+    // figure out the opacity for the panel based on the distance.
+    const opacity = this._determineOpacity(topRatio, bottomRatio);
+
+    panelNode.style.opacity = opacity;
+  }
+
+  _updateScrollFullPosition(params) {
+    // if viewScroll is falsey but NOT 0 (0 is allowed)
+    if (!params.viewScroll && params.viewScroll !== 0) {
+      return;
+    }
+
+    if (!app.isInBuilder && this._node) {
+      // how far up the viewport the top of the panel is
+      const scrollProgress = params.viewScroll / params.windowHeight;
+      const FADE_IN_LINE = 0.05;
+
+      // fade it in if it's more than that amount up the panel
+      if (!this._node.hasClass('bring-in') && scrollProgress > FADE_IN_LINE) {
+        this._node.addClass('bring-in');
       }
-
-      let middlePositionY = (visibleArea / 2),
-          panelHalfHeight = 75;
-
-      panelPos = middlePositionY + panelHalfHeight - (scrollProgress * (sectionHeight / 4));
-
-      // Should use GSOP or some other lib to compute this
-      if (scrollProgress <= 0.5) {
-        panelOpa = scrollProgress * 2 * 1.5; // 1.5 acceleration factor
+      // fade out if it goes back down below the fade in line
+      // for some reason, the last view's panel can have the scrollProgress of 0 again... after it's scrolled all the way through
+      // and you're leaving the section.
+      // We don't want to remove the bring-in class in that case
+      else if (scrollProgress < FADE_IN_LINE && !params.isNavigatingAway) {
+        this._node.removeClass('bring-in');
       }
-      else {
-        panelOpa = 1 - (scrollProgress - 0.5) * 2 / 1.5;
-      }
+    }
+  }
 
-      if (panelOpa > 1) {
-        panelOpa = 1;
-      }
-      else if (panelOpa < 0) {
-        panelOpa = 0;
-      }
-
-      if (panelOpa > 0.9) {
-        panelOpa = 1;
-      }
-
-      this._node.parent().find('.imm-panel').css({
-        transform: 'inherit',
-        opacity: 0,
-        visibility: 'hidden'
-      });
-      this._node.css({
-        transform: 'translateY(' + parseInt(panelPos) + 'px)',
-        opacity: panelOpa,
-        visibility: 'visible'
-      });
+  updatePosition(params) {
+    if (this.layout === 'scroll-partial') {
+      this._updateScrollPartialPosition(params);
     }
     else {
-      if (!app.isInBuilder && this._node) {
-        if (!this._node.hasClass('bring-in') && scrollProgress > 0.05) {
-          this._node.addClass('bring-in');
-        }
-        // for some reason, the last view's panel can have the scrollProgress of 0 again... after it's scrolled all teh way up.
-        // We don't want to remove the bring-in class in that case... so ew make sure it only happens
-        // when the scrollProgress 0 is "when the element is below screen".
-        // we use the panelIndex and compare that with how far the immersive section has been scrolled -- i.e.
-        // how many "views-worth" of immersive has been scrolled. If it's more than the index,
-        // we know we've scrolled THROUGH the last view, and so we don't want to remove the class.
-        else if (scrollProgress < 0.05 && scrollingViewIndex === params.panelIndex) {
-          this._node.removeClass('bring-in');
-        }
-      }
+      this._updateScrollFullPosition(params);
     }
   }
 

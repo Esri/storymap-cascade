@@ -8,7 +8,7 @@ The Story Map Cascade℠ app lets you combine narrative text with maps, images, 
 [Download](http://links.esri.com/storymaps/story_map_cascade_zip) |
 [Cascade page on Esri Story Maps website](https://storymaps.arcgis.com/en/app-list/cascade/)
 
-**Latest release is version 1.7.2**, if you want to be informed of new releases, we recommend you watch this repository ([see GitHub help](https://help.github.com/articles/watching-repositories)). See the [release page](https://github.com/Esri/story-map-cascade/releases) for release notes.
+**Latest release is version 1.8.3**, if you want to be informed of new releases, we recommend you watch this repository ([see GitHub help](https://help.github.com/articles/watching-repositories)). See the [release page](https://github.com/Esri/story-map-cascade/releases) for release notes.
 
 ## Help content
 
@@ -294,7 +294,7 @@ Some open-source components of this project are licensed under other License ter
 | React                 | [BSD with patent grant](https://github.com/facebook/react#license)       |
 | React-redux           | MIT       |
 | Redux                 | MIT       |
-| Froogaloop            | N/A       |
+| vimeo-player-js       | MIT       |
 | youtube-api           | N/A       |
 | Clipboard.js          | MIT       |
 | ProgressJS            | MIT       |
@@ -308,4 +308,4 @@ Some open-source components of this project are licensed under other License ter
 | jquery-mousewheel     | MIT       |
 | Color Thief           | MIT       |
 
-Additionally, The Unite Gallery open-source library is located at `src/app/storymaps/common/utils/UniteGallery.js`. It is licensed MIT; those portions modified by the Story Maps team are licensed Apache 2.0 with the rest of this project.
+Additionally, The Unite Gallery open-source library is located at `src/app/storymaps/tpl/utils/UniteGallery.js`. It is licensed MIT; those portions modified by the Story Maps team are licensed Apache 2.0 with the rest of this project.

@@ -49,6 +49,7 @@ export default class Audio extends Media {
         url: this._audio.url,
         mimeType: 'audio/' + this.getMimeType(this._audio.url),
         caption: this._audio.caption,
+        altText: this._audio.altText,
         placeholder: i18n.viewer.media.captionPlaceholder,
         captionEditable: app.isInBuilder
       });
@@ -58,6 +59,7 @@ export default class Audio extends Media {
       output += viewBackground({
         id: this._domID,
         url: this._audio.url,
+        altText: this._audio.altText,
         classes: 'audio-container'
       });
     }

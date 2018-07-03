@@ -49,8 +49,8 @@ export default class PanelBuilder extends Panel {
     this._node.find('.builder-config-panel-btn').click(this.toggleBuilderPanel.bind(this));
   }
 
-  updatePosition(params, isNavigatingAway) {
-    super.updatePosition(params, isNavigatingAway);
+  updatePosition(params) {
+    super.updatePosition(params);
     this._editor.hideToolbars();
 
     // Update media cfg
@@ -94,7 +94,7 @@ export default class PanelBuilder extends Panel {
 
     // In builder - a click on a scroll partial panel make it fully opaque
     if (this.layout == 'scroll-partial') {
-      this._node.css('opacity', 1);
+      this._node.find('.blocks').css('opacity', 1);
     }
   }
 
@@ -185,8 +185,9 @@ export default class PanelBuilder extends Panel {
     this._settings[option] = value;
     this.updateSettings();
 
+    // make sure scroll-partial panel is fully visible
     if (this.layout == 'scroll-partial') {
-      this._node.css('opacity', 1);
+      this._node.find('.blocks').css('opacity', 1);
     }
 
     topic.publish('builder-section-update');

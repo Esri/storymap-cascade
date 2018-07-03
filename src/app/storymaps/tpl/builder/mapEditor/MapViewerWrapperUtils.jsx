@@ -25,6 +25,13 @@ export default class MapViewerWrapperUtils {
     return url;
   }
 
+  static getPortalDomain(url) {
+    const link = document.createElement('a');
+
+    link.setAttribute('href', url);
+    return link.protocol + '//' + link.hostname;
+  }
+
   static viewerIsSameDomain() {
     const mapViewerDomain = this.getPortalURL().split('//').slice(-1)[0];
     const mapViewerDomainSplit = mapViewerDomain.split('.');

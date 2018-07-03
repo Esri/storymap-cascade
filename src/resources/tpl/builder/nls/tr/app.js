@@ -115,7 +115,9 @@ define({
         "changeMedia": "Medyayı değiştir",
         "edit": "Düzenle",
         "editAside": "Yeni bir tarayıcı penceresinde açılır. Düzeltmelerinizi kaydettikten sonra değişikliklerinizi görmek için bu hikayeyi kaydedin ve yeniden yükleyin.",
-        "remove": "Kaldır"
+        "remove": "Kaldır",
+        "altTextPlaceholder": "Görme engelli okuyucular için bu medyanın bir açıklamasını ekleyin...",
+        "altTextHelptip": "Alternatif metin, ekran okuyucu yazılımı gibi yardımcı teknolojiler tarafından kullanılan görsel medya açıklamasıdır. Bu, isteğe bağlıdır ancak WCAG ve Bölüm 508 gibi web erişilebilirlik kurallarını karşılamak için önerilir."
       },
       "appearance": {
         "homeView": "Başlangıç görünümü",
@@ -248,6 +250,7 @@ define({
           }
         },
         "sidePanel": {
+          "thirdPartyTerms": "Bir üçüncü parti hizmetini kullanarak, hizmet şartlarını kabul etmiş olursunuz: ",
           "googlePhotos": {
             "placeholder": "E-posta veya ${Picasa}/${Google+} Kimliği",
             "helpText": "Hikayenize ${Picasa} veya ${Google+} uygulamasına yüklenmiş olan fotoğraflar ekleyebilirsiniz. Hikayelerinizde ${Google} hesabınızda saklanan görüntüleri kullanma hakkında bilgi edinmek için bkz. ${helpLinkText}.",
@@ -257,7 +260,7 @@ define({
           "unsplash": {
             "placeholder": "Fotoğraf arayın",
             "aboutText": "${Unsplash}; ücretsiz ve kaliteli fotoğraflardan oluşan bir koleksiyondur.",
-            "copyrightText": "${Unsplash} uygulamasında yayınlanmış olan fotoğrafların tümü ${CC0} Lisansı altında korunmaktadır. Daha fazla bilgi için bkz. ${moreInfoLink}.",
+            "copyrightText": "Tüm fotoğraflar, ${Unsplash} Lisansı altında korunmaktadır. Daha fazla bilgi alın ${moreInfoLink}.",
             "moreInfoLink": "buraya"
           },
           "flickr": {
@@ -558,14 +561,30 @@ define({
     "httpsTransitionMessage": {
       "bannerMsg": "Web Güvenliği ve Story Maps hakkında Önemli İleti",
       "s1h1": "Esri, Story Maps'in güvenliğini geliştiriyor",
-      "s1p1": "Story Maps'iniz web'de yayınlanır ve web topluluğu her zaman daha iyi güvenlik sağlamak ve uygulamak için çalışmaktadır. İnternet üzerinden iletilen içerik için güvenli bir bağlantı sağlayan HTTPS, web içeriğine erişmenin birincil yolu olarak kullanılmaktadır. Çoğu modern tarayıcı artık, HTTPS yerine HTTP kullanıldığında uyarı mesajları göstermektedir. Bu yeni geliştirilen standart nedeniyle Haziran 2018 ArcGIS Online güncellemesinden itibaren Story Maps'te HTTPS kullanılması gerekecektir.",
-      "s1p2": "Pratik olarak bu, bir Story Map demektir ve tüm içeriğine (görüntüler, katmanlar, gömülü uygulamalar ve web siteleri dahil) HTTP yerine HTTPS ile başlayan bağlantılar kullanılarak erişim sağlanmalıdır. Bu, okuyucularınız için en iyi deneyimi sağlar; çünkü çoğu web tarayıcısında bu, hikayelerinizin güvenli olduğu anlamına gelir.",
+      "s1p1": "Hikaye Haritanız web’de yayınlanır ve web topluluğu her zaman daha iyi güvenlik sağlamak ve uygulamak için çalışmaktadır. İnternet üzerinden iletilen içerik için güvenli bir bağlantı sağlayan HTTPS, web içeriğine erişmenin birincil yolu olarak kullanılmaktadır. Çoğu modern tarayıcı artık, HTTPS yerine HTTP kullanıldığında uyarı mesajları göstermektedir. Bu yeni standart nedeniyle, Hikaye Haritaları oluştururken ve paylaşırken HTTPS bağlantıları kullanmanızı ve Story Map’e web içeriği yerleştirirken veya görüntü bağlantısı yaparken yalnızca HTTPS URL’leri kullanmanızı öneririz.",
+      "s1p2": "Pratik olarak, bu bir Hikaye Haritası anlamına gelir ve tüm içeriği (görüntüler, katmanlar, gömülü uygulamalar ve web siteleri dahil) HTTP yerine HTTPS ile başlayan bağlantılar kullanılarak erişilmelidir. Bu, okuyucularınız için en iyi deneyimi sağlar; çünkü çoğu web tarayıcısı hikayelerinizin güvenli olduğunu gösterecektir.",
       "s2h1": "Ne yapmam gerekiyor?",
-      "s2p1": "Esri, Story Map yazarları ve okuyucuları için bu geçişi kolaylaştırmaya çalışmaktadır. Artık Story Map oluşturucuları ve Hikayelerim'de, hikayelerinizdeki güvensiz içeriği (HTTP) bulmanıza yardımcı olacak ve bunları nasıl ele alacağınıza dair tavsiyelerde bulunacak araçlar mevcuttur. Lütfen hikayenizi güvenli olmayan içeriklere karşı kontrol edin ve Haziran 2018'den önce HTTPS'ye güncelleyin.",
+      "s2p1": "Esri, Story Map sahipleri ve okuyucuları için bu geçişi kolaylaştırmaya çalışmaktadır. Artık Story Map oluşturucularında ve Hikayelerim’de, hikayelerinizdeki güvensiz içeriği (HTTP) bulmanıza yardımcı olacak ve bunları nasıl ele alacağınıza dair tavsiyelerde bulunacak araçlar mevcuttur. Lütfen hikayenizi güvenli olmayan içeriklere karşı kontrol edin ve bir an önce HTTPS’ye güncelleyin.",
       "action1": "Kapat",
       "action2": "Hikayelerimi şimdi kontrol et",
       "action3": "Daha fazla bilgi",
       "floatingNotification": "Bu hikaye güvenli olmayan (HTTP) içerik içeriyor. Lütfen inceleyin ve bu sorunları ele alın."
+    },
+    "embedBar": {
+      "share": "Paylaş",
+      "fullScreen": "Tam ekran",
+      "exitFullScreen": "Tam ekrandan çık",
+      "enlarge": "Genişlet",
+      "newTab": "Yeni sekmede aç",
+      "tagline": "Bir Hikaye Haritası"
+    },
+    "june2018SurveyMessage": {
+      "bannerMsg": "Bir şey sorabilir miyiz? Story Maps’in geleceğini şekillendirmemize yardımcı olacak.",
+      "s1h1": "Düşüncelerinizi paylaşın ve geleceği şekillendirin",
+      "s1p1": "Verdiğiniz bilgiler, en önemli geri bildirim kaynağımız ve sizinle ilgili daha çok şey öğrenmek Story Maps’i geliştirmemize yardımcı olacaktır. Üç dakikanızı alacak bu ankete katılırsanız memnun oluruz.",
+      "s2p1": "Her zaman olduğu gibi Esri Story Maps’i kullandığınız için teşekkür ederiz!",
+      "action1": "Kapat",
+      "action2": "Ankete katıl"
     }
   }
 });

@@ -1,6 +1,6 @@
 {
   "name": "cascade-storytelling-template-js-dev",
-  "version": "1.6.2",
+  "version": "1.8.3",
   "homepage": "",
   "authors": [
     "Gregory L'Azou <glazou@esri.com>"
@@ -19,7 +19,6 @@
     "redux": "https://cdnjs.cloudflare.com/ajax/libs/redux/3.3.1/redux.min.js",
     "calcite-bootstrap": "https://github.com/Esri/calcite-bootstrap/releases/download/v0.3.2/calcite-bootstrap.zip",
     "jquery": "~2.2.4",
-    "froogaloop": "~1.0.0",
     "progress.js": "https://github.com/usablica/progress.js.git",
     "youtube-api": "https://www.youtube.com/iframe_api",
     "fastclick": "~1.0.6",
@@ -35,6 +34,7 @@
     "progressbar.js": "~1.0.1",
     "seiyria-bootstrap-slider": "~9.2.0",
     "color-thief": "~2.0.1",
-    "clipboard": "~1.5.15"
+    "clipboard": "~1.5.15",
+    "vimeo-player-js": "^2.6.1"
   }
 }

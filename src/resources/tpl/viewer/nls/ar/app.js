@@ -60,7 +60,7 @@ define({
     },
     "headerFromCommon": {
       "defaultTagline": "A ${STORY_MAP}",
-      "share": "مشاركة",
+      "share": "مشاركة أو طباعة",
       "tooltipAutoplayDisabled": "وهو غير متوفر في عرض التشغيل التلقائي"
     },
     "shareFromCommon": {
@@ -83,6 +83,11 @@ define({
       "speedFast": "سريع",
       "speedMedium": "متوسط",
       "speedSlow": "بطيء"
+    },
+    "bannerNotification": {
+      "learnMore": "التعرف على المزيد",
+      "close": "إغلاق",
+      "dontShowAgain": "عدم إظهار هذه الرسالة مجددًا"
     }
   },
   "print": {
@@ -112,11 +117,6 @@ define({
       "websiteLabel": "موقع ويب:",
       "videoLabel": "مقطع فيديو:",
       "audioLabel": "مقطع صوت:"
-    },
-    "bannerNotification": {
-      "learnMore": "التعرف على المزيد",
-      "close": "إغلاق",
-      "dontShowAgain": "عدم إظهار هذه الرسالة مجددًا"
     }
   }
 });

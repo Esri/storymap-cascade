@@ -67,9 +67,11 @@ export default class ServiceLayer {
           options.layer.errors.push(IssueTypes.layers.subscriptionContent);
         }
 
+        /*
         else {
           options.layer.errors.push(IssueTypes.layers.secureService);
         }
+        */
       }
 
       options.resolve(options.layer);

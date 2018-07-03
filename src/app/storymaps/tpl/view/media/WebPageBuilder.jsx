@@ -131,6 +131,7 @@ export default class WebPageBuilder extends WebPage {
   _createManageTab() {
     return new BuilderConfigTabManageMedia({
       hideRemove: this._placement == 'background',
+      altText: this._webpage.altText,
       showErrors: this.scanResults.errors && this.scanResults.errors.filter(error => !error.isAlternate).length && this.scanResults.unfixable
     });
   }

@@ -86,7 +86,8 @@ export default class ImageBuilder extends Image {
       }
       else if (tab == 'background') {
         tabs.push(new BuilderConfigTabBackground({
-          sectionType: this._sectionType
+          sectionType: this._sectionType,
+          placement: this._placement
         }));
       }
       else if (tab == 'manage') {
@@ -229,6 +230,7 @@ export default class ImageBuilder extends Image {
   _createManageTab() {
     return new BuilderConfigTabManageImage({
       hideRemove: this._placement == 'background',
+      altText: this._image.altText,
       showErrors: this.scanResults.errors && this.scanResults.errors.filter(error => !error.isAlternate).length && this.scanResults.unfixable
     });
   }

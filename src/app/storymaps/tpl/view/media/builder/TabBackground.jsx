@@ -18,6 +18,9 @@ export default class TabBackground extends Tab {
     this.type = 'background';
     this.icon = 'fa-arrows-alt';
     this.placement = null;
+
+    // if the media is block or background. Would call it "placement" but that has another meaning already here
+    this._mediaContext = params.placement;
     this.focusDot = null;
     this.previewThumbnail = null;
     this.checkbox = null;
@@ -34,9 +37,9 @@ export default class TabBackground extends Tab {
 
     return viewTpl({
       isTitle: this.sectionType === 'title',
-      isImmersive: this.sectionType === 'immersive',
+      isImmersive: this.sectionType === 'immersive' && this._mediaContext === 'background',
       // need to add narrative panel check to next statement
-      isNarrativeOrPanel: this.sectionType === 'sequence',
+      isNarrativeOrPanel: this._mediaContext === 'block',
       strings: i18n.builder.mediaConfig.background,
       isSafari: isSafari
     });

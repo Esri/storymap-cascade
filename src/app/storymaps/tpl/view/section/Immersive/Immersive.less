@@ -1,11 +1,5 @@
 @import "../../../core/Variables";
 
-/* todo: this need some more love, something isn't right... */
-.section-immersive .foreground {
-  padding: 0 !important;
-  bottom: 0 !important;
-}
-
 .section-immersive .background:not(.active) {
   pointer-events: none !important;
 }
@@ -24,7 +18,11 @@
   height: calc(100vh ~"-" @immersive-panel-height);
 }
 
-.section-immersive.active:not(.disable-snap) .background {
+body.embed-mode-bar .section-immersive .background {
+  height: calc(100vh ~"-" @embed-bar-height);
+}
+
+.section-immersive.active .background {
   position: fixed;
 }
 
@@ -42,17 +40,10 @@
   background-color: #0E0E0E;
 }
 
-body.builder-mode .section-immersive.active:not(.disable-snap) .background {
+body.builder-mode .section-immersive.active .background {
   left: @builder-panel-width;
   width: calc(100% ~"-" @builder-panel-width);
 }
-
-/*
-todo: for image only?
-.section-immersive.active:not(.disable-snap) .background > div {
-    background-attachment: fixed;
-}
-*/
 
 /*
  * Title
@@ -60,6 +51,9 @@ todo: for image only?
 
 .section-immersive .background-title {
   top: 60px;
+  position: absolute;
+  left: 0;
+  right: 0;
   z-index: 1;
   text-align: center;
   color: #FFF;
@@ -85,14 +79,12 @@ todo: for image only?
   }
 }
 
-.section-immersive.active:not(.disable-snap) .background-title {
+.section-immersive.active .background-title {
   position: fixed;
-  left: 0;
-  right: 0;
   opacity: 1;
 }
 
-body.builder-mode .section-immersive.active:not(.disable-snap) .background-title {
+body.builder-mode .section-immersive.active .background-title {
   left: @builder-panel-width;
 }
 
@@ -120,7 +112,7 @@ body.builder-mode .section-immersive.active:not(.disable-snap) .background-title
   opacity: 0;
 }
 
-.section-immersive.active:not(.disable-snap) .background-credits {
+.section-immersive.active .background-credits {
   position: fixed;
   opacity: 1;
 }
@@ -135,48 +127,16 @@ body.builder-mode .section-immersive.active:not(.disable-snap) .background-title
 
 .section-immersive {
   .foreground {
+    position: relative;
+    padding-top: 100vh;
+    padding-bottom: 0;
     font-size: 1.3em;
     line-height: 160%;
     color: #FFF;
     z-index: 2;
     pointer-events: none;
-  }
-
-  .foreground {
     width: 100%;
-
-    .blocks {
-      min-height: 100px;
-      /* header + some margin */
-      max-height: calc(~"100vh - 50px - 50px");
-      overflow-y: auto;
-      a {color: @brand-info;};
-    }
-
-    .block {
-      margin-top: 15px;
-
-      &:nth-child(1) {
-        margin-top: 0;
-      }
-    }
-
-    /* TODO */
-    .image {
-      padding: 0;
-
-      img {
-        max-width: 100%;
-        height: inherit !important;
-      }
-    }
   }
-}
-
-body.builder-mode .section-immersive .blocks {
-  /* without that extra padding in builder can't have overflow: auto
-    as the last add menu is overflowing the scrollbar always get displayed */
-  padding-bottom: 25px;
 }
 
 body.mobile-view .background-title h2 {
@@ -301,57 +261,4 @@ body.builder-mode .background-swipe-trans-extras {
 
 body.builder-mode .separator-horizontal {
   margin-left: @builder-panel-width;
-}
-
-/*
- * Responsive
- */
-
-body.mobile-view .section-immersive .imm-panel {
-  width: 50%;
-  margin-left: 5px;
-  max-width: inherit;
-
-  .block {
-    font-size: 14px;
-    line-height: 150%;
-    padding: 5px;
-  }
-
-  h2 {
-    font-size: 20px !important;
-  }
-}
-
-.section-immersive.disable-snap {
-  min-height: 100vh !important;
-
-  .foreground {
-    position: absolute;
-    bottom: 0px;
-
-    .imm-panel {
-      width: 90%;
-      margin-left: auto !important;
-      margin-right: auto !important;
-      min-height: inherit !important;
-    }
-
-    .block {
-      background-color: rgba(255, 255, 255, 0.6);
-      border-radius: 0 2px 2px 0;
-      padding: 5px;
-      font-size: 1em;
-      line-height: 150%;
-      width: 100%;
-      color: #373737;
-    }
-
-    /*
-    .block-inner {
-      background-color: initial !important;
-      color: inherit !important;
-    }
-    */
-  }
 }

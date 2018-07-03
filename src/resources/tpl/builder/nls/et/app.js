@@ -115,7 +115,9 @@ define({
         "changeMedia": "Vaheta meedia",
         "edit": "Muuda",
         "editAside": "See lugu avatakse uues brauseriaknas. Pärast muudatuste salvestamist salvestage lugu ja laadige see muudatuste nägemiseks uuesti.",
-        "remove": "Eemalda"
+        "remove": "Eemalda",
+        "altTextPlaceholder": "Lisage selle meediasisu kirjeldus nägemispuudega lugejate jaoks...",
+        "altTextHelptip": "Asetekst on visuaalmeedia kirjeldus, mida kasutavad mitmesugused hõlbustustehnoloogiad, näiteks ekraanilugeri tarkvara. See pole kohustuslik, kuid veebihõlbustusjuhiste (nt WCAG ja Section 508) täitmiseks on aseteksti siiski soovitatav kasutada."
       },
       "appearance": {
         "homeView": "Algvaade",
@@ -248,6 +250,7 @@ define({
           }
         },
         "sidePanel": {
+          "thirdPartyTerms": "Kolmanda osapoole pakutava teenuse kasutamisel nõustute selle teenusetingimustega: ",
           "googlePhotos": {
             "placeholder": "E-posti aadress või ${Picasa}/${Google+} ID",
             "helpText": "Saate lisada oma loole pilte, mille olete üles laadinud rakendustesse ${Picasa} või ${Google+}. Vaadake siit ${helpLinkText}, kuidas kasutada lugudes ${Google}’i kontol talletatavaid fotosid.",
@@ -257,7 +260,7 @@ define({
           "unsplash": {
             "placeholder": "Otsi fotosid",
             "aboutText": "${Unsplash} pakub tasuta (kontrollitud) kvaliteetseid fotosid.",
-            "copyrightText": "Kõik rakenduse ${Unsplash} fotod on litsentsiga (${CC0} License). Lisateave ${moreInfoLink}.",
+            "copyrightText": "Kõik fotod on litsentsitud järgmise litsentsi alusel: ${Unsplash}. Lisainfo: ${moreInfoLink}.",
             "moreInfoLink": "siit"
           },
           "flickr": {
@@ -558,14 +561,30 @@ define({
     "httpsTransitionMessage": {
       "bannerMsg": "Oluline teade veebiturvalisuse ja kaardilugude kohta",
       "s1h1": "Esri tegeleb kaardilugude turvalisuse tõstmisega",
-      "s1p1": "Teie kaardilood on veebis reaalajas ja veebikogukond töötab pidevalt selle nimel, et turvalisust parendada ja tõhustada. Interneti kaudu sisu turvalist edastamist võimaldav HTTPS on kujunemas veebisisule juurdepääsu eelistatud viisiks. Enamik moodsaid brausereid kuvavad hoiatusteate, kui HTTPS-i asemel kasutatakse HTTP-d. Selle uue standardi kujunemise tõttu on alates ArcGIS Online’i 2018. aasta juunikuu värskendusest teie kaardilugudel HTTPS-i kasutamine kohustuslik.",
-      "s1p2": "See tähendab, et juurdepääs kaardiloole ja kogu selle sisule (sh piltidele, kihtidele, manusrakendustele ja veebilehtedele) peab toimuma linkidega, mille alguses on HTTPS ja mitte HTTP. Nii tagatakse teie lugejatele parim kasutuskogemus, kuna enamik veebibrausereid näitab, et teie lugude avamine on turvaline.",
+      "s1p1": "Teie kaardilugude kodu on veebis. Veebikogukond tegeleb pidevalt aina paremate turbemeetmete väljatöötamise ja kasutusele võtmisega. Veebisisule juurdepääsuks kasutatakse üha enam HTTPS-i, mis pakub sisu edastamiseks Internetis turvalist ühendust. Enamik tänapäevaseid brausereid kuvab nüüd hoiatuse, kui HTTPS-i asemel on kasutatud HTTP-d. Selle uue standardi tõttu soovitame teil kindlasti kasutada kaardilugude koostamiseks ja jagamiseks HTTPS-linke ning kaardiloos veebisisu manustamise või piltidega linkimise korral üksnes HTTPS-protokolli kasutavaid URL-e.",
+      "s1p2": "Sisuliselt tähendab see, et kaardilugu ja kogu selle sisu (sh pildid, kihid, manustatud rakendused ja veebisaidid) peaksid juurdepääsu lubamiseks kasutama linke, mille alguses on HTTP asemel HTTPS. Kuna enamik brausereid annab sel juhul märku, et teie lood on turvalised, on kasutajatel teie lugude vaatamisel kindlam tunne.",
       "s2h1": "Mida ma pean tegema?",
-      "s2p1": "Esri töötab selle nimel, et kaardilugude autoritele ja lugejatele kulgeks üleminek võimalikult lihtsalt. Juba praegu on kaardiloo koosturites ja jaotises Minu lood saadaval tööriistad, mis aitavad leida lugudes ebaturvalist sisu (HTTP) ja annavad soovitusi, mida sellega ette võtta. Palun kontrollige enne 2018. aasta juunit oma lugude sisu üle ja värskendage kogu ebaturvaline sisu uuele standardile HTTPS.",
+      "s2p1": "Esri loodab teha selle ülemineku kaardilugude koostajate ja lugejate jaoks lihtsaks. Kaardilugude koosturites ja lehel Minu lood on nüüd saadaval tööriistad, mis aitavad teil oma lugudest üles leida ebaturvalist sisu (HTTP) ja pakuvad soovitusi probleemi lahendamiseks. Kontrollige lood üle ja viige ebaturvaline sisu esimesel võimalusel üle HTTPS-i kasutamisele.",
       "action1": "Sule",
       "action2": "Kontrolli minu lugusid kohe",
       "action3": "Lisateave",
       "floatingNotification": "See lugu sisaldab ebaturvalist (HTTP) sisu. Vaadake lugu üle ja kõrvaldage probleemid."
+    },
+    "embedBar": {
+      "share": "Jaga",
+      "fullScreen": "Täisekraan",
+      "exitFullScreen": "Välju täisekraanist",
+      "enlarge": "Kasvav",
+      "newTab": "Avatakse uuel vahelehel",
+      "tagline": "Kaardilugu"
+    },
+    "june2018SurveyMessage": {
+      "bannerMsg": "Kas tohime teilt midagi küsida? See aitab vormida kaardilugude tulevikku.",
+      "s1h1": "Teie mõtted aitavad vormida tulevikku",
+      "s1p1": "Teie arvamused on meie kõige olulisem tagasiside allikas. Mida rohkem me teie kohta teame, seda paremaks saame kaardilugude funktsiooni edaspidi muuta. Meil oleks väga hea meel, kui leiaksite mõne minuti, et vastata järgmise lühikese uuringu küsimustele.",
+      "s2p1": "Täname teid Esri kaardilugude kasutamise eest!",
+      "action1": "Sule",
+      "action2": "Vasta küsitlusele"
     }
   }
 });

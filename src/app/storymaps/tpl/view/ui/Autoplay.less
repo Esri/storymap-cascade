@@ -1,3 +1,5 @@
+@import "../../core/Variables";
+
 .autoplay-controls {
   position: fixed;
   bottom: 10px;
@@ -45,4 +47,8 @@
     background-color: #FFF;
     border: 1px solid rgba(0, 0, 0, 0.3);
   }
+}
+
+body.embed-mode-bar .autoplay-controls {
+  bottom: calc(10px ~"+" @embed-bar-height);
 }

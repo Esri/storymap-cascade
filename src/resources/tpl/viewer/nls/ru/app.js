@@ -60,7 +60,7 @@ define({
     },
     "headerFromCommon": {
       "defaultTagline": "${STORY_MAP}",
-      "share": "Опубликовать",
+      "share": "Опубликовать или напечатать",
       "tooltipAutoplayDisabled": "Недоступно в режиме автовоспроизведения"
     },
     "shareFromCommon": {
@@ -83,6 +83,11 @@ define({
       "speedFast": "Быстро",
       "speedMedium": "Среднее",
       "speedSlow": "Медленно"
+    },
+    "bannerNotification": {
+      "learnMore": "Подробнее",
+      "close": "Закрыть",
+      "dontShowAgain": "Не показывать это сообщение снова"
     }
   },
   "print": {
@@ -112,11 +117,6 @@ define({
       "websiteLabel": "Веб-сайт:",
       "videoLabel": "Видео:",
       "audioLabel": "Аудио:"
-    },
-    "bannerNotification": {
-      "learnMore": "Подробнее",
-      "close": "Закрыть",
-      "dontShowAgain": "Не показывать это сообщение снова"
     }
   }
 });

@@ -151,7 +151,7 @@ body.builder-mode .block-caption:not(:focus):empty:before {
 /*
  * When builder config is open, interaction are always authorized
  */
-.builder-config-open .media-media {
+.builder-config-open .media-media:not(.video-player) {
   pointer-events: all !important;
 }
 

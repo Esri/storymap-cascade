@@ -113,40 +113,75 @@ define([
     };
 
     this.initBannerNotification = function() {
-      var strings = i18n.builder.httpsTransitionMessage;
+      var stringsSurvey = i18n.builder.june2018SurveyMessage;
+      var stringsHttps = i18n.builder.httpsTransitionMessage;
+
+      new BannerNotification({
+        id: 'june2018Survey',
+        bannerMsg: stringsSurvey.bannerMsg,
+        primaryColor: '#1e8a87',
+        mainMsgHtml: '\
+        <h2 class="banner-notification-text">' + stringsSurvey.s1h1 + '</h2>\
+        <p class="banner-notification-text">' + stringsSurvey.s1p1 + '</p>\
+        <p class="banner-notification-text">' + stringsSurvey.s2p1 + '</p>\
+        ',
+        actions: [
+          {
+            string: stringsSurvey.action1,
+            closeOnAction: true
+          },
+          {
+            primary: true,
+            string: stringsSurvey.action2,
+            closeOnAction: true,
+            action: function() {
+              window.open('http://links.esri.com/storymaps/june2018-survey');
+            }
+          }
+        ],
+        cookie: {
+          domain: 'arcgis.com',
+          path: '/',
+          maxAge: 60 * 60 * 24 * 365
+        }
+        // autohideAfter: new Date() > new Date(/*'July 31 2018'*/) ? 0 : 2
+      });
+
       new BannerNotification({
         id: 'httpsTransitionMessage',
-        bannerMsg: strings.bannerMsg,
+        bannerMsg: stringsHttps.bannerMsg,
         mainMsgHtml: '\
-          <h2 class="banner-notification-text">' + strings.s1h1 + '</h2>\
-          <p class="banner-notification-text">' + strings.s1p1 + '</p>\
-          <p class="banner-notification-text">' + strings.s1p2 + '</p>\
-          <h2 class="banner-notification-text">' + strings.s2h1 + '</h2>\
-          <p class="banner-notification-text">' + strings.s2p1 + '</p>\
+          <h2 class="banner-notification-text">' + stringsHttps.s1h1 + '</h2>\
+          <p class="banner-notification-text">' + stringsHttps.s1p1 + '</p>\
+          <p class="banner-notification-text">' + stringsHttps.s1p2 + '</p>\
+          <h2 class="banner-notification-text">' + stringsHttps.s2h1 + '</h2>\
+          <p class="banner-notification-text">' + stringsHttps.s2p1 + '</p>\
         ',
         actions: [
           {
             primary: true,
-            string: strings.action1,
+            string: stringsHttps.action1,
             closeOnAction: true
           },
           {
-            string: strings.action2,
+            string: stringsHttps.action2,
             action: function() {
               window.open('https://storymaps.arcgis.com/en/my-stories/');
             }
           },
           {
-            string: strings.action3,
+            string: stringsHttps.action3,
             action: function() {
               window.open('https://links.esri.com/storymaps/web_security_faq');
             }
           }
         ],
         cookie: {
-          domain: window.location.hostname,
+          domain: 'arcgis.com',
+          path: '/',
           maxAge: 60 * 60 * 24 * 365
-        }
+        },
+        blockingNotifications: 'june2018Survey'
       });
     };
 

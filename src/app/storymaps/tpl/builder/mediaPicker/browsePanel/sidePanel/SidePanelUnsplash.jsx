@@ -73,7 +73,7 @@ class SearchInput extends React.Component {
 class SidePanelUnsplash extends React.Component {
 
   processAboutSpan(str, spanStr, reactKey) {
-    if (str.indexOf('brand') === 0) {
+    if (str === 'Unsplash') {
       return (
         <a key={reactKey} href={app.cfg.BUILDER_LINKS.unsplashHome} target="_blank"><strong>{spanStr}</strong></a>
       );
@@ -82,13 +82,7 @@ class SidePanelUnsplash extends React.Component {
   }
 
   processCopyrightSpan(str, spanStr, reactKey) {
-    if (str === 'CC0') {
-      return (
-        // turns out CC0 is brand name, so no translation.
-        <a key={reactKey} href={app.cfg.BUILDER_LINKS.cc0License} target="_blank"><strong>Creative Commons Zero</strong></a>
-      );
-    }
-    else if (str === 'moreInfoLink') {
+    if (str === 'moreInfoLink') {
       return (
         <a key={reactKey} href={app.cfg.BUILDER_LINKS.unsplashLicense} target="_blank"><strong>{spanStr}</strong></a>
       );
@@ -135,6 +129,10 @@ class SidePanelUnsplash extends React.Component {
         <div className="help-text">
           <p>{this.getAboutSpans(text.aboutText, 'about')}</p>
           <p>{this.getAboutSpans(text.copyrightText, 'copyright')}</p>
+          <p className="small-text">
+            <span>{i18n.builder.mediaPicker.browsePanel.sidePanel.thirdPartyTerms}</span>
+            <a className="link" target="_blank" rel="noopener noreferrer" href={app.cfg.BUILDER_LINKS.TERMS.unsplash}>Unsplash</a>
+          </p>
         </div>
       </div>
     );

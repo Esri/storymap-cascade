@@ -22,11 +22,13 @@ define([
   'lib-build/css!../view/media/Common',
 
   'lib-build/i18n!resources/tpl/viewer/nls/app',
+  'lib-build/i18n!resources/tpl/builder/nls/app',
 
   'storymaps-react/tpl/core/Controller',
   'storymaps/tpl/core/Core',
   'storymaps/tpl/utils/CommonHelper',
   'storymaps/tpl/utils/UI',
+  'storymaps/tpl/utils/EmbedBar',
   'storymaps-react/tpl/utils/IOSEmbedFix',
 
   'storymaps-react/tpl/view/ui/Header',
@@ -36,7 +38,9 @@ define([
   'lib-build/css!storymaps/tpl/utils/SocialSharing',
 
   'esri/arcgis/utils',
+  'esri/urlUtils',
   'dojo/_base/Color',
+  'dojo/_base/lang',
   'dojo/on',
   'dojo/has',
   'dojo/topic'
@@ -50,11 +54,13 @@ define([
   mediasCss,
 
   i18n,
+  i18nBuilder,
 
   Controller,
   Core,
   CommonHelper,
   UIUtils,
+  EmbedBar,
   IOSEmbedFix,
 
   Header,
@@ -64,7 +70,9 @@ define([
   socialSharingCss,
 
   arcgisUtils,
+  urlUtils,
   Color,
+  lang,
   on,
   has,
   topic
@@ -74,6 +82,8 @@ define([
   // on Portal for some reason (when the JSAPI is in the same domain as this code), it self-executes when it gets here.
   // This way, we force execution to only happen when we call new MainView() in main-app.js
   return function() {
+    lang.mixin(i18n, i18nBuilder);
+
     // Story header
     var _header = new Header();
     // Save scroll position when a modal opens
@@ -85,43 +95,8 @@ define([
     var _core = null;
 
     // Hold reference to UI component for customization
-    app.ui = {
-      header: _header,
-      update: updateUI
-    };
-
-    //
-    // The section and media factory are accessed through window object as we can't import module dynamically with es6
-    //  and Controller that is es6 needs them
-    //
-
-    require(
-      [app.isInBuilder ? 'storymaps-react/tpl/view/section/FactoryBuilder' : 'storymaps-react/tpl/view/section/FactoryViewer'],
-      function(SectionFactory) {
-        app.ui.SectionFactory = SectionFactory;
-      }
-    );
-
-    require(
-      [app.isInBuilder ? 'storymaps/tpl/view/section/Immersive/PanelFactoryBuilder' : 'storymaps/tpl/view/section/Immersive/PanelFactoryViewer'],
-      function(ImmersivePanelFactory) {
-        app.ui.ImmersivePanelFactory = ImmersivePanelFactory;
-      }
-    );
-
-    require(
-      [app.isInBuilder ? 'storymaps-react/tpl/view/media/FactoryBuilder' : 'storymaps-react/tpl/view/media/FactoryViewer'],
-      function(MediaFactory) {
-        app.ui.MediaFactory = MediaFactory;
-      }
-    );
-
-    require(
-      [app.isInBuilder ? 'storymaps-react/tpl/builder/Controller' : 'storymaps-react/tpl/core/Controller'],
-      function(Controller) {
-        app.Controller = Controller;
-      }
-    );
+    app.ui.header = _header;
+    app.ui.update = updateUI;
 
     function init(core) {
       _core = core;
@@ -151,6 +126,47 @@ define([
       .then(function() {
         app.Controller.renderHeader();
         app.Controller.changeTheme();
+
+        // embed bar goes here... DOM in place, but before any important calculations
+        var strings = i18n.builder.embedBar;
+        lang.mixin(strings, {
+          open: i18n.viewer.shareFromCommon.open,
+          close: i18n.viewer.common.close,
+          // these strings don't exist yet
+          shareFacebook: '',
+          shareTwitter: ''
+        });
+
+        var urlParams = urlUtils.urlToObject(window.location.search).query || {};
+        // true if there's any value for classicEmbedMode, or no value but the key, or classicembedmode
+        var isClassicEmbedMode = urlParams.classicEmbedMode ? true : urlParams.classicEmbedMode === '' ? true : urlParams.classicembedmode ? true : urlParams.classicembedmode === '' ? true : false;
+        var logoObject = lang.getObject('data.appItem.data.values.settings.header.logo', true, app);
+
+        // it's esri logo if (url and enabled properties are falsey (empty object, logo hasn't been configured)) OR (the logo object is enabled and the URL is esri-logo)
+        var hasEsriLogo = (!logoObject.enabled && !logoObject.url) || (logoObject.enabled && logoObject.url === 'resources/tpl/viewer/icons/esri-logo.png');
+
+        var embedBar = new EmbedBar({
+          classicEmbedMode: isClassicEmbedMode,
+          strings: strings,
+          disableFullscreen: true,
+          appCreationDate: app.data.appItem.item.created,
+          june2018ReleaseDate: app.cfg.JUNE_CREATED_DATE,
+          isBuilder: app.isInBuilder,
+          isEsriLogo: hasEsriLogo,
+          logoPath: 'resources/tpl/viewer/icons/esri-logo-black.png',
+          logoElements: [$('.story-header .logoImg')],
+          taglineElements: [$('.story-header .linkContainer .link')],
+          shareElements: [$('.story-header .share-btn-container')],
+          appTitle: app.data.title,
+          bitlyCreds: [app.cfg.HEADER_SOCIAL.bitly.key, app.cfg.HEADER_SOCIAL.bitly.login]
+        });
+
+        var embedBarExists = embedBar.initiated;
+
+        // add a class to the body if we're using the embed bar, so that styles can all be based on that.
+        if (embedBarExists) {
+          $('body').addClass('embed-mode-bar');
+        }
 
         displayApp();
 

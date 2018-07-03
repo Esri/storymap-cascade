@@ -60,7 +60,7 @@ define({
     },
     "headerFromCommon": {
       "defaultTagline": "${STORY_MAP}",
-      "share": "שתף",
+      "share": "שיתוף או הדפסה",
       "tooltipAutoplayDisabled": "זה לא זמין במצב ניגון אוטומטי"
     },
     "shareFromCommon": {
@@ -83,6 +83,11 @@ define({
       "speedFast": "מהיר",
       "speedMedium": "בינונית",
       "speedSlow": "איטי"
+    },
+    "bannerNotification": {
+      "learnMore": "לימוד נוסף",
+      "close": "סגור",
+      "dontShowAgain": "אל תציג הודעה זו שוב"
     }
   },
   "print": {
@@ -112,11 +117,6 @@ define({
       "websiteLabel": "אתר אינטרנט:",
       "videoLabel": "וידאו:",
       "audioLabel": "שמע:"
-    },
-    "bannerNotification": {
-      "learnMore": "לימוד נוסף",
-      "close": "סגור",
-      "dontShowAgain": "אל תציג הודעה זו שוב"
     }
   }
 });

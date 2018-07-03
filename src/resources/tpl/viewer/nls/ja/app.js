@@ -60,7 +60,7 @@ define({
     },
     "headerFromCommon": {
       "defaultTagline": "${STORY_MAP}",
-      "share": "共有",
+      "share": "共有または印刷",
       "tooltipAutoplayDisabled": "これは、自動再生モードでは使用できません"
     },
     "shareFromCommon": {
@@ -83,6 +83,11 @@ define({
       "speedFast": "速い",
       "speedMedium": "中程度",
       "speedSlow": "遅い"
+    },
+    "bannerNotification": {
+      "learnMore": "詳細",
+      "close": "閉じる",
+      "dontShowAgain": "今後このメッセージを表示しない"
     }
   },
   "print": {
@@ -112,11 +117,6 @@ define({
       "websiteLabel": "Web サイト:",
       "videoLabel": "ビデオ:",
       "audioLabel": "オーディオ:"
-    },
-    "bannerNotification": {
-      "learnMore": "詳細",
-      "close": "閉じる",
-      "dontShowAgain": "今後このメッセージを表示しない"
     }
   }
 });

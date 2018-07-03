@@ -55,6 +55,7 @@ export default class AudioBuilder extends Audio {
       if (tab == 'manage') {
         tabs.push(new BuilderConfigTabManageMedia({
           hideRemove: this._placement == 'background',
+          altText: this._audio.altText,
           showErrors: this.scanResults.errors && this.scanResults.errors.filter(error => !error.isAlternate).length && this.scanResults.unfixable
         }));
       }

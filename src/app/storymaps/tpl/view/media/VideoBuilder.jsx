@@ -35,7 +35,6 @@ export default class VideoBuilder extends Video {
     }
 
     delete this._video.title;
-    delete this._video.description;
 
     return super.render(params);
   }
@@ -64,6 +63,24 @@ export default class VideoBuilder extends Video {
     return super.load(params);
   }
 
+  onDuplicateOrEdit(loadedMedia, reload) {
+    this._placement = loadedMedia._placement;
+    this._videoPlayer = loadedMedia._videoPlayer;
+    this._isVideoLoaded = true;
+    if (reload) {
+      this.reload();
+    }
+  }
+
+  reload() {
+    if (this._video.source === 'vimeo') {
+      this.reloadOrReplayVimeoVideo();
+    }
+    else if (this._video.source === 'youtube') {
+      this.reloadOrReplayYoutubeVideo();
+    }
+  }
+
   isUnfixableError(errorIds) {
     if (errorIds.indexOf(issues.videos.inaccessible) >= 0) {
       return {
@@ -79,8 +96,6 @@ export default class VideoBuilder extends Video {
     // TODO: those shoul dbe filtered before
     delete this._video.user;
     delete this._video.thumbUrl;
-    delete this._video.viewCount;
-    delete this._video.likeCount;
 
     if (this._node) {
       this._video.caption = this._node.find('.block-caption').html();
@@ -97,7 +112,8 @@ export default class VideoBuilder extends Video {
         tabs.push(new BuilderConfigTabSize());
       }
       else if (tab == 'appearance') {
-        if (this._sectionType == 'immersive') {
+        // only show the appearance tab for videos if it's an immersive background
+        if (this._sectionType == 'immersive' && this._placement === 'background') {
           tabs.push(new BuilderConfigTabVideo());
         }
       }
@@ -196,5 +212,18 @@ export default class VideoBuilder extends Video {
 
   _makeUrlsHttps() {
     this._video.url = CommonHelper.forceHttpsUrl(this._video.url);
+  }
+
+  updateParams(newMedia) {
+    this._start = newMedia._start;
+    this._end = newMedia._end;
+    this._video.start = newMedia._start;
+    this._video.end = newMedia._end;
+    if (this._cache && this._cache[this.id]) {
+      this._cache[this.id].params = {
+        start: newMedia._start,
+        end: newMedia._end
+      };
+    }
   }
 }

@@ -12,16 +12,20 @@ export default class TabManageMedia extends Tab {
     this.title = i18n.builder.mediaConfig.tabs.manage;
     this.type = 'manage';
     this.icon = 'fa-wrench';
+    this.altText = params.altText;
   }
 
   render() {
     return viewTpl({
-      strings: i18n.builder.mediaConfig.manage
+      strings: i18n.builder.mediaConfig.manage,
+      altText: this.altText
     });
   }
 
   postCreate(params) {
     super.postCreate(params);
+
+    this._node.find('[data-toggle="tooltip"]').tooltip();
 
     if (this._options) {
       if (this._options.hideRemove) {
@@ -45,6 +49,11 @@ export default class TabManageMedia extends Tab {
     this._node.find('.config-item[data-action="swap"]').on('click', () => {
       this._onAction('swap');
     });
+
+    this._node.find('.alt-text-text').on('input', () => {
+      this.setMedia('altText', this._node.find('.alt-text-text').val());
+      this.altText = this._node.find('.alt-text-text').val();
+    });
   }
 
   destroy() {
@@ -53,5 +62,7 @@ export default class TabManageMedia extends Tab {
     this._node.find('.config-item[data-action="remove"]').off('click');
     this._node.find('.config-item[data-action="upload-image"]').off('click');
     this._node.find('.config-item[data-action="swap"]').off('click');
+    this._node.find('[data-toggle="tooltip"]').tooltip('destroy');
+    this._node.find('.alt-text-text').off('input');
   }
 }

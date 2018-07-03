@@ -1,5 +1,4 @@
 import $ from 'jquery';
-import config from '../config';
 import i18n from 'lib-build/i18n!resources/tpl/builder/nls/app';
 import constants from '../constants';
 
@@ -309,7 +308,7 @@ var FlickrConnector = (function() {
       + 'api.flickr.com/services/rest/?method='
       + method
       + '&format=json'
-      + '&api_key=' + config.FLICKR_API_KEY
+      + '&api_key=' + app.cfg.MEDIA_KEYS.FLICKR_API
       + (! params ? '' : '&' + $.param(params))
       + '&jsoncallback=?';
 

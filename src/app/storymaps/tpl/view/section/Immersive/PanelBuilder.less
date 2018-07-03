@@ -1,218 +1,212 @@
 @import "../../../core/Variables";
 
-.imm-panel {
-  // immersive panels + and dividing line to add content
-  // ::before is dividing line and rounded square around +, visible on hover
-  // :: after is +
-  &.theme-black-over-white .block::before {
-    color: #FFF;
-    border-bottom-color: #666;
-  }
-
-  &.theme-black-over-white .block::after {
-    color: #666;
-  }
-
-  &.theme-white-over-black .block::before {
-    color: #404040;
-    border-bottom-color: #ccc;
-  }
-
-  &.theme-white-over-black .block::after {
-    color: #ccc;
-  }
-
-  .panel-cfg {
-    font-family: 'open_sans', sans-serif;
-
-    &.active {
-      display: block;
+body.builder-mode {
+  .imm-panel {
+    // immersive panels + and dividing line to add content
+    // ::before is dividing line and rounded square around +, visible on hover
+    // :: after is +
+    &.theme-black-over-white .block::before {
+      color: #FFF;
+      border-bottom-color: #666;
     }
 
-    .builder-config-panel-btn {
-      position: absolute;
-      top: -13px;
-      right: -13px;
-      width: 26px;
-      height: 26px;
-      color: #000;
-      font-size: 20px;
-      cursor: pointer;
-      background-color: #FFF;
-      border-radius: 15px;
-      padding-left: 5px;
-      padding-top: 3px;
-      z-index: 10;
+    &.theme-black-over-white .block::after {
+      color: #666;
+    }
 
-      &:hover {
-        opacity: 0.9;
-      }
+    &.theme-white-over-black .block::before {
+      color: #404040;
+      border-bottom-color: #ccc;
+    }
 
-      .builder-invite-open {
+    &.theme-white-over-black .block::after {
+      color: #ccc;
+    }
+
+    .panel-cfg {
+      font-family: 'open_sans', sans-serif;
+
+      &.active {
         display: block;
       }
 
-      .builder-invite-close {
-        display: none;
-        margin-left: -2px;
-        color: #FFF;
-      }
+      .builder-config-panel-btn {
+        position: absolute;
+        top: -13px;
+        right: -13px;
+        width: 26px;
+        height: 26px;
+        color: #000;
+        font-size: 20px;
+        cursor: pointer;
+        background-color: #FFF;
+        border-radius: 15px;
+        padding-left: 5px;
+        padding-top: 3px;
+        z-index: 10;
 
-      &.active {
-        background-color: @link-color;
+        &:hover {
+          opacity: 0.9;
+        }
 
         .builder-invite-open {
-          display: none;
+          display: block;
         }
 
         .builder-invite-close {
-          display: block;
-        }
-      }
-    }
-
-    .builder-config-panel {
-      display: none;
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 0;
-
-      width: 100%;
-      min-height: 285px;
-
-      background-color: rgb(200,200,200);
-      text-align: center;
-      padding: 10px;
-
-      z-index: 9;
-
-      &.active {
-        display: block;
-      }
-
-      .options-container {
-        flex-direction: column;
-      }
-
-      .panel-scrolling-layout {
-        flex-direction: row;
-      }
-
-      .column-label {
-        font-size: 16px;
-        line-height: 24px;
-        color: #000;
-        margin-bottom: 5px;
-      }
-
-      .panel-scrolling-layout,
-      .panel-scrolling-style,
-      .panel-scrolling-size,
-      .panel-scrolling-placement,
-      .panel-scrolling-theme,
-      .panel-config-row, {
-        display: flex;
-      }
-
-      .panel-config-row,
-      .panel-scrolling-layout {
-        margin-top: 20px;
-      }
-
-      .panel-scrolling-layout {
-        margin-top: 0;
-      }
-
-      .panel-config-row:nth-child(1) {
-        margin-top: 5px;
-      }
-
-      .panel-scrolling-style,
-      .panel-scrolling-size,
-      .panel-scrolling-placement,
-      .panel-scrolling-theme {
-        flex: 1;
-        justify-content: center;
-      }
-
-      .panel-scrolling-placement,
-      .panel-scrolling-theme {
-        border-right: 1px solid #AAA;
-      }
-
-      .row-scrolling {
-        border-top: 1px solid #AAA;
-        margin-top: 15px;
-        padding-top: 5px;
-      }
-
-      .panel-column {
-        display: flex;
-        width: 100%;
-      }
-
-      .panel-cfg-item {
-        flex: 1;
-
-        .active {
-          cursor: default;
+          display: none;
+          margin-left: -2px;
+          color: #FFF;
         }
 
-        .panel-cfg-item-wrapper {
-          position: relative;
-          display: inline-block;
-          cursor: pointer;
+        &.active {
+          background-color: @link-color;
 
-          &:hover {
-            opacity: 0.8;
-          }
-
-          &:before {
+          .builder-invite-open {
             display: none;
-            position: absolute;
-            right: -5px;
-            top: -5px;
-            color: @brand-primary;
-            text-shadow: -1px 0px 2px rgba(255, 255, 255, 1);
           }
 
-          &.active:before {
+          .builder-invite-close {
             display: block;
           }
+        }
+      }
 
-          .panel-cfg-item-icon {
-            pointer-events: none;
+      .builder-config-panel {
+        display: none;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+
+        width: 100%;
+        min-height: 285px;
+
+        background-color: rgb(200,200,200);
+        text-align: center;
+        padding: 10px;
+
+        z-index: 9;
+
+        &.active {
+          display: block;
+        }
+
+        .options-container {
+          flex-direction: column;
+        }
+
+        .panel-scrolling-layout {
+          flex-direction: row;
+        }
+
+        .column-label {
+          font-size: 16px;
+          line-height: 24px;
+          color: #000;
+          margin-bottom: 5px;
+        }
+
+        .panel-scrolling-layout,
+        .panel-scrolling-style,
+        .panel-scrolling-size,
+        .panel-scrolling-placement,
+        .panel-scrolling-theme,
+        .panel-config-row, {
+          display: flex;
+        }
+
+        .panel-config-row,
+        .panel-scrolling-layout {
+          margin-top: 20px;
+        }
+
+        .panel-scrolling-layout {
+          margin-top: 0;
+        }
+
+        .panel-config-row:nth-child(1) {
+          margin-top: 5px;
+        }
+
+        .panel-scrolling-style,
+        .panel-scrolling-size,
+        .panel-scrolling-placement,
+        .panel-scrolling-theme {
+          flex: 1;
+          justify-content: center;
+        }
+
+        .panel-scrolling-placement,
+        .panel-scrolling-theme {
+          border-right: 1px solid #AAA;
+        }
+
+        .row-scrolling {
+          border-top: 1px solid #AAA;
+          margin-top: 15px;
+          padding-top: 5px;
+        }
+
+        .panel-column {
+          display: flex;
+          width: 100%;
+        }
+
+        .panel-cfg-item {
+          flex: 1;
+
+          .active {
+            cursor: default;
+          }
+
+          .panel-cfg-item-wrapper {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+
+            &:hover {
+              opacity: 0.8;
+            }
+
+            &:before {
+              display: none;
+              position: absolute;
+              right: -5px;
+              top: -5px;
+              color: @brand-primary;
+              text-shadow: -1px 0px 2px rgba(255, 255, 255, 1);
+            }
+
+            &.active:before {
+              display: block;
+            }
+
+            .panel-cfg-item-icon {
+              pointer-events: none;
+            }
           }
         }
       }
     }
-  }
 
-  /*
-   * Panel block media config
-   */
+    .blocks {
+      /* without that extra padding in builder can't have overflow: auto
+        as the last add menu is overflowing the scrollbar always get displayed */
+      padding-bottom: 25px;
+      width: 100%;
+    }
 
-  .block .media-cfg-panel {
-    position: fixed;
-    left: @builder-panel-width;
-    width: calc(100% ~"-" @builder-panel-width);
-    z-index: 4;
-  }
-}
+    /*
+     * Panel block media config
+     */
 
-.layout-scroll-partial {
-  .block .media-cfg-panel {
-    top: inherit !important;
-    left: -30px;
-    width: calc(100vw ~"-" 250px);
-  }
-
-  .placement-right .block .media-cfg-panel {
-    left: calc(~"-100vw + 250px + 30vw + 30px");
-  }
-
-  .placement-center .block .media-cfg-panel {
-    left: 0;
+    .block .media-cfg-panel {
+      position: fixed;
+      left: @builder-panel-width;
+      width: calc(100% ~"-" @builder-panel-width);
+      /* Above other medias' media config toggle button or delete button */
+      z-index: 1002;
+    }
   }
 }

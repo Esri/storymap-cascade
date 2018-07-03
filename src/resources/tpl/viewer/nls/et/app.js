@@ -60,7 +60,7 @@ define({
     },
     "headerFromCommon": {
       "defaultTagline": "A ${STORY_MAP}",
-      "share": "Jaga",
+      "share": "Jaga või prindi",
       "tooltipAutoplayDisabled": "See pole automaatesituse režiimis saadaval"
     },
     "shareFromCommon": {
@@ -83,6 +83,11 @@ define({
       "speedFast": "Kiire",
       "speedMedium": "Keskmine",
       "speedSlow": "Aeglane"
+    },
+    "bannerNotification": {
+      "learnMore": "Lisateave",
+      "close": "Sule",
+      "dontShowAgain": "Ära kuva enam seda teadet"
     }
   },
   "print": {
@@ -112,11 +117,6 @@ define({
       "websiteLabel": "Veebileht:",
       "videoLabel": "Video:",
       "audioLabel": "Heli:"
-    },
-    "bannerNotification": {
-      "learnMore": "Lisateave",
-      "close": "Sule",
-      "dontShowAgain": "Ära kuva enam seda teadet"
     }
   }
 });

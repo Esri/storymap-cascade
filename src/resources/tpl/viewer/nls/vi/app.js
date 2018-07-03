@@ -60,7 +60,7 @@ define({
     },
     "headerFromCommon": {
       "defaultTagline": "${STORY_MAP}",
-      "share": "Chia sẻ",
+      "share": "Chia sẻ hoặc in ấn",
       "tooltipAutoplayDisabled": "Tính năng này không khả dụng trong chế độ phát tự động"
     },
     "shareFromCommon": {
@@ -83,6 +83,11 @@ define({
       "speedFast": "Nhanh",
       "speedMedium": "Trung bình",
       "speedSlow": "Chậm"
+    },
+    "bannerNotification": {
+      "learnMore": "Tìm hiểu Thêm",
+      "close": "Đóng",
+      "dontShowAgain": "Không hiện lại thông báo này"
     }
   },
   "print": {
@@ -112,11 +117,6 @@ define({
       "websiteLabel": "Trang web:",
       "videoLabel": "Video:",
       "audioLabel": "Âm thanh:"
-    },
-    "bannerNotification": {
-      "learnMore": "Tìm hiểu Thêm",
-      "close": "Đóng",
-      "dontShowAgain": "Không hiện lại thông báo này"
     }
   }
 });

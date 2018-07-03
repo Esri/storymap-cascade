@@ -1,6 +1,7 @@
 import {} from 'lib-build/less!./Header';
 
 import i18n from 'lib-build/i18n!resources/tpl/builder/nls/app';
+import i18nv from 'lib-build/i18n!resources/tpl/viewer/nls/app';
 
 import CommonHelper from 'storymaps/tpl/utils/CommonHelper';
 
@@ -62,6 +63,7 @@ export default class Header {
       .click(this._onShareBtnClick.bind(this))
       .toggleClass('active', !! social.enabled)
       .off('keypress')
+      .attr('title', i18nv.viewer.headerFromCommon.share).attr('aria-label', i18nv.viewer.headerFromCommon.share)
       .on('keypress', function(evt) {
         if (evt.keyCode === 13 && !!social.enabled) {
           this._onShareBtnClick();

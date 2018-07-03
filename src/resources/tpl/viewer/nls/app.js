@@ -62,7 +62,7 @@ define({
       },
       headerFromCommon: {
         defaultTagline: "A ${STORY_MAP}",
-        share: "Share",
+        share: "Share or print",
         tooltipAutoplayDisabled: "This isn't available in autoplay mode"
       },
       shareFromCommon: {
@@ -85,6 +85,11 @@ define({
         speedFast: "Fast",
         speedMedium: "Medium",
         speedSlow: "Slow"
+      },
+      bannerNotification: {
+        learnMore: "Learn More",
+        close: "Close",
+        dontShowAgain: "Don't show this message again"
       }
     },
     print: {
@@ -114,16 +119,12 @@ define({
         websiteLabel: "Website:",
         videoLabel: "Video:",
         audioLabel: "Audio:",
-      },
-      bannerNotification: {
-        learnMore: "Learn More",
-        close: "Close",
-        dontShowAgain: "Don't show this message again"
       }
     }
   }),
   "ar": 1,
   "bs": 1,
+  "ca": 1,
   "cs": 1,
   "da": 1,
   "de": 1,
@@ -135,6 +136,7 @@ define({
   "he": 1,
   "hi": 1,
   "hr": 1,
+  "hu": 1,
   "id": 1,
   "it": 1,
   "ja": 1,

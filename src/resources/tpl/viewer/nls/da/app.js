@@ -60,7 +60,7 @@ define({
     },
     "headerFromCommon": {
       "defaultTagline": "Et ${STORY_MAP}",
-      "share": "Opdatér",
+      "share": "Del eller udskriv",
       "tooltipAutoplayDisabled": "Dette er ikke tilgængeligt i autoplay-tilstand."
     },
     "shareFromCommon": {
@@ -83,6 +83,11 @@ define({
       "speedFast": "Hurtigt",
       "speedMedium": "Mellem",
       "speedSlow": "Langsomt"
+    },
+    "bannerNotification": {
+      "learnMore": "Yderligere oplysninger",
+      "close": "Luk",
+      "dontShowAgain": "Vis ikke denne meddelelse igen"
     }
   },
   "print": {
@@ -112,11 +117,6 @@ define({
       "websiteLabel": "Websted:",
       "videoLabel": "Video",
       "audioLabel": "Lyd:"
-    },
-    "bannerNotification": {
-      "learnMore": "Yderligere oplysninger",
-      "close": "Luk",
-      "dontShowAgain": "Vis ikke denne meddelelse igen"
     }
   }
 });

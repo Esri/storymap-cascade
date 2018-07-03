@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import MediaFactory from '../media/MediaFactory';
 import SectionNumber from './SectionNumber';
 import {} from 'lib-build/less!../styles/Cover';
+import MediaView from 'storymaps-react/tpl/view/media/Media';
 
 class Cover extends Component {
 
@@ -12,7 +13,7 @@ class Cover extends Component {
         headerLink = null;
 
     if (header.logo  && header.logo.enabled) {
-      let imgUrl = header.logo.url;
+      let imgUrl = MediaView.addToken(header.logo.url);
       const logoClasses = `logo-img${imgUrl.match('esri-logo') ? '' : ' not-esri'}`;
       headerLogo = (
         <a className="logoLink" href={header.logo.link} target="_blank" alt="Link to organization">

@@ -458,12 +458,8 @@ export default class Controller {
       return;
     }
 
-    var sectionTop = app.display.sections[params.currentSectionIndex].top;
-
     newSection.onScroll(lang.mixin(params, {
       status: 'current',
-      viewportTop: params.scrollTop - sectionTop,
-      viewportBottom: params.scrollTop + app.display.sectionHeight - sectionTop,
       webSceneCache: this._webSceneCache
     }));
 
@@ -510,8 +506,7 @@ export default class Controller {
     //
 
     $.each(params.visibleSections, function(i, sectionIndex) {
-      var section = this._sections[sectionIndex],
-          sectionTop = app.display.sections[sectionIndex].top;
+      var section = this._sections[sectionIndex];
 
       // Skip current section that already got one event sent
       if (sectionIndex == params.currentSectionIndex) {
@@ -520,8 +515,6 @@ export default class Controller {
 
       section.onScroll(lang.mixin(params, {
         status: 'visible',
-        viewportTop: params.scrollTop - sectionTop,
-        viewportBottom: params.scrollTop + app.display.sectionHeight - sectionTop,
         webSceneCache: this._webSceneCache
       }));
     }.bind(this));

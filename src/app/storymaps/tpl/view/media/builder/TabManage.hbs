@@ -14,7 +14,7 @@
 </div>
 <div class="builder-config-section larger">
   <div class="section-content button">
-    <div class="config-item button btn btn-bw{{#if showErrors}} disabled{{/if}}" data-action="edit">
+    <div class="config-item button btn btn-bw{{#if showErrors}} disabled{{/if}}" data-action="edit" data-toggle="tooltip" data-placement="top" title="{{strings.editAside}}">
       {{#if mapEditorEnabled}}
         <span class="config-icon fa-stack">
           <i class="fa fa-map-o"></i>
@@ -37,4 +37,9 @@
       {{strings.remove}}
     </div>
   </div>
+</div>
+
+<div class="alt-text-container">
+    <span class="config-icon alt-text-icon fa fa-lg fa-universal-access" data-toggle="tooltip" data-placement="top" title="{{strings.altTextHelptip}}"></span>
+    <textarea class="alt-text-text" rows="1" placeholder="{{strings.altTextPlaceholder}}">{{altText}}</textarea>
 </div>

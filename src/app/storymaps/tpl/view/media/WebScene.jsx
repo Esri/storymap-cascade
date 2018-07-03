@@ -78,6 +78,7 @@ export default class WebScene extends Media {
         output += viewBackground({
           id: this._domID,
           websceneId: this.id,
+          altText: this._webscene.altText,
           labelExploreStart: i18n.viewer.media.exploreMap,
           labelExploreStop: i18n.viewer.media.exploreStop
         });
@@ -95,6 +96,7 @@ export default class WebScene extends Media {
           id: this._domID,
           websceneId: this.id,
           caption: this._webscene.caption,
+          altText: this._webscene.altText,
           placeholder: i18n.viewer.media.captionPlaceholder,
           captionEditable: app.isInBuilder,
           labelExploreStart: i18n.viewer.media.exploreMap,
@@ -307,7 +309,7 @@ export default class WebScene extends Media {
     });
 
     // catch a failed scene
-    scene.otherwise(function() {
+    scene.catch(function() {
       if (app.builder) {
         this.setError({unfixable: true, showLoadingError: true});
       }

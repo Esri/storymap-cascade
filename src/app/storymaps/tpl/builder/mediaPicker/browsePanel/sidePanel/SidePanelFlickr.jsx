@@ -335,6 +335,10 @@ class SidePanelFlickr extends React.Component {
           onChange={this.props.onChange}
           onKeyPress={this.props.onKeyPress}
           containerState={this.props.containerState} />
+        <div className="small-text text-margins">
+          <span>{i18n.builder.mediaPicker.browsePanel.sidePanel.thirdPartyTerms}</span>
+          <a className="link" target="_blank" rel="noopener noreferrer" href={app.cfg.BUILDER_LINKS.TERMS.flickr}>Flickr</a>
+        </div>
       </div>
     );
 

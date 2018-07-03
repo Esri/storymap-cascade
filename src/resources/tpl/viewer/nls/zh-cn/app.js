@@ -60,7 +60,7 @@ define({
     },
     "headerFromCommon": {
       "defaultTagline": "${STORY_MAP}",
-      "share": "共享",
+      "share": "共享或打印",
       "tooltipAutoplayDisabled": "这不适用于自动播放模式"
     },
     "shareFromCommon": {
@@ -83,6 +83,11 @@ define({
       "speedFast": "快速",
       "speedMedium": "中等",
       "speedSlow": "慢速"
+    },
+    "bannerNotification": {
+      "learnMore": "更多信息",
+      "close": "关闭",
+      "dontShowAgain": "不再显示此消息"
     }
   },
   "print": {
@@ -112,11 +117,6 @@ define({
       "websiteLabel": "网址：",
       "videoLabel": "视频：",
       "audioLabel": "音频："
-    },
-    "bannerNotification": {
-      "learnMore": "更多信息",
-      "close": "关闭",
-      "dontShowAgain": "不再显示此消息"
     }
   }
 });

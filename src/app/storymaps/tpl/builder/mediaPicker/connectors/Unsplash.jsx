@@ -1,7 +1,6 @@
 import $ from 'jquery';
-import config from '../config';
 import i18n from 'lib-build/i18n!resources/tpl/builder/nls/app';
-import constants from '../constants';
+import urlUtils from 'esri/urlUtils';
 
 var text = i18n.builder.mediaPicker.browsePanel.providers.unsplash;
 
@@ -59,10 +58,17 @@ var UnsplashConnector = (function() {
   };
 
   var replaceUsername = function(str, username) {
-    let returnStr = str.replace('${username}', username);
+    let returnStr = str.replace(/\${username}/i, username);
     return returnStr.replace(/\$\{(.*?)}/g, function(brand) {
       return brand.slice(2, -1);
     });
+  };
+
+  var replaceUsernameAndLink = function(str, photo) {
+    const userLink = '<a href="' + photo.links.html + '?utm_source=Story%20Maps%20Cascade&utm_medium=referral" target="_blank">' + photo.user.name + '</a>';
+    const unsplashLink = '<a href="https://unsplash.com?utm_source=Story%20Maps%20Cascade&utm_medium=referral" target="_blank">Unsplash</a>';
+    let returnStr = str.replace(/\${username}/i, userLink);
+    return returnStr.replace(/\$\{(.*?)}/g, unsplashLink);
 
   };
 
@@ -70,8 +76,8 @@ var UnsplashConnector = (function() {
     return Object.assign({
       name: replaceUsername(text.photoBy, photo.user.name),
       externalLink: {
-        link: photo.user.links.html,
-        background: photo.user.profile_image.medium,
+        link: photo.user.links.html + '?utm_source=Story%20Maps%20Cascade&utm_medium=referral',
+        background: photo.user.profile_image.small,
         hoverText: replaceUsername(text.userLink, photo.user.name)
       },
       picUrl: photo.urls.regular,
@@ -81,15 +87,11 @@ var UnsplashConnector = (function() {
       isVideo: false,
       id: photo.id,
       modified: new Date(photo.created_at),
-      type: 'unsplash'
-    }, getThumbUrlOptions(photo));
-  };
-
-  var getThumbUrlOptions = function(photo) {
-    var height = Math.max(constants.galleryContent.IMG_HEIGHT, constants.galleryContent.ALBUM_HEIGHT);
-    return {
-      thumbUrl: (photo.urls.thumb).replace(/\&w\=[0-9]*/, '&h=' + height)
-    };
+      type: 'unsplash',
+      thumbUrl: photo.urls.thumb,
+      onSelected: requiredUnsplashViewRequest.bind(photo),
+      caption: replaceUsernameAndLink(text.captionStarter, photo)
+    });
   };
 
   var getPhotoUrlOptions = function(photo) {
@@ -99,26 +101,29 @@ var UnsplashConnector = (function() {
       const fallback = {
         url: photo.picUrl,
         width: photo.width,
-        height: photo.height
+        height: photo.height,
+        caption: photo.caption
       };
-      if (!this.urls.raw) {
+      const rawUrl = this.urls.raw;
+      if (!rawUrl) {
         return fallback;
       }
       const imgRatio = this.height / this.width;
       // might as well match flickr sizes of 800, 1024, 1600, and 2048.
       let sizes = [
-        getDynamicSizeUrl(this.urls.raw, 800, imgRatio),
-        getDynamicSizeUrl(this.urls.raw, 1024, imgRatio),
-        getDynamicSizeUrl(this.urls.raw, 1600, imgRatio),
-        getDynamicSizeUrl(this.urls.raw, 2048, imgRatio)
+        getDynamicSizeUrl(rawUrl, 800, imgRatio),
+        getDynamicSizeUrl(rawUrl, 1024, imgRatio),
+        getDynamicSizeUrl(rawUrl, 1600, imgRatio),
+        getDynamicSizeUrl(rawUrl, 2048, imgRatio)
       ];
 
       resolve(Object.assign({}, fallback, {sizes}));
     });
   };
 
-  var getDynamicSizeUrl = function(url, largest, ratio) {
-    let width, height, urlParams = Object.assign({}, dynamicSizingParams);
+  var getDynamicSizeUrl = function(rawUrl, largest, ratio) {
+    const rawUrlSplit = urlUtils.urlToObject(rawUrl);
+    let width, height, urlParams = Object.assign({}, dynamicSizingParams, rawUrlSplit.query || {});
     if (ratio < 1) {
       width = largest;
       height = Math.round(ratio * width);
@@ -130,7 +135,7 @@ var UnsplashConnector = (function() {
       Object.assign(urlParams, {h: height});
     }
     return {
-      url: url + '?' + $.param(urlParams),
+      url: rawUrlSplit.path + '?' + $.param(urlParams),
       height: height,
       width: width
     };
@@ -139,10 +144,25 @@ var UnsplashConnector = (function() {
   var request = function(params) {
     var url = 'https://'
       + 'api.unsplash.com/search/photos?'
-      + 'client_id=' + config.UNSPLASH_API_KEY
+      + 'client_id=' + app.cfg.MEDIA_KEYS.UNSPLASH_API
+      + '&per_page=30'
       + (params ? '&' + $.param(params) : '');
 
     return $.getJSON(url);
+  };
+
+  // `this` === photo object returned from unsplash. bound above.
+  var requiredUnsplashViewRequest = function() {
+    if (this && this.links && this.links.download_location) {
+      var connector = this.links.download_location.match(/\?/) ? '&' : '?';
+      var urlWithParams = this.links.download_location + connector + 'client_id=' + app.cfg.MEDIA_KEYS.UNSPLASH_API;
+      $.getJSON(urlWithParams).done(function() {
+        // console.debug('%c triggered download. 🎉', 'color: blue; font-size: 14px;');
+      });
+    }
+    else {
+      console.warn('failed to hit required Unsplash download endpoint. 😨', this);
+    }
   };
 
   return {photoSearch};

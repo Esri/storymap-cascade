@@ -72,14 +72,13 @@ class Webmap extends Component {
       bingMapsKey: app.cfg.BING_MAPS_KEY,
       layerMixins: app.data.appProxies || null,
       mapOptions: {
-        // without classic navigation mode, polygon feature layers often bleed over into adjacent
-        // pages (both above and below, sometimes spanning multiple pages), and the bottom
-        // left basemap tile also prints on the following page if the map is too close
-        // to the bottom of the page. See these blocks/gists: c4b6a6dc013fb3a4d310c5a767ec0441
-        // and c4b6a6dc013fb3a4d310c5a767ec0441. Also internal jsapi issue 11087. Because users
-        // shouldn't be doing much navigating of the maps on this print page, I think the tradeoffs
-        // for the lesser 'classic' navigation mode are worth the gain in print reliability. -als
-        navigationMode: 'classic',
+        // we used to specify classic navigation mode here, as polygon feature layers often
+        // bled over into adjacent pages, and the bottom left basemap tile also often printed
+        // on the following page. See these blocks/gists: c4b6a6dc013fb3a4d310c5a767ec0441
+        // and c4b6a6dc013fb3a4d310c5a767ec0441. Also internal jsapi issue 11087. However, it
+        // *looks* like Chrome has fixed this problem as of 6/2018? Additionally, here (but not MJ),
+        // we had problems with some layers like heatmaps not showing up with classic navigation mode.
+        // (and we should probably keep settings like this the same across apps)
         smartNavigation: false
       }
     };

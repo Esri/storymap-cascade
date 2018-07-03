@@ -115,7 +115,9 @@ define({
         "changeMedia": "變更媒體",
         "edit": "編輯",
         "editAside": "在新瀏覽器頁籤中開啟。儲存編輯內容後，儲存和重新載入此故事可查看變更。",
-        "remove": "移除"
+        "remove": "移除",
+        "altTextPlaceholder": "為視障讀者新增此媒體的說明。",
+        "altTextHelptip": "替代文字是輔助技術 (如螢幕助讀程式軟體) 所使用的視覺媒體的說明。 這是選用的，但建議您符合 WCAG 和第 508 節之類的 Web 協助工具指導方針。"
       },
       "appearance": {
         "homeView": "初始視圖",
@@ -248,6 +250,7 @@ define({
           }
         },
         "sidePanel": {
+          "thirdPartyTerms": "使用協力廠商服務時，即表示您同意其服務條款。 ",
           "googlePhotos": {
             "placeholder": "電子郵件或 ${Picasa}/${Google+} ID",
             "helpText": "您可以將上傳到 ${Picasa} 或 ${Google+} 的相片新增到您的故事。圖像使用的相關 ${helpLinkText} 儲存在您故事的 ${Google} 帳號中。",
@@ -257,7 +260,7 @@ define({
           "unsplash": {
             "placeholder": "搜尋相片",
             "aboutText": "${Unsplash} 是免費、高品質的相片精選集。",
-            "copyrightText": "在 ${Unsplash} 上發佈的所有相片皆經 ${CC0} 授權。如需詳細資訊，${moreInfoLink}。",
+            "copyrightText": "所有相片都是在 ${Unsplash} 授權下發佈。 如需詳細資訊，${moreInfoLink}。",
             "moreInfoLink": "此處"
           },
           "flickr": {
@@ -558,14 +561,30 @@ define({
     "httpsTransitionMessage": {
       "bannerMsg": "Web 安全性和 Story Maps 的相關重要資訊",
       "s1h1": "Esri 正在加強 Story Maps 的安全性",
-      "s1p1": "您的 Story Maps 在 Web 上運作，且 Web 社群一直致力於建立和實施更好的安全機制。為透過網際網路傳輸的內容提供安全連線的 HTTPS，正在成為存取 Web 內容的通行方式。若是使用 HTTP 而非 HTTPS，現今大多數的瀏覽器都會顯示警告訊息。基於此新興的標準，從 ArcGIS Online 的 2018 年 6 月更新開始，Story Maps 將需要使用 HTTPS。",
-      "s1p2": "從實務而言，這表示故事地圖及其所有內容 (包含圖片、圖層、內嵌的應用程式和網站) 都必須使用以 HTTPS (而非 HTTP) 開頭的連結存取。如此可確保為您的讀者提供最佳的體驗，因為大多數的 Web 瀏覽器都會指出您的故事是安全的。",
+      "s1p1": "您的 Story Maps 在 Web 上運作，且 Web 社群一直致力於建立和實施更好的安全機制。 為透過網際網路傳輸的內容提供安全連線的 HTTPS，正在成為存取 Web 內容的通行方式。 若是使用 HTTP 而非 HTTPS，現今大多數的瀏覽器都會顯示警告訊息。 基於此新興的標準，我們強烈建議您使用 HTTPS 連結來創作和分享 Story Maps，並在故事地圖的圖片中嵌入 Web 內容或連結時，僅使用 HTTPS URL。",
+      "s1p2": "從實務而言，這表示故事地圖及其所有內容 (包含圖片、圖層、內嵌的應用程式和網站) 都必須使用以 HTTPS (而非 HTTP) 開頭的連結存取。 如此可確保為您的讀者提供最佳的體驗，因為大多數的 Web 瀏覽器都會指出您的故事是安全的。",
       "s2h1": "我需要執行哪些工作?",
-      "s2p1": "Esri 正在努力使故事地圖的作者和讀者都能輕鬆進行此轉移。故事地圖建立器和我的故事現在提供了工具，可協助您在故事中尋找不安全的內容 (HTTP)，並提供如何解決問題的建議。請檢查您的故事是否有不安全的內容，並在 2018 年 6 月之前更新為 HTTPS。",
+      "s2p1": "Esri 正在努力使故事地圖的作者和讀者都能輕鬆進行此轉移。 故事地圖建立器和我的故事現在提供了工具，可協助您在故事中尋找不安全的內容 (HTTP)，並提供如何解決問題的建議。 請檢查您的故事是否有不安全的內容，並盡快更新為 HTTPS。",
       "action1": "關閉",
       "action2": "立即檢查我的故事",
       "action3": "瞭解詳細資訊",
       "floatingNotification": "此故事包含不安全的 (HTTP) 內容。請檢閱並解決這些問題。"
+    },
+    "embedBar": {
+      "share": "分享",
+      "fullScreen": "全螢幕",
+      "exitFullScreen": "退出全螢幕",
+      "enlarge": "放大",
+      "newTab": "在新頁籤中開啟",
+      "tagline": "故事地圖"
+    },
+    "june2018SurveyMessage": {
+      "bannerMsg": "我們是否能詢問您一些事情? 它將有助於形塑 Story Maps 的願景。",
+      "s1h1": "分享您的構想以形塑願景。",
+      "s1p1": "您的意見是我們最重要且唯一的回饋來源，且盡可能獲得您的寶貴意見將有助於改善 Story Maps。 如果您能參加這個三分鐘的調查，我們將不勝感激。",
+      "s2p1": "無論如何，非常感謝您使用 Esri Story Maps!",
+      "action1": "關閉",
+      "action2": "參與調查"
     }
   }
 });

@@ -60,7 +60,7 @@ define({
     },
     "headerFromCommon": {
       "defaultTagline": "${STORY_MAP}",
-      "share": "Kopīgot",
+      "share": "Koplietot vai drukāt",
       "tooltipAutoplayDisabled": "Nav pieejams automātiskās demonstrēšanas režīmā"
     },
     "shareFromCommon": {
@@ -83,6 +83,11 @@ define({
       "speedFast": "Ātri",
       "speedMedium": "Vidēji",
       "speedSlow": "Lēni"
+    },
+    "bannerNotification": {
+      "learnMore": "Uzzināt vairāk",
+      "close": "Aizvērt",
+      "dontShowAgain": "Nerādīt šo ziņojumu vēlreiz"
     }
   },
   "print": {
@@ -112,11 +117,6 @@ define({
       "websiteLabel": "Tīmekļa vietne:",
       "videoLabel": "Video",
       "audioLabel": "Audio"
-    },
-    "bannerNotification": {
-      "learnMore": "Uzzināt vairāk",
-      "close": "Aizvērt",
-      "dontShowAgain": "Nerādīt šo ziņojumu vēlreiz"
     }
   }
 });

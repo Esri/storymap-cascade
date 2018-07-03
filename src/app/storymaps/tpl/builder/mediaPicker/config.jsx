@@ -1,7 +1,0 @@
-export default {
-  APP_IS_PORTAL: false,
-  FLICKR_API_KEY: '750b36a2ac65a72e03cf9cef06d79f45',
-  UNSPLASH_API_KEY: '05dea1567391cf2dcdb9bf52016953d1f878eb5a5ec4759cf839cdddebbb6ae2',
-  YOUTUBE_API_KEY: 'AIzaSyDevTFP16nz6sA-akiOVi6wWXiplJnQ4qw',
-  YOUTUBE_DISABLE_ON_PORTAL: true
-};

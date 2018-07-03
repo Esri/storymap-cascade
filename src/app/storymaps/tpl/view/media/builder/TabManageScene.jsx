@@ -15,6 +15,7 @@ export default class TabManageScene extends Tab {
     this.type = 'manage';
     this.icon = 'fa-wrench';
     this.sceneName = params.sceneName;
+    this.altText = params.altText;
 
     this._mediaType = params.mediaType;
     this._mediaId = params.mediaId;
@@ -34,12 +35,15 @@ export default class TabManageScene extends Tab {
   render() {
     return viewTpl({
       sceneName: this.sceneName,
+      altText: this.altText,
       strings: i18n.builder.mediaConfig.manage
     });
   }
 
   postCreate(params) {
     super.postCreate(params);
+
+    this._node.find('[data-toggle="tooltip"]').tooltip();
 
     if (this._options) {
       if (this._options.hideRemove) {
@@ -58,6 +62,11 @@ export default class TabManageScene extends Tab {
     this._node.find('.config-item[data-action="upload-image"]').on('click', () => {
       // TODO: Send action
       console.log('action');
+    });
+
+    this._node.find('.alt-text-text').on('input', () => { //TODO: is INPUT ok or should we do KEYUP (also in destroy)?
+      this.setMedia('altText', this._node.find('.alt-text-text').val());
+      this.altText = this._node.find('.alt-text-text').val();
     });
 
     this._node.find('.config-item[data-action="edit"]').on('click', () => {
@@ -83,5 +92,7 @@ export default class TabManageScene extends Tab {
     this._node.find('.config-item[data-action="upload-image"]').off('click');
     this._node.find('.config-item[data-action="edit"]').off('click');
     this._node.find('.config-item[data-action="swap"]').off('click');
+    this._node.find('[data-toggle="tooltip"]').tooltip('destroy');
+    this._node.find('.alt-text-text').off('input');
   }
 }

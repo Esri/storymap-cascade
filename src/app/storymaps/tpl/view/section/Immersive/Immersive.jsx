@@ -27,6 +27,7 @@ export default class Immersive {
     this._currentViewIndex = -1;
     this._isNavigatingAway = false;
     this._currentViewScrollPosition = -1;
+    this._currentViewNode = null;
     this._swipeTransitionExtrasNode = null;
     this._previousMedia = null;
 
@@ -57,12 +58,6 @@ export default class Immersive {
 
     this._nbViews = views.length;
 
-    /*
-    if ( Renderer.checkErrors(config, section, index) ){
-      return output;
-    }
-    */
-
     var config = [],
         title = '',
         credits = '',
@@ -72,13 +67,6 @@ export default class Immersive {
     /*
      * Options
      */
-
-    // One view on mobile
-    /*
-    if (this._nbViews == 1 && UIUtils.isMobileBrowser() && ! options['events-btn']) {
-      config.push('disable-snap');
-    }
-    */
 
     if (options.style) {
       config.push(options.style);
@@ -220,8 +208,6 @@ export default class Immersive {
       numberOfViews *= 1.1;
     }
 
-    this._node.css('min-height', (numberOfViews * 100) + 'vh');
-
     // Will affect the transition by checking the rules
     // TODO: in builder only?
     this._applyTransitionRules();
@@ -244,18 +230,46 @@ export default class Immersive {
   }
 
   onScroll(params) {
-    var viewIndex = parseInt(params.currentSectionScroll / app.display.windowHeight, 10) + 1;
+    let viewIndex = 0;
 
-    this._isNavigatingAway = viewIndex > this._nbViews;
+    // for any other situation besides "current", the first view showing will be fine
+    // (if the immersive section is scrolling up into view, it's good, and if we're below it, it's not on screen so it doesn't matter which view we show)
+    // the active view is whichever panel's top is on the screen, if not the first.
+    this._currentViewNode = this._node.find('.imm-panel').eq(0);
+    if (params.status === 'current') {
+      this._node.find('.imm-panel').each((index, element) => {
+        // if the panel's top is above the bottom of the page, it's selected.
+        // since you're going through in down order, last one where this is true is correct.
+        if (params.currentSectionScroll + params.windowHeight > $(element).position().top) {
+          viewIndex = index;
+          this._currentViewNode = $(element);
+        }
+      });
+    }
 
-    this._currentViewScrollPosition = params.currentSectionScroll % app.display.windowHeight;
+    // index starts at 1, not 0
+    viewIndex += 1;
 
-    // Bound viewIndex to handle navigating away
-    viewIndex = Math.min(viewIndex, this._nbViews);
+    // if the section is still active, but the bottom of the section is in the viewport (meaning it's undocked and we're scrolling down from it)
+    // viewport range is important
+    // section height is important
+    const sectionBottomOffset = this._node.position().top + this._node.outerHeight();
+    const sectionBottomInViewport = sectionBottomOffset > params.scrollTop && sectionBottomOffset < params.scrollTop + params.windowHeight;
 
-    // Section not active yet
-    if (params.viewportTop <= 0) {
-      viewIndex = 1;
+    this._isNavigatingAway = params.status === 'current' && sectionBottomInViewport;
+
+    // if we're not fully in the section, this value should be 0 since you're not scrolling through a view.
+    if (params.status !== 'current' || this._isNavigatingAway) {
+      this._currentViewScrollPosition = 0;
+    }
+    else {
+      // how far "through the view" you've scrolled. Is 0 when panel is at bottom of screen, and the panel's height value when panel is done
+      this._currentViewScrollPosition = (params.currentSectionScroll + params.windowHeight) - this._currentViewNode.position().top;
+
+      // don't allow the value to be negative (happens briefly when immersive section jumps into place when docked)
+      if (this._currentViewScrollPosition < 0) {
+        this._currentViewScrollPosition = 0;
+      }
     }
 
     if (params.status == 'unload') {
@@ -287,10 +301,6 @@ export default class Immersive {
           performBuilderInit: false,
           animate: false
         });
-      }
-
-      if (this._panels[0]) {
-        this._panels[0].updatePosition(Object.assign({}, params, {panelIndex: 0}));
       }
 
       this._node.toggleClass('hide-title hide-credits', true);
@@ -422,16 +432,16 @@ export default class Immersive {
           const SWIPE_ACCELERATION_FACTOR = 1.3;
 
           if (! mediaPerformTransition) {
-            var swipePosition = null,
-                mediaWidth = app.display.windowWidth,
-                mediaHeight = app.display.windowHeight;
+            let swipePosition = null;
+            const mediaWidth = app.display.windowWidth;
+            let swipeWindowHeight = params.windowHeight;
 
             if (app.isInBuilder) {
-              mediaHeight -= BUILDER_PANEL_HEIGHT;
+              swipeWindowHeight -= BUILDER_PANEL_HEIGHT;
             }
 
             if (transition == 'swipe-vertical') {
-              swipePosition = mediaHeight - (this._currentViewScrollPosition * SWIPE_ACCELERATION_FACTOR);
+              swipePosition = swipeWindowHeight - (this._currentViewScrollPosition * SWIPE_ACCELERATION_FACTOR);
 
               currentMedia.getNode().css(
                 'clip',
@@ -449,7 +459,9 @@ export default class Immersive {
                 .addClass('active');
             }
             else if (transition == 'swipe-horizontal') {
-              let swipeRatio = (this._currentViewScrollPosition * SWIPE_ACCELERATION_FACTOR) / mediaHeight;
+              // amt to swipe is based on how far up the viewport the current view is, and NOT on how far through the view.
+              // this way, the swipe speed is the same regardless of how tall the view is (all views are minimum 100vh).
+              let swipeRatio = (this._currentViewScrollPosition * SWIPE_ACCELERATION_FACTOR) / swipeWindowHeight;
 
               swipePosition = mediaWidth - swipeRatio * mediaWidth;
 
@@ -481,16 +493,26 @@ export default class Immersive {
       /*
        * Panel
        */
-      var panel = this._panels && this._panels.length ? this._panels[viewIndex - 1] : null;
 
-      panel.updatePosition(Object.assign({}, params, {panelIndex: viewIndex - 1}));
+      if (this._panels && this._panels.length) {
+        // all panels in immersive section have the same layout
+        const panelLayout = this._panels[0].layout;
 
-      if (mediaUpdate.isNewView) {
-        let previousPanel = this._panels[viewIndex - 2];
-        if (previousPanel) {
-          previousPanel.updatePosition({
-            panelIndex: viewIndex - 2,
-            isNewView: true
+        if (panelLayout === 'scroll-partial') {
+          // update the opacity for the current panel and 1 before and 1 after
+          // this way we're not having to compute all this on scroll for every view in the immersive section
+          const selectedPanels = this._getNearbyPanels();
+
+          for (let panel of selectedPanels) {
+            panel.updatePosition({windowHeight: params.windowHeight});
+          }
+        }
+        else {
+          let currentPanel = this._panels[viewIndex - 1];
+          currentPanel.updatePosition({
+            viewScroll: this._currentViewScrollPosition,
+            isNavigatingAway: this._isNavigatingAway,
+            windowHeight: params.windowHeight
           });
         }
       }
@@ -500,12 +522,24 @@ export default class Immersive {
        */
       if (viewIndex == this._nbViews) {
         this._node.toggleClass('hide-title hide-credits', this._isNavigatingAway);
-
-        if (panel.layout == 'scroll-partial' && this._isNavigatingAway) {
-          this._node.find('.imm-panel').css('opacity', 0);
-        }
       }
     }
+  }
+
+  _getNearbyPanels() {
+    const nearbyPanels = [];
+
+    // get the previous, current, and next panels, but only if they exist (i.e. first panel has no previous panel, last panel has no next panel)
+    const previousPanel = this._panels[this._currentViewIndex - 2];
+    previousPanel && nearbyPanels.push(previousPanel);
+
+    const currentPanel = this._panels[this._currentViewIndex - 1];
+    currentPanel && nearbyPanels.push(currentPanel);
+
+    const nextPanel = this._panels[this._currentViewIndex];
+    nextPanel && nearbyPanels.push(nextPanel);
+
+    return nearbyPanels;
   }
 
   _loadWebScenes(params) {
@@ -554,8 +588,8 @@ export default class Immersive {
         }
 
         else if (params.scrollDifference >= 0 && afterCurrentMedia === sceneView) {
-          // if within 750px and going down/resizing...
-          let distanceFromNextView = app.display.windowHeight - this._currentViewScrollPosition;
+          // if the scene is within 750px of the next (upcoming) view and going down/resizing -- difference between view height and view scroll position.
+          let distanceFromNextView = this._currentViewNode.outerHeight() - this._currentViewScrollPosition;
 
           if (distanceFromNextView <= PIXEL_TOLERANCE) {
             addParams.viewIndex = params.viewIndex;
@@ -628,17 +662,14 @@ export default class Immersive {
       return;
     }
 
-    var sectionTop = this._node.position().top,
-        viewHeight = app.display.windowHeight,
-        viewsOffset = params.index * viewHeight,
-        // TODO is this stable in viewer
-        viewOffset = viewHeight - 250;
+    const view = this._node.find('.imm-panel').eq(params.index);
+    // how far down the document the view is
+    const viewOffset = view.offset().top;
+    // how far down the view to scroll, so the view isn't stuck at its very top
+    const DISTANCE_DOWN_VIEW = 125;
 
-    if (app.isInBuilder) {
-      viewOffset += BUILDER_PANEL_HEIGHT;
-    }
-
-    var scrollPos = Math.floor(sectionTop + viewsOffset + viewOffset);
+    // scroll position == how far down the section is, plus how far down this view is, plus any offset
+    const scrollPos = Math.floor(viewOffset - DISTANCE_DOWN_VIEW);
 
     // TODO: animate will fire intermediate view navigation event which the view panel doesn't like
     if (params.animate) {

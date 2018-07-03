@@ -201,6 +201,7 @@ export default class WebSceneBuilder extends WebScene {
       hideRemove: this._placement == 'background',
       mediaType: 'webscene',
       mediaId: this.id,
+      altText: this._webscene.altText,
       showErrors: this.scanResults.errors && this.scanResults.errors.length && this.scanResults.errors.filter(error => !error.isAlternate).length,
       sceneName
     });

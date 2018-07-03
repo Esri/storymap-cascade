@@ -131,6 +131,10 @@ class SidePanelGooglePhotos extends React.Component {
         />
         <div className="help-text">
           {this.getHelpSpans()}
+          <div className="small-text">
+            <span>{i18n.builder.mediaPicker.browsePanel.sidePanel.thirdPartyTerms}</span>
+            <a className="link" target="_blank" rel="noopener noreferrer" href={app.cfg.BUILDER_LINKS.TERMS.google}>Google</a>
+          </div>
         </div>
       </div>
     );

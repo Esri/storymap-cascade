@@ -60,7 +60,7 @@ define({
     },
     "headerFromCommon": {
       "defaultTagline": "${STORY_MAP}",
-      "share": "공유",
+      "share": "공유 또는 인쇄",
       "tooltipAutoplayDisabled": "자동 재생 모드에서는 사용할 수 없습니다."
     },
     "shareFromCommon": {
@@ -83,6 +83,11 @@ define({
       "speedFast": "빠르게",
       "speedMedium": "중형",
       "speedSlow": "느리게"
+    },
+    "bannerNotification": {
+      "learnMore": "자세한 정보",
+      "close": "닫기",
+      "dontShowAgain": "이 메시지를 다시 표시 안 함"
     }
   },
   "print": {
@@ -112,11 +117,6 @@ define({
       "websiteLabel": "웹 사이트:",
       "videoLabel": "비디오:",
       "audioLabel": "오디오:"
-    },
-    "bannerNotification": {
-      "learnMore": "자세한 정보",
-      "close": "닫기",
-      "dontShowAgain": "이 메시지를 다시 표시 안 함"
     }
   }
 });

@@ -1,5 +1,5 @@
-import config from '../config';
 import constants from '../constants';
+import CommonHelper from 'storymaps/tpl/utils/CommonHelper';
 
 var URLConnector = (function() {
 
@@ -18,17 +18,15 @@ var URLConnector = (function() {
           });
           return;
         }
-        resolve({
+        const videoParams = getVimeoParams(url);
+        resolve(Object.assign({
           id: videoId,
           source: 'vimeo',
           title: data.title,
-          description: data.description,
           user: data.user_name,
           thumbUrl: data.thumbnail_small,
-          url: getVimeoVideoEmbed(videoId),
-          viewCount: data.stats_number_of_plays,
-          likeCount: data.stats_number_of_likes
-        });
+          url: getVimeoVideoEmbed(videoId, videoParams)
+        }, videoParams));
       }).catch((error) => {
         reject({
           reason: constants.fetchStatus.NOT_FOUND,
@@ -64,17 +62,15 @@ var URLConnector = (function() {
           });
           return;
         }
-        resolve({
+        const videoParams = getYoutubeParams(url);
+        resolve(Object.assign({
           id: videoId,
           source: 'youtube',
           title: item.snippet.title,
-          description: item.snippet.description,
           user: item.snippet.channelTitle,
           thumbUrl: item.snippet.thumbnails['default'].url,
-          url: getYoutubeEmbed(videoId),
-          viewCount: item.statistics.viewCount,
-          likeCount: item.statistics.likeCount
-        });
+          url: getYoutubeEmbed(videoId, videoParams)
+        }, videoParams));
       }).catch((error) => {
         if (error && error.status == 403) {
           reject({
@@ -99,7 +95,7 @@ var URLConnector = (function() {
       const requestUrl = 'https://www.googleapis.com/youtube/v3/videos'
             + '?part=snippet,statistics'
             + '&id=' + videoId
-            + '&key=' + config.YOUTUBE_API_KEY;
+            + '&key=' + app.cfg.MEDIA_KEYS.YOUTUBE_API;
 
       $.ajax({
         url: requestUrl,
@@ -117,6 +113,45 @@ var URLConnector = (function() {
 
     });
 
+  };
+
+  var getYoutubeParams = function(url) {
+    var urlParams = CommonHelper.getUrlParams(url);
+    var whitelistedParams = {};
+    if (urlParams.start) {
+      if (urlParams.start.match(/[h|m|s]/) && !urlParams.t) {
+        urlParams.t = urlParams.start;
+      }
+      else {
+        whitelistedParams.start = parseInt(urlParams.start);
+      }
+    }
+    if (urlParams.end) {
+      whitelistedParams.end = parseInt(urlParams.end);
+    }
+    // sometimes start time is in the form t=2m30s.
+    if (urlParams.t) {
+      var totalSeconds = 0;
+      var hours = urlParams.t.match(/\d+h/);
+      if (hours) {
+        totalSeconds += (parseInt(hours[0]) * 60 * 60);
+      }
+      var minutes = urlParams.t.match(/\d+m/);
+      if (minutes) {
+        totalSeconds += (parseInt(minutes[0]) * 60);
+      }
+      var seconds = urlParams.t.match(/\d+s/);
+      if (seconds) {
+        totalSeconds += parseInt(seconds[0]);
+      }
+      if (!hours && !minutes && !seconds) {
+        totalSeconds = parseInt(urlParams.t);
+      }
+      if (totalSeconds) {
+        whitelistedParams.start = totalSeconds;
+      }
+    }
+    return whitelistedParams;
   };
 
   var getVimeoVideoInfo = function(videoId) {
@@ -142,6 +177,17 @@ var URLConnector = (function() {
     });
   };
 
+  var getVimeoParams = function(url) {
+    var urlHash = CommonHelper.getUrlHash(url);
+    var whitelistedParams = {};
+    var timeHash = urlHash.match(/t=\d+s/);
+    if (timeHash) {
+      var seconds = parseInt(timeHash[0].slice(2, -1));
+      whitelistedParams.start = seconds;
+    }
+    return whitelistedParams;
+  };
+
   var getYoutubeId = function(url) {
     var urlTest = /(youtube\.com\/(watch\?v\=|embed\/)|youtu\.be\/)([a-zA-Z0-9_-]{3,20})/.exec(url);
     return urlTest ? urlTest.pop() : null;
@@ -152,16 +198,30 @@ var URLConnector = (function() {
   };
 
   var getVimeoId = function(url) {
-    var urlTest = /(?:www\.|player\.)?vimeo.com\/(?:channels\/(?:\w+\/)?|groups\/([^\/]*)\/videos\/|album\/(\d+)\/video\/|video\/|)(\d+)(?:$|\/|\?)/.exec(url);
+    var urlTest = /(?:www\.|player\.)?vimeo.com\/(?:channels\/(?:\w+\/)?|groups\/([^\/]*)\/videos\/|album\/(\d+)\/video\/|video\/|)(\d+)(?:$|\/|\?|#)/.exec(url);
     return urlTest ? urlTest.pop() : null;
   };
 
-  var getYoutubeEmbed = function(videoId) {
-    return '//www.youtube.com/embed/' + videoId + '?wmode=opaque&rel=0&showinfo=0';
+  var getYoutubeEmbed = function(videoId, whitelistedParams) {
+    var addr = '//www.youtube.com/embed/' + videoId;
+    if (whitelistedParams && Object.keys(whitelistedParams).length) {
+      var whitelistedArr = [];
+      for (let key in whitelistedParams) {
+        whitelistedArr.push(key + '=' + whitelistedParams[key]);
+      }
+      if (whitelistedArr.length) {
+        addr += '?' + whitelistedArr.join('&');
+      }
+    }
+    return addr;
   };
 
-  var getVimeoVideoEmbed = function(videoId) {
-    return '//player.vimeo.com/video/' + videoId;
+  var getVimeoVideoEmbed = function(videoId, whitelistedParams) {
+    var addr = '//player.vimeo.com/video/' + videoId;
+    if (whitelistedParams && whitelistedParams.start) {
+      addr += '#t=' + whitelistedParams.start + 's';
+    }
+    return addr;
   };
 
   var checkForIframe = function(url) {

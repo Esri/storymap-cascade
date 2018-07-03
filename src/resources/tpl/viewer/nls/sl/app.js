@@ -60,7 +60,7 @@ define({
     },
     "headerFromCommon": {
       "defaultTagline": "${STORY_MAP}",
-      "share": "Deli",
+      "share": "Deli ali tiskaj",
       "tooltipAutoplayDisabled": "Ni na voljo v načinu samodejnega predvajanja"
     },
     "shareFromCommon": {
@@ -83,6 +83,11 @@ define({
       "speedFast": "Hitro",
       "speedMedium": "Srednje",
       "speedSlow": "Počasi"
+    },
+    "bannerNotification": {
+      "learnMore": "Izvedi več",
+      "close": "Zapri",
+      "dontShowAgain": "Tega sporočila ne kaži več"
     }
   },
   "print": {
@@ -112,11 +117,6 @@ define({
       "websiteLabel": "Spletna stran:",
       "videoLabel": "Video:",
       "audioLabel": "Zvok:"
-    },
-    "bannerNotification": {
-      "learnMore": "Izvedi več",
-      "close": "Zapri",
-      "dontShowAgain": "Tega sporočila ne kaži več"
     }
   }
 });

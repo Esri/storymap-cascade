@@ -410,6 +410,14 @@ class UrlContainer extends React.Component {
 
     divArr.push(<div key="link-text-ender">{text.linkText.ender}</div>);
 
+    if (videoAllowed) {
+      divArr.push(<div key="terms" className="small-text">
+        <span>{i18n.builder.mediaPicker.browsePanel.sidePanel.thirdPartyTerms}</span>
+        <a className="link" target="_blank" rel="noopener noreferrer" href={app.cfg.BUILDER_LINKS.TERMS.youtube}>YouTube</a>,&nbsp;
+        <a className="link" target="_blank" rel="noopener noreferrer" href={app.cfg.BUILDER_LINKS.TERMS.vimeo}>Vimeo</a>
+      </div>);
+    }
+
     return divArr;
 
   }

@@ -25,8 +25,9 @@ export default class MapViewerWrapper {
     this._isNewMap = false;
     this._mapViewerLoadingPolling = null;
     this._mapViewerChangesCheck = null;
-    // MAP_VIEWER_URL value should not be changed after this
-    this.MAP_VIEWER_URL = MapViewerWrapperUtils.getPortalURL();
+    // MAP_VIEWER_DOMAIN value should not be changed after this
+    const portalUrl = MapViewerWrapperUtils.getPortalURL();
+    this.MAP_VIEWER_DOMAIN = MapViewerWrapperUtils.getPortalDomain(portalUrl);
 
     this._frameWindow = params.frameWindow;
     this._onSaveSucceedCallback = params.onSaveSucceed;
@@ -96,7 +97,7 @@ export default class MapViewerWrapper {
 
   _send(json) {
     try {
-      this._frameWindow.postMessage(JSON.stringify(json), this.MAP_VIEWER_URL);
+      this._frameWindow.postMessage(JSON.stringify(json), this.MAP_VIEWER_DOMAIN);
     }
     catch (error) {
       // This doesn't seems to be called as the error would happen in the frame
@@ -152,7 +153,7 @@ export default class MapViewerWrapper {
 
   receiveMessage(event) {
     // make sure event is coming from map viewer
-    if (event.origin !== this.MAP_VIEWER_URL) {
+    if (event.origin !== this.MAP_VIEWER_DOMAIN) {
       return;
     }
     // make sure the source is the map viewer

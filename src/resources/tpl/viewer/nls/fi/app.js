@@ -60,7 +60,7 @@ define({
     },
     "headerFromCommon": {
       "defaultTagline": "${STORY_MAP}",
-      "share": "Jaa",
+      "share": "Jaa tai tulosta",
       "tooltipAutoplayDisabled": "Tämä toiminto ei ole käytettävissä automaattisen toiston tilassa"
     },
     "shareFromCommon": {
@@ -83,6 +83,11 @@ define({
       "speedFast": "Nopea",
       "speedMedium": "Keskitaso",
       "speedSlow": "Hidas"
+    },
+    "bannerNotification": {
+      "learnMore": "Lisätietoja",
+      "close": "Sulje",
+      "dontShowAgain": "Älä näytä tätä viestiä uudelleen"
     }
   },
   "print": {
@@ -112,11 +117,6 @@ define({
       "websiteLabel": "Web-sivusto:",
       "videoLabel": "Video:",
       "audioLabel": "Ääni:"
-    },
-    "bannerNotification": {
-      "learnMore": "Lisätietoja",
-      "close": "Sulje",
-      "dontShowAgain": "Älä näytä tätä viestiä uudelleen"
     }
   }
 });

@@ -247,27 +247,19 @@ export default class ImmersiveBuilder extends Immersive {
       .removeClass('layout-scroll-full layout-scroll-partial')
       .addClass('layout-' + layout);
 
-    this._node.find('.imm-panel').css({
-      opacity: layout == 'scroll-full' ? 'inherit' : 0,
-      transform: ''
-    });
-
+    // scroll-partial has varied opacity; scroll-full should be opaque
     if (layout === 'scroll-full') {
-      this._node.find('.imm-panel').css('visibility', 'visible');
+      this._node.find('.blocks').css('opacity', 1);
     }
 
-    for(let i = 0; i < this._panels.length; i++) {
-      let panel = this._panels[i];
-
+    for(let panel of this._panels) {
       panel.layout = layout;
 
-      if (i == this._currentViewIndex - 1) {
-        panel.updatePosition({
-          currentSectionScroll: this._currentScrollPosition,
-          panelIndex: i
-        });
-      }
-
+      panel.updatePosition({
+        viewScroll: this._currentViewScrollPosition,
+        isNavigatingAway: this._isNavigatingAway,
+        windowHeight: app.display.windowHeight
+      });
     }
   }
 
@@ -496,6 +488,10 @@ export default class ImmersiveBuilder extends Immersive {
       }));
     }
 
+    if (isMediaAlreadyLoaded && newMediaJSON.video) {
+      SectionCommon.onEditBackgroundVideo(this._medias, newMediaJSON, newMedia);
+    }
+
     newMedia.postCreate({
       container: this._node,
       delayBuilderInit: false,
@@ -512,6 +508,9 @@ export default class ImmersiveBuilder extends Immersive {
         isBuilderAdd: true,
         isUniqueInSection: true
       });
+    }
+    else if (newMedia.onDuplicateOrEdit) {
+      newMedia.onDuplicateOrEdit(media, true);
     }
 
     this._medias[mediaIndex] = newMedia;
@@ -832,6 +831,9 @@ export default class ImmersiveBuilder extends Immersive {
       mediaJSON: this._medias[index].serialize(false),
       mediaCache: this._mediaCache
     });
+    if (newMedia.onDuplicateOrEdit) {
+      newMedia.onDuplicateOrEdit(this._medias[index]);
+    }
     this._medias.splice(index + 1, 0, newMedia);
 
     var isMediaAlreadyLoaded = this.isMediaAlreadyLoaded(newMedia.serialize(false));

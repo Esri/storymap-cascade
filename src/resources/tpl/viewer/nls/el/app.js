@@ -60,7 +60,7 @@ define({
     },
     "headerFromCommon": {
       "defaultTagline": "Ένα ${STORY_MAP}",
-      "share": "Κοινοποίηση",
+      "share": "Κοινοποίηση ή εκτύπωση",
       "tooltipAutoplayDisabled": "Αυτή η επιλογή δεν είναι διαθέσιμη στη λειτουργία αυτόματης αναπαραγωγής"
     },
     "shareFromCommon": {
@@ -83,6 +83,11 @@ define({
       "speedFast": "Γρήγορα",
       "speedMedium": "Μεσαία ταχύτητα",
       "speedSlow": "Αργά"
+    },
+    "bannerNotification": {
+      "learnMore": "Μάθετε περισσότερα",
+      "close": "Κλείσιμο",
+      "dontShowAgain": "Να μην εμφανιστεί ξανά το μήνυμα"
     }
   },
   "print": {
@@ -112,11 +117,6 @@ define({
       "websiteLabel": "Ιστότοπος:",
       "videoLabel": "Βίντεο:",
       "audioLabel": "Ήχος:"
-    },
-    "bannerNotification": {
-      "learnMore": "Μάθετε περισσότερα",
-      "close": "Κλείσιμο",
-      "dontShowAgain": "Να μην εμφανιστεί ξανά το μήνυμα"
     }
   }
 });

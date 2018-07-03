@@ -243,6 +243,7 @@ export default class WebMapBuilder extends WebMap {
       hideRemove: this._placement == 'background',
       mediaType: 'webmap',
       mediaId: this.id,
+      altText: this._webmap.altText,
       // only show errors if there are unfixable scan results (if there are fixable ones, they'll go on the issues tab)
       showErrors: errors && errors.filter(error => !error.isAlternate).length && this.scanResults.unfixable,
       mapName,

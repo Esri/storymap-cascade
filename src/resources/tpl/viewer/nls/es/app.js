@@ -60,7 +60,7 @@ define({
     },
     "headerFromCommon": {
       "defaultTagline": "Un ${STORY_MAP}",
-      "share": "Compartir",
+      "share": "Compartir o imprimir",
       "tooltipAutoplayDisabled": "Esto no está disponible en el modo de reproducción automática"
     },
     "shareFromCommon": {
@@ -83,6 +83,11 @@ define({
       "speedFast": "Rápido",
       "speedMedium": "Mediana",
       "speedSlow": "Lento"
+    },
+    "bannerNotification": {
+      "learnMore": "Más información",
+      "close": "Cerrar",
+      "dontShowAgain": "No volver a mostrar este mensaje"
     }
   },
   "print": {
@@ -112,11 +117,6 @@ define({
       "websiteLabel": "Sitio web:",
       "videoLabel": "Vídeo:",
       "audioLabel": "Audio:"
-    },
-    "bannerNotification": {
-      "learnMore": "Más información",
-      "close": "Cerrar",
-      "dontShowAgain": "No volver a mostrar este mensaje"
     }
   }
 });

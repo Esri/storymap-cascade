@@ -60,7 +60,7 @@ define({
     },
     "headerFromCommon": {
       "defaultTagline": "${STORY_MAP}",
-      "share": "Sdílet",
+      "share": "Sdílet či vytisknout",
       "tooltipAutoplayDisabled": "Není k dispozici v režimu automatického přehrávání."
     },
     "shareFromCommon": {
@@ -83,6 +83,11 @@ define({
       "speedFast": "Rychle",
       "speedMedium": "Střední",
       "speedSlow": "Pomalu"
+    },
+    "bannerNotification": {
+      "learnMore": "Více informací",
+      "close": "Zavřít",
+      "dontShowAgain": "Toto hlášení příště nezobrazovat"
     }
   },
   "print": {
@@ -112,11 +117,6 @@ define({
       "websiteLabel": "Webové stránky:",
       "videoLabel": "Video:",
       "audioLabel": "Audio:"
-    },
-    "bannerNotification": {
-      "learnMore": "Více informací",
-      "close": "Zavřít",
-      "dontShowAgain": "Toto hlášení příště nezobrazovat"
     }
   }
 });

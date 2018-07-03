@@ -115,7 +115,9 @@ define({
         "changeMedia": "Cambia elementi multimediali",
         "edit": "Modifica",
         "editAside": "Si apre in una nuova finestra del browser. Dopo aver salvato le modifiche, salvare e ricaricare la storia per vedere le modifiche.",
-        "remove": "Rimuovi"
+        "remove": "Rimuovi",
+        "altTextPlaceholder": "Aggiungere una descrizione di questo contenuto multimediale per i lettori con disabilità visive...",
+        "altTextHelptip": "Il testo alternativo è una descrizione dei supporti visivi utilizzati da tecnologie assistive, come il software di lettura dello schermo. Ciò è facoltativo, ma consigliato per soddisfare le linee guida di accessibilità del web come la WCAG e la Sezione 508."
       },
       "appearance": {
         "homeView": "Vista iniziale",
@@ -248,6 +250,7 @@ define({
           }
         },
         "sidePanel": {
+          "thirdPartyTerms": "Utilizzando un servizio di terzi, si accettano i termini di servizio relativi: ",
           "googlePhotos": {
             "placeholder": "E-mail o ID ${Picasa}/${Google+}",
             "helpText": "È possibile aggiungere foto caricate in ${Picasa} o ${Google+} alla storia. ${helpLinkText} sull'utilizzo di immagini memorizzate nell'account ${Google} nelle storie.",
@@ -257,7 +260,7 @@ define({
           "unsplash": {
             "placeholder": "Cerca foto",
             "aboutText": "${Unsplash} è una raccolta curata di foto di alta qualità, gratuite.",
-            "copyrightText": "Tutte le foto pubblicate su ${Unsplash} sono concesse in licenza in virtù della licenza ${CC0}. Ulteriori informazioni ${moreInfoLink}.",
+            "copyrightText": "Tutte le foto sono autorizzate dalla licenza ${Unsplash}. Trova ulteriori informazioni su ${moreInfoLink}.",
             "moreInfoLink": "qui"
           },
           "flickr": {
@@ -558,14 +561,30 @@ define({
     "httpsTransitionMessage": {
       "bannerMsg": "Messaggio importante riguardante la sicurezza Web e le Story Map",
       "s1h1": "Esri sta migliorando la sicurezza delle Story Map",
-      "s1p1": "Le Story Map vivono nel Web e la comunità Web è costantemente impegnata nella formulazione e nell’implementazione di misure volte a migliorare la sicurezza. Il protocollo HTTPS, che fornisce una connessione sicura per i contenuti trasmessi su Internet, si sta affermando come metodo di accesso più comune ai contenuti Web. Molti dei browser moderni mostrano un messaggio di avviso nei casi in cui viene usato l’HTTP anziché l’HTTPS. A seguito dell’affermazione di questo standard, a partire dall’aggiornamento di giugno 2018 di ArcGIS Online, le Story Map dovranno usare l’HTTPS.",
-      "s1p2": "A livello pratico, ciò implica che le Story Map e tutti i relativi contenuti (ivi comprese immagini, Layer, app e siti Web incorporati) dovranno essere accessibili attraverso link che iniziano con HTTPS anziché con HTTP. Ciò garantirà una miglior esperienza per gli utenti poiché molti browser segnaleranno che la Story Map è sicura.",
+      "s1p1": "Le Story Map vivono nel Web e la comunità Web è costantemente impegnata nella formulazione e nell’implementazione di misure volte a migliorare la sicurezza. Il protocollo HTTPS, che fornisce una connessione sicura per i contenuti trasmessi su Internet, si sta affermando come metodo di accesso più comune ai contenuti Web. Molti dei browser moderni mostrano un messaggio di avviso nei casi in cui viene usato l’HTTP anziché l’HTTPS. A causa di questo standard emergente, consigliamo vivamente di utilizzare i link HTTPS per la creazione e la condivisione di Story Maps e di utilizzare solo gli URL HTTPS per incorporare il contenuto Web o il collegamento a immagini all'interno di una Story Map.",
+      "s1p2": "In pratica, ciò significa che una Story Map e tutto il suo contenuto (inclusi immagini, layer, app incorporate e siti Web) devono essere accessibili utilizzando i collegamenti che iniziano con HTTPS anziché con HTTP. Ciò garantisce la migliore esperienza per i lettori perché la maggior parte dei browser Web indica che le tue storie sono al sicuro.",
       "s2h1": "Cosa occorre fare?",
-      "s2p1": "Esri sta lavorando per facilitare la transizione sia per gli autori sia per i lettori di Story Map. I generatori di Story Map e My Stories contengono strumenti che possono essere impiegati per trovare contenuti non sicuri (HTTP) all’interno delle storie e che forniscono indicazioni utili sulla loro gestione. Si prega di verificare la presenza di contenuti non sicuri all’interno delle storie e di aggiornarli all’HTTPS prima del mese di giugno 2018.",
+      "s2p1": "Esri sta lavorando per rendere questa transizione facile per autori e lettori di Story Map. I generatori di Story Map e My Stories contengono strumenti che possono essere impiegati per trovare contenuti non sicuri (HTTP) all’interno delle storie e che forniscono indicazioni utili sulla loro gestione. Si prega di verificare la presenza di contenuti non sicuri all’interno delle storie e di aggiornarli all’HTTPS prima possibile.",
       "action1": "Chiudi",
       "action2": "Controlla subito le mie storie",
       "action3": "Ulteriori informazioni",
       "floatingNotification": "Questa storia contiene contenuti non sicuri (HTTP). Verificare e risolvere il problema."
+    },
+    "embedBar": {
+      "share": "Crea",
+      "fullScreen": "Schermo intero",
+      "exitFullScreen": "Chiudi visualizzazione a schermo intero",
+      "enlarge": "Allarga",
+      "newTab": "Apri in una nuova scheda",
+      "tagline": "Story Map"
+    },
+    "june2018SurveyMessage": {
+      "bannerMsg": "Possiamo fare qualche domanda? Ci consentiranno di plasmare il futuro di Story Maps.",
+      "s1h1": "Condividi le tue opinioni, plasma il futuro",
+      "s1p1": "Il contributi degli utenti sono la nostra più importante fonte di feedback e ottenere ulteriori informazioni sugli utenti ci consentirà di migliorare Story Maps. Saremmo lieti che i nostri utenti possano partecipare a questa inchiesta di tre minuti.",
+      "s2p1": "Come sempre, grazie per aver utilizzato Esri Story Maps!",
+      "action1": "Chiudere",
+      "action2": "Partecipa all’inchiesta"
     }
   }
 });

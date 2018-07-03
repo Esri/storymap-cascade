@@ -26,10 +26,14 @@ export default class TabWebPage extends Tab {
   }
 
   bindInteraction() {
-    let interactions = this._node.find('.config-item[data-type="interaction"]');
-    let selectedInteraction = this._media.options.interaction || 'enabled';
+    let selectedInteraction = this._media.options.interaction || 'button';
 
+    if (selectedInteraction === 'mouseover' && !this._node.find('.config-item[data-type="interaction"][data-value="mouseover"]').length) {
+      this._node.find('.config-item[data-type="interaction"]').last().after('<li class="config-item btn btn-gray" data-type="interaction" data-value="mouseover">Mouseover</li>');
+    }
     this._node.find(`.config-item[data-type="interaction"][data-value="${selectedInteraction}"]`).addClass(this.selectedClass);
+
+    let interactions = this._node.find('.config-item[data-type="interaction"]');
     interactions.on('click', e => {
       let target = $(e.currentTarget);
       let interaction = target.data('value');

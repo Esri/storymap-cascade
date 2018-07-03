@@ -60,7 +60,7 @@ define({
     },
     "headerFromCommon": {
       "defaultTagline": "${STORY_MAP}",
-      "share": "Bendrinti",
+      "share": "Bendrinti arba spausdinti",
       "tooltipAutoplayDisabled": "Automatinio paleidimo režimu nepasiekiamas"
     },
     "shareFromCommon": {
@@ -83,6 +83,11 @@ define({
       "speedFast": "Greitai",
       "speedMedium": "Vidutiniškas",
       "speedSlow": "Lėtai"
+    },
+    "bannerNotification": {
+      "learnMore": "Sužinokite daugiau",
+      "close": "Uždaryti",
+      "dontShowAgain": "Daugiau nerodyti šio pranešimo"
     }
   },
   "print": {
@@ -112,11 +117,6 @@ define({
       "websiteLabel": "Internetinis puslapis:",
       "videoLabel": "Vaizdo įrašas:",
       "audioLabel": "Garso įrašas:"
-    },
-    "bannerNotification": {
-      "learnMore": "Sužinokite daugiau",
-      "close": "Uždaryti",
-      "dontShowAgain": "Daugiau nerodyti šio pranešimo"
     }
   }
 });

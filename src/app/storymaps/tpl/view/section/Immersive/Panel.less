@@ -1,7 +1,3 @@
-.imm-panel {
-
-}
-
 @import "../../../core/Variables";
 
 /*
@@ -30,16 +26,53 @@
 
 .imm-panel {
   min-height: 100vh;
-  width: 0;
+  padding-bottom: 380px;
+  padding-top: 20px;
 
   .blocksWrapper {
-    position: absolute;
+    position: relative;
+    min-width: 250px;
+    max-width: 400px;
+    margin-left: 30px;
     pointer-events: all !important;
-    margin-top: 20px;
+  }
+
+  &.size-small .blocksWrapper {
+    width: 28%;
+    max-width: 300px;
+  }
+
+  &.size-medium .blocksWrapper {
+  width: 38%;
+  }
+
+  &.size-large .blocksWrapper {
+    width: 48%;
+    max-width: 600px;
   }
 
   .blocks {
     padding: 15px;
+    min-height: 100px;
+    overflow-y: auto;
+    a {color: @brand-info;};
+
+    .block {
+      margin-top: 15px;
+
+      &:nth-child(1) {
+        margin-top: 0;
+      }
+    }
+
+    .image {
+      padding: 0;
+
+      img {
+        max-width: 100%;
+        height: inherit !important;
+      }
+    }
 
     /* no size config yet */
     .block-media-wrapper,
@@ -55,15 +88,15 @@
     }
   }
 
-    .block-type-video .block-media {
-      position: absolute;
-      top: 0px;
-      left: 0px;
-      right: 0px;
-      bottom: 0px;
-      width: 100%;
-      height: 100%;
-    }
+  .block-type-video .block-media {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    width: 100%;
+    height: 100%;
+  }
 
   &.size-large {
     .blocks {
@@ -126,164 +159,19 @@
    */
 
   &.placement-right .blocksWrapper {
-    left: inherit;
-    right: 30px;
+    margin-left: auto;
+    margin-right: 30px;
   }
 
   &.placement-center .blocksWrapper {
-    left: 0;
-    right: 0;
     margin-left: auto;
     margin-right: auto;
   }
 }
 
-/*
- * Scroll full
- */
-
-.layout-scroll-full {
-  .foreground {
-    position: absolute;
-    bottom: 150px;
-
-    .imm-panel {
-      margin-left: 30px;
-
-      .blocksWrapper {
-        min-width: 250px;
-        max-width: 400px;
-      }
-
-      /*
-       * Size
-       */
-
-       &.size-small .blocksWrapper {
-         width: 28%;
-         max-width: 300px;
-       }
-
-       &.size-medium .blocksWrapper {
-        width: 38%;
-      }
-
-       &.size-large .blocksWrapper {
-        width: 48%;
-        max-width: 600px;
-      }
-
-      /*
-       * Placement
-       */
-
-      &.placement-right {
-        margin-right: 30px;
-        margin-left: auto;
-      }
-
-      &.placement-center {
-        margin-left: auto;
-        margin-right: auto;
-      }
-    }
-  }
-}
-
-/*
- * Scroll partial
- */
-
-.layout-scroll-partial {
-  .foreground {
-    position: fixed;
-    bottom: inherit;
-    top: 0;
-
-    .imm-panel {
-      position: absolute;
-      top: 0;
-      left: 30px;
-
-      opacity: 0;
-      visibility: hidden;
-
-      min-width: 250px;
-      max-width: 400px;
-
-      .blocksWrapper {
-        width: 100%;
-      }
-
-      /*
-       * Size
-       */
-
-       &.size-small {
-         width: 21%;
-         max-width: 300px;
-       }
-
-       &.size-medium {
-        width: 30%;
-      }
-
-       &.size-large {
-        width: 37%;
-        max-width: 600px;
-      }
-
-      /*
-       * Placement
-       */
-
-      &.placement-right {
-        right: 30px;
-        left: inherit;
-      }
-
-      /*
-       * scroll-partial centered behave like scroll-full
-       * can they all behae like that?
-       * TODO
-       */
-      &.placement-center {
-        left: 0 !important;
-        right: 0;
-        width: calc(~"100% - 250px");
-        min-width: inherit;
-        max-width: inherit;
-
-        .blocksWrapper {
-          width: inherit;
-          margin-left: auto;
-          margin-right: auto;
-          display: block;
-          position: relative;
-          min-width: 250px;
-          max-width: 400px;
-        }
-
-        &.size-small .blocksWrapper {
-          width: 28%;
-          max-width: 300px;
-        }
-
-        &.size-medium .blocksWrapper {
-         width: 38%;
-       }
-
-        &.size-large .blocksWrapper {
-         width: 48%;
-         max-width: 600px;
-       }
-      }
-    }
-  }
-
-  /* prevent conflict with previous section - panel can be over */
-  &:not(.active) .imm-panel {
-    display: none;
+.layout-scroll-partial .imm-panel {
+  .blocks {
+    opacity: 0;
   }
 }
 
@@ -293,26 +181,19 @@
 
 body.mobile-view .imm-panel {
   .blocksWrapper {
-    left: 0;
-    right: 0;
     margin-left: auto;
     margin-right: auto;
   }
-    .blocks {
-     padding: 5px;
- }
-}
-
-/*
- * Builder
- */
-
-.builder-mode .layout-scroll-partial .imm-panel {
-  &.placement-right {
-    margin-right: @builder-panel-width;
+  .blocks {
+    padding: 5px;
+  }
+  .block {
+    font-size: 14px;
+    line-height: 150%;
+    padding: 5px;
   }
 
-  &.placement-center {
-    left: -@builder-panel-width;
+  h2 {
+    font-size: 20px !important;
   }
 }

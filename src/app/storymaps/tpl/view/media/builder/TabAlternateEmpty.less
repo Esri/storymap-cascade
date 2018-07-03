@@ -5,8 +5,17 @@
   cursor: default;
   padding: 0 10px;
 
+  @media (max-width: @screen-lg) {
+    .alt-media-title {
+      font-size: 16px;
+    }
+  }
+
   .section-content {
     height: 100%;
+    width: 70%;
+    min-width: 400px;
+    margin: auto;
   }
 
   .warning-summary {
@@ -16,8 +25,11 @@
 
   // widths of summary and items. add to 94.
   .warning-summary {
+    position: relative;
     background: #f9f9f9;
-    width: 90%;
+    width: 50%;
+    min-width: 400px;
+    min-height: 175px;
   }
 
   // .issue-items {
@@ -40,7 +52,7 @@
     .warning-title {
       line-height: 1.1em;
       color: @Calcite_Orange_a150;
-      padding-bottom: 5px;
+      padding-bottom: 8px;
       width: 100%;
       font-size: 24px;
       margin: 0;
@@ -48,31 +60,31 @@
 
     .warning-description {
       line-height: 1.2em;
-      font-size: 12px;
+      font-size: 14px;
     }
 
-    @media (max-width: @screen-md) {
-      .title {
-        font-size: 20px;
+    @media (max-width: @screen-lg) {
+      .warning-title {
+        font-size: 16px;
       }
-      .description {
+      .warning-description {
         font-size: 12px;
       }
     }
 
     @media (max-width: ((@screen-md + @screen-sm) / 2)) {
-      .title {
-        font-size: 18px;
+      .warning-title {
+        font-size: 16px;
       }
-      .description {
+      .warning-description {
         font-size: 10px;
       }
     }
 
     .fix-btn {
-      display: block;
-      bottom: 0;
-      width: 100%;
+      position: absolute;
+      bottom: 10px;
+      width: 96%;
       left: 2%;
       z-index: 2;
     }

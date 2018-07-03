@@ -33,7 +33,34 @@ require([
     return;
   }
 
-  require(['storymaps/tpl/core/MainView'], function(MainView) {
+  require([
+    'storymaps/tpl/core/MainView',
+
+    //
+    // The section and media factory are accessed through window object as we can't import module dynamically with es6
+    //  and Controller that is es6 needs them
+    //
+    app.isInBuilder ? 'storymaps-react/tpl/view/section/FactoryBuilder' : 'storymaps-react/tpl/view/section/FactoryViewer',
+    app.isInBuilder ? 'storymaps/tpl/view/section/Immersive/PanelFactoryBuilder' : 'storymaps/tpl/view/section/Immersive/PanelFactoryViewer',
+    app.isInBuilder ? 'storymaps-react/tpl/view/media/FactoryBuilder' : 'storymaps-react/tpl/view/media/FactoryViewer',
+    app.isInBuilder ? 'storymaps-react/tpl/builder/Controller' : 'storymaps-react/tpl/core/Controller'
+  ],
+  function(
+    MainView,
+    SectionFactory,
+    ImmersivePanelFactory,
+    MediaFactory,
+    Controller
+  ) {
+
+    app.ui = {
+      SectionFactory: SectionFactory,
+      ImmersivePanelFactory: ImmersivePanelFactory,
+      MediaFactory: MediaFactory
+    };
+
+    app.Controller = Controller;
+
     var mainViewInstance = new MainView();
 
     if (app.isInBuilder) {

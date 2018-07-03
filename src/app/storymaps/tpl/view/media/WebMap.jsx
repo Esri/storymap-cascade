@@ -95,6 +95,7 @@ export default class WebMap extends Media {
         classes: classes.join(' '),
         options: options,
         caption: this._webmap.caption,
+        altText: this._webmap.altText,
         placeholder: i18n.viewer.media.captionPlaceholder,
         captionEditable: app.isInBuilder,
         labelExploreStart: i18n.viewer.media.exploreMap,
@@ -104,6 +105,7 @@ export default class WebMap extends Media {
     else {
       output += viewBackground({
         webmapId: this.id,
+        altText: this._webmap.altText,
         labelExploreStart: i18n.viewer.media.exploreMap,
         labelExploreStop: i18n.viewer.media.exploreStop
       });
@@ -398,13 +400,16 @@ export default class WebMap extends Media {
     if (this._transition == 'swipe-vertical' || this._transition == 'swipe-horizontal') {
       if (this._swipeLayersNodes && this._swipeLayersNodes.length) {
         // TODO: refactor to be common with Immersive???
-
-        let swipePos = app.display.windowHeight - this._lastScrollPosition;
-
+        const SWIPE_ACCELERATION_FACTOR = 1.3;
         const BUILDER_PANEL_HEIGHT = 125;
+        let swipeableHeight = app.display.windowHeight;
+
         if (app.isInBuilder) {
-          swipePos -= BUILDER_PANEL_HEIGHT;
+          swipeableHeight -= BUILDER_PANEL_HEIGHT;
         }
+
+        // swipe at a linear rate slightly higher than the scroll
+        let swipePos = swipeableHeight - (this._lastScrollPosition * SWIPE_ACCELERATION_FACTOR);
 
         /*
         if (! params.isActive) {

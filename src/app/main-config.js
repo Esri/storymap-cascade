@@ -120,6 +120,15 @@
           location: app.pathJSAPI4 + 'esri'
         },
         {
+          name: '@dojo',
+          location: app.pathJSAPI4 + '@dojo'
+        },
+        {
+          name: 'tslib',
+          location: app.pathJSAPI4 + 'tslib',
+          main: 'tslib'
+        },
+        {
           name: 'maquette',
           location: app.pathJSAPI4 + 'maquette',
           main: 'dist/maquette.umd'

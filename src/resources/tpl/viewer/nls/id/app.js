@@ -60,7 +60,7 @@ define({
     },
     "headerFromCommon": {
       "defaultTagline": "${STORY_MAP}",
-      "share": "Bagikan",
+      "share": "Bagikan atau cetak",
       "tooltipAutoplayDisabled": "Tidak tersedia pada mode pemutaran otomatis"
     },
     "shareFromCommon": {
@@ -83,6 +83,11 @@ define({
       "speedFast": "Cepat",
       "speedMedium": "Sedang",
       "speedSlow": "Lambat"
+    },
+    "bannerNotification": {
+      "learnMore": "Pelajari Lebih Lanjut",
+      "close": "Tutup",
+      "dontShowAgain": "Jangan tampilkan pesan ini lagi"
     }
   },
   "print": {
@@ -112,11 +117,6 @@ define({
       "websiteLabel": "Website:",
       "videoLabel": "Video:",
       "audioLabel": "Audio:"
-    },
-    "bannerNotification": {
-      "learnMore": "Pelajari Lebih Lanjut",
-      "close": "Tutup",
-      "dontShowAgain": "Jangan tampilkan pesan ini lagi"
     }
   }
 });

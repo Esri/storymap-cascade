@@ -115,7 +115,9 @@ define({
         "changeMedia": "Alterar imagem",
         "edit": "Editar",
         "editAside": "Abre num novo separador do navegador. Após guardar as suas edições, guarde e recarregue esta história para visualizar as alterações que efetuou.",
-        "remove": "Remover"
+        "remove": "Remover",
+        "altTextPlaceholder": "Introduza uma descrição deste suporte para leitores com deficiência visual...",
+        "altTextHelptip": "O texto alternativo é uma descrição dos suportes visuais utilizados por tecnologias auxiliares, como software de leitura de ecrã. É opcional, mas recomendada para corresponder às linhas orientadoras de acessibilidade web, tais como WCAG e a Secção 508."
       },
       "appearance": {
         "homeView": "Vista inicial",
@@ -248,6 +250,7 @@ define({
           }
         },
         "sidePanel": {
+          "thirdPartyTerms": "Ao utilizar um serviço de terceiros, concorda com os respetivos termos de serviço: ",
           "googlePhotos": {
             "placeholder": "Correio Eletrónico ou ID de ${Picasa}/${Google+}",
             "helpText": "Pode adicionar fotografias carregadas para ${Picasa} ou ${Google+} à sua história. ${helpLinkText} sobre a utilização de imagens armazenadas na sua conta ${Google} nas suas histórias.",
@@ -257,7 +260,7 @@ define({
           "unsplash": {
             "placeholder": "Pesquisar fottografias",
             "aboutText": "${Unsplash} é uma coleção curada de fotografias gratuitas, de alta qualidade.",
-            "copyrightText": "Todas as fotografias publicadas no ${Unsplash} encontram-se licenciadas através da Licença ${CC0}. Obtenha mais informações ${moreInfoLink}.",
+            "copyrightText": "Todas as fotografias se encontram licenciadas ao abrigo da Licença ${Unsplash} . Obtenha mais informações ${moreInfoLink}.",
             "moreInfoLink": "aqui"
           },
           "flickr": {
@@ -558,14 +561,30 @@ define({
     "httpsTransitionMessage": {
       "bannerMsg": "Mensagem Importante acerca de Segurança na Web e Story Maps",
       "s1h1": "A Esri está a melhorar a segurança dos Story Maps",
-      "s1p1": "Os seus Story Maps existem na web, e a comunidade da web está sempre a trabalhar para estabelecer e implementar melhor segurança. HTTPS, que fornece uma ligação segura para conteúdo transmitido através da Internet, está a emergir como modo habitual de aceder a conteúdo web. A maioria dos navegadores modernos exibe agora mensagens de aviso quando é utilizado HTTP ao invés de HTTPS. Devido a esta norma emergente, a partir da atualização de junho de 2018 ao ArcGIS Online, será necessário que os seus Story Maps utilizem HTTPS.",
-      "s1p2": "Em termos práticos, isto significa que um Story Map e todo o respetivo conteúdo (incluindo imagens, camadas, aplicações incorporadas e sites web) tem de ser acedido através de ligações que começam com HTTPS ao invés de HTTP. Isto garante uma experiência de maior qualidade para os seus leitores, já que a maioria dos navegadores web indicarão que as suas histórias são seguras.",
+      "s1p1": "Os seus Story Maps existem na web, e a comunidade da web está sempre a trabalhar para estabelecer e implementar melhor segurança. HTTPS, que fornece uma ligação segura para conteúdo transmitido através da Internet, está a emergir como modo habitual de aceder a conteúdo web. A maioria dos navegadores modernos exibe agora mensagens de aviso quando é utilizado HTTP ao invés de HTTPS. Devido a este padrão emergente, recomendamos vivamente que utilize ligações HTTPS para criar e partilhar Story Maps, e que apenas utilize URLs HTTPS ao incorporar conteúdo da web ou ao estabelecer ligações a imagens num Story Map.",
+      "s1p2": "Em termos práticos, isto significa que um Story Map e todo o respetivo conteúdo (incluindo imagens, camadas, aplicações incorporadas e sites web) deve ser acedido através de ligações que começam com HTTPS ao invés de HTTP. Isto garante uma experiência de maior qualidade para os seus leitores, já que a maioria dos navegadores web indicarão que as suas histórias são seguras.",
       "s2h1": "O que tenho de fazer?",
-      "s2p1": "A Esri está a trabalhar para que esta transição seja simples para autores e leitores de Story Maps. Encontram-se agora disponíveis ferramentas, nos builders de Story Maps e em As Minhas Histórias, que o ajudam a encontrar conteúdo inseguro (HTTP) nas suas histórias e oferecem recomendações sobre como lidar com isso. Por favor, verifique se as suas histórias têm conteúdo inseguro e atualize para HTTPS antes de junho de 2018.",
+      "s2p1": "A Esri está a trabalhar para que esta transição seja simples para autores e leitores de Story Maps. Encontram-se agora disponíveis ferramentas, nos builders de Story Maps e em As Minhas Histórias, que o ajudam a encontrar conteúdo inseguro (HTTP) nas suas histórias e oferecem recomendações sobre como lidar com isso. Por favor, verifique se as suas histórias têm conteúdo inseguro e atualize para HTTPS assim que possível.",
       "action1": "Fechar",
       "action2": "Verificar as minhas histórias agora",
       "action3": "Obter mais informações",
       "floatingNotification": "Esta história contém conteúdo inseguro (HTTP). Por favor, reveja e corrija estes problemas."
+    },
+    "embedBar": {
+      "share": "Partilhar",
+      "fullScreen": "Ecrã inteiro",
+      "exitFullScreen": "Sair do modo de ecrã inteiro",
+      "enlarge": "Aumentar",
+      "newTab": "Abrir num novo separador",
+      "tagline": "Um Story Map"
+    },
+    "june2018SurveyMessage": {
+      "bannerMsg": "Podemos fazer-lhe uma pergunta? Irá ajudar definir o futuro dos Story Maps.",
+      "s1h1": "Partilhe as suas ideias, defina o futuro",
+      "s1p1": "A sua opinião é a nossa principal fonte de feedback, e aprender mais sobre si irá ajudar-nos a melhorar o Story Maps. Ficaremos agradecidos se puder participar neste questionário de três minutos.",
+      "s2p1": "Como sempre, obrigado por utilizar Esri Story Maps!",
+      "action1": "Fechar",
+      "action2": "Preencher o questionário"
     }
   }
 });
