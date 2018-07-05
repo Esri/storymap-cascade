@@ -1,0 +1,47 @@
+{
+  "name": "vimeo-player-js",
+  "homepage": "https://github.com/vimeo/player.js",
+  "authors": [
+    "Brad Dougherty <brad@vimeo.com> (https://brad.is)"
+  ],
+  "description": "Interact with and control an embedded Vimeo Player.",
+  "main": "dist/player.min.js",
+  "moduleType": [
+    "amd",
+    "globals",
+    "node"
+  ],
+  "keywords": [
+    "vimeo",
+    "player",
+    "api",
+    "iframe",
+    "embed",
+    "video",
+    "javascript",
+    "postMessage"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    ".nyc_output",
+    ".github",
+    "coverage",
+    "docs",
+    "src",
+    "node_modules",
+    "test",
+    "codecov.yml",
+    "rollup.config.js"
+  ],
+  "version": "2.6.2",
+  "_release": "2.6.2",
+  "_resolution": {
+    "type": "version",
+    "tag": "v2.6.2",
+    "commit": "6a20feb3769f45196dcaef614ec2476e6876f8de"
+  },
+  "_source": "https://github.com/vimeo/player.js.git",
+  "_target": "^2.6.1",
+  "_originalSource": "vimeo-player-js"
+}
