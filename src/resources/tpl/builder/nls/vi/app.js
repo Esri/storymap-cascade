@@ -172,7 +172,7 @@ define({
           "error": "Không có mạng truyền thông ủy quyền",
           "imageOnly": "Trong phần câu chuyện này, bạn có thể thêm hình ảnh.",
           "imageAndVideo": "Trong phần câu chuyện này, bạn có thể thêm hình ảnh hoặc video.",
-          "imageVideoWebpage": "Trong phần câu chuyện này, bạn có thể thêm hình ảnh, video hoặc trang web."
+          "imageVideoWebpage": "Trong phần câu chuyện này, bạn có thể thêm âm thanh, hình ảnh, video hoặc trang web."
         }
       },
       "browsePanel": {
@@ -300,16 +300,20 @@ define({
             "createContent": {
               "createNewMap": "Tạo Bản đồ mới",
               "or": "HOẶC",
-              "dragAndDrop": "Thả (các) hình ảnh ở đây",
-              "uploadImage": "Duyệt xem (các) hình ảnh",
-              "agolInfo": "Ảnh sẽ được lưu trong tài khoản ArcGIS và chỉ có thể truy cập bên trong câu chuyện của bạn.",
-              "saveBeforeUpload": "Sau khi bạn đã lưu câu chuyện này, bạn có thể tải hình ảnh lên ArcGIS ở đây.",
-              "fileTypesImage": "Các loại tập tin được hỗ trợ: .png, .jpeg, .jpg, .gif, .bmp"
+              "dragAndDropImage": "Thả hình ảnh",
+              "dragAndDropImageAudio": "Thả hình ảnh hoặc âm thanh",
+              "uploadButton": "Duyệt",
+              "agolInfo": "Sẽ chỉ có thể truy cập hình ảnh và âm thanh được tải lên trong câu chuyện này.",
+              "saveBeforeUpload": "Sau khi lưu câu chuyện này, bạn có thể tải hình ảnh và âm thanh lên ArcGIS ở đây.",
+              "fileExtsImage": "Các loại được hỗ trợ: png, jpg, gif, bmp.",
+              "fileExtsImageAudio": "Các loại được hỗ trợ: png, jpg, gif, bmp, mp3.",
+              "maxSize": "Tối 10 MB mỗi tệp."
             },
             "filterAndSort": {
               "webmap": "Bản đồ Web",
               "webscene": "Web Scene",
               "image": "Hình ảnh",
+              "audio": "Âm thanh",
               "date": "Ngày",
               "sortByDate": "Sắp xếp theo ngày",
               "title": "Tiêu đề",
@@ -389,9 +393,9 @@ define({
       "placeholder": "Nhập một tiêu đề..."
     },
     "media": {
-      "imageUpload": "Hình ảnh đang được tải lên...",
-      "imageUploadSuccess": "Hình ảnh được tải lên thành công",
-      "imageUploadFail": "Không thể tải hình ảnh lên"
+      "mediaUpload": "Phương tiện đang được tải lên...",
+      "mediaUploadSuccess": "Tải phương tiện lên thành công",
+      "mediaUploadFail": "Không thể tải phương tiện lên"
     },
     "controller": {
       "sectionOrganize": "Bạn đã tổ chức phần này",
@@ -412,6 +416,7 @@ define({
     "mediaErrors": {
       "mediaTypes": {
         "image": "hình ảnh",
+        "audio": "audio",
         "webmap": "bản đồ",
         "webscene": "scene",
         "video": "video",
@@ -569,22 +574,6 @@ define({
       "action2": "Kiểm tra câu chuyện của tôi ngay",
       "action3": "Tìm hiểu thêm",
       "floatingNotification": "Câu chuyện này có chứa nội dung (HTTP) không bảo mật. Vui lòng xem xét và xử lý vấn đề này."
-    },
-    "embedBar": {
-      "share": "Chia sẻ",
-      "fullScreen": "Toàn màn hình",
-      "exitFullScreen": "Thoát chế độ toàn màn hình",
-      "enlarge": "Phóng to",
-      "newTab": "Mở trong tab mới",
-      "tagline": "Story Map"
-    },
-    "june2018SurveyMessage": {
-      "bannerMsg": "Chúng tôi hỏi bạn vài câu hỏi có được không? Điều này sẽ giúp định hình tương lai của Story Map.",
-      "s1h1": "Chia sẻ cảm nghĩ của bản thân để định hình tương lai",
-      "s1p1": "Dữ liệu đầu vào từ bạn là nguồn phản hồi duy nhất có tính chất quan trọng với chúng tôi và việc tìm hiểu thêm về bạn sẽ giúp chúng tôi cải thiện hơn ứng dụng Story Map. Chúng tôi vô cùng biết ơn nếu bạn có thể dành ba phút để thực hiện khảo sát này.",
-      "s2p1": "Như thường lệ, xin chân thành cảm ơn bạn đã sử dụng Esri Story Maps!",
-      "action1": "Đóng",
-      "action2": "Thực hiện khảo sát"
     }
   }
 });

@@ -33,7 +33,7 @@ define({
       "mapLoadingFail": "Tapahtui virhe, eikä kartta latautunut oikein.",
       "signOut": "Kirjaudu ulos",
       "builderSupportFirefox": "Story Map Cascade -luontitoiminto tukee nyt Firefoxia.<br><br>Cascade-tarinoiden luonnin tuki Firefoxissa on nyt beeta-vaiheessa. Kokeile luontitoimintoa ja kerro mahdollisista ongelmista ${ESRI-SUPPORT} tai ${ESRI-COMMUNITY}.",
-      "builderSupportOther": "Cascade-tarinoita voi tarkastella missä tahansa verkkoselaimessa, mutta Story Map Cascade -luontitoimintoa tuetaan vain ${CHROME}-, ${SAFARI} ja ${FIREFOX}-selaimissa (beeta).<br><br>Jos haluat, että Cascade-luontitoiminto tukee eri selainta, ota yhteyttä ${ESRI-SUPPORT} tai ${BROWSER-SUPPORT-VOTE}.",
+      "builderSupportOther": "Cascade-tarinoita voi tarkastella missä tahansa verkkoselaimessa, mutta Story Map Cascade -luontitoimintoa tuetaan vain ${CHROME}-, ${SAFARI}- ja ${FIREFOX}-selaimissa.<br><br>Jos haluat, että Cascade-luontitoiminto tukee eri selainta, ota yhteyttä: ${ESRI-SUPPORT} tai ${BROWSER-SUPPORT-VOTE}.",
       "builderSupportIpad": "Story Map Cascade -luontitoimintoa ei tueta iPadissa. Luomasi ja jakamasi Cascade-tarinat toimivat kyllä iPadissa.",
       "launchBuilder": "Käynnistä Cascade-luontitoiminto",
       "notAgain": "Älä näytä tätä uudelleen",
@@ -88,6 +88,16 @@ define({
       "learnMore": "Lisätietoja",
       "close": "Sulje",
       "dontShowAgain": "Älä näytä tätä viestiä uudelleen"
+    },
+    "embedBar": {
+      "share": "Jaa",
+      "fullScreen": "Koko näyttö",
+      "exitFullScreen": "Poistu koko näytön tilasta",
+      "enlarge": "Laajenna",
+      "newTab": "Avaa uudessa välilehdessä",
+      "tagline": "Tarinakartta",
+      "twitter": "Jaa Twitterissä",
+      "facebook": "Jaa Facebookissa"
     }
   },
   "print": {

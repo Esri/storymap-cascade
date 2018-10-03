@@ -104,9 +104,10 @@ class AuthMediaHeader extends React.Component {
     }
 
     // some shortcuts
-    let IMAGE = constants.contentType.IMAGE;
-    let VIDEO = constants.contentType.VIDEO;
-    let WEBPAGE = constants.contentType.WEBPAGE;
+    const IMAGE = constants.contentType.IMAGE;
+    const VIDEO = constants.contentType.VIDEO;
+    const WEBPAGE = constants.contentType.WEBPAGE;
+    const AUDIO = constants.contentType.AUDIO;
 
     switch (authMedia.length) {
       // the untranslated strings here are fatal errors, where the authMedia array doesn't
@@ -123,7 +124,7 @@ class AuthMediaHeader extends React.Component {
         return this.getErrorSpan('two authorized media, but it wasnt image/video!');
       case 3:
       case 4:
-        if (authMedia.indexOf(IMAGE) >= 0 && authMedia.indexOf(VIDEO) >= 0 && authMedia.indexOf(WEBPAGE) >= 0) {
+        if (authMedia.indexOf(IMAGE) >= 0 && authMedia.indexOf(VIDEO) >= 0 && authMedia.indexOf(WEBPAGE) >= 0 && authMedia.indexOf(AUDIO) >= 0) {
           return this.getInfoSpan(text.contentType.imageVideoWebpage);
         }
         return this.getErrorSpan('three authorized media, but it wasnt image/video/webpage!');

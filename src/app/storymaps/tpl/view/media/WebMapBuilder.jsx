@@ -113,6 +113,16 @@ export default class WebMapBuilder extends WebMap {
     return mapItem.title || mapItem.name;
   }
 
+  maybeCloseConfig() {
+    if (this._node.hasClass('builder-config-open')) {
+      this._builderConfigPanel._onToggle();
+      if (this._configTabWebMap) {
+        this._configTabWebMap.onConfigClose();
+      }
+    }
+
+  }
+
   //
   // Private
   //

@@ -74,7 +74,7 @@ export default class PremiumManager {
 
   _resolvePremiumContent(url) {
     let isSubscription = this._appProxySettings._isPremium(url);
-    let isPremium = this._appProxySettings._consumesCredits(url);
+    let isPremium = this._appProxySettings._isSubscriber(url);
 
     // premium content that consumes credits will return true for both of the above, but we want to differentiate the two.
     // if it is both, flag it as premium only and not subscription.

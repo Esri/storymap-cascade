@@ -139,7 +139,7 @@ export default class ImageGalleryBuilder extends ImageGallery {
 
   _onUploadStart(index) {
     this._uploadNotification = new CancelNotification({
-      label: i18n.builder.media.imageUpload
+      label: i18n.builder.media.mediaUpload
     });
 
     this._uploadNotification.display().then(
@@ -157,7 +157,7 @@ export default class ImageGalleryBuilder extends ImageGallery {
     if (this._uploadNotification) {
       this._uploadNotification.update({
         type: 'success',
-        label: i18n.builder.media.imageUploadSuccess
+        label: i18n.builder.media.mediaUploadSuccess
       });
     }
 
@@ -169,7 +169,7 @@ export default class ImageGalleryBuilder extends ImageGallery {
     if (this._uploadNotification) {
       this._uploadNotification.update({
         type: 'error',
-        label: i18n.builder.media.imageUploadFail
+        label: i18n.builder.media.mediaUploadFail
       });
     }
 

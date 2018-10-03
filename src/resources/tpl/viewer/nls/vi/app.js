@@ -33,7 +33,7 @@ define({
       "mapLoadingFail": "Đã xảy ra lỗi, bản đồ không tải đúng.",
       "signOut": "Đăng Xuất",
       "builderSupportFirefox": "Bộ thiết lập Story Map Cascade hiện đang hỗ trợ trình duyệt Firefox!<br><br>Chức năng hỗ trợ tạo câu chuyện Cascade trong Firefox hiện đang ở bản beta. Xin hãy dùng thử và thông báo mọi vấn đề nếu có với ${ESRI-SUPPORT} hoặc ${ESRI-COMMUNITY}.",
-      "builderSupportOther": "Có thể xem các câu chuyện Cascade trên bất kỳ trình duyệt web hiện đại nào, nhưng bộ thiết lập Story Map Cascade thì chỉ được hỗ trợ trên ${CHROME}, ${SAFARI}, và ${FIREFOX} (beta).<br><br>Nếu bạn cần bộ thiết lập Cascade để hỗ trợ một số trình duyệt khác, vui lòng liên lạc với ${ESRI-SUPPORT} hoặc ${BROWSER-SUPPORT-VOTE}.",
+      "builderSupportOther": "Các câu chuyện Cascade có thể xem được ở bất kỳ trình duyệt web hiện đại nào, nhưng bộ thiết lập Story Map Cascade chỉ được hỗ trợ ở ${CHROME}, ${SAFARI} và ${FIREFOX}.<br><br>Nếu bạn cần bộ thiết lập Cascade hỗ trợ một trình duyệt khác, xin liên hệ với ${ESRI-SUPPORT} hoặc ${BROWSER-SUPPORT-VOTE}.",
       "builderSupportIpad": "Bộ thiết lập Story Map Cascade không được hỗ trợ trên iPad. Các câu chuyện Cascade bạn đã tạo ra và chia sẻ sẽ hoạt động được trên iPad.",
       "launchBuilder": "Khởi chạy Bộ thiết lập Cascade",
       "notAgain": "Không hiện lại thông báo này",
@@ -88,6 +88,16 @@ define({
       "learnMore": "Tìm hiểu Thêm",
       "close": "Đóng",
       "dontShowAgain": "Không hiện lại thông báo này"
+    },
+    "embedBar": {
+      "share": "Chia sẻ",
+      "fullScreen": "Toàn màn hình",
+      "exitFullScreen": "Thoát chế độ toàn màn hình",
+      "enlarge": "Phóng to",
+      "newTab": "Mở trong tab mới",
+      "tagline": "Story Map",
+      "twitter": "Chia sẻ trên Twitter",
+      "facebook": "Chia sẻ trên Facebook"
     }
   },
   "print": {

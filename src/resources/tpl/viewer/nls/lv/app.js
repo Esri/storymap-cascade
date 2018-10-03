@@ -33,7 +33,7 @@ define({
       "mapLoadingFail": "Radās kļūda — karte netika ielādēta pareizi.",
       "signOut": "Izrakstīties",
       "builderSupportFirefox": "Kartes stāsta kaskādes veidotājs tagad atbalsta Firefox!<br><br>Kaskādes stāstu izveide pārlūkā Firefox pašlaik ir pieejama beta versijā. Izmēģiniet to un ziņojiet par problēmām ${ESRI-SUPPORT} vai ${ESRI-COMMUNITY}.",
-      "builderSupportOther": "Kaskādes stāstus var skatīt jebkurā mūsdienīgā pārlūkā, bet Kartes stāsta kaskādes veidotāju atbalsta tikai ${CHROME}, ${SAFARI} un ${FIREFOX} (beta versijā).<br><br>Ja nepieciešams, lai Kaskādes veidotājs tiktu atbalstīts citā pārlūkā, sazinieties ar ${ESRI-SUPPORT} vai ${BROWSER-SUPPORT-VOTE}.",
+      "builderSupportOther": "Cascade stāstus var skatīt jebkurā modernā tīmekļa pārlūkprogrammā, bet Story Map Cascade veidotāju atbalsta tikai ${CHROME}, ${SAFARI} un ${FIREFOX}.<br><br>Ja jums ir nepieciešams Cascade veidotājs atbalstam citā pārlūkprogrammā, sazinieties ar ${ESRI-SUPPORT} vai ${BROWSER-SUPPORT-VOTE}.",
       "builderSupportIpad": "Kartes stāsta kaskādes veidotāju neatbalsta iPad, bet iPad ierīcēs darbosies stāsti, kurus izveidojat un kopīgojat.",
       "launchBuilder": "Palaist Kaskādes veidotāju",
       "notAgain": "Vairs nerādīt šo saturu",
@@ -88,6 +88,16 @@ define({
       "learnMore": "Uzzināt vairāk",
       "close": "Aizvērt",
       "dontShowAgain": "Nerādīt šo ziņojumu vēlreiz"
+    },
+    "embedBar": {
+      "share": "Kopīgošana",
+      "fullScreen": "Pilnekrāna režīms",
+      "exitFullScreen": "Iziet no pilnekrāna režīma",
+      "enlarge": "Palielināt",
+      "newTab": "Atvēriet jaunā cilnē",
+      "tagline": "Kartes stāsts",
+      "twitter": "Kopīgot Twitter",
+      "facebook": "Kopīgot Facebook"
     }
   },
   "print": {

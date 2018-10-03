@@ -33,7 +33,7 @@ define({
       "mapLoadingFail": "Algo deu errado, o mapa não carregou corretamente.",
       "signOut": "Sair",
       "builderSupportFirefox": "O construtor de Cascata do Mapa Histórico agora suporta Firefox!<br><br>O suporte para criação de histórias de Cascata no Firefox está atualmente em beta. Teste e reporte quaisquer problemas para ${ESRI-SUPPORT} ou ${ESRI-COMMUNITY}.",
-      "builderSupportOther": "As histórias em cascata podem ser visualizadas em qualquer navegador da web moderno, mas o construtor de Cascata de Mapa Histórico é suportado somente no ${CHROME}, ${SAFARI}, e ${FIREFOX} (beta).<br><br>Se você precisar do construtor de Cascata para suportar um navegador diferente, entre em contato com ${ESRI-SUPPORT} ou ${BROWSER-SUPPORT-VOTE}.",
+      "builderSupportOther": "As histórias em cascata podem ser visualizadas em qualquer navegador da web moderno, mas o construtor de Cascata do Mapa Histórico é suportado somente no ${CHROME}, ${SAFARI}, e ${FIREFOX}.<br><br>Se você precisar do construtor de Cascata para suportar um navegador diferente, entre em conato com ${ESRI-SUPPORT} ou ${BROWSER-SUPPORT-VOTE}.",
       "builderSupportIpad": "O construtor de Cascata do Mapa Histórico não é suportado no iPad. As histórias em cascata que você cria e compartilha funcionam no iPad.",
       "launchBuilder": "Inicie o construtor de Cascata",
       "notAgain": "Não mostrar isto novamente",
@@ -88,6 +88,16 @@ define({
       "learnMore": "Obtenha Mais Informações",
       "close": "Fechar",
       "dontShowAgain": "Não mostrar esta mensagem novamente"
+    },
+    "embedBar": {
+      "share": "Compartilhar",
+      "fullScreen": "Tela Cheia",
+      "exitFullScreen": "Sair da tela cheia",
+      "enlarge": "Aumentar",
+      "newTab": "Abrir em uma nova guia",
+      "tagline": "Um Mapa Histórico",
+      "twitter": "Compartilhar no Twitter",
+      "facebook": "Compartilhar no Facebook"
     }
   },
   "print": {

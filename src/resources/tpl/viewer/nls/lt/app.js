@@ -33,7 +33,7 @@ define({
       "mapLoadingFail": "Įvyko klaida ir žemėlapio nepavyko tinkamai įkelti.",
       "signOut": "Atsijungti",
       "builderSupportFirefox": "Besitęsiančių žemėlapių pasakojimai nuo šiol palaikomi Firefox!<br><br>Šiuo metu besitęsiančių žemėlapių pasakojimų kūrimas Firefox palaikomas tik beta versijoje. Išbandykite ir apie problemas praneškite ${ESRI-SUPPORT} arba ${ESRI-COMMUNITY}.",
-      "builderSupportOther": "Besitęsiančių žemėlapių pasakojimus galima peržiūrėti bet kurioje šiuolaikinėje interneto naršyklėje, tačiau jų kūrimo priemonė palaikoma tik ${CHROME}, ${SAFARI} ir ${FIREFOX} (beta versija).<br><br>Jei norite besitęsiančių žemėlapių pasakojimų kūrimo priemonę naudoti kitoje naršyklėje, kreipkitės į ${ESRI-SUPPORT} arba ${BROWSER-SUPPORT-VOTE}.",
+      "builderSupportOther": "Besitęsiančius pasakojimus galima peržiūrėti naudojant bet kurią šiuolaikinę naršyklę, tačiau Besitęsiančių žemėlapių pasakojimų kūrimo priemonę palaiko tik ${CHROME}, ${SAFARI} ir ${FIREFOX}.<br><br>Jei norite, kad Besitęsiančių pasakojimų kūrimo priemonę palaikytų kita naršyklė, kreipkitės į ${ESRI-SUPPORT} arba ${BROWSER-SUPPORT-VOTE}.",
       "builderSupportIpad": "Besitęsiančių žemėlapių pasakojimų kūrimo priemonė nepalaikoma naudojant iPad. Tačiau jūsų sukurtos ir bendrinamos aplikacijos šiuose įrenginiuose veiks.",
       "launchBuilder": "Paleiskite besitęsiančių žemėlapių pasakojimų kūrimo priemonę",
       "notAgain": "Daugiau nerodyti",
@@ -88,6 +88,16 @@ define({
       "learnMore": "Sužinokite daugiau",
       "close": "Uždaryti",
       "dontShowAgain": "Daugiau nerodyti šio pranešimo"
+    },
+    "embedBar": {
+      "share": "Bendrinti",
+      "fullScreen": "Visas ekranas",
+      "exitFullScreen": "Išjungti viso ekrano rodymo režimą",
+      "enlarge": "Išplėsti",
+      "newTab": "Atidaryti naujame lange",
+      "tagline": "Žemėlapio pasakojimas",
+      "twitter": "Bendrinti Twitter",
+      "facebook": "Bendrinti Facebook"
     }
   },
   "print": {

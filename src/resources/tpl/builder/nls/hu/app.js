@@ -172,7 +172,7 @@ define({
           "error": "Nincs engedélyezett média",
           "imageOnly": "A történet ezen részében vehet fel képet.",
           "imageAndVideo": "A történet ezen részében vehet fel képet vagy videót.",
-          "imageVideoWebpage": "A történet ezen részében vehet fel képet, videót vagy weboldalt."
+          "imageVideoWebpage": "A történet ezen részében vehet fel hangot, képet, videót vagy weboldalt."
         }
       },
       "browsePanel": {
@@ -300,16 +300,20 @@ define({
             "createContent": {
               "createNewMap": "Új térkép létrehozása",
               "or": "VAGY",
-              "dragAndDrop": "Húzzon ide képe(ke)t",
-              "uploadImage": "Kép(ek) böngészése)",
-              "agolInfo": "A képek az ArcGIS-fiókjában lesznek tárolva, és csak a történetében lesznek elérhetők.",
-              "saveBeforeUpload": "Miután mentette a történetet, itt feltöltheti a képeket az ArcGIS webhelyre.",
-              "fileTypesImage": "Támogatott fájltípusok: .png, .jpeg, .jpg, .gif, .bmp"
+              "dragAndDropImage": "Képek áthelyezése",
+              "dragAndDropImageAudio": "Képek vagy hang áthelyezése",
+              "uploadButton": "Tallózás",
+              "agolInfo": "A feltöltött kép vagy hang kizárólag e történeten belül lesz hozzáférhető.",
+              "saveBeforeUpload": "Miután mentette a történetet, itt töltheti fel a képeket és a nagot az ArcGIS rendszerébe.",
+              "fileExtsImage": "Támogatott típusok: PNG, JPG, GIF és BMP.",
+              "fileExtsImageAudio": "Támogatott típusok: PNG, JPG, GIF, BMP és MP3.",
+              "maxSize": "Legfeljebb 10 MB fájlonként."
             },
             "filterAndSort": {
               "webmap": "Webtérkép",
               "webscene": "Web 3D térkép",
               "image": "Kép",
+              "audio": "Hang",
               "date": "Dátum",
               "sortByDate": "Rendezés dátum szerint",
               "title": "Cím",
@@ -389,9 +393,9 @@ define({
       "placeholder": "Adjon meg egy címet..."
     },
     "media": {
-      "imageUpload": "A kép feltöltése folyamatban van...",
-      "imageUploadSuccess": "A kép feltöltése sikerült",
-      "imageUploadFail": "Nem sikerült a kép feltöltése"
+      "mediaUpload": "A média feltöltése folyamatban van…",
+      "mediaUploadSuccess": "A média feltöltése sikerült",
+      "mediaUploadFail": "Nem sikerült a média feltöltése"
     },
     "controller": {
       "sectionOrganize": "Rendezte a szekciókat",
@@ -412,6 +416,7 @@ define({
     "mediaErrors": {
       "mediaTypes": {
         "image": "kép",
+        "audio": "hang",
         "webmap": "térkép",
         "webscene": "3D térkép",
         "video": "videó",
@@ -569,22 +574,6 @@ define({
       "action2": "Saját történetek megtekintése most",
       "action3": "További információk",
       "floatingNotification": "Ez a történet nem biztonságos (HTTP) tartalmat tartalmaz. Kérjük, ellenőrizze és javítsa ki a problámákat."
-    },
-    "embedBar": {
-      "share": "Megosztás",
-      "fullScreen": "Teljes képernyő",
-      "exitFullScreen": "Kilépés a teljes képernyőből",
-      "enlarge": "Nagyítás",
-      "newTab": "Megnyitás új fülön",
-      "tagline": "Egy story map"
-    },
-    "june2018SurveyMessage": {
-      "bannerMsg": "Lehet egy kérdésünk? A segítségünkre lesz a Story Map-ek továbbfejlesztésében.",
-      "s1h1": "Ossza meg a gondolatait, és járuljon hozzá a fejlődéshez",
-      "s1p1": "Az Öntől érkező megjegyzések a legfontosabb visszajelzési forrásunkat adják, és minél többet tudunk Önről, annál hatékonyabban fejleszthetjük a story map-eket. Fogadja hálás köszönetünket, ha részt vesz ebben a háromperces felmérésben!",
-      "s2p1": "Köszönjük, hogy az Esri story mapeket választotta!",
-      "action1": "Bezárás",
-      "action2": "A felmérés indítása"
     }
   }
 });

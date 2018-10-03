@@ -1,6 +1,9 @@
+@import '../../core/Variables';
+
 .block.block-audio .block-media {
   min-height: 100px;
-  width: 60%;
+  min-width: 300px; /* chrome audio player 242px min */
+  max-width: 600px;
 
   .audio {
     height: auto;
@@ -12,6 +15,10 @@
   audio {
     width: 67%;
     margin-top: 25px;
+
+    @media (max-width: @screen-md) {
+      width: 80%;
+    }
   }
 
   .media-cfg-invite .builder-invite-background {
@@ -20,7 +27,9 @@
 
 }
 
-.block.block-audio.error .block-media {
+/* need lots of selectors here to override a different
+ * error block styling */
+.builder-mode .block.block-audio.error .block-media {
   .loading-error {
     top: 5px;
     z-index: 1;

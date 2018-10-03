@@ -33,7 +33,7 @@ define({
       "mapLoadingFail": "Ceva nu a mers bine şi harta nu a fost încărcată corect.",
       "signOut": "Ieşire",
       "builderSupportFirefox": "Aplicaţia de creare Story Map Cascade suportă acum Firefox!<br><br>Suportul pentru autorizarea Poveștilor cascadă în Firefox este oferit în prezent în beta. Vă rugăm să încercaţi şi să raportați orice problemă la ${ESRI-SUPPORT} sau ${ESRI-COMMUNITY}.",
-      "builderSupportOther": "Poveştile cascadă pot fi vizualizate în orice browser modern, dar aplicaţia de creare Story Map Cascade este suportată doar în ${SAFARI} și ${FIREFOX} (beta).<br><br>Dacă aveţi nevoie ca aplicaţia de creare cascadă să suporte şi alt browser, vă rugăm să contactaţi ${ESRI-SUPPORT} sau ${BROWSER-SUPPORT-VOTE}.",
+      "builderSupportOther": "Poveștile cascadă pot fi vizualizate în orice browser web modern, dar aplicația de creare Story Map Cascade este acceptată doar în ${CHROME}, ${SAFARI} și ${FIREFOX}.<br><br>Dacă aveți nevoie ca aplicația de creare cascadă să accepte un alt browser, contactați ${ESRI-SUPPORT} sau ${BROWSER-SUPPORT-VOTE}.",
       "builderSupportIpad": "Aplicaţia de creare Story Map Cascade nu este suportată pe iPad. Poveştile cascadă pe care le creaţi şi partajaţi vor funcţiona pe iPad.",
       "launchBuilder": "Lansare aplicaţie de creare Cascade",
       "notAgain": "Nu se mai afişează aceasta",
@@ -88,6 +88,16 @@ define({
       "learnMore": "Aflaţi mai multe",
       "close": "Închidere",
       "dontShowAgain": "Nu afişa acest mesaj din nou"
+    },
+    "embedBar": {
+      "share": "Partajare",
+      "fullScreen": "Pe tot ecranul",
+      "exitFullScreen": "Părăsiți modul pe tot ecranul",
+      "enlarge": "Mărire",
+      "newTab": "Deschideți într-o filă nouă",
+      "tagline": "O hartă informativă",
+      "twitter": "Partajare pe Twitter",
+      "facebook": "Partajare pe Facebook"
     }
   },
   "print": {

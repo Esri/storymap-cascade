@@ -33,7 +33,7 @@ define({
       "mapLoadingFail": "משהו השתבש, המפה לא נטענה באופן תקין.",
       "signOut": "יציאה",
       "builderSupportFirefox": "אשף הבנייה של 'מפל מפת סיפור' תומך כעת ב-Firefox!<br><br>התמיכה בכתיבת סיפורי מפל ב-Firefox נמצאת כעת בגרסת בתא. נסה אותה ודווח על כל בעיה ל-${ESRI-SUPPORT} או ל-${ESRI-COMMUNITY}.",
-      "builderSupportOther": "ניתן להציג סיפורי מפל בכל דפדפן אינטרנט מודרני. עם זאת, אשף הבנייה של 'מפל מפת סיפור' נתמך רק ב-${CHROME}, ‏${SAFARI} ו-${FIREFOX}.<br><br> אם אתה צריך שאשף הבנייה של 'מפל' יתמוך בדפדפן אחר, צור קשר עם ${ESRI-SUPPORT} או ${BROWSER-SUPPORT-VOTE}.",
+      "builderSupportOther": "ניתן להציג סיפורי מפל בכל דפדפן אינטרנט מודרני, עם זאת אשף הבנייה של 'מפל מפת סיפור' נתמך ב-‎${CHROME}‎, ב-‎${SAFARI}‎ וב-‎${FIREFOX}‎ בלבד.<br><br>אתה אתה צריך שאשף הבנייה של 'מפל' יתמוך בדפדפן אחר, פנה אל ‎${ESRI-SUPPORT}‎ או ‎${BROWSER-SUPPORT-VOTE}‎.",
       "builderSupportIpad": "אשף הבנייה של מפל מפת סיפור אינו נתמך ב-iPad. סיפורי מפל שתיצור ותשתף יפעלו ב-iPad.",
       "launchBuilder": "הפעל את אשף הבנייה של 'מפל'",
       "notAgain": "אל תציג הודעה זו שוב",
@@ -88,6 +88,16 @@ define({
       "learnMore": "לימוד נוסף",
       "close": "סגור",
       "dontShowAgain": "אל תציג הודעה זו שוב"
+    },
+    "embedBar": {
+      "share": "שיתוף",
+      "fullScreen": "מסך מלא",
+      "exitFullScreen": "צא ממסך מלא",
+      "enlarge": "הגדל",
+      "newTab": "פתח בכרטיסייה חדשה",
+      "tagline": "מפת סיפור",
+      "twitter": "שתף ב-Twitter",
+      "facebook": "שתף ב-Facebook"
     }
   },
   "print": {

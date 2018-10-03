@@ -45,7 +45,7 @@ const handleGifFile = function(file, isSingle) {
       // so just go for it -- upload whatever);
 
       // we pass the dimensions back to the requesting function.
-      resolveWithData({file, img, dataUrl: isSingle ? null : constants.blankBackground}, resolve);
+      resolveWithData({file, img, dataUrl: isSingle ? null : constants.fileSettings.blankBackground}, resolve);
 
     }).catch(reject); // pass createNewImage rejection along.
 
@@ -91,7 +91,7 @@ const resolveWithData = function(options, resolve) {
 };
 
 const validateFileSize = function(fileOrBlob) {
-  return fileOrBlob.size <= constants.photoSettings.maxFileSize;
+  return fileOrBlob.size <= constants.fileSettings.maxFileSize;
 };
 
 const checkIdealFileSize = function(file) {

@@ -6,6 +6,8 @@ import BuilderConfig from './builder/Panel';
 import BuilderConfigTabManageMedia from './builder/TabManageMedia';
 import CommonHelper from 'storymaps/tpl/utils/CommonHelper';
 
+import CancelNotification from '../../builder/notification/Cancel';
+
 import lang from 'dojo/_base/lang';
 import topic from 'dojo/topic';
 
@@ -83,6 +85,10 @@ export default class AudioBuilder extends Audio {
   }
 
   serialize(includeInstanceID) {
+    if (this._audio.uploadDeferred) {
+      delete this._audio.uploadDeferred;
+    }
+
     if (this._node) {
       this._audio.caption = this._node.find('.block-caption').html();
     }
@@ -97,6 +103,59 @@ export default class AudioBuilder extends Audio {
   _onConfigChange() {
     this._applyConfig();
     super._onConfigChange();
+  }
+
+  _onUploadStart() {
+    this._uploadNotification = new CancelNotification({
+      container: this._node.parents('.section').eq(0),
+      label: text.media.mediaUpload
+    });
+
+    this._uploadNotification.display().then(
+      function() {
+        this._onAction('remove');
+      }.bind(this),
+      function() {
+        //
+      }
+    );
+  }
+
+  _onUploadSuccess(audio) {
+    this._audio.url = audio.url;
+    this._audio.thumbUrl = audio.thumbUrl || audio.dataUrl;
+    this.previewThumb = this._audio.thumbUrl;
+    delete this._audio.dataUrl;
+    delete this._audio.uploadDeferred;
+
+    if (this._uploadNotification) {
+      this._uploadNotification.update({
+        type: 'success',
+        label: text.media.mediaUploadSuccess
+      });
+    }
+
+    this.rerender();
+
+    this._isLoaded = false;
+
+    this.preload().then(this.load.bind(this));
+
+    topic.publish('builder-media-update');
+
+  }
+
+  _onUploadFail() {
+    if (this._uploadNotification) {
+      this._uploadNotification.update({
+        type: 'error',
+        label: text.media.mediaUploadFail
+      });
+    }
+
+    if (this._placement == 'block') {
+      this._onAction('remove');
+    }
   }
 
   _makeUrlsHttps() {

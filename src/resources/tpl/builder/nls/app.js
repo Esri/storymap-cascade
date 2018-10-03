@@ -176,7 +176,7 @@ define({
             error: "No authorized media.",
             imageOnly: "In this part of the story, you can add an image.",
             imageAndVideo: "In this part of the story, you can add an image or a video.",
-            imageVideoWebpage: "In this part of the story, you can add an image, a video, or a webpage."
+            imageVideoWebpage: "In this part of the story, you can add audio, an image, a video, or a webpage."
           }
         },
         browsePanel: {
@@ -304,16 +304,20 @@ define({
               createContent: {
                 createNewMap: "Create a New Map",
                 or: "OR",
-                dragAndDrop: "Drop image(s) here",
-                uploadImage: "Browse for image(s)",
-                agolInfo: "Images will be stored in your ArcGIS account and accessible only inside your story.",
-                saveBeforeUpload: "Once you save this story, you can upload images to ArcGIS here.",
-                fileTypesImage: "Supported file types: .png, .jpeg, .jpg, .gif, .bmp"
+                dragAndDropImage: "Drop images",
+                dragAndDropImageAudio: "Drop images or audio",
+                uploadButton: "Browse",
+                agolInfo: "Uploaded images and audio will be accessible only within this story.",
+                saveBeforeUpload: "Once you save this story, you can upload images and audio to ArcGIS here.",
+                fileExtsImage: "Supported types: png, jpg, gif, bmp.",
+                fileExtsImageAudio: "Supported types: png, jpg, gif, bmp, mp3.",
+                maxSize: "Max 10 MB per file."
               },
               filterAndSort: {
                 webmap: "Web Map",
                 webscene: "Web Scene",
                 image: "Image",
+                audio: "Audio",
                 date: "Date",
                 sortByDate: "Sort by date",
                 title: "Title",
@@ -393,9 +397,9 @@ define({
         placeholder: "Enter a title..."
       },
       media: {
-        imageUpload: "Image upload in progress...",
-        imageUploadSuccess: "Image uploaded successfully",
-        imageUploadFail: "Image upload failed"
+        mediaUpload: "Media upload in progress...",
+        mediaUploadSuccess: "Media uploaded successfully",
+        mediaUploadFail: "Media upload failed"
       },
       controller: {
         sectionOrganize: "You organized the sections",
@@ -416,6 +420,7 @@ define({
       mediaErrors: {
         mediaTypes: {
           image: "image",
+          audio: "audio",
           webmap: "map",
           webscene: "scene",
           video: "video",
@@ -573,22 +578,6 @@ define({
         action2: "Check my stories now",
         action3: "Learn more",
         floatingNotification: "This story contains insecure (HTTP) content. Please review and address these issues."
-      },
-      embedBar: {
-        share: "Share",
-        fullScreen: "Full screen",
-        exitFullScreen: "Exit full screen",
-        enlarge: "Enlarge",
-        newTab: "Open in a new tab",
-        tagline: "A Story Map"
-      },
-      june2018SurveyMessage: {
-        bannerMsg: "Can we ask you something? It will help shape the future of Story Maps.",
-        s1h1: "Share your thoughts, shape the future",
-        s1p1: "Your input is our single most important source of feedback, and learning more about you will help us improve Story Maps. We would be grateful if you could participate in this three-minute survey.",
-        s2p1: "As always, thanks for using Esri Story Maps!",
-        action1: "Close",
-        action2: "Take the survey"
       }
     }
   }),

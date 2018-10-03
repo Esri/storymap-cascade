@@ -172,7 +172,7 @@ define({
           "error": "Tidak ada media yang sah.",
           "imageOnly": "Pada bagian cerita ini, Anda dapat menambahkan gambar.",
           "imageAndVideo": "Pada bagian cerita ini, Anda dapat menambahkan gambar atau video.",
-          "imageVideoWebpage": "Pada bagian cerita ini, Anda dapat menambahkan gambar, video, atau halaman web."
+          "imageVideoWebpage": "Pada bagian cerita ini, Anda dapat menambahkan audio, gambar, video, atau halaman web."
         }
       },
       "browsePanel": {
@@ -300,16 +300,20 @@ define({
             "createContent": {
               "createNewMap": "Buat Peta Baru",
               "or": "ATAU",
-              "dragAndDrop": "Masukkan gambar di sini",
-              "uploadImage": "Telusuri gambar",
-              "agolInfo": "Gambar akan disimpan di akun ArcGIS Anda dan dapat diakses hanya dari dalam cerita Anda.",
-              "saveBeforeUpload": "Setelah menyimpan cerita ini, Anda dapat mengunggah gambar ke ArcGIS di sini.",
-              "fileTypesImage": "Mendukung jenis file berikut: .png, .jpeg, .jpg, .gif, .bmp"
+              "dragAndDropImage": "Letakkan gambar",
+              "dragAndDropImageAudio": "Letakkan gambar atau audio",
+              "uploadButton": "Jelajahi",
+              "agolInfo": "Gambar dan audio yang sudah diunggah hanya akan dapat diakses dalam cerita ini.",
+              "saveBeforeUpload": "Setelah menyimpan cerita ini, Anda dapat mengunggah gambar dan audio ke ArcGIS di sini.",
+              "fileExtsImage": "Jenis yang didukung: png, jpg, gif, bmp.",
+              "fileExtsImageAudio": "Jenis yang didukung: png, jpg, gif, bmp, mp3.",
+              "maxSize": "Maks 10 MB per file."
             },
             "filterAndSort": {
               "webmap": "Web Map",
               "webscene": "Web Scene",
               "image": "Gambar",
+              "audio": "Audio",
               "date": "Tanggal",
               "sortByDate": "Urutkan berdasarkan tanggal",
               "title": "Judul",
@@ -389,9 +393,9 @@ define({
       "placeholder": "Masukkan judul..."
     },
     "media": {
-      "imageUpload": "Unggah gambar sedang berlangsung...",
-      "imageUploadSuccess": "Gambar berhasil diunggah",
-      "imageUploadFail": "Gambar gagal diunggah"
+      "mediaUpload": "Unggahan media sedang dalam proses...",
+      "mediaUploadSuccess": "Media berhasil diunggah",
+      "mediaUploadFail": "Media gagal diunggah"
     },
     "controller": {
       "sectionOrganize": "Anda mengatur bagian",
@@ -412,6 +416,7 @@ define({
     "mediaErrors": {
       "mediaTypes": {
         "image": "gambar",
+        "audio": "audio",
         "webmap": "peta",
         "webscene": "scene",
         "video": "video",
@@ -569,22 +574,6 @@ define({
       "action2": "Periksa cerita saya sekarang",
       "action3": "Pelajari lebih lanjut",
       "floatingNotification": "Cerita ini berisi konten tidak aman (HTTP). Harap tinjau dan atasi masalah tersebut."
-    },
-    "embedBar": {
-      "share": "Bagikan",
-      "fullScreen": "Layar penuh",
-      "exitFullScreen": "Keluar dari layar penuh",
-      "enlarge": "Perbesar",
-      "newTab": "Buka di tab baru",
-      "tagline": "Story Map"
-    },
-    "june2018SurveyMessage": {
-      "bannerMsg": "Bolehkah kami tanyakan sesuatu? Ini akan membantu membentuk masa depan Story Map.",
-      "s1h1": "Bagikan pemikiran Anda, bentuk masa depan",
-      "s1p1": "Masukan Anda adalah satu-satunya sumber umpan balik yang paling penting, dan mempelajari lebih banyak tentang Anda akan meningkatkan Story Map. Kami akan berterima kasih jika Anda dapat berpartisipasi dalam survei tiga menit ini.",
-      "s2p1": "Seperti biasa, terima kasih telah menggunakan Story Map Esri!",
-      "action1": "Tutup",
-      "action2": "Ikuti survei"
     }
   }
 });

@@ -172,7 +172,7 @@ define({
           "error": "許可されているメディアがありません。",
           "imageOnly": "ストーリーのこの部分には、画像を追加できます。",
           "imageAndVideo": "ストーリーのこの部分には、画像またはビデオを追加できます。",
-          "imageVideoWebpage": "ストーリーのこの部分には、画像、ビデオ、または Web ページを追加できます。"
+          "imageVideoWebpage": "ストーリーのこの部分には、オーディオ、画像、ビデオ、または Web ページを追加できます。"
         }
       },
       "browsePanel": {
@@ -300,16 +300,20 @@ define({
             "createContent": {
               "createNewMap": "新しいマップの作成",
               "or": "OR",
-              "dragAndDrop": "画像をここにドロップ",
-              "uploadImage": "画像の参照",
-              "agolInfo": "画像は、ArcGIS アカウントで格納され、ストーリー内でのみアクセスできます。",
-              "saveBeforeUpload": "このストーリーを保存すると、ここで画像を ArcGIS にアップロードできます。",
-              "fileTypesImage": "サポートされているファイル タイプ: .png、.jpeg、.jpg、.gif、.bmp"
+              "dragAndDropImage": "画像をドロップ",
+              "dragAndDropImageAudio": "画像またはオーディオをドロップ",
+              "uploadButton": "参照",
+              "agolInfo": "アップロードした画像とオーディオには、このストーリー内でのみアクセスできます。",
+              "saveBeforeUpload": "このストーリーを保存したら、ここで画像とオーディオを ArcGIS にアップロードできます。",
+              "fileExtsImage": "サポートされているタイプ: png、jpg、gif、bmp",
+              "fileExtsImageAudio": "サポートされているタイプ: png、jpg、gif、bmp、mp3",
+              "maxSize": "ファイルあたり最大 10 MB"
             },
             "filterAndSort": {
               "webmap": "Web マップ",
               "webscene": "Web シーン",
               "image": "イメージ",
+              "audio": "オーディオ",
               "date": "日付",
               "sortByDate": "日付で並べ替え",
               "title": "タイトル",
@@ -389,9 +393,9 @@ define({
       "placeholder": "タイトルの入力..."
     },
     "media": {
-      "imageUpload": "画像のアップロードが進行中です",
-      "imageUploadSuccess": "画像が正常にアップロードされました",
-      "imageUploadFail": "画像のアップロードに失敗しました"
+      "mediaUpload": "メディアのアップロードが進行中です...",
+      "mediaUploadSuccess": "メディアが正常にアップロードされました",
+      "mediaUploadFail": "メディアのアップロードに失敗しました"
     },
     "controller": {
       "sectionOrganize": "セクションを整理しました",
@@ -412,6 +416,7 @@ define({
     "mediaErrors": {
       "mediaTypes": {
         "image": "画像",
+        "audio": "オーディオ",
         "webmap": "マップ",
         "webscene": "シーン",
         "video": "ビデオ",
@@ -569,22 +574,6 @@ define({
       "action2": "ストーリーを今すぐ確認する",
       "action3": "詳細",
       "floatingNotification": "このストーリーには安全でない (HTTP) コンテンツがあります。確認の上、問題を解決してください。"
-    },
-    "embedBar": {
-      "share": "共有",
-      "fullScreen": "全画面表示",
-      "exitFullScreen": "全画面表示を終了",
-      "enlarge": "拡大",
-      "newTab": "新しいタブで開く",
-      "tagline": "ストーリー マップ"
-    },
-    "june2018SurveyMessage": {
-      "bannerMsg": "ユーザーの皆様にお願いがあります。 これは今後のストーリー マップを形成するのに役立つものです。",
-      "s1h1": "皆様のご意見を共有することで、今後のストーリー マップが形成されます。",
-      "s1p1": "皆様のご意見が最も重要かつ唯一のフィードバック ソースとなり、ユーザーの状況を詳細に知ることがストーリー マップの改善につながります。 この 3 分ほどの調査にご参加いただけると幸いです。",
-      "s2p1": "Esri ストーリー マップを今後ともよろしくお願いいたします。",
-      "action1": "閉じる",
-      "action2": "調査を実行"
     }
   }
 });

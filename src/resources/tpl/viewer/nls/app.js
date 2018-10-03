@@ -35,7 +35,7 @@ define({
         mapLoadingFail: "Something went wrong, the map did not load correctly.",
         signOut: "Sign Out",
         builderSupportFirefox: "Story Map Cascade builder now supports Firefox!<br><br>Support for authoring Cascade stories in Firefox is currently in beta. Please try it out and report any issues to ${ESRI-SUPPORT} or the ${ESRI-COMMUNITY}.",
-        builderSupportOther: "Cascade stories can be viewed in any modern web browser, but Story Map Cascade builder is supported only in ${CHROME}, ${SAFARI}, and ${FIREFOX} (beta).<br><br>If you need Cascade builder to support a different browser, please contact ${ESRI-SUPPORT} or ${BROWSER-SUPPORT-VOTE}.",
+        builderSupportOther: "Cascade stories can be viewed in any modern web browser, but Story Map Cascade builder is supported only in ${CHROME}, ${SAFARI}, and ${FIREFOX}.<br><br>If you need Cascade builder to support a different browser, please contact ${ESRI-SUPPORT} or ${BROWSER-SUPPORT-VOTE}.",
         builderSupportIpad: "Story Map Cascade builder is not supported on iPad. Cascade stories that you create and share will work on iPad.",
         launchBuilder: "Launch Cascade builder",
         notAgain: "Do not show this again",
@@ -90,6 +90,16 @@ define({
         learnMore: "Learn More",
         close: "Close",
         dontShowAgain: "Don't show this message again"
+      },
+      embedBar: {
+        share: "Share",
+        fullScreen: "Full screen",
+        exitFullScreen: "Exit full screen",
+        enlarge: "Enlarge",
+        newTab: "Open in a new tab",
+        tagline: "A Story Map",
+        twitter: "Share on Twitter",
+        facebook: "Share on Facebook"
       }
     },
     print: {

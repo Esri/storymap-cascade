@@ -33,7 +33,7 @@ define({
       "mapLoadingFail": "Hata oluştu, harita düzgün şekilde yüklenmedi.",
       "signOut": "Oturumu Kapat",
       "builderSupportFirefox": "Story Map Cascade oluşturucu artık Firefox'u destekliyor!<br><br>Firefox'ta Cascade hikayelerini yazma desteği beta'da mevcut durumda. Lütfen deneyin ve varsa sorunları ${ESRI-SUPPORT} veya ${ESRI-COMMUNITY} ile iletişim kurun.",
-      "builderSupportOther": "Cascade hikayeleri her modern tarayıcıda görüntülenebilir, ancak Story Map Cascade oluşturucu yalnızca ${CHROME}, ${SAFARI} ve ${FIREFOX} (beta) tarafından desteklenir.<br><br>Cascade oluşturucunun farklı bir tarayıcıyı desteklemesi gerekiyorsa, ${ESRI-SUPPORT} veya ${BROWSER-SUPPORT-VOTE} ile iletişim kurun.",
+      "builderSupportOther": "Cascade hikayeleri herhangi bir modern web tarayıcısında görüntülenebilir, ancak Story Map Cascade oluşturucu yalnızca ${CHROME}, ${SAFARI} ve ${FIREFOX} tarafından desteklenir.<br><br>Farklı bir tarayıcıyı desteklemek için Cascade oluşturucuya ihtiyacınız varsa, lütfen ${ESRI-SUPPORT} veya ${BROWSER-SUPPORT-VOTE} ile iletişime geçin.",
       "builderSupportIpad": "Story Map Cascade oluşturucu iPad cihazında desteklenmez. Oluşturduğunuz ve paylaştığınız Cascade hikayeleri iPad üzerinde çalışır.",
       "launchBuilder": "Cascade oluşturucuyu başlat",
       "notAgain": "Bunu tekrar gösterme",
@@ -88,6 +88,16 @@ define({
       "learnMore": "Daha Fazla Bilgi",
       "close": "Kapat",
       "dontShowAgain": "Bu iletiyi tekrar gösterme"
+    },
+    "embedBar": {
+      "share": "Paylaş",
+      "fullScreen": "Tam ekran",
+      "exitFullScreen": "Tam ekrandan çık",
+      "enlarge": "Genişlet",
+      "newTab": "Yeni sekmede aç",
+      "tagline": "Bir Hikaye Haritası",
+      "twitter": "Twitter'da Paylaş",
+      "facebook": "Facebook'ta Paylaş"
     }
   },
   "print": {

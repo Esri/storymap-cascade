@@ -33,7 +33,7 @@ define({
       "mapLoadingFail": "오류가 발생했습니다. 맵을 올바르게 불러오지 않았습니다.",
       "signOut": "로그아웃",
       "builderSupportFirefox": "이제 Story Map Cascade 빌더에서 FireFox를 지원합니다!<br><br>Firefox에서 Cascade 스토리 작성은 현재 베타 버전으로 지원됩니다. 사용 후 발견되는 모든 문제는 ${ESRI-SUPPORT} 또는 ${ESRI-COMMUNITY}로 보고해 주시기 바랍니다.",
-      "builderSupportOther": "Cascade 스토리는 모든 최신 웹 브라우저에서 볼 수 있지만 Story Map Cascade 빌더는 ${CHROME}, ${SAFARI} 및 ${FIREFOX}(베타 버전)에서만 지원됩니다.<br><br>다른 브라우저를 지원하는 Cascade 빌더가 필요한 경우 ${ESRI-SUPPORT} 또는 ${BROWSER-SUPPORT-VOTE}에 문의하세요.",
+      "builderSupportOther": "Cascade 스토리는 모든 최신 웹브라우저에서 볼 수 있지만 Story Map Cascade 빌더는 ${CHROME}, ${SAFARI}, ${FIREFOX}에서만 지원됩니다.<br><br>다른 브라우저를 지원하는 Cascade 빌더를 사용해야 할 경우 ${ESRI-SUPPORT} 또는 ${BROWSER-SUPPORT-VOTE}에 문의하세요.",
       "builderSupportIpad": "Story Map Cascade 빌더는 iPad에서 지원되지 않습니다. 생성한 후 공유하는 Cascade 스토리는 iPad에서 작동됩니다.",
       "launchBuilder": "Cascade 빌더 실행",
       "notAgain": "다시 표시 안 함",
@@ -88,6 +88,16 @@ define({
       "learnMore": "자세한 정보",
       "close": "닫기",
       "dontShowAgain": "이 메시지를 다시 표시 안 함"
+    },
+    "embedBar": {
+      "share": "공유하기",
+      "fullScreen": "전체 화면",
+      "exitFullScreen": "전체 화면 종료",
+      "enlarge": "확대",
+      "newTab": "새 탭에서 열기",
+      "tagline": "스토리맵",
+      "twitter": "Twitter에 공유",
+      "facebook": "Facebook에 공유"
     }
   },
   "print": {

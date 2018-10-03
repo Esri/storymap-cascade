@@ -33,7 +33,7 @@ define({
       "mapLoadingFail": "Terjadi gangguan, peta tidak dimuat dengan benar.",
       "signOut": "Keluar",
       "builderSupportFirefox": "Builder Story Map Cascade sekarang mendukung Firefox!<br><br>Dukungan untuk menulis cerita Cascade di Firefox saat ini dalam status beta. Silakan coba dan laporan masalah apa pun ke ${ESRI-SUPPORT} atau ${ESRI-COMMUNITY}.",
-      "builderSupportOther": "Cerita Cascade dapat dilihat di browser web modern mana pun, namun builder Story Map Cascade hanya didukung di ${CHROME}, ${SAFARI}, dan ${FIREFORX} (beta).<br><br>Jika Anda memerlukan builder Cascade untuk mendukung browser lainnya, harap hubungi ${ESRI-SUPPORT} atau ${BROWSER-SUPPORT-VOTE}.",
+      "builderSupportOther": "Cerita Cascade dapat dilihat di browser web modern mana pun, namun builder Story Map Cascade hanya didukung di ${CHROME}, ${SAFARI}, dan ${FIREFOX}.<br><br>Jika Anda memerlukan builder Cascade untuk mendukung browser yang berbeda, harap hubungi ${ESRI-SUPPORT} atau ${BROWSER-SUPPORT-VOTE}.",
       "builderSupportIpad": "Builder Story Map Cascade tidak didukung di iPad. Cerita Cascade yang Anda buat dan bagikan akan berjalan di iPad.",
       "launchBuilder": "Jalankan builder Cascade",
       "notAgain": "Jangan perlihatkan ini lagi",
@@ -88,6 +88,16 @@ define({
       "learnMore": "Pelajari Lebih Lanjut",
       "close": "Tutup",
       "dontShowAgain": "Jangan tampilkan pesan ini lagi"
+    },
+    "embedBar": {
+      "share": "Bagikan",
+      "fullScreen": "Layar penuh",
+      "exitFullScreen": "Keluar dari layar penuh",
+      "enlarge": "Perbesar",
+      "newTab": "Buka di tab baru",
+      "tagline": "Story Map",
+      "twitter": "Bagikan ke Twitter",
+      "facebook": "Bagikan ke Facebook"
     }
   },
   "print": {

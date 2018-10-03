@@ -1,3 +1,6 @@
+import IdentityManager from 'esri/IdentityManager';
+import ArcGISUtils from 'esri/arcgis/utils';
+
 import IssueTypes from './../IssueTypes';
 import Media from './Media';
 
@@ -41,7 +44,21 @@ export default class Audio extends Media {
           Audio._onAudioError(audio, resolve);
         };
 
-        trialAudio.src = [audio.id];
+        let baseURL = ArcGISUtils.arcgisUrl.split('/sharing/')[0];
+        let credential = IdentityManager.findCredential(baseURL);
+        let tokenSuffix = '';
+
+        // check if it is hosted on AGOL...
+        if (credential && this._isAGOLAudio(audio)) {
+          // only add a token if there isn't already one on there.
+          if (audio.id.indexOf('?token') === -1 && audio.id.indexOf('&token') === -1) {
+            tokenSuffix = '?token=' + credential.token;
+          }
+        }
+
+        if (audio.id) {
+          trialAudio.src = audio.id + tokenSuffix;
+        }
       });
     });
   }
@@ -54,5 +71,14 @@ export default class Audio extends Media {
   static _onAudioError(audio, resolve) {
     audio.errors.push(IssueTypes.audio.inaccessible);
     resolve(audio);
+  }
+
+  static _isAGOLAudio(audio) {
+    if (audio.id && audio.id.match(new RegExp('\/sharing\/rest\/content\/items\/.*?\/resources\/'))) {
+      return true;
+    }
+    else {
+      return false;
+    }
   }
 }

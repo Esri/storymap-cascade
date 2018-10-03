@@ -33,7 +33,7 @@ define({
       "mapLoadingFail": "發生了一些錯誤，地圖未正確載入。",
       "signOut": "登出",
       "builderSupportFirefox": "Story Map Cascade 建立器現在支援 Firefox!<br><br>Firefox 支援的 Cascade 故事創作目前處於 beta 階段。請試用並向 ${ESRI-SUPPORT} 或 ${ESRI-COMMUNITY} 報告任何問題。",
-      "builderSupportOther": "可在任何新穎的 Web 瀏覽器中檢視 Cascade 故事，但 Story Map Cascade 建立器僅受 ${CHROME}、${SAFARI} 和 ${FIREFOX} (beta) 支援。<br><br>如果需要 Cascade 建立器來支援不同的瀏覽器，請聯絡 ${ESRI-SUPPORT} 或 ${BROWSER-SUPPORT-VOTE}。",
+      "builderSupportOther": "可在任何新穎的 Web 瀏覽器中檢視 Cascade 故事，但 Story Map Cascade 建立器僅受 ${CHROME}、${SAFARI} 和 ${FIREFOX} 支援。<br><br>如果需要 Cascade 建立器來支援不同的瀏覽器，請聯絡 ${ESRI-SUPPORT} 或 ${BROWSER-SUPPORT-VOTE}。",
       "builderSupportIpad": "iPad 不支援 Story Map Cascade 建立器。您建立和分享的 Cascade 故事將在 iPad 上運作。",
       "launchBuilder": "啟動 Cascade 建立器",
       "notAgain": "不再顯示此訊息",
@@ -88,6 +88,16 @@ define({
       "learnMore": "瞭解詳細資訊",
       "close": "關閉",
       "dontShowAgain": "請勿再次顯示此訊息"
+    },
+    "embedBar": {
+      "share": "分享",
+      "fullScreen": "全螢幕",
+      "exitFullScreen": "退出全螢幕",
+      "enlarge": "放大",
+      "newTab": "在新頁籤中開啟",
+      "tagline": "故事地圖",
+      "twitter": "在 Twitter 上分享",
+      "facebook": "在 Facebook 上分享"
     }
   },
   "print": {

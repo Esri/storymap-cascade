@@ -33,7 +33,7 @@ define({
       "mapLoadingFail": "Hiba történt, a térkép nem töltődött be megfelelően.",
       "signOut": "Kijelentkezés",
       "builderSupportFirefox": "A Story Map Cascade szerkesztő már támogatja a Firefox böngészőt!<br><br>A Cascade történetek Firefoxban való támogatása jelenleg bétaverzióban érhető el. Kérjük, próbálja ki, és az esetleges problémákat jelentse itt: ${ESRI-SUPPORT} vagy ${ESRI-COMMUNITY}.",
-      "builderSupportOther": "A kaszkádolt történetek megtekinthetők bármelyik modern webböngészőben, de a Story Map Cascade szerkesztőt csak a ${CHROME}, a ${SAFARI} és a ${FIREFOX} (bétaverzió) böngésző támogatja.<br><br>Ha azt szeretné, hogy a Cascade szerkesztő más böngészőt is támogasson, keresse fel a következőket: ${ESRI-SUPPORT} vagy ${BROWSER-SUPPORT-VOTE}.",
+      "builderSupportOther": "A kaszkádolt történetek megtekinthetők bármelyik modern webböngészőben, de a Story Map Cascade szerkesztőt csak a ${CHROME}, a ${SAFARI} és a ${FIREFOX} böngésző támogatja.<br><br>Ha azt szeretné, hogy a Cascade szerkesztő más böngészőt is támogasson, keresse fel a következőket: ${ESRI-SUPPORT} vagy ${BROWSER-SUPPORT-VOTE}.",
       "builderSupportIpad": "A Story Map Cascade szerkesztő nem támogatott az iPad eszközökön. A létrehozott és megosztott kaszkádolt történetek működni fognak az iPad eszközökön.",
       "launchBuilder": "Cascade szerkesztő elindítása",
       "notAgain": "Ne jelenjen meg újra ez",
@@ -88,6 +88,16 @@ define({
       "learnMore": "További információk",
       "close": "Bezárás",
       "dontShowAgain": "Ne jelenjen meg újra ez az üzenet"
+    },
+    "embedBar": {
+      "share": "Megosztás",
+      "fullScreen": "Teljes képernyő",
+      "exitFullScreen": "Kilépés a teljes képernyőből",
+      "enlarge": "Nagyítás",
+      "newTab": "Megnyitás új fülön",
+      "tagline": "Egy story map",
+      "twitter": "Megosztás Twitteren",
+      "facebook": "Megosztás Facebookon"
     }
   },
   "print": {

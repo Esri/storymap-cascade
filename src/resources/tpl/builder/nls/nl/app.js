@@ -172,7 +172,7 @@ define({
           "error": "Geen geautoriseerde media.",
           "imageOnly": "In dit deel van het verhaal kunt u een afbeelding toevoegen.",
           "imageAndVideo": "In dit deel van het verhaal kunt u een afbeelding of een video toevoegen.",
-          "imageVideoWebpage": "In dit deel van het verhaal kunt u een afbeelding, een video of een webpagina toevoegen."
+          "imageVideoWebpage": "In dit deel van het verhaal kunt u een audiobestand, een afbeelding, een video of een webpagina toevoegen."
         }
       },
       "browsePanel": {
@@ -300,16 +300,20 @@ define({
             "createContent": {
               "createNewMap": "Een Nieuwe kaart maken",
               "or": "OF",
-              "dragAndDrop": "Plaats de afbeelding(en) hier",
-              "uploadImage": "Zoeken naar afbeelding(en)",
-              "agolInfo": "Afbeeldingen worden opgeslagen in uw ArcGIS-account en zijn alleen toegankelijk in uw verhaal.",
-              "saveBeforeUpload": "Zodra u dit verhaal opgeslagen hebt, kunt u hier afbeeldingen uploaden naar ArcGIS.",
-              "fileTypesImage": "Ondersteunde bestandstypes: .png, .jpeg, .jpg, .gif, .bmp"
+              "dragAndDropImage": "Afbeeldingen verslepen",
+              "dragAndDropImageAudio": "Afbeeldingen of audiobestanden verslepen",
+              "uploadButton": "Bladeren",
+              "agolInfo": "Geüploade beelden en audiobestanden zijn alleen toegankelijk binnen uw verhaal.",
+              "saveBeforeUpload": "Zodra u dit verhaal opgeslagen hebt, kunt u hier afbeeldingen en geluidsbestanden uploaden naar ArcGIS.",
+              "fileExtsImage": "Ondersteunde types: png, jpg, gif, bmp.",
+              "fileExtsImageAudio": "Ondersteunde types: png, jpg, gif, bmp, mp3.",
+              "maxSize": "Max 10 MB per bestand."
             },
             "filterAndSort": {
               "webmap": "Webmap",
               "webscene": "Webscene",
               "image": "Afbeelding",
+              "audio": "Audiobestand",
               "date": "Datum",
               "sortByDate": "Sorteren op datum",
               "title": "Titel",
@@ -389,9 +393,9 @@ define({
       "placeholder": "Voer een titel in..."
     },
     "media": {
-      "imageUpload": "Afbeelding-upload bezig...",
-      "imageUploadSuccess": "Afbeelding met succes geüpload",
-      "imageUploadFail": "Uploaden afbeelding mislukt"
+      "mediaUpload": "Media-upload bezig...",
+      "mediaUploadSuccess": "Media succesvol geüpload",
+      "mediaUploadFail": "Uploaden media mislukt"
     },
     "controller": {
       "sectionOrganize": "U hebt de secties georganiseerd",
@@ -412,6 +416,7 @@ define({
     "mediaErrors": {
       "mediaTypes": {
         "image": "image",
+        "audio": "audiobestand",
         "webmap": "kaart",
         "webscene": "scene",
         "video": "video",
@@ -569,22 +574,6 @@ define({
       "action2": "Controleer nu mijn verhalen",
       "action3": "Meer weten",
       "floatingNotification": "Dit verhaal bevat onbeveiligde (HTTP) content. Controleer en corrigeer deze problemen."
-    },
-    "embedBar": {
-      "share": "Delen",
-      "fullScreen": "Volledig scherm",
-      "exitFullScreen": "Volledig scherm afsluiten",
-      "enlarge": "Vergroten",
-      "newTab": "Openen in een nieuw tabblad",
-      "tagline": "Een Story Map"
-    },
-    "june2018SurveyMessage": {
-      "bannerMsg": "Mogen we u iets vragen? Het zal de toekomst van Story Maps helpen vormgeven.",
-      "s1h1": "Deel u gedachten, vorm de toekomst",
-      "s1p1": "Uw input is onze belangrijkste bron van feedback en als we meer over u weten, helpt dit ons om Story Maps te verbeteren. We zouden het op prijs stellen als u zou kunnen deelnemen aan deze drie minuten durende enquête.",
-      "s2p1": "Bedankt voor het gebruik van Esri Story Maps!",
-      "action1": "Sluiten",
-      "action2": "De enquête invullen"
     }
   }
 });

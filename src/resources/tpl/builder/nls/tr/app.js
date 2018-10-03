@@ -172,7 +172,7 @@ define({
           "error": "Yetkilendirilmiş ortam yok.",
           "imageOnly": "Hikayenin bu bölümüne bir görüntü ekleyebilirsiniz.",
           "imageAndVideo": "Hikayenin bu bölümüne bir görüntü veya video ekleyebilirsiniz.",
-          "imageVideoWebpage": "Hikayenin bu bölümüne bir görüntü, video veya web sayfası ekleyebilirsiniz."
+          "imageVideoWebpage": "Hikayenin bu bölümüne ses, görüntü, video veya web sayfası ekleyebilirsiniz."
         }
       },
       "browsePanel": {
@@ -300,16 +300,20 @@ define({
             "createContent": {
               "createNewMap": "Yeni Harita Oluştur",
               "or": "VEYA",
-              "dragAndDrop": "Görüntüleri buraya bırakın",
-              "uploadImage": "Görüntülere göz atın",
-              "agolInfo": "Görüntüler ArcGIS hesabınızda saklanır ve bunlara yalnızca hikayenizin içinden erişilebilir.",
-              "saveBeforeUpload": "Bu hikayeyi kaydettikten sonra buradan ArcGIS uygulamasına görüntü yükleyebilirsiniz.",
-              "fileTypesImage": "Desteklenen dosya türleri: .png, .jpeg, .jpg, .gif, .bmp"
+              "dragAndDropImage": "Görüntüleri bırak",
+              "dragAndDropImageAudio": "Görüntüleri veya sesi bırak",
+              "uploadButton": "Göz at",
+              "agolInfo": "Yüklenen görüntüler ve ses sadece bu hikaye içinden erişilebilir olacak.",
+              "saveBeforeUpload": "Bu hikayeyi kaydettikten sonra buradan ArcGIS uygulamasına görüntü ve ses yükleyebilirsiniz.",
+              "fileExtsImage": "Desteklenen türler: .png, jpg, gif, bmp.",
+              "fileExtsImageAudio": "Desteklenen türler: png, jpg, gif, bmp, mp3.",
+              "maxSize": "Dosya başına maksimum 10 MB."
             },
             "filterAndSort": {
               "webmap": "Web Haritası",
               "webscene": "Web Görünümü",
               "image": "Görüntü",
+              "audio": "Ses",
               "date": "Tarih",
               "sortByDate": "Tarihe göre sırala",
               "title": "Başlık",
@@ -389,9 +393,9 @@ define({
       "placeholder": "Bir başlık girin..."
     },
     "media": {
-      "imageUpload": "Görüntü yükleme sürüyor...",
-      "imageUploadSuccess": "Görüntüler başarıyla yüklendi",
-      "imageUploadFail": "Görüntü yüklenemedi"
+      "mediaUpload": "Medya yükleme sürüyor...",
+      "mediaUploadSuccess": "Medya başarıyla yüklendi",
+      "mediaUploadFail": "Medya yüklenemedi"
     },
     "controller": {
       "sectionOrganize": "Bölümleri düzenlediniz",
@@ -412,6 +416,7 @@ define({
     "mediaErrors": {
       "mediaTypes": {
         "image": "görüntü",
+        "audio": "işitsel",
         "webmap": "harita",
         "webscene": "sahne",
         "video": "görüntü",
@@ -569,22 +574,6 @@ define({
       "action2": "Hikayelerimi şimdi kontrol et",
       "action3": "Daha fazla bilgi",
       "floatingNotification": "Bu hikaye güvenli olmayan (HTTP) içerik içeriyor. Lütfen inceleyin ve bu sorunları ele alın."
-    },
-    "embedBar": {
-      "share": "Paylaş",
-      "fullScreen": "Tam ekran",
-      "exitFullScreen": "Tam ekrandan çık",
-      "enlarge": "Genişlet",
-      "newTab": "Yeni sekmede aç",
-      "tagline": "Bir Hikaye Haritası"
-    },
-    "june2018SurveyMessage": {
-      "bannerMsg": "Bir şey sorabilir miyiz? Story Maps’in geleceğini şekillendirmemize yardımcı olacak.",
-      "s1h1": "Düşüncelerinizi paylaşın ve geleceği şekillendirin",
-      "s1p1": "Verdiğiniz bilgiler, en önemli geri bildirim kaynağımız ve sizinle ilgili daha çok şey öğrenmek Story Maps’i geliştirmemize yardımcı olacaktır. Üç dakikanızı alacak bu ankete katılırsanız memnun oluruz.",
-      "s2p1": "Her zaman olduğu gibi Esri Story Maps’i kullandığınız için teşekkür ederiz!",
-      "action1": "Kapat",
-      "action2": "Ankete katıl"
     }
   }
 });

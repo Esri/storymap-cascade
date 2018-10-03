@@ -198,6 +198,11 @@ function GalleryItem(props) {
         thumbUrl: props.item.thumbUrl
       });
     }
+    else if (itemType === 'audio') {
+      Object.assign(selection, {
+        url: props.item.url
+      });
+    }
     else {
       Object.assign(selection, {
         id: props.item.id
@@ -245,6 +250,8 @@ function GalleryItem(props) {
         return 'globe fa-2x';
       case constants.contentType.IMAGE:
         return 'picture-o';
+      case constants.contentType.AUDIO:
+        return 'volume-up';
       default:
         return 'star';
     }
@@ -278,7 +285,10 @@ function GalleryItem(props) {
   };
 
   var getItemThumbUrl = function(item) {
-    return item.dataUrl || item.tokenizedThumbUrl || item.thumbUrl || item.thumbnail;
+    if (item.dataUrl && item.dataUrl !== true) {
+      return item.dataUrl;
+    }
+    return item.tokenizedThumbUrl || item.thumbUrl || item.thumbnail;
   };
 
   var showItems = function() {

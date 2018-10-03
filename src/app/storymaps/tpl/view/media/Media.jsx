@@ -241,7 +241,7 @@ export default class Media {
 
   getArcGISContent() {
     let arcgisContent = [];
-    let agolImg;
+    let agolMedia;
 
     if (this.type == 'webmap' || this.type == 'webscene') {
       arcgisContent = [{
@@ -250,38 +250,40 @@ export default class Media {
       }];
     }
     else if (this.type == 'image' && this._image) {
-      agolImg = this.getImageArcGISContent(this._image.url);
-      if (agolImg) {
-        arcgisContent.push(agolImg);
-      }
+      agolMedia = this.getMediaArcGISContent(this._image.url, 'image');
     }
     else if (this.type == 'image-gallery') {
       for (var image of this._images.images) {
-        agolImg = this.getImageArcGISContent(image.url);
-        if (agolImg) {
-          arcgisContent.push(agolImg);
+        agolMedia = this.getMediaArcGISContent(image.url, 'image');
+        if (agolMedia) {
+          arcgisContent.push(agolMedia);
         }
       }
+      agolMedia = null; // clear so it doesn't get re-added below
+    }
+    else if (this.type == 'audio') {
+      agolMedia = this.getMediaArcGISContent(this._audio.url, 'audio');
     }
 
     const altMedia = this.getAlternate();
     if (altMedia && altMedia._image) {
-      agolImg = this.getImageArcGISContent(altMedia._image.url);
-      if (agolImg) {
-        arcgisContent.push(agolImg);
-      }
+      agolMedia = this.getMediaArcGISContent(altMedia._image.url, 'image');
+    }
+
+    if (agolMedia) {
+      arcgisContent.push(agolMedia);
     }
 
     return arcgisContent;
   }
 
-  getImageArcGISContent(url) {
+  getMediaArcGISContent(url, type) {
     let arcgisResourceURL = Media.getArcGISItemResourceURL(url);
 
     if (arcgisResourceURL) {
       return {
         type: 'item-resource',
-        mediaType: 'image',
+        mediaType: type,
         url: arcgisResourceURL.url,
         file: arcgisResourceURL.file
       };

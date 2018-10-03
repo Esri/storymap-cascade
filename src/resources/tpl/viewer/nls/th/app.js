@@ -33,7 +33,7 @@ define({
       "mapLoadingFail": "มีบางอย่างไม่ถูกต้อง โหลดแผนที่ไม่ถูกต้อง",
       "signOut": "ลงชื่อออก",
       "builderSupportFirefox": "ในขณะนี้ตัวสร้าง Story Map Cascade รองรับ Firefox!<br><br>การรองรับสำหรับการเขียนเรื่องราว Cascade ใน Firefox ในปัจจุบันอยู่ในรุ่นเบต้า โปรดลองใช้และรายงานปัญหาต่าง ๆ ไปยัง ${ESRI-SUPPORT} หรือ ${ESRI-COMMUNITY}",
-      "builderSupportOther": "เรื่องราว Cascade สามารถดูได้ในเว็บเบราว์เซอร์สมัยใหม่ แต่เฉพาะ ${CHROME}, ${SAFARI} และ ${FIREFOX} (รุ่นเบต้า) เท่านั้นที่รองรับตัวสร้าง Story Map Cascade<br><br>หากคุณต้องการตัวสร้าง Cascade ให้รองรับเบราว์เซอร์อื่น โปรดติดต่อ ${ESRI-SUPPORT} หรือ ${BROWSER-SUPPORT-VOTE}",
+      "builderSupportOther": "สามารถดูเรื่องราวแบบ Cascade บนเว็บเบราว์เซอร์สมัยใหม่รุ่นใดก็ได้ แต่เครื่องมือสร้าง Story Map Cascade จะรองรับเฉพาะบน ${CHROME}, ${SAFARI} และ ${FIREFOX}<br><br>หากคุณต้องการให้เครื่องมือสร้าง Cascade รองรับเบราว์เซอร์อื่น โปรดติดต่อ ${ESRI-SUPPORT} หรือ ${BROWSER-SUPPORT-VOTE}",
       "builderSupportIpad": "เครื่องมือสร้างแผนที่เรื่องราวแบบคาสเคส ไม่รองรับบน iPad แต่แผนที่เรื่องราวแบบคาสเคดที่คุณสร้างสามารถใช้ได้บน iPad",
       "launchBuilder": "เปิดใช้งานตัวสร้าง Cascade",
       "notAgain": "ไม่ต้องแสดงสิ่งนี้อีก",
@@ -88,6 +88,16 @@ define({
       "learnMore": "เรียนรู้เพิ่มเติม",
       "close": "ปิด",
       "dontShowAgain": "ไม่ต้องแสดงข้อความนี้อีก"
+    },
+    "embedBar": {
+      "share": "แบ่งปัน",
+      "fullScreen": "แสดงผลเต็มหน้าจอ",
+      "exitFullScreen": "ออกจากโหมดเต็มจอ",
+      "enlarge": "ขยาย",
+      "newTab": "เปิดในแท็บใหม่",
+      "tagline": "Story Map",
+      "twitter": "แชร์ผ่าน Twitter",
+      "facebook": "แชร์ผ่าน Facebook"
     }
   },
   "print": {

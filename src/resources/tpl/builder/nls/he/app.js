@@ -172,7 +172,7 @@ define({
           "error": "אין מדיה מאושרת.",
           "imageOnly": "בחלק הזה של הסיפור ניתן להוסיף תמונה.",
           "imageAndVideo": "בחלק הזה של הסיפור ניתן להוסיף תמונה או סרטון.",
-          "imageVideoWebpage": "בחלק הזה של הסיפור ניתן להוסיף תמונה, סרטון או דף אינטרנט."
+          "imageVideoWebpage": "בחלק זה של הסיפור ניתן להוסיף שמע, תמונה, סרטון או דף אינטרנט."
         }
       },
       "browsePanel": {
@@ -300,16 +300,20 @@ define({
             "createContent": {
               "createNewMap": "צור מפה חדשה",
               "or": "או",
-              "dragAndDrop": "גרור תמונות לכאן",
-              "uploadImage": "עיין כדי למצוא תמונות",
-              "agolInfo": "תמונות יאוחסנו בחשבון ArcGIS שלך והגישה אליהן תהיה רק מחוץ לסיפור.",
-              "saveBeforeUpload": "אחרי שמירת הסיפור, תוכל להעלות מכאן תמונות ל-ArcGIS.",
-              "fileTypesImage": "סוגי קבצים נתמכים: ‎.png,‏ ‎.jpeg,‏ ‎.jpg,‏ ‎.gif,‏ ‎.bmp"
+              "dragAndDropImage": "שחרר תמונות",
+              "dragAndDropImageAudio": "שחרר תמונות או שמע",
+              "uploadButton": "עיין",
+              "agolInfo": "התמונות והשמע שהועלו יהיה נגישים בתוך סיפור זה בלבד.",
+              "saveBeforeUpload": "לאחר שמירת הסיפור, תוכל להעלות מכאן תמונות ושמע אל ArcGIS.",
+              "fileExtsImage": "הסוגים הנתמכים: ‎.png,‏ ‎.jpg,‏ ‎.gif,‏ ‎.bmp",
+              "fileExtsImageAudio": "הסוגים הנתמכים: ‎.png,‏ ‎.jpg,‏ ‎.gif,‏ ‎.bmp,‏ mp3",
+              "maxSize": "עד ‎10 MB לכל קובץ."
             },
             "filterAndSort": {
               "webmap": "מפת Web",
               "webscene": "סצנת Web",
               "image": "תמונה",
+              "audio": "צליל",
               "date": "תאריך",
               "sortByDate": "מיון לפי תאריך",
               "title": "כותרת",
@@ -389,9 +393,9 @@ define({
       "placeholder": "הזן כותרת..."
     },
     "media": {
-      "imageUpload": "העלאת תמונה מתבצעת...",
-      "imageUploadSuccess": "התמונה הועלתה בהצלחה",
-      "imageUploadFail": "העלאת התמונה נכשלה"
+      "mediaUpload": "העלאת מדיה מתבצעת...",
+      "mediaUploadSuccess": "המדיה הועלתה בהצלחה",
+      "mediaUploadFail": "העלאת המדיה נכשלה"
     },
     "controller": {
       "sectionOrganize": "סידרת את הקטעים",
@@ -412,6 +416,7 @@ define({
     "mediaErrors": {
       "mediaTypes": {
         "image": "תמונה",
+        "audio": "צליל",
         "webmap": "מפה",
         "webscene": "סצנה",
         "video": "וידאו",
@@ -569,22 +574,6 @@ define({
       "action2": "בדוק את הסיפורים שלי כעת",
       "action3": "מידע נוסף",
       "floatingNotification": "סיפור זה מכיל תוכן לא מאובטח (HTTP). בדוק את הבעיות ותקן אותן."
-    },
-    "embedBar": {
-      "share": "שיתוף",
-      "fullScreen": "מסך מלא",
-      "exitFullScreen": "צא ממסך מלא",
-      "enlarge": "הגדל",
-      "newTab": "פתח בכרטיסייה חדשה",
-      "tagline": "מפת סיפור"
-    },
-    "june2018SurveyMessage": {
-      "bannerMsg": "אפשר לבקש ממך משהו? הדבר יעזור בעיצוב העתיד של מפות הסיפור.",
-      "s1h1": "שתף את מחשבותיך, עצב את העתיד",
-      "s1p1": "דעתך היא המקור החשוב ביותר שלנו לקבלת משוב ואם נדע עליך מעט יותר, הדבר יסייע לנו לשפר את מפות הסיפור. נודה לך מאד אם תסכים להשיב לסקר זה, שידרוש שלוש דקות מזמנך.",
-      "s2p1": "כמו תמיד, תודה שבחרת להשתמש במפות הסיפור של Esri!",
-      "action1": "סגור",
-      "action2": "השתתף בסקר"
     }
   }
 });

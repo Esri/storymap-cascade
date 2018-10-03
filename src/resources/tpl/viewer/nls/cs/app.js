@@ -33,7 +33,7 @@ define({
       "mapLoadingFail": "Něco se pokazilo, mapa se nenahrála správně.",
       "signOut": "Odhlásit",
       "builderSupportFirefox": "Nástroj pro tvorbu kaskádové mapy s příběhem nyní podporuje Firefox!<br><br>Podpora vytváření kaskádových příběhů ve Firefoxu je momentálně ve verzi beta. Aplikaci si neváhejte vyzkoušet a s případnými problémy se obraťte na ${ESRI-SUPPORT} nebo ${ESRI-COMMUNITY}.",
-      "builderSupportOther": "Kaskádové příběhy lze zobrazit v jakémkoli moderním webovém prohlížeči. Nástroj pro tvorbu kaskádové mapy s příběhem ovšem podporují pouze prohlížeče ${CHROME}, ${SAFARI} a ${FIREFOX} (beta).<br><br>Pokud potřebujete, aby nástroj podporoval jiný prohlížeč, obraťte se prosím na ${ESRI-SUPPORT} nebo ${BROWSER-SUPPORT-VOTE}.",
+      "builderSupportOther": "Kaskádové příběhy lze prohlížet v libovolném moderním webovém prohlížeči, ale nástroj pro tvorbu kaskádové mapy s příběhem je podporován pouze v prohlížečích ${CHROME} a ${SAFARI}.<br><br>Pokud potřebujete, aby nástroj pro tvorbu kaskádové mapy podporoval jiný webový prohlížeč, kontaktujte ${ESRI-SUPPORT} nebo ${BROWSER-SUPPORT-VOTE}.",
       "builderSupportIpad": "Nástroj pro tvorbu kaskádové mapy s příběhem není na iPadu podporován. Vytvořené a sdílené kaskádové příběhy budou na iPadu fungovat.",
       "launchBuilder": "Spustit nástroj pro tvorbu kaskádové mapy",
       "notAgain": "Toto dialogové okno příště nezobrazovat",
@@ -88,6 +88,16 @@ define({
       "learnMore": "Více informací",
       "close": "Zavřít",
       "dontShowAgain": "Toto hlášení příště nezobrazovat"
+    },
+    "embedBar": {
+      "share": "Sdílet",
+      "fullScreen": "Celá obrazovka",
+      "exitFullScreen": "Ukončit režim celé obrazovky",
+      "enlarge": "Zvětšit",
+      "newTab": "Otevřít na nové kartě.",
+      "tagline": "Mapa s příběhem",
+      "twitter": "Sdílet na Twitteru",
+      "facebook": "Sdílet na Facebooku"
     }
   },
   "print": {

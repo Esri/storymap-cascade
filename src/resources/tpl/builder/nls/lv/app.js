@@ -172,7 +172,7 @@ define({
           "error": "Nav autorizēta datu nesēja.",
           "imageOnly": "Šajā stāsta daļā varat pievienot attēlu.",
           "imageAndVideo": "Šajā stāsta daļā varat pievienot attēlu vai video.",
-          "imageVideoWebpage": "Šajā stāsta daļā varat pievienot attēlu, video vai tīmekļa lapu."
+          "imageVideoWebpage": "Šajā stāsta daļā varat pievienot audio, attēlu, video vai tīmekļa lapu."
         }
       },
       "browsePanel": {
@@ -300,16 +300,20 @@ define({
             "createContent": {
               "createNewMap": "Izveidot jaunu karti",
               "or": "VAI",
-              "dragAndDrop": "Nometiet attēlu(s) šeit",
-              "uploadImage": "Pārlūkot attēlu(s)",
-              "agolInfo": "attēli tiks glabāti jūsu ArcGIS kontā un būs pieejami tikai jūsu stāstā.",
-              "saveBeforeUpload": "Pēc šī stāsta saglabāšanas šeit varat augšupielādēt attēlus ArcGIS.",
-              "fileTypesImage": "Atbalstītie failu tipi: .png, .jpeg, .jpg, .gif, .bmp"
+              "dragAndDropImage": "Nomest attēlus",
+              "dragAndDropImageAudio": "Nomest attēlus vai audio",
+              "uploadButton": "Pārlūkot",
+              "agolInfo": "Augšupielādētajiem attēliem un audio varēs piekļūt tikai šajā stāstā.",
+              "saveBeforeUpload": "Pēc šī stāsta saglabāšanas šeit varat augšupielādēt attēlus un audio ArcGIS.",
+              "fileExtsImage": "Atbalstītie tipi: .png, .jpg, .gif, .bmp.",
+              "fileExtsImageAudio": "Atbalstītie tipi: .png, .jpg, .gif, .bmp, .mp3.",
+              "maxSize": "Faila izmērs nedrīkst pārsniegt 10 MB."
             },
             "filterAndSort": {
               "webmap": "Tīmekļa karte",
               "webscene": "Tīmekļa scēna",
               "image": "Attēls",
+              "audio": "Audio",
               "date": "Datums",
               "sortByDate": "Šķirot pēc datuma",
               "title": "Virsraksts",
@@ -389,9 +393,9 @@ define({
       "placeholder": "Ievadīt virsrakstu..."
     },
     "media": {
-      "imageUpload": "Notiek attēla augšupielāde...",
-      "imageUploadSuccess": "Attēla augšupielāde izdevās",
-      "imageUploadFail": "Attēla augšupielāde neizdevās"
+      "mediaUpload": "Notiek multivides augšupielāde…",
+      "mediaUploadSuccess": "Multivides augšupielāde izdevās",
+      "mediaUploadFail": "Multivides augšupielāde neizdevās"
     },
     "controller": {
       "sectionOrganize": "Jūs organizējāt sadaļas",
@@ -412,6 +416,7 @@ define({
     "mediaErrors": {
       "mediaTypes": {
         "image": "attēls",
+        "audio": "audio",
         "webmap": "karte",
         "webscene": "scēna",
         "video": "video",
@@ -569,22 +574,6 @@ define({
       "action2": "Pārbaudīt manus stāstus tūlīt",
       "action3": "Uzziniet vairāk",
       "floatingNotification": "Šajā stāstā ir ietverts nedrošs (HTTP) saturs. Izskatiet un novērsiet problēmas."
-    },
-    "embedBar": {
-      "share": "Kopīgošana",
-      "fullScreen": "Pilnekrāna režīms",
-      "exitFullScreen": "Iziet no pilnekrāna režīma",
-      "enlarge": "Palielināt",
-      "newTab": "Atvēriet jaunā cilnē",
-      "tagline": "Kartes stāsts"
-    },
-    "june2018SurveyMessage": {
-      "bannerMsg": "Vai varam jums kaut ko pajautāt? Tas palīdzēs veidot Kartes stāstu nākotni.",
-      "s1h1": "Dalieties savās domās, veidojiet nākotni",
-      "s1p1": "Jūsu ieguldījums ir viens no mūsu svarīgākajiem atsauksmju avotiem, pastāstot vairāk, jūs palīdzēsiet mums uzlabot Kartes stāstus. Mēs būtu pateicīgi, ja jūs varētu piedalīties šajā trīs minūšu aptaujā.",
-      "s2p1": "Kā vienmēr, paldies, ka izmantojat Esri Kartes stāstus!",
-      "action1": "Aizvērt",
-      "action2": "Aizpildīt aptauju"
     }
   }
 });

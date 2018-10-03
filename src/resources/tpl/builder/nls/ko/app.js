@@ -172,7 +172,7 @@ define({
           "error": "인증되지 않는 미디어입니다.",
           "imageOnly": "스토리의 이 부분에서는 이미지를 추가할 수 있습니다.",
           "imageAndVideo": "스토리의 이 부분에서는 이미지 또는 비디오를 추가할 수 있습니다.",
-          "imageVideoWebpage": "스토리의 이 부분에서는 이미지, 비디오 또는 웹 페이지를 추가할 수 있습니다."
+          "imageVideoWebpage": "스토리의 해당 부분에는 오디오, 이미지, 비디오, 웹페이지를 추가할 수 있습니다."
         }
       },
       "browsePanel": {
@@ -300,16 +300,20 @@ define({
             "createContent": {
               "createNewMap": "새 맵 생성",
               "or": "OR",
-              "dragAndDrop": "여기에 이미지 놓기",
-              "uploadImage": "이미지 찾아보기",
-              "agolInfo": "이미지가 ArcGIS에 저장되며 스토리 내에서만 접근할 수 있습니다.",
-              "saveBeforeUpload": "이 스토리를 저장하면 여기에서 ArcGIS에 이미지를 업로드할 수 있습니다.",
-              "fileTypesImage": "지원되는 파일 유형: .png, .jpeg, .jpg, .gif, .bmp"
+              "dragAndDropImage": "이미지 드롭",
+              "dragAndDropImageAudio": "이미지 또는 오디오 드롭",
+              "uploadButton": "찾아보기",
+              "agolInfo": "업로드한 이미지 및 오디오는 해당 스토리 내에서만 접근할 수 있습니다.",
+              "saveBeforeUpload": "이 스토리를 저장하면 여기에서 ArcGIS에 이미지 및 오디오를 업로드할 수 있습니다.",
+              "fileExtsImage": "png, jpg, gif, bmp 유형이 지원됩니다.",
+              "fileExtsImageAudio": "png, jpg, gif, bmp, mp3 유형이 지원됩니다.",
+              "maxSize": "파일당 최대 10MB가 지원됩니다."
             },
             "filterAndSort": {
               "webmap": "웹 맵",
               "webscene": "웹 씬",
               "image": "이미지",
+              "audio": "오디오",
               "date": "날짜",
               "sortByDate": "날짜별로 정렬",
               "title": "제목",
@@ -389,9 +393,9 @@ define({
       "placeholder": "제목 입력..."
     },
     "media": {
-      "imageUpload": "이미지 업로드 진행 중...",
-      "imageUploadSuccess": "이미지가 업로드됨",
-      "imageUploadFail": "이미지를 업로드 실패"
+      "mediaUpload": "미디어 업로드 진행 중...",
+      "mediaUploadSuccess": "미디어를 업로드했습니다.",
+      "mediaUploadFail": "미디어를 업로드하지 못했습니다."
     },
     "controller": {
       "sectionOrganize": "섹션이 구성됨",
@@ -412,6 +416,7 @@ define({
     "mediaErrors": {
       "mediaTypes": {
         "image": "이미지",
+        "audio": "오디오",
         "webmap": "맵",
         "webscene": "씬",
         "video": "비디오",
@@ -569,22 +574,6 @@ define({
       "action2": "내 스토리 지금 확인",
       "action3": "자세한 정보",
       "floatingNotification": "이 스토리에는 안전하지 않은(HTTP) 콘텐츠가 포함되어 있습니다. 검토하고 해당 문제를 해결하세요."
-    },
-    "embedBar": {
-      "share": "공유하기",
-      "fullScreen": "전체 화면",
-      "exitFullScreen": "전체 화면 종료",
-      "enlarge": "확대",
-      "newTab": "새 탭에서 열기",
-      "tagline": "스토리맵"
-    },
-    "june2018SurveyMessage": {
-      "bannerMsg": "요청을 드려도 될까요? 이 질문에 답변을 제공하면 향후 스토리맵을 향상시키는 데 도움이 됩니다.",
-      "s1h1": "의견을 공유하고 향후 스토리맵을 향상시키세요.",
-      "s1p1": "Esri는 귀하의 소중한 피드백을 반영하여 스토리맵을 더욱 향상시킬 수 있습니다. 이 3분 분량의 설문에 참여해 주시면 감사하겠습니다.",
-      "s2p1": "항상 Esri Story Maps를 사용해 주셔서 항상 감사드립니다!",
-      "action1": "닫기",
-      "action2": "설문 작성"
     }
   }
 });

@@ -172,7 +172,7 @@ define({
           "error": "Nėra autorizuotos medijos.",
           "imageOnly": "Šioje pasakojimo dalyje galite pridėti paveikslėlį.",
           "imageAndVideo": "Šioje pasakojimo dalyje galite pridėti paveikslėlį arba vaizdo įrašą.",
-          "imageVideoWebpage": "Šioje pasakojimo dalyje galite pridėti paveikslėlį, vaizdo įrašą arba tinklalapį."
+          "imageVideoWebpage": "Šioje pasakojimo dalyje galite pridėti garso įrašą, paveikslėlį, vaizdo įrašą arba tinklalapį."
         }
       },
       "browsePanel": {
@@ -300,16 +300,20 @@ define({
             "createContent": {
               "createNewMap": "Kurti naują žemėlapį",
               "or": "ARBA",
-              "dragAndDrop": "Nuvilkite paveikslėlį (-ius) čia",
-              "uploadImage": "Ieškokite paveikslėlio (-ių)",
-              "agolInfo": "Paveikslėliai bus saugomi jūsų ArcGIS paskyroje ir pasiekiami tik jūsų pasakojimo viduje.",
-              "saveBeforeUpload": "Įrašę šį pasakojimą, galite įkelti paveikslėlius į ArcGIS čia.",
-              "fileTypesImage": "Palaikomi failų tipai: .png, .jpeg, .jpg, .gif, .bmp"
+              "dragAndDropImage": "Nuvilkti vaizdus",
+              "dragAndDropImageAudio": "Nuvilkti vaizdus arba garso įrašus",
+              "uploadButton": "Naršyti",
+              "agolInfo": "Įkelti vaizdai ir garso įrašai bus pasiekiami tik šiame pasakojime.",
+              "saveBeforeUpload": "Išsaugoję šį pasakojimą, galite įkelti paveikslėlius ir garso įrašus į ArcGIS čia.",
+              "fileExtsImage": "Palaikomi tipai: png, jpg, gif, bmp.",
+              "fileExtsImageAudio": "Palaikomi tipai: png, jpg, gif, bmp, mp3.",
+              "maxSize": "Maks. failo dydis 10 MB."
             },
             "filterAndSort": {
               "webmap": "Internetinis žemėlapis",
               "webscene": "Internetinė scena",
               "image": "Paveikslėlis",
+              "audio": "Garso įrašas",
               "date": "Data",
               "sortByDate": "Rūšiuoti pagal datą",
               "title": "Pavadinimas",
@@ -389,9 +393,9 @@ define({
       "placeholder": "Įveskite antraštę..."
     },
     "media": {
-      "imageUpload": "Įkeliamas atvaizdas...",
-      "imageUploadSuccess": "Atvaizdas įkeltas sėkmingai",
-      "imageUploadFail": "Atvaizdo įkelti nepavyko"
+      "mediaUpload": "Įkeliama medija...",
+      "mediaUploadSuccess": "Medija įkelta sėkmingai",
+      "mediaUploadFail": "Medijos įkelti nepavyko"
     },
     "controller": {
       "sectionOrganize": "Jūs surikiavote skiltis",
@@ -412,6 +416,7 @@ define({
     "mediaErrors": {
       "mediaTypes": {
         "image": "atvaizdas",
+        "audio": "garso įrašas",
         "webmap": "žemėlapis",
         "webscene": "scena",
         "video": "vaizdo įrašas",
@@ -569,22 +574,6 @@ define({
       "action2": "Peržiūrėkite savo pasakojimus jau dabar",
       "action3": "Sužinokite daugiau",
       "floatingNotification": "Šiame pasakojime yra nesaugaus (HTTP) turinio. Peržiūrėkite ir išspręskite šias problemas."
-    },
-    "embedBar": {
-      "share": "Bendrinti",
-      "fullScreen": "Visas ekranas",
-      "exitFullScreen": "Išjungti viso ekrano rodymo režimą",
-      "enlarge": "Išplėsti",
-      "newTab": "Atidaryti naujame lange",
-      "tagline": "Žemėlapio pasakojimas"
-    },
-    "june2018SurveyMessage": {
-      "bannerMsg": "Ar galime kai ko jūsų paklausti? Tai padės ateityje kurti žemėlapių pasakojimus.",
-      "s1h1": "Pasidalykite savo mintimis ir kurkime ateitį kartu",
-      "s1p1": "Jūsų indėlis yra mūsų svarbiausias atsiliepimų šaltinis, o sužinoję apie jus daugiau, galėsime patobulinti žemėlapių pasakojimus. Būtume dėkingi, jei sudalyvautumėte šioje trijų minučių apklausoje.",
-      "s2p1": "Kaip visada, dėkojame, kad naudojate Esri žemėlapių pasakojimus!",
-      "action1": "Uždaryti",
-      "action2": "Užpildyti apklausą"
     }
   }
 });

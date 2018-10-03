@@ -329,29 +329,58 @@ var ArcGISConnector = (function() {
         return;
       }
 
-      let thumbFile = findThumbUrl(r, resources);
-      let thumbUrl = Helper.stripTrailingSlash(resourcesUrl) + '/' + encodeURIComponent(thumbFile);
-      let tokenizedThumbUrl = thumbUrl + '?token=' + _portalUser.credential.token;
       let name = (nameSplit.length === 1) ? nameSplit[0] : (nameSplit.slice(0, -1).join('__') + '.' + fileExt);
-      // TODO: what to do with files that don't have datestamps in their titles?
       let modified = endSplit[0].match(/^[0-9]{13}$/) ? new Date(parseInt(endSplit[0])) : '';
+      var formattedResource;
 
-      returnArr.push({
-        name: decodeURIComponent(name),
-        modified,
-        thumbUrl,
-        tokenizedThumbUrl,
-        thumbFile,
-        type,
-        picUrl: Helper.stripTrailingSlash(resourcesUrl) + '/' + encodeURIComponent(r),
-        displayName: text.filterAndSort.image,
-        id: r, // these need unique ids for react gallery item array
-        fileName: r,
-        title: name,
-        fromResources: true
-      });
+      if (type === 'audio') {
+        formattedResource = getFormattedAudio(r, resources, resourcesUrl, fileExt, name, modified, type);
+      }
+      else {
+        formattedResource = getFormattedImage(r, resources, resourcesUrl, fileExt, name, modified, type);
+      }
+
+      returnArr.push(formattedResource);
+
     });
     return returnArr;
+  };
+
+  var getFormattedImage = function(r, resources, resourcesUrl, fileExt, name, modified, type) {
+    let thumbFile = findThumbUrl(r, resources);
+    let thumbUrl = Helper.stripTrailingSlash(resourcesUrl) + '/' + encodeURIComponent(thumbFile);
+    let tokenizedThumbUrl = thumbUrl + '?token=' + _portalUser.credential.token;
+    // TODO: what to do with files that don't have datestamps in their titles?
+
+    return {
+      name: decodeURIComponent(name),
+      modified,
+      thumbUrl,
+      tokenizedThumbUrl,
+      thumbFile,
+      type,
+      picUrl: Helper.stripTrailingSlash(resourcesUrl) + '/' + encodeURIComponent(r),
+      displayName: text.filterAndSort.image,
+      id: r, // these need unique ids for react gallery item array
+      fileName: r,
+      title: name,
+      fromResources: true
+    };
+  };
+
+  var getFormattedAudio = function(r, resources, resourcesUrl, fileExt, name, modified, type) {
+    return {
+      name: decodeURIComponent(name),
+      modified,
+      type,
+      url: Helper.stripTrailingSlash(resourcesUrl) + '/' + encodeURIComponent(r),
+      thumbUrl: 'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPHN2ZyB3aWR0aD0iMTc5MiIgaGVpZ2h0PSIxNzkyIiB2aWV3Qm94PSIwIDAgMTc5MiAxNzkyIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxwYXRoIGQ9Ik04MzIgMzUydjEwODhxMCAyNi0xOSA0NXQtNDUgMTktNDUtMTlsLTMzMy0zMzNoLTI2MnEtMjYgMC00NS0xOXQtMTktNDV2LTM4NHEwLTI2IDE5LTQ1dDQ1LTE5aDI2MmwzMzMtMzMzcTE5LTE5IDQ1LTE5dDQ1IDE5IDE5IDQ1em0zODQgNTQ0cTAgNzYtNDIuNSAxNDEuNXQtMTEyLjUgOTMuNXEtMTAgNS0yNSA1LTI2IDAtNDUtMTguNXQtMTktNDUuNXEwLTIxIDEyLTM1LjV0MjktMjUgMzQtMjMgMjktMzYgMTItNTYuNS0xMi01Ni41LTI5LTM2LTM0LTIzLTI5LTI1LTEyLTM1LjVxMC0yNyAxOS00NS41dDQ1LTE4LjVxMTUgMCAyNSA1IDcwIDI3IDExMi41IDkzdDQyLjUgMTQyem0yNTYgMHEwIDE1My04NSAyODIuNXQtMjI1IDE4OC41cS0xMyA1LTI1IDUtMjcgMC00Ni0xOXQtMTktNDVxMC0zOSAzOS01OSA1Ni0yOSA3Ni00NCA3NC01NCAxMTUuNS0xMzUuNXQ0MS41LTE3My41LTQxLjUtMTczLjUtMTE1LjUtMTM1LjVxLTIwLTE1LTc2LTQ0LTM5LTIwLTM5LTU5IDAtMjYgMTktNDV0NDUtMTlxMTMgMCAyNiA1IDE0MCA1OSAyMjUgMTg4LjV0ODUgMjgyLjV6bTI1NiAwcTAgMjMwLTEyNyA0MjIuNXQtMzM4IDI4My41cS0xMyA1LTI2IDUtMjYgMC00NS0xOXQtMTktNDVxMC0zNiAzOS01OSA3LTQgMjIuNS0xMC41dDIyLjUtMTAuNXE0Ni0yNSA4Mi01MSAxMjMtOTEgMTkyLTIyN3Q2OS0yODktNjktMjg5LTE5Mi0yMjdxLTM2LTI2LTgyLTUxLTctNC0yMi41LTEwLjV0LTIyLjUtMTAuNXEtMzktMjMtMzktNTkgMC0yNiAxOS00NXQ0NS0xOXExMyAwIDI2IDUgMjExIDkxIDMzOCAyODMuNXQxMjcgNDIyLjV6Ii8+PC9zdmc+',
+      displayName: text.filterAndSort.audio,
+      id: r, // these need unique ids for react gallery item array
+      fileName: r,
+      title: name,
+      fromResources: true
+    };
   };
 
   var findThumbUrl = function(originalResourceName, allResources) {

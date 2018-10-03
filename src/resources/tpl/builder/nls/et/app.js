@@ -74,16 +74,16 @@ define({
       "creditsLabel": "Krediidid",
       "betaFeedback": "Tagasiside",
       "betaNote": "Andke meile teada, mida rakendusest ${APP_NAME} arvate. Samuti teavitage meid ka sellest, kui miski ootustekohaselt ei tööta.",
-      "notSharedNote": "Teie lugu pole jagatud, ainult teie näete seda.",
+      "notSharedNote": "Teie lugu pole jagatud, ainult Teie näete seda.",
       "organizationWarning": "Selleks et teised saaksid seda lugu vaadata, peate loole lisatud vaateid, vaatekihte ja rakendusi oma ettevõttega jagama. Kaarte ja kaardikihte jagatakse automaatselt.",
       "publicWarning": "Selleks et teised saaksid seda lugu vaadata, peate loole lisatud vaateid, vaatekihte ja rakendusi kõigiga jagama. Kaarte ja kaardikihte jagatakse automaatselt.",
-      "addTitleNote": "Salvestamiseks lisage esilehe pealkiri",
+      "addTitleNote": "Salvestamiseks lisage esilehele pealkiri",
       "saveError": "Teie loo salvestamisel ilmnes tõrge.",
       "duplicate": "Duplikaat",
       "organize": "Paiguta",
       "done": "Valmis",
       "invite": "Loo täiendamisel kuvatakse jaotised siin...",
-      "mystoriestooltip": "Juhul kui loos esineb probleeme, annab teile nendest teada kaskaadikoostur, mis aitab teil probleemid ka lahendada. Vaateid ja lisatud rakendusi ei kontrollita, neid peate ise kontrollima."
+      "mystoriestooltip": "Juhul kui loos esineb probleeme, annab teile nendest teada kaskaadikoostaja, mis aitab teil probleemid ka lahendada. Vaateid ja lisatud rakendusi ei kontrollita, neid peate ise kontrollima."
     },
     "immersiveViewPanel": {
       "transition": "Üleminek",
@@ -124,7 +124,7 @@ define({
         "audio": "Heli",
         "on": "Sees",
         "muted": "Vaigistatud",
-        "volumeAside": "Selles vaates esitatakse lugejale video automaatselt. Juhul kui te heli vaigistate, ei saa lugeja seda sisse lülitada.",
+        "volumeAside": "Selles vaates esitatakse lugejale video automaatselt. Juhul kui Te heli vaigistate, ei saa lugeja seda sisse lülitada.",
         "view": "Vaatamine",
         "resetLocation": "Lähtesta asukoht",
         "resetLayers": "Lähtesta kihid",
@@ -136,7 +136,7 @@ define({
         "interactionAside": "*Interaktsiooninupp kuvatakse puuteekraaniga seadmete ekraanidel.",
         "slide": "Slaid",
         "noSlides": "Ühtegi slaidi pole saadaval.",
-        "mapExtentPrompt": "Oma loo jutustamiseks värskenda kaarti ning muudatuste salvestamiseks klõpsake linnukest"
+        "mapExtentPrompt": "Oma loo jutustamiseks värskendage kaarti ning muudatuste salvestamiseks klõpsake linnukest"
       },
       "sectionAppearance": {
         "layout": "Paigutus",
@@ -152,14 +152,14 @@ define({
       "background": {
         "noCrop": "Ära kärbi",
         "mostImportantPart": "Vali põhipunkt",
-        "cropExplanationImmersive": "Selleks et valida, kuidas pilt eri ekraanisuuruste korral kärbitakse, valige pildil punkt. Valitud punkt on alati nähtav. Juhul, kui pilt peab täielikult nähtav olema, valige märkeruut „Ära kärbi”.",
+        "cropExplanationImmersive": "Selleks et valida, kuidas pilt eri ekraanisuuruste korral kärbitakse, valige pildil punkt. Valitud punkt on alati nähtav. Juhul, kui pilt peab täielikult nähtav olema, valige märkeruut ära kärbi.",
         "cropExplanation": "Selleks et valida, kuidas pilt eri ekraanisuuruste korral kärbitakse, valige pildil punkt. Valitud punkt on alati nähtav.",
         "color": "Värv",
         "previews": "Eelvaated"
       },
       "altMedia": {
-        "alternativeMedia": "Mobiiliseadme alternatiivne pilt",
-        "explanation": "Teatud meediumisisu ei pruugi olla toetatud või ei pruugi töötada hästi mobiilsideseadmetes. Kasutage seda paneeli selle pildi määratlemiseks, mis kuvataks selle meediumisisu asemel, kui teie lugu vaadatakse mobiiltelefonis või tahvelarvutis.",
+        "alternativeMedia": "Alternatiivne pilt mobiiliseadmetele",
+        "explanation": "Teatud meediumisisu ei pruugi olla toetatud või ei pruugi töötada hästi mobiilsideseadmetes. Kasutage seda paneeli selle pildi määratlemiseks, mis kuvataks selle meediumisisu asemel, kui Teie lugu vaadatakse mobiiltelefonis või tahvelarvutis.",
         "changeAltImage": "Muuda pilt",
         "uploadAltImage": "Lisa alternatiivne pilt"
       }
@@ -172,7 +172,7 @@ define({
           "error": "Lubatud meediamaterjali pole.",
           "imageOnly": "Loo selles osas saate lisada pildi.",
           "imageAndVideo": "Loo selles osas saate lisada pildi või video.",
-          "imageVideoWebpage": "Loo selles osas saate lisada pildi, video või veebilehe."
+          "imageVideoWebpage": "Loo selles osas saate lisada heliklipi, pildi, video või veebilehe."
         }
       },
       "browsePanel": {
@@ -183,7 +183,7 @@ define({
           "noPhotosFound": "Teie otsingule ei vasta ükski foto. Proovige uuesti.",
           "noItemsFound": "Teie otsingule ei vasta ükski üksus. Proovige uuesti.",
           "noItemsInThisStory": "Sellele loole ei ole veel programmist ArcGIS sisu lisatud.",
-          "limitReached": "Kuvatakse 100 üksust. Kui te ei leia, mida vajate, proovige märksõnaotsingut.",
+          "limitReached": "Kuvatakse 100 üksust. Kui Te ei leia, mida vajate, proovige märksõnaotsingut.",
           "galleryItems": {
             "uploadError": "Vabandame. Selle üksuse üleslaadimine ebaõnnestus."
           },
@@ -226,8 +226,8 @@ define({
             },
             "embedProtocol": {
               "embedProtocolLabel": "Lehe laadimine turvalise ühendusega (https)",
-              "embedProtocolWarning1": "Kui seda lehte teie loos ei laadita, siis ei saa seda veebilehe turvalisusega seotud põhjustel manustada.",
-              "embedProtocolWarning2": "Kui seda lehte teie loos ei laadita, tühistage see valik ja proovige uuesti. Kui lehte ikkagi ei laadita, ei saa seda veebilehe turvalisusega seotud põhjustel manustada.",
+              "embedProtocolWarning1": "Kui seda lehte Teie loos ei laadita, siis ei saa seda veebilehe turvalisusega seotud põhjustel manustada.",
+              "embedProtocolWarning2": "Kui seda lehte Teie loos ei laadita, tühistage see valik ja proovige uuesti. Kui lehte ikkagi ei laadita, ei saa seda veebilehe turvalisusega seotud põhjustel manustada.",
               "embedProtocolWarning3": "Alternatiivne võimalus on lisada loole link, mis avaneb eraldi brauseriaknas. ${linkText}",
               "linkText": "Lisateave."
             },
@@ -300,16 +300,20 @@ define({
             "createContent": {
               "createNewMap": "Loo uus kaart",
               "or": "VÕI",
-              "dragAndDrop": "Pane pilt (pildid) siia",
-              "uploadImage": "Sirvi pilte",
-              "agolInfo": "Pildid salvestatakse teie ArcGIS-i kontole ja need on ligipääsetavad ainult teie loos.",
-              "saveBeforeUpload": "Kui loo salvestate, saate siit laadida pildi programmi ArcGIS.",
-              "fileTypesImage": "Toetatud failitüübid: .png, .jpeg, .jpg, .gif, .bmp"
+              "dragAndDropImage": "Lohistage pildid",
+              "dragAndDropImageAudio": "Lohistage pildid või heliklipid",
+              "uploadButton": "Sirvi",
+              "agolInfo": "Üleslaaditud piltidele ja heliklippidele pääseb juurde üksnes selles loos.",
+              "saveBeforeUpload": "Pärast loo salvestamist saate pildid ja heliklipid siit ArcGIS-i üles laadida.",
+              "fileExtsImage": "Toetatud tüübid: png, jpg, gif, bmp.",
+              "fileExtsImageAudio": "Toetatud tüübid: png, jpg, gif, bmp, mp3.",
+              "maxSize": "Kuni 10 MB faili kohta."
             },
             "filterAndSort": {
               "webmap": "Veebikaart",
               "webscene": "Veebivaade",
               "image": "Pilt",
+              "audio": "Heli",
               "date": "Kuupäev",
               "sortByDate": "Sordi kuupäeva järgi",
               "title": "Pealkiri",
@@ -330,7 +334,7 @@ define({
       "cancelTitle": "Kas hüljata kõik salvestamata muudatused?",
       "errorSave": "Kaardi salvestamine ebaõnnestus. Proovige uuesti.",
       "loadFail": "Kaardiredaktorit ei saa kahjuks laadida",
-      "close": "Sule",
+      "close": "Sulge",
       "save": "Salvesta",
       "confirm": "Jah, sulge kaart",
       "deny": "Ei, jätka töötamist"
@@ -346,7 +350,7 @@ define({
         "immersive": "Detailne"
       },
       "link": {
-        "invite": "Kleepige või sisestamise link."
+        "invite": "Kleepige või sisestage link..."
       },
       "color": {
         "choose": "Vali",
@@ -389,9 +393,9 @@ define({
       "placeholder": "Sisesta pealkiri..."
     },
     "media": {
-      "imageUpload": "Pilti laaditakse üles",
-      "imageUploadSuccess": "Pilt laaditi üles",
-      "imageUploadFail": "Pildi üleslaadimine nurjus"
+      "mediaUpload": "Meediumifaili laaditakse üles...",
+      "mediaUploadSuccess": "Meediumifail laaditi üles",
+      "mediaUploadFail": "Meediumifaili üleslaadimine nurjus"
     },
     "controller": {
       "sectionOrganize": "Korraldasite jaotised",
@@ -401,7 +405,7 @@ define({
     },
     "notification": {
       "cancel": "Loobu",
-      "close": "Sule",
+      "close": "Sulge",
       "undo": "Ennista"
     },
     "sections": {
@@ -412,6 +416,7 @@ define({
     "mediaErrors": {
       "mediaTypes": {
         "image": "pilt",
+        "audio": "heli",
         "webmap": "kaart",
         "webscene": "stseen",
         "video": "videomaterjalide",
@@ -423,10 +428,10 @@ define({
         "deleted": "See üksus on kustutatud.",
         "inaccessible": "See sisu pole kättesaadav.",
         "unauthorized": "Teil puudub õigus seda sisu vaadata.",
-        "unshared": "Seda üksust jagatakse teie looga võrreldes muul viisil.",
-        "othersUnshared": "Seda üksust jagatakse teie looga võrreldes muul viisil.",
+        "unshared": "Seda üksust jagatakse Teie looga võrreldes muul viisil.",
+        "othersUnshared": "Seda üksust jagatakse Teie looga võrreldes muul viisil.",
         "subscriptionContent": "See kaart sisaldab tellijasisu kihti.",
-        "premiumContent": "See kaart sisaldab kvaliteetsisu kihti.",
+        "premiumContent": "See kaart sisaldab premium sisu kihti.",
         "secureService": "See kaart sisaldab kaitstud kihti."
       },
       "contentIssues": {
@@ -439,9 +444,9 @@ define({
       },
       "contentWarnings": {
         "noAltImage": "Enne jagamist kontrollige oma lugu kindlasti mobiilsideseadmes. Kui see meediumisisu ei tööta eeldatult, kasutage allolevat nuppu alternatiivse pildi lisamiseks, mis kuvatakse telefonis või tahvelarvutis loo vaatamisel.",
-        "noAltImageUnsupported": "Mobiilsideseadmed ei toeta seda meediumisisu. Määrake vahekaardil Mobiil alternatiivne pilt, mida näidatakse, kui lugu kuvatakse mobiilsidega seadmetes. Kasutage allolevat nuppu alternatiivse pildi lisamiseks, mis kuvatakse telefonis või tahvelarvutis loo vaatamisel.",
+        "noAltImageUnsupported": "Mobiilsideseadmed ei toeta seda meediumisisu. Määrake vahekaardil mobiil alternatiivne pilt, mida näidatakse, kui lugu kuvatakse mobiilsidega seadmetes. Kasutage allolevat nuppu alternatiivse pildi lisamiseks, mis kuvatakse telefonis või tahvelarvutis loo vaatamisel.",
         "noAltImageWarning": "Enne jagamist kontrollige oma lugu kindlasti mobiilsideseadmes. Kui see meediumisisu ei tööta eeldatult, kasutage allolevat nuppu alternatiivse pildi lisamiseks, mis kuvatakse telefonis või tahvelarvutis loo vaatamisel.",
-        "noAltImageAlt": "Seda tüüpi meediumisisu ei pruugi olla toetatud või ei pruugi töötada hästi mobiilsideseadmetes. Sisestage vahekaardil Mobiil alternatiivne pilt, mis kuvataks selle meediumisisu asemel, kui teie lugu vaadatakse mobiiltelefonis või tahvelarvutis."
+        "noAltImageAlt": "Seda tüüpi meediumisisu ei pruugi olla toetatud või ei pruugi töötada hästi mobiilsideseadmetes. Sisestage vahekaardil mobiil alternatiivne pilt, mis kuvataks selle meediumisisu asemel, kui Teie lugu vaadatakse mobiiltelefonis või tahvelarvutis."
       },
       "descriptions": {
         "httpAudioUnfixable": "See heliklipp ei toeta HTTPS-i. Kustutage see oma loost või asendage lingiga.",
@@ -491,20 +496,20 @@ define({
           "unshared": "Mittejagatud sisu",
           "othersUnshared": "Kellegi teise mittejagatud sisu",
           "subscriptionContent": "Tellija sisu",
-          "premiumContent": "Kvaliteetsisu",
+          "premiumContent": "Premium sisu",
           "secureContent": "Kaitstud sisu",
           "deleted": "Kustutatud sisu",
           "inaccessible": "Kättesaamatu sisu",
           "unauthorized": "Volitamata sisu"
         },
         "descriptions": {
-          "unshared": "Seda sisu jagatakse teie looga võrreldes muul viisil.",
-          "othersUnshared": "Selle sisu omanik on muu isik ning seda sisu jagatakse teie looga võrreldes muul viisil.",
-          "othersUnsharedAuthorized": "Selle sisu omanik on muu isik, kuid teil on õigus seda sisu jagada.",
+          "unshared": "Seda sisu jagatakse Teie looga võrreldes muul viisil.",
+          "othersUnshared": "Selle sisu omanik on muu isik ning seda sisu jagatakse Teie looga võrreldes muul viisil.",
+          "othersUnsharedAuthorized": "Selle sisu omanik on muu isik, kuid Teil on õigus seda sisu jagada.",
           "inaccessible": "See sisu pole kättesaadav.",
           "deleted": "See sisu on kustutatud.",
           "unauthorized": "Teil puudub õigus seda sisu vaadata.",
-          "popupFeatureLayer": "Pildiüksusega kihi hüpikaknad pärinevad objektikihist, mida jagatakse teie looga võrreldes muul viisil.",
+          "popupFeatureLayer": "Pildiüksusega kihi hüpikaknad pärinevad objektikihist, mida jagatakse Teie looga võrreldes muul viisil.",
           "subscriptionContent": "Tellijasisu avalikuks kasutamiseks peate andma loa.",
           "premiumContent": "Kvaliteetsisu avalikuks kasutamiseks peate andma loa.",
           "secureService": "Kaitstud sisu pole lugejatele kättesaadav.",
@@ -512,13 +517,13 @@ define({
         },
         "tooltips": {
           "unshared": "Klõpsake jagamise kohta lisateabe saamiseks.",
-          "othersUnshared": "Teil puudub õigus teistele isikutele kuuluva sisu jagamiseks. Paluge sisu omanikul sisu jagada, eemaldage kaart loost või muutke kaarti, et eemaldada teile mittekuuluvad kihid. Klõpsake kaartide muutmise kohta lisateabe saamiseks.",
+          "othersUnshared": "Teil puudub õigus teistele isikutele kuuluva sisu jagamiseks. Paluge sisu omanikul sisu jagada, eemaldage kaart loost või muutke kaarti, et eemaldada Teile mittekuuluvad kihid. Klõpsake kaartide muutmise kohta lisateabe saamiseks.",
           "inaccessible": "Eemaldage see kaart loost või muutke seda, et eemaldada kättesaamatud kihid. Klõpsake kaartide muutmise kohta lisateabe saamiseks.",
           "deleted": "Eemaldage see kaart loost või muutke seda, et eemaldada puuduolevad kihid. Klõpsake kaartide muutmise kohta lisateabe saamiseks.",
           "unauthorized": "Eemaldage see kaart loost või muutke seda, et eemaldada lubamatud kihid. Klõpsake kaartide muutmise kohta lisateabe saamiseks.",
-          "popupFeatureLayer": "Pildiüksusega kihi hüpikaknad pärinevad objektikihist, mida jagatakse teie looga võrreldes muul viisil.",
+          "popupFeatureLayer": "Pildiüksusega kihi hüpikaknad pärinevad objektikihist, mida jagatakse Teie looga võrreldes muul viisil.",
           "subscriptionContent": "Tellijasisu ei kasuta krediite. Klõpsake lisateabe saamiseks.",
-          "premiumContent": "Krediidid kantakse teie ettevõttele üle iga kord, kui keegi vaatab teie loos kvaliteetsisu. Klõpsake lisateabe saamiseks.",
+          "premiumContent": "Krediidid kantakse Teie organisatsioonile üle iga kord, kui keegi vaatab Teie loos premium sisu. Klõpsake lisateabe saamiseks.",
           "secureService": "Eemaldage loost kaitstud sisu või klõpsake, et saada teavet selle kohta, kuidas kaitstud sisu teistele isikutele kasutamiseks lubada.",
           "missingItemWarning": "Kiht toimib, kuid muutunud võivad olla selle sümbolid ja hüpikaknad ning muutunud võib olla ka selle nimi. Kinnitage, et kiht kuvatakse soovitud kujul või eemaldage kiht loost."
         },
@@ -547,11 +552,11 @@ define({
     },
     "saveErrorSocial": {
       "title": "Sotsiaalmeedias jagamine",
-      "panel1": "Teie loo ilme võib sotsiaalmeedias olla soovitust erinev, kuna teie ArcGIS-i veebirakenduse üksuse pealkiri ei ühti teie loo pealkirjaga.",
-      "panel1tooltip": "Kui lisate pealkirja, kokkuvõtte ja pisipildi, näeb teie lugu välja järgmine:",
+      "panel1": "Teie loo ilme võib sotsiaalmeedias olla soovitust erinev, kuna Teie ArcGIS-i veebirakenduse üksuse pealkiri ei ühti Teie loo pealkirjaga.",
+      "panel1tooltip": "Kui lisate pealkirja, kokkuvõtte ja pisipildi, näeb Teie lugu välja järgmine:",
       "panel2": "Millist pealkirja soovite sotsiaalmeedias kasutada:",
       "panel2q1": "Loo pealkiri (soovitatav)",
-      "panel2q1tooltip": "Selle suvandi valimisel muudetakse teie üksuse pealkiri loo pealkirjaga samasuguseks ning sünkroonitakse täiendavad koosturis tehtud muudatused.",
+      "panel2q1tooltip": "Selle suvandi valimisel muudetakse Teie üksuse pealkiri loo pealkirjaga samasuguseks ning sünkroonitakse täiendavad koostajas tehtud muudatused.",
       "panel2q2": "Üksuse pealkiri",
       "panel3": "Selleks et oma loo ilmet sotsiaalmeedias veelgi täiustada, kasutage portaali ${MYSTORIES}, et lisada kokkuvõte ja pisipilt.",
       "panel4": "Ära hoiata mind enam selle loo puhul",
@@ -561,30 +566,14 @@ define({
     "httpsTransitionMessage": {
       "bannerMsg": "Oluline teade veebiturvalisuse ja kaardilugude kohta",
       "s1h1": "Esri tegeleb kaardilugude turvalisuse tõstmisega",
-      "s1p1": "Teie kaardilugude kodu on veebis. Veebikogukond tegeleb pidevalt aina paremate turbemeetmete väljatöötamise ja kasutusele võtmisega. Veebisisule juurdepääsuks kasutatakse üha enam HTTPS-i, mis pakub sisu edastamiseks Internetis turvalist ühendust. Enamik tänapäevaseid brausereid kuvab nüüd hoiatuse, kui HTTPS-i asemel on kasutatud HTTP-d. Selle uue standardi tõttu soovitame teil kindlasti kasutada kaardilugude koostamiseks ja jagamiseks HTTPS-linke ning kaardiloos veebisisu manustamise või piltidega linkimise korral üksnes HTTPS-protokolli kasutavaid URL-e.",
-      "s1p2": "Sisuliselt tähendab see, et kaardilugu ja kogu selle sisu (sh pildid, kihid, manustatud rakendused ja veebisaidid) peaksid juurdepääsu lubamiseks kasutama linke, mille alguses on HTTP asemel HTTPS. Kuna enamik brausereid annab sel juhul märku, et teie lood on turvalised, on kasutajatel teie lugude vaatamisel kindlam tunne.",
+      "s1p1": "Teie kaardilugude kodu on veebis. Veebikogukond tegeleb pidevalt aina paremate turbemeetmete väljatöötamise ja kasutusele võtmisega. Veebisisule juurdepääsuks kasutatakse üha enam HTTPS-i, mis pakub sisu edastamiseks internetis turvalist ühendust. Enamik tänapäevaseid brausereid kuvab nüüd hoiatuse, kui HTTPS-i asemel on kasutatud HTTP-d. Selle uue standardi tõttu soovitame Teil kindlasti kasutada kaardilugude koostamiseks ja jagamiseks HTTPS-linke ning kaardiloos veebisisu manustamise või piltidega linkimise korral üksnes HTTPS-protokolli kasutavaid URL-e.",
+      "s1p2": "Sisuliselt tähendab see, et kaardilugu ja kogu selle sisu (sh pildid, kihid, manustatud rakendused ja veebisaidid) peaksid juurdepääsu lubamiseks kasutama linke, mille alguses on HTTP asemel HTTPS. Kuna enamik brausereid annab sel juhul märku, et Teie lood on turvalised, on kasutajatel Teie lugude vaatamisel kindlam tunne.",
       "s2h1": "Mida ma pean tegema?",
-      "s2p1": "Esri loodab teha selle ülemineku kaardilugude koostajate ja lugejate jaoks lihtsaks. Kaardilugude koosturites ja lehel Minu lood on nüüd saadaval tööriistad, mis aitavad teil oma lugudest üles leida ebaturvalist sisu (HTTP) ja pakuvad soovitusi probleemi lahendamiseks. Kontrollige lood üle ja viige ebaturvaline sisu esimesel võimalusel üle HTTPS-i kasutamisele.",
-      "action1": "Sule",
+      "s2p1": "Esri loodab teha selle ülemineku kaardilugude koostajate ja lugejate jaoks lihtsaks. Kaardilugude koostkoostajates ja lehel minu lood on nüüd saadaval tööriistad, mis aitavad Teil oma lugudest üles leida ebaturvalist sisu (HTTP) ja pakuvad soovitusi probleemi lahendamiseks. Kontrollige lood üle ja viige ebaturvaline sisu esimesel võimalusel üle HTTPS-i kasutamisele.",
+      "action1": "Sulge",
       "action2": "Kontrolli minu lugusid kohe",
       "action3": "Lisateave",
       "floatingNotification": "See lugu sisaldab ebaturvalist (HTTP) sisu. Vaadake lugu üle ja kõrvaldage probleemid."
-    },
-    "embedBar": {
-      "share": "Jaga",
-      "fullScreen": "Täisekraan",
-      "exitFullScreen": "Välju täisekraanist",
-      "enlarge": "Kasvav",
-      "newTab": "Avatakse uuel vahelehel",
-      "tagline": "Kaardilugu"
-    },
-    "june2018SurveyMessage": {
-      "bannerMsg": "Kas tohime teilt midagi küsida? See aitab vormida kaardilugude tulevikku.",
-      "s1h1": "Teie mõtted aitavad vormida tulevikku",
-      "s1p1": "Teie arvamused on meie kõige olulisem tagasiside allikas. Mida rohkem me teie kohta teame, seda paremaks saame kaardilugude funktsiooni edaspidi muuta. Meil oleks väga hea meel, kui leiaksite mõne minuti, et vastata järgmise lühikese uuringu küsimustele.",
-      "s2p1": "Täname teid Esri kaardilugude kasutamise eest!",
-      "action1": "Sule",
-      "action2": "Vasta küsitlusele"
     }
   }
 });

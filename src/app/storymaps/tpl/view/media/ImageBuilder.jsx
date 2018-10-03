@@ -122,7 +122,7 @@ export default class ImageBuilder extends Image {
     var errorText = text.mediaErrors;
     if (errorIds.indexOf(issues.images.inaccessible) >= 0) {
       return {
-        msg: errorText.placeholders.inaccessible.replace('${media-type}', errorText.mediaTypes.image),
+        msg: errorText.placeholders.inaccessible,
         unfixable: true,
         showLoadingError: true
       };
@@ -157,7 +157,7 @@ export default class ImageBuilder extends Image {
     }
     this._uploadNotification = new CancelNotification({
       container: this._node.parents('.section').eq(0),
-      label: text.media.imageUpload
+      label: text.media.mediaUpload
     });
 
     this._node.find('.img-gallery-invite').addClass('disabled');
@@ -185,7 +185,7 @@ export default class ImageBuilder extends Image {
     if (this._uploadNotification) {
       this._uploadNotification.update({
         type: 'success',
-        label: text.media.imageUploadSuccess
+        label: text.media.mediaUploadSuccess
       });
     }
 
@@ -205,7 +205,7 @@ export default class ImageBuilder extends Image {
     if (this._uploadNotification) {
       this._uploadNotification.update({
         type: 'error',
-        label: text.media.imageUploadFail
+        label: text.media.mediaUploadFail
       });
     }
 

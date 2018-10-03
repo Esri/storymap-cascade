@@ -172,7 +172,7 @@ define({
           "error": "Brak autoryzowanego zasobu multimedialnego.",
           "imageOnly": "W tej części narracji można dodać obraz.",
           "imageAndVideo": "W tej części narracji można dodać obraz lub film.",
-          "imageVideoWebpage": "W tej części narracji można dodać obraz, film lub witrynę internetową."
+          "imageVideoWebpage": "W tej części narracji można dodać dźwięk, obraz, film lub witrynę internetową."
         }
       },
       "browsePanel": {
@@ -300,16 +300,20 @@ define({
             "createContent": {
               "createNewMap": "Utwórz nową mapę",
               "or": "OR",
-              "dragAndDrop": "Upuść obrazy tutaj",
-              "uploadImage": "Przeglądaj w poszukiwaniu obrazów",
-              "agolInfo": "Obrazy zostaną zapisane na Twoim koncie na platformie ArcGIS i będą dostępne tylko w narracji.",
-              "saveBeforeUpload": "Po zapisaniu tej narracji można w tym miejscu przesyłać obrazy na platformę ArcGIS.",
-              "fileTypesImage": "Obsługiwane typy plików: .png, .jpeg, .jpg, .gif, .bmp"
+              "dragAndDropImage": "Upuść obrazy",
+              "dragAndDropImageAudio": "Upuść obrazy lub dźwięk",
+              "uploadButton": "Przeglądaj",
+              "agolInfo": "Przesłane obrazy i dźwięk będą dostępne tylko w ramach tej narracji.",
+              "saveBeforeUpload": "Po zapisaniu tej narracji można w tym miejscu przesyłać obrazy i dźwięk na platformę ArcGIS.",
+              "fileExtsImage": "Obsługiwane typy plików: png, jpg, gif, bmp.",
+              "fileExtsImageAudio": "Obsługiwane typy plików: png, jpg, gif, bmp, mp3.",
+              "maxSize": "Maksymalnie 10 MB na plik."
             },
             "filterAndSort": {
               "webmap": "mapa internetowa",
               "webscene": "Scena internetowa",
               "image": "Obraz",
+              "audio": "Audio",
               "date": "Data",
               "sortByDate": "Sortuj wg daty",
               "title": "Tytuł",
@@ -389,9 +393,9 @@ define({
       "placeholder": "Wpisz tytuł..."
     },
     "media": {
-      "imageUpload": "Trwa przesyłanie obrazu...",
-      "imageUploadSuccess": "Przesłanie obrazu powiodło się",
-      "imageUploadFail": "Przesyłanie obrazu nie powiodło się"
+      "mediaUpload": "Trwa przesyłanie multimediów...",
+      "mediaUploadSuccess": "Pomyślnie przesłano multimedia",
+      "mediaUploadFail": "Przesyłanie multimediów nie powiodło się"
     },
     "controller": {
       "sectionOrganize": "Zorganizowano sekcje",
@@ -412,6 +416,7 @@ define({
     "mediaErrors": {
       "mediaTypes": {
         "image": "image",
+        "audio": "dźwięk",
         "webmap": "mapa",
         "webscene": "scena",
         "video": "wideo",
@@ -569,22 +574,6 @@ define({
       "action2": "Sprawdź teraz moje narracje",
       "action3": "Dowiedz się więcej",
       "floatingNotification": "Ta narracja zawiera niezabezpieczone zasoby (HTTP). Przejrzyj te problemy i zajmij się nimi."
-    },
-    "embedBar": {
-      "share": "Udostępnij",
-      "fullScreen": "Pełny ekran",
-      "exitFullScreen": "Opuść tryb pełnoekranowy",
-      "enlarge": "Powiększ",
-      "newTab": "Otwórz w nowej karcie",
-      "tagline": "Mapa narracyjna"
-    },
-    "june2018SurveyMessage": {
-      "bannerMsg": "Czy możemy o coś prosić? Pomoże to nadawać przyszły kształt mapom narracyjnym.",
-      "s1h1": "Podziel się z nami swoją opinią, weź udział w kształtowaniu przyszłości",
-      "s1p1": "Przekazane opinie są dla nas najważniejszym źródłem informacji, a dzięki lepszej znajomości Twoich oczekiwań możemy ulepszać mapy narracyjne. Będziemy wdzięczni za wzięcie udziału w tej trzyminutowej ankiecie.",
-      "s2p1": "Jak zawsze, dziękujemy też za korzystanie z map narracyjnych firmy Esri!",
-      "action1": "Zamknij",
-      "action2": "Wypełnij ankietę"
     }
   }
 });

@@ -172,7 +172,7 @@ define({
           "error": "Žádné autorizované médium.",
           "imageOnly": "V této části příběhu můžete přidat obrázek.",
           "imageAndVideo": "V této části příběhu můžete přidat obrázek nebo video.",
-          "imageVideoWebpage": "V této části příběhu můžete přidat obrázek, video nebo webovou stránku."
+          "imageVideoWebpage": "V této části příběhu můžete přidat zvuk, obrázek, video nebo webovou stránku."
         }
       },
       "browsePanel": {
@@ -300,16 +300,20 @@ define({
             "createContent": {
               "createNewMap": "Vytvořit novou mapu",
               "or": "'NEBO'",
-              "dragAndDrop": "Přetáhněte snímek (snímky) sem",
-              "uploadImage": "Procházet snímky",
-              "agolInfo": "Obrázky se uloží do vašeho účtu ArcGIS a bude možné k nim přistupovat pouze ve vašem příběhu.",
-              "saveBeforeUpload": "Po uložení tohoto příběhu můžete snímky načíst do služby ArcGIS zde.",
-              "fileTypesImage": "Podporované typy souborů: .png, .jpeg, .jpg, .gif, .bmp"
+              "dragAndDropImage": "Přidat obrázky",
+              "dragAndDropImageAudio": "Přidat obrázky nebo zvuk",
+              "uploadButton": "Procházet",
+              "agolInfo": "Nahrané obrázky a zvuky budou přístupné pouze v rámci tohoto příběhu.",
+              "saveBeforeUpload": "Po uložení tohoto příběhu můžete snímky a zvuky načíst do služby ArcGIS zde.",
+              "fileExtsImage": "Podporované typy souborů: png, jpg, gif, bmp.",
+              "fileExtsImageAudio": "Podporované typy souborů: png, jpg, gif, bmp, mp3.",
+              "maxSize": "Každý soubor může mít maximálně 10 MB."
             },
             "filterAndSort": {
               "webmap": "Webová mapa",
               "webscene": "Webová scéna",
               "image": "Snímek",
+              "audio": "Audio",
               "date": "Datum",
               "sortByDate": "Seřadit podle data",
               "title": "Název",
@@ -389,9 +393,9 @@ define({
       "placeholder": "Zadejte nadpis…"
     },
     "media": {
-      "imageUpload": "Obrázek se nahrává…",
-      "imageUploadSuccess": "Obrázek byl úspěšně nahrán.",
-      "imageUploadFail": "Nepodařilo se nahrát obrázek."
+      "mediaUpload": "Média se nahrávají…",
+      "mediaUploadSuccess": "Média byla úspěšně nahrána",
+      "mediaUploadFail": "Nepodařilo se nahrát média"
     },
     "controller": {
       "sectionOrganize": "Uspořádali jste části.",
@@ -412,6 +416,7 @@ define({
     "mediaErrors": {
       "mediaTypes": {
         "image": "obraz",
+        "audio": "audio",
         "webmap": "mapa",
         "webscene": "scéna",
         "video": "sbírku",
@@ -569,22 +574,6 @@ define({
       "action2": "Chci si prohlédnout svoje příběhy",
       "action3": "Více informací",
       "floatingNotification": "Příběh obsahuje nezabezpečený (HTTP) obsah. Prosím zkontrolujte a vyřešte tyto problémy se zabezpečením."
-    },
-    "embedBar": {
-      "share": "Sdílet",
-      "fullScreen": "Celá obrazovka",
-      "exitFullScreen": "Ukončit režim celé obrazovky",
-      "enlarge": "Zvětšit",
-      "newTab": "Otevřít na nové kartě.",
-      "tagline": "Mapa s příběhem"
-    },
-    "june2018SurveyMessage": {
-      "bannerMsg": "Můžeme vám položit několik otázek? Pomůže nám to vytvořit budoucnost map s příběhem.",
-      "s1h1": "Podělte se o své nápady, vytvářejte budoucnost.",
-      "s1p1": "Váš ohlas je naším nejdůležitějším zdrojem zpětné vazby a více informací o vás nám pomůže mapy s příběhem dále vylepšovat. Velice bychom ocenili, kdybyste se mohli zúčastnit tohoto tříminutového průzkumu.",
-      "s2p1": "A jako vždy, děkujeme vám za to, že používáte mapy s příběhem!",
-      "action1": "Zavřít",
-      "action2": "Provést průzkum"
     }
   }
 });

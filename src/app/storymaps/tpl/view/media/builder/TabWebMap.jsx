@@ -351,4 +351,8 @@ export default class TabWebMap extends TabArcGIS {
 
     return null;
   }
+
+  onConfigClose() {
+    this._isActive = false;
+  }
 }

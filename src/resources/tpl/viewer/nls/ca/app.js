@@ -33,7 +33,7 @@ define({
       "mapLoadingFail": "S'ha produït algun problema. El mapa no s'ha carregat correctament.",
       "signOut": "Tanca la sessió",
       "builderSupportFirefox": "El builder de l'Story Map Cascade ja és compatible amb el Firefox.<br><br>El suport per a la creació d'històries del Cascade al Firefox es troba en versió beta. Proveu-ho i notifiqueu qualsevol problema al ${ESRI-SUPPORT} o a la ${ESRI-COMMUNITY}.",
-      "builderSupportOther": "Les històries del Cascade es poden visualitzar en qualsevol navegador web, però el builder de l'Story Map Cascade només s'admet al ${CHROME}, el ${SAFARI} i el ${FIREFOX} (beta).<br><br>Si necessiteu que el builder del Cascade sigui compatible amb un navegador diferent, poseu-vos en contacte amb el ${ESRI-SUPPORT} o bé ${BROWSER-SUPPORT-VOTE}.",
+      "builderSupportOther": "Les històries del Cascade es poden visualitzar en qualsevol navegador web modern, però el builder de l'Story Map Cascade només s'admet al ${CHROME}, el ${SAFARI} i el ${FIREFOX}.<br><br>Si necessiteu que el builder del Cascade sigui compatible amb un navegador diferent, poseu-vos en contacte amb el ${ESRI-SUPPORT} o bé ${BROWSER-SUPPORT-VOTE}.",
       "builderSupportIpad": "El builder de l'Story Map Cascade no s'admet a l'iPad. Les històries del Cascade que creeu i compartiu funcionaran a l'iPad.",
       "launchBuilder": "Inicia el builder del Cascade",
       "notAgain": "No ho tornis a mostrar",
@@ -88,6 +88,16 @@ define({
       "learnMore": "Més informació",
       "close": "Tanca",
       "dontShowAgain": "No tornis a mostrar aquest missatge"
+    },
+    "embedBar": {
+      "share": "Comparteix",
+      "fullScreen": "Pantalla completa",
+      "exitFullScreen": "Surt de la pantalla completa",
+      "enlarge": "Amplia",
+      "newTab": "Obre-ho en una pestanya nova",
+      "tagline": "Un Story Map",
+      "twitter": "Comparteix-ho al Twitter",
+      "facebook": "Comparteix-ho al Facebook"
     }
   },
   "print": {

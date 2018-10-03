@@ -33,7 +33,7 @@ define({
       "mapLoadingFail": "Noe gikk galt, og kartet ble ikke lastet inn på riktig måte.",
       "signOut": "Logg av",
       "builderSupportFirefox": "Byggeverktøyet Story Map Cascade støtter nå Firefox!<br><br>Støtte for å opprette Cascade-fortellinger i Firefox er foreløpig i betaversjon. Prøv det, og rapporter eventuelle problem til ${ESRI-SUPPORT} eller ${ESRI-COMMUNITY}.",
-      "builderSupportOther": "Cascade-fortellinger kan vises i vanlige nettlesere, men byggeverktøyet Story Map Cascade støttes bare i ${CHROME}, ${SAFARI} og ${FIREFOX} (beta).<br><br>Hvis du har behov for at byggeverktøyet Cascade skal støtte en annen leser, tar du kontakt med ${ESRI-SUPPORT} eller ${BROWSER-SUPPORT-VOTE}.",
+      "builderSupportOther": "Cascade-fortellinger kan vises i alle moderne nettlesere, men byggeverktøyet Story Map Cascade støttes bare i ${CHROME}, ${SAFARI} og ${FIREFOX}.<br><br>Hvis du har behov for at Cascade-byggeverktøyet skal støtte en annen nettleser, kan du kontakte ${ESRI-SUPPORT} eller ${BROWSER-SUPPORT-VOTE}.",
       "builderSupportIpad": "Byggeverktøyet Story Map Cascade støttes ikke på iPad. Cascade-fortellinger som du oppretter og deler, vil fungere på iPad.",
       "launchBuilder": "Starter byggeverktøyet Cascade",
       "notAgain": "Ikke vis igjen",
@@ -88,6 +88,16 @@ define({
       "learnMore": "Få mer informasjon",
       "close": "Lukk",
       "dontShowAgain": "Ikke vis denne meldingen igjen"
+    },
+    "embedBar": {
+      "share": "Del",
+      "fullScreen": "Fullskjerm",
+      "exitFullScreen": "Avslutt fullskjerm",
+      "enlarge": "Forstørr",
+      "newTab": "Åpne i ny fane",
+      "tagline": "Et fortellingskart",
+      "twitter": "Del på Twitter",
+      "facebook": "Del på Facebook"
     }
   },
   "print": {

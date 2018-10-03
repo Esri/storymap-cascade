@@ -98,6 +98,7 @@ var URLConnector = (function() {
             + '&key=' + app.cfg.MEDIA_KEYS.YOUTUBE_API;
 
       $.ajax({
+        dataType: 'json',
         url: requestUrl,
         timeout: 4000
       }).then((response) => {

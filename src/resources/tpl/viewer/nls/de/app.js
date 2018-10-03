@@ -33,7 +33,7 @@ define({
       "mapLoadingFail": "Ein Fehler ist aufgetreten. Die Karte wurde nicht korrekt geladen.",
       "signOut": "Abmelden",
       "builderSupportFirefox": "Der Story Map Cascade Builder unterstützt jetzt Firefox!<br><br>Die Unterstützung für die Erstellung von Cascade-Storys in Firefox befindet sich derzeit in der Betaphase. Probieren Sie die Betaversion aus, und wenden Sie sich bei Problemen an ${ESRI-SUPPORT} oder die ${ESRI-COMMUNITY}.",
-      "builderSupportOther": "Cascade-Storys können in jedem modernen Webbrowser angezeigt werden. Story Map Cascade-Builder wird jedoch nur in ${CHROME}, ${SAFARI} und ${FIREFOX} (Betaversion) unterstützt.<br><br>Falls Cascade-Builder einen anderen Browser unterstützen soll, wenden Sie sich an den ${ESRI-SUPPORT} oder ${BROWSER-SUPPORT-VOTE}.",
+      "builderSupportOther": "Cascade-Storys können in jedem modernen Webbrowser angezeigt werden. Story Map Cascade-Builder wird jedoch nur in ${CHROME}, ${SAFARI} und ${FIREFOX} unterstützt.<br><br>Falls Cascade-Builder einen anderen Browser unterstützen soll, wenden Sie sich an den ${ESRI-SUPPORT} oder ${BROWSER-SUPPORT-VOTE}.",
       "builderSupportIpad": "Story Map Cascade-Builder wird nicht auf dem iPad unterstützt. Cascade-Storys, die Sie laden und freigeben hingegen schon.",
       "launchBuilder": "Cascade Builder starten",
       "notAgain": "Diese Meldung nicht mehr anzeigen",
@@ -88,6 +88,16 @@ define({
       "learnMore": "Mehr erfahren",
       "close": "Schließen",
       "dontShowAgain": "Diese Meldung nicht mehr anzeigen"
+    },
+    "embedBar": {
+      "share": "Freigeben",
+      "fullScreen": "Vollbild",
+      "exitFullScreen": "Vollbild beenden",
+      "enlarge": "Vergrößern",
+      "newTab": "In neuer Registerkarte öffnen",
+      "tagline": "Eine Story-Map",
+      "twitter": "Auf Twitter freigeben",
+      "facebook": "Auf Facebook freigeben"
     }
   },
   "print": {

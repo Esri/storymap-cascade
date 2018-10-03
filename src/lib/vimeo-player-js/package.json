@@ -1,6 +1,6 @@
 {
   "name": "@vimeo/player",
-  "version": "2.6.2",
+  "version": "2.6.3",
   "description": "Interact with and control an embedded Vimeo Player.",
   "license": "MIT",
   "author": "Brad Dougherty <brad@vimeo.com>",
@@ -46,52 +46,61 @@
     "postMessage"
   ],
   "dependencies": {
-    "es6-collections": "0.5.6",
-    "native-promise-only": "0.8.1"
+    "native-promise-only": "0.8.1",
+    "weakmap-polyfill": "2.0.0"
   },
   "devDependencies": {
-    "@vimeo/eslint-config-player": "^4.0.1",
-    "ava": "^0.22.0",
-    "babel-core": "^6.18.2",
-    "babel-plugin-transform-runtime": "^6.15.0",
-    "babel-preset-es2015": "^6.18.0",
-    "chalk": "^1.1.3",
-    "chokidar": "^1.6.1",
+    "@babel/core": "^7.0.0-beta",
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0-beta",
+    "@babel/plugin-syntax-export-default-from": "^7.0.0-beta",
+    "@babel/plugin-transform-classes": "^7.0.0-beta",
+    "@babel/plugin-transform-object-assign": "^7.0.0-beta",
+    "@babel/plugin-transform-runtime": "^7.0.0-beta",
+    "@babel/preset-env": "^7.0.0-beta",
+    "@babel/register": "^7.0.0-beta",
+    "@babel/runtime": "^7.0.0-beta",
+    "@vimeo/eslint-config-player": "^5.0.1",
+    "ava": "1.0.0-beta.6",
+    "chalk": "^2.4.1",
+    "chokidar": "^2.0.3",
     "chokidar-cli": "^1.2.0",
-    "codecov": "^1.0.1",
-    "cross-env": "^3.1.3",
-    "eslint": "^3.9.1",
-    "eslint-plugin-ava": "^4.0.0",
-    "eslint-plugin-compat": "^1.0.2",
+    "codecov": "^3.0.2",
+    "cross-env": "^5.1.5",
+    "eslint": "^4.19.1",
+    "eslint-plugin-ava": "^4.5.1",
+    "eslint-plugin-compat": "^2.4.0",
+    "esm": "^3.0.51",
+    "greenkeeper-postpublish": "^1.0.1",
     "jquery": "^3.1.1",
-    "jsdom": "^9.8.3",
+    "jsdom": "^11.11.0",
     "maxmin": "^2.1.0",
     "npm-run-all": "^4.1.1",
-    "nyc": "^10.0.0",
+    "nyc": "^11.7.3",
     "rimraf": "^2.5.4",
-    "rollup": "^0.41.4",
-    "rollup-plugin-babel": "^2.7.1",
-    "rollup-plugin-commonjs": "^7.0.0",
-    "rollup-plugin-node-resolve": "^2.0.0",
-    "sinon": "^1.17.6",
-    "uglify-js": "^2.7.5"
+    "rollup": "^0.60.7",
+    "rollup-plugin-babel": "^4.0.0-beta",
+    "rollup-plugin-commonjs": "^9.1.3",
+    "rollup-plugin-node-resolve": "^3.3.0",
+    "sinon": "^5.0.7",
+    "uglify-js": "^3.3.25"
   },
   "babel": {
     "presets": [
       [
-        "es2015",
+        "@babel/preset-env",
         {
-          "modules": false
+          "modules": false,
+          "shippedProposals": true
         }
       ]
     ],
     "env": {
-      "development": {
+      "test": {
         "presets": [
-          "es2015"
+          "@babel/preset-env"
         ],
         "plugins": [
-          "transform-runtime"
+          "@babel/transform-runtime"
         ],
         "sourceMaps": "inline"
       }
@@ -99,14 +108,19 @@
   },
   "ava": {
     "require": [
-      "babel-core/register",
+      "esm",
+      "@babel/register",
       "./test/helpers/browser-env.js"
     ],
-    "source": [
+    "sources": [
       "!dist/**/*"
     ]
   },
   "nyc": {
+    "require": [
+      "esm",
+      "@babel/register"
+    ],
     "exclude": [
       "node_modules",
       "src/lib/compatibility-check.js",
@@ -117,6 +131,6 @@
     "> 1%",
     "last 2 versions",
     "Firefox ESR",
-    "not ie < 9"
+    "not ie < 11"
   ]
 }

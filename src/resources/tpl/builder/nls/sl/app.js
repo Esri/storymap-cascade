@@ -172,7 +172,7 @@ define({
           "error": "Ni pooblaščenega medija.",
           "imageOnly": "V tem delu zgodbe lahko dodate sliko.",
           "imageAndVideo": "V tem delu zgodbe lahko dodate sliko ali videoposnetek.",
-          "imageVideoWebpage": "V tem delu zgodbe lahko dodate sliko, videoposnetek ali spletno stran."
+          "imageVideoWebpage": "V tem delu zgodbe lahko dodate zvok, sliko, video ali spletno stran."
         }
       },
       "browsePanel": {
@@ -300,16 +300,20 @@ define({
             "createContent": {
               "createNewMap": "Ustvari novo karto",
               "or": "ALI",
-              "dragAndDrop": "Odložite slike tukaj",
-              "uploadImage": "Poiščite slike",
-              "agolInfo": "Slike bodo shranjene v vašem računu ArcGIS in dostopne samo znotraj vaše zgodbe.",
-              "saveBeforeUpload": "Ko shranite to zgodbo, lahko naložite slike v ArcGIS tukaj.",
-              "fileTypesImage": "Podprte vrste datotek: .png, .jpeg, .jpg, .gif, .bmp"
+              "dragAndDropImage": "Spusti slike",
+              "dragAndDropImageAudio": "Spusti slike ali zvok",
+              "uploadButton": "Prebrskaj",
+              "agolInfo": "Naložene slike in zvok bodo na voljo samo v tej zgodbi.",
+              "saveBeforeUpload": "Ko shranite to zgodbo, lahko naložite slike in zvok v ArcGIS tukaj.",
+              "fileExtsImage": "Podprti formati: png, jpg, gif, bmp.",
+              "fileExtsImageAudio": "Podprti formati: png, jpg, gif, bmp, mp3.",
+              "maxSize": "Največ 10 MB na datoteko."
             },
             "filterAndSort": {
               "webmap": "Spletna karta",
               "webscene": "Spletni 3D-prizor",
               "image": "Slika",
+              "audio": "Zvok",
               "date": "Datum",
               "sortByDate": "Razvrsti po datumu",
               "title": "Ime",
@@ -389,9 +393,9 @@ define({
       "placeholder": "Vnesite naslov..."
     },
     "media": {
-      "imageUpload": "V teku je nalaganje slike...",
-      "imageUploadSuccess": "Slika je uspešno naložena",
-      "imageUploadFail": "Nalaganje slike ni uspelo"
+      "mediaUpload": "V teku je nalaganje medijev...",
+      "mediaUploadSuccess": "Mediji so uspešno naloženi",
+      "mediaUploadFail": "Nalaganje medijev ni uspelo"
     },
     "controller": {
       "sectionOrganize": "Organizirali ste razdelek",
@@ -412,6 +416,7 @@ define({
     "mediaErrors": {
       "mediaTypes": {
         "image": "slika",
+        "audio": "zvok",
         "webmap": "karta",
         "webscene": "3D-prizor",
         "video": "video",
@@ -569,22 +574,6 @@ define({
       "action2": "Preveri moje zgodbe zdaj",
       "action3": "Izvedi več",
       "floatingNotification": "Ta zgodba vsebuje negotovo (HTTP) vsebino. Preglejte in obravnavajte te težave."
-    },
-    "embedBar": {
-      "share": "Deli",
-      "fullScreen": "Celozaslonski način",
-      "exitFullScreen": "Izhod iz celozaslonskega načina",
-      "enlarge": "Povečaj",
-      "newTab": "Odpri v novem zavihku",
-      "tagline": "Karta z zgodbo"
-    },
-    "june2018SurveyMessage": {
-      "bannerMsg": "Ali vas lahko nekaj vprašamo? To bo pomagalo oblikovati prihodnost Kart z zgodbo.",
-      "s1h1": "Delite svoje misli z nami in oblikujte prihodnost",
-      "s1p1": "Vaš prispevek je naš edini in najpomembnejši vir povratnih informacij. Več informacij o vas nam pomaga izboljšati Karte z zgodbo. Zelo bi bili veseli, če bi lahko izpolnili ta vprašalnik, reševanje katerega vam bo vzelo 3 minute.",
-      "s2p1": "Kot vedno se vam zahvaljujemo za uporabo Esri Kart z zgodbo.",
-      "action1": "Zapri",
-      "action2": "Izpolni obrazec"
     }
   }
 });

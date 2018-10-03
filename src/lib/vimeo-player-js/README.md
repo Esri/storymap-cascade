@@ -11,17 +11,14 @@ You can install the Vimeo Player API through either npm:
 npm install @vimeo/player
 ```
 
-or Bower:
-
-```bash
-bower install vimeo-player-js
-```
-
 Alternatively, you can reference an up‐to‐date version on our CDN:
 
 ```html
 <script src="https://player.vimeo.com/api/player.js"></script>
 ```
+
+**Warning:** when used with RequireJS it's required to load the script dynamically via the RequireJS load system.  
+http://www.requirejs.org/docs/api.html#jsfiles
 
 ## Getting Started
 
@@ -34,7 +31,7 @@ Already have a player on the page? Pass the element to the `Vimeo.Player`
 constructor and you’re ready to go.
 
 ```html
-<iframe src="https://player.vimeo.com/video/76979871" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<iframe src="https://player.vimeo.com/video/76979871" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen allow="autoplay; encrypted-media"></iframe>
 
 <script src="https://player.vimeo.com/api/player.js"></script>
 <script>

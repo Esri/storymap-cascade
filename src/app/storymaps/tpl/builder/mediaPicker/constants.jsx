@@ -19,7 +19,7 @@ export default {
   // Yes, you need a dot in front of the extension
   uploadFileExtensions: {
     // VIDEO: ['.mp4'],
-    // AUDIO: ['.mp3'],
+    AUDIO: ['.mp3'],
     IMAGE: ['.png', '.jpeg', '.jpg', '.gif', '.bmp']
   },
   fetchStatus: {
@@ -83,14 +83,16 @@ export default {
     NO_PHOTOS: 'NO_PHOTOS',
     ERROR: 'ERROR'
   },
-  // for agol photo attaching
+  // for agol photo and audio attaching
+  fileSettings: {
+    maxFileSize: 10000000, // 10Mb in bytes.
+    blankBackground: 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'
+  },
   photoSettings: {
     maxWidth: 1920,
     quality: 0.8,
-    idealFileSize: 500000, // 500k
-    maxFileSize: 10000000 // 10Mb in bytes.
-  },
-  blankBackground: 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'
+    idealFileSize: 500000 // 500k
+  }
 };
 
 /* FLICKR LICENSES BELOW. For more info, including links to license text:

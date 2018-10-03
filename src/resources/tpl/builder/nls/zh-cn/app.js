@@ -172,7 +172,7 @@ define({
           "error": "无授权媒体。",
           "imageOnly": "可在故事的此部分中添加图像。",
           "imageAndVideo": "可在故事的此部分中添加图像或视频。",
-          "imageVideoWebpage": "可在故事的此部分中添加图像、视频或 Web 页面。"
+          "imageVideoWebpage": "可在故事的此部分中添加音频、图像、视频或 Web 页面。"
         }
       },
       "browsePanel": {
@@ -300,16 +300,20 @@ define({
             "createContent": {
               "createNewMap": "创建新地图",
               "or": "或者",
-              "dragAndDrop": "在此处放置图像",
-              "uploadImage": "浏览图像",
-              "agolInfo": "图像将存储到您的 ArcGIS 帐户，并且仅能通过您的故事进行访问。",
-              "saveBeforeUpload": "保存该故事后，可在此处将图像上传至 ArcGIS。",
-              "fileTypesImage": "支持的文件类型：.png、.jpeg、.jpg、.gif、.bmp"
+              "dragAndDropImage": "放置图像",
+              "dragAndDropImageAudio": "放置图像或音频",
+              "uploadButton": "浏览",
+              "agolInfo": "仅能在此故事中访问已上传的图像和音频。",
+              "saveBeforeUpload": "保存该故事后，可在此处将图像和音频上传至 ArcGIS。",
+              "fileExtsImage": "支持的类型：png、jpg、gif、bmp。",
+              "fileExtsImageAudio": "支持的类型：png、jpg、gif、bmp、mp3。",
+              "maxSize": "每个文件最大 10 MB。"
             },
             "filterAndSort": {
               "webmap": "Web 地图",
               "webscene": "Web 场景",
               "image": "图像",
+              "audio": "音频",
               "date": "日期",
               "sortByDate": "按日期排序",
               "title": "标题",
@@ -389,9 +393,9 @@ define({
       "placeholder": "输入标题..."
     },
     "media": {
-      "imageUpload": "正在上传图像...",
-      "imageUploadSuccess": "图像上传成功",
-      "imageUploadFail": "图像上传失败"
+      "mediaUpload": "正在上传媒体...",
+      "mediaUploadSuccess": "媒体上传成功",
+      "mediaUploadFail": "媒体上传失败"
     },
     "controller": {
       "sectionOrganize": "您对各个部分进行了组织",
@@ -412,6 +416,7 @@ define({
     "mediaErrors": {
       "mediaTypes": {
         "image": "图像",
+        "audio": "音频",
         "webmap": "地图",
         "webscene": "场景",
         "video": "视频",
@@ -569,22 +574,6 @@ define({
       "action2": "立即检查我的故事",
       "action3": "了解详细信息",
       "floatingNotification": "此故事包含非安全 (HTTP) 内容。请检查并解决这些问题。"
-    },
-    "embedBar": {
-      "share": "共享",
-      "fullScreen": "全屏",
-      "exitFullScreen": "退出全屏",
-      "enlarge": "最大化",
-      "newTab": "在新选项卡中打开",
-      "tagline": "故事地图"
-    },
-    "june2018SurveyMessage": {
-      "bannerMsg": "我们能问您一些问题吗? 这能够帮助我们塑造 Story Maps 的未来。",
-      "s1h1": "分享观点，塑造未来",
-      "s1p1": "您的观点是我们最重要的反馈来源，了解您的更多观点能帮助我们改进 Story Maps。 如果您能参与用时三分钟的调查，我们将万分感激。",
-      "s2p1": "最后，感谢您一如既往地使用 Esri Story Maps!",
-      "action1": "关闭",
-      "action2": "参与调查"
     }
   }
 });

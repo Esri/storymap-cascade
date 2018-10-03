@@ -34,12 +34,12 @@
     "codecov.yml",
     "rollup.config.js"
   ],
-  "version": "2.6.2",
-  "_release": "2.6.2",
+  "version": "2.6.3",
+  "_release": "2.6.3",
   "_resolution": {
     "type": "version",
-    "tag": "v2.6.2",
-    "commit": "6a20feb3769f45196dcaef614ec2476e6876f8de"
+    "tag": "v2.6.3",
+    "commit": "b52c0995838c5cef1d6827b000c5d1c9b7b5d313"
   },
   "_source": "https://github.com/vimeo/player.js.git",
   "_target": "^2.6.1",

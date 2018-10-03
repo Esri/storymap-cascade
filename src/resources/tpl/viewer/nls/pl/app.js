@@ -33,7 +33,7 @@ define({
       "mapLoadingFail": "Wystąpił pewien problem, nie wczytano mapy prawidłowo.",
       "signOut": "Wyloguj się",
       "builderSupportFirefox": "Kreator Story Map Cascade (Mapa narracyjna — Kaskada) obecnie obsługuje przeglądarkę Firefox!<br><br>Obsługa tworzenia narracji kaskadowych w przeglądarce Firefox jest obecnie w wersji beta. Wypróbuj ją i zgłoś napotkane problemy działowi ${ESRI-SUPPORT} lub ${ESRI-COMMUNITY}.",
-      "builderSupportOther": "Narracje kaskadowe można wyświetlać we wszystkich współczesnych przeglądarkach internetowych, ale kreator Story Map Cascade (Mapa narracyjna — Kaskada) jest obsługiwany tylko w przeglądarkach ${CHROME}, ${SAFARI} oraz ${FIREFOX} (beta).<br><br>Jeśli chcesz, aby kreator kaskad obsługiwał inną przeglądarkę, skontaktuj się z działem ${ESRI-SUPPORT} lub ${BROWSER-SUPPORT-VOTE}.",
+      "builderSupportOther": "Narracje kaskadowe można wyświetlać w każdej współczesnej przeglądarce internetowej, ale kreator Kaskada map narracyjnych jest obsługiwany tylko w przeglądarkach ${CHROME}, ${SAFARI} i ${FIREFOX}.<br><br>Jeśli chcesz, aby kreator Kaskada map narracyjnych obsługiwał inną przeglądarkę, skontaktuj się z ${ESRI-SUPPORT} lub ${BROWSER-SUPPORT-VOTE}.",
       "builderSupportIpad": "Kreator Kaskada map narracyjnych nie jest obsługiwany na tablecie iPad. Utworzone i udostępnione narracje kaskadowe będą działały na tablecie iPad.",
       "launchBuilder": "Uruchamianie kreatora kaskadowego",
       "notAgain": "Nie pokazuj tego ponownie",
@@ -88,6 +88,16 @@ define({
       "learnMore": "Dowiedz się więcej",
       "close": "Zamknij",
       "dontShowAgain": "Nie pokazuj tej wiadomości ponownie"
+    },
+    "embedBar": {
+      "share": "Udostępnij",
+      "fullScreen": "Pełny ekran",
+      "exitFullScreen": "Opuść tryb pełnoekranowy",
+      "enlarge": "Powiększ",
+      "newTab": "Otwórz w nowej karcie",
+      "tagline": "Mapa narracyjna",
+      "twitter": "Udostępnij na Twitterze",
+      "facebook": "Udostępnij na Facebooku"
     }
   },
   "print": {

@@ -540,7 +540,12 @@ export default class ImmersiveBuilder extends Immersive {
   //
 
   _selectView(index) {
-    if (index != this._currentViewIndex - 1) {
+    var actualCurrentIndex = this._currentViewIndex - 1;
+    if (index != actualCurrentIndex) {
+      var currentMedia = this._medias && this._medias[actualCurrentIndex];
+      if (currentMedia && currentMedia.maybeCloseConfig) {
+        currentMedia.maybeCloseConfig();
+      }
       this.navigateToViewByIndex({
         index: index,
         animate: false
@@ -821,6 +826,11 @@ export default class ImmersiveBuilder extends Immersive {
   }
 
   _duplicateView(index) {
+    var currentMedia = this._medias && this._medias[this._currentViewIndex - 1];
+    if (currentMedia && currentMedia.maybeCloseConfig) {
+      currentMedia.maybeCloseConfig();
+    }
+
     let transition = this._transitions[index];
 
     //

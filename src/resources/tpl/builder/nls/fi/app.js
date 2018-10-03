@@ -172,7 +172,7 @@ define({
           "error": "Ei valtuutettua mediaa.",
           "imageOnly": "Tässä tarinan osassa voit lisätä kuvan.",
           "imageAndVideo": "Tässä tarinan osassa voit lisätä kuvan tai videon.",
-          "imageVideoWebpage": "Tässä tarinan osassa voit lisätä kuvan, videon tai verkkosivun."
+          "imageVideoWebpage": "Tässä tarinan osassa voit lisätä ääntä, kuvan, videon tai verkkosivun."
         }
       },
       "browsePanel": {
@@ -300,16 +300,20 @@ define({
             "createContent": {
               "createNewMap": "Luo uusi kartta",
               "or": "TAI",
-              "dragAndDrop": "Pudota kuva(t) tähän",
-              "uploadImage": "Etsi kuvia selaamalla",
-              "agolInfo": "Kuvat tallennetaan ArcGIS-tilillesi. Niitä voi käyttää vain tarinassasi.",
-              "saveBeforeUpload": "Kun tallennat tämän tarinan, voit ladata kuvat ArcGISiin tässä.",
-              "fileTypesImage": "Tuetut tiedostotyypit: .png, .jpeg, .jpg, .gif ja .bmp"
+              "dragAndDropImage": "Pudota kuvat",
+              "dragAndDropImageAudio": "Pudota kuvat tai äänitiedostot",
+              "uploadButton": "Selaa",
+              "agolInfo": "Sivustoon ladatut kuvat ja äänitiedostot ovat käytettävissä vain tässä tarinassa.",
+              "saveBeforeUpload": "Kun tallennat tämän tarinan, voit ladata kuvat tai äänitiedostot ArcGISiin tässä.",
+              "fileExtsImage": "Tuetut tiedostotyypit: .png, .jpg, .gif ja .bmp.",
+              "fileExtsImageAudio": "Tuetut tiedostotyypit: .png, .jpg, .gif, .bmp ja mp3.",
+              "maxSize": "Enintään 10 Mt tiedostoa kohti."
             },
             "filterAndSort": {
               "webmap": "Web-kartta",
               "webscene": "Web-maisema",
               "image": "kuva",
+              "audio": "Ääni",
               "date": "Päivämäärä",
               "sortByDate": "Lajittele päivämäärän perusteella",
               "title": "Otsikko",
@@ -389,9 +393,9 @@ define({
       "placeholder": "Anna otsikko..."
     },
     "media": {
-      "imageUpload": "Kuvan lataus on meneillään...",
-      "imageUploadSuccess": "Kuvan lataaminen onnistui",
-      "imageUploadFail": "Kuvan lataaminen epäonnistui"
+      "mediaUpload": "Median lataus sivustoon on meneillään...",
+      "mediaUploadSuccess": "Median lataaminen onnistui",
+      "mediaUploadFail": "Median lataaminen epäonnistui"
     },
     "controller": {
       "sectionOrganize": "Osiot on järjestetty",
@@ -412,6 +416,7 @@ define({
     "mediaErrors": {
       "mediaTypes": {
         "image": "kuva",
+        "audio": "ääni",
         "webmap": "kartta",
         "webscene": "maisema",
         "video": "video",
@@ -569,22 +574,6 @@ define({
       "action2": "Tarkista omat tarinani nyt",
       "action3": "Lisätietoja",
       "floatingNotification": "Tässä tarinassa on suojaamatonta (HTTP) sisältöä. Tarkista ja ratkaise nämä ongelmat."
-    },
-    "embedBar": {
-      "share": "Jaa",
-      "fullScreen": "Koko näyttö",
-      "exitFullScreen": "Poistu koko näytön tilasta",
-      "enlarge": "Laajenna",
-      "newTab": "Avaa uudessa välilehdessä",
-      "tagline": "Tarinakartta"
-    },
-    "june2018SurveyMessage": {
-      "bannerMsg": "Voimmeko kysyä sinulta jotain? Siitä on apua tarinakarttojen tulevaisuuden muokkaamisessa.",
-      "s1h1": "Jaa ajatuksesi, muokkaa tulevaisuutta",
-      "s1p1": "Panoksesi on tärkein yksittäinen palautelähteemme ja sinuun tutustumisesta on apua tarinakarttojen parantamisessa. Olisimme kiitollisia, jos osallistut tähän kolmen minuutin kyselyyn.",
-      "s2p1": "Kiitos, että käytit Esri Story Mapsia!",
-      "action1": "Sulje",
-      "action2": "Osallistu kyselyyn"
     }
   }
 });

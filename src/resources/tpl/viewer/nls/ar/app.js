@@ -33,7 +33,7 @@ define({
       "mapLoadingFail": "‏‏حدث خطأ ما، لم يتم تحميل الخريطة بشكل صحيح.",
       "signOut": "تسجيل الخروج",
       "builderSupportFirefox": "يدعم الآن منشيء تتالي خريطة القصة!<br><br>الدعم لتأليف تتالي القصص في Forex يكون بالبيتا حاليًا. الرجاء محاولة ورفع تقارير بأي مسائل متعلقة بـ ${ESRI-SUPPORT} أو ${ESRI-COMMUNITY}.",
-      "builderSupportOther": "يمكن عرض قصص التتالي في أي مستعرض ويب حديث، إلا أن منشئ \"تتالي خريطة القصة\" ليس مدعومًا إلا في ${CHROME}، ${SAFARI}، و ${FIREFOX} (بيتا).<br><br>إذا أردت أن يدعم منشئ التتالي مستعرضًا آخرًا، يرجى الاتصال بـ ${ESRI-SUPPORT} أو ${BROWSER-SUPPORT-VOTE}.",
+      "builderSupportOther": "يمكن عرض قصص التتالي أي مستعرض ويب حديث، ولكن منشئ \"تتالي خريطة القصة\" مدعوم فقط في ${CHROME} و${SAFARI} و${FIREFOX}.<br><br>إذا أردت منشئ Cascade لدعم مستعرض آخر، يرجى الاتصال بـ  ${ESRI-SUPPORT} أو ${BROWSER-SUPPORT-VOTE}.",
       "builderSupportIpad": "منشئ \"تتالي خريطة القصة\" غير مدعوم في iPad، وستعمل قصص التتالي التي تنشئها وتشاركها في iPad.",
       "launchBuilder": "إطلاق \"منشئ التتالي\"",
       "notAgain": "لا تظهر هذا مرة أخرى",
@@ -88,6 +88,16 @@ define({
       "learnMore": "التعرف على المزيد",
       "close": "إغلاق",
       "dontShowAgain": "عدم إظهار هذه الرسالة مجددًا"
+    },
+    "embedBar": {
+      "share": "مشاركة",
+      "fullScreen": "ملء الشاشة",
+      "exitFullScreen": "خروج من ملء الشاشة",
+      "enlarge": "توسيع",
+      "newTab": "فتح في علامة تبويب جديدة",
+      "tagline": "خريطة قصة",
+      "twitter": "مشاركة على Twitter",
+      "facebook": "مشاركة على Facebook"
     }
   },
   "print": {

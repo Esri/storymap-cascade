@@ -172,7 +172,7 @@ define({
           "error": "無授權的媒體。",
           "imageOnly": "在故事的此部分中，您可以新增圖像。",
           "imageAndVideo": "在故事的此部分中，您可以新增圖像或影片。",
-          "imageVideoWebpage": "在故事的此部分中，您可以新增圖像、影片或網頁。"
+          "imageVideoWebpage": "在故事的此部分中，您可以新增音訊、圖片、影片或網頁。"
         }
       },
       "browsePanel": {
@@ -300,16 +300,20 @@ define({
             "createContent": {
               "createNewMap": "新建地圖",
               "or": "或",
-              "dragAndDrop": "在這裡放置圖像",
-              "uploadImage": "瀏覽圖像",
-              "agolInfo": "圖片將儲存在您的 ArcGIS 帳號中，並可在您的故事中存取。",
-              "saveBeforeUpload": "儲存此故事後，您可以在裡將圖像上傳到 ArcGIS。",
-              "fileTypesImage": "支援的檔案類型: .png、.jpeg、.jpg、.gif、.bmp"
+              "dragAndDropImage": "捨棄圖片",
+              "dragAndDropImageAudio": "捨棄圖片或音訊",
+              "uploadButton": "瀏覽",
+              "agolInfo": "可在此故事中存取上傳的圖片和音訊。",
+              "saveBeforeUpload": "儲存此故事後，您可以在這裡將圖片和音訊上傳到 ArcGIS。",
+              "fileExtsImage": "支援的類型: png、jpg、gif、bmp。",
+              "fileExtsImageAudio": "支援的類型: png、jpg、gif、bmp、mp3。",
+              "maxSize": "每個檔案最大 10 MB。"
             },
             "filterAndSort": {
               "webmap": "Web 地圖",
               "webscene": "Web 場景",
               "image": "圖片",
+              "audio": "音訊",
               "date": "日期",
               "sortByDate": "按日期排序",
               "title": "標題",
@@ -389,9 +393,9 @@ define({
       "placeholder": "輸入標題..."
     },
     "media": {
-      "imageUpload": "圖片上傳進行中...",
-      "imageUploadSuccess": "已成功上傳圖片",
-      "imageUploadFail": "圖片上傳失敗"
+      "mediaUpload": "媒體上傳進行中...",
+      "mediaUploadSuccess": "已成功上傳媒體",
+      "mediaUploadFail": "媒體上傳失敗"
     },
     "controller": {
       "sectionOrganize": "已組織部分",
@@ -412,6 +416,7 @@ define({
     "mediaErrors": {
       "mediaTypes": {
         "image": "圖像",
+        "audio": "音訊",
         "webmap": "地圖",
         "webscene": "場景",
         "video": "video",
@@ -569,22 +574,6 @@ define({
       "action2": "立即檢查我的故事",
       "action3": "瞭解詳細資訊",
       "floatingNotification": "此故事包含不安全的 (HTTP) 內容。請檢閱並解決這些問題。"
-    },
-    "embedBar": {
-      "share": "分享",
-      "fullScreen": "全螢幕",
-      "exitFullScreen": "退出全螢幕",
-      "enlarge": "放大",
-      "newTab": "在新頁籤中開啟",
-      "tagline": "故事地圖"
-    },
-    "june2018SurveyMessage": {
-      "bannerMsg": "我們是否能詢問您一些事情? 它將有助於形塑 Story Maps 的願景。",
-      "s1h1": "分享您的構想以形塑願景。",
-      "s1p1": "您的意見是我們最重要且唯一的回饋來源，且盡可能獲得您的寶貴意見將有助於改善 Story Maps。 如果您能參加這個三分鐘的調查，我們將不勝感激。",
-      "s2p1": "無論如何，非常感謝您使用 Esri Story Maps!",
-      "action1": "關閉",
-      "action2": "參與調查"
     }
   }
 });

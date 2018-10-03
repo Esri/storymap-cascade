@@ -172,7 +172,7 @@ define({
           "error": "Niciun mediu autorizat.",
           "imageOnly": "În această parte a relatării puteţi adăuga o imagine.",
           "imageAndVideo": "În această parte a relatării puteţi adăuga o imagine sau un videoclip.",
-          "imageVideoWebpage": "În această parte a relatării puteţi adăuga o imagine, un videoclip sau o pagină web."
+          "imageVideoWebpage": "În această parte a relatării puteți adăuga un material audio, o imagine, un videoclip sau o pagină web."
         }
       },
       "browsePanel": {
@@ -300,16 +300,20 @@ define({
             "createContent": {
               "createNewMap": "Creaţi o hartă nouă",
               "or": "SAU",
-              "dragAndDrop": "Fixaţi imaginile aici",
-              "uploadImage": "Răsfoiţi imagini",
-              "agolInfo": "Imaginile vor fi stocate în contul ArcGIS şi vor fi accesibile doar în relatarea dvs.",
-              "saveBeforeUpload": "Odată ce aţi salvat relatarea, puteţi încărca imagini în ArcGIS aici.",
-              "fileTypesImage": "Tipuri de fişier acceptate: .png, .jpeg, .jpg, .gif, .bmp"
+              "dragAndDropImage": "Fixare imagini",
+              "dragAndDropImageAudio": "Fixare imagini sau materiale audio",
+              "uploadButton": "Răsfoire",
+              "agolInfo": "Imaginile și materialele audio încărcate vor fi disponibile numai în cadrul acestei relatări.",
+              "saveBeforeUpload": "Odată ce ați salvat relatarea, puteți încărca imagini și materiale audio în ArcGIS aici.",
+              "fileExtsImage": "Tipuri acceptate: png, jpg, gif, bmp.",
+              "fileExtsImageAudio": "Tipuri acceptate: png, jpg, gif, bmp, mp3.",
+              "maxSize": "Maxim 10 MB per fișier."
             },
             "filterAndSort": {
               "webmap": "Hartă Web",
               "webscene": "Scenă web",
               "image": "Imagine",
+              "audio": "Audio",
               "date": "Data",
               "sortByDate": "Sortare după dată",
               "title": "Titlu",
@@ -389,9 +393,9 @@ define({
       "placeholder": "Introduceţi un titlu..."
     },
     "media": {
-      "imageUpload": "Se încarcă imaginea...",
-      "imageUploadSuccess": "Imaginea s-a încărcat cu succes",
-      "imageUploadFail": "Incărcarea imaginii a eşuat"
+      "mediaUpload": "Se încarcă fișierele media...",
+      "mediaUploadSuccess": "Fișierele media s-au încărcat cu succes",
+      "mediaUploadFail": "Încărcarea fișierelor media a eșuat"
     },
     "controller": {
       "sectionOrganize": "Aţi organizat secţiunile",
@@ -412,6 +416,7 @@ define({
     "mediaErrors": {
       "mediaTypes": {
         "image": "imagine",
+        "audio": "audio",
         "webmap": "hărţii",
         "webscene": "scenei",
         "video": "video",
@@ -569,22 +574,6 @@ define({
       "action2": "Verificaţi-mi acum relatările",
       "action3": "Aflaţi mai multe",
       "floatingNotification": "Această relatare include conţinut nesigur (HTTP). Analizaţi și gestionați aceste probleme."
-    },
-    "embedBar": {
-      "share": "Partajare",
-      "fullScreen": "Pe tot ecranul",
-      "exitFullScreen": "Părăsiți modul pe tot ecranul",
-      "enlarge": "Mărire",
-      "newTab": "Deschideți într-o filă nouă",
-      "tagline": "O hartă informativă"
-    },
-    "june2018SurveyMessage": {
-      "bannerMsg": "Vă putem solicita un lucru? Acesta va contribui la modelarea viitorului hărților informative.",
-      "s1h1": "Împărtășiți-vă gândurile, modelați viitorul",
-      "s1p1": "Informațiile furnizate de dvs. reprezintă sursa noastră cea mai importantă de feedback și faptul că aflăm mai multe despre dvs. ne va ajuta să îmbunătățim hărțile informative. V-am fi recunoscători dacă ați putea participa la acest chestionar de trei minute.",
-      "s2p1": "Ca întotdeauna, vă mulțumim că utilizați hărțile informative Esri!",
-      "action1": "Închidere",
-      "action2": "Parcurgeți chestionarul"
     }
   }
 });

@@ -172,7 +172,7 @@ define({
           "error": "Não existem media autorizados.",
           "imageOnly": "Nesta parte da história pode adicionar uma imagem.",
           "imageAndVideo": "Nesta parte da história pode adicionar uma imagem ou um vídeo.",
-          "imageVideoWebpage": "Nesta parte da história pode adicionar uma imagem, um vídeo ou uma página web."
+          "imageVideoWebpage": "Nesta parte da história pode adicionar áudio, uma imagem, um vídeo ou uma página web."
         }
       },
       "browsePanel": {
@@ -300,16 +300,20 @@ define({
             "createContent": {
               "createNewMap": "Crie um novo mapa",
               "or": "OU",
-              "dragAndDrop": "Solte imagem(ens) aqui",
-              "uploadImage": "Procurar imagem(ens)",
-              "agolInfo": "As imagens serão armazenadas na sua conta ArcGIS e estarão acessíveis apenas dentro da sua história.",
-              "saveBeforeUpload": "Após guardar esta história, pode carregar imagens para ArcGIS aqui.",
-              "fileTypesImage": "Tipos de ficheiros suportados: .png, .jpeg, .jpg, .gif, .bmp"
+              "dragAndDropImage": "Soltar imagens",
+              "dragAndDropImageAudio": "Soltar imagens ou áudio",
+              "uploadButton": "Procurar",
+              "agolInfo": "As imagens e áudio transferidos ficarão acessíveis apenas no interior desta história.",
+              "saveBeforeUpload": "Após guardar esta história, pode carregar imagens e áudio para ArcGIS aqui.",
+              "fileExtsImage": "Tipos suportados: png, jpg, gif, bmp.",
+              "fileExtsImageAudio": "Tipos suportados: png, jpg, gif, bmp, mp3.",
+              "maxSize": "Máx 10 MB por ficheiro."
             },
             "filterAndSort": {
               "webmap": "Mapa Web",
               "webscene": "Web Scene",
               "image": "Imagem",
+              "audio": "Áudio",
               "date": "Data",
               "sortByDate": "Ordenar por data",
               "title": "Título",
@@ -389,9 +393,9 @@ define({
       "placeholder": "Introduza um título..."
     },
     "media": {
-      "imageUpload": "Carregamento de imagem em curso...",
-      "imageUploadSuccess": "Imagem carregada com sucesso",
-      "imageUploadFail": "Falha ao carregar a imagem"
+      "mediaUpload": "Carregamento de media em curso...",
+      "mediaUploadSuccess": "Media carregado com sucesso",
+      "mediaUploadFail": "Falha ao carregar os media"
     },
     "controller": {
       "sectionOrganize": "Organizou as secções",
@@ -412,6 +416,7 @@ define({
     "mediaErrors": {
       "mediaTypes": {
         "image": "Imagem",
+        "audio": "áudio",
         "webmap": "mapa",
         "webscene": "cena 3D",
         "video": "vídeo",
@@ -569,22 +574,6 @@ define({
       "action2": "Verificar as minhas histórias agora",
       "action3": "Obter mais informações",
       "floatingNotification": "Esta história contém conteúdo inseguro (HTTP). Por favor, reveja e corrija estes problemas."
-    },
-    "embedBar": {
-      "share": "Partilhar",
-      "fullScreen": "Ecrã inteiro",
-      "exitFullScreen": "Sair do modo de ecrã inteiro",
-      "enlarge": "Aumentar",
-      "newTab": "Abrir num novo separador",
-      "tagline": "Um Story Map"
-    },
-    "june2018SurveyMessage": {
-      "bannerMsg": "Podemos fazer-lhe uma pergunta? Irá ajudar definir o futuro dos Story Maps.",
-      "s1h1": "Partilhe as suas ideias, defina o futuro",
-      "s1p1": "A sua opinião é a nossa principal fonte de feedback, e aprender mais sobre si irá ajudar-nos a melhorar o Story Maps. Ficaremos agradecidos se puder participar neste questionário de três minutos.",
-      "s2p1": "Como sempre, obrigado por utilizar Esri Story Maps!",
-      "action1": "Fechar",
-      "action2": "Preencher o questionário"
     }
   }
 });

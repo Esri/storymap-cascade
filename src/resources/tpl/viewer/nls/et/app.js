@@ -33,7 +33,7 @@ define({
       "mapLoadingFail": "Midagi läks valesti ning kaarti ei laaditud õigesti.",
       "signOut": "Logi välja",
       "builderSupportFirefox": "Kaardilugude kaskaadi koostaja on nüüd toetud ka Firefox brauseris!<br><br>Vastav Firefoxi tugi on praegu kasutatav beetaversioonina. Proovige seda ja kui leiate mõne kitsaskoha, andke sellest kindlasti teada: ${ESRI-SUPPORT} või ${ESRI-COMMUNITY}.",
-      "builderSupportOther": "Kaskaadlugusid saab kuvada kõikide tänapäevaste veebibrauseritega, aga kaardilugude kaskaadi koosturi tugi on üksnes brauseritel ${CHROME}, ${SAFARI} ja ${FIREFOX} (beeta).<br><br>Kui soovite, et kaskaadi koosturi tugi oleks veel mõnel brauseril, võtke ühendust: ${ESRI-SUPPORT} või klõpsake hääletamiseks: ${BROWSER-SUPPORT-VOTE}.",
+      "builderSupportOther": "Kaskaadlugusid saab kuvada igas tänapäevases veebibrauseris, kuid nende koostamiseks vajalik Story Map Cascade Builder on toetatud vaid brauserites ${CHROME}, ${SAFARI} ja ${FIREFOX}.<br><br>Kui teil on vaja, et kaskaadlugude koostamise keskkond toetaks mõnda muud brauserit, võtke palun ühendust ${ESRI-SUPPORT} või ${BROWSER-SUPPORT-VOTE}.",
       "builderSupportIpad": "iPadis kaardilugude kaskaadi koosturit ei toetata. Eelnevalt koostatud ja jagatud kaskaadlood iPadis toimivad.",
       "launchBuilder": "Kaskaadi koosturi käivitamine",
       "notAgain": "Ära seda enam kuva",
@@ -71,7 +71,7 @@ define({
       "embedExplain": "Kasutage loo veebilehele lisamiseks järgmist HTML-koodi.",
       "size": "Suurus (laius/kõrgus):",
       "autoplayLabel": "Automaatesituse režiim",
-      "autoplayExplain1": "Automaatesituse režiimis keritakse teie lugu kindla ajavahemiku järel edasi. Seda on hea kasutada kioskite või avalike kohtade ekraanidel, kuid arvestage, et muudel juhtudel võib see raskendada teie loo lugemist. See funktsioon pole väikestel ekraanidel toetatud.",
+      "autoplayExplain1": "Automaatesituse režiimis keritakse Teie lugu kindla ajavahemiku järel edasi. Seda on hea kasutada kioskite või avalike kohtade ekraanidel, kuid arvestage, et muudel juhtudel võib see raskendada Teie loo lugemist. See funktsioon pole väikestel ekraanidel toetatud.",
       "autoplayExplain2": "Kui see režiim on aktiveeritud, saate kasutada loo esitamise või peatamise ja liikumiskiiruse reguleerimise juhtelemente.",
       "linksupdated": "Lingid on värskendatud!"
     },
@@ -88,6 +88,16 @@ define({
       "learnMore": "Lisateave",
       "close": "Sule",
       "dontShowAgain": "Ära kuva enam seda teadet"
+    },
+    "embedBar": {
+      "share": "Jaga",
+      "fullScreen": "Täisekraan",
+      "exitFullScreen": "Välju täisekraanist",
+      "enlarge": "Kasvav",
+      "newTab": "Avatakse uuel vahelehel",
+      "tagline": "Kaardilugu",
+      "twitter": "Jaga Twitteris",
+      "facebook": "Jaga Facebookis"
     }
   },
   "print": {
@@ -97,7 +107,7 @@ define({
       "printOptions": "Valikud",
       "makeTextBlack": "Muuda kogu tekst mustaks",
       "showLinks": "Kuva linkide URL-id",
-      "useAltMedia": "Asenda reaalajas meedium piltidega, kui olemas",
+      "useAltMedia": "Asenda reaalajas meedium piltidega, kui see on võimalik",
       "pageBreaks": "Alusta iga jaotist uuelt lehelt",
       "printRange": "Prindi osa sellest loost",
       "sectionStart": "Jaotised:",

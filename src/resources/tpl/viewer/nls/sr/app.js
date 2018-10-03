@@ -33,7 +33,7 @@ define({
       "mapLoadingFail": "Došlo je do greške, mapa se nije učitala pravilno.",
       "signOut": "Odjavite se",
       "builderSupportFirefox": "Story Map Cascade alatka za izradu sada je podržana na Firefox pregledaču!<br><br>Podrška za kreiranje Cascade priča u Firefox pregledači je trenutno u beta verziji. Isprobajte je i prijavite bilo kakve probleme na ${ESRI-SUPPORT} ili na ${ESRI-COMMUNITY}.",
-      "builderSupportOther": "Cascade priče mogu da budu pregledane u bilo kom novijem veb pregledaču, ali Story Map Cascade alatka za izradu je podržana samo u ${CHROME}, ${SAFARI} i ${FIREFOX} (beta).<br><br>Ako vam je potrebna Cascade alatka za izradu kako biste podržali različit pregledač, obratite se ${ESRI-SUPPORT} ili ${BROWSER-SUPPORT-VOTE}.",
+      "builderSupportOther": "Cascade priče mogu da budu pregledane u bilo kom novijem veb pregledaču, ali Story Map Cascade alatka za izradu je podržana samo u pregledačima ${CHROME}, ${SAFARI} i ${FIREFOX}.<br><br>Ako vam je potrebno da Cascade alatka za izradu podržava drugi pregledač, obratite se ${ESRI-SUPPORT} ili ${BROWSER-SUPPORT-VOTE}.",
       "builderSupportIpad": "Alatka za izradu Story Map Cascade nije podržana na iPad uređaju. Kaskadne priče koje kreirate i podelite će raditi na iPad uređajima.",
       "launchBuilder": "Pokretanje Cascade alatke za izradu",
       "notAgain": "Ne prikazuj ovo ponovo",
@@ -88,6 +88,16 @@ define({
       "learnMore": "Saznaj više",
       "close": "Zatvori",
       "dontShowAgain": "Ne prikazuj ponovo ovu poruku"
+    },
+    "embedBar": {
+      "share": "Podeli",
+      "fullScreen": "Ceo ekran",
+      "exitFullScreen": "Izađi iz režima celog ekrana",
+      "enlarge": "Uvećaj",
+      "newTab": "Otvori u novoj kartici",
+      "tagline": "Story mapa",
+      "twitter": "Podelite na mreži Twitter",
+      "facebook": "Podelite na mreži Facebook"
     }
   },
   "print": {

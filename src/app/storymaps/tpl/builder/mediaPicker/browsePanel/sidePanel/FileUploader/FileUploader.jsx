@@ -9,6 +9,7 @@ import i18n from 'lib-build/i18n!resources/tpl/builder/nls/app';
 import topic from 'dojo/topic';
 import constants from '../../../constants';
 import ImageUploadHelper from './NewerImageUploadHelper';
+import AudioUploadHelper from './AudioUploadHelper';
 import { ArcGISConnector } from '../../../connectors/ArcGIS';
 
 var text = i18n.builder.mediaPicker.browsePanel.sidePanel.agol;
@@ -158,7 +159,7 @@ export default class FileUploader extends React.Component {
     if (!singleFile) {
       namesArr.forEach((names) => {
         this.props.fileUploadFunctions.singleProgress(Object.assign({
-          dataUrl: constants.blankBackground
+          dataUrl: constants.fileSettings.blankBackground
         }, names));
       });
     }
@@ -247,7 +248,7 @@ export default class FileUploader extends React.Component {
 
         if (!isSingle) {
           // pass a blank background back to the container for a placeholder while the thumbnail is generated
-          this.props.fileUploadFunctions.singleProgress(Object.assign({dataUrl: constants.blankBackground}, names));
+          this.props.fileUploadFunctions.singleProgress(Object.assign({dataUrl: constants.fileSettings.blankBackground}, names));
         }
 
         this.processFile(file, isSingle).then((result) => {
@@ -284,6 +285,7 @@ export default class FileUploader extends React.Component {
       case 'image':
         return ImageUploadHelper.loadImageFromFile(file, isSingle);
       case 'audio':
+        return AudioUploadHelper.loadAudioFromFile(file, isSingle);
       case 'video':
         console.warn('unhandled file type', simplifiedType);
         return;
@@ -388,11 +390,16 @@ export default class FileUploader extends React.Component {
   }
 
   broadcastChosenFile(fileDetails) {
-    let broadcastDetails = {
-      type: fileDetails.type,
-      width: fileDetails.width,
-      height: fileDetails.height
-    };
+    let broadcastDetails = {type: fileDetails.type};
+
+    if (fileDetails.width) {
+      Object.assign(broadcastDetails, {width: fileDetails.width});
+    }
+
+    if (fileDetails.height) {
+      Object.assign(broadcastDetails, {height: fileDetails.height});
+    }
+
     if (fileDetails.uploadDeferred) {
       Object.assign(broadcastDetails, {uploadDeferred: fileDetails.uploadDeferred});
     }
@@ -417,8 +424,21 @@ export default class FileUploader extends React.Component {
   }
 
   getFileTypesText() {
-    // TODO: when more file types are supported, need to decide between help texts.
-    return text.createContent.fileTypesImage;
+    if (this.state.contentTypes.indexOf('audio') >= 0) {
+      return text.createContent.dragAndDropImageAudio;
+    }
+    else {
+      return text.createContent.dragAndDropImage;
+    }
+  }
+
+  getFileExtensionsText() {
+    if (this.state.contentTypes.indexOf('audio') >= 0) {
+      return text.createContent.fileExtsImageAudio;
+    }
+    else {
+      return text.createContent.fileExtsImage;
+    }
   }
 
   forceClickInput(evt) {
@@ -447,7 +467,7 @@ export default class FileUploader extends React.Component {
       onDrop={this.onDrop}>
         <span className="block-md">
           <span className="fa fa-hand-rock-o fa-lg" />
-          <span>{text.createContent.dragAndDrop}</span>
+          <span>{this.getFileTypesText()}</span>
         </span>
         <div
           className="btn btn-bw inverse btn-file block-md"
@@ -455,7 +475,7 @@ export default class FileUploader extends React.Component {
           onKeyPress={(evt) => this.forceClickInput(evt)}
         >
           <span className="fa fa-folder-open-o fa-lg" />
-          <span>{text.createContent.uploadImage}</span>
+          <span>{text.createContent.uploadButton}</span>
           <input
             multiple="multiple"
             id={this.props.id}
@@ -470,7 +490,9 @@ export default class FileUploader extends React.Component {
         <div className={fileExtClasses}>
           <span className="fa fa-file-o info" />
           <span className="fa fa-exclamation-triangle danger" />
-          <span> {this.getFileTypesText()}</span>
+          <span> {this.getFileExtensionsText()}</span>
+          <br />
+          <span> {text.createContent.maxSize}</span>
         </div>
         <div className="info-footer">
           <span className="fa fa-lg fa-info-circle" />
@@ -483,7 +505,7 @@ export default class FileUploader extends React.Component {
   renderNoDnD() {
     return (
       <button type="button" className="uploader btn btn-bw inverse btn-file btn-block">
-        {text.createContent.uploadImage}
+        {text.createContent.uploadButton}
         <input
         id={this.props.id}
         ref="input"

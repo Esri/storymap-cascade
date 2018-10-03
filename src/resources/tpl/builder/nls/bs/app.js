@@ -172,7 +172,7 @@ define({
           "error": "Nema ovlaštenih medija.",
           "imageOnly": "U ovom dijelu priče možete dodati sliku.",
           "imageAndVideo": "U ovom dijelu priče možete dodati sliku ili videozapis.",
-          "imageVideoWebpage": "U ovom dijelu priče možete dodati sliku, videozapis ili web-stranicu."
+          "imageVideoWebpage": "U ovom dijelu priče možete dodati audiozapis, sliku, videozapis ili web-stranicu."
         }
       },
       "browsePanel": {
@@ -300,16 +300,20 @@ define({
             "createContent": {
               "createNewMap": "Stvaranje nove karte",
               "or": "ILI",
-              "dragAndDrop": "Spusti sliku/e ovdje",
-              "uploadImage": "Traži sliku/e",
-              "agolInfo": "Slike će se pohraniti u vašem ArcGIS računu i bit će dostupne samo unutar vaše priče.",
-              "saveBeforeUpload": "Kada spremite ovu priču, ovdje možete učitati slike na ArcGIS.",
-              "fileTypesImage": "Podržane vrste datoteke: .png, .jpeg, .jpg, .gif, .bmp"
+              "dragAndDropImage": "Ispusti slike",
+              "dragAndDropImageAudio": "Ispustite slike ili audiozapis",
+              "uploadButton": "Pregledaj",
+              "agolInfo": "Učitane slike i audiozapis bit će dostupni samo unutar ove priče.",
+              "saveBeforeUpload": "Kada spremite ovu priču, ovdje možete učitati slike i audiozapis na ArcGIS.",
+              "fileExtsImage": "Podržane vrste: png, jpg, gif, bmp.",
+              "fileExtsImageAudio": "Podržane vrste: png, jpg, gif, bmp, mp3.",
+              "maxSize": "Maks. 10 MB po datoteci."
             },
             "filterAndSort": {
               "webmap": "Web-karta",
               "webscene": "Web-scena",
               "image": "Slika",
+              "audio": "Audiozapis",
               "date": "Datum",
               "sortByDate": "Sortiraj po datumu",
               "title": "Naziv",
@@ -389,9 +393,9 @@ define({
       "placeholder": "Unesite naziv..."
     },
     "media": {
-      "imageUpload": "Učitavanje slike u tijeku...",
-      "imageUploadSuccess": "Slika je uspješno učitana",
-      "imageUploadFail": "Nije uspjelo učitavanje slike"
+      "mediaUpload": "Učitavanje medija u tijeku...",
+      "mediaUploadSuccess": "Medije je uspješno učitan",
+      "mediaUploadFail": "Učitavanje medija nije uspjelo"
     },
     "controller": {
       "sectionOrganize": "Organizirali ste dijelove",
@@ -412,6 +416,7 @@ define({
     "mediaErrors": {
       "mediaTypes": {
         "image": "slika",
+        "audio": "audiozapis",
         "webmap": "karta",
         "webscene": "scena",
         "video": "videozapis",
@@ -569,22 +574,6 @@ define({
       "action2": "Sada pregledaj moje priče",
       "action3": "Saznajte više",
       "floatingNotification": "Ova priča sadrži nesiguran (HTTP) sadržaj. Pregledajte i riješite te probleme."
-    },
-    "embedBar": {
-      "share": "Podijeli",
-      "fullScreen": "Puni zaslon",
-      "exitFullScreen": "Izađi iz punog zaslona",
-      "enlarge": "Uvećaj",
-      "newTab": "Otvori u novoj kartici",
-      "tagline": "Story Map"
-    },
-    "june2018SurveyMessage": {
-      "bannerMsg": "Možemo li vas nešto pitati? Pomoći će nam u oblikovanju budućnosti usluge Story Maps.",
-      "s1h1": "Podijelite svoje misli, oblikujte budućnost",
-      "s1p1": "Vaša su iskustva naš najvažniji izvor povratnih informacija i ako saznamo više o vama, to će nam pomoći poboljšati Story Maps. Bili bismo zahvalni ako biste sudjelovali u ovoj anketi koja traje tri minute.",
-      "s2p1": "Kao i uvijek, hvala na korištenju Esri Story Maps!",
-      "action1": "Zatvori",
-      "action2": "Ispuni anketu"
     }
   }
 });

@@ -128,13 +128,13 @@ define([
         app.Controller.changeTheme();
 
         // embed bar goes here... DOM in place, but before any important calculations
-        var strings = i18n.builder.embedBar;
+        var strings = i18n.viewer.embedBar;
         lang.mixin(strings, {
           open: i18n.viewer.shareFromCommon.open,
           close: i18n.viewer.common.close,
           // these strings don't exist yet
-          shareFacebook: '',
-          shareTwitter: ''
+          shareFacebook: i18n.viewer.embedBar.facebook,
+          shareTwitter: i18n.viewer.embedBar.twitter
         });
 
         var urlParams = urlUtils.urlToObject(window.location.search).query || {};

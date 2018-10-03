@@ -33,7 +33,7 @@ define({
       "mapLoadingFail": "Произошла ошибка, карта загрузилась некорректно.",
       "signOut": "Выйти",
       "builderSupportFirefox": "Конструктор Story Map Cascade теперь поддерживает Firefox! <br><br>Поддержка создания историй Cascade в Firefox в настоящий момент осуществляется в режиме тестирования. Пожалуйста, изучите и отправляйте сообщения об ошибках в ${ESRI-SUPPORT} или ${ESRI-COMMUNITY}.",
-      "builderSupportOther": "Истории Cascade можно просматривать в любом современном веб-браузере, но конструктор Story Map Cascade поддерживается только в ${CHROME}, ${SAFARI} и ${FIREFOX} (в режиме тестирования).<br><br>Если вам требуется поддержка конструктора Cascade на другом браузере, свяжитесь с ${ESRI-SUPPORT} или ${BROWSER-SUPPORT-VOTE}.",
+      "builderSupportOther": "Истории Cascade можно просматривать в любом современном браузере, но конструктор Story Map Cascade поддерживается только в ${CHROME} и ${SAFARI} и ${FIREFOX}.<br><br>Если вам требуется поддержка конструктора Cascade на другом браузере, свяжитесь с ${ESRI-SUPPORT} или ${BROWSER-SUPPORT-VOTE}.",
       "builderSupportIpad": "Конструктор Story Map Cascade не поддерживается на iPad. Опубликованные истории Cascade могут просматриваться на iPad.",
       "launchBuilder": "Запуск конструктора Cascade",
       "notAgain": "Не показывать это сообщение снова",
@@ -88,6 +88,16 @@ define({
       "learnMore": "Подробнее",
       "close": "Закрыть",
       "dontShowAgain": "Не показывать это сообщение снова"
+    },
+    "embedBar": {
+      "share": "Общий доступ",
+      "fullScreen": "Во весь экран",
+      "exitFullScreen": "Выйти из полноэкранного режима",
+      "enlarge": "Увеличить",
+      "newTab": "Открыть в новой вкладке",
+      "tagline": "Карта-история",
+      "twitter": "Разместить в Twitter",
+      "facebook": "Разместить в Facebook"
     }
   },
   "print": {

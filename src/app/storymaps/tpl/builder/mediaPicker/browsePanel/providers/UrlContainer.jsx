@@ -137,6 +137,9 @@ class UrlContainer extends React.Component {
     if (nextProps.currentMedia) {
       const media = nextProps.currentMedia[nextProps.currentMedia.type];
       const appId = app.data.appItem.item.id;
+      // TODO: not sure this is sufficient to catch all images that don't come
+      // from services, and exclude the ones that do.
+      const notFromResources = media.url && (media.source === 'url' || !media.thumbUrl) && (!appId || !media.url.match(appId + '/resources'));
       switch (nextProps.currentMedia.type) {
         case 'webpage':
           var src = nextProps.currentMedia.webpage.url.replace(/^\/\//, '');
@@ -147,9 +150,7 @@ class UrlContainer extends React.Component {
           Object.assign(newState, {textInputValue});
           break;
         case 'image': {
-          // TODO: not sure this is sufficient to catch all images that don't come
-          // from services, and exclude the ones that do.
-          if (media.url && (media.source === 'url' || !media.thumbUrl) && (!appId || !media.url.match(appId + '/resources'))) {
+          if (notFromResources) {
             Object.assign(newState, {
               textInputValue: media.url.replace(/^\/\//, '')
             });
@@ -168,13 +169,10 @@ class UrlContainer extends React.Component {
           break;
         }
         case 'audio': {
-          if (media.url) {
+          if (notFromResources) {
             Object.assign(newState, {
               textInputValue: media.url.replace(/^\/\//, '')
             });
-          }
-          else {
-            console.warn('audio fell through because no url');
           }
           break;
         }

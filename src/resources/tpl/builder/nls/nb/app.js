@@ -172,7 +172,7 @@ define({
           "error": "Ingen godkjente medier.",
           "imageOnly": "I denne delen av historien kan du legge til et bilde.",
           "imageAndVideo": "I denne delen av historien kan du legge til et bilde eller en video.",
-          "imageVideoWebpage": "I denne delen av historien kan du legge til et bilde, en video eller en nettside."
+          "imageVideoWebpage": "I denne delen av fortellingen kan du legge til lyd, et bilde, en video eller en nettside."
         }
       },
       "browsePanel": {
@@ -300,16 +300,20 @@ define({
             "createContent": {
               "createNewMap": "Opprett et nytt kart",
               "or": "ELLER",
-              "dragAndDrop": "Slipp bilde(r) her",
-              "uploadImage": "Bla gjennom bilder",
-              "agolInfo": "Bildene lagres i ArcGIS-kontoen og er kun tilgjengelige inne i historien.",
-              "saveBeforeUpload": "Når du har lagret denne historien, kan du laste opp bilder til ArcGIS her.",
-              "fileTypesImage": "Filtyper som støttes: .png, .jpeg, .jpg, .gif, .bmp"
+              "dragAndDropImage": "Slipp bilder",
+              "dragAndDropImageAudio": "Slipp bilder eller lyd",
+              "uploadButton": "Bla gjennom",
+              "agolInfo": "Opplastede bilder og lyd blir tilgjengelig bare i denne fortellingen.",
+              "saveBeforeUpload": "Når du har lagret denne fortellingen, kan du laste opp bilder og lyd til ArcGIS her.",
+              "fileExtsImage": "Filtyper som støttes: png, jpg, gif, bmp.",
+              "fileExtsImageAudio": "Filtyper som støttes: png, jpg, gif, bmp, mp3.",
+              "maxSize": "Maks. 10 MB per fil."
             },
             "filterAndSort": {
               "webmap": "Webkart",
               "webscene": "Webscene",
               "image": "Bilde",
+              "audio": "Lyd",
               "date": "Dato",
               "sortByDate": "Sorter etter dato",
               "title": "Tittel",
@@ -389,9 +393,9 @@ define({
       "placeholder": "Angi en tittel..."
     },
     "media": {
-      "imageUpload": "Bildeopplasting pågår ...",
-      "imageUploadSuccess": "Bildeopplastingen var vellykket",
-      "imageUploadFail": "Bildeopplastingen mislyktes"
+      "mediaUpload": "Medieopplasting pågår ...",
+      "mediaUploadSuccess": "Medieopplastingen var vellykket",
+      "mediaUploadFail": "Medieopplastingen mislyktes"
     },
     "controller": {
       "sectionOrganize": "Du organiserte seksjonene",
@@ -412,6 +416,7 @@ define({
     "mediaErrors": {
       "mediaTypes": {
         "image": "bilde",
+        "audio": "lyd",
         "webmap": "kart",
         "webscene": "scene",
         "video": "videosamlingen",
@@ -569,22 +574,6 @@ define({
       "action2": "Kontroller mine fortellinger nå",
       "action3": "Mer informasjon",
       "floatingNotification": "Denne fortellingen inneholder usikkert innhold (HTTP). Se gjennom og rett opp i disse problemene."
-    },
-    "embedBar": {
-      "share": "Del",
-      "fullScreen": "Fullskjerm",
-      "exitFullScreen": "Avslutt fullskjerm",
-      "enlarge": "Forstørr",
-      "newTab": "Åpne i ny fane",
-      "tagline": "Et fortellingskart"
-    },
-    "june2018SurveyMessage": {
-      "bannerMsg": "Kan vi spørre deg om noe? Det vil bidra til å forme fortellingskartenes fremtid.",
-      "s1h1": "Si hva du tenker, bidra til å forme fremtiden",
-      "s1p1": "Du er vår viktigste kilde til tilbakemeldinger, og når vi vet mer om deg, kan vil lettere forbedre fortellingskartene. Vi setter stor pris på om du kan avse tre minutter til å delta i denne undersøkelsen.",
-      "s2p1": "Nok en gang takk for at du bruker Esri Story Maps!",
-      "action1": "Lukk",
-      "action2": "Ta undersøkelsen"
     }
   }
 });

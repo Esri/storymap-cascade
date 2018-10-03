@@ -33,7 +33,7 @@ define({
       "mapLoadingFail": "問題が発生しました。マップを正しく読み込みませんでした。",
       "signOut": "サイン アウト",
       "builderSupportFirefox": "ストーリー マップ カスケード ビルダーで、Firefox がサポートされるようになりました。<br><br>Firefox でのカスケード ストーリーの作成サポートは、現時点ではベータ版です。使用を試して、何か問題がありましたら、${ESRI-SUPPORT} または ${ESRI-COMMUNITY} にご報告ください。",
-      "builderSupportOther": "カスケード ストーリーは、最新の Web ブラウザーで表示できますが、ストーリー マップ カスケード ビルダーは ${CHROME}、${SAFARI}、${FIREFOX} (ベータ版) でのみサポートされています。<br><br>カスケード ビルダーで別のブラウザーをサポートする必要がある場合は、${ESRI-SUPPORT} または ${BROWSER-SUPPORT-VOTE} にお問い合わせください。",
+      "builderSupportOther": "カスケード ストーリーは最新の Web ブラウザーで表示できますが、ストーリー マップ カスケード ビルダーは ${CHROME}、${SAFARI}、および ${FIREFOX} でしかサポートされていません。<br><br>別のブラウザーをサポートするためにカスケード ビルダーが必要な場合は、${ESRI-SUPPORT} または ${BROWSER-SUPPORT-VOTE} にお問い合わせください。",
       "builderSupportIpad": "ストーリー マップ カスケード ビルダーは iPad ではサポートされていません。作成および共有したカスケード ストーリーは iPad 上で動作します。",
       "launchBuilder": "カスケード ビルダーの起動",
       "notAgain": "今後このメッセージを表示しない",
@@ -88,6 +88,16 @@ define({
       "learnMore": "詳細",
       "close": "閉じる",
       "dontShowAgain": "今後このメッセージを表示しない"
+    },
+    "embedBar": {
+      "share": "共有",
+      "fullScreen": "全画面表示",
+      "exitFullScreen": "全画面表示を終了",
+      "enlarge": "拡大",
+      "newTab": "新しいタブで開く",
+      "tagline": "ストーリー マップ",
+      "twitter": "Twitter で共有",
+      "facebook": "Facebook で共有"
     }
   },
   "print": {

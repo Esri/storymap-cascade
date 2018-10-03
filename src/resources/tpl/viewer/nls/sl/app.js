@@ -33,7 +33,7 @@ define({
       "mapLoadingFail": "Nekaj ni v redu, karta se ni pravilno naložila.",
       "signOut": "Odjava",
       "builderSupportFirefox": "Graditelj kaskadnih kart z zgodbo sedaj podpira Firefox!<br><br>Podpora za ustvarjanje kaskadnih zgodb v Firefoxu je trenutno v beta. Preizkusite jo in prijavite morebitne težave na ${ESRI-SUPPORT} ali ${ESRI-COMMUNITY}.",
-      "builderSupportOther": "Kaskadne zgodbe si lahko ogledate v katerem koli sodobnem spletnem brskalniku, vendar je graditelj Kaskadnih kart z zgodbo podprt samo v brskalnikih ${CHROME}, ${SAFARI} in ${FIREFOX} (beta).<br><br>Če potrebujete kaskadnega graditelja za podporo drugemu brskalniku, se obrnite na ${ESRI-SUPPORT} ali ${BROWSER-SUPPORT-VOTE}.",
+      "builderSupportOther": "Kaskadne zgodbe si bo mogoče ogledati v vseh sodobnih brskalnikih, vendar je graditelj Kaskadnih kart z zgodbo podprt samo v brskalnikih ${CHROME}, ${SAFARI} in ${FIREFOX}.<br><br>Če potrebujete kaskadnega graditelja podprtega v drugem brskalniku, se obrnite na ${ESRI-SUPPORT} ali ${BROWSER-SUPPORT-VOTE}.",
       "builderSupportIpad": "Graditelj Kaskadnih kart z zgodbo ni podprt na iPadu. Na iPadu bodo delovale kaskadne zgodbe, ki jih boste ustvarili ali delili.",
       "launchBuilder": "Zaženi kaskadnega graditelja",
       "notAgain": "Tega ne kaži več",
@@ -88,6 +88,16 @@ define({
       "learnMore": "Izvedi več",
       "close": "Zapri",
       "dontShowAgain": "Tega sporočila ne kaži več"
+    },
+    "embedBar": {
+      "share": "Deli",
+      "fullScreen": "Celozaslonski način",
+      "exitFullScreen": "Izhod iz celozaslonskega načina",
+      "enlarge": "Povečaj",
+      "newTab": "Odpri v novem zavihku",
+      "tagline": "Karta z zgodbo",
+      "twitter": "Deli na Twitterju",
+      "facebook": "Deli na Facebooku"
     }
   },
   "print": {

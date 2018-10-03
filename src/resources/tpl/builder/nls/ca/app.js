@@ -172,7 +172,7 @@ define({
           "error": "No hi ha cap contingut multimèdia autoritzat.",
           "imageOnly": "En aquesta part de la història, podeu afegir una imatge.",
           "imageAndVideo": "En aquesta part de la història, podeu afegir una imatge o un vídeo.",
-          "imageVideoWebpage": "En aquesta part de la història, podeu afegir una imatge, un vídeo o una pàgina web."
+          "imageVideoWebpage": "En aquesta part de la història, podeu afegir àudio, una imatge, un vídeo o una pàgina web."
         }
       },
       "browsePanel": {
@@ -300,16 +300,20 @@ define({
             "createContent": {
               "createNewMap": "Crea un mapa nou",
               "or": "OR",
-              "dragAndDrop": "Deixa anar imatges aquí",
-              "uploadImage": "Cerca imatges",
-              "agolInfo": "Les imatges s'emmagatzemaran al vostre compte de l'ArcGIS i només s'hi podrà accedir des de dins de la vostra història.",
-              "saveBeforeUpload": "Quan deseu aquesta història, podreu pujar imatges a l'ArcGIS aquí.",
-              "fileTypesImage": "Tipus de fitxers compatibles: .png, .jpeg, .jpg, .gif i .bmp"
+              "dragAndDropImage": "Suprimeix imatges",
+              "dragAndDropImageAudio": "Suprimeix imatges o àudio",
+              "uploadButton": "Navega",
+              "agolInfo": "Només podreu accedir a les imatges i l'àudio que s'hagin pujat dins d'aquesta història.",
+              "saveBeforeUpload": "Quan deseu aquesta història, podreu pujar imatges i àudio a l'ArcGIS aquí.",
+              "fileExtsImage": "Tipus admesos: PNG, JPG, GIF i BMP.",
+              "fileExtsImageAudio": "Tipus admesos: PNG, JPG, GIF, BMP i MP3.",
+              "maxSize": "10 MB per fitxer com a màxim."
             },
             "filterAndSort": {
               "webmap": "Mapa web",
               "webscene": "Escena web",
               "image": "Imatge",
+              "audio": "Àudio",
               "date": "Data",
               "sortByDate": "Ordena per data",
               "title": "Títol",
@@ -389,9 +393,9 @@ define({
       "placeholder": "Introduïu un títol..."
     },
     "media": {
-      "imageUpload": "Pujada de la imatge en curs...",
-      "imageUploadSuccess": "Imatge pujada correctament",
-      "imageUploadFail": "Error de pujada de la imatge"
+      "mediaUpload": "Pujada de contingut multimèdia en curs...",
+      "mediaUploadSuccess": "Contingut multimèdia pujat correctament",
+      "mediaUploadFail": "Error de pujada de contingut multimèdia"
     },
     "controller": {
       "sectionOrganize": "Heu organitzat les seccions",
@@ -412,6 +416,7 @@ define({
     "mediaErrors": {
       "mediaTypes": {
         "image": "imatge",
+        "audio": "àudio",
         "webmap": "mapa",
         "webscene": "escena",
         "video": "vídeo",
@@ -569,22 +574,6 @@ define({
       "action2": "Comprova les meves històries ara",
       "action3": "Més informació",
       "floatingNotification": "Aquesta història conté contingut (HTTP) no segur. Reviseu i tracteu aquests problemes."
-    },
-    "embedBar": {
-      "share": "Comparteix",
-      "fullScreen": "Pantalla completa",
-      "exitFullScreen": "Surt de la pantalla completa",
-      "enlarge": "Amplia",
-      "newTab": "Obre-ho en una pestanya nova",
-      "tagline": "Un Story Map"
-    },
-    "june2018SurveyMessage": {
-      "bannerMsg": "Us podem preguntar una cosa? Ajudarà a definir el futur de l'Story Maps.",
-      "s1h1": "Compartiu les vostres idees i definiu el futur",
-      "s1p1": "La vostra entrada és la nostra font de comentaris més important i obtenir més informació sobre vós ens ajudarà a millorar els Story Maps. Us agrairíem que responguéssiu aquesta enquesta de tres minuts.",
-      "s2p1": "Com sempre, gràcies per utilitzar l'Esri Story Maps.",
-      "action1": "Tanca",
-      "action2": "Responeu l'enquesta"
     }
   }
 });

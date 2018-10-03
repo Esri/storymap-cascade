@@ -33,7 +33,7 @@ define({
       "mapLoadingFail": "Algo correu mal, o mapa não foi carregado correctamente.",
       "signOut": "Terminar Sessão",
       "builderSupportFirefox": "O builder Story Map Cascade já suporta o Firefox!<br><br>O suporte para criação de histórias Cascade no Firefox encontra-se em versão beta. Por favor, experimente-o e reporte quaisquer problemas a ${ESRI-SUPPORT} ou à ${ESRI-COMMUNITY}.",
-      "builderSupportOther": "As histórias do Cascade podem ser visualizadas em qualquer navegador web moderno, mas o builder do Story Map Cascade é suportado apenas em ${CHROME}, ${SAFARI}, and ${FIREFOX} (beta).<br><br>Caso necessite que o builder do Cascade suporte outro navegador, por favor contacte ${ESRI-SUPPORT} ou ${BROWSER-SUPPORT-VOTE}.",
+      "builderSupportOther": "As histórias do Cascade podem ser visualizadas em qualquer navegador web moderno, mas o builder do Story Map Cascade é suportado apenas no ${CHROME}, ${SAFARI}, e ${FIREFOX}.<br><br>Caso necessite que o builder do Cascade suporte um navegador diferente, por favor contacte ${ESRI-SUPPORT} ou ${BROWSER-SUPPORT-VOTE}.",
       "builderSupportIpad": "O builder Story Map Cascade não é suportados em iPad. As histórias do Cascade que cria e partilha funcionam no iPad.",
       "launchBuilder": "Iniciar o builder do Cascade",
       "notAgain": "Não voltar a exibir isto.",
@@ -88,6 +88,16 @@ define({
       "learnMore": "Saber Mais",
       "close": "Fechar",
       "dontShowAgain": "Não exibir esta mensagem novamente"
+    },
+    "embedBar": {
+      "share": "Partilhar",
+      "fullScreen": "Ecrã inteiro",
+      "exitFullScreen": "Sair do modo de ecrã inteiro",
+      "enlarge": "Aumentar",
+      "newTab": "Abrir num novo separador",
+      "tagline": "Um Story Map",
+      "twitter": "Partilhar no Twitter",
+      "facebook": "Partilhar no Facebook"
     }
   },
   "print": {
