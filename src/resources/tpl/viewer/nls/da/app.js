@@ -127,6 +127,9 @@ define({
       "websiteLabel": "Websted:",
       "videoLabel": "Video",
       "audioLabel": "Lyd:"
+    },
+    "licenseChange2018": {
+      "noAccess": "Din konto (%USER_NAME%) har ikke licens til at åbne et Story Map, der ikke er offentlige. Bed din organisationsadministrator om at knytte dig til en brugertype, der omfatter Story Maps eller en add-on Essential Apps-licens."
     }
   }
 });

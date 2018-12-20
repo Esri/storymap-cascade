@@ -127,6 +127,9 @@ define({
       "websiteLabel": "Internetinis puslapis:",
       "videoLabel": "Vaizdo įrašas:",
       "audioLabel": "Garso įrašas:"
+    },
+    "licenseChange2018": {
+      "noAccess": "Jūsų paskyra (%USER_NAME%) nelicencijuota atverti ne viešą žemėlapio pasakojimą. Kreipkitės į organizacijos administratorių, kad paskirtų jums vartotojo tipą, kuris turi žemėlapio pasakojimus, arba suteiktų jums papildomą svarbiausių aplikacijų licenciją."
     }
   }
 });

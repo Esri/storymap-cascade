@@ -127,6 +127,9 @@ define({
       "websiteLabel": "Site web:",
       "videoLabel": "Video:",
       "audioLabel": "Audio:"
+    },
+    "licenseChange2018": {
+      "noAccess": "Contul dvs. (%USER_NAME%) nu este licențiat să deschidă o hartă informativă care nu este publică.  Solicitați-i administratorului organizației să vă aloce un tip de utilizator care include hărți informative sau o licență pentru aplicații esențiale de completare."
     }
   }
 });

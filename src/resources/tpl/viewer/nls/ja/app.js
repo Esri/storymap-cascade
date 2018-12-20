@@ -127,6 +127,9 @@ define({
       "websiteLabel": "Web サイト:",
       "videoLabel": "ビデオ:",
       "audioLabel": "オーディオ:"
+    },
+    "licenseChange2018": {
+      "noAccess": "パブリックでないストーリー マップを開くためのライセンスがアカウント (%USER_NAME%) に付与されていません。  組織の管理者にストーリー マップまたはアドオン Essential Apps ライセンスを含むユーザー タイプを割り当てるよう依頼してください。"
     }
   }
 });

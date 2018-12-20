@@ -127,6 +127,9 @@ define({
       "websiteLabel": "Web Sitesi:",
       "videoLabel": "Video:",
       "audioLabel": "Ses:"
+    },
+    "licenseChange2018": {
+      "noAccess": "Hesabınız (%USER_NAME%) herkese açık olmayan bir Hikaye Haritasını açmak için lisanslandırılmamış. Lütfen kuruluş yöneticinizden Hikaye Haritaları veya eklenti Temel Uygulamalar lisansı içeren bir kullanıcı türü atamasını isteyin."
     }
   }
 });

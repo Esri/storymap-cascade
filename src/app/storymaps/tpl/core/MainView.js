@@ -284,6 +284,11 @@ define([
         // The active section is the section that is before the section not visible
         if (sectionTop > visibleViewportTop) {
           if (! activeSection) {
+            // safari sometimes lets the sectionIndex be -1 (depending on scroll-up
+            // speed and force), which breaks things. reset to 0.
+            if (sectionIndex < 0) {
+              sectionIndex = 0;
+            }
             activeSection = {
               index: sectionIndex,
               top: sections[sectionIndex].top,

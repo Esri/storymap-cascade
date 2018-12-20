@@ -127,6 +127,9 @@ define({
       "websiteLabel": "Site da Web:",
       "videoLabel": "Vídeo:",
       "audioLabel": "Áudio:"
+    },
+    "licenseChange2018": {
+      "noAccess": "Sua conta (%USER_NAME%) não está licenciada para abrir um Mapa Histórico que não seja público. Solicite ao administrador da sua organização que lhe atribua um tipo de usuário que inclua os Mapas Históricos ou uma licença complementar dos Aplicativos Fundamentais."
     }
   }
 });

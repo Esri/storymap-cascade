@@ -127,6 +127,9 @@ define({
       "websiteLabel": "Webhely:",
       "videoLabel": "Videó:",
       "audioLabel": "Hang:"
+    },
+    "licenseChange2018": {
+      "noAccess": "Az Ön fiókjának (%USER_NAME%) licence nem teszi lehetővé a nem nyilvános story map megnyitását.  Igényelje a szervezete adminisztrátorától, hogy rendeljen Önhöz olyan felhasználótípust, amely tartalmazza a story map-eket, vagy egy kiegészítő story map-ekre vonatkozó licencet."
     }
   }
 });

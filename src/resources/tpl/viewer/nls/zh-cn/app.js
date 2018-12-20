@@ -127,6 +127,9 @@ define({
       "websiteLabel": "网址：",
       "videoLabel": "视频：",
       "audioLabel": "音频："
+    },
+    "licenseChange2018": {
+      "noAccess": "您的帐户(%USER_NAME%)无权打开非公共 Story Map。 请联系您的组织管理员为您分配包含 Story Maps 或附加基本应用程序许可的用户类型。"
     }
   }
 });

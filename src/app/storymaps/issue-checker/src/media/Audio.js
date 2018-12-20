@@ -27,18 +27,6 @@ export default class Audio extends Media {
           Audio.resolveAndClear(audio, timer, resolve);
         };
 
-        trialAudio.ondurationchange = function() {
-          if (trialAudio.duration) {
-            window.clearTimeout(timer);
-            if (isFinite(trialAudio.duration)) {
-              Audio.resolveAndClear(audio, timer, resolve);
-            }
-            else {
-              Audio._onAudioError(audio, resolve);
-            }
-          }
-        };
-
         trialAudio.onerror = function() {
           window.clearTimeout(timer);
           Audio._onAudioError(audio, resolve);

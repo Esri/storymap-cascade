@@ -8,6 +8,7 @@ import UIUtils from 'storymaps/tpl/utils/UI';
 
 import i18n from 'lib-build/i18n!resources/tpl/viewer/nls/app';
 
+import has from 'dojo/sniff';
 import Deferred from 'dojo/Deferred';
 
 const PREVIEW_THUMB = 'resources/tpl/builder/icons/media-placeholder/video.png';
@@ -134,13 +135,6 @@ export default class Audio extends Media {
       def.resolve();
     }.bind(this);
 
-    aud.ondurationchange = function() {
-      if (aud.duration && !isFinite(aud.duration)) {
-        this.onAudioError();
-        def.resolve();
-      }
-    }.bind(this);
-
     // sometimes neither onloadedmetadata nor onerror fire.
     // idk why. but resolve after 5 seconds so the media will show up.
     window.setTimeout(() => {
@@ -178,12 +172,33 @@ export default class Audio extends Media {
     if (this._audio && this._audio.url) {
       this.preload().then(() => {
         this._fadeInMedia();
+        this.fixSafari();
       });
     }
 
     resultDeferred.resolve();
 
     return resultDeferred;
+  }
+
+  fixSafari() {
+    if (!this._node) {
+      return;
+    }
+    var aud = this._node.find('audio');
+    if (!aud.length) {
+      return;
+    }
+    // fine for regular safari, but mobile safari needs
+    // a reload every time it ends. :\
+    if (aud.prop('duration') === Infinity) {
+      aud.load();
+    }
+    if (has('ios')) {
+      aud.on('ended', function() {
+        aud.load();
+      });
+    }
   }
 
   getMimeType(url) {

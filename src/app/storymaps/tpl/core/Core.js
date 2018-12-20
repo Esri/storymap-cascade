@@ -422,7 +422,6 @@ define([
 
       return;
     }
-
     // Direct creation and not signed-in
     if (app.isInBuilder && _builder.isDirectCreation && isProd() && CommonHelper.isArcGISHosted() && ! (CommonHelper.getPortalUser() || app.portal.getPortalUser())) {
       redirectToSignIn();
@@ -432,8 +431,31 @@ define([
     // Direct creation and signed in
     if (app.isInBuilder && _builder.isDirectCreation) {
       portalLogin().then(function() {
-        initializeUI();
-        appInitComplete();
+        var oAuthInfo = new ArcGISOAuthInfo({
+          appId: 'storymaps',
+          portalUrl: 'https:' + app.indexCfg.sharingurl.split('/sharing')[0],
+          popup: true
+        });
+        IdentityManager.registerOAuthInfos([oAuthInfo]);
+        IdentityManager.checkAppAccess('https:' + app.indexCfg.sharingurl, 'storymaps').then(function(identityResponse) {
+          if (identityResponse && identityResponse.code && identityResponse.code === 'IdentityManagerBase.1') {
+            initError('notAuthorizedBuilder');
+            return;
+          }
+          else {
+            // If in builder, check that user is user can create/edit item
+            if (app.isInBuilder && ! CommonHelper.checkUserItemPrivileges()) {
+              initError('notAuthorizedBuilder');
+              return;
+            }
+            initializeUI();
+            appInitComplete();
+            return;
+          }
+        }, function() {
+          initError('notAuthorizedBuilder');
+          return;
+        });
       });
       return;
     }
@@ -479,112 +501,29 @@ define([
           initError('appLoadingFail');
           return;
         }
-
-        var itemRq = response.item,
-            dataRq = response.itemData;
-
-        app.data.appItem = {
-          item: itemRq,
-          data: dataRq
-        };
-
-        app.userCanEdit = CommonHelper.userIsAppOwner();
-
-        // Prevent app from accessing the cookie in viewer when user is not the owner
-        //
-        // if (! app.isInBuilder && ! app.userCanEdit) {
-        //   if (! document.__defineGetter__) {
-        //     Object.defineProperty(document, 'cookie', {
-        //       get: function() {
-        //         return '';
-        //       },
-        //       set: function() {
-        //         return true;
-        //       }
-        //     });
-        //   }
-        //   else {
-        //     document.__defineGetter__('cookie', function() {
-        //       return '';
-        //     });
-        //     document.__defineSetter__('cookie', function() {
-        //     });
-        //   }
-        // }
-
-        if (app.indexCfg.authorizedOwners && app.indexCfg.authorizedOwners.length > 0 && app.indexCfg.authorizedOwners[0]) {
-          var owner = itemRq.owner,
-              ownerFound = false;
-
-          if (owner) {
-            ownerFound = $.inArray(owner, app.indexCfg.authorizedOwners) != -1;
-          }
-
-          if (! ownerFound && app.indexCfg.authorizedOwners[0] == '*') {
-            ownerFound = true;
-          }
-
-          if (! ownerFound) {
-            $.each(app.indexCfg.authorizedOwners, function(i, owner) {
-              var test = owner.match(/^\[(.*)\]$/);
-
-              if (test) {
-                if (itemRq.orgId == test[1]) {
-                  ownerFound = true;
-                }
-              }
-            });
-          }
-
-          if (! ownerFound) {
-            initError('invalidConfigOwner');
+        var oAuthInfo = new ArcGISOAuthInfo({
+          appId: 'storymaps',
+          portalUrl: 'https:' + app.indexCfg.sharingurl.split('/sharing')[0],
+          popup: true
+        });
+        IdentityManager.registerOAuthInfos([oAuthInfo]);
+        if(response.item.access !== 'public') {
+          IdentityManager.checkAppAccess('https:' + app.indexCfg.sharingurl, 'storymaps').then(function(identityResponse) {
+            if (identityResponse && identityResponse.code && identityResponse.code === 'IdentityManagerBase.1') {
+              initError('notAuthorizedLicense');
+              return;
+            }
+            else {
+              loadWebMappingAppStep3(response);
+              return;
+            }
+          }, function() {
+            initError('notAuthorizedLicense');
             return;
-          }
-        }
-
-        // App proxies
-        if (itemRq && itemRq.appProxies) {
-          var layerMixins = array.map(itemRq.appProxies, function(p) {
-            return {
-              url: p.sourceUrl,
-              mixin: {
-                url: p.proxyUrl
-              }
-            };
           });
-
-          app.data.appProxies = layerMixins;
         }
-
-        // If in builder, check that user is app owner or org admin
-        if (app.isInBuilder && isProd() && !app.userCanEdit) {
-          initError('notAuthorized');
-          return;
-        }
-
-        var isStoryBlank = _mainView.isStoryBlank();
-
-        if (! isStoryBlank) {
-          appInitComplete();
-        }
-        else if (app.isInBuilder) {
-          appInitComplete();
-        }
-        // No data in view mode
-        else if(CommonHelper.getAppID(isProd())) {
-          if(app.userCanEdit) {
-            //app.ui.loadingIndicator.setMessage(i18n.viewer.loading.loadBuilder);
-            //setTimeout(function(){
-            CommonHelper.switchToBuilder();
-            //}, 1200);
-          }
-          else {
-            initError('notConfiguredDesktop');
-          }
-        }
-        // No data in preview mode (should not happen)
         else {
-          initError('noLayer');
+          loadWebMappingAppStep3(response);
         }
       },
       function(error) {
@@ -601,24 +540,150 @@ define([
     );
   }
 
+  function loadWebMappingAppStep3(response) {
+    var itemRq = response.item,
+        dataRq = response.itemData;
+
+    app.data.appItem = {
+      item: itemRq,
+      data: dataRq
+    };
+
+    app.userCanEdit = CommonHelper.userIsAppOwner();
+
+    // Prevent app from accessing the cookie in viewer when user is not the owner
+    //
+    // if (! app.isInBuilder && ! app.userCanEdit) {
+    //   if (! document.__defineGetter__) {
+    //     Object.defineProperty(document, 'cookie', {
+    //       get: function() {
+    //         return '';
+    //       },
+    //       set: function() {
+    //         return true;
+    //       }
+    //     });
+    //   }
+    //   else {
+    //     document.__defineGetter__('cookie', function() {
+    //       return '';
+    //     });
+    //     document.__defineSetter__('cookie', function() {
+    //     });
+    //   }
+    // }
+
+    if (app.indexCfg.authorizedOwners && app.indexCfg.authorizedOwners.length > 0 && app.indexCfg.authorizedOwners[0]) {
+      var owner = itemRq.owner,
+          ownerFound = false;
+
+      if (owner) {
+        ownerFound = $.inArray(owner, app.indexCfg.authorizedOwners) != -1;
+      }
+
+      if (! ownerFound && app.indexCfg.authorizedOwners[0] == '*') {
+        ownerFound = true;
+      }
+
+      if (! ownerFound) {
+        $.each(app.indexCfg.authorizedOwners, function(i, owner) {
+          var test = owner.match(/^\[(.*)\]$/);
+
+          if (test) {
+            if (itemRq.orgId == test[1]) {
+              ownerFound = true;
+            }
+          }
+        });
+      }
+
+      if (! ownerFound) {
+        initError('invalidConfigOwner');
+        return;
+      }
+    }
+
+    // App proxies
+    if (itemRq && itemRq.appProxies) {
+      var layerMixins = array.map(itemRq.appProxies, function(p) {
+        return {
+          url: p.sourceUrl,
+          mixin: {
+            url: p.proxyUrl
+          }
+        };
+      });
+
+      app.data.appProxies = layerMixins;
+    }
+
+    // If in builder, check that user is app owner or org admin
+    if (app.isInBuilder && isProd() && !app.userCanEdit) {
+      initError('notAuthorized');
+      return;
+    }
+
+    var isStoryBlank = _mainView.isStoryBlank();
+
+    if (! isStoryBlank) {
+      appInitComplete();
+    }
+    else if (app.isInBuilder) {
+      appInitComplete();
+    }
+    // No data in view mode
+    else if(CommonHelper.getAppID(isProd())) {
+      if(app.userCanEdit) {
+        //app.ui.loadingIndicator.setMessage(i18n.viewer.loading.loadBuilder);
+        //setTimeout(function(){
+        CommonHelper.switchToBuilder();
+        //}, 1200);
+      }
+      else {
+        initError('notConfiguredDesktop');
+      }
+    }
+    // No data in preview mode (should not happen)
+    else {
+      initError('noLayer');
+    }
+  }
+
   function portalLogin() {
     var resultDeferred = new Deferred();
 
     app.portal.signIn().then(
       function() {
 
-        // If in builder, check that user is user can create/edit item
-        if (app.isInBuilder && ! CommonHelper.checkUserItemPrivileges()) {
+        var oAuthInfo = new ArcGISOAuthInfo({
+          appId: 'storymaps',
+          portalUrl: 'https:' + app.indexCfg.sharingurl.split('/sharing')[0],
+          popup: true
+        });
+        IdentityManager.registerOAuthInfos([oAuthInfo]);
+        IdentityManager.checkAppAccess('https:' + app.indexCfg.sharingurl, 'storymaps').then(function(identityResponse) {
+          if (identityResponse && identityResponse.code && identityResponse.code === 'IdentityManagerBase.1') {
+            initError('notAuthorizedBuilder');
+            return;
+          }
+          else {
+            // If in builder, check that user is user can create/edit item
+            if (app.isInBuilder && ! CommonHelper.checkUserItemPrivileges()) {
+              initError('notAuthorizedBuilder');
+              return;
+            }
+
+            app.userCanEdit = CommonHelper.userIsAppOwner();
+
+            definePortalConfig();
+            app.portal.signedIn = true;
+            topic.publish('portal-signin');
+            resultDeferred.resolve();
+          }
+        }, function() {
           initError('notAuthorizedBuilder');
           return;
-        }
-
-        app.userCanEdit = CommonHelper.userIsAppOwner();
-
-        definePortalConfig();
-        app.portal.signedIn = true;
-        topic.publish('portal-signin');
-        resultDeferred.resolve();
+        });
       },
       function() {
         resultDeferred.reject();
@@ -695,6 +760,14 @@ define([
 
   function initError(error, message, noDisplay) {
     var errorMsg = i18n.viewer.errors[error];
+
+    if (error == 'notAuthorizedLicense') {
+      errorMsg = i18n.print.licenseChange2018.noAccess;
+      errorMsg = errorMsg.replace(/%USER_NAME%/g, CommonHelper.getPortalUser() ? CommonHelper.getPortalUser() : '');
+    }
+    else {
+      errorMsg = errorMsg.replace(/%TPL_NAME%/g, app.cfg.TPL_NAME);
+    }
 
     errorMsg = errorMsg.replace(/{TPL_NAME}/g, app.cfg.TPL_NAME);
 

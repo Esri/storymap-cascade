@@ -127,6 +127,9 @@ define({
       "websiteLabel": "Web-mjesto:",
       "videoLabel": "Videozapis:",
       "audioLabel": "Audiozapis:"
+    },
+    "licenseChange2018": {
+      "noAccess": "Vaš račun (%USER_NAME%) nije licenciran za upotrebu Story Mapa koji nije javan. Obratite se administratoru svoje organizacije da vam dodijeli vrstu korisnika koja sadrži licencu za Story Map ili za dodatke za osnovne appove."
     }
   }
 });
