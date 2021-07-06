@@ -131,7 +131,8 @@ export default class Controller {
       link: headerSettings.link,
       social: headerSettings.social,
       bookmarks: this.getBookmarks(),
-      title: this.getStoryTitle()
+      title: this.getStoryTitle(),
+      seriesEntries: this.getSeriesEntries()
     });
   }
 
@@ -281,7 +282,6 @@ export default class Controller {
     this._$currentSection = null;
     this._currentSectionIndex = null;
     this._container = $('.sections');
-
     var errorInPreviousSection = false,
         sectionsLength = sections.length;
 
@@ -405,6 +405,23 @@ export default class Controller {
     }.bind(this));
 
     return Promise.all(asyncResults);
+  }
+
+  static getSeriesEntries() {
+    var seriesEntries = [];
+    let seriesItem = app.data.seriesItem;
+    let seriesEntriesObjects = seriesItem ? seriesItem.data.values.story.entries : null;
+    if(seriesEntriesObjects !== null) {
+      $.each(seriesEntriesObjects, function(i, seriesEntryObject) {
+        if (seriesEntryObject.status == 'PUBLISHED' && seriesEntryObject.media.type == 'webpage') {
+          seriesEntries.push({
+            url: seriesEntryObject.media.webpage.url,
+            title: seriesEntryObject.title
+          });
+        }
+      });      
+    }
+    return seriesEntries;
   }
 
   static getBookmarks() {
@@ -591,7 +608,7 @@ export default class Controller {
         return;
       }
 
-      const HEADER_HEIGHT = 50;
+      const HEADER_HEIGHT = UIUtils.getHeaderHeight();
 
       var sectionType = this._sections[params.index].type,
           sectionTop = app.display.sections[params.index].top,

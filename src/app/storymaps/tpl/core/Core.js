@@ -128,7 +128,8 @@ define([
         proxyurl: app.indexCfg.proxyurl,
         sharingurl: app.indexCfg.sharingurl,
         oAuthAppId: app.indexCfg.oAuthAppId,
-        story: app.indexCfg.story
+        story: app.indexCfg.story,
+        seriesId: app.indexCfg.seriesId
       };
     }
 
@@ -623,6 +624,24 @@ define([
       return;
     }
 
+    arcgisUtils.getItem(app.indexCfg.seriesId).then(
+      function(response) {
+        var itemRq = response.item,
+            dataRq = response.itemData;
+
+        app.data.seriesItem = {
+          item: itemRq,
+          data: dataRq
+        };
+        loadWebMappingAppStep4();
+      }, function() {
+      console.error('Error getting series data');
+      loadWebMappingAppStep4();
+    });
+
+  }
+
+  function loadWebMappingAppStep4() {
     var isStoryBlank = _mainView.isStoryBlank();
 
     if (! isStoryBlank) {
@@ -646,7 +665,7 @@ define([
     // No data in preview mode (should not happen)
     else {
       initError('noLayer');
-    }
+    }    
   }
 
   function portalLogin() {

@@ -10,7 +10,8 @@ var Anchor = MediumEditor.extensions.anchor.extend({
   name: 'anchor',
   aria: '',
   placeholderText: i18n.builder.textEditor.link.invite,
-  linkValidation: true,
+  linkValidation: false,
+  targetCheckbox: true,
   init: function() {
     MediumEditor.extensions.anchor.prototype.init.call(this);
   },

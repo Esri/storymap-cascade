@@ -1,3 +1,11 @@
+# HiQ Updates
+
+# Dev mode
+
+0. grunt server
+1. go to http://localhost:8080/src/index.html?appid=e82eb472a3a8409483a9328d3eb04441
+
+
 # Story Map Cascade
 
 The Story Map Cascade℠ app lets you combine narrative text with maps, images, and multimedia content in an engaging, full-screen scrolling experience. In a Cascade story, sections containing text and in-line media can be interspersed with "immersive" sections that fill the screen with your maps, 3D scenes, images, and videos. Cascade is ideal for making compelling, in-depth stories that are very easy for people to navigate.

@@ -477,7 +477,7 @@ class SettingsPopup {
       this.resolve = resolve;
       this.reject = reject;
 
-      const BOOKMARK_MAX_CHARACTERS = 20;
+      const BOOKMARK_MAX_CHARACTERS = 50;
       const TAGLINE_MAX_CHARACTERS = 50;
 
       this.data = $.extend(true, {}, options.settings);

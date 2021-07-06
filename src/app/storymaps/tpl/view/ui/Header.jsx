@@ -19,12 +19,14 @@ const HEADER_HEIGHT = 50;
 export default class Header {
 
   constructor() {
-    this._node = $('.story-header');
-    this._bookmarksNode = this._node.find('.bookmarks');
+    this._storyheader_node = $('.story-header');
+    this._seriesmenu_node = $('.series-menu-container');
+    this._titlelogoheader_node = $('.title-logo-header');
+    this._bookmarksNode = this._storyheader_node.find('.bookmarks');
 
     this._shareDialog = new ShareDialog($('#shareDialog'));
     this._progressBar = new ProgressBar();
-    this._bookmarks = new Bookmarks(this._node.find('.bookmarks'));
+    this._bookmarks = new Bookmarks(this._storyheader_node.find('.bookmarks'));
 
     this._isCompact = null;
     this._currentSection = null;
@@ -33,7 +35,7 @@ export default class Header {
   }
 
   render(params = {}) {
-    var {logo, link, social, title} = params;
+    var {logo, link, social, title, seriesEntries} = params;
     var socialCfg = {
       logoEnabled: logo.enabled,
       logoURL: Media.addToken(logo.url),
@@ -42,23 +44,25 @@ export default class Header {
       linkText: link.title
     };
 
-    this.setLogo(this._node, socialCfg).then(() => {
+    this.setSeriesLinks(this._seriesmenu_node, seriesEntries);
+
+    this.setLogo(this._titlelogoheader_node, socialCfg).then(() => {
       this._bookmarks.render(params.bookmarks);
     }, () => {
       this._bookmarks.render(params.bookmarks);
     });
-    this.setLink(this._node, socialCfg);
+    this.setLink(this._storyheader_node, socialCfg);
 
-    this._node.find('.title').html(title);
+    this._titlelogoheader_node.find('.title').html(title);
 
-    this._node.find('.title').off('click').on('click', function() {
+    this._titlelogoheader_node.find('.title').off('click').on('click', function() {
       app.Controller.navigateToSection({
         index: 0,
         animate: false
       });
     });
 
-    this._node.find('.share-btn')
+    this._storyheader_node.find('.share-btn')
       .off('click')
       .click(this._onShareBtnClick.bind(this))
       .toggleClass('active', !! social.enabled)
@@ -77,7 +81,7 @@ export default class Header {
   }
 
   initShareTooltip() {
-    let shareContainer = this._node.find('.share-btn-container[data-toggle="tooltip"]');
+    let shareContainer = this._storyheader_node.find('.share-btn-container[data-toggle="tooltip"]');
 
     shareContainer.tooltip({
       title: i18n.builder.header.sharingNotAvailable,
@@ -100,8 +104,8 @@ export default class Header {
       }
     }
 
-    let socialShareButton = this._node.find('.share-btn');
-    let shareContainer = this._node.find('.share-btn-container[data-toggle="tooltip"]');
+    let socialShareButton = this._storyheader_node.find('.share-btn');
+    let shareContainer = this._storyheader_node.find('.share-btn-container[data-toggle="tooltip"]');
 
     // if the story's private or the app has not yet been saved, disable the share button.
     if (isPrivate || (app.builder && app.builder.isDirectCreationFirstSave)) {
@@ -115,8 +119,8 @@ export default class Header {
   }
 
   disableShareButtonAutoplay() {
-    let socialShareButton = this._node.find('.share-btn');
-    let shareContainer = this._node.find('.share-btn-container[data-toggle="tooltip"]');
+    let socialShareButton = this._storyheader_node.find('.share-btn');
+    let shareContainer = this._storyheader_node.find('.share-btn-container[data-toggle="tooltip"]');
 
     socialShareButton.addClass('share-disabled');
     shareContainer
@@ -126,6 +130,19 @@ export default class Header {
         trigger: 'hover',
         placement: 'left'
       });
+  }
+
+  setSeriesLinks(container, seriesEntries) {
+    var currentAppId = app.data.appItem.item.id;
+    //for (const entry of seriesEntries) {
+    for(var i = seriesEntries.length; i--;) {
+      const entry = seriesEntries[i];
+      var linkClass = '';
+      if(entry.url.indexOf(currentAppId) >= 0) {
+        linkClass = 'class="active"';
+      }
+      container.find('.series-list').prepend('<li><a ' +linkClass +' href="' + entry.url + '">' + entry.title + '</a></li>');
+    }
   }
 
   setLogo(container, headerCfg) {
@@ -194,10 +211,10 @@ export default class Header {
     if (this._isCompact !== params.headerCompact) {
       this._isCompact = params.headerCompact;
 
-      this._node.toggleClass('compact', this._isCompact);
+      this._storyheader_node.toggleClass('compact', this._isCompact);
       this._bookmarksNode.toggleClass('bookmarks-hidden', this._isCompact);
       if (! this._isCompact) {
-        this._node.css('background-color', 'rgba(0,0,0,1)');
+        this._storyheader_node.css('background-color', 'rgba(0,0,0,1)');
       }
     }
     //
@@ -225,18 +242,18 @@ export default class Header {
   }
 
   showEditButton() {
-    this._node.find('.header-edit-button')
+    this._storyheader_node.find('.header-edit-button')
       .html('<i class="header-edit-icon fa fa-pencil"></i>' + i18n.builder.header.edit + '<span aria-hidden="true" class="header-edit-close">×</span>')
       .show()
       .off('click')
       .click(CommonHelper.switchToBuilder);
 
     if (has('ie') || has('trident') == 7) {
-      this._node.find('.header-edit-close').hide();
+      this._storyheader_node.find('.header-edit-close').hide();
     }
     else {
-      this._node.find('.header-edit-close').click(function() {
-        this._node.find('.header-edit-button').hide();
+      this._storyheader_node.find('.header-edit-close').click(function() {
+        this._storyheader_node.find('.header-edit-button').hide();
         $(window).resize();
         return false;
       }.bind(this));

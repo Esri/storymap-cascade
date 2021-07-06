@@ -4,10 +4,10 @@ import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 
 import urlUtils from 'esri/urlUtils';
+import UIUtils from 'storymaps/tpl/utils/UI';
 
 import Controller from 'storymaps-react/tpl/core/Controller';
 import PrintViewReact from './PrintViewReact';
-
 class PrintViewWrapper extends Component {
 
   constructor(props) {
@@ -47,6 +47,9 @@ class PrintViewWrapper extends Component {
     };
 
     this.render(props);
+    UIUtils.turnBlockTextsIntoHtml();
+    UIUtils.turnTitleTextsIntoHtml();
+    UIUtils.createAccordions();    
     this.hideLoadingOverlay();
   }
 

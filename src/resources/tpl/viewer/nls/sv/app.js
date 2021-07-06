@@ -56,7 +56,9 @@ define({
       "loading1": "Läser in...",
       "loading2": "Läser in kartan ...",
       "videoPlayPause": "spela/pausa",
-      "videoMuteUnmute": "ljud på/av"
+      "videoMuteUnmute": "ljud på/av",
+      "legendLabel": "Teckenförklaring",
+      "overviewMapLabel": "Översiktskarta"
     },
     "headerFromCommon": {
       "defaultTagline": "En ${STORY_MAP}",

@@ -1,0 +1,691 @@
+
+
+/*CUSTOM LESS RULES FOR ESKILSTUNA*/
+
+
+@font-face {
+  font-family: 'eskilstuna-icons';
+  src:  url('../../../../../resources/fonts/eskilstuna-icons/eskilstuna-icons.eot?2e6shw');
+  src:  url('../../../../../resources/fonts/eskilstuna-icons/eskilstuna-icons.eot?2e6shw#iefix') format('embedded-opentype'),
+    url('../../../../../resources/fonts/eskilstuna-icons/eskilstuna-icons.ttf?2e6shw') format('truetype'),
+    url('../../../../../resources/fonts/eskilstuna-icons/eskilstuna-icons.woff?2e6shw') format('woff'),
+    url('../../../../../resources/fonts/eskilstuna-icons/eskilstuna-icons.svg?2e6shw#eskilstuna-icons') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@color-blue: #00ADB8;
+@fontawesome-font-family: "FontAwesome";
+@fa-icon-angle-down: "\f107";
+@fa-bars: "\f0c9";
+@fa-close-x: "\f00d";
+@eskilstuna-icon-star: "\e90c";
+@tablet-pixel-lower-limit: 600px;
+/*TOP NAVIGATION*/
+@titleLogoHeaderHeight: 90px; //If you change this you will also have to update getHeaderHeight() in UI.js
+
+.story-header{
+  box-shadow:none !important;
+}
+
+.bookmarks{
+  justify-content: flex-start !important;
+  height: 100%;
+  padding-top: 12px;
+
+  .bookmark{
+    padding-left: 10px;
+    padding-right: 10px;
+    border-bottom-width:7px !important;
+    color:#fff;
+
+    &.active, &:hover, &:active, &:focus{
+      color:#fff;
+      border-color:@color-blue !important;
+    }
+  }
+}
+
+.story-header .linkContainer {
+  display: none;
+}
+
+//MOVE TITLE IN FONT OF TEXT
+.section-immersive .background-title{
+  z-index: 3 !important;
+}
+
+
+//MAKE PANELS WHITE WITH NO OPACITY
+.imm-panel {
+  &.theme-black-over-white.style-background {
+    .blocksWrapper .blocks {
+      color: #000;
+      background-color: #fff;
+    }
+  }
+}
+
+//UPDATE SIZE OF BLOCK S
+.imm-panel.size-large .blocksWrapper {
+  width: auto;
+  width:100% !important;
+  max-width: none !important;
+  margin-left: 0px;
+
+  .blocks{
+    padding-left:0px;
+    padding-right:0px;
+  }
+}
+
+//LEFT ALIGN BOOKMARKS
+.bookmarks{
+  justify-content: flex-start;
+}
+
+
+//PROGRESS BAR
+html.dj_ios{
+  .progressjs-progress{
+    top: 90px !important;
+  }
+}
+.progressjs-inner{
+  background-color: @color-blue !important;
+  height:5px !important;
+}
+
+//HIDE LOGO AND TITLE
+/*.logo-title-container {
+  display: none;
+}*/
+
+/*ACCORDIONS*/
+.hiq-accordion-container{
+  border:1px solid @color-blue;
+
+  .hiq-accordion-container{
+    margin-top:20px;
+  }
+
+  &.open {
+    >.hiq-accordion-panel{
+      display: block;
+    }
+    >.hiq-accordion .hiq-accordion-triBox{
+      transform: rotate(180deg) scaleX(-1);
+    }
+  }
+}
+
+/*Always open in print view*/
+body.print-view {
+  .hiq-accordion-panel {
+    display: block !important;
+  }
+  .hiq-accordion-triBox {
+    transform: rotate(180deg) scaleX(-1);
+  }
+}
+
+
+@hiq-accordion-triBox-width:15%;
+button.hiq-accordion {
+  margin:0;
+  margin-top:0px;
+  position: relative;
+  background-color: #fff;
+  font-weight: bold;
+  color: #000;
+  cursor: pointer;
+  padding: 18px;
+  padding-right:@hiq-accordion-triBox-width;
+  width: 100%;
+  text-align: left;
+  border: none;
+  outline: none;
+  transition: 0.4s;
+
+  >p {
+      margin: 0;
+      width: 85%;
+  }
+}
+
+.hiq-accordion-panel{
+  display: none;
+  padding: 20px 20px;
+  background-color: #fff;
+  overflow: hidden;
+  margin-bottom: 15px;
+}
+
+.hiq-accordion-triBox {
+  position: absolute;
+  height: 100%;
+  background: linear-gradient(to bottom right, transparent 50%, @color-blue 50.6%);
+  width: @hiq-accordion-triBox-width;
+  min-width: 60px;
+  right: 0;
+  bottom: 0;
+  &:after{
+    position: absolute;
+    right: 10px;
+    bottom: 4px;
+    font-size: 34px;
+    font-weight: 100;
+    color: #fff;
+    content: @fa-icon-angle-down;
+    font-family: @fontawesome-font-family;
+  }
+}
+
+
+//Hide embed bar when embedding a cascade storymap in a series storymap
+.embed-bar{
+  display:none;
+}
+body.embed-mode-bar .section-layout-cover .wrapper, body.embed-mode-bar .section-immersive .background{
+  height: 100%;
+}
+
+
+/*INTERACT BUTTON ON MOBILE/TABLET DEVICES*/
+.interaction-container{
+  right:20px;
+}
+
+/*OVERVEIW MAP AND LEGEND*/
+.overview-legend-container{
+  position: absolute !important;
+  right: 20px;
+  z-index: 30;
+  bottom: 60px;
+  background: transparent;
+  min-width: 250px;
+  font-family: open_sans;
+}
+
+body.mobile-view{
+  .overview-legend-container{
+    bottom: 80px;
+    min-width: none;
+  }
+}
+
+body.tablet-view{
+  .overview-legend-container{
+    bottom: 100px;
+  }
+}
+
+.overview-legend-container .hiq-accordion-container{
+  margin-bottom: 20px;
+
+  &:last-child{
+    margin-bottom: 0px;
+  }
+
+  .hiq-accordion-panel{
+    margin-bottom: 0px;
+  }
+}
+
+body.mobile-view, body.tablet-view {
+  .background-type-webmap{
+    .overview-legend-container, .map-search-container {
+      display: none;
+    }
+
+    &.interaction-enabled {
+      .overview-legend-container, .map-search-container {
+        display: block;
+      }
+    }
+  }
+}
+
+/*MAP LEGEND*/
+.legend-content{
+  padding:10px;
+  max-height: 50vh;
+  overflow-y: auto;
+}
+
+/*OVERVIEW MAP*/
+.overview-content-wrapper {
+  width: 250px;
+  height: 150px;
+  padding:0px;
+}
+
+.overview-content-wrapper .ovwContainer {
+  width: 250px !important;
+  height: 150px !important;
+}
+
+.overview-content-wrapper .ovwHighlight {
+  box-shadow: 0 0 5px #2E2E2E;
+}
+
+/*MAP SEARCH*/
+.map-search-container{
+  position:absolute;
+  right:20px;
+  top:180px;
+}
+
+.arcgisSearch .searchBtn{
+  width: 30px;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+
+/*ZOOM SLIDER*/
+.esriSimpleSliderTR{
+  top:70px;
+}
+.block-media{
+  .esriSimpleSliderTR{
+    top:20px;
+  }
+}
+
+
+/*CREDITS / FOOTER*/
+.section-layout-credits-eskilstuna{
+
+  .background{
+    overflow:hidden;
+    background-color:#000 !important;
+    //Add star in background corner
+    &::before {
+      font-family: 'eskilstuna-icons';
+      position: absolute;
+      content: @eskilstuna-icon-star;
+      color: @color-blue;
+      bottom: 0;
+      right: 0;
+      font-size: 340px;
+      z-index: 10;
+      transform: translate(50%, 50%);
+    }
+  }
+
+  .foreground{
+    background-color:#000 !important;
+    color:#fff;
+          padding:40px 40px 100px;
+      max-width: 1140px;
+      margin:auto;
+
+    a{
+      color:#fff;
+      text-decoration: underline;
+    }
+
+    .credits-row{
+
+    }
+    .credits-col{
+      width: 100%;
+      text-align: center;
+      margin-bottom: 40px;
+      @media (min-width: @screen-md) {
+        width: 100%/4;
+        text-align: left;
+        margin-bottom: 0px;
+        float:left;
+        display: inline;
+        padding-left:20px;
+        &:first-child{
+          padding-left:0px;
+        }
+      }
+
+      h2{
+        font-weight: 700;
+        font-size: 22px;
+        margin-bottom: 10px;
+      }
+
+      ul{
+        list-style: none;
+        margin: 0px;
+        padding: 0px;
+      }
+    }
+    .credits-clear-both{
+      clear: both;
+    }
+  }
+
+}
+
+
+.header{
+  position:fixed;
+  top:0px;
+  left:0px;
+  width:100%;
+  color:#fff;
+  z-index:999;
+}
+.title-logo-header{
+  display: none;
+  height: @titleLogoHeaderHeight;
+  background-color:#000;
+  padding:20px;
+
+  .logo-title-container {
+    max-width: none;
+
+    h1.title {
+      font-size:16px;
+      line-height: 18px;
+    }
+  }
+
+}
+
+
+h1.title{
+  margin-left: 20px;
+  font-weight: bold;
+  font-family: open_sans;
+  font-size: 16px;
+  color: @color-blue;
+  @media (min-width: @screen-md) {
+    font-size: 20px;
+  }
+}
+
+.logoImg{
+  max-width: 250px;
+  max-height: 40px;
+}
+
+
+.hamburger-icon{
+  font-size:30px;
+  &:after{
+    font-family: @fontawesome-font-family;
+    content:@fa-bars;
+  }
+}
+
+.series-menu-container{
+  margin-right: 40px;
+
+  h1{
+    line-height: 20px;
+  }
+
+  &.open{
+    .series-menu{
+      height:calc(~'100vh - @{titleLogoHeaderHeight}');
+      overflow: auto;
+    }
+
+    .hamburger-icon{
+      &:after{
+        content:@fa-close-x;
+      }
+    }
+
+  }
+}
+
+
+
+body.no-scroll{
+  overflow: hidden;
+}
+.series-menu{
+  width:100%;
+  background:#000;
+  color:#fff;
+  position:fixed;
+  top:@titleLogoHeaderHeight;
+  left:0px;
+  padding:0;
+  z-index:999;
+  height:0;
+  -webkit-transition: height .2s ease-in-out;
+  transition: height .2s ease-in-out;
+  overflow: hidden;
+}
+
+.series-list{
+  list-style:none;
+  padding:0px;
+  text-align:center;
+
+  li{
+    min-height:50px;
+  }
+
+  a{
+      display: block;
+      padding: 12px 20px;
+      color:#fff;
+      text-decoration: none;
+      font-weight: bold;
+
+      &.active, &:hover, &:active, &:focus {
+        background-color:@color-blue;
+        color:#fff;
+        text-decoration: none;
+      }
+    }
+}
+
+/*FIXES WHEN NOT EMBEDDED*/
+body:not(.isEmbed):not(.builder-mode):not(.print-view){
+  .title-logo-header{
+    display: block;
+  }
+
+  .story-header{
+    top:@titleLogoHeaderHeight !important;
+    position:initial;
+  }
+
+  .section-immersive .background-title{
+    top:60px + @titleLogoHeaderHeight;
+  }
+
+ .esriSimpleSliderTR{
+    top:70px + @titleLogoHeaderHeight;
+  }
+
+  .map-search-container{
+    top:180px + @titleLogoHeaderHeight;
+  }
+}
+
+body.mobile-view, body.tablet-view {
+  .background-type-webmap.interaction-enabled{
+    z-index: 3; //Put in front of foreground content
+  }
+}
+
+
+/*MEDIUM EDITOR*/
+.medium-editor-toolbar-anchor-sm {
+  &.medium-toolbar-arrow-under:after {
+    top:64px !important;
+  }
+
+  .medium-editor-toolbar-form .medium-editor-toolbar-input, .medium-editor-toolbar-form label {
+    width:auto !important;
+  }
+}
+
+
+/*TEXT WITH IMAGE*/
+.text-with-image {
+  position:relative;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction:column;
+
+  &.image-first {
+    .text-content {
+      order: 1;
+    }
+    .image-content {
+      order: 0;
+    }
+  }
+
+  @media (min-width: @tablet-pixel-lower-limit) {
+      flex-direction:row;
+
+    &.image-first {
+      .text-content, .image-content {
+        order: 0;
+      }
+    }
+  }
+
+  .text-content {
+    padding: 15px;
+    margin-left:auto;
+    margin-right: auto;
+    @media (min-width: @tablet-pixel-lower-limit) {
+      margin-left: 30px;
+      margin-right: 0px;
+      flex-shrink: 0;
+    }
+
+    width: 38%;
+    min-width: 250px;
+    max-width: 400px;
+
+    color: #000;
+    background-color: #fff;
+  }
+
+  .image-content {
+    width:100%;
+    max-width: 100%;
+    overflow:auto;
+    text-align: center;
+    padding-bottom:15px;
+    pointer-events: none;
+
+    @media (min-width: @tablet-pixel-lower-limit) {
+      padding-top:0px;
+      padding-bottom:0px;
+      margin-right: 30px;
+      min-width: none;
+      width: auto;
+      flex-grow: 1000;
+      padding-left: 30px;
+    }
+
+
+    &.sticky, &.sticky-bottom {
+      left:0;
+      width:100%;
+      padding-right: 30px;
+      padding-left: calc(~'38% + 60px');
+      @media (min-width: 1053px) {
+        padding-left: 460px !important;
+      }
+    }
+
+    &.sticky {
+      position:fixed;
+    }
+
+    &.sticky-bottom {
+      position:absolute;
+      bottom:0px;
+    }
+
+    img {
+      max-width: 100%;
+      max-height: 700px;
+      pointer-events: initial;
+    }
+
+  }
+}
+
+.b-Link-Link{
+  display: inline-block;
+  &:hover {
+    color: #fff !important;
+  }
+}
+
+.b-Link-Container{
+  height: 38px;
+  background-color: #4d7480;
+  text-align: center;
+  padding-left: 14px;
+  padding-right: 14px;
+  margin-right: 10px;
+  display: table;
+
+  &:hover {
+    box-shadow: 3px 2px #000;
+    .b-Link-Text {
+      font-weight: bold;
+    }
+  }
+}
+
+.b-Link-Text{
+  display: table-cell;
+  vertical-align: middle;
+  color: white;
+}
+
+
+//CUSTOM SCROLLBAR IN ACCORDION
+.hiq-accordion-container {
+  /* Track */
+  ::-webkit-scrollbar {
+    width: 14px;
+    height: 14px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #fff;
+    border-left: solid 1px @color-blue;
+    border-top: solid 1px @color-blue;
+  }
+
+
+  /* Thumb */
+  ::-webkit-scrollbar-thumb {
+    background: @color-blue;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: darken(@color-blue, 10%);
+  }
+
+  ::-webkit-scrollbar-thumb:active {
+    background: @color-blue;
+  }
+}
+
+//CUSTOM STYLE FOR FIRST PAGE TITLE TEXT AND BACKGROUND
+.section-layout-cover {
+  .foreground {
+      .text-background.background-dark {
+       background-color: rgba(0,0,0,0.4);
+       margin-top: 30%;
+      }
+      .foreground .text-background.background-light {
+        background-color: rgba(255,255,255,0.4);
+        margin-top: 30%;
+      }
+  }
+}

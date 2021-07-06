@@ -13,6 +13,8 @@ import Extent from 'esri/geometry/Extent';
 import SimpleMarkerSymbol from 'esri/symbols/SimpleMarkerSymbol';
 import webMercatorUtils from 'esri/geometry/webMercatorUtils';
 import Point from 'esri/geometry/Point';
+import Legend from 'esri/dijit/Legend';
+import Search from 'esri/dijit/Search';
 import Query from 'esri/tasks/query';
 import QueryTask from 'esri/tasks/QueryTask';
 
@@ -68,6 +70,7 @@ export default class WebMap extends Media {
         }
       };
     }
+
   }
 
   render(context) {
@@ -78,6 +81,12 @@ export default class WebMap extends Media {
     }
 
     this._placement = context.placement;
+
+    //Generate random id
+    var randomID = function() {
+      // https://gist.github.com/gordonbrander/2230317
+      return '_' + Math.random().toString(36).substr(2, 9);
+    };
 
     if (this._placement == 'block') {
       var options = JSON.stringify({
@@ -107,10 +116,11 @@ export default class WebMap extends Media {
         webmapId: this.id,
         altText: this._webmap.altText,
         labelExploreStart: i18n.viewer.media.exploreMap,
-        labelExploreStop: i18n.viewer.media.exploreStop
+        labelExploreStop: i18n.viewer.media.exploreStop,
+        labelLegend: i18n.viewer.media.legendLabel,
+        legendAccordionId: 'legend' +randomID()
       });
     }
-
     return output;
   }
 
@@ -482,7 +492,8 @@ export default class WebMap extends Media {
   loadMap(mapElem, resultDeferred, params) {
     var options = {
       mapOptions: {
-        smartNavigation: false
+        smartNavigation: false,
+        sliderPosition: 'top-right'
       },
       usePopupManager: true,
       editable: false,
@@ -493,6 +504,10 @@ export default class WebMap extends Media {
     if (this._webmap.extent) {
       options.mapOptions.extent = new Extent(this._webmap.extent);
     }
+
+    //Set max and min scale
+    options.mapOptions.maxScale = 24000;
+    options.mapOptions.minScale = 750000;
 
     this._node.addClass('media-is-loading');
 
@@ -509,6 +524,49 @@ export default class WebMap extends Media {
       $(mapElem).css('pointer-events', '');
       map.disableScrollWheelZoom();
       map.disableKeyboardNavigation();
+
+      //Add legend and search field to background map
+      if(this._placement == 'background') {
+        var $mapParentElem = $(mapElem).parent();
+
+        //Add legend
+        if (map._layerSize >= 1) {
+          //Select layers to show in legend
+          var layerInfos = [];
+          var layersToSkip = ['World Imagery', 'Low Resolution 15m Imagery', 'High Resolution 60cm Imagery', 'High Resolution 30cm Imagery', 'Citations'];
+          for(var i = 0; i < map.layerIds.length; i++) {
+            var aLayer = map.getLayer(map.layerIds[i]);
+            var addLayerToLegend = true;
+            if(aLayer.layerInfos) {
+              for(var j = 0; j < aLayer.layerInfos.length; j++) {
+                if(layersToSkip.indexOf(aLayer.layerInfos[j].name) >= 0) {
+                  addLayerToLegend = false;
+                  break;
+                }
+              }
+
+            }
+            if(addLayerToLegend) {
+              layerInfos.unshift({layer: aLayer, title: aLayer.title ? aLayer.title : aLayer.id});
+            }
+          }
+          var legendDijit = new Legend({
+            map: map,
+            layerInfos: layerInfos
+          }, $mapParentElem.find('.legend-content')[0]);        
+          legendDijit.startup();    
+        }
+        else{
+          $mapParentElem.find('.legend-container')[0].remove();
+        }
+
+        //Add search field
+        var search = new Search({
+          map: map,
+          enableButtonMode: true
+        }, $mapParentElem.find('.map-search-content')[0]);
+        search.startup();
+      }
 
       map.reposition();
       map.resize();

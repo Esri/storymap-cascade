@@ -1,7 +1,7 @@
 define([
-
+  'lib-build/hbars!storymaps/tpl/view/media/Accordion'
 ], function(
-
+  accordionViewTpl
 ) {
   function s4() {
     return Math.floor((1 + Math.random()) * 0x10000)
@@ -9,10 +9,20 @@ define([
     .substring(1);
   }
 
+  function decodeHtmlTags(text) {
+    var updatedText =  text.replaceAll('&amp;', '&');
+    return updatedText.replaceAll('&lt;', '<').replaceAll('&gt;', '>');
+  }
+
+  function parseElementContentToHTML(element) {
+    var elementHtml = decodeHtmlTags(element.innerHTML);
+    $(element).html($.parseHTML(elementHtml));
+  }
+
   return {
     isMobileBrowser: function() {
       return (/Android|webOS|iPhone|iPad|iPod|BlackBerry|Opera Mini|IEMobile/i).test(navigator.userAgent);
-    },
+    }, 
     hasWebGL: function(returnContext) {
       if (!!window.WebGLRenderingContext) {
         var canvas = document.createElement('canvas'),
@@ -76,6 +86,50 @@ define([
         + '-' + s4()
         + '-' + s4()
         + '-' + s4() + s4() + s4();
+    },
+    getHeaderHeight: function() {
+      var headerHeight = 50;
+      if(!window.app.isEmbeddedInEsriStoryMap) {
+        headerHeight += 90; //90px is the height of the series header that is shown when not embedded
+      }
+      return headerHeight;
+    },
+    //Parse the text into html
+    turnBlockTextsIntoHtml: function() {
+      $('p.block').each(function(index, element) {
+        parseElementContentToHTML(element);
+      });      
+    },
+    //Parse the text into html
+    turnTitleTextsIntoHtml: function() {
+      $('.title-text, .title, .subtitle, .title-immersive').each(function(index, element) {
+        parseElementContentToHTML(element);
+      });      
+    },  
+    /*Turn elements with accordion class into real accordions.*/
+    createAccordions: function() {
+      var couldBeMoreAccordions = true;
+      var accordionLevel = 0;
+      var accordionIndex = 0;
+      while(couldBeMoreAccordions && accordionLevel < 5) {
+        accordionLevel++;
+        couldBeMoreAccordions = false;
+        $('.accordion').each(function(index, element) {
+          couldBeMoreAccordions = true;
+          var $accordion = $(element);
+          var $accordionContent = $accordion.find('.accordion-content:first');
+          var accordionContentHtml = $accordionContent.html();
+          $accordionContent.remove();
+          var accordionTitleHtml = $accordion.html();
+          var accordionId = 'accordion-' +accordionIndex;
+          accordionIndex++;
+          $accordion.replaceWith(accordionViewTpl({
+            accordionId: accordionId,
+            accordionTitleHtml: accordionTitleHtml,
+            accordionContentHtml: accordionContentHtml
+          }));
+        });          
+      }      
     }
   };
 });

@@ -273,9 +273,10 @@ class UrlContainer extends React.Component {
       }
       // TODO: better way of excluding audio
       if (this.checkSingleMediaType('WEBPAGE') && !(addr.match(/\.(mp3|m4a|wav)$/i))) {
-        if (addr.indexOf('http:\/\/') !== 0 && addr.indexOf('https:\/\/') !== 0 && addr.indexOf('\/\/') !== 0) {
+        //Disabled next lines to allow relative URLs
+/*        if (addr.indexOf('http:\/\/') !== 0 && addr.indexOf('https:\/\/') !== 0 && addr.indexOf('\/\/') !== 0) {
           addr = '//' + addr;
-        }
+        }*/
         this.publishSelection({type: 'webpage', url: addr, height: iframeHeight});
         return;
       }

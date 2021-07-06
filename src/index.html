@@ -45,10 +45,12 @@
       var configOptions = {
         // Enter an application ID created through the Cascade builder
         appid: "",
+        seriesId: "66ea1e35082640b4b1f9720bad14a9d2",
+
         // Optionally, to secure Cascade's access, if the story item is private or to use the builder
         //    configure an ArcGIS OAuth application ID (example: 6gyOg377fLUhUk6f)
         // When specified, sign-in is mandatory even if your story is public
-        oAuthAppId: "",
+        oAuthAppId: "He4wEjV4u5UwRUY4",
         // Optionally, to use the appid URL parameter, configure authorizedOwners to reference
         //    members whose stories can be viewed by this storytelling app.
         // To authorize stories owned by...
@@ -57,7 +59,7 @@
         //    any member of one or more organizations: use ["[orgID]"] or ["[orgID1]", "[orgID2]", ...] (Note the use of brackets in this case, e.g., ["[nzS0F0zdNLvs7nc8]"])
         //        You can get your orgID by going to My Organization and clicking Find...The most viewed items in the organization.
         //        Your orgID will be shown in the search box.
-        authorizedOwners: [""]
+        authorizedOwners: ["*"]
       };
     </script>
 
@@ -87,21 +89,34 @@
     </style>
 
     <div class="embed-wrapper">
-      <div class="story-header compact" role="banner">
-        <div class="logo-title-container">
-          <span class="logo-wrapper">
-            <a class="logoLink" href="" target="_blank" alt="Link to organization">
-              <img class="logoImg" src="" alt="Logo">
-            </a>
-          </span>
-          <span class="title strong"></span>
-        </div>
-        <ul class="bookmarks" role="navigation"></ul>
-        <div class="share">
-          <button class="btn btn-sm btn-primary header-edit-button"></button>
-          <span class="linkContainer"></span>
-          <div class="share-btn-container" data-toggle="tooltip">
-            <i class="fa fa-share-alt share-btn" tabindex="0"></i>
+      <div class="header">
+        <div class="title-logo-header">
+          <div class="logo-title-container">
+            <div class="series-menu-container" id="hamburger-menu">
+              <span class="hamburger-icon" data-toggle="#hamburger-menu" data-toggle-body-no-scroll></span>
+              <div class="series-menu"><ul class="series-list">
+                <li></li>
+                <li><a href="https://karta.eskilstuna.se/eskilstunakartan/oversiktsplan2030/#maps/613">Visa karta</a></li>
+                <li><a href="https://eskilstuna.se">Kontakt</a></li>
+              </ul></div>
+            </div>
+            <span class="logo-wrapper">
+              <a class="logoLink" href="" target="_blank" alt="Link to organization">
+                <img class="logoImg" src="" alt="Logo">
+              </a>
+            </span>
+            <h1 class="title"></h1>
+          </div>         
+       </div>
+        <div class="story-header compact" role="banner">
+          
+          <ul class="bookmarks" role="navigation"></ul>
+          <div class="share">
+            <button class="btn btn-sm btn-primary header-edit-button"></button>
+            <span class="linkContainer"></span>
+            <div class="share-btn-container" data-toggle="tooltip">
+              <i class="fa fa-share-alt share-btn" tabindex="0"></i>
+            </div>
           </div>
         </div>
       </div>

@@ -2,6 +2,7 @@ import SectionCommon from 'storymaps-react/tpl/view/section/Common';
 import UIUtils from 'storymaps/tpl/utils/UI';
 
 import viewTpl from 'lib-build/hbars!./Credits';
+import viewTplEskilstuna from 'lib-build/hbars!./CreditsEskilstuna';
 import {} from 'lib-build/less!./Credits';
 import {} from 'lib-build/css!../ui/AuthorInfo';
 
@@ -66,12 +67,23 @@ export default class Credits {
       }
     }
 
-    return viewTpl({
-      background: SectionCommon.renderBackground({
-        media: this._backgroundMedia
-      }),
-      credits: creditsOutput
-    });
+    if(this._section.layout.toLowerCase() === 'eskilstuna') {
+      return viewTplEskilstuna({
+        background: SectionCommon.renderBackground({
+          media: this._backgroundMedia
+        }),
+        credits: creditsOutput,
+        seriesEntries: app.Controller.getSeriesEntries()
+      });
+    } 
+    else {
+      return viewTpl({
+        background: SectionCommon.renderBackground({
+          media: this._backgroundMedia
+        }),
+        bookmarks: app.Controller.getBookmarks()
+      });
+    }
   }
 
   postCreate(sectionContainer) {

@@ -87,9 +87,17 @@ export default function(params = {}) {
       aria: ''
     },
     {
+      name: 'orderedlist',
+      aria: ''
+    }, 
+    {
+      name: 'unorderedlist',
+      aria: ''
+    },           
+    {
       name: 'colorPicker',
       aria: ''
-    }
+    }  
   ];
 
   // Buttons in block toolbar
@@ -249,7 +257,7 @@ export default function(params = {}) {
   }
 
   var editor = new MediumEditor(_node, {
-    targetBlank: true,
+    targetBlank: false,
     autoLink: true,
     imageDragging: false,
     fileDragging: false,

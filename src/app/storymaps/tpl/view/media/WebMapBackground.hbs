@@ -2,6 +2,20 @@
   <span class="large-loader"></span>
 </div>
 <div class="media-media media-item map" data-id="{{webmapId}}" aria-label="{{altText}}"></div>
+
+<div class="map-search-container"><div class="map-search-content"></div></div>
+<div class="overview-legend-container">
+  
+  <div class="hiq-accordion-container legend-container" id="{{legendAccordionId}}">
+    <button class="hiq-accordion" data-toggle="#{{legendAccordionId}}" aria-controls="{{legendAccordionId}}" aria-expanded="false">
+      {{labelLegend}}
+      <div class="hiq-accordion-triBox"></div>
+    </button>
+    <div class="hiq-accordion-panel legend-content"></div>
+  </div>
+
+</div>
+
 <div class="interaction-container">
   <button class="btn btn-default btn-sm">
     <span class="int-container-disabled">

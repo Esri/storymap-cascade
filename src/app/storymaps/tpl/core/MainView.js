@@ -98,6 +98,8 @@ define([
     app.ui.header = _header;
     app.ui.update = updateUI;
 
+    var TABLET_PIXEL_LOWER_LIMIT = 600;
+
     function init(core) {
       _core = core;
       return true;
@@ -106,10 +108,24 @@ define([
     function initStory(config, settings, sections) {
       IOSEmbedFix.setStyles();
 
+      //Add an extra section with Eskilstuna footer
+      if(!app.isInBuilder) {
+        sections.push({
+          type: 'credits',
+          layout: 'eskilstuna',
+          background: {
+            type: 'color',
+            color: '#000'
+          },
+          foreground: {
+            panels: []
+          }
+        });
+      }
+
       // Need some minimal info like window size before rendering the story
       computeDisplayInfos();
-
-      if (app.display.browserWidth < 768) {
+      if (app.display.browserWidth < TABLET_PIXEL_LOWER_LIMIT) {
         $('body').addClass('mobile-view');
         app.isMobileView = true;
       }
@@ -168,6 +184,14 @@ define([
           $('body').addClass('embed-mode-bar');
         }
 
+        /*START OF CUSTOM SCRIPT FOR ESKILSTUNA*/
+        if(!app.isInBuilder) {
+          UIUtils.turnBlockTextsIntoHtml();
+          UIUtils.createAccordions();
+        }
+        UIUtils.turnTitleTextsIntoHtml();
+        /*END OF CUSTOM SCRIPT FOR ESKILSTUNA*/
+
         displayApp();
 
         // Update display infos
@@ -184,7 +208,7 @@ define([
           computeDisplayInfos();
         }, 500);
       });
-    }
+    }   
 
     /*
      * Update UI - mostly triggered on Scroll
@@ -245,9 +269,10 @@ define([
       //
 
       var headerCompact = false;
-
+      var headerHeight = UIUtils.getHeaderHeight();
+      
       if (scrollTop <= app.display.windowHeight) {
-        var newPos = app.display.windowHeight - scrollTop - 50;
+        var newPos = app.display.windowHeight - scrollTop - headerHeight;
 
         if (newPos < 40) {
           newPos = 0;
@@ -274,7 +299,7 @@ define([
           sectionTop = 0,
           sectionIndex = 0,
           sectionBottom = null,
-          visibleViewportTop = viewportTop + 50;
+          visibleViewportTop = viewportTop + UIUtils.getHeaderHeight();
 
       for (var i = 0; i < nbSections; i++) {
         sectionTop = sections[i].top;
@@ -395,6 +420,7 @@ define([
         .trigger('resize');
 
       topic.subscribe('media-dynamic-resize', onResize);
+      topic.subscribe('compute-display-infos', computeDisplayInfos);
 
       //
       // Scroll event
@@ -538,7 +564,7 @@ define([
     function onResize() {
       // This does not dictate much as the switch between mobile view
       //   is only done when story is initializing
-      var isSmall = app.display.browserWidth < 768;
+      var isSmall = app.display.browserWidth < TABLET_PIXEL_LOWER_LIMIT;
 
       computeDisplayInfos();
 

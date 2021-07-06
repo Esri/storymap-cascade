@@ -80,7 +80,7 @@ export default class CoverBuilder extends Cover {
           }
         }
 
-        const newTitle = $('<div>' + $(e.target).text() + '</div>').text();
+        const newTitle = $('<div>' + $(e.target)[0].innerHTML() + '</div>').html();
 
         if (newTitle != app.Controller.getStoryTitle()) {
           this._section.foreground.title = newTitle;
@@ -99,9 +99,9 @@ export default class CoverBuilder extends Cover {
       })
       .keydown(e => {
         // Do not allow enter key
-        if (e.keyCode === 13) {
+        /*if (e.keyCode === 13) {
           return false;
-        }
+        }*/
 
         // Prevent ctrl + B/I/U or ctrl + b/i/u
         if(e.ctrlKey || e.metaKey) {
@@ -126,8 +126,8 @@ export default class CoverBuilder extends Cover {
             element.innerHTML = '';
           }
         }
-
-        const newValue = $('<div>' + $(e.target).text() + '</div>').text();
+        
+        const newValue = $('<div>' + $(e.target)[0].innerHTML + '</div>').html();
 
         if (newValue != this._section.foreground.subtitle) {
           this._section.foreground.subtitle = newValue;
@@ -136,9 +136,9 @@ export default class CoverBuilder extends Cover {
       })
       .keydown(e => {
         // Do not allow enter key
-        if (e.keyCode === 13) {
+        /*if (e.keyCode === 13) {
           return false;
-        }
+        }*/
 
         // Prevent ctrl + B/I/U or ctrl + b/i/u
         if(e.ctrlKey || e.metaKey) {
@@ -150,7 +150,7 @@ export default class CoverBuilder extends Cover {
       })
       .on('paste', () => {
         setTimeout(() => {
-          this._node.find('.cover-subtitle').html($('<div>' + this._node.find('.cover-subtitle').text() + '</div>').text());
+          this._node.find('.cover-subtitle').html($('<div>' + this._node.find('.cover-subtitle').html() + '</div>').html());
         }, 0);
       });
 
@@ -162,8 +162,8 @@ export default class CoverBuilder extends Cover {
 
   serialize(includeInstanceID) {
     if (this._node) {
-      this._section.foreground.title = $('<div>' + this._node.find('.cover-title').text() + '</div>').text();
-      this._section.foreground.subtitle = $('<div>' + this._node.find('.cover-subtitle').text() + '</div>').text();
+      this._section.foreground.title = $('<div>' + this._node.find('.cover-title').html() + '</div>').html();
+      this._section.foreground.subtitle = $('<div>' + this._node.find('.cover-subtitle').html() + '</div>').html();
       this._section.background = this._backgroundMedia.serialize(includeInstanceID);
     }
 

@@ -1,0 +1,35 @@
+<div class="section section-layout-credits section-layout-credits-eskilstuna" role="contentinfo">
+
+  {{{background}}}
+
+  <div class="foreground">
+
+  	<div class="credits-col">
+  		<h2>Kontakta oss</h2>
+  		Kommunens Stadsbyggnadsförvaltning<br>
+  		E-post: <a href="mailto:stadsbyggnad@eskilstuna.se">stadsbyggnad@eskilstuna.se</a><br>
+  		Telefon: <a href="tel:01212525">012 - 125 25</a>
+  	</div>
+  	<div class="credits-col">
+  		<h2>Innehåll</h2>
+  		<ul>
+      {{#each seriesEntries}}
+        <li><a href="{{this.url}}">{{this.title}}</a></li>
+      {{/each}}
+  		<ul>
+  	</div>  	
+  	<div class="credits-col">
+  		<h2>Följ oss!</h2>
+  		<img alt="Facebook" class="sv-noborder c60" src="resources/tpl/viewer/icons/fb-logo_100.png"> <a href="https://sv-se.facebook.com/eskilstunakommun/" title="Följ Eskilstuna kommun på Facebook">Facebook</a>
+  	</div>  	  	
+  	<div class="credits-col">
+  		<h2>Om webbplatsen</h2>
+  		<a href="https://www.eskilstuna.se/" title="Läs mer om webbplatsen">Om webbplatsen</a>
+  	</div>  	
+  	<div class="credits-clear-both"></div>
+{{!--     <div class="credits">
+      {{{credits}}}
+    </div> --}}
+  </div>
+  <div class="builder-section-add-menu"></div>
+</div>

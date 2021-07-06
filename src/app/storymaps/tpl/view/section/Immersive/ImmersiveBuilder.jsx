@@ -129,12 +129,12 @@ export default class ImmersiveBuilder extends Immersive {
       })
       .keydown(e => {
         // Do not allow enter key
-        if (e.keyCode === 13) {
+        /*if (e.keyCode === 13) {
           // If pressing enter insert <br> instead of default behavior that is div
           //document.execCommand('insertHTML', false, '<br><br>');
           return false;
         }
-
+*/
         // Prevent ctrl + B/I/U or ctrl + b/i/u
         if(e.ctrlKey || e.metaKey) {
           var key = e.keyCode;
@@ -291,8 +291,11 @@ export default class ImmersiveBuilder extends Immersive {
 
       // Title
       if (i === 0) {
+        console.log(this._node.find('.background-title h2'));
+        console.log(this._node.find('.background-title h2')[0]);
         views[0].foreground.title = {
-          value: $('<div>' + this._node.find('.background-title h2').text() + '</div>').text(),
+          // value: $('<div>' + this._node.find('.background-title h2').text() + '</div>').text(),
+          value: $('<div>' + this._node.find('.background-title h2')[0].innerHTML + '</div>').html(),
           global: true,
           style: this._titleConfig.getStyle()
         };

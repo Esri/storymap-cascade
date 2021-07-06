@@ -462,7 +462,7 @@
       connect: {
         server: {
           options: {
-            port: 8080,
+            port: 8082,
             keepalive: true,
             hostname: '*'
           }
@@ -551,7 +551,19 @@
             }
           ]
         }
+      },
+
+      postcss: {
+        options: {
+          processors: [
+            require('autoprefixer')({browsers: 'last 10 versions', diff:true}), 
+          ]
+        },
+        deploy: {
+          src: 'deploy/app/*.css'
+        }
       }
+
     });
 
     /*
@@ -599,6 +611,7 @@
       'regex-replace:js',
       'regex-replace:css',
       'concat',
+      'postcss:deploy',
 
       // Copy html
       'copy:html',
