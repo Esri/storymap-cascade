@@ -132,12 +132,9 @@ export default class Media {
     var btn = $(e.currentTarget);
     btn.toggleClass('enabled');
     this._node.toggleClass('interaction-enabled');
-    window.btn = btn;
-    window.nodeMedia = this._nodeMedia
+    // Inform the iframe when it's enabled or disabled
     var message = {enabled:btn.hasClass('enabled')};
-    console.dir(this._nodeMedia)
-    this._nodeMedia[0].contentWindow.postMessage(JSON.stringify(message), window.location.origin);
-    console.log('Clicked');
+    this._nodeMedia[0].contentWindow.postMessage(JSON.stringify(message), 'https://karta.eskilstuna.se');
   }
 
   _createAlternateTab() {
