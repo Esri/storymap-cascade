@@ -103,6 +103,7 @@ class Webmap extends Component {
     if (webmapInfo.layers && webmapInfo.layers.length) {
       const opLyrs = response.itemInfo.itemData.operationalLayers;
       opLyrs.forEach(opLyr => {
+        const trueOpLyrVisibility = opLyr.visibility === undefined ? true : opLyr.visibility;
         let visOverride;
 
         if (opLyr.layerObject) {
@@ -113,7 +114,7 @@ class Webmap extends Component {
             }
             return false;
           });
-          opLyr.layerObject.setVisibility(visOverride !== undefined ? visOverride : opLyr.visibility);
+          opLyr.layerObject.setVisibility(visOverride !== undefined ? visOverride : trueOpLyrVisibility);
         } else if (opLyr.featureCollection && opLyr.featureCollection.layers) {
           opLyr.featureCollection.layers.forEach(fcLyr => {
             let fcLyrId = fcLyr.layerObject.id.split('_').slice(0, -1).join('_');
@@ -124,7 +125,7 @@ class Webmap extends Component {
               }
               return false;
             });
-            fcLyr.layerObject.setVisibility(visOverride !== undefined ? visOverride : opLyr.visibility);
+            fcLyr.layerObject.setVisibility(visOverride !== undefined ? visOverride : trueOpLyrVisibility);
           });
         }
 

@@ -1,18 +1,58 @@
 define([
   'esri/urlUtils',
   'esri/arcgis/utils',
-  'dojo/cookie',
+  'dojo/Deferred',
   'dojo/_base/Color',
   './SocialSharing'
 ],
 function(
   urlUtils,
   arcgisUtils,
-  cookie,
+  Deferred,
   Color,
   SocialSharing
 ) {
+  // from /platformSelf
+  var _fetchedUser, _fetchedToken;
+
   return {
+    fetchPortalSelfInfo: function() {
+      var deferred = new Deferred();
+      var portalUrl = arcgisUtils.arcgisUrl.split('/sharing/')[0];
+      var url = portalUrl.replace('http://', 'https://') + '/sharing/rest/oauth2/platformSelf?f=json';
+
+      $.ajax(url, {
+        method: 'POST',
+        dataType: 'json',
+        data: {
+          f: 'json'
+        },
+        xhrFields: {
+          withCredentials: true
+        },
+        headers: {
+          'X-Esri-Auth-Client-Id': app.cfg.DEFAULT_CLIENT_ID,
+          'X-Esri-Auth-Redirect-Uri': window.location.href
+        },
+        success: function(data) {
+          if (data) {
+            if (data.username) {
+              _fetchedUser = data.username;
+            }
+            if (data.token) {
+              _fetchedToken = data.token;
+            }
+          }
+          // always resolve
+          deferred.resolve();
+        },
+        error: function() {
+          deferred.resolve();
+        }
+      });
+
+      return deferred.promise;
+    },
     switchToBuilder: function() {
       if(document.location.search.match(/appid/)) {
         document.location = SocialSharing.cleanURL(document.location.protocol + '//' + document.location.host + document.location.pathname + document.location.search, true) + '&edit' + document.location.hash;
@@ -104,38 +144,10 @@ function(
       return arcgisUtils.arcgisUrl.split('/sharing/')[0];
     },
     getPortalUser: function() {
-      var esriCookie = cookie('esri_auth');
-
-      if(! esriCookie) {
-        return;
-      }
-
-      esriCookie = JSON.parse(esriCookie.replace('"ssl":undefined','"ssl":""'));
-
-      // Cookie has to be set on the same organization
-      if(esriCookie.urlKey && esriCookie.customBaseUrl
-          && (esriCookie.urlKey + '.' + esriCookie.customBaseUrl).toLowerCase() != document.location.hostname.toLowerCase()) {
-        return;
-      }
-
-      return esriCookie ? esriCookie.email : null;
+      return _fetchedUser;
     },
     getCookieToken: function() {
-      var esriCookie = cookie('esri_auth');
-
-      if(! esriCookie) {
-        return;
-      }
-
-      esriCookie = JSON.parse(esriCookie.replace('"ssl":undefined','"ssl":""'));
-
-      // Cookie has to be set on the same organization
-      if(esriCookie.urlKey && esriCookie.customBaseUrl
-          && (esriCookie.urlKey + '.' + esriCookie.customBaseUrl).toLowerCase() != document.location.hostname.toLowerCase()) {
-        return;
-      }
-
-      return esriCookie ? esriCookie.token : null;
+      return _fetchedToken;
     },
     userIsAppOwner: function() {
       var portalUser = app.portal ? app.portal.getPortalUser() : null,
@@ -200,7 +212,7 @@ function(
     },
 
     fixUploadedImageUrl: function(url) {
-      var specificPortalUrl = url.replace(/^(https?:\/\/)|^(\/\/)/, '').split(/\//)[0];
+      var specificPortalUrl = url.replace(/^(https?:\/\/)|^(\/\/)/, '').split('/sharing')[0];
       var genericPortalUrl = app.portal.portalHostname;
       if (!specificPortalUrl || !genericPortalUrl) {
         return url;

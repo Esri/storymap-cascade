@@ -1,4 +1,4 @@
-/* eslint quotes: ["error", "double"] */
+﻿/* eslint quotes: ["error", "double"] */
 /* nls files need to use double quotes */
 define({
   "viewer": {
@@ -37,7 +37,10 @@ define({
       "builderSupportIpad": "Aplicaţia de creare Story Map Cascade nu este suportată pe iPad. Poveştile cascadă pe care le creaţi şi partajaţi vor funcţiona pe iPad.",
       "launchBuilder": "Lansare aplicaţie de creare Cascade",
       "notAgain": "Nu se mai afişează aceasta",
-      "sorry": "Atenţie:"
+      "sorry": "Atenţie:",
+      "nonOwnerOrgUrl": "%TPL_NAME% pe care încercați să îl accesați nu are originea în URL-ul pus la dispoziție de dvs.",
+      "nonOwnerOrgProceedToGeneric": "Continuați la %HREF%",
+      "advanced": "Avansat"
     },
     "mobileWarning": {
       "message1": "Aţi citit versiunea pentru mobil a acestei poveşti. Pentru versiunea completă, cu elemente media mai bogate, încercaţi să o citiţi pe un computer.",
@@ -129,7 +132,7 @@ define({
       "audioLabel": "Audio:"
     },
     "licenseChange2018": {
-      "noAccess": "Contul dvs. (%USER_NAME%) nu este licențiat să deschidă o hartă informativă care nu este publică.  Solicitați-i administratorului organizației să vă aloce un tip de utilizator care include hărți informative sau o licență pentru aplicații esențiale de completare."
+      "noAccess": "Contul dvs. (%USER_NAME%) nu este licențiat să deschidă o hartă informativă care nu este publică. Solicitați-i administratorului organizației dvs. să vă aloce un tip de utilizator care include hărți informative sau o licență pentru aplicații esențiale de completare."
     }
   }
 });

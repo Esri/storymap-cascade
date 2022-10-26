@@ -1,3 +1,5 @@
+_Note: Classic Esri Story Maps templates are in extended support on ArcGIS Online as of September 2021 and mature support on ArcGIS Enterprise 10.9.1. For the latest information on the transition from classic Esri Story Maps to ArcGIS StoryMaps, click [here](https://www.esri.com/arcgis-blog/?s=#&tag=classic-esri-story-maps-transition)._
+
 # Story Map Cascade
 
 The Story Map Cascade℠ app lets you combine narrative text with maps, images, and multimedia content in an engaging, full-screen scrolling experience. In a Cascade story, sections containing text and in-line media can be interspersed with "immersive" sections that fill the screen with your maps, 3D scenes, images, and videos. Cascade is ideal for making compelling, in-depth stories that are very easy for people to navigate.
@@ -8,7 +10,7 @@ The Story Map Cascade℠ app lets you combine narrative text with maps, images, 
 [Download](http://links.esri.com/storymaps/story_map_cascade_zip) |
 [Cascade page on Esri Story Maps website](https://storymaps.arcgis.com/en/app-list/cascade/)
 
-**Latest release is version 1.10.0**, if you want to be informed of new releases, we recommend you watch this repository ([see GitHub help](https://help.github.com/articles/watching-repositories)). See the [release page](https://github.com/Esri/story-map-cascade/releases) for release notes.
+**Latest release is version 1.23.0**, which corresponds to the June 2022 release of ArcGIS Online. If you want to be informed of new releases, we recommend you watch this repository ([see GitHub help](https://help.github.com/articles/watching-repositories)). See the [release page](https://github.com/Esri/story-map-cascade/releases) for release notes.
 
 ## Help content
 

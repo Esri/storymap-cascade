@@ -1,4 +1,4 @@
-/* eslint quotes: ["error", "double"] */
+﻿/* eslint quotes: ["error", "double"] */
 /* strings files need to be double quotes */
 define({
   "builder": {
@@ -450,16 +450,16 @@ define({
       },
       "descriptions": {
         "httpAudioUnfixable": "Il file audio non supporta l’HTTPS. Rimuoverlo dalla storia o sostituirlo con un link.",
-        "httpAudioUncheckable": "Il file audio ha un URL non sicuro (HTTP). Fare clic sul pulsante riportato di seguito per provare a usare un URL HTTPS per il file audio. Se non funziona, rimuovere il file audio dalla storia o sostituirlo con un collegamento ipertestuale.",
+        "httpAudioUncheckable": "Il file audio ha un URL non sicuro (HTTP). Fare clic sul pulsante riportato di seguito per provare a usare un URL HTTPS per il file audio. Se non funziona, rimuovere l'audio dalla storia o sostituirlo con un collegamento ipertestuale.",
         "httpAudioFixable": "Il file audio ha un URL non sicuro (HTTP). Fare clic sul pulsante riportato di seguito per usare un URL HTTPS sicuro per il file audio.",
         "httpWebpageUnfixable": "La pagina Web non supporta l’HTTPS. Rimuoverla dalla storia o sostituirla con uno screenshot o con un link.",
-        "httpWebpageUncheckable": "La pagina Web ha un URL non sicuro (HTTP). Fare clic sul pulsante riportato di seguito per provare a usare un URL HTTPS per la pagina Web. Se non funziona, rimuovere la pagina Web dalla storia o sostituirla con uno screenshot o con un collegamento ipertestuale.",
+        "httpWebpageUncheckable": "La pagina Web ha un URL non sicuro (HTTP). Fare clic sul pulsante riportato di seguito per provare a usare un URL HTTPS per la pagina Web. Se non funziona, rimuovere la pagina web dalla storia o sostituirla con uno screenshot o collegamento ipertestuale.",
         "httpWebpageFixable": "La pagina Web ha un URL non sicuro (HTTP). Fare clic sul pulsante riportato di seguito per usare un URL HTTPS per la pagina Web.",
         "httpVideoUnfixable": "Il file video non supporta l’HTTPS. Rimuoverlo dalla storia o sostituirlo con uno screenshot o con un link.",
-        "httpVideoUncheckable": "Il file video ha un URL non sicuro (HTTP). Fare clic sul pulsante riportato di seguito per provare a usare un URL HTTPS per il file video. Se non funziona, rimuovere il file video dalla storia o sostituirlo con uno screenshot o con un collegamento ipertestuale.",
+        "httpVideoUncheckable": "Il file video ha un URL non sicuro (HTTP). Fare clic sul pulsante riportato di seguito per provare a usare un URL HTTPS per il file video. Se non funziona, rimuovere il video dalla storia o sostituirlo con uno screenshot o collegamento ipertestuale.",
         "httpVideoFixable": "Il file video ha un URL non sicuro (HTTP). Fare clic sul pulsante riportato di seguito per usare un URL HTTPS sicuro per il file video.",
         "httpImageUnfixable": "L’immagine non supporta l’HTTPS. Rimuoverla dalla storia o sostituirla con un link.",
-        "httpImageUncheckable": "L’immagine ha un URL non sicuro (HTTP). Fare clic sul pulsante riportato di seguito per provare a usare un URL HTTPS per l’immagine. Se non funziona, rimuovere l’immagine dalla storia o sostituirla con un collegamento ipertestuale.",
+        "httpImageUncheckable": "L’immagine ha un URL non sicuro (HTTP). Fare clic sul pulsante riportato di seguito per provare a usare un URL HTTPS per l’immagine. Se non funziona, rimuovere l'immagine dalla storia o sostituirla con un collegamento ipertestuale.",
         "httpImageFixable": "L’immagine ha un URL non sicuro (HTTP). Fare clic sul pulsante riportato di seguito per usare un URL HTTPS sicuro per l’immagine.",
         "httpLayer": "Il Layer ha un URL non sicuro (HTTP).",
         "inaccessibleLogo": "Impossibile accedere al logo. Sostituirlo con un’altra immagine.",
@@ -469,13 +469,13 @@ define({
       },
       "tooltips": {
         "httpAudioFixable": "Fare clic sul pulsante per usare un URL HTTPS sicuro per il file audio.",
-        "httpAudioUncheckable": "Provare a usare un URL HTTPS per il file audio. Se non funziona, rimuovere il file audio dalla storia o sostituirlo con un collegamento.",
+        "httpAudioUncheckable": "Provare a usare un URL HTTPS per il file audio. Se non funziona, rimuovere l'audio dalla storia o sostituirlo con un link.",
         "httpWebpageFixable": "Fare clic sul pulsante per usare un URL HTTPS sicuro per la pagina Web.",
         "httpWebpageUncheckable": "Provare a usare un URL HTTPS per la pagina Web. Se non funziona, rimuovere la pagina Web dalla storia o sostituirla con uno screenshot o con un collegamento.",
         "httpVideoFixable": "Fare clic sul pulsante per usare un URL HTTPS sicuro per il file video.",
-        "httpVideoUncheckable": "Provare a usare un URL HTTPS per il file video. Se non funziona, rimuovere il file video dalla storia o sostituirlo con uno screenshot o con un collegamento.",
+        "httpVideoUncheckable": "Provare a usare un URL HTTPS per il file video. Se non funziona, rimuovere il video dalla storia o sostituirlo con uno screenshot o un link.",
         "httpImageFixable": "Fare clic sul pulsante per usare un URL HTTPS sicuro per l’immagine.",
-        "httpImageUncheckable": "Provare a usare un URL HTTPS per l’immagine. Se non funziona, rimuovere l’immagine dalla storia o sostituirla con un collegamento.",
+        "httpImageUncheckable": "Provare a usare un URL HTTPS per l’immagine. Se non funziona, rimuovere l'immagine dalla storia o sostituirlo con un link.",
         "httpLayerMyMap": "Visitare la pagina degli elementi della mappa per aggiornare il Layer e usare l’HTTPS. Qualora il Layer non possa essere aggiornato, rimuoverlo dalla mappa.",
         "httpLayerNotMyMap": "Effettuare una copia della mappa e aggiornare il Layer per usare l’HTTPS. Qualora il Layer non possa essere aggiornato, rimuoverlo dalla mappa.",
         "clickLearnMore": "Fare clic per maggiori informazioni."
@@ -574,6 +574,30 @@ define({
       "action2": "Controlla subito le mie storie",
       "action3": "Ulteriori informazioni",
       "floatingNotification": "Questa storia contiene contenuti non sicuri (HTTP). Verificare e risolvere il problema."
+    },
+    "extendedSupportMessage": {
+      "bannerMsg": "Le classiche Esri Story Maps sono in Extended Support.",
+      "s1h1": "Messaggio importante sulle classiche Esri Story Maps",
+      "s1p1": "I modelli classici di Esri Story Maps sono in Extended Support. Tutti i clienti sono incoraggiati a usare ArcGIS StoryMaps, lo strumento di storytelling di attuale generazione di Esri.",
+      "s1p2": "I modelli classici non sono più in sviluppo attivo e non sono raccomandati per i nuovi progetti. Non sono previsti ulteriori aggiornamenti delle loro capacità. Le storie che hai creato utilizzando i modelli classici continueranno ad essere disponibili.",
+      "s1p3": "Nel dicembre 2021, i modelli classici saranno rimossi dalla galleria delle app configurabili di default. Uno o più modelli classici possono essere aggiunti al gruppo di applicazioni configurabili personalizzate dell'organizzazione, se necessario, per supportare i flussi di lavoro correnti durante la transizione all'uso di ArcGIS StoryMaps.",
+      "s1p4": "Per maggiori informazioni, clicca sul link per saperne di più qui sotto.",
+      "action1": "Chiudi",
+      "action2": "Ulteriori informazioni",
+      "action3": "Prova ArcGIS StoryMaps"
+    },
+    "matureSupportMessage": {
+      "bannerMsg": "Le classiche Esri Story Maps sono in Mature Support",
+      "s1h1": "Messaggio importante sulle classiche Esri Story Maps",
+      "s1p1": "I modelli classici di Esri Story Maps sono in Mature Support. Tutti i clienti sono incoraggiati a usare ArcGIS StoryMaps, lo strumento di storytelling di attuale generazione di Esri.",
+      "s1p2": "I modelli classici non sono più in sviluppo attivo e non sono raccomandati per i nuovi progetti. Non sono previsti ulteriori aggiornamenti delle loro capacità. Le storie che hai creato utilizzando i modelli classici continueranno ad essere disponibili.",
+      "s1p3": "Per maggiori informazioni, clicca sul link per saperne di più qui sotto.",
+      "action1": "Chiudi",
+      "action2": "Ulteriori informazioni",
+      "action3": "Prova ArcGIS StoryMaps"
+    },
+    "storyTellerUserType": {
+      "notCreatorError": "L'account (%USER_NAME%) non possiede la licenza per utilizzare i generatori di Story Map classiche. Richiedere all'amministratore dell'organizzazione di assegnare all'utente corrente un tipo di utente Creator."
     }
   }
 });

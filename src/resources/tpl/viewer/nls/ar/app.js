@@ -1,4 +1,4 @@
-/* eslint quotes: ["error", "double"] */
+﻿/* eslint quotes: ["error", "double"] */
 /* nls files need to use double quotes */
 define({
   "viewer": {
@@ -37,7 +37,10 @@ define({
       "builderSupportIpad": "منشئ \"تتالي خريطة القصة\" غير مدعوم في iPad، وستعمل قصص التتالي التي تنشئها وتشاركها في iPad.",
       "launchBuilder": "إطلاق \"منشئ التتالي\"",
       "notAgain": "لا تظهر هذا مرة أخرى",
-      "sorry": "انتبه:"
+      "sorry": "انتبه:",
+      "nonOwnerOrgUrl": "لا يأتي %TPL_NAME% الذي تحاول الوصول إليه من عنوان URL الذي قدمته.",
+      "nonOwnerOrgProceedToGeneric": "الانتقال إلى %HREF%",
+      "advanced": "متقدم"
     },
     "mobileWarning": {
       "message1": "لقد قرأت إصدار الجوال لهذه القصة. وللإصدار الكامل المزود بعناصر وسائط أكثر، جربه على كمبيوتر سطح المكتب.",
@@ -129,7 +132,7 @@ define({
       "audioLabel": "مقطع صوت:"
     },
     "licenseChange2018": {
-      "noAccess": "حسابك (%USER_NAME%) غير مرخص لفتح خريطة قصة غير عامة. رجاءً اطلب من مسئولي المؤسسة تعيينك كنوع مستخدم يتضمن خرائط القصة أو ترخيص التطبيقات الأساسية المضافة."
+      "noAccess": "حسابك (%USER_NAME%) غير مرخص لفتح خريطة قصة غير عامة. رجاءً اطلب من مسؤول المؤسسة تعيينك كنوع مستخدم يتضمن خرائط القصة Story Maps أو ترخيص التطبيقات الأساسية المضافة."
     }
   }
 });

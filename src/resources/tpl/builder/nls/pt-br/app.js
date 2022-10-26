@@ -1,4 +1,4 @@
-/* eslint quotes: ["error", "double"] */
+﻿/* eslint quotes: ["error", "double"] */
 /* strings files need to be double quotes */
 define({
   "builder": {
@@ -574,6 +574,30 @@ define({
       "action2": "Verificar minhas histórias agora",
       "action3": "Mais informações",
       "floatingNotification": "Esta história contém conteúdo inseguro (HTTP) . Revise e corrija estes problemas."
+    },
+    "extendedSupportMessage": {
+      "bannerMsg": "Classic Esri Story Maps estão em Suporte Estendido",
+      "s1h1": "Importar mensagem sobre Classic Esri Story Maps",
+      "s1p1": "Modelos do Classic Esri Story Maps estão em Suporte Estendido Todos os clientes são incentivados a usar ArcGIS StoryMaps, a ferramenta de narrativa da geração atual da Esri.",
+      "s1p2": "Os modelos clássicos não estão mais em desenvolvimento ativo e não são recomendados para novos projetos. Nenhuma outra atualização de seus recursos está planejada. As histórias que você criou usando os modelos clássicos continuarão disponíveis.",
+      "s1p3": "Em Dezembro de 2021, os modelos clássicos serão removidos da galeria de aplicativos configuráveis padrão. Um ou mais modelos clássicos podem ser adicionados ao grupo de aplicativos configuráveis personalizados da sua organização, se necessário, para oferecer suporte aos fluxos de trabalho atuais durante a transição para usar o ArcGIS StoryMaps.",
+      "s1p4": "Para mais informações, clique no link para saber mais abaixo.",
+      "action1": "Fechar",
+      "action2": "Saiba mais",
+      "action3": "Testar ArcGIS StoryMaps"
+    },
+    "matureSupportMessage": {
+      "bannerMsg": "Classic Esri Story Maps estão em Suporte Vencido",
+      "s1h1": "Importar mensagem sobre Classic Esri Story Maps",
+      "s1p1": "Modelos do Classic Esri Story Maps estão em Suporte Vencido Todos os clientes são incentivados a usar ArcGIS StoryMaps, a ferramenta de narrativa da geração atual da Esri.",
+      "s1p2": "Os modelos clássicos não estão mais em desenvolvimento ativo e não são recomendados para novos projetos. Nenhuma outra atualização de seus recursos está planejada. As histórias que você criou usando os modelos clássicos continuarão disponíveis.",
+      "s1p3": "Para mais informações, clique no link para saber mais abaixo.",
+      "action1": "Fechar",
+      "action2": "Saiba mais",
+      "action3": "Testar ArcGIS StoryMaps"
+    },
+    "storyTellerUserType": {
+      "notCreatorError": "Sua conta (%USER_NAME%) não está licenciada para utilizar os construtores de mapa histórico clássicos. Peça ao seu administrador da organização para atribuir um tipo de usuário Creator."
     }
   }
 });

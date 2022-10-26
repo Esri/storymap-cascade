@@ -1,4 +1,4 @@
-/* eslint quotes: ["error", "double"] */
+﻿/* eslint quotes: ["error", "double"] */
 /* nls files need to use double quotes */
 define({
   "viewer": {
@@ -37,7 +37,10 @@ define({
       "builderSupportIpad": "Story Map Cascade-builder-programmet understøttes ikke på iPad. De Cascade-historier, du opretter og deler, vil fungere på iPad.",
       "launchBuilder": "Start Cascade-builder",
       "notAgain": "Vis ikke dette igen",
-      "sorry": "Bemærk:"
+      "sorry": "Bemærk:",
+      "nonOwnerOrgUrl": "Den %TPL_NAME%, du prøver at få adgang til, stammer ikke fra den URL, som du har angivet.",
+      "nonOwnerOrgProceedToGeneric": "Fortsæt til %HREF%",
+      "advanced": "Avanceret"
     },
     "mobileWarning": {
       "message1": "Du har læst den mobile version af denne historie. For at få vist den fulde historie med mere avancerede medieelementer skal du prøve at læse den på en stationær computer.",
@@ -129,7 +132,7 @@ define({
       "audioLabel": "Lyd:"
     },
     "licenseChange2018": {
-      "noAccess": "Din konto (%USER_NAME%) har ikke licens til at åbne et Story Map, der ikke er offentlige. Bed din organisationsadministrator om at knytte dig til en brugertype, der omfatter Story Maps eller en add-on Essential Apps-licens."
+      "noAccess": "Din konto (%USER_NAME%) har ikke licens til at åbne et Story Map, der ikke er offentligt. Bed din organisationsadministrator om at knytte dig til en brugertype, der omfatter Story Maps eller en add-on Essential Apps-licens."
     }
   }
 });

@@ -1,4 +1,4 @@
-/* eslint quotes: ["error", "double"] */
+﻿/* eslint quotes: ["error", "double"] */
 /* strings files need to be double quotes */
 define({
   "builder": {
@@ -574,6 +574,30 @@ define({
       "action2": "Saját történetek megtekintése most",
       "action3": "További információk",
       "floatingNotification": "Ez a történet nem biztonságos (HTTP) tartalmat tartalmaz. Kérjük, ellenőrizze és javítsa ki a problámákat."
+    },
+    "extendedSupportMessage": {
+      "bannerMsg": "A klasszikus Esri Story Maps a Kiterjesztett terméktámogatásban",
+      "s1h1": "Fontos üzenet a klasszikus Esri Story Maps alkalmazással kapcsolatban",
+      "s1p1": "A klasszikus Esri Story Maps sablonok a Kiterjesztett terméktámogatásban Minden ügyfelet arra ösztönöznek, hogy használják az ArcGIS StoryMaps alkalmazást, az Esri aktuális történetmesélő eszközét.",
+      "s1p2": "A klasszikus sablonok már nincsenek aktív fejlesztés alatt, és nem ajánljuk őket új projektekhez. Képességeik további frissítését nem tervezik. A klasszikus sablonok használatával létrehozott történetek továbbra is elérhetőek maradnak.",
+      "s1p3": "2021. decemberében a klasszikus sablonokat eltávolítjuk az alapértelmezett konfigurálható alkalmazások galériájából. Egy vagy több klasszikus sablon hozzáadható a szervezet egyénileg konfigurálható alkalmazások csoportjához, ha szükséges a jelenlegi munkafolyamatok támogatásához az ArcGIS StoryMaps használatára való áttérés során.",
+      "s1p4": "További információkért kattintson az alábbi linkre.",
+      "action1": "Bezárás",
+      "action2": "További információ",
+      "action3": "Próbálja ki az ArcGIS StoryMaps alkalmazást"
+    },
+    "matureSupportMessage": {
+      "bannerMsg": "A klasszikus Esri Story Maps a Terméktámogatásban",
+      "s1h1": "Fontos üzenet a klasszikus Esri Story Maps alkalmazással kapcsolatban",
+      "s1p1": "A klasszikus Esri Story Maps sablonok a Terméktámogatásban Minden ügyfelet arra ösztönöznek, hogy használják az ArcGIS StoryMaps alkalmazást, az Esri aktuális történetmesélő eszközét.",
+      "s1p2": "A klasszikus sablonok már nincsenek aktív fejlesztés alatt, és nem ajánljuk őket új projektekhez. Képességeik további frissítését nem tervezik. A klasszikus sablonok használatával létrehozott történetek továbbra is elérhetőek maradnak.",
+      "s1p3": "További információkért kattintson az alábbi linkre.",
+      "action1": "Bezárás",
+      "action2": "További információ",
+      "action3": "Próbálja ki az ArcGIS StoryMaps alkalmazást"
+    },
+    "storyTellerUserType": {
+      "notCreatorError": "Az Ön fiókjának (%USER_NAME%) licence nem teszi lehetővé a klasszikus story map szerkesztők használatát. Kérje meg a szervezete adminisztrátorát, hogy rendeljen Önhöz Készítő felhasználótípust."
     }
   }
 });

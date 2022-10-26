@@ -1,4 +1,4 @@
-/* eslint quotes: ["error", "double"] */
+﻿/* eslint quotes: ["error", "double"] */
 /* nls files need to use double quotes */
 define({
   "viewer": {
@@ -37,7 +37,10 @@ define({
       "builderSupportIpad": "Story Map Cascade -luontitoimintoa ei tueta iPadissa. Luomasi ja jakamasi Cascade-tarinat toimivat kyllä iPadissa.",
       "launchBuilder": "Käynnistä Cascade-luontitoiminto",
       "notAgain": "Älä näytä tätä uudelleen",
-      "sorry": "Huomio:"
+      "sorry": "Huomio:",
+      "nonOwnerOrgUrl": "%TPL_NAME%, jota yrität käyttää, ei ole peräisin määrittämästäsi URL-osoitteesta.",
+      "nonOwnerOrgProceedToGeneric": "Jatka kohtaan %HREF%",
+      "advanced": "Advanced"
     },
     "mobileWarning": {
       "message1": "Olet lukenut tämän tarinan mobiiliversion. Jos haluat nähdä täyden version, jossa on enemmän mediaelementtejä, lue tarina pöytätietokoneella.",

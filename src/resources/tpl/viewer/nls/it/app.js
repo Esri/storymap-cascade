@@ -1,4 +1,4 @@
-/* eslint quotes: ["error", "double"] */
+﻿/* eslint quotes: ["error", "double"] */
 /* nls files need to use double quotes */
 define({
   "viewer": {
@@ -37,7 +37,10 @@ define({
       "builderSupportIpad": "Il generatore Cascade Story Map non è supportato su iPad. Le storie Cascade create e condivise funzioneranno su iPad.",
       "launchBuilder": "Avvia il generatore Cascade",
       "notAgain": "Non mostrare più",
-      "sorry": "Attenzione:"
+      "sorry": "Attenzione:",
+      "nonOwnerOrgUrl": "Il %TPL_NAME%a cui si sta tentando di accedere non ha origine dall'URL fornito.",
+      "nonOwnerOrgProceedToGeneric": "Procedere a %HREF%",
+      "advanced": "Avanzato"
     },
     "mobileWarning": {
       "message1": "Il testo della storia è stato adattato per i dispositivi mobili. Per la versione completa, con elementi multimediali avanzati, utilizzare un computer desktop.",
@@ -129,7 +132,7 @@ define({
       "audioLabel": "Audio:"
     },
     "licenseChange2018": {
-      "noAccess": "L’account (%USER_NAME%) non dispone della licenza per aprire una Story Map non pubblica.  È necessario richiedere all’amministratore dell'organizzazione l’assegnazione di un tipo di utente che includa le Story Map o una licenza aggiuntiva per le app essenziali."
+      "noAccess": "L’account (%USER_NAME%) non dispone della licenza per aprire una Story Map non pubblica. È necessario richiedere all’amministratore dell'organizzazione l’assegnazione di un tipo di utente che includa le Story Map o una licenza aggiuntiva per le app essenziali."
     }
   }
 });

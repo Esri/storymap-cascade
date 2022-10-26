@@ -89,6 +89,7 @@
             'lib-build/i18n'
           ],
           inlineText: true,
+          optimizeCss: true,
           separateCSS: true,
           siteRoot: '../../src/app/storymaps/',
           preserveLicenseComments: false,

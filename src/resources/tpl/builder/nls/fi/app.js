@@ -1,4 +1,4 @@
-/* eslint quotes: ["error", "double"] */
+﻿/* eslint quotes: ["error", "double"] */
 /* strings files need to be double quotes */
 define({
   "builder": {
@@ -574,6 +574,30 @@ define({
       "action2": "Tarkista omat tarinani nyt",
       "action3": "Lisätietoja",
       "floatingNotification": "Tässä tarinassa on suojaamatonta (HTTP) sisältöä. Tarkista ja ratkaise nämä ongelmat."
+    },
+    "extendedSupportMessage": {
+      "bannerMsg": "Perinteiset Esri Story Mapsit ovat laajennetussa tuessa",
+      "s1h1": "Tärkeä viesti koskien perinteistä Esri Story Mapsia",
+      "s1p1": "Perinteiset Esri Story Maps -mallit ovat laajennetussa tuessa. Kaikkia asiakkaita kehotetaan käyttämään ArcGIS StoryMapsia, joka on Esrin nykyisen sukupolven tarinankerrontatyökalu.",
+      "s1p2": "Perinteisiä malleja ei enää aktiivisesti kehitetä eikä niitä suositella käytettäväksi uusissa projekteissa. Ominaisuuksiin ei ole suunnitteilla uusia päivityksiä. Perinteisten mallien avulla luodut tarinat ovat edelleen käytettävissä.",
+      "s1p3": "Joulukuussa 2021 perinteiset mallit poistetaan oletusarvoisesta Configurable Apps -galleriasta Yksi tai useampi perinteinen malli voidaan lisätä organisaatiosi oletusarvoiseen Configurable Apps -ryhmään tarvittaessa, sillä niistä on hyötyä nykyisessä työnkulussa siirtyessäsi käyttämään ArcGIS StoryMapsia.",
+      "s1p4": "Lisätietoja saat napsauttamalla alla olevaa linkkiä.",
+      "action1": "Sulje",
+      "action2": "Lisätietoja",
+      "action3": "Kokeile ArcGIS StoryMapsia"
+    },
+    "matureSupportMessage": {
+      "bannerMsg": "Perinteiset Esri Story Mapsit ovat syrjäytymässä olevassa tukivaiheessa",
+      "s1h1": "Tärkeä viesti koskien perinteistä Esri Story Mapsia",
+      "s1p1": "Perinteiset Esri Story Maps -mallit ovat syrjäytymässä olevassa tukivaiheessa. Kaikkia asiakkaita kehotetaan käyttämään ArcGIS StoryMapsia, joka on Esrin nykyisen sukupolven tarinankerrontatyökalu.",
+      "s1p2": "Perinteisiä malleja ei enää aktiivisesti kehitetä eikä niitä suositella käytettäväksi uusissa projekteissa. Ominaisuuksiin ei ole suunnitteilla uusia päivityksiä. Perinteisten mallien avulla luodut tarinat ovat edelleen käytettävissä.",
+      "s1p3": "Lisätietoja saat napsauttamalla alla olevaa linkkiä.",
+      "action1": "Sulje",
+      "action2": "Lisätietoja",
+      "action3": "Kokeile ArcGIS StoryMapsia"
+    },
+    "storyTellerUserType": {
+      "notCreatorError": "Tiliäsi (%USER_NAME%) ei ole lisensoitu käyttämään perinteisiä tarinakarttojen luontitoimintoja. Pyydä organisaatiosi pääkäyttäjää määrittämään sinulle Creator-käyttäjätyyppi."
     }
   }
 });

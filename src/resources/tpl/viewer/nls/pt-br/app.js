@@ -1,4 +1,4 @@
-/* eslint quotes: ["error", "double"] */
+﻿/* eslint quotes: ["error", "double"] */
 /* nls files need to use double quotes */
 define({
   "viewer": {
@@ -37,7 +37,10 @@ define({
       "builderSupportIpad": "O construtor de Cascata do Mapa Histórico não é suportado no iPad. As histórias em cascata que você cria e compartilha funcionam no iPad.",
       "launchBuilder": "Inicie o construtor de Cascata",
       "notAgain": "Não mostrar isto novamente",
-      "sorry": "Atenção:"
+      "sorry": "Atenção:",
+      "nonOwnerOrgUrl": "O %TPL_NAME% que você está tentando acessar não se origina da URL fornecida.",
+      "nonOwnerOrgProceedToGeneric": "Prossiga para %HREF%",
+      "advanced": "Avançado"
     },
     "mobileWarning": {
       "message1": "Você leu a versão móvel desta história. Para a versão completa, com elementos de mídia mais eficientes, teste em um computador de desktop.",
@@ -129,7 +132,7 @@ define({
       "audioLabel": "Áudio:"
     },
     "licenseChange2018": {
-      "noAccess": "Sua conta (%USER_NAME%) não está licenciada para abrir um Mapa Histórico que não seja público. Solicite ao administrador da sua organização que lhe atribua um tipo de usuário que inclua os Mapas Históricos ou uma licença complementar dos Aplicativos Fundamentais."
+      "noAccess": "Sua conta (%USER_NAME%) não está licenciada para abrir um Mapa Histórico que não seja público. Solicite ao administrador da sua organização que lhe atribua um tipo de usuário que inclua Mapas Históricos ou uma licença complementar do Essential Apps."
     }
   }
 });

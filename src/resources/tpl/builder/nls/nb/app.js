@@ -1,4 +1,4 @@
-/* eslint quotes: ["error", "double"] */
+﻿/* eslint quotes: ["error", "double"] */
 /* strings files need to be double quotes */
 define({
   "builder": {
@@ -450,16 +450,16 @@ define({
       },
       "descriptions": {
         "httpAudioUnfixable": "Lyden støtter ikke HTTPS.  Fjern den fra fortellingen, eller erstatt den med en kobling.",
-        "httpAudioUncheckable": "Lyden har usikker (HTTP) URL. Klikk på knappen nedenfor for å bruke en HTTPS URL for denne lyden. Hvis det ikke fungerer, fjerner du lyden fra fortellingen eller erstatter den med en hyperkobling.",
+        "httpAudioUncheckable": "Lyden har usikker (HTTP) URL. Klikk på knappen nedenfor for å bruke en HTTPS URL for denne lyden. Hvis det ikke fungerer, fjerner du lyden fra historien eller erstatter den med en hyperkobling.",
         "httpAudioFixable": "Lyden har usikker (HTTP) URL. Klikk på knappen nedenfor for å bruke en sikker HTTPS URL for denne lyden.",
         "httpWebpageUnfixable": "Nettsiden støtter ikke HTTPS.  Fjern den fra fortellingen, eller erstatt den med et skjermbilde eller en kobling.",
-        "httpWebpageUncheckable": "Denne nettsiden har en usikker (HTTP) URL. Klikk på knappen nedenfor for å bruke en HTTPS URL for denne nettsiden. Hvis det ikke fungerer, fjerner du nettsiden fra fortellingen eller erstatter den med et skjermbilde eller en hyperkobling.",
+        "httpWebpageUncheckable": "Denne nettsiden har en usikker (HTTP) URL. Klikk på knappen nedenfor for å bruke en HTTPS URL for denne nettsiden. Hvis det ikke fungerer, fjerner du nettsiden fra historien eller erstatter den med et skjermbilde eller en hyperkobling.",
         "httpWebpageFixable": "Denne nettsiden har en usikker (HTTP) URL. Klikk på knappen nedenfor for å bruke en sikker HTTPS URL for denne nettsiden.",
         "httpVideoUnfixable": "Videoen støtter ikke HTTPS.  Fjern den fra fortellingen, eller erstatt den med et skjermbilde eller en kobling.",
-        "httpVideoUncheckable": "Denne lyden har en usikker (HTTP) URL. Klikk på knappen nedenfor for å bruke en HTTPS URL for denne videoen. Hvis det ikke fungerer, fjerner du videoen fra fortellingen eller erstatter den med et skjermbilde eller en hyperkobling.",
+        "httpVideoUncheckable": "Denne lyden har en usikker (HTTP) URL. Klikk på knappen nedenfor for å bruke en HTTPS URL for denne videoen. Hvis det ikke fungerer, fjerner du videoen fra historien eller erstatter den med et skjermbilde eller en hyperkobling.",
         "httpVideoFixable": "Denne lyden har en usikker (HTTP) URL. Klikk på knappen nedenfor for å bruke en sikker HTTPS URL for denne videoen.",
         "httpImageUnfixable": "Bildet støtter ikke HTTPS.  Fjern det fra fortellingen, eller erstatt det med en kobling.",
-        "httpImageUncheckable": "Dette bildet har en usikker (HTTP) URL. Klikk på knappen nedenfor for å bruke en HTTPS URL for dette bildet. Hvis det ikke fungerer, fjerner du bildet fra fortellingen eller erstatter den med en hyperkobling.",
+        "httpImageUncheckable": "Dette bildet har en usikker (HTTP) URL. Klikk på knappen nedenfor for å bruke en HTTPS URL for dette bildet. Hvis det ikke fungerer, fjerner du bildet fra historien eller erstatter det med en hyperkobling.",
         "httpImageFixable": "Dette bildet har en usikker (HTTP) URL. Klikk på knappen nedenfor for å bruke en sikker HTTPS URL for dette bildet.",
         "httpLayer": "Dette laget har en usikker (HTTP) URL.",
         "inaccessibleLogo": "Denne logoen er ikke tilgjengelig. Erstatt den med et annet bilde.",
@@ -469,13 +469,13 @@ define({
       },
       "tooltips": {
         "httpAudioFixable": "Klikk på knappen for å bruke en sikker HTTPS URL for denne lyden.",
-        "httpAudioUncheckable": "Prøv å bruke en HTTPS URL for denne lyden. Hvis det ikke fungerer, fjerner du lyden fra fortellingen eller erstatter den med en kobling.",
+        "httpAudioUncheckable": "Prøv å bruke en HTTPS URL for denne lyden. Hvis det ikke fungerer, fjerner du lyden fra historien eller erstatter den med en kobling.",
         "httpWebpageFixable": "Klikk på knappen for å bruke en sikker HTTPS URL for denne nettsiden.",
-        "httpWebpageUncheckable": "Prøv å bruke en HTTPS URL for denne nettsiden. Hvis det ikke fungerer, fjerner du nettsiden fra fortellingen eller erstatter den med et skjermbilde eller en kobling.",
+        "httpWebpageUncheckable": "Prøv å bruke en HTTPS URL for denne nettsiden. Hvis det ikke fungerer, fjerner du nettsiden fra historien eller erstatter den med et skjermbilde eller en kobling.",
         "httpVideoFixable": "Klikk på knappen for å bruke en sikker HTTPS URL for denne videoen.",
-        "httpVideoUncheckable": "Prøv å bruke en HTTPS URL for denne videoen. Hvis det ikke fungerer, fjerner du videoen fra fortellingen eller erstatter den med et skjermbilde eller en kobling.",
+        "httpVideoUncheckable": "Prøv å bruke en HTTPS URL for denne videoen. Hvis det ikke fungerer, fjerner du videoen fra historien eller erstatter den med et skjermbilde eller en kobling.",
         "httpImageFixable": "Klikk på knappen for å bruke en sikker HTTPS URL for dette bildet.",
-        "httpImageUncheckable": "Prøv å bruke en HTTPS URL for dette bildet. Hvis det ikke fungerer, fjerner du bildet fra fortellingen eller erstatter den med en kobling.",
+        "httpImageUncheckable": "Prøv å bruke en HTTPS URL for dette bildet. Hvis det ikke fungerer, fjerner du bildet fra historien eller erstatter det med en kobling.",
         "httpLayerMyMap": "Gå til elementsiden for kartet for å oppdatere dette laget til å bruke HTTPS. Hvis det ikke er mulig å oppdatere laget, fjerner du det fra kartet.",
         "httpLayerNotMyMap": "Lag en kopi av kartet, og oppdater laget til å bruke HTTPS. Hvis det ikke er mulig å oppdatere laget, fjerner du det fra kartet.",
         "clickLearnMore": "Klikk for mer informasjon"
@@ -574,6 +574,30 @@ define({
       "action2": "Kontroller mine fortellinger nå",
       "action3": "Mer informasjon",
       "floatingNotification": "Denne fortellingen inneholder usikkert innhold (HTTP). Se gjennom og rett opp i disse problemene."
+    },
+    "extendedSupportMessage": {
+      "bannerMsg": "Classic Esri Story Maps er i Extended Support-fase",
+      "s1h1": "Viktig informasjon om Classic Esri Story Maps",
+      "s1p1": "Classic Esri Story Maps-maler er i Extended Support-fase. All kunder oppfordres til å bruke ArcGIS StoryMaps, som er Esris gjeldende verktøy for historiefortelling.",
+      "s1p2": "Classic-malene blir ikke videreutviklet og anbefales ikke til nye prosjekter. Det er ingen planer om å oppdatere funksjonaliteten i disse malene. Historier som er opprette ved hjelp av Classic-malene, vil fortsatt være tilgjengelige.",
+      "s1p3": "I desember 2021 blir Classic-malene fjernet fra standardgalleriet for Configurable Apps. Du kan legge til én eller flere Classic-maler i organisasjonens egendefinerte gruppe for konfigurerbare apper dersom det er nødvendig for å støtte nåværende arbeidsflyter under overgangen til ArcGIS StoryMaps.",
+      "s1p4": "Klikk på Mer informasjon-koblingen nedenfor hvis du vil ha mer informasjon.",
+      "action1": "Lukk",
+      "action2": "Mer informasjon",
+      "action3": "Prøv ArcGIS StoryMaps"
+    },
+    "matureSupportMessage": {
+      "bannerMsg": "Classic Esri Story Maps er i Mature Support-fase",
+      "s1h1": "Viktig informasjon om Classic Esri Story Maps",
+      "s1p1": "Classic Esri Story Maps-maler er i Mature Support-fase. All kunder oppfordres til å bruke ArcGIS StoryMaps, som er Esris gjeldende verktøy for historiefortelling.",
+      "s1p2": "Classic-malene blir ikke videreutviklet og anbefales ikke til nye prosjekter. Det er ingen planer om å oppdatere funksjonaliteten i disse malene. Historier som er opprette ved hjelp av Classic-malene, vil fortsatt være tilgjengelige.",
+      "s1p3": "Klikk på Mer informasjon-koblingen nedenfor hvis du vil ha mer informasjon.",
+      "action1": "Lukk",
+      "action2": "Mer informasjon",
+      "action3": "Prøv ArcGIS StoryMaps"
+    },
+    "storyTellerUserType": {
+      "notCreatorError": "Kontoen (%USER_NAME%) har ikke lisens til å bruke byggeverktøyene for klassiske Story Maps. Be administratoren for organisasjonen om å tilordne Creator-brukertypen til deg."
     }
   }
 });

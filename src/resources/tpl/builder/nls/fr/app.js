@@ -1,4 +1,4 @@
-/* eslint quotes: ["error", "double"] */
+﻿/* eslint quotes: ["error", "double"] */
 /* strings files need to be double quotes */
 define({
   "builder": {
@@ -34,7 +34,7 @@ define({
         "logoLink": "Lien vers le logo",
         "logoUploadProgress": "Chargement du logo en cours",
         "logoUploadSuccess": "Chargement du logo réussi",
-        "logoUploadError": "Echec de chargement du logo, retour au logo ${ESRI}",
+        "logoUploadError": "Échec du chargement du logo, retour au logo ${ESRI}",
         "customHeaderText": "Balise",
         "taglineLinkDisabledTooltip": "Saisissez une balise pour activer le lien",
         "link": "Lien vers la balise",
@@ -310,8 +310,8 @@ define({
               "maxSize": "Maximum de 10 Mo par fichier."
             },
             "filterAndSort": {
-              "webmap": "Carte web",
-              "webscene": "Scène web",
+              "webmap": "Carte Web",
+              "webscene": "Scène Web",
               "image": "Image",
               "audio": "Audio",
               "date": "Date",
@@ -421,7 +421,7 @@ define({
         "webscene": "scène",
         "video": "&quot;1démarrage rapide&quot;2",
         "content": "contenu",
-        "webpage": "page web"
+        "webpage": "page Web"
       },
       "placeholders": {
         "generic": "Ce contenu n’est pas accessible.",
@@ -453,7 +453,7 @@ define({
         "httpAudioUncheckable": "L’URL de ce contenu audio n’est pas sécurisée (HTTP). Cliquez sur le bouton ci-dessous pour essayer d’utiliser une URL HTTPS pour ce contenu audio. Si cela ne fonctionne pas, supprimez le contenu audio de votre récit ou remplacez-le par un hyperlien.",
         "httpAudioFixable": "L’URL de ce contenu audio n’est pas sécurisée (HTTP). Cliquez sur le bouton ci-dessous pour utiliser une URL HTTPS sécurisée pour ce contenu audio.",
         "httpWebpageUnfixable": "Cette page web ne prend pas en charge HTTPS. Supprimez-la de votre récit ou remplacez-la par une capture d’écran ou par un lien.",
-        "httpWebpageUncheckable": "L’URL de cette page web n’est pas sécurisée (HTTP). Cliquez sur le bouton ci-dessous pour essayer d’utiliser une URL HTTPS pour cette page web. Si cela ne fonctionne pas, supprimez la page web de votre récit ou remplacez-la par une capture d'écran ou un hyperlien.",
+        "httpWebpageUncheckable": "L’URL de cette page web n’est pas sécurisée (HTTP). Cliquez sur le bouton ci-dessous pour essayer d’utiliser une URL HTTPS pour cette page web. Si cela ne fonctionne pas, supprimez la page Web de votre récit ou remplacez-la par une capture d’écran ou un hyperlien.",
         "httpWebpageFixable": "L’URL de cette page web n’est pas sécurisée (HTTP). Cliquez sur le bouton ci-dessous pour utiliser une URL HTTPS sécurisée pour cette page web.",
         "httpVideoUnfixable": "Cette vidéo ne prend pas en charge HTTPS. Supprimez-la de votre récit ou remplacez-la par une capture d’écran ou par un lien.",
         "httpVideoUncheckable": "L’URL de cette vidéo n’est pas sécurisée (HTTP). Cliquez sur le bouton ci-dessous pour essayer d’utiliser une URL HTTPS pour cette vidéo. Si cela ne fonctionne pas, supprimez la vidéo de votre récit ou remplacez-la par une capture d’écran ou un hyperlien.",
@@ -471,11 +471,11 @@ define({
         "httpAudioFixable": "Cliquez sur le bouton pour utiliser une URL HTTPS sécurisée pour ce contenu audio.",
         "httpAudioUncheckable": "Essayez d’utiliser une URL HTTPS pour ce contenu audio. Si cela ne fonctionne pas, supprimez le contenu audio de votre récit ou remplacez-le par un lien.",
         "httpWebpageFixable": "Cliquez sur le bouton pour utiliser une URL HTTPS sécurisée pour cette page web.",
-        "httpWebpageUncheckable": "Essayez d’utiliser une URL HTTPS pour cette page web. Si cela ne fonctionne pas, supprimez la page web de votre récit ou remplacez-la par une capture d'écran ou un lien.",
+        "httpWebpageUncheckable": "Essayez d’utiliser une URL HTTPS pour cette page web. Si cela ne fonctionne pas, supprimez la page Web de votre récit ou remplacez-la par une capture d’écran ou un lien.",
         "httpVideoFixable": "Cliquez sur le bouton pour utiliser une URL HTTPS sécurisée pour cette vidéo.",
         "httpVideoUncheckable": "Essayez d’utiliser une URL HTTPS pour cette vidéo. Si cela ne fonctionne pas, supprimez la vidéo de votre récit ou remplacez-la par une capture d’écran ou un lien.",
         "httpImageFixable": "Cliquez sur le bouton pour utiliser une URL HTTPS sécurisée pour cette image.",
-        "httpImageUncheckable": "Essayez d’utiliser une URL HTTPS pour cette image. Si cela ne fonctionne pas, supprimez l'image de votre récit ou remplacez-la par un lien.",
+        "httpImageUncheckable": "Essayez d’utiliser une URL HTTPS pour cette image. Si cela ne fonctionne pas, supprimez l’image de votre récit ou remplacez-la par un lien.",
         "httpLayerMyMap": "Visitez la page des éléments de la carte pour mettre à jour cette couche et faire en sorte qu’elle utilise HTTPS. S’il n’est pas possible de mettre à jour la couche, supprimez-la de la carte.",
         "httpLayerNotMyMap": "Effectuez une copie de la carte et mettez à jour cette couche pour faire en sorte qu’elle utilise HTTPS. S’il n’est pas possible de mettre à jour la couche, supprimez-la de la carte.",
         "clickLearnMore": "Cliquez pour en savoir plus."
@@ -530,7 +530,7 @@ define({
         "fixButtons": {
           "share": "Partager",
           "hide": "Masquer",
-          "authorize": "Autorisez",
+          "authorize": "Autoriser",
           "remove": "Supprimer",
           "help": "Obtenir de l'aide",
           "ignore": "Ignorer",
@@ -574,6 +574,30 @@ define({
       "action2": "Vérifier mes récits maintenant",
       "action3": "En savoir plus",
       "floatingNotification": "Ce récit comporte du contenu non sécurisé (HTTP). Veuillez examiner et résoudre ces problèmes."
+    },
+    "extendedSupportMessage": {
+      "bannerMsg": "Esri Story Maps Classic est en support étendu",
+      "s1h1": "Message important sur Esri Story Maps Classic",
+      "s1p1": "Les modèles Esri Story Maps Classic sont en support étendu. Nous encourageons tous les clients à utiliser ArcGIS StoryMaps, l’outil de narration actuel d’Esri.",
+      "s1p2": "Les modèles classiques ne sont plus en phase de développement actif et sont, à ce titre, déconseillés pour une utilisation dans de nouveaux projets. Aucune mise à jour des fonctionnalités n’est prévue. Les récits que vous avez créés à l’aide des modèles classiques restent disponibles.",
+      "s1p3": "En décembre 2021, les modèles classiques seront supprimés de la bibliothèque des applications configurables par défaut. Il est possible d’ajouter un ou plusieurs modèles classiques au groupe d’applications configurables personnalisées de votre organisation, si nécessaire, pour prendre en charge les workflows actuels en attendant votre passage définitif à ArcGIS StoryMaps.",
+      "s1p4": "Pour plus d’informations, cliquez sur le lien En savoir plus ci-dessous.",
+      "action1": "Fermer",
+      "action2": "En savoir plus",
+      "action3": "Essayer ArcGIS StoryMaps"
+    },
+    "matureSupportMessage": {
+      "bannerMsg": "Esri Story Maps Classic est en support mature",
+      "s1h1": "Message important sur Esri Story Maps Classic",
+      "s1p1": "Les modèles Esri Story Maps Classic sont en support mature. Nous encourageons tous les clients à utiliser ArcGIS StoryMaps, l’outil de narration actuel d’Esri.",
+      "s1p2": "Les modèles classiques ne sont plus en phase de développement actif et sont, à ce titre, déconseillés pour une utilisation dans de nouveaux projets. Aucune mise à jour des fonctionnalités n’est prévue. Les récits que vous avez créés à l’aide des modèles classiques restent disponibles.",
+      "s1p3": "Pour plus d’informations, cliquez sur le lien En savoir plus ci-dessous.",
+      "action1": "Fermer",
+      "action2": "En savoir plus",
+      "action3": "Essayer ArcGIS StoryMaps"
+    },
+    "storyTellerUserType": {
+      "notCreatorError": "La licence de votre compte (%USER_NAME%) ne permet pas d’utiliser les générateurs de story maps classiques. Demandez à l’administrateur de votre organisation de vous attribuer le type d’utilisateur Creator."
     }
   }
 });

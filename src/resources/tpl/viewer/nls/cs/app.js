@@ -1,4 +1,4 @@
-/* eslint quotes: ["error", "double"] */
+﻿/* eslint quotes: ["error", "double"] */
 /* nls files need to use double quotes */
 define({
   "viewer": {
@@ -37,7 +37,10 @@ define({
       "builderSupportIpad": "Nástroj pro tvorbu kaskádové mapy s příběhem není na iPadu podporován. Vytvořené a sdílené kaskádové příběhy budou na iPadu fungovat.",
       "launchBuilder": "Spustit nástroj pro tvorbu kaskádové mapy",
       "notAgain": "Toto dialogové okno příště nezobrazovat",
-      "sorry": "Upozornění:"
+      "sorry": "Upozornění:",
+      "nonOwnerOrgUrl": "%TPL_NAME%, kam se snažíte získat přístup, nepochází z adresy URL, kterou jste zadali.",
+      "nonOwnerOrgProceedToGeneric": "Pokračujte na %HREF%",
+      "advanced": "Pokročilé"
     },
     "mobileWarning": {
       "message1": "Četli jste mobilní verzi tohoto příběhu. Pro plnou verzi s bohatšími mediálními prvky ho vyzkoušejte na stolním počítači.",
@@ -64,9 +67,9 @@ define({
       "tooltipAutoplayDisabled": "Není k dispozici v režimu automatického přehrávání."
     },
     "shareFromCommon": {
-      "copy": "Kopírovat (Copy)",
+      "copy": "Kopírovat",
       "copied": "Zkopírováno",
-      "open": "Otevřeno",
+      "open": "Otevřít",
       "embed": "Vložit do webové stránky",
       "embedExplain": "Chcete-li příběh vložit do webové stránky, použijte následující kód HTML.",
       "size": "Velikost (šířka/výška):",

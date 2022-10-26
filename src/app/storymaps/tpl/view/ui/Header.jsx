@@ -130,7 +130,7 @@ export default class Header {
 
   setLogo(container, headerCfg) {
     return new Promise((resolve, reject) => {
-      if (! headerCfg.logoEnabled || ! headerCfg.logoURL || headerCfg.logoURL == 'NO_LOGO') {
+      if (! headerCfg.logoEnabled || ! headerCfg.logoURL || headerCfg.logoURL == 'NO_LOGO' || headerCfg.logoURL == 'resources/tpl/viewer/icons/esri-logo.png') {
         container.find('.logoImg').hide();
         //resizeLinkContainer(container);
         reject();

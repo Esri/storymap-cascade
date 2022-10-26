@@ -113,6 +113,12 @@ export default class TabWebMap extends TabArcGIS {
     let layersButton = this._node.find('.config-item[data-type="reset"][data-value="layers"]');
 
     let layers = ArcgisUtils.getLayerList(this.map);
+    // this is working around a bug in the jsapi function as of 3.31
+    layers.forEach((lyr) => {
+      if (lyr.visibility === undefined) {
+        lyr.visibility = true;
+      }
+    });
 
     // loop through and set visibility to the overrides
     if (this._media.layers) {

@@ -1,4 +1,4 @@
-/* eslint quotes: ["error", "double"] */
+﻿/* eslint quotes: ["error", "double"] */
 /* strings files need to be double quotes */
 define({
   "builder": {
@@ -179,7 +179,7 @@ define({
         "providers": {
           "searchingFor": "\"${searchterm}” aranıyor...",
           "searchedFor": "\"${searchterm}” için arama sonuçları",
-          "albumsOf": "${Username} adlı kişinin albümleri",
+          "albumsOf": "${username} adlı kişinin albümleri",
           "noPhotosFound": "Aramanızla eşleşen fotoğraf yok. Yeniden deneyin.",
           "noItemsFound": "Aramanızla eşleşen öge yok. Yeniden deneyin.",
           "noItemsInThisStory": "Bu hikayeye henüz herhangi bir ArcGIS içeriği eklenmedi.",
@@ -255,7 +255,7 @@ define({
             "placeholder": "E-posta veya ${Picasa}/${Google+} Kimliği",
             "helpText": "Hikayenize ${Picasa} veya ${Google+} uygulamasına yüklenmiş olan fotoğraflar ekleyebilirsiniz. Hikayelerinizde ${Google} hesabınızda saklanan görüntüleri kullanma hakkında bilgi edinmek için bkz. ${helpLinkText}.",
             "helpLinkText": "Daha fazla bilgi",
-            "cannotFindUser": "${Username} kullanıcısı bulunamıyor. Lütfen yeniden deneyin."
+            "cannotFindUser": "${username} kullanıcısı bulunamıyor. Lütfen yeniden deneyin."
           },
           "unsplash": {
             "placeholder": "Fotoğraf arayın",
@@ -450,16 +450,16 @@ define({
       },
       "descriptions": {
         "httpAudioUnfixable": "Bu ses dosyası HTTPS'yi desteklemiyor. Hikayenizden kaldırın veya bir bağlantıyla değiştirin.",
-        "httpAudioUncheckable": "Bu ses dosyasının URL'si güvenli değil (HTTP). Bu ses dosyasında bir HTTPS URL'si kullanmak için aşağıdaki düğmeye tıklayın. Bu işe yaramazsa, ses dosyasını hikayenizden kaldırın veya bir köprü bağlantısı ile değiştirin.",
+        "httpAudioUncheckable": "Bu ses dosyasının URL'si güvenli değil (HTTP). Bu ses dosyasında bir HTTPS URL'si kullanmak için aşağıdaki düğmeye tıklayın. Bu işe yaramazsa, ses dosyasını hikâyenizden kaldırın veya yerine bir köprü bağlantısı koyun.",
         "httpAudioFixable": "Bu ses dosyasının URL'si güvenli değil (HTTP). Bu ses dosyasında güvenli bir HTTPS URL'si kullanmak için aşağıdaki düğmeye tıklayın.",
         "httpWebpageUnfixable": "Bu web sayfası HTTPS'yi desteklemiyor. Hikayenizden kaldırın veya bir ekran görüntüsü veya bağlantıyla değiştirin.",
-        "httpWebpageUncheckable": "Bu web sayfasının URL'si güvenli değil (HTTP). Bu web sayfasında bir HTTPS URL'si kullanmak için aşağıdaki düğmeye tıklayın. Bu işe yaramazsa, web sayfasını hikayenizden kaldırın veya bir ekran görüntüsü ya da köprü bağlantısı ile değiştirin.",
+        "httpWebpageUncheckable": "Bu web sayfasının URL'si güvenli değil (HTTP). Bu web sayfasında bir HTTPS URL'si kullanmak için aşağıdaki düğmeye tıklayın. Bu işe yaramazsa, web sayfasını hikâyenizden kaldırın veya yerine bir ekran görüntüsü ya da köprü bağlantısı koyun.",
         "httpWebpageFixable": "Bu web sayfasının URL'si güvenli değil (HTTP). Bu web sayfasında güvenli HTTPS URL'si kullanmak için aşağıdaki düğmeye tıklayın.",
         "httpVideoUnfixable": "Bu video HTTPS'yi desteklemiyor. Hikayenizden kaldırın veya bir ekran görüntüsü veya bağlantıyla değiştirin.",
-        "httpVideoUncheckable": "Bu videonun URL'si güvenli değil (HTTP). Bu videoda bir HTTPS URL'si kullanmak için aşağıdaki düğmeye tıklayın. Bu işe yaramazsa, videoyu hikayenizden kaldırın veya bir ekran görüntüsü ya da köprü bağlantısı ile değiştirin.",
+        "httpVideoUncheckable": "Bu videonun URL'si güvenli değil (HTTP). Bu videoda bir HTTPS URL'si kullanmak için aşağıdaki düğmeye tıklayın. Bu işe yaramazsa, videoyu hikâyenizden kaldırın veya yerine bir ekran görüntüsü ya da köprü bağlantısı koyun.",
         "httpVideoFixable": "Bu videonun URL'si güvenli değil (HTTP). Bu videoda güvenli bir HTTPS URL'si kullanmak için aşağıdaki düğmeye tıklayın.",
         "httpImageUnfixable": "Bu görüntü HTTPS'yi desteklemiyor. Hikayenizden kaldırın veya bir bağlantıyla değiştirin.",
-        "httpImageUncheckable": "Bu görüntünün URL'si güvenli değil (HTTP). Bu görüntüde bir HTTPS URL'si kullanmak için aşağıdaki düğmeye tıklayın. Bu işe yaramazsa, görüntüyü hikayenizden kaldırın veya bir köprü bağlantısı ile değiştirin.",
+        "httpImageUncheckable": "Bu görüntünün URL'si güvenli değil (HTTP). Bu görüntüde bir HTTPS URL'si kullanmak için aşağıdaki düğmeye tıklayın. Bu işe yaramazsa, görüntüyü hikâyenizden kaldırın veya yerine bir köprü bağlantısı koyun.",
         "httpImageFixable": "Bu görüntünün URL'si güvenli değil (HTTP). Bu görüntüde güvenli bir HTTPS URL'si kullanmak için aşağıdaki düğmeye tıklayın.",
         "httpLayer": "Bu katmanın URL'si güvenli değil (HTTP).",
         "inaccessibleLogo": "Bu logo erişilebilir değil. Başka bir görüntüyle değiştirin.",
@@ -469,13 +469,13 @@ define({
       },
       "tooltips": {
         "httpAudioFixable": "Bu ses dosyasında güvenli HTTPS URL'si kullanmak için düğmeye tıklayın.",
-        "httpAudioUncheckable": "Bu ses dosyasında bir HTTPS URL'si kullanmayı deneyin. Bu işe yaramazsa, ses dosyasını hikayenizden kaldırın veya bir bağlantı ile değiştirin.",
+        "httpAudioUncheckable": "Bu ses dosyasında bir HTTPS URL'si kullanmayı deneyin. Bu işe yaramazsa, ses dosyasını hikâyenizden kaldırın veya yerine bir bağlantı koyun.",
         "httpWebpageFixable": "Bu web sayfasında güvenli HTTPS URL'si kullanmak için düğmeye tıklayın.",
-        "httpWebpageUncheckable": "Bu web sayfasında bir HTTPS URL'si kullanmayı deneyin. Bu işe yaramazsa, web sayfasını hikayenizden kaldırın veya bir ekran görüntüsü ya da bağlantı ile değiştirin.",
+        "httpWebpageUncheckable": "Bu web sayfasında bir HTTPS URL'si kullanmayı deneyin. Bu işe yaramazsa, web sayfasını hikâyenizden kaldırın veya yerine bir ekran görüntüsü ya da bağlantı koyun.",
         "httpVideoFixable": "Bu videoda güvenli HTTPS URL'si kullanmak için düğmeye tıklayın.",
-        "httpVideoUncheckable": "Bu videoda bir HTTPS URL'si kullanmayı deneyin. Bu işe yaramazsa, videoyu hikayenizden kaldırın veya bir ekran görüntüsü ya da bağlantı ile değiştirin.",
+        "httpVideoUncheckable": "Bu videoda bir HTTPS URL'si kullanmayı deneyin. Bu işe yaramazsa, videoyu hikâyenizden kaldırın veya yerine bir ekran görüntüsü ya da bağlantı koyun.",
         "httpImageFixable": "Bu görüntüde güvenli HTTPS URL'si kullanmak için düğmeye tıklayın.",
-        "httpImageUncheckable": "Bu görüntüde bir HTTPS URL'si kullanmayı deneyin. Bu işe yaramazsa, görüntüyü hikayenizden kaldırın veya bir bağlantı ile değiştirin.",
+        "httpImageUncheckable": "Bu görüntüde bir HTTPS URL'si kullanmayı deneyin. Bu işe yaramazsa, görüntüyü hikâyenizden kaldırın veya yerine bir bağlantı koyun.",
         "httpLayerMyMap": "HTTPS kullanmak amacıyla bu katmanı güncellemek için haritanın öğe sayfasını ziyaret edin. Katman güncellenemiyorsa, haritadan kaldırın.",
         "httpLayerNotMyMap": "Haritanın bir kopyasını alın ve HTTPS kullanmak için bu katmanı güncelleyin. Katman güncellenemiyorsa, haritadan kaldırın.",
         "clickLearnMore": "Daha fazla öğrenmek için tıklayın."
@@ -574,6 +574,30 @@ define({
       "action2": "Hikayelerimi şimdi kontrol et",
       "action3": "Daha fazla bilgi",
       "floatingNotification": "Bu hikaye güvenli olmayan (HTTP) içerik içeriyor. Lütfen inceleyin ve bu sorunları ele alın."
+    },
+    "extendedSupportMessage": {
+      "bannerMsg": "Klasik Esri Story Maps Genişletilmiş Destekte",
+      "s1h1": "Klasik Esri Story Maps hakkında önemli mesaj",
+      "s1p1": "Klasik Esri Story Maps şablonları Genişletilmiş Destekte Tüm müşterilerimiz, Esri'nin güncel hikaye anlatım aracı olan ArcGIS StoryMaps'i kullanmaya teşvik edilmektedir.",
+      "s1p2": "Klasik şablonlar artık aktif geliştirme aşamasında değildir ve yeni projeler için tavsiye edilmemektedirler. Yetenekleri için yeni güncellemeler planlanmamıştır. Klasik şablonları kullanarak oluşturduğunuz hikayeler kullanılabilir olmaya devam edecektir.",
+      "s1p3": "2021'in Aralık ayında klasik şablonlar, varsayılan yapılandırılabilir uygulamalar galerisinden kaldırılacaktır. ArcGIS StoryMaps'i kullanmaya geçişiniz sırasında mevcut iş akışlarını desteklemek için gerekirse, kuruluşunuzun özel yapılandırılabilir uygulamalar grubuna bir veya daha fazla klasik şablon eklenebilir.",
+      "s1p4": "Daha fazla bilgi için aşağıdaki daha fazla öğren bağlantısına tıklayın.",
+      "action1": "Kapat",
+      "action2": "Daha fazla bilgi edinin",
+      "action3": "ArcGIS StoryMaps'i deneyin"
+    },
+    "matureSupportMessage": {
+      "bannerMsg": "Klasik Esri Story Maps Gelişmiş Destekte",
+      "s1h1": "Klasik Esri Story Maps hakkında önemli mesaj",
+      "s1p1": "Klasik Esri Story Maps şablonları Gelişmiş Destekte Tüm müşterilerimiz, Esri'nin güncel hikaye anlatım aracı olan ArcGIS StoryMaps'i kullanmaya teşvik edilmektedir.",
+      "s1p2": "Klasik şablonlar artık aktif geliştirme aşamasında değildir ve yeni projeler için tavsiye edilmemektedirler. Yetenekleri için yeni güncellemeler planlanmamıştır. Klasik şablonları kullanarak oluşturduğunuz hikayeler kullanılabilir olmaya devam edecektir.",
+      "s1p3": "Daha fazla bilgi için aşağıdaki daha fazla öğren bağlantısına tıklayın.",
+      "action1": "Kapat",
+      "action2": "Daha fazla bilgi edinin",
+      "action3": "ArcGIS StoryMaps'i deneyin"
+    },
+    "storyTellerUserType": {
+      "notCreatorError": "Hesabınızın (%USER_NAME%) klasik story map oluşturucularını kullanma yetkisi yok. Kuruluşunuzun yöneticisinden size bir Creator kullanıcı türü atamasını isteyin."
     }
   }
 });

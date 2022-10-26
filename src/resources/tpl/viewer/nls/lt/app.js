@@ -1,4 +1,4 @@
-/* eslint quotes: ["error", "double"] */
+﻿/* eslint quotes: ["error", "double"] */
 /* nls files need to use double quotes */
 define({
   "viewer": {
@@ -12,7 +12,7 @@ define({
       "configNotFound": "Nurodytos konfigūracijos rasti arba įkelti nepavyko dėl JSON sintaksės klaidos.",
       "boxTitle": "Įvyko klaida",
       "servedFromFile": "Aplikacija turi būti pasiekiama per internetinį serverį. Daugiau informacijos rasite ${USER_GUIDE}.",
-      "userGuide": "vartotojo vadove",
+      "userGuide": "naudotojo vadove",
       "invalidConfig": "Neteisinga konfigūracija",
       "invalidConfigNoApp": "Interneto žemėlapių aplikacijos identifikatorius nenurodytas index.html.",
       "invalidConfigNoAppDev": "URL parametruose (?appid=) nenurodytas interneto žemėlapių aplikacijos identifikatorius. Veikiant programavimo režimu, appid konfigūracija index.html ignoruojama.",
@@ -37,7 +37,10 @@ define({
       "builderSupportIpad": "Besitęsiančių žemėlapių pasakojimų kūrimo priemonė nepalaikoma naudojant iPad. Tačiau jūsų sukurtos ir bendrinamos aplikacijos šiuose įrenginiuose veiks.",
       "launchBuilder": "Paleiskite besitęsiančių žemėlapių pasakojimų kūrimo priemonę",
       "notAgain": "Daugiau nerodyti",
-      "sorry": "Dėmesio!"
+      "sorry": "Dėmesio!",
+      "nonOwnerOrgUrl": "Aplikacija %TPL_NAME%, kurią bandote pasiekti, nėra pasiekiama naudojant jūsų nurodytą URL.",
+      "nonOwnerOrgProceedToGeneric": "Tęskite %HREF%",
+      "advanced": "Kiti parametrai"
     },
     "mobileWarning": {
       "message1": "Jūs peržiūrėjote mobiliąją šio pasakojimo versiją. Norėdami pamatyti daugiau medijos elementų, atsidarykite ją kompiuteryje.",
@@ -129,7 +132,7 @@ define({
       "audioLabel": "Garso įrašas:"
     },
     "licenseChange2018": {
-      "noAccess": "Jūsų paskyra (%USER_NAME%) nelicencijuota atverti ne viešą žemėlapio pasakojimą. Kreipkitės į organizacijos administratorių, kad paskirtų jums vartotojo tipą, kuris turi žemėlapio pasakojimus, arba suteiktų jums papildomą svarbiausių aplikacijų licenciją."
+      "noAccess": "Jūsų paskyra (%USER_NAME%) nelicencijuota atverti ne viešą žemėlapio pasakojimą. Kreipkitės į organizacijos administratorių, kad paskirtų jums naudotojo tipą, kuris turi žemėlapių pasakojimus, arba suteiktų jums papildomą svarbiausių aplikacijų licenciją."
     }
   }
 });

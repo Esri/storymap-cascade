@@ -1,4 +1,4 @@
-/* eslint quotes: ["error", "double"] */
+﻿/* eslint quotes: ["error", "double"] */
 /* nls files need to use double quotes */
 define({
   "viewer": {
@@ -37,7 +37,10 @@ define({
       "builderSupportIpad": "Story Map Cascade-builder wordt niet ondersteund op de iPad. Cascade-verhalen die u maakt en deelt werken op de iPad.",
       "launchBuilder": "Cascade builder starten",
       "notAgain": "Dit niet meer tonen",
-      "sorry": "Let op:"
+      "sorry": "Let op:",
+      "nonOwnerOrgUrl": "De %TPL_NAME% die u probeert te openen is niet afkomstig van de URL die u hebt ingevoerd.",
+      "nonOwnerOrgProceedToGeneric": "Ga door naar %HREF%",
+      "advanced": "Geavanceerd"
     },
     "mobileWarning": {
       "message1": "U hebt de mobiele versie van dit verhaal gelezen. Lees de volledige versie, met rijkere media-elementen, op een desktopcomputer.",
@@ -129,7 +132,7 @@ define({
       "audioLabel": "Audio:"
     },
     "licenseChange2018": {
-      "noAccess": "Uw account  (%USER_NAME%) heeft geen licentie om een Story Map te openen die niet openbaar is. Vraag uw organisatiebeheerder om u een gebruikerstype toe te wijzen die Sory Maps of een add-on Essential Apps-licentie bevat."
+      "noAccess": "Uw account (%USER_NAME%) heeft geen licentie om een StoryMap te openen die niet openbaar is. Vraag uw organisatiebeheerder om u een gebruikerstype toe te wijzen die Story Maps of een add-on Essential Apps-licentie bevat."
     }
   }
 });

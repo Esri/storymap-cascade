@@ -1,4 +1,4 @@
-/* eslint quotes: ["error", "double"] */
+﻿/* eslint quotes: ["error", "double"] */
 /* strings files need to be double quotes */
 define({
   "builder": {
@@ -450,16 +450,16 @@ define({
       },
       "descriptions": {
         "httpAudioUnfixable": "Ta zvočni zapis ne podpira HTTPS. Odstranite ga iz vaše zgodbe ali ga nadomestite s povezavo.",
-        "httpAudioUncheckable": "Ta zvočni zapis ima nezavarovan (HTTP) URL.Kliknite spodnji gumb in poskusite uporabiti HTTPS URL za ta zvočni zapis. Če to ne deluje, zvočni zapis odstranite iz svoje zgodbe ali ga zamenjajte s hiperpovezavo.",
+        "httpAudioUncheckable": "Ta zvočni zapis ima nezavarovan (HTTP) URL. Kliknite spodnji gumb in poskusite uporabiti HTTPS URL za ta zvočni zapis. Če to ne deluje, zvočni zapis odstranite iz svoje zgodbe ali ga zamenjajte s hiperpovezavo.",
         "httpAudioFixable": "Ta zvočni zapis ima nezavarovan (HTTP) URL.Kliknite spodnji gumb za uporabo zavarovanega HTTPS URL za ta zvočni zapis.",
         "httpWebpageUnfixable": "Ta spletna stran ne podpira HTTPS. Odstranite jo iz vaše zgodbe ali jo nadomestite s posnetkom zaslona ali povezavo.",
-        "httpWebpageUncheckable": "Ta spletna stran ima nezavarovan (HTTP) URL.Kliknite spodnji gumb in poskusite uporabiti HTTPS URL za to spletno stran. Če to ne deluje, spletno stran odstranite iz svoje zgodbe ali jo zamenjajte s posnetkom zaslona ali hiperpovezavo.",
+        "httpWebpageUncheckable": "Ta spletna stran ima nezavarovan (HTTP) URL. Kliknite spodnji gumb in poskusite uporabiti HTTPS URL za to spletno stran. Če to ne deluje, spletno stran odstranite iz svoje zgodbe ali jo zamenjajte s posnetkom zaslona ali hiperpovezavo.",
         "httpWebpageFixable": "Ta spletna stran ima nezavarovan (HTTP) URL.Kliknite spodnji gumb za uporabo zavarovanega HTTPS URL za to spletno stran.",
         "httpVideoUnfixable": "Ta video ne podpira HTTPS. Odstranite ga iz vaše zgodbe ali ga nadomestite s posnetkom zaslona ali povezavo.",
-        "httpVideoUncheckable": "Ta video ima nezavarovan (HTTP) URL.Kliknite spodnji gumb in poskusite uporabiti HTTPS URL za ta video. Če to ne deluje, video odstranite iz svoje zgodbe ali ga zamenjajte s posnetkom zaslona ali hiperpovezavo.",
+        "httpVideoUncheckable": "Ta video ima nezavarovan (HTTP) URL. Kliknite spodnji gumb in poskusite uporabiti HTTPS URL za ta video. Če to ne deluje, video odstranite iz svoje zgodbe ali ga zamenjajte s posnetkom zaslona ali hiperpovezavo.",
         "httpVideoFixable": "Ta video ima nezavarovan (HTTP) URL.Kliknite spodnji gumb za uporabo zavarovanega HTTPS URL za ta video.",
         "httpImageUnfixable": "Ta slika ne podpira HTTPS. Odstranite jo iz vaše zgodbe ali jo nadomestite s povezavo.",
-        "httpImageUncheckable": "Ta slika ima nezavarovan (HTTP) URL.Kliknite spodnji gumb in poskusite uporabiti HTTPS URL za to sliko. Če to ne deluje, sliko odstranite iz svoje zgodbe ali jo zamenjajte s hiperpovezavo.",
+        "httpImageUncheckable": "Ta slika ima nezavarovan (HTTP) URL. Kliknite spodnji gumb in poskusite uporabiti HTTPS URL za to sliko. Če to ne deluje, sliko odstranite iz svoje zgodbe ali jo zamenjajte s hiperpovezavo.",
         "httpImageFixable": "Ta slika ima nezavarovan (HTTP) URL.Kliknite spodnji gumb za uporabo zavarovanega HTTPS URL za to sliko.",
         "httpLayer": "Ta sloj ima negotov (HTTP) URL.",
         "inaccessibleLogo": "Do tega logotipa ni mogoče dostopati. Zamenjajte ga z drugo sliko.",
@@ -574,6 +574,30 @@ define({
       "action2": "Preveri moje zgodbe zdaj",
       "action3": "Izvedi več",
       "floatingNotification": "Ta zgodba vsebuje negotovo (HTTP) vsebino. Preglejte in obravnavajte te težave."
+    },
+    "extendedSupportMessage": {
+      "bannerMsg": "Klasične karte z zgodbo Esri so v načinu Razširjene podpore",
+      "s1h1": "Pomembno sporočilo o klasičnih kartah z zgodbo Esri",
+      "s1p1": "Predloge klasičnih kart z zgodbo Esri so v načinu Razširjene podpore. Strankam priporočamo uporabo ArcGIS StoryMaps, Esrijevega orodja nove generacije za pripovedovanje zgodb.",
+      "s1p2": "Klasične predloge niso več v aktivnem razvoju in niso priporočljive za nove projekte. Posodobitve njihovih zmožnosti niso več načrtovane. Zgodbe, ki ste jih ustvarili s klasičnimi predlogami bodo še naprej na voljo.",
+      "s1p3": "V decembru 2021 bodo klasične predloge odstranjene iz galerije privzetih konfigurabilnih aplikacij. Ena ali več klasičnih predlog bo lahko dodanih v skupino vaše organizacije s konfigurabilnimi aplikacijami po meri, če bodo potrebne za podporo trenutnim delovnim postopkom med prehodom na uporabo ArcGIS StoryMaps.",
+      "s1p4": "Za več informacij kliknite na spodnjo povezavo \"izvedite več\".",
+      "action1": "Zapri",
+      "action2": "Več",
+      "action3": "Preskusite ArcGIS StoryMaps"
+    },
+    "matureSupportMessage": {
+      "bannerMsg": "Klasične karte z zgodbo Esri so v načinu za zrele izdelke",
+      "s1h1": "Pomembno sporočilo o klasičnih kartah z zgodbo Esri",
+      "s1p1": "Predloge klasičnih kart z zgodbo Esri so v načinu za zrele izdelke. Strankam priporočamo uporabo ArcGIS StoryMaps, Esrijevega orodja nove generacije za pripovedovanje zgodb.",
+      "s1p2": "Klasične predloge niso več v aktivnem razvoju in niso priporočljive za nove projekte. Posodobitve njihovih zmožnosti niso več načrtovane. Zgodbe, ki ste jih ustvarili s klasičnimi predlogami bodo še naprej na voljo.",
+      "s1p3": "Za več informacij kliknite na spodnjo povezavo \"izvedite več\".",
+      "action1": "Zapri",
+      "action2": "Več",
+      "action3": "Preskusite ArcGIS StoryMaps"
+    },
+    "storyTellerUserType": {
+      "notCreatorError": "Vaš račun (%USER_NAME%) nima licence za uporabo graditeljev klasičnih kart z zgodbo. Prosite skrbnika svoje organizacije, da vam dodeli vrsto uporabnika Ustvarjalec."
     }
   }
 });

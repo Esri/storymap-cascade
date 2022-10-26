@@ -1,4 +1,4 @@
-/* eslint quotes: ["error", "double"] */
+﻿/* eslint quotes: ["error", "double"] */
 /* strings files need to be double quotes */
 define({
   "builder": {
@@ -125,7 +125,7 @@ define({
         "on": "Ein",
         "muted": "Stummgeschaltet",
         "volumeAside": "Das Video wird automatisch angezeigt, wenn ein Leser diese Ansicht erreicht hat. Wenn Sie den Ton stummschalten, kann er vom Leser nicht aktiviert werden.",
-        "view": "Sicht",
+        "view": "Ansicht",
         "resetLocation": "Position zurücksetzen",
         "resetLayers": "Layer zurücksetzen",
         "clearPopup": "Pop-up löschen",
@@ -242,7 +242,7 @@ define({
               "inaccessible": "Die Datei, die Sie hinzufügen möchten, fehlt oder es kann nicht darauf zugegriffen werden.",
               "tryAgain": "Überprüfen Sie die Adresse, und versuchen Sie es erneut.",
               "mediaTypes": {
-                "VIDEO": "Videosammlung",
+                "VIDEO": "Video",
                 "IMAGE": "Bild",
                 "generic": "Medien"
               }
@@ -260,7 +260,7 @@ define({
           "unsplash": {
             "placeholder": "Fotos suchen",
             "aboutText": "${Unsplash} ist eine kuratierte Sammlung kostenloser, qualitativ hochwertiger Fotos.",
-            "copyrightText": "Alle Fotos sind unter der ${Unsplash}-Lizenz lizenziert. Weitere Informationen finden Sie unter ${moreInfoLink}.",
+            "copyrightText": "Alle Fotos sind unter der ${Unsplash}-Lizenz lizenziert. Weitere Informationen finden Sie ${moreInfoLink}.",
             "moreInfoLink": "hier"
           },
           "flickr": {
@@ -299,7 +299,7 @@ define({
             },
             "createContent": {
               "createNewMap": "Eine neue Karte erstellen",
-              "or": "OR",
+              "or": "ODER",
               "dragAndDropImage": "Bilder ablegen",
               "dragAndDropImageAudio": "Bilder oder Audio ablegen",
               "uploadButton": "Durchsuchen",
@@ -318,7 +318,7 @@ define({
               "sortByDate": "Nach Datum sortieren",
               "title": "Titel",
               "sortByTitle": "Nach Titel sortieren",
-              "views": "Ansichten",
+              "views": "Aufrufe",
               "search": "Nach Schlagwort oder ID suchen"
             }
           }
@@ -419,7 +419,7 @@ define({
         "audio": "Audio",
         "webmap": "Karte",
         "webscene": "Szene",
-        "video": "Videosammlung",
+        "video": "Video",
         "content": "Inhalt",
         "webpage": "Webseite"
       },
@@ -450,16 +450,16 @@ define({
       },
       "descriptions": {
         "httpAudioUnfixable": "Dieses Audio unterstützt HTTPS nicht. Entfernen Sie es aus der Story, oder ersetzen Sie es durch einen Link.",
-        "httpAudioUncheckable": "Dieses Audio hat eine unsichere URL (HTTP). Klicken Sie auf die unten stehende Schaltfläche, um für dieses Audio eine sichere HTTPS-URL zu verwenden. Falls dies nicht funktioniert, entfernen Sie das Audio aus der Story oder ersetzen Sie es durch einen Hyperlink.",
+        "httpAudioUncheckable": "Dieses Audio hat eine unsichere URL (HTTP). Klicken Sie auf die unten stehende Schaltfläche, um für dieses Audio eine sichere HTTPS-URL zu verwenden. Falls dies nicht funktioniert, entfernen Sie das Audio aus der Story, oder ersetzen Sie es durch einen Hyperlink.",
         "httpAudioFixable": "Dieses Audio hat eine unsichere URL (HTTP). Klicken Sie auf die unten stehende Schaltfläche, um für dieses Audio eine sichere HTTPS-URL zu verwenden.",
         "httpWebpageUnfixable": "Diese Webseite unterstützt HTTPS nicht. Entfernen Sie sie aus der Story, oder ersetzen Sie sie durch einen Screenshot oder Link.",
-        "httpWebpageUncheckable": "Diese Webseite hat eine unsichere URL (HTTP). Klicken Sie auf die unten stehende Schaltfläche, um für diese Webseite eine sichere HTTPS-URL zu verwenden. Falls dies nicht funktioniert, entfernen Sie die Webseite aus der Story oder ersetzen Sie sie durch einen Screenshot oder Hyperlink.",
+        "httpWebpageUncheckable": "Diese Webseite hat eine unsichere URL (HTTP). Klicken Sie auf die unten stehende Schaltfläche, um für diese Webseite eine sichere HTTPS-URL zu verwenden. Falls dies nicht funktioniert, entfernen Sie die Webseite aus der Story, oder ersetzen Sie sie durch einen Screenshot oder Hyperlink.",
         "httpWebpageFixable": "Diese Webseite hat eine unsichere URL (HTTP). Klicken Sie auf die unten stehende Schaltfläche, um für diese Webseite eine sichere HTTPS-URL zu verwenden.",
         "httpVideoUnfixable": "Dieses Video unterstützt HTTPS nicht. Entfernen Sie es aus der Story, oder ersetzen Sie es durch einen Screenshot oder Link.",
-        "httpVideoUncheckable": "Dieses Video hat eine unsichere URL (HTTP). Klicken Sie auf die unten stehende Schaltfläche, um für dieses Video eine sichere HTTPS-URL zu verwenden. Falls dies nicht funktioniert, entfernen Sie das Video aus der Story oder ersetzen Sie es durch einen Screenshot oder Hyperlink.",
+        "httpVideoUncheckable": "Dieses Video hat eine unsichere URL (HTTP). Klicken Sie auf die unten stehende Schaltfläche, um für dieses Video eine sichere HTTPS-URL zu verwenden. Falls dies nicht funktioniert, entfernen Sie das Video aus der Story, oder ersetzen Sie es durch einen Screenshot oder Hyperlink.",
         "httpVideoFixable": "Dieses Video hat eine unsichere URL (HTTP). Klicken Sie auf die unten stehende Schaltfläche, um für dieses Video eine sichere HTTPS-URL zu verwenden.",
         "httpImageUnfixable": "Dieses Bild unterstützt HTTPS nicht. Entfernen Sie es aus der Story, oder ersetzen Sie es durch einen Link.",
-        "httpImageUncheckable": "Dieses Bild hat eine unsichere URL (HTTP). Klicken Sie auf die unten stehende Schaltfläche, um für dieses Bild eine sichere HTTPS-URL zu verwenden. Falls dies nicht funktioniert, entfernen Sie das Bild aus der Story oder ersetzen Sie es durch einen Hyperlink.",
+        "httpImageUncheckable": "Dieses Bild hat eine unsichere URL (HTTP). Klicken Sie auf die unten stehende Schaltfläche, um für dieses Bild eine sichere HTTPS-URL zu verwenden. Falls dies nicht funktioniert, entfernen Sie das Bild aus der Story, oder ersetzen Sie es durch einen Hyperlink.",
         "httpImageFixable": "Dieses Bild hat eine unsichere URL (HTTP). Klicken Sie auf die unten stehende Schaltfläche, um für dieses Bild eine sichere HTTPS-URL zu verwenden.",
         "httpLayer": "Dieser Layer hat eine unsichere URL (HTTP).",
         "inaccessibleLogo": "Auf dieses Logo kann nicht zugegriffen werden. Ersetzen Sie es durch ein anderes Bild.",
@@ -469,13 +469,13 @@ define({
       },
       "tooltips": {
         "httpAudioFixable": "Klicken Sie auf die Schaltfläche, um für dieses Audio eine sichere HTTPS-URL zu verwenden.",
-        "httpAudioUncheckable": "Verwenden Sie für dieses Audio eine sichere HTTPS-URL. Falls dies nicht funktioniert, entfernen Sie das Audio aus der Story oder ersetzen Sie es durch einen Link.",
+        "httpAudioUncheckable": "Verwenden Sie für dieses Audio eine sichere HTTPS-URL. Falls dies nicht funktioniert, entfernen Sie das Audio aus der Story, oder ersetzen Sie es durch einen Link.",
         "httpWebpageFixable": "Klicken Sie auf die Schaltfläche, um für diese Webseite eine sichere HTTPS-URL zu verwenden.",
-        "httpWebpageUncheckable": "Verwenden Sie für diese Webseite eine sichere HTTPS-URL. Falls dies nicht funktioniert, entfernen Sie die Webseite aus der Story oder ersetzen Sie sie durch einen Screenshot oder Link.",
+        "httpWebpageUncheckable": "Verwenden Sie für diese Webseite eine sichere HTTPS-URL. Falls dies nicht funktioniert, entfernen Sie die Webseite aus der Story, oder ersetzen Sie sie durch einen Screenshot oder Link.",
         "httpVideoFixable": "Klicken Sie auf die Schaltfläche, um für dieses Video eine sichere HTTPS-URL zu verwenden.",
-        "httpVideoUncheckable": "Verwenden Sie für dieses Video eine sichere HTTPS-URL. Falls dies nicht funktioniert, entfernen Sie das Video aus der Story oder ersetzen Sie es durch einen Screenshot oder Link.",
+        "httpVideoUncheckable": "Verwenden Sie für dieses Video eine sichere HTTPS-URL. Falls dies nicht funktioniert, entfernen Sie das Video aus der Story, oder ersetzen Sie es durch einen Screenshot oder Link.",
         "httpImageFixable": "Klicken Sie auf die Schaltfläche, um für dieses Bild eine sichere HTTPS-URL zu verwenden.",
-        "httpImageUncheckable": "Verwenden Sie für dieses Bild eine sichere HTTPS-URL. Falls dies nicht funktioniert, entfernen Sie das Bild aus der Story oder ersetzen Sie es durch einen Link.",
+        "httpImageUncheckable": "Verwenden Sie für dieses Bild eine sichere HTTPS-URL. Falls dies nicht funktioniert, entfernen Sie das Bild aus der Story, oder ersetzen Sie es durch einen Link.",
         "httpLayerMyMap": "Aktualisieren Sie den Layer auf der Elementseite der Karte, um HTTPS zu verwenden. Falls der Layer nicht aktualisiert werden kann, entfernen Sie ihn aus der Karte.",
         "httpLayerNotMyMap": "Erstellen Sie eine Kopie der Karte, und aktualisieren Sie den Layer, um HTTPS zu verwenden. Falls der Layer nicht aktualisiert werden kann, entfernen Sie ihn aus der Karte.",
         "clickLearnMore": "Klicken Sie, um weitere Informationen zu erhalten."
@@ -530,7 +530,7 @@ define({
         "fixButtons": {
           "share": "Freigeben",
           "hide": "Ausblenden",
-          "authorize": "Autorisieren Sie",
+          "authorize": "Autorisieren",
           "remove": "Entfernen",
           "help": "Hilfe aufrufen",
           "ignore": "Ignorieren",
@@ -574,6 +574,30 @@ define({
       "action2": "Eigene Storys jetzt überprüfen",
       "action3": "Weitere Informationen",
       "floatingNotification": "Diese Story enthält unsichere Inhalte (HTTP). Überprüfen und beheben Sie diese Probleme."
+    },
+    "extendedSupportMessage": {
+      "bannerMsg": "Klassische Esri Story Maps haben nun den Support-Status \"Extended\"",
+      "s1h1": "Wichtige Information zu klassischen Esri Story Maps",
+      "s1p1": "Klassische Esri Story Map-Vorlagen haben nun den Support-Status \"Extended\". Wir empfehlen allen Kunden, ArcGIS StoryMaps, das Esri Storytelling-Werkzeug der aktuellen Generation zu verwenden.",
+      "s1p2": "Die klassischen Vorlagen werden nicht mehr aktiv weiterentwickelt und für neue Projekte nicht empfohlen. Für die entsprechenden Funktionen sind keine weiteren Aktualisierungen geplant. Storys, die Sie mit den klassischen Vorlagen erstellt haben, sind weiterhin verfügbar.",
+      "s1p3": "Im Dezember 2021 werden die klassischen Vorlagen aus der Galerie der Standard-Configurable Apps entfernt. Während des Übergangs zur Verwendung von ArcGIS StoryMaps können der Gruppe der benutzerdefinierten Configurable Apps Ihrer Organisation zur Unterstützung aktueller Workflows bei Bedarf eine oder mehrere klassische Vorlagen hinzugefügt werden.",
+      "s1p4": "Klicken Sie unten auf den Link \"Weitere Informationen\", um mehr zu erfahren.",
+      "action1": "Schließen",
+      "action2": "Weitere Informationen",
+      "action3": "ArcGIS StoryMaps testen"
+    },
+    "matureSupportMessage": {
+      "bannerMsg": "Klassische Esri Story Maps haben nun den Support-Status \"Mature\"",
+      "s1h1": "Wichtige Information zu klassischen Esri Story Maps",
+      "s1p1": "Klassische Esri Story Map-Vorlagen haben nun den Support-Status \"Mature\". Wir empfehlen allen Kunden, ArcGIS StoryMaps, das Esri Storytelling-Werkzeug der aktuellen Generation, zu verwenden.",
+      "s1p2": "Die klassischen Vorlagen werden nicht mehr aktiv weiterentwickelt und für neue Projekte nicht empfohlen. Für die entsprechenden Funktionen sind keine weiteren Aktualisierungen geplant. Storys, die Sie mit den klassischen Vorlagen erstellt haben, sind weiterhin verfügbar.",
+      "s1p3": "Klicken Sie unten auf den Link \"Weitere Informationen\", um mehr zu erfahren.",
+      "action1": "Schließen",
+      "action2": "Weitere Informationen",
+      "action3": "ArcGIS StoryMaps testen"
+    },
+    "storyTellerUserType": {
+      "notCreatorError": "Ihr Konto (%USER_NAME%) ist nicht für die Verwendung klassischer Story-Map-Builder lizenziert. Bitten Sie den Administrator Ihrer Organisation, Ihnen einen Creator-Benutzertyp zuzuweisen."
     }
   }
 });

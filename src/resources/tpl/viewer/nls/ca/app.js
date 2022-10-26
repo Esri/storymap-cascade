@@ -1,4 +1,4 @@
-/* eslint quotes: ["error", "double"] */
+﻿/* eslint quotes: ["error", "double"] */
 /* nls files need to use double quotes */
 define({
   "viewer": {
@@ -37,7 +37,10 @@ define({
       "builderSupportIpad": "El builder de l'Story Map Cascade no s'admet a l'iPad. Les històries del Cascade que creeu i compartiu funcionaran a l'iPad.",
       "launchBuilder": "Inicia el builder del Cascade",
       "notAgain": "No ho tornis a mostrar",
-      "sorry": "Atenció:"
+      "sorry": "Atenció:",
+      "nonOwnerOrgUrl": "L'element %TPL_NAME% al qual proveu d'accedir no prové de l'URL que heu proporcionat.",
+      "nonOwnerOrgProceedToGeneric": "Procediu a %HREF%",
+      "advanced": "Advanced"
     },
     "mobileWarning": {
       "message1": "Heu llegit la versió per a mòbil d'aquesta història. Per veure'n la versió completa, que conté més elements multimèdia, obriu-la en un equip de sobretaula.",
@@ -129,7 +132,7 @@ define({
       "audioLabel": "Àudio:"
     },
     "licenseChange2018": {
-      "noAccess": "El vostre compte (%USER_NAME%) no té llicència per obrir un story map que no sigui públic.  Demaneu a l'administrador de l'organització que us assigni un tipus d'usuari que inclogui story maps o una llicència d'aplicacions bàsiques de complement."
+      "noAccess": "El vostre compte (%USER_NAME%) no té llicència per obrir un story map que no sigui públic. Demaneu a l'administrador de l'organització que us assigni un tipus d'usuari que inclogui story maps o una llicència d'aplicacions bàsiques de complement."
     }
   }
 });

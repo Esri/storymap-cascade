@@ -1,4 +1,4 @@
-/* eslint quotes: ["error", "double"] */
+﻿/* eslint quotes: ["error", "double"] */
 /* strings files need to be double quotes */
 define({
   "builder": {
@@ -450,16 +450,16 @@ define({
       },
       "descriptions": {
         "httpAudioUnfixable": "Âm thanh này không hỗ trợ HTTPS. Xóa nó khỏi câu chuyện của bạn hoặc thay thế bằng một liên kết.",
-        "httpAudioUncheckable": "Âm thanh này có URL (HTTP) không bảo mật. Nhấp vào nút dưới để thử sử dụng một URL HTTPS cho âm thanh này. Nếu thao tác này không hoạt động, hãy xóa âm thanh khỏi câu chuyện của bạn và thay bằng một hyperlink.",
+        "httpAudioUncheckable": "Âm thanh này có URL (HTTP) không bảo mật. Nhấp vào nút phía dưới để sử dụng thử URL HTTPS cho âm thanh này. Nếu cách này không hiệu quả, hãy xóa âm thanh khỏi câu chuyện của bạn và thay bằng một hyperlink.",
         "httpAudioFixable": "Âm thanh này có URL (HTTP) không bảo mật. Nhấp vào nút dưới để thử sử dụng một URL HTTPS bảo mật cho âm thanh này.",
         "httpWebpageUnfixable": "Trang web này không hỗ trợ HTTPS. Xóa nó khỏi câu chuyện của bạn hoặc thay thế bằng một liên kết hoặc ảnh chụp màn hình.",
-        "httpWebpageUncheckable": "Trang web này có URL (HTTP) không bảo mật. Nhấp vào nút dưới để thử sử dụng một URL HTTPS cho trang web này. Nếu thao tác này không hoạt động, hãy xóa trang web khỏi câu chuyện của bạn và thay bằng một ảnh chụp màn hình hoặc hyperlink.",
+        "httpWebpageUncheckable": "Trang web này có URL (HTTP) không bảo mật. Nhấp vào nút phía dưới để thử sử dụng URL HTTPS cho trang web này. Nếu cách này không hiệu quả, hãy xóa trang web khỏi câu chuyện của bạn và thay bằng một ảnh chụp màn hình hoặc hyperlink.",
         "httpWebpageFixable": "Trang web này có URL (HTTP) không bảo mật. Nhấp vào nút dưới để sử dụng một URL HTTPS bảo mật cho trang web này.",
         "httpVideoUnfixable": "Video này không hỗ trợ HTTPS. Xóa nó khỏi câu chuyện của bạn hoặc thay thế bằng một liên kết hoặc ảnh chụp màn hình.",
-        "httpVideoUncheckable": "Video này có URL (HTTP) không bảo mật. Nhấp vào nút dưới để thử sử dụng một URL HTTPS cho video này. Nếu thao tác này không hoạt động, hãy xóa video khỏi câu chuyện của bạn và thay bằng một ảnh chụp màn hình hoặc hyperlink.",
+        "httpVideoUncheckable": "Video này có URL (HTTP) không bảo mật. Nhấp vào nút phía dưới để thử sử dụng URL HTTPS cho video này. Nếu cách này không hiệu quả, hãy xóa video khỏi câu chuyện của bạn và thay bằng một ảnh chụp màn hình hoặc hyperlink.",
         "httpVideoFixable": "Video này có URL (HTTP) không bảo mật. Nhấp vào nút dưới để sử dụng một URL HTTPS bảo mật cho video này.",
         "httpImageUnfixable": "Hình ảnh này không hỗ trợ HTTPS. Xóa nó khỏi câu chuyện của bạn hoặc thay thế bằng một liên kết.",
-        "httpImageUncheckable": "Hình ảnh này có URL (HTTP) không bảo mật. Nhấp vào nút dưới để thử sử dụng một URL HTTPS cho hình ảnh này. Nếu thao tác này không hoạt động, hãy xóa hình ảnh khỏi câu chuyện của bạn và thay bằng một hyperlink.",
+        "httpImageUncheckable": "Hình ảnh này có URL (HTTP) không bảo mật. Nhấp vào nút phía dưới để thử sử dụng URL HTTPS cho hình ảnh này. Nếu cách này không hiệu quả, hãy xóa hình ảnh khỏi câu chuyện của bạn và thay bằng một hyperlink.",
         "httpImageFixable": "Hình ảnh này có URL (HTTP) không bảo mật. Nhấp vào nút dưới để sử dụng một URL HTTPS bảo mật cho hình ảnh này.",
         "httpLayer": "Lớp này có URL (HTTP) không bảo mật.",
         "inaccessibleLogo": "Logo này không thể truy cập được. Thay thế nó bằng hình ảnh khác.",
@@ -469,13 +469,13 @@ define({
       },
       "tooltips": {
         "httpAudioFixable": "Nhấp vào nút để sử dụng URL HTTPS bảo mật cho âm thanh này.",
-        "httpAudioUncheckable": "Thử sử dụng một URL HTTPS cho âm thanh này. Nếu thao tác này không hoạt động, hãy xóa âm thanh khỏi câu chuyện của bạn và thay bằng một liên kết.",
+        "httpAudioUncheckable": "Thử sử dụng một URL HTTPS cho âm thanh này. Nếu cách này không hiệu quả, hãy xóa âm thanh ra khỏi câu chuyện của bạn và thay bằng một liên kết.",
         "httpWebpageFixable": "Nhấp vào nút để sử dụng một URL HTTPS bảo mật cho trang web này.",
-        "httpWebpageUncheckable": "Thử sử dụng một URL HTTPS cho trang web này. Nếu thao tác này không hoạt động, hãy xóa trang web khỏi câu chuyện của bạn và thay bằng một ảnh chụp màn hình hoặc liên kết.",
+        "httpWebpageUncheckable": "Thử sử dụng một URL HTTPS cho trang web này. Nếu cách này không hiệu quả, hãy xóa trang web khỏi câu chuyện của bạn và thay bằng một ảnh chụp màn hình hoặc liên kết.",
         "httpVideoFixable": "Nhấp vào nút để sử dụng URL HTTPS bảo mật cho video này.",
-        "httpVideoUncheckable": "Thử sử dụng một URL HTTPS cho video này. Nếu thao tác này không hoạt động, hãy xóa video khỏi câu chuyện của bạn và thay bằng một ảnh chụp màn hình hoặc liên kết.",
+        "httpVideoUncheckable": "Thử sử dụng một URL HTTPS cho video này. Nếu cách này không hiệu quả, hãy xóa video ra khỏi câu chuyện của bạn và thay bằng một ảnh chụp màn hình hoặc liên kết.",
         "httpImageFixable": "Nhấp vào nút để sử dụng URL HTTPS bảo mật cho hình ảnh này.",
-        "httpImageUncheckable": "Thử sử dụng một URL HTTPS cho hình ảnh này. Nếu thao tác này không hoạt động, hãy xóa hình ảnh khỏi câu chuyện của bạn và thay bằng một liên kết.",
+        "httpImageUncheckable": "Thử sử dụng một URL HTTPS cho hình ảnh này. Nếu cách này không hiệu quả, hãy xóa hình ảnh ra khỏi câu chuyện của bạn và thay bằng một liên kết.",
         "httpLayerMyMap": "Truy cập trang mục của bản đồ để cập nhật lớp này để sử dụng HTTPS. Nếu không thể cập nhật lớp, hãy xóa nó khỏi bản đồ.",
         "httpLayerNotMyMap": "Tạo một bản sao của bản đồ và cập nhật lớp này để sử dụng HTTPS. Nếu không thể cập nhật lớp, hãy xóa nó khỏi bản đồ.",
         "clickLearnMore": "Nhấp vào để tìm hiểu thêm."
@@ -574,6 +574,30 @@ define({
       "action2": "Kiểm tra câu chuyện của tôi ngay",
       "action3": "Tìm hiểu thêm",
       "floatingNotification": "Câu chuyện này có chứa nội dung (HTTP) không bảo mật. Vui lòng xem xét và xử lý vấn đề này."
+    },
+    "extendedSupportMessage": {
+      "bannerMsg": "Story Maps Cổ điển của Esri ở giai đoạn Hỗ trợ Mở rộng",
+      "s1h1": "Thông báo quan trọng về Story Maps Cổ điển của Esri",
+      "s1p1": "Các biểu mẫu Story Maps Cổ điển của Esri ở giai đoạn Hỗ trợ Mở rộng. Tất cả khách hàng đều được khuyến khích sử dụng ArcGIS StoryMaps, công cụ kể chuyện thế hệ hiện tại của Esri.",
+      "s1p2": "Các biểu mẫu cổ điển không còn được phát triển và không được khuyến khích sử dụng cho các dự án mới. Không có bản cập nhật thêm về chức năng nào được lên kế hoạch. Các câu chuyện bạn đã tạo bằng biểu mẫu cổ điển vẫn sẽ tiếp tục khả dụng.",
+      "s1p3": "Vào tháng 12 năm 2021, chúng tôi sẽ xóa biểu mẫu cổ điển khỏi bộ sưu tập configurable apps mặc định. Nếu cần, bạn có thể thêm một hoặc nhiều biểu mẫu cổ điển vào nhóm configurable apps tùy chỉnh của tổ chức bạn để hỗ trợ quy trình công việc hiện tại trong quá trình chuyển tiếp sang sử dụng ArcGIS StoryMaps.",
+      "s1p4": "Để biết thêm thông tin, hãy nhấp vào liên kết tìm hiểu thêm bên dưới.",
+      "action1": "Đóng",
+      "action2": "Tìm hiểu thêm",
+      "action3": "Dùng thử ArcGIS StoryMaps"
+    },
+    "matureSupportMessage": {
+      "bannerMsg": "Story Maps Cổ điển của Esri ở giai đoạn Hỗ trợ Trưởng thành",
+      "s1h1": "Thông báo quan trọng về Story Maps cổ điển của Esri",
+      "s1p1": "Các biểu mẫu Story Maps Cổ điển của Esri ở giai đoạn Hỗ trợ Trưởng thành Tất cả khách hàng đều được khuyến khích sử dụng ArcGIS StoryMaps, công cụ kể chuyện thế hệ hiện tại của Esri.",
+      "s1p2": "Các biểu mẫu cổ điển không còn được phát triển và không được khuyến khích sử dụng cho các dự án mới. Không có bản cập nhật thêm về chức năng nào được lên kế hoạch. Các câu chuyện bạn đã tạo bằng biểu mẫu cổ điển vẫn sẽ tiếp tục khả dụng.",
+      "s1p3": "Để biết thêm thông tin, hãy nhấp vào liên kết tìm hiểu thêm bên dưới.",
+      "action1": "Đóng",
+      "action2": "Tìm hiểu thêm",
+      "action3": "Dùng thử ArcGIS StoryMaps"
+    },
+    "storyTellerUserType": {
+      "notCreatorError": "Tài khoản của bạn (%USER_NAME%) không được cấp phép để sử dụng các trình dựng bản đồ câu chuyện cổ điển. Vui lòng yêu cầu quản trị viên của tổ chức chỉ định cho bạn loại người dùng là Creator."
     }
   }
 });

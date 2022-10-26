@@ -1,4 +1,4 @@
-/* eslint quotes: ["error", "double"] */
+﻿/* eslint quotes: ["error", "double"] */
 /* nls files need to use double quotes */
 define({
   "viewer": {
@@ -37,7 +37,10 @@ define({
       "builderSupportIpad": "O builder Story Map Cascade não é suportados em iPad. As histórias do Cascade que cria e partilha funcionam no iPad.",
       "launchBuilder": "Iniciar o builder do Cascade",
       "notAgain": "Não voltar a exibir isto.",
-      "sorry": "Atenção:"
+      "sorry": "Atenção:",
+      "nonOwnerOrgUrl": "O(A) %TPL_NAME% que está a tentar aceder não tem origem no URL disponibilizado.",
+      "nonOwnerOrgProceedToGeneric": "Prosseguir para %HREF%",
+      "advanced": "Avançado"
     },
     "mobileWarning": {
       "message1": "Já leu a versão desta história para dispositivo móvel. Para aceder à versão completa, com elementos audiovisuais mais completos, execute-o num computador desktop.",

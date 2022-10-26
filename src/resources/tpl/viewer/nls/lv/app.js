@@ -1,4 +1,4 @@
-/* eslint quotes: ["error", "double"] */
+﻿/* eslint quotes: ["error", "double"] */
 /* nls files need to use double quotes */
 define({
   "viewer": {
@@ -14,7 +14,7 @@ define({
       "servedFromFile": "Lietotnei ir jāpiekļūst caur tīmekļa serveri. Plašāku informāciju skatiet šeit: ${USER_GUIDE}.",
       "userGuide": "lietotāja rokasgrāmata",
       "invalidConfig": "Nederīga konfigurācija",
-      "invalidConfigNoApp": "Web kartēšanas lietotnes identifikators nav norādīts šeit: index.html.",
+      "invalidConfigNoApp": "Tīmekļa kartēšanas lietotnes identifikators nav norādīts šeit: index.html.",
       "invalidConfigNoAppDev": "URL parametros nav norādīts tīmekļa kartēšanas lietotnes identifikators (?appid=). Izstrādes režīmā lapā index.html ir ignorēta appid konfigurācija.",
       "unspecifiedConfigOwner": "Pilnvarotais īpašnieks nav konfigurēts.",
       "invalidConfigOwner": "Stāsta īpašnieks nav pilnvarots.",
@@ -28,23 +28,26 @@ define({
       "notAuthorizedBuilder": "Jums nav atļauts izmantot {TPL_NAME} veidotāju.",
       "noViewerIE": "Šis stāsts netiek atbalstīts Internet Explorer versijās, kas ir vecākas par ${VERSION}. ${UPGRADE}",
       "noViewerIE2": "Jūs mēģināt skatīt šo stāstu, izmantojot vecāku, neatbalstītu pārlūku. Var gadīties, ka nedarbojas kāds elements vai rodas citas neparedzētas problēmas. Iesakām jaunināt uz Internet Explorer 11 vai izmantot citu pārlūku, piemēram, Chrome.",
-      "noViewerIE3": "No 2017. gada beigām šo stāstu vairs nevarēs ielādēt šajā pārlūkā. Pēc tam šī stāsta skatīšanai ir jāizmanto atbalstīts pārlūks.",
+      "noViewerIE3": "No 2017. gada beigām šo stāstu vairs nevar ielādēt šajā pārlūkā. Pēc tam šī stāsta skatīšanai ir jāizmanto atbalstīts pārlūks.",
       "upgradeBrowser": "Atjaunojiet savu pārlūku.",
       "mapLoadingFail": "Radās kļūda — karte netika ielādēta pareizi.",
       "signOut": "Izrakstīties",
-      "builderSupportFirefox": "Kartes stāsta kaskādes veidotājs tagad atbalsta Firefox!<br><br>Kaskādes stāstu izveide pārlūkā Firefox pašlaik ir pieejama beta versijā. Izmēģiniet to un ziņojiet par problēmām ${ESRI-SUPPORT} vai ${ESRI-COMMUNITY}.",
-      "builderSupportOther": "Cascade stāstus var skatīt jebkurā modernā tīmekļa pārlūkprogrammā, bet Story Map Cascade veidotāju atbalsta tikai ${CHROME}, ${SAFARI} un ${FIREFOX}.<br><br>Ja jums ir nepieciešams Cascade veidotājs atbalstam citā pārlūkprogrammā, sazinieties ar ${ESRI-SUPPORT} vai ${BROWSER-SUPPORT-VOTE}.",
-      "builderSupportIpad": "Kartes stāsta kaskādes veidotāju neatbalsta iPad, bet iPad ierīcēs darbosies stāsti, kurus izveidojat un kopīgojat.",
-      "launchBuilder": "Palaist Kaskādes veidotāju",
+      "builderSupportFirefox": "Kartes stāsta Cascade (kaskādes) veidotājs tagad atbalsta Firefox!<br><br>Kaskādes stāstu izveide pārlūkā Firefox pašlaik ir pieejama beta versijā. Izmēģiniet to un ziņojiet par problēmām ${ESRI-SUPPORT} vai ${ESRI-COMMUNITY}.",
+      "builderSupportOther": "Kaskādes stāstus var skatīt jebkurā modernā tīmekļa pārlūkprogrammā, bet Kartes stāsta Cascade veidotāju atbalsta tikai ${CHROME}, ${SAFARI} un ${FIREFOX}.<br><br>Ja jums ir nepieciešams Cascade veidotājs atbalstam citā pārlūkprogrammā, sazinieties ar ${ESRI-SUPPORT} vai ${BROWSER-SUPPORT-VOTE}.",
+      "builderSupportIpad": "Kartes stāsta Cascade (kaskāde) veidotāju neatbalsta iPad, bet iPad ierīcēs darbosies stāsti, kurus izveidojat un kopīgojat.",
+      "launchBuilder": "Palaist Cascade veidotāju",
       "notAgain": "Vairs nerādīt šo saturu",
-      "sorry": "Uzmanību!"
+      "sorry": "Uzmanību!",
+      "nonOwnerOrgUrl": "%TPL_NAME%, kam mēģināt piekļūt, nav no jūsu norādītā vietrāža (URL).",
+      "nonOwnerOrgProceedToGeneric": "Turpināt ar %HREF%",
+      "advanced": "Uzlabots"
     },
     "mobileWarning": {
-      "message1": "Jūs lasījāt šī stāsta mobilo versiju. Lai skatītu pilno versiju ar bagātīgāku multivides satura klāstu, atveriet to galddatorā.",
+      "message1": "Jūs skatījāt šī stāsta mobilo versiju. Lai skatītu pilno versiju ar bagātīgāku multivides satura klāstu, atveriet to datora.",
       "email": "Nosūtīt e-pastā saiti uz šo stāstu"
     },
     "cover": {
-      "iosEmbedLink": "Pieskarieties, lai izlasītu visu rakstu"
+      "iosEmbedLink": "Pieskarieties, lai izlasītu visu stāstu"
     },
     "media": {
       "captionPlaceholder": "Vieta parakstam...",
@@ -104,7 +107,7 @@ define({
     "settings": {
       "pleaseWait": "Pirms drukāšanas uzgaidiet, līdz tiks ielādēts viss stāsts",
       "printNotes": "Ja šīs lapas ielāde ir lēna vai dažas multivides vienības netiek parādītas, mēģiniet aizstāt tiešsaistes multividi ar attēliem vai drukāt mazāku sadaļu diapazonu. Lai iegūtu labākos rezultātus, iespējams, sava pārlūka drukāšanas iestatījumos ir jāaktivizē fona elementu drukāšana.",
-      "printOptions": "Varianti",
+      "printOptions": "Iespējas",
       "makeTextBlack": "Iekrāsot visu tekstu melnu",
       "showLinks": "Rādīt saišu vietrāžus URL",
       "useAltMedia": "Aizstāt tiešsaistes multividi ar attēliem (ja tie ir pieejami)",
@@ -117,7 +120,7 @@ define({
     },
     "page": {
       "appTagline": "Šis stāsts tika izveidots, izmantojot ${CASCADE_LINK_TEXT}.",
-      "cascadeLinkText": "Esri Kartes stāsta kaskāde",
+      "cascadeLinkText": "Esri Kartes stāsta Kaskāde",
       "readItOnline": "Izlasiet to tīmekļa vietnē ${STORY_URL}."
     },
     "sections": {
@@ -125,11 +128,11 @@ define({
     },
     "media": {
       "websiteLabel": "Tīmekļa vietne:",
-      "videoLabel": "Video",
-      "audioLabel": "Audio"
+      "videoLabel": "Video:",
+      "audioLabel": "Audio:"
     },
     "licenseChange2018": {
-      "noAccess": "Jūsu kontam (%USER_NAME%) nav licences, lai atvērtu Kartes stāstu, kas nav publisks. Pieprasiet savas organizācijas administratoram piešķirt jums lietotāja veidu, kurā iekļauts Story Maps vai papildinājumlietotņu Essential Apps licence."
+      "noAccess": "Jūsu kontam (%USER_NAME%) nav atļaujas atvērt kartes stāstu, kas nav publisks. Pieprasiet savas organizācijas administratoram piešķirt jums lietotāja veidu, kurā iekļauta Story Maps vai papildinājumlietotņu Essential Apps licence."
     }
   }
 });

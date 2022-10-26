@@ -1,4 +1,4 @@
-/* eslint quotes: ["error", "double"] */
+﻿/* eslint quotes: ["error", "double"] */
 /* strings files need to be double quotes */
 define({
   "builder": {
@@ -450,16 +450,16 @@ define({
       },
       "descriptions": {
         "httpAudioUnfixable": "Acest audio nu acceptă HTTPS. Eliminaţi-l din povestea dvs. sau înlocuiţi-l cu un link.",
-        "httpAudioUncheckable": "Acest audio are un URL nesigur (HTTP). Faceți clic pe butonul de mai jos pentru a încerca să folosiți un URL HTTPS pentru acest audio. Dacă acest lucru nu funcționează, eliminați materialul audio din magazinul dvs. sau înlocuiți-l cu un hyperlink.",
+        "httpAudioUncheckable": "Acest audio are un URL nesigur (HTTP). Faceți clic pe butonul de mai jos pentru a încerca să folosiți un URL HTTPS pentru acest audio. Dacă acest lucru nu funcționează, eliminați materialul audio din relatarea dvs. sau înlocuiți-l cu un hyperlink.",
         "httpAudioFixable": "Acest audio are un URL nesigur (HTTP). Faceți clic pe butonul de mai jos pentru a utiliza un URL HTTPS securizat pentru acest audio.",
         "httpWebpageUnfixable": "Această pagină web nu acceptă HTTPS. Eliminaţi-o din povestea dvs. sau înlocuiţi-o cu o captură de ecran sau cu un link.",
-        "httpWebpageUncheckable": "Această pagină web are un URL nesigur (HTTP). Faceți clic pe butonul de mai jos pentru a încerca să folosiți un URL HTTPS pentru această pagină web. Dacă acest lucru nu funcționează, eliminați pagina web din magazinul dvs. sau înlocuiți-o cu o captură de ecran sau cu un hyperlink.",
+        "httpWebpageUncheckable": "Această pagină web are un URL nesigur (HTTP). Faceți clic pe butonul de mai jos pentru a încerca să folosiți un URL HTTPS pentru această pagină web. Dacă acest lucru nu funcționează, eliminați pagina web din relatarea dvs. sau înlocuiți-o cu o captură de ecran sau cu un hyperlink.",
         "httpWebpageFixable": "Această pagină web are un URL nesigur (HTTP). Faceți clic pe butonul de mai jos pentru a utiliza un URL HTTPS securizat pentru acest pagină web.",
         "httpVideoUnfixable": "Acest videoclip nu acceptă HTTPS. Eliminaţi-l din povestea dvs. sau înlocuiţi-l cu o captură de ecran sau cu un link.",
-        "httpVideoUncheckable": "Acest videoclip are un URL nesigur (HTTP). Faceți clic pe butonul de mai jos pentru a încerca să folosiți un URL HTTPS pentru acest video. Dacă acest lucru nu funcționează, eliminați materialul video din magazinul dvs. sau înlocuiți-o cu o captură de ecran sau cu un hyperlink.",
+        "httpVideoUncheckable": "Acest videoclip are un URL nesigur (HTTP). Faceți clic pe butonul de mai jos pentru a încerca să folosiți un URL HTTPS pentru acest video. Dacă acest lucru nu funcționează, eliminați materialul video din relatarea dvs. sau înlocuiți-o cu o captură de ecran sau cu un hyperlink.",
         "httpVideoFixable": "Acest videoclip are un URL nesigur (HTTP). Faceți clic pe butonul de mai jos pentru a utiliza un URL HTTPS securizat pentru acest video.",
         "httpImageUnfixable": "Această imagine nu acceptă HTTPS. Eliminaţi-o din povestea dvs. sau înlocuiţi-o cu un link.",
-        "httpImageUncheckable": "Această imagine are un URL nesigur (HTTP). Faceți clic pe butonul de mai jos pentru a încerca să folosiți un URL HTTPS pentru această imagine. Dacă acest lucru nu funcționează, eliminați imaginea din magazinul dvs. sau înlocuiți-o cu un hyperlink.",
+        "httpImageUncheckable": "Această imagine are un URL nesigur (HTTP). Faceți clic pe butonul de mai jos pentru a încerca să folosiți un URL HTTPS pentru această imagine. Dacă acest lucru nu funcționează, eliminați imaginea din relatarea dvs. sau înlocuiți-o cu un hyperlink.",
         "httpImageFixable": "Această imagine are un URL nesigur (HTTP). Faceți clic pe butonul de mai jos pentru a utiliza un URL HTTPS securizat pentru această imagine.",
         "httpLayer": "Acest strat tematic are un URL nesigur (HTTP).",
         "inaccessibleLogo": "Acest logo nu este accesibil. Înlocuiţi-l cu o altă imagine.",
@@ -469,13 +469,13 @@ define({
       },
       "tooltips": {
         "httpAudioFixable": "Faceţi clic pe buton pentru a utiliza un URL HTTPS securizat pentru acest material audio.",
-        "httpAudioUncheckable": "Încercați să folosiți un URL HTTPS pentru acest material audio. Dacă acest lucru nu funcționează, eliminați materialul audio din magazinul dvs. sau înlocuiți-l cu un link.",
+        "httpAudioUncheckable": "Încercați să folosiți un URL HTTPS pentru acest material audio. Dacă acest lucru nu funcționează, eliminați materialul audio din relatarea dvs. sau înlocuiți-l cu un link.",
         "httpWebpageFixable": "Faceţi clic pe buton pentru a utiliza un URL HTTPS securizat pentru această pagină web.",
-        "httpWebpageUncheckable": "Încercați să folosiți un URL HTTPS pentru această pagină web. Dacă acest lucru nu funcționează, eliminați pagina web din magazinul dvs. sau înlocuiți-o cu o captură de ecran sau cu un link.",
+        "httpWebpageUncheckable": "Încercați să folosiți un URL HTTPS pentru această pagină web. Dacă acest lucru nu funcționează, eliminați pagina web din relatarea dvs. sau înlocuiți-o cu o captură de ecran sau cu un link.",
         "httpVideoFixable": "Faceţi clic pe buton pentru a utiliza un URL HTTPS securizat pentru acest videoclip.",
-        "httpVideoUncheckable": "Încercați să folosiți un URL HTTPS pentru acest material video. Dacă acest lucru nu funcționează, eliminați materialul video din magazinul dvs. sau înlocuiți-l cu o captură de ecran sau cu un link.",
+        "httpVideoUncheckable": "Încercați să folosiți un URL HTTPS pentru acest material video. Dacă acest lucru nu funcționează, eliminați materialul video din relatarea dvs. sau înlocuiți-l cu o captură de ecran sau cu un link.",
         "httpImageFixable": "Faceţi clic pe buton pentru a utiliza un URL HTTPS securizat pentru această imagine.",
-        "httpImageUncheckable": "Încercați să folosiți un URL HTTPS pentru această imagine. Dacă acest lucru nu funcționează, eliminați imaginea din magazinul dvs. sau înlocuiți-o cu un link.",
+        "httpImageUncheckable": "Încercați să folosiți un URL HTTPS pentru această imagine. Dacă acest lucru nu funcționează, eliminați imaginea din relatarea dvs. sau înlocuiți-o cu un link.",
         "httpLayerMyMap": "Vizitați pagina element a hărţii pentru a actualiza acest strat tematic în vederea utilizării HTTPS. Dacă stratul tematic nu poate fi actualizat, eliminaţi-l din hartă.",
         "httpLayerNotMyMap": "Faceţi o copie a hărţii și actualizați acest strat tematic pentru a utiliza HTTPS. Dacă stratul tematic nu poate fi actualizat, eliminaţi-l din hartă.",
         "clickLearnMore": "Faceţi clic pentru a afla mai multe."
@@ -574,6 +574,30 @@ define({
       "action2": "Verificaţi-mi acum relatările",
       "action3": "Aflaţi mai multe",
       "floatingNotification": "Această relatare include conţinut nesigur (HTTP). Analizaţi și gestionați aceste probleme."
+    },
+    "extendedSupportMessage": {
+      "bannerMsg": "Hărțile informative clasice Esri sunt incluse în asistența extinsă",
+      "s1h1": "Mesaj important despre hărțile informative Esri",
+      "s1p1": "Șabloanele de hărți informative clasice Esri sunt incluse în asistența extinsă. Toți clienții sunt încurajați să utilizeze instrumentul de relatare de generație actuală de la Esri, ArcGIS StoryMaps.",
+      "s1p2": "Șabloanele clasice nu mai fac parte din dezvoltarea actuală și nu sunt recomandate pentru proiectele noi. Nu se intenționează lansarea de actualizări viitoare la capacitățile lor. Relatările pe care le-ați creat folosind șabloane clasice vor fi disponibile în continuare.",
+      "s1p3": "În decembrie 2021, șabloanele clasice vor fi eliminate din galeria de aplicații configurabile implicite. Unul sau mai multe șabloane clasice pot fi adăugate în grupul de aplicații configurabile personalizate ale organizației dvs. dacă este necesar pentru a susține fluxurile de lucru actuale în timpul tranziției dvs. la utilizarea ArcGIS StoryMaps.",
+      "s1p4": "Pentru mai multe informații, faceți clic pe linkul de învățare suplimentară de mai jos.",
+      "action1": "Închidere",
+      "action2": "Aflați mai multe",
+      "action3": "Încercați ArcGIS StoryMaps"
+    },
+    "matureSupportMessage": {
+      "bannerMsg": "Hărțile informative clasice Esri sunt incluse în asistența matură",
+      "s1h1": "Mesaj important despre hărțile informative Esri",
+      "s1p1": "Șabloanele de hărți informative clasice Esri sunt incluse în asistența matură. Toți clienții sunt încurajați să utilizeze instrumentul de relatare de generație actuală de la Esri, ArcGIS StoryMaps.",
+      "s1p2": "Șabloanele clasice nu mai fac parte din dezvoltarea actuală și nu sunt recomandate pentru proiectele noi. Nu se intenționează lansarea de actualizări viitoare la capacitățile lor. Relatările pe care le-ați creat folosind șabloane clasice vor fi disponibile în continuare.",
+      "s1p3": "Pentru mai multe informații, faceți clic pe linkul de învățare suplimentară de mai jos.",
+      "action1": "Închidere",
+      "action2": "Aflați mai multe",
+      "action3": "Încercați ArcGIS StoryMaps"
+    },
+    "storyTellerUserType": {
+      "notCreatorError": "Contul dvs. (%USER_NAME%) nu are licența necesară pentru utilizarea aplicațiilor de creare a hărților informative clasice. Solicitați-i administratorului organizației dvs. să vă aloce un tip de utilizator Creator."
     }
   }
 });

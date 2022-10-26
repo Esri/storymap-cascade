@@ -1,4 +1,4 @@
-/* eslint quotes: ["error", "double"] */
+﻿/* eslint quotes: ["error", "double"] */
 /* nls files need to use double quotes */
 define({
   "viewer": {
@@ -37,7 +37,10 @@ define({
       "builderSupportIpad": "iPadis kaardilugude kaskaadi koosturit ei toetata. Eelnevalt koostatud ja jagatud kaskaadlood iPadis toimivad.",
       "launchBuilder": "Kaskaadi koosturi käivitamine",
       "notAgain": "Ära seda enam kuva",
-      "sorry": "Tähelepanu!"
+      "sorry": "Tähelepanu!",
+      "nonOwnerOrgUrl": "%TPL_NAME%, mida proovite avada, pole pärit teie esitatud URL-ilt.",
+      "nonOwnerOrgProceedToGeneric": "Kas soovite liikuda kohta %HREF%",
+      "advanced": "Täiustatud"
     },
     "mobileWarning": {
       "message1": "Lugesite seda lugu mobiilivaates. Rohkemate meediaelementidega täisloo lugemiseks saate kasutada lauaarvutit.",
@@ -129,7 +132,7 @@ define({
       "audioLabel": "Heli:"
     },
     "licenseChange2018": {
-      "noAccess": "Teie kontol (%USER_NAME%) puudub litsents kaardiloo avamiseks, mis ei ole avalik. Paluge oma organisatsiooni administraatoril määrata teile kasutajatüüp, mis sisaldab kaardilugusid või oluliste rakenduse lisalitsentsi."
+      "noAccess": "Teie kontol (%USER_NAME%) puudub litsents kaardiloo avamiseks, mis ei ole avalik. Paluge oma organisatsiooni administraatoril määrata teile kasutajatüüp, mis sisaldab Story Maps või täiendavate Essential Apps rakenduste litsentsi."
     }
   }
 });

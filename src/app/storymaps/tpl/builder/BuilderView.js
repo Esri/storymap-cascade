@@ -113,34 +113,34 @@ define([
     };
 
     this.initBannerNotification = function() {
-      var stringsHttps = i18n.builder.httpsTransitionMessage;
+      var bannerStrings = i18n.builder.extendedSupportMessage;
 
       new BannerNotification({
-        id: 'httpsTransitionMessage',
-        bannerMsg: stringsHttps.bannerMsg,
+        id: 'extendedSupportMessage',
+        bannerMsg: bannerStrings.bannerMsg,
         mainMsgHtml: '\
-          <h2 class="banner-notification-text">' + stringsHttps.s1h1 + '</h2>\
-          <p class="banner-notification-text">' + stringsHttps.s1p1 + '</p>\
-          <p class="banner-notification-text">' + stringsHttps.s1p2 + '</p>\
-          <h2 class="banner-notification-text">' + stringsHttps.s2h1 + '</h2>\
-          <p class="banner-notification-text">' + stringsHttps.s2p1 + '</p>\
+          <h2 class="banner-notification-text">' + bannerStrings.s1h1 + '</h2>\
+          <p class="banner-notification-text">' + bannerStrings.s1p1 + '</p>\
+          <p class="banner-notification-text">' + bannerStrings.s1p2 + '</p>\
+          <p class="banner-notification-text">' + bannerStrings.s1p3 + '</p>\
+          <p class="banner-notification-text">' + bannerStrings.s1p4 + '</p>\
         ',
         actions: [
           {
             primary: true,
-            string: stringsHttps.action1,
+            string: bannerStrings.action1,
             closeOnAction: true
           },
           {
-            string: stringsHttps.action2,
+            string: bannerStrings.action2,
             action: function() {
-              window.open('https://storymaps.arcgis.com/en/my-stories/');
+              window.open('https://www.esri.com/arcgis-blog/products/arcgis-storymaps/announcements/transition-timeline-for-classic-story-maps-august-2021/');
             }
           },
           {
-            string: stringsHttps.action3,
+            string: bannerStrings.action3,
             action: function() {
-              window.open('https://links.esri.com/storymaps/web_security_faq');
+              window.open('https://www.esri.com/en-us/arcgis/products/arcgis-storymaps/overview');
             }
           }
         ],

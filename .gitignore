@@ -3,6 +3,9 @@ build/
 node_modules/
 src/resources/styles/calcite
 
+# Needed for CI
+src/lib/
+
 #################
 ## Eclipse
 #################
@@ -197,7 +200,7 @@ $RECYCLE.BIN/
 # Packages
 *.egg
 *.egg-info
-#dist/
+dist/
 build/
 eggs/
 parts/

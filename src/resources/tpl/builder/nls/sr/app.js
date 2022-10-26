@@ -1,4 +1,4 @@
-/* eslint quotes: ["error", "double"] */
+﻿/* eslint quotes: ["error", "double"] */
 /* strings files need to be double quotes */
 define({
   "builder": {
@@ -450,16 +450,16 @@ define({
       },
       "descriptions": {
         "httpAudioUnfixable": "Ovaj audio ne podržava HTTPS. Uklonite ga iz priče ili ga zamenite linkom.",
-        "httpAudioUncheckable": "Ovaj audio ima nebezbednu (HTTP) URL adresu. Kliknite na dugme ispod da biste isprobali korišćenje HTTPS URL adrese za ovaj audio. Ako to ne funkcioniše, uklonite audio iz svoje radnje ili ga zamenite hipervezom.",
+        "httpAudioUncheckable": "Ovaj audio ima nebezbednu (HTTP) URL adresu. Kliknite na dugme ispod da biste isprobali korišćenje HTTPS URL adrese za ovaj audio. Ako to ne funkcioniše, uklonite audio snimak iz svoje priče ili ga zamenite hiperlinkom.",
         "httpAudioFixable": "Ovaj audio ima nebezbednu (HTTP) URL adresu. Kliknite na dugme ispod za korišćenje bezbedne HTTPS URL adrese za ovaj audio.",
         "httpWebpageUnfixable": "Ova veb stranica ne podržava HTTPS. Uklonite je iz priče ili je zamenite snimkom ekrana ili linkom.",
-        "httpWebpageUncheckable": "Ova veb stranica ima nebezbednu (HTTP) URL adresu. Kliknite na dugme ispod da biste isprobali korišćenje HTTPS URL adrese za ovu veb stranicu. Ako to ne funkcioniše, uklonite veb stranicu iz svoje radnje ili je zamenite snimkom ekrana ili hipervezom.",
+        "httpWebpageUncheckable": "Ova veb stranica ima nebezbednu (HTTP) URL adresu. Kliknite na dugme ispod da biste isprobali korišćenje HTTPS URL adrese za ovu veb stranicu. Ako to ne funkcioniše, uklonite veb stranicu iz svoje priče ili je zamenite snimkom ekrana ili hiperlinkom.",
         "httpWebpageFixable": "Ova veb stranica ima nebezbednu (HTTP) URL adresu. Kliknite na dugme ispod za korišćenje bezbedne HTTPS URL adrese za ovu veb stranicu.",
         "httpVideoUnfixable": "Ovaj video ne podržava HTTPS. Uklonite ga iz priče ili ga zamenite snimkom ekrana ili linkom.",
-        "httpVideoUncheckable": "Ovaj video ima nebezbednu (HTTP) URL adresu. Kliknite na dugme ispod da biste isprobali korišćenje HTTPS URL adrese za ovaj video sadržaj. Ako to ne funkcioniše, uklonite video sadržaj iz svoje radnje ili ga zamenite snimkom ekrana ili hipervezom.",
+        "httpVideoUncheckable": "Ovaj video ima nebezbednu (HTTP) URL adresu. Kliknite na dugme ispod da biste isprobali korišćenje HTTPS URL adrese za ovaj video sadržaj. Ako to ne funkcioniše, uklonite video snimak iz svoje priče ili ga zamenite snimkom ekrana ili hiperlinkom.",
         "httpVideoFixable": "Ovaj video ima nebezbednu (HTTP) URL adresu. Kliknite na dugme ispod za korišćenje bezbedne HTTPS URL adrese za ovaj video sadržaj.",
         "httpImageUnfixable": "Ovaj snimak ne podržava HTTPS. Uklonite ga iz priče ili ga zamenite linkom.",
-        "httpImageUncheckable": "Ovaj snimak ima nebezbednu (HTTP) URL adresu.Kliknite na dugme ispod da biste isprobali korišćenje HTTPS URL adrese za ovaj snimak. Ako to ne funkcioniše, uklonite snimak iz svoje radnje ili ga zamenite hipervezom.",
+        "httpImageUncheckable": "Ovaj snimak ima nebezbednu (HTTP) URL adresu. Kliknite na dugme ispod da biste isprobali korišćenje HTTPS URL adrese za ovaj snimak. Ako to ne funkcioniše, uklonite snimak iz svoje priče ili ga zamenite hiperlinkom.",
         "httpImageFixable": "Ovaj snimak ima nebezbednu (HTTP) URL adresu. Kliknite na dugme ispod za korišćenje bezbedne HTTPS URL adrese za ovaj snimak.",
         "httpLayer": "Ovaj sloj ima nebezbednu (HTTP) URL adresu.",
         "inaccessibleLogo": "Ovaj logotip nije dostupan. Zamenite ga drugim snimkom.",
@@ -469,13 +469,13 @@ define({
       },
       "tooltips": {
         "httpAudioFixable": "Kliknite na dugme kako biste koristili HTTPS URL za ovaj audio.",
-        "httpAudioUncheckable": "Isprobajte korišćenje HTTPS URL adrese za ovaj audio. Ako to ne funkcioniše, uklonite audio iz svoje radnje ili ga zamenite vezom.",
+        "httpAudioUncheckable": "Isprobajte korišćenje HTTPS URL adrese za ovaj audio. Ako to ne funkcioniše, uklonite audio snimak iz svoje priče ili ga zamenite linkom.",
         "httpWebpageFixable": "Kliknite na dugme kako biste koristili HTTPS URL za ovu veb stranicu.",
-        "httpWebpageUncheckable": "Isprobajte korišćenje HTTPS URL adrese za ovu veb stranicu. Ako to ne funkcioniše, uklonite veb stranicu iz svoje radnje ili je zamenite snimkom ekrana ili vezom.",
+        "httpWebpageUncheckable": "Isprobajte korišćenje HTTPS URL adrese za ovu veb stranicu. Ako to ne funkcioniše, uklonite veb stranicu iz svoje priče ili je zamenite snimkom ekrana ili linkom.",
         "httpVideoFixable": "Kliknite na dugme kako biste koristili bezbednu HTTPS URL adresu za ovaj video.",
-        "httpVideoUncheckable": "Isprobajte korišćenje HTTPS URL adrese za ovaj video sadržaj. Ako to ne funkcioniše, uklonite video sadržaj iz svoje radnje ili ga zamenite snimkom ekrana ili vezom.",
+        "httpVideoUncheckable": "Isprobajte korišćenje HTTPS URL adrese za ovaj video sadržaj. Ako to ne funkcioniše, uklonite video snimak iz svoje priče ili ga zamenite snimkom ekrana ili linkom.",
         "httpImageFixable": "Kliknite na dugme kako biste koristili bezbednu HTTPS URL adresu za ovaj snimak.",
-        "httpImageUncheckable": "Isprobajte korišćenje HTTPS URL adrese za ovaj snimak. Ako to ne funkcioniše, uklonite snimak iz svoje radnje ili ga zamenite vezom.",
+        "httpImageUncheckable": "Isprobajte korišćenje HTTPS URL adrese za ovaj snimak. Ako to ne funkcioniše, uklonite snimak iz svoje priče ili ga zamenite linkom.",
         "httpLayerMyMap": "Posetite stranicu stavke mape da biste ažurirali ovaj sloj za korišćenje HTTPS. Ako sloj ne može da bude ažuriran, uklonite ga iz mape.",
         "httpLayerNotMyMap": "Napravite kopiju mape i ažurirajte ovaj sloj za korišćenje HTTPS. Ako sloj ne može da bude ažuriran, uklonite ga iz mape.",
         "clickLearnMore": "Kliknite sa saznate više."
@@ -574,6 +574,30 @@ define({
       "action2": "Proveri odmah moje priče",
       "action3": "Saznaj više",
       "floatingNotification": "Ova priča sadrži nebezbedni (HTTP) sadržaj. Pregledajte je i rešite taj problem."
+    },
+    "extendedSupportMessage": {
+      "bannerMsg": "Klasične Esri Story Maps nalaze se u proširenoj podršci",
+      "s1h1": "Važne poruke za klasične Esri Story Maps",
+      "s1p1": "Classic Esri Story Maps šabloni nalaze se u proširenoj podršci. Podstičemo sve klijente da upotrebe ArcGIS StoryMaps, trenutnu alatku kompanije Esri za pričanje priča.",
+      "s1p2": "Klasični šabloni se ne nalaze više u okviru stavke za aktivni razvoj i ne preporučuju se više za nove projekte. Nema dodatnih ažuriranja koja su planirana za njihove sposobnosti. Priče koje ste kreirali koristeći klasične šablone nastaviće da budu dostupne.",
+      "s1p3": "U decembru 2021. klasični šabloni biće uklonjeni iz galerije podrazumevanih podesivih aplikacija. Jedan ili više klasičnih šablona može se dodati u grupu prilagođenih podesivih aplikacija ako je to potrebno kao podrška za trenutne radne tokove tokom vaše tranzicije na korišćenje ArcGIS StoryMaps.",
+      "s1p4": "Za više informacija, kliknite na vezu u nastavku.",
+      "action1": "Zatvori",
+      "action2": "Saznajte više",
+      "action3": "Isprobajte ArcGIS StoryMaps"
+    },
+    "matureSupportMessage": {
+      "bannerMsg": "Klasične Esri Story Maps nalaze se u Mature Support",
+      "s1h1": "Važne poruke za klasične Esri Story Maps",
+      "s1p1": "Classic Esri Story Maps šabloni nalaze se u Mature Support. Podstičemo sve klijente da upotrebe ArcGIS StoryMaps, trenutnu alatku kompanije Esri za pričanje priča.",
+      "s1p2": "Klasični šabloni se ne nalaze više u okviru stavke za aktivni razvoj i ne preporučuju se više za nove projekte. Nema dodatnih ažuriranja koja su planirana za njihove sposobnosti. Priče koje ste kreirali koristeći klasične šablone nastaviće da budu dostupne.",
+      "s1p3": "Za više informacija, kliknite na vezu u nastavku.",
+      "action1": "Zatvori",
+      "action2": "Saznajte više",
+      "action3": "Isprobajte ArcGIS StoryMaps"
+    },
+    "storyTellerUserType": {
+      "notCreatorError": "Vaš nalog (%USER_NAME%) nema licencu za korišćenje preglednika mape. Zatražite od administratora organizacije da vam dodeli dodatni tip korisnika Kreator."
     }
   }
 });

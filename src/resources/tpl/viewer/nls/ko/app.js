@@ -1,4 +1,4 @@
-/* eslint quotes: ["error", "double"] */
+﻿/* eslint quotes: ["error", "double"] */
 /* nls files need to use double quotes */
 define({
   "viewer": {
@@ -8,7 +8,7 @@ define({
     },
     "errors": {
       "noConfigName": "index.html > configOptions.story에 지정된 구성이 없음",
-      "configFormatError": "JSON 구문 오류로 인해, 지정된 구성을 불러올 수 없습니다.",
+      "configFormatError": "JSON 구문 오류로 인해 지정된 구성을 불러올 수 없습니다.",
       "configNotFound": "지정된 구성을 찾을 수 없거나 JSON 구문 오류로 인해 불러올 수 없습니다.",
       "boxTitle": "오류가 발생했습니다.",
       "servedFromFile": "웹 서버를 통해 응용프로그램에 접근해야 합니다. 자세한 내용은 ${USER_GUIDE}를 참고하세요.",
@@ -28,7 +28,7 @@ define({
       "notAuthorizedBuilder": "{TPL_NAME} 빌더를 사용할 수 있는 권한이 없습니다.",
       "noViewerIE": "이 스토리는 ${VERSION} 이전 버전의 Internet Explorer에서 지원되지 않습니다. ${UPGRADE}.",
       "noViewerIE2": "지원되지 않는 이전 브라우저를 사용하여 이 스토리를 보려고 합니다. 작동되지 않는 기능이 있거나 예기치 않은 문제가 발생할 수 있습니다. Internet Explorer 11로 업그레이드하거나 Chrome 등의 다른 브라우저를 사용하세요.",
-      "noViewerIE3": "2017년 후반부터는 이 스토리를 이 브라우저에서 불러올 수 없으므로 이 스토리를 보려면 지원되는 브라우저를 사용해야 합니다.",
+      "noViewerIE3": "2017년 후반부터는 해당 스토리를 이 브라우저에서 불러올 수 없으므로 이 스토리를 보려면 지원되는 브라우저를 사용해야 합니다.",
       "upgradeBrowser": "브라우저를 업데이트하세요.",
       "mapLoadingFail": "오류가 발생했습니다. 맵을 올바르게 불러오지 않았습니다.",
       "signOut": "로그아웃",
@@ -37,7 +37,10 @@ define({
       "builderSupportIpad": "Story Map Cascade 빌더는 iPad에서 지원되지 않습니다. 생성한 후 공유하는 Cascade 스토리는 iPad에서 작동됩니다.",
       "launchBuilder": "Cascade 빌더 실행",
       "notAgain": "다시 표시 안 함",
-      "sorry": "주의:"
+      "sorry": "주의:",
+      "nonOwnerOrgUrl": "접근하려는 %TPL_NAME%이(가) 제공한 URL에서 생성되지 않았습니다.",
+      "nonOwnerOrgProceedToGeneric": "%HREF%로 계속 진행",
+      "advanced": "고급"
     },
     "mobileWarning": {
       "message1": "이 스토리의 모바일 버전을 읽었습니다. 더 다양한 미디어 요소로 구성된 정식 버전을 알아보려면 데스크톱 컴퓨터에서 사용해 보세요.",
@@ -81,7 +84,7 @@ define({
     },
     "autoplay": {
       "speedFast": "빠르게",
-      "speedMedium": "중형",
+      "speedMedium": "보통",
       "speedSlow": "느리게"
     },
     "bannerNotification": {
@@ -124,12 +127,12 @@ define({
       "sectionLabel": "섹션 ${SECTION_NUMBER}"
     },
     "media": {
-      "websiteLabel": "웹 사이트:",
+      "websiteLabel": "웹사이트:",
       "videoLabel": "비디오:",
       "audioLabel": "오디오:"
     },
     "licenseChange2018": {
-      "noAccess": "귀하의 계정(%USER_NAME%)에는 공개 상태가 아닌 스토리맵을 열 수 있는 라이선스가 없습니다.  스토리맵 또는 애드온 필수 앱 라이선스가 포함된 사용자 유형을 업무 지시하려면 기관 관리자에게 문의하세요."
+      "noAccess": "귀하의 계정(%USER_NAME%)에는 공개 상태가 아닌 스토리맵을 열 수 있는 라이선스가 없습니다. 스토리맵 또는 애드온 필수 앱 라이선스가 포함된 사용자 유형을 업무 지시하려면 기관 관리자에게 문의하세요."
     }
   }
 });

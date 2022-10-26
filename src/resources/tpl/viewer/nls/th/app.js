@@ -1,4 +1,4 @@
-/* eslint quotes: ["error", "double"] */
+﻿/* eslint quotes: ["error", "double"] */
 /* nls files need to use double quotes */
 define({
   "viewer": {
@@ -37,7 +37,10 @@ define({
       "builderSupportIpad": "เครื่องมือสร้างแผนที่เรื่องราวแบบคาสเคส ไม่รองรับบน iPad แต่แผนที่เรื่องราวแบบคาสเคดที่คุณสร้างสามารถใช้ได้บน iPad",
       "launchBuilder": "เปิดใช้งานตัวสร้าง Cascade",
       "notAgain": "ไม่ต้องแสดงสิ่งนี้อีก",
-      "sorry": "เรียน"
+      "sorry": "เรียน",
+      "nonOwnerOrgUrl": "%TPL_NAME% ที่คุณพยายามเข้าใช้งาน ไม่ได้มีที่มาจาก URL ที่คุณระบุ",
+      "nonOwnerOrgProceedToGeneric": "ดำเนินการต่อไปยัง %HREF%",
+      "advanced": "ขั้นสูง"
     },
     "mobileWarning": {
       "message1": "คุณกำลังดูข้อมูลสำหรับมือถือในเรื่องนี้ สำหรับรุ่นเต็มด้วยที่มีองค์ประกอบมากยิ่งขึ้น สามารถดูได้บนเครื่องคอมพิวเตอร์เดสก์ทอป",

@@ -1,4 +1,4 @@
-/* eslint quotes: ["error", "double"] */
+﻿/* eslint quotes: ["error", "double"] */
 /* strings files need to be double quotes */
 define({
   "builder": {
@@ -24,7 +24,7 @@ define({
         "immersiveDefault": "Poutavá část (nenalezen žádný text)",
         "titleDefault": "Titulní část (nenalezen žádný text)",
         "coverDefault": "Úvodní část (nenalezen žádný text)",
-        "coverAppendage": "(Obal)"
+        "coverAppendage": "(Úvod)"
       },
       "logoSharing": {
         "logo": "Logo",
@@ -41,7 +41,7 @@ define({
         "enableSocialSharing": "Zobrazit tlačítko sdílení"
       },
       "appearance": {
-        "themeLabel": "Téma",
+        "themeLabel": "Motiv",
         "fontLabel": "Písma",
         "previewLabel": "Náhled",
         "fontsTitleLabel": "Názvy",
@@ -70,17 +70,17 @@ define({
       "buttonHealth": "Zpráva o zdraví",
       "manageStories": "Spravovat moje příběhy",
       "closeWithPendingChange": "Opravdu chcete potvrdit tuto akci? Vaše změny budou ztraceny.",
-      "coverLabel": "Obal",
+      "coverLabel": "Úvod",
       "creditsLabel": "Kredity",
       "betaFeedback": "Zpětná vazba",
       "betaNote": "Dejte nám vědět, co si myslíte o aplikaci ${APP_NAME}, nebo pokud něco nefunguje podle vašeho očekávání.",
       "notSharedNote": "Váš příběh není sdílen, vidíte ho jenom vy.",
       "organizationWarning": "Abyste zajistili, že tento příběh budou moci zobrazit ostatní uživatelé, musíte se svou organizací sdílet také jeho scény, vrstvy scén a vložené aplikace. Mapy a mapové vrstvy se sdílejí automaticky.",
       "publicWarning": "Aby tento příběh mohli zobrazit ostatní uživatelé, musíte se všemi sdílet také jeho scény, vrstvy scén a vložené aplikace. Mapy a mapové vrstvy se sdílejí automaticky.",
-      "addTitleNote": "Pro uložení přidejte na obal nadpis",
+      "addTitleNote": "Pro uložení přidejte do úvodu nadpis",
       "saveError": "Při ukládání vašeho příběhu došlo k chybě.",
       "duplicate": "Duplikovat",
-      "organize": "Organizovat",
+      "organize": "Uspořádat",
       "done": "Hotovo",
       "invite": "V průběhu tvorby vašeho příběhu se jednotlivé části zobrazí zde…",
       "mystoriestooltip": "Nástroj pro tvorbu kaskád vás upozorní na problémy s vaším příběhem a pomůže vám je napravit. Scény a vložené aplikace se nekontrolují, je nutné je zkontrolovat ručně."
@@ -140,7 +140,7 @@ define({
       },
       "sectionAppearance": {
         "layout": "Rozvržení",
-        "theme": "Téma"
+        "theme": "Motiv"
       },
       "size": {
         "small": "Malá",
@@ -379,11 +379,11 @@ define({
     },
     "immersive": {
       "titleConfig": {
-        "theme": "Téma"
+        "theme": "Motiv"
       },
       "panelConfig": {
         "position": "Pozice",
-        "theme": "Téma",
+        "theme": "Motiv",
         "size": "Velikost",
         "background": "Pozadí",
         "layout": "Posouvání (pro všechny panely)"
@@ -450,16 +450,16 @@ define({
       },
       "descriptions": {
         "httpAudioUnfixable": "Audio nepodporuje protokol HTTPS. Odstraňte audio z příběhu nebo ho nahraďte odkazem.",
-        "httpAudioUncheckable": "Audio má nezabezpečenou (HTTP) adresu URL. Pokud chcete pro audio zkusit použít zabezpečenou adresu URL s protokolem HTTPS, stiskněte tlačítko níže. Pokud toto řešení nefunguje, odstraňte audio z příběhu nebo ho nahraďte odkazem.",
+        "httpAudioUncheckable": "Audio má nezabezpečenou (HTTP) adresu URL. Pokud chcete pro audio zkusit použít zabezpečenou adresu URL s protokolem HTTPS, stiskněte tlačítko níže. Pokud toto řešení nefunguje, odstraňte audio z příběhu nebo ho nahraďte hypertextovým odkazem.",
         "httpAudioFixable": "Audio má nezabezpečenou (HTTP) adresu URL. Pokud chcete pro audio použít zabezpečenou adresu URL s protokolem HTTPS, stiskněte tlačítko níže.",
         "httpWebpageUnfixable": "Webová stránka nepodporuje protokol HTTPS. Odstraňte ji z příběhu nebo ji nahraďte snímkem obrazovky či odkazem.",
-        "httpWebpageUncheckable": "Webová stránka má nezabezpečenou (HTTP) adresu URL . Pokud chcete pro webovou stránku zkusit použít zabezpečenou adresu URL s protokolem HTTPS, stiskněte tlačítko níže. Pokud toto řešení nefunguje, odstraňte webovou stránku z příběhu nebo ji nahraďte snímkem obrazovky nebo odkazem.",
+        "httpWebpageUncheckable": "Webová stránka má nezabezpečenou (HTTP) adresu URL . Pokud chcete pro webovou stránku zkusit použít zabezpečenou adresu URL s protokolem HTTPS, stiskněte tlačítko níže. Pokud toto řešení nefunguje, odstraňte webovou stránku z příběhu nebo ji nahraďte snímkem obrazovky nebo hypertextovým odkazem.",
         "httpWebpageFixable": "Webová stránka má nezabezpečenou (HTTP) adresu URL . Pokud chcete pro webovou stránku použít zabezpečenou adresu URL s protokolem HTTPS, stiskněte tlačítko níže.",
         "httpVideoUnfixable": "Video nepodporuje protokol HTTPS. Odstraňte ho z příběhu nebo ho nahraďte snímkem obrazovky či odkazem.",
-        "httpVideoUncheckable": "Video má nezabezpečenou (HTTP) adresu URL. Pokud chcete pro video zkusit použít zabezpečenou adresu URL s protokolem HTTPS, stiskněte tlačítko níže. Pokud toto řešení nefunguje, odstraňte video z příběhu nebo ho nahraďte snímkem obrazovky nebo odkazem.",
+        "httpVideoUncheckable": "Video má nezabezpečenou (HTTP) adresu URL. Pokud chcete pro video zkusit použít zabezpečenou adresu URL s protokolem HTTPS, stiskněte tlačítko níže. Pokud toto řešení nefunguje, odstraňte video z příběhu nebo ho nahraďte snímkem obrazovky nebo hypertextovým odkazem.",
         "httpVideoFixable": "Video má nezabezpečenou (HTTP) adresu URL. Pokud chcete pro video použít zabezpečenou adresu URL s protokolem HTTPS, stiskněte tlačítko níže.",
         "httpImageUnfixable": "Obrázek nepodporuje protokol HTTPS. Odstraňte ho z příběhu nebo ho nahraďte odkazem.",
-        "httpImageUncheckable": "Obrázek má nezabezpečenou (HTTP) adresu URL. Pokud chcete pro snímek zkusit použít zabezpečenou adresu URL s protokolem HTTPS, stiskněte tlačítko níže. Pokud toto řešení nefunguje, odstraňte snímek z příběhu nebo ho nahraďte odkazem.",
+        "httpImageUncheckable": "Obrázek má nezabezpečenou (HTTP) adresu URL. Pokud chcete pro obrázek zkusit použít zabezpečenou adresu URL s protokolem HTTPS, stiskněte tlačítko níže. Pokud toto řešení nefunguje, odstraňte obrázek z příběhu nebo ho nahraďte hypertextovým odkazem.",
         "httpImageFixable": "Obrázek má nezabezpečenou (HTTP) adresu URL. Pokud chcete pro snímek použít zabezpečenou adresu URL s protokolem HTTPS, stiskněte tlačítko níže.",
         "httpLayer": "Vrstva má nezabezpečenou (HTTP) adresu URL.",
         "inaccessibleLogo": "Logo není přístupné. Nahraďte ho jiným obrázkem.",
@@ -469,13 +469,13 @@ define({
       },
       "tooltips": {
         "httpAudioFixable": "Stiskněte toto tlačítko, pokud chcete pro audio použít zabezpečenou adresu URL s protokolem HTTPS.",
-        "httpAudioUncheckable": "Pokuste se pro audio použít zabezpečenou adresu URL s protokolem HTTPS. Pokud toto řešení nefunguje, odstraňte audio z příběhu nebo ho nahraďte odkazem.",
+        "httpAudioUncheckable": "Pokuste se pro audio použít zabezpečenou adresu URL s protokolem HTTPS. Pokud toto řešení nefunguje, odstraňte audio z příběhu nebo ho nahraďte odkazem.",
         "httpWebpageFixable": "Stiskněte toto tlačítko, pokud chcete pro webovou stránku použít zabezpečenou adresu URL s protokolem HTTPS.",
-        "httpWebpageUncheckable": "Pokuste se pro webovou stránku použít zabezpečenou adresu URL s protokolem HTTPS. Pokud toto řešení nefunguje, odstraňte webovou stránku z příběhu nebo ji nahraďte snímkem obrazovky nebo odkazem.",
+        "httpWebpageUncheckable": "Pokuste se pro webovou stránku použít zabezpečenou adresu URL s protokolem HTTPS. Pokud toto řešení nefunguje, odstraňte webovou stránku z příběhu nebo ji nahraďte snímkem obrazovky nebo odkazem.",
         "httpVideoFixable": "Stiskněte toto tlačítko, pokud chcete pro video použít zabezpečenou adresu URL s protokolem HTTPS.",
-        "httpVideoUncheckable": "Pokuste se pro video použít zabezpečenou adresu URL s protokolem HTTPS. Pokud toto řešení nefunguje, odstraňte video z příběhu nebo ho nahraďte snímkem obrazovky nebo odkazem.",
+        "httpVideoUncheckable": "Pokuste se pro video použít zabezpečenou adresu URL s protokolem HTTPS. Pokud toto řešení nefunguje, odstraňte video z příběhu nebo ho nahraďte snímkem obrazovky nebo odkazem.",
         "httpImageFixable": "Stiskněte toto tlačítko, pokud chcete pro obrázek použít zabezpečenou adresu URL s protokolem HTTPS.",
-        "httpImageUncheckable": "Pokuste se pro snímek použít zabezpečenou adresu URL s protokolem HTTPS. Pokud toto řešení nefunguje, odstraňte snímek z příběhu nebo ho nahraďte odkazem.",
+        "httpImageUncheckable": "Pokuste se pro obrázek použít zabezpečenou adresu URL s protokolem HTTPS. Pokud toto řešení nefunguje, odstraňte obrázek z příběhu nebo ho nahraďte odkazem.",
         "httpLayerMyMap": "Přejděte na stránku položek mapy a aktualizujte tuto vrstvu, aby používala protokol HTTPS. Pokud vrstvu nelze aktualizovat, odstraňte ji z mapy.",
         "httpLayerNotMyMap": "Mapu zkopírujte a aktualizujte tuto vrstvu, aby používala protokol HTTPS. Pokud vrstvu nelze aktualizovat, odstraňte ji z mapy.",
         "clickLearnMore": "Kliknutím zde se dozvíte více."
@@ -574,6 +574,30 @@ define({
       "action2": "Chci si prohlédnout svoje příběhy",
       "action3": "Více informací",
       "floatingNotification": "Příběh obsahuje nezabezpečený (HTTP) obsah. Prosím zkontrolujte a vyřešte tyto problémy se zabezpečením."
+    },
+    "extendedSupportMessage": {
+      "bannerMsg": "Mapy Classic Esri Story mají prodlouženou podporu",
+      "s1h1": "Důležitá informace o klasických mapách Esri Story",
+      "s1p1": "Šablony map Classic Esri Story mají prodlouženou podporu. Vyzýváme všechny zákazníky, aby používali ArcGIS StoryMaps, aktuální generaci map Esri pro zobrazování příběhů.",
+      "s1p2": "Klasické šablony se už dále aktivně nevyvíjí a nedoporučujeme je pro nové projekty. Další aktualizace jejich funkcí se neplánují. Příběhy, které jste pomocí klasických šablon vytvořili, budou i nadále dostupné.",
+      "s1p3": "V prosinci 2021 budou klasické šablony odstraněny z výchozí galerie konfigurovatelných aplikací. Pokud potřebujete během vašeho přechodu na ArcGIS StoryMaps podpořit aktuální pracovní postupy může být k vaší skupině vlastních konfigurovatelných aplikací přidána jedna nebo více klasických šablon.",
+      "s1p4": "Více informací se dozvíte na níže uvedeném odkazu.",
+      "action1": "Zavřít",
+      "action2": "Další informace",
+      "action3": "Vyzkoušejte ArcGIS StoryMaps"
+    },
+    "matureSupportMessage": {
+      "bannerMsg": "Mapy Classic Esri Story jsou ve finální fázi podpory",
+      "s1h1": "Důležitá informace o klasických mapách Esri Story",
+      "s1p1": "Šablony map Classic Esri Story jsou ve finální fázi podpory. Vyzýváme všechny zákazníky, aby používali ArcGIS StoryMaps, aktuální generaci map Esri pro zobrazování příběhů.",
+      "s1p2": "Klasické šablony se už dále aktivně nevyvíjí a nedoporučujeme je pro nové projekty. Další aktualizace jejich funkcí se neplánují. Příběhy, které jste pomocí klasických šablon vytvořili, budou i nadále dostupné.",
+      "s1p3": "Více informací se dozvíte na níže uvedeném odkazu.",
+      "action1": "Zavřít",
+      "action2": "Další informace",
+      "action3": "Vyzkoušejte ArcGIS StoryMaps"
+    },
+    "storyTellerUserType": {
+      "notCreatorError": "Váš účet (%USER_NAME%) nevlastní licenci k použití nástrojů pro tvorbu klasických map s příběhem. Požádejte prosím administrátora své organizace, aby vám přidělil typ uživatele Creator."
     }
   }
 });

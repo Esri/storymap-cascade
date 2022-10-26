@@ -1,4 +1,4 @@
-/* eslint quotes: ["error", "double"] */
+﻿/* eslint quotes: ["error", "double"] */
 /* nls files need to use double quotes */
 define({
   "viewer": {
@@ -37,7 +37,10 @@ define({
       "builderSupportIpad": "Le générateur Story Map Cascade n’est pas pris en charge sur iPad. Les récits Cascade que vous créez et partagez fonctionneront sur iPad.",
       "launchBuilder": "Lancer le générateur de Cascade",
       "notAgain": "Ne plus afficher",
-      "sorry": "Attention :"
+      "sorry": "Attention :",
+      "nonOwnerOrgUrl": "L’application %TPL_NAME% à laquelle vous essayez d’accéder n’est pas disponible à l’URL que vous avez indiquée.",
+      "nonOwnerOrgProceedToGeneric": "Poursuivre vers %HREF%",
+      "advanced": "Avancé"
     },
     "mobileWarning": {
       "message1": "Vous avez lu la version mobile de ce récit. Pour voir la version complète, avec ses éléments multimédias plus sophistiqués, essayez sur un ordinateur de bureau.",
@@ -66,7 +69,7 @@ define({
     "shareFromCommon": {
       "copy": "Copier",
       "copied": "Copié",
-      "open": "Ouvert",
+      "open": "Ouvrir",
       "embed": "Incorporer dans une page web",
       "embedExplain": "Utilisez le code HTML suivant pour incorporer le récit dans une page web.",
       "size": "Taille (largeur/hauteur):",
@@ -129,7 +132,7 @@ define({
       "audioLabel": "Audio :"
     },
     "licenseChange2018": {
-      "noAccess": "La licence de votre compte (%USER_NAME%) ne permet pas d’ouvrir une Story Map non publique. Demandez à l’administrateur de votre organisation de vous attribuer un type d’utilisateur qui inclut les Story Maps ou une licence Essential Apps sous forme de complément."
+      "noAccess": "La licence de votre compte (%USER_NAME%) ne permet pas d’ouvrir une story map non publique. Demandez à l’administrateur de votre organisation de vous attribuer un type d’utilisateur qui inclut StoryMaps ou une licence Essential Apps additionnelle."
     }
   }
 });

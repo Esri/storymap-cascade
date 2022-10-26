@@ -1,4 +1,4 @@
-/* eslint quotes: ["error", "double"] */
+﻿/* eslint quotes: ["error", "double"] */
 /* strings files need to be double quotes */
 define({
   "builder": {
@@ -76,7 +76,7 @@ define({
       "betaNote": "Praneškite mums, ką manote apie ${APP_NAME}, arba jei kas nors neveikia taip, kaip turėtų.",
       "notSharedNote": "Jūsų pasakojimas nebendrinamas, jį galite matyti tik jūs",
       "organizationWarning": "Kad šį pasakojimą galėtų matyti kiti, turite viešai bendrinti jo scenas, scenų sluoksnius ir įkeltas aplikacijas su savo organizacija. Žemėlapiai ir žemėlapių sluoksniai bendrinami automatiškai.",
-      "publicWarning": "Norėdami užtikrinti, kad šį pasakojimą galės peržiūrėti kiti vartotojai, turite su visais bendrinti ir jo scenas, scenų sluoksnius bei įterptas aplikacijas. Žemėlapiai ir žemėlapių sluoksniai bendrinami automatiškai.",
+      "publicWarning": "Norėdami užtikrinti, kad šį pasakojimą galės peržiūrėti kiti naudotojai, turite su visais bendrinti ir jo scenas, scenų sluoksnius bei įterptas aplikacijas. Žemėlapiai ir žemėlapių sluoksniai bendrinami automatiškai.",
       "addTitleNote": "Norėdami įrašyti, viršelyje nurodykite pavadinimą",
       "saveError": "Įrašant jūsų pasakojimą, įvyko klaida.",
       "duplicate": "Dubliuoti",
@@ -450,16 +450,16 @@ define({
       },
       "descriptions": {
         "httpAudioUnfixable": "Šis garso failas nepalaiko HTTPS. Pašalinkite jį iš savo pasakojimo arba pakeiskite jį nuoroda.",
-        "httpAudioUncheckable": "Šio garso įrašo (HTTP) URL yra nesaugus. Spustelėkite mygtuką norėdami naudoti šio garso įrašo HTTPS URL. Jei neveikia, pašalinkite garso įrašą iš savo pasakojimo arba pakeiskite jį hipersaitu.",
+        "httpAudioUncheckable": "Šio garso įrašo (HTTP) URL yra nesaugus. Spustelėkite mygtuką norėdami naudoti šio garso įrašo HTTPS URL. Jei neveikia, pašalinkite garso įrašą iš savo pasakojimo arba pakeiskite jį nuoroda.",
         "httpAudioFixable": "Šio garso įrašo (HTTP) URL yra nesaugus. Spustelėkite toliau esantį mygtuką norėdami naudoti saugų šio garso įrašo HTTPS URL.",
         "httpWebpageUnfixable": "Šis tinklalapis nepalaiko HTTPS. Pašalinkite jį iš savo pasakojimo arba pakeiskite jį ekrano vaizdu arba nuoroda.",
-        "httpWebpageUncheckable": "Šio tinklalapio (HTTP) URL yra nesaugus. Spustelėkite mygtuką norėdami naudoti šio tinklalapio HTTPS URL. Jei neveikia, pašalinkite tinklalapį iš savo pasakojimo arba pakeiskite jį ekrano vaizdu ar hipersaitu.",
+        "httpWebpageUncheckable": "Šio tinklalapio (HTTP) URL yra nesaugus. Spustelėkite mygtuką norėdami naudoti šio tinklalapio HTTPS URL. Jei neveikia, pašalinkite tinklalapį iš savo pasakojimo arba pakeiskite jį ekrano vaizdu ar nuoroda.",
         "httpWebpageFixable": "Šio tinklalapio (HTTP) URL yra nesaugus. Spustelėkite toliau esantį mygtuką norėdami naudoti saugų šio tinklalapio HTTPS URL.",
         "httpVideoUnfixable": "Šis vaizdo įrašas nepalaiko HTTPS. Pašalinkite jį iš savo pasakojimo arba pakeiskite jį ekrano vaizdu arba nuoroda.",
-        "httpVideoUncheckable": "Šio vaizdo įrašo (HTTP) URL yra nesaugus. Spustelėkite mygtuką norėdami naudoti šio vaizdo įrašo HTTPS URL. Jei neveikia, pašalinkite vaizdo įrašą iš savo pasakojimo arba pakeiskite jį ekrano vaizdu ar hipersaitu.",
+        "httpVideoUncheckable": "Šio vaizdo įrašo (HTTP) URL yra nesaugus. Spustelėkite mygtuką norėdami naudoti šio vaizdo įrašo HTTPS URL. Jei neveikia, pašalinkite vaizdo įrašą iš savo pasakojimo arba pakeiskite jį ekrano vaizdu ar nuoroda.",
         "httpVideoFixable": "Šio vaizdo įrašo (HTTP) URL yra nesaugus. Spustelėkite toliau esantį mygtuką norėdami naudoti saugų šio vaizdo įrašo HTTPS URL.",
         "httpImageUnfixable": "Šis paveikslėlis nepalaiko HTTPS. Pašalinkite jį iš savo pasakojimo arba pakeiskite jį nuoroda.",
-        "httpImageUncheckable": "Šio paveikslėlio (HTTP) URL yra nesaugus. Spustelėkite mygtuką norėdami naudoti šio paveikslėlio HTTPS URL. Jei neveikia, pašalinkite paveikslėlį iš savo pasakojimo arba pakeiskite jį hipersaitu.",
+        "httpImageUncheckable": "Šio paveikslėlio (HTTP) URL yra nesaugus. Spustelėkite mygtuką norėdami naudoti šio paveikslėlio HTTPS URL. Jei neveikia, pašalinkite paveikslėlį iš savo pasakojimo arba pakeiskite jį nuoroda.",
         "httpImageFixable": "Šio paveikslėlio (HTTP) URL yra nesaugus. Spustelėkite toliau esantį mygtuką norėdami naudoti saugų šio paveikslėlio HTTPS URL.",
         "httpLayer": "Šio sluoksnio (HTTP) URL yra nesaugus.",
         "inaccessibleLogo": "Šis logotipas nepasiekiamas. Pakeiskite jį kitu paveikslėliu.",
@@ -574,6 +574,30 @@ define({
       "action2": "Peržiūrėkite savo pasakojimus jau dabar",
       "action3": "Sužinokite daugiau",
       "floatingNotification": "Šiame pasakojime yra nesaugaus (HTTP) turinio. Peržiūrėkite ir išspręskite šias problemas."
+    },
+    "extendedSupportMessage": {
+      "bannerMsg": "Klasikiniai „Esri Story Maps“ yra „Extended Support“",
+      "s1h1": "Svarbus pranešimas apie klasikinius „Esri Story Maps“",
+      "s1p1": "Klasikinių „Esri Story Maps“ šablonai yra „Extended Support“ Visi klientai skatinami naudoti „ArcGIS StoryMaps“ – dabartinės kartos „Esri“ pasakojimų įrankį.",
+      "s1p2": "Klasikiniai šablonai nebėra aktyviai kuriami ir nerekomenduojami naujiems projektams. Jų galimybėms nesuplanuotas tolesnis naujinimas. Pasakojimai, kuriuos sukūrėte naudodami klasikinius šablonus, vis dar bus prieinami.",
+      "s1p3": "2021 m. gruodį klasikiniai šablonai bus pašalinti iš numatytosios „Configurable Apps“ galerijos. Vieną ar daugiau klasikinių šablonų galima pridėti prie Jūsų organizacijos pasirinktinės „Configurable Apps“ grupės, jei jų reikia dabartinių darbo eigų palaikymui, pereinant prie „ArcGIS StoryMaps“ naudojimo.",
+      "s1p4": "Daugiau informacijos rasite spustelėję žemiau pateiktą nuorodą.",
+      "action1": "Uždaryti",
+      "action2": "Sužinokite daugiau",
+      "action3": "Išbandyti „ArcGIS StoryMaps“"
+    },
+    "matureSupportMessage": {
+      "bannerMsg": "Klasikiniai „Esri Story Maps“ yra „Mature Support“",
+      "s1h1": "Svarbus pranešimas apie klasikinius „Esri Story Maps“",
+      "s1p1": "Klasikiniai „Esri Story Maps“ šablonai yra „Mature Support“. Visi klientai skatinami naudoti „ArcGIS StoryMaps“ – dabartinės kartos „Esri“ pasakojimų įrankį.",
+      "s1p2": "Klasikiniai šablonai nebėra aktyviai kuriami ir nerekomenduojami naujiems projektams. Jų galimybėms nesuplanuotas tolesnis naujinimas. Pasakojimai, kuriuos sukūrėte naudodami klasikinius šablonus, vis dar bus prieinami.",
+      "s1p3": "Daugiau informacijos rasite spustelėję žemiau pateiktą nuorodą.",
+      "action1": "Uždaryti",
+      "action2": "Sužinokite daugiau",
+      "action3": "Išbandyti „ArcGIS StoryMaps“"
+    },
+    "storyTellerUserType": {
+      "notCreatorError": "Jūsų paskyra (%USER_NAME%) nelicencijuota naudoti klasikines žemėlapių pasakojimų kūrimo priemones. Paprašykite organizacijos administratoriaus priskirti jums Kūrėjo naudotojo tipą."
     }
   }
 });

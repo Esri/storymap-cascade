@@ -1,4 +1,4 @@
-/* eslint quotes: ["error", "double"] */
+﻿/* eslint quotes: ["error", "double"] */
 /* nls files need to use double quotes */
 define({
   "viewer": {
@@ -37,7 +37,10 @@ define({
       "builderSupportIpad": "ストーリー マップ カスケード ビルダーは iPad ではサポートされていません。作成および共有したカスケード ストーリーは iPad 上で動作します。",
       "launchBuilder": "カスケード ビルダーの起動",
       "notAgain": "今後このメッセージを表示しない",
-      "sorry": "注意:"
+      "sorry": "注意:",
+      "nonOwnerOrgUrl": "アクセスしようとしている %TPL_NAME% は、指定した URL からのものではありません。",
+      "nonOwnerOrgProceedToGeneric": "%HREF% に進む",
+      "advanced": "Advanced"
     },
     "mobileWarning": {
       "message1": "このストーリーのモバイル バージョンを読み取りました。メディア エレメントが豊富な完全バージョンについては、デスクトップ コンピューターでお試しください。",
@@ -129,7 +132,7 @@ define({
       "audioLabel": "オーディオ:"
     },
     "licenseChange2018": {
-      "noAccess": "パブリックでないストーリー マップを開くためのライセンスがアカウント (%USER_NAME%) に付与されていません。  組織の管理者にストーリー マップまたはアドオン Essential Apps ライセンスを含むユーザー タイプを割り当てるよう依頼してください。"
+      "noAccess": "パブリックでないストーリー マップを開くためのライセンスがアカウント (%USER_NAME%) に付与されていません。 組織の管理者にストーリー マップまたはアドオン Essential Apps ライセンスを含むユーザー タイプを割り当てるよう依頼してください。"
     }
   }
 });

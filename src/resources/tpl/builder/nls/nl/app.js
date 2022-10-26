@@ -1,4 +1,4 @@
-/* eslint quotes: ["error", "double"] */
+﻿/* eslint quotes: ["error", "double"] */
 /* strings files need to be double quotes */
 define({
   "builder": {
@@ -574,6 +574,30 @@ define({
       "action2": "Controleer nu mijn verhalen",
       "action3": "Meer weten",
       "floatingNotification": "Dit verhaal bevat onbeveiligde (HTTP) content. Controleer en corrigeer deze problemen."
+    },
+    "extendedSupportMessage": {
+      "bannerMsg": "Klassieke Esri Story Maps gaan over op Extended Support",
+      "s1h1": "Belangrijk bericht over klassieke Esri Story Maps",
+      "s1p1": "De templates voor de klassieke Esri Story Maps gaan over op Extended Support. Alle klanten worden aangeraden om ArcGIS StoryMaps te gebruiken, Esri's nieuwste en huidige tool om verhalen mee te vertellen.",
+      "s1p2": "De klassieke templates worden niet meer actief ontwikkeld. Voor nieuwe projecten wordt het gebruik ervan afgeraden. Er staan geen verdere updates op de planning voor deze optie. Verhalen die u met de klassieke templates hebt gemaakt, blijven beschikbaar.",
+      "s1p3": "In december 2021 zullen de klassieke templates verwijderd worden uit de standaard galerij met configureerbare apps. Als uw bedrijf bepaalde klassieke templates nodig heeft om uw werk te kunnen blijven uitvoeren tijdens de overstap naar ArcGIS StoryMaps, kunnen een of meerdere van deze templates worden toegevoegd aan de aangepaste groep met configureerbare apps van uw bedrijf.",
+      "s1p4": "Klik voor meer informatie hieronder op Meer weten.",
+      "action1": "Sluiten",
+      "action2": "Meer weten",
+      "action3": "Probeer ArcGIS StoryMaps uit"
+    },
+    "matureSupportMessage": {
+      "bannerMsg": "Klassieke Esri Story Maps gaan over op Mature Support",
+      "s1h1": "Belangrijk bericht over klassieke Esri Story Maps",
+      "s1p1": "De templates voor de klassieke Esri Story Maps gaan over op Mature Support. Alle klanten worden aangeraden om ArcGIS StoryMaps te gebruiken, Esri's nieuwste en huidige tool om verhalen mee te vertellen.",
+      "s1p2": "De klassieke templates worden niet meer actief ontwikkeld. Voor nieuwe projecten wordt het gebruik ervan afgeraden. Er staan geen verdere updates op de planning voor deze optie. Verhalen die u met de klassieke templates hebt gemaakt, blijven beschikbaar.",
+      "s1p3": "Klik voor meer informatie hieronder op Meer weten.",
+      "action1": "Sluiten",
+      "action2": "Meer weten",
+      "action3": "Probeer ArcGIS StoryMaps uit"
+    },
+    "storyTellerUserType": {
+      "notCreatorError": "Uw account (%USER_NAME%) heeft geen licentie om Classic Story Map Builders te gebruiken. Vraag uw organisatiebeheerder om u een Ontwikkelaar user type toe te wijzen."
     }
   }
 });

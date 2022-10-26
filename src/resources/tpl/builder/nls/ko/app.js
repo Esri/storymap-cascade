@@ -1,4 +1,4 @@
-/* eslint quotes: ["error", "double"] */
+﻿/* eslint quotes: ["error", "double"] */
 /* strings files need to be double quotes */
 define({
   "builder": {
@@ -12,14 +12,14 @@ define({
     },
     "headerConfig": {
       "toggles": {
-        "bookmarks": "책갈피",
+        "bookmarks": "북마크",
         "logoSharing": "로고 및 공유",
         "theme": "모양"
       },
       "bookmarks": {
         "title": "섹션",
-        "bookmark": "책갈피",
-        "intro": "책갈피는 헤더에 나타나는 스토리 섹션에 대한 링크입니다. 스토리 기본 섹션에 대한 간략한 책갈피를 만들어 독자가 스토리를 쉽게 살펴볼 수 있습니다.",
+        "bookmark": "북마크",
+        "intro": "북마크는 헤더에 나타나는 스토리 섹션에 대한 링크입니다. 스토리 기본 섹션에 대한 간략한 북마크를 만들어 독자가 스토리를 쉽게 살펴볼 수 있습니다.",
         "sequentialDefault": "이야기 섹션(텍스트가 없음)",
         "immersiveDefault": "몰입형 섹션(텍스트가 없음)",
         "titleDefault": "제목 섹션(텍스트가 없음)",
@@ -46,7 +46,7 @@ define({
         "previewLabel": "미리 보기",
         "fontsTitleLabel": "제목",
         "fontsBodyLabel": "본문",
-        "loremTitle": "Lorem Ipsum",
+        "loremTitle": "로렘 입숨",
         "loremBody": "Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor. Mauris consequat orci nec magna facilisis bibendum at eget libero."
       }
     },
@@ -79,7 +79,7 @@ define({
       "publicWarning": "이 스토리를 다른 사람이 볼 수 있도록 하려면 스토리의 씬, 씬 레이어, 임베드된 앱을 모두에게 공유(공개)해야 합니다. 맵과 맵 레이어는 자동으로 공유됩니다.",
       "addTitleNote": "저장할 커버의 표지 추가",
       "saveError": "스토리를 저장하는 중 오류가 발생했습니다.",
-      "duplicate": "복제",
+      "duplicate": "복사",
       "organize": "구성",
       "done": "완료",
       "invite": "스토리를 만들 때 섹션이 여기에 나타납니다.",
@@ -144,16 +144,16 @@ define({
       },
       "size": {
         "small": "작게",
-        "medium": "중간",
+        "medium": "보통",
         "large": "크게",
         "noCrop": "긴 이미지를 자르지 않음",
-        "noCropTallTooltip": "자르지 않은 긴 이미지는 전체이미지를 보기위해 스크롤을 해야하는 독자에게 영향을 미칩니다."
+        "noCropTallTooltip": "자르지 않은 긴 이미지는 전체이미지를 보기 위해 스크롤을 해야하는 독자에게 영향을 미칩니다."
       },
       "background": {
         "noCrop": "자르지 않음",
         "mostImportantPart": "가장 중요한 포인트 선택",
-        "cropExplanationImmersive": "이미지상의 한 포인트를 선택하여 다양한 화면 크기에서 이미지가 잘리는 방식을 선택합니다.  선택한 포인트는 항상 표시됩니다. 이미지가 완전히 보여야 하는 경우 '자르지 않음'을 선택합니다.",
-        "cropExplanation": "이미지상의 한 포인트를 선택하여 다양한 화면 크기에서 이미지가 잘리는 방식을 선택합니다. 선택한 포인트는 항상 표시됩니다.",
+        "cropExplanationImmersive": "이미지상의 한 포인트를 선택하여 다양한 화면 크기에서 이미지가 잘리는 방식을 선택합니다. 선택한 포인트는 항상 표시됩니다. 이미지가 완전히 보여야 하는 경우 '자르지 않음'을 선택합니다.",
+        "cropExplanation": "이미지에서 한 포인트를 선택하여 다양한 화면 크기에서 이미지가 잘리는 방식을 선택합니다. 선택한 포인트는 항상 표시됩니다.",
         "color": "색상",
         "previews": "미리 보기"
       },
@@ -171,7 +171,7 @@ define({
         "contentType": {
           "error": "인증되지 않는 미디어입니다.",
           "imageOnly": "스토리의 이 부분에서는 이미지를 추가할 수 있습니다.",
-          "imageAndVideo": "스토리의 이 부분에서는 이미지 또는 비디오를 추가할 수 있습니다.",
+          "imageAndVideo": "스토리의 이 부분에서는 이미지나 비디오를 추가할 수 있습니다.",
           "imageVideoWebpage": "스토리의 해당 부분에는 오디오, 이미지, 비디오, 웹페이지를 추가할 수 있습니다."
         }
       },
@@ -211,9 +211,9 @@ define({
           },
           "urlContent": {
             "uploadHeaders": {
-              "generic": "웹의 콘텐츠에 대한 링크",
-              "imageOnly": "웹의 이미지에 대한 링크",
-              "imageAndVideo": "웹의 이미지 또는 비디오에 대한 링크"
+              "generic": "웹 콘텐츠에 대한 링크",
+              "imageOnly": "웹 이미지에 대한 링크",
+              "imageAndVideo": "웹의 이미지나 비디오에 대한 링크"
             },
             "linkText": {
               "imageOnly": "위의 상자에서 직접 사진에 연결할 수 있습니다.",
@@ -236,7 +236,7 @@ define({
               "generic": "입력한 주소에 문제가 발생했습니다. 다시 시도하세요.",
               "imageOnly1": "스토리의 이 부분에서 이미지를 사용해야 합니다.",
               "imageOnly2": "이미지(.jpg, .png, .gif)의 링크를 제공하거나 ${ArcGIS}, ${Flickr}, ${Google+} 또는 ${Unsplash}에서 이미지를 선택하세요.",
-              "imageAndVideo1": "스토리의 이 부분에서 이미지 또는 비디오를 사용해야 합니다.",
+              "imageAndVideo1": "스토리의 이 부분에서 이미지나 비디오를 사용해야 합니다.",
               "imageAndVideo2": "이미지(.jpg, .png, .gif) 링크 또는 ${YouTube}나 ${Vimeo}의 비디오 링크를 제공하거나 ${ArcGIS}, ${Flickr}, ${Google+} 또는 ${Unsplash}에서 이미지를 선택하세요.",
               "badFormat": "추가하려는 파일의 링크는 형식이 잘못되었습니다.",
               "inaccessible": "추가하려는 파일은 누락되었거나 접근할 수 없습니다.",
@@ -366,7 +366,7 @@ define({
     "cover": {
       "titlePrompt": "스토리 제목 입력...",
       "subtitlePrompt": "아래쪽으로 스크롤하여 시작하거나 선택적 부제목 입력",
-      "mediaPlaceholder": "이미지 또는 비디오 추가",
+      "mediaPlaceholder": "이미지나 비디오 추가",
       "saveError": "저장 실패, 이 제목의 항목이 이미 있음"
     },
     "credits": {
@@ -453,7 +453,7 @@ define({
         "httpAudioUncheckable": "이 오디오에는 안전하지 않은(HTTP) URL이 있습니다. 아래 버튼을 클릭하여 이 오디오에 HTTPS URL을 사용해 보세요. 작동하지 않으면 스토리에서 오디오를 제거하거나 하이퍼링크로 바꾸세요.",
         "httpAudioFixable": "이 오디오에는 안전하지 않은(HTTP) URL이 있습니다. 아래 버튼을 클릭하여 이 오디오에 안전한 HTTPS URL을 사용하세요.",
         "httpWebpageUnfixable": "이 웹 페이지는 HTTPS를 지원하지 않습니다. 스토리에서 웹 페이지를 제거하거나 스크린샷 또는 링크로 바꾸세요.",
-        "httpWebpageUncheckable": "이 웹 페이지에는 안전하지 않은(HTTP) URL이 있습니다. 아래 버튼을 클릭하여 이 웹 페이지에 HTTPS URL을 사용해 보세요. 작동하지 않으면 스토리에서 웹 페이지를 제거하거나 스크린샷 또는 하이퍼링크로 바꾸세요.",
+        "httpWebpageUncheckable": "이 웹 페이지에는 안전하지 않은(HTTP) URL이 있습니다. 아래 버튼을 클릭하여 이 웹 페이지에 HTTPS URL을 사용해 보세요. 작동하지 않으면 스토리에서 웹페이지를 제거하거나 스크린샷 또는 하이퍼링크로 바꾸세요.",
         "httpWebpageFixable": "이 웹 페이지에는 안전하지 않은(HTTP) URL이 있습니다. 아래 버튼을 클릭하여 웹 페이지에 안전한 HTTPS URL을 사용하세요.",
         "httpVideoUnfixable": "이 비디오는 HTTPS를 지원하지 않습니다. 스토리에서 비디오를 제거하거나 스크린샷 또는 링크로 바꾸세요.",
         "httpVideoUncheckable": "이 비디오에는 안전하지 않은(HTTP) URL이 있습니다. 아래 버튼을 클릭하여 이 비디오에 HTTPS URL을 사용해 보세요. 작동하지 않으면 스토리에서 비디오를 제거하거나 스크린샷 또는 하이퍼링크로 바꾸세요.",
@@ -471,7 +471,7 @@ define({
         "httpAudioFixable": "버튼을 클릭하여 이 오디오에 안전한 HTTPS URL을 사용하세요.",
         "httpAudioUncheckable": "이 오디오에 HTTPS URL을 사용해 보세요. 작동하지 않으면 스토리에서 오디오를 제거하거나 링크로 바꾸세요.",
         "httpWebpageFixable": "버튼을 클릭하여 웹 페이지에 안전한 HTTPS URL을 사용하세요.",
-        "httpWebpageUncheckable": "이 웹 페이지에 HTTPS URL을 사용해 보세요. 작동하지 않으면 스토리에서 웹 페이지를 제거하거나 스크린샷 또는 링크로 바꾸세요.",
+        "httpWebpageUncheckable": "이 웹 페이지에 HTTPS URL을 사용해 보세요. 작동하지 않으면 스토리에서 웹페이지를 제거하거나 스크린샷 또는 링크로 바꾸세요.",
         "httpVideoFixable": "버튼을 클릭하여 이 비디오에 안전한 HTTPS URL을 사용하세요.",
         "httpVideoUncheckable": "이 비디오에 HTTPS URL을 사용해 보세요. 작동하지 않으면 스토리에서 비디오를 제거하거나 스크린샷 또는 링크로 바꾸세요.",
         "httpImageFixable": "버튼을 클릭하여 이 이미지에 안전한 HTTPS URL을 사용하세요.",
@@ -567,13 +567,37 @@ define({
       "bannerMsg": "웹 보안 및 스토리맵에 대한 중요 메시지",
       "s1h1": "Esri는 스토리맵의 보안을 지속적으로 강화하고 있습니다.",
       "s1p1": "스토리맵은 웹에서 실행되며 웹 커뮤니티는 더 강화된 보안을 설정하고 구현하기 위해 항상 노력하고 있습니다. 인터넷을 통해 전송되는 콘텐츠의 보안 연결을 제공하는 HTTPS는 웹 콘텐츠에 접근하는 필수 방법으로 부각되고 있어, 현재 대부분의 최신 브라우저에서는 HTTPS가 아닌 HTTP를 사용하는 경우 경고 메시지가 표시됩니다. 이 새로운 표준을 따라 스토리맵 제작 및 공유에 HTTPS 링크를 사용하고, 웹 콘텐츠를 임베드하거나 스토리맵 내 이미지에 연결할 때 HTTPS URL만 사용하는 것을 권장합니다.",
-      "s1p2": "이는 스토리맵의 모든 콘텐츠(이미지, 레이어, 임베드된 앱, 웹 사이트)가 HTTP가 아닌 HTTPS로 시작하는 링크를 사용하여 접근해야 함을 의미합니다. HTTPS를 사용하면 대부분의 웹 브라우저에서 내 스토리가 안전한 것으로 나타나므로 독자에게 최상의 환경이 제공됩니다.",
+      "s1p2": "이는 스토리맵의 모든 콘텐츠(이미지, 레이어, 임베드된 앱, 웹사이트)가 HTTP가 아닌 HTTPS로 시작하는 링크를 사용하여 접근해야 함을 의미합니다. HTTPS를 사용하면 대부분의 웹 브라우저에서 내 스토리가 안전한 것으로 나타나므로 독자에게 최상의 환경이 제공됩니다.",
       "s2h1": "해야 할 일",
       "s2p1": "Esri는 스토리맵 작성자와 독자가 쉽게 HTTPS로 전환할 수 있도록 노력하고 있습니다. 이제, 스토리맵 빌더 및 내 스토리에서 안전하지 않은 콘텐츠(HTTP)를 찾고 이를 해결하기 위한 권장 사항을 제시하는 도구가 제공됩니다. 내 스토리에서 안전하지 않은 콘텐츠를 확인하고 가능한 한 빨리 HTTPS로 업데이트하세요.",
       "action1": "닫기",
       "action2": "내 스토리 지금 확인",
       "action3": "자세한 정보",
       "floatingNotification": "이 스토리에는 안전하지 않은(HTTP) 콘텐츠가 포함되어 있습니다. 검토하고 해당 문제를 해결하세요."
+    },
+    "extendedSupportMessage": {
+      "bannerMsg": "Classic Esri Story Maps가 연장 지원됩니다.",
+      "s1h1": "Classic Esri Story Maps에 대한 중요 메시지",
+      "s1p1": "Classic Esri Story Maps 템플릿이 연장 지원됩니다. 모든 고객은 Esri의 최신 스토리텔링 도구인 ArcGIS StoryMaps를 사용하는 것이 좋습니다.",
+      "s1p2": "클래식 템플릿은 더 이상 활성 개발 상태가 아니며 새 프로젝트에 권장되지 않습니다. 해당 기능에 대한 추가 업데이트 계획은 없습니다. 클래식 템플릿을 사용하여 생성한 스토리는 계속 사용할 수 있습니다.",
+      "s1p3": "클래식 템플릿은 2021년 12월에 기본 Configurable Apps 갤러리에서 제거됩니다. ArcGIS StoryMaps 사용으로 전환하는 동안 현재 워크플로를 지원해야 하는 경우 기관의 사용자 설정 Configurable Apps 그룹에 클래식 템플릿을 하나 이상 추가할 수 있습니다.",
+      "s1p4": "자세한 내용을 확인하려면 아래의 자세한 정보 링크를 클릭하세요.",
+      "action1": "닫기",
+      "action2": "자세한 정보",
+      "action3": "ArcGIS StoryMaps 체험하기"
+    },
+    "matureSupportMessage": {
+      "bannerMsg": "Classic Esri Story Maps가 만기 지원됩니다.",
+      "s1h1": "Classic Esri Story Maps에 대한 중요 메시지",
+      "s1p1": "Classic Esri Story Maps 템플릿이 만기 지원됩니다. 모든 고객은 Esri의 최신 스토리텔링 도구인 ArcGIS StoryMaps를 사용하는 것이 좋습니다.",
+      "s1p2": "클래식 템플릿은 더 이상 활성 개발 상태가 아니며 새 프로젝트에 권장되지 않습니다. 해당 기능에 대한 추가 업데이트 계획은 없습니다. 클래식 템플릿을 사용하여 생성한 스토리는 계속 사용할 수 있습니다.",
+      "s1p3": "자세한 내용을 확인하려면 아래의 자세한 정보 링크를 클릭하세요.",
+      "action1": "닫기",
+      "action2": "자세한 정보",
+      "action3": "ArcGIS StoryMaps 체험하기"
+    },
+    "storyTellerUserType": {
+      "notCreatorError": "계정(%USER_NAME%)에는 클래식 스토리맵 빌더를 사용할 수 있는 라이선스가 없습니다. Creator 사용자 유형 할당을 기관 관리자에게 요청하세요."
     }
   }
 });

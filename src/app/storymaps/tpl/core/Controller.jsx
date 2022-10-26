@@ -73,8 +73,8 @@ export default class Controller {
     const DEFAULT_HEADER_SETTINGS = {
       logo: {
         enabled: true,
-        url: 'resources/tpl/viewer/icons/esri-logo.png',
-        link: 'https://www.esri.com'
+        url: '',
+        link: ''
       },
       link: {
         url: 'https://storymaps.arcgis.com',

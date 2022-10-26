@@ -1,4 +1,4 @@
-/* eslint quotes: ["error", "double"] */
+﻿/* eslint quotes: ["error", "double"] */
 /* strings files need to be double quotes */
 define({
   "builder": {
@@ -237,7 +237,7 @@ define({
               "imageOnly1": "Loo selles osas tuleb kasutada pilti.",
               "imageOnly2": "Lisage pildi (.jpg, .png, .gif) link või valige pilt rakendusest ${ArcGIS}, ${Flickr}, ${Google+}, või ${Unsplash}.",
               "imageAndVideo1": "Loo selles osas tuleb kasutada pilti või videot.",
-              "imageAndVideo2": "Lisage pildi (.jpg, .png, .gif) link või valige video rakendusest ${ArcGIS} või ${Flickr} või valige pilt rakendusest ${ArcGIS}, ${Flickr}, ${Google+} või ${Unsplash}.",
+              "imageAndVideo2": "Lisage pildi (.jpg, .png, .gif) link või valige video rakendusest ${YouTube} või ${YouTube} või valige pilt rakendusest ${ArcGIS}, ${Flickr}, ${Google+} või ${Unsplash}.",
               "badFormat": "Faili link, mida lisada püüate, ei ole õiges vormingus.",
               "inaccessible": "Fail, mida lisada püüate, ei ole leitav või avatav.",
               "tryAgain": "Kontrollige aadressi ja proovige uuesti.",
@@ -574,6 +574,30 @@ define({
       "action2": "Kontrolli minu lugusid kohe",
       "action3": "Lisateave",
       "floatingNotification": "See lugu sisaldab ebaturvalist (HTTP) sisu. Vaadake lugu üle ja kõrvaldage probleemid."
+    },
+    "extendedSupportMessage": {
+      "bannerMsg": "Klassikalised Esri kaardilood on saadaval pikendatud toega",
+      "s1h1": "Oluline teave klassikaliste Esri kaardilugude kohta",
+      "s1p1": "Klassikaliste Esri kaardilugude mallid on saadaval pikendatud toega. Kõigil klientidel on soovitatav kasutada ArcGIS StoryMapsi, Esri praeguse põlvkonna lugude jutustamise tööriista.",
+      "s1p2": "Klassikalisi malle ei arendata enam aktiivselt ja need pole uute projektide puhul soovitatavad. Nende funktsioone ei plaanita rohkem värskendada. Lood, mille olete loonud klassikaliste mallide abil, on ka edaspidi kättesaadavad.",
+      "s1p3": "2021. aasta detsembris eemaldatakse klassikalised mallid konfigureeritavate vaikerakenduste galeriist. Üks või mitu klassikalist malli võidakse lisada teie organisatsiooni kohandatavate konfigureeritavate rakenduste rühma, kui teil on neid ArcGIS StoryMapsi kasutamisele ülemineku ajal vaja oma praeguste töövoogude toetamiseks.",
+      "s1p4": "Lisateabe saamiseks klõpsake allolevat lisateabe linki.",
+      "action1": "Sule",
+      "action2": "Lisainfo",
+      "action3": "Proovige rakendust ArcGIS StoryMaps"
+    },
+    "matureSupportMessage": {
+      "bannerMsg": "Klassikalised Esri kaardilood on saadaval aeguva toega",
+      "s1h1": "Oluline teave klassikaliste Esri kaardilugude kohta",
+      "s1p1": "Klassikaliste Esri kaardilugude mallid on saadaval aeguva toega. Kõigil klientidel on soovitatav kasutada ArcGIS StoryMapsi, Esri praeguse põlvkonna lugude jutustamise tööriista.",
+      "s1p2": "Klassikalisi malle ei arendata enam aktiivselt ja need pole uute projektide puhul soovitatavad. Nende funktsioone ei plaanita rohkem värskendada. Lood, mille olete loonud klassikaliste mallide abil, on ka edaspidi kättesaadavad.",
+      "s1p3": "Lisateabe saamiseks klõpsake allolevat lisateabe linki.",
+      "action1": "Sule",
+      "action2": "Lisainfo",
+      "action3": "Proovige rakendust ArcGIS StoryMaps"
+    },
+    "storyTellerUserType": {
+      "notCreatorError": "Teie konto (%USER_NAME%) ei ole litsentseeritud klassikaliste kaardilugude tegemiseks. Paluge oma organisatsiooni administraatoril määrata teile kasutajatüüp Creator."
     }
   }
 });

@@ -1,4 +1,4 @@
-/* eslint quotes: ["error", "double"] */
+﻿/* eslint quotes: ["error", "double"] */
 /* strings files need to be double quotes */
 define({
   "builder": {
@@ -217,7 +217,7 @@ define({
             },
             "linkText": {
               "imageOnly": "在上面的框中，您可以直接链接到照片。",
-              "imageAndVideo1": "在上面的框中，您可以粘贴来自 ${YouTube} 或 {Vimeo} 的视频链接或 iframe 代码。",
+              "imageAndVideo1": "在上面的框中，您可以粘贴来自 ${YouTube} 或 ${Vimeo} 的视频链接或 iframe 代码。",
               "imageAndVideo2": "您还可以直接链接到照片。",
               "imageVideoWebpage1": "在上面的框中，您可以粘贴来自 web 内容的链接或 iframe 代码，如 ${YouTube} 或 ${Vimeo} 的动态图表或视频。",
               "imageVideoWebpage2": "您也可以直接链接到照片、视频、音频文件、web 页面或 web 应用程序。",
@@ -453,7 +453,7 @@ define({
         "httpAudioUncheckable": "此音频具有非安全 (HTTP) URL。 请单击以下按钮以尝试使用此音频的 HTTPS URL。 如果该方法不起作用，请从您的故事中移除此音频，或者将其替换为超链接。",
         "httpAudioFixable": "此音频具有非安全 (HTTP) URL。 请单击以下按钮以使用此音频的安全 HTTPS URL。",
         "httpWebpageUnfixable": "该网页不支持 HTTPS。请将其从您的故事中删除或将其替换为屏幕截图或链接。",
-        "httpWebpageUncheckable": "此 web 页面具有非安全 (HTTP) URL。 请单击以下按钮以尝试使用此 web 页面的 HTTPS URL。 如果该方法不起作用，请从您的故事中移除此 web 页面，或者将其替换为屏幕截图或超链接。",
+        "httpWebpageUncheckable": "此 Web 页面具有非安全（HTTP）URL。 请单击以下按钮以尝试使用此 Web 页面的 HTTPS URL。 如果该方法不起作用，请从您的故事中移除此 Web 页面，或者将其替换为屏幕截图或超链接。",
         "httpWebpageFixable": "此 web 页面具有非安全 (HTTP) URL。 请单击以下按钮以使用此 web 页面的安全 HTTPS URL。",
         "httpVideoUnfixable": "该视频不支持 HTTPS。请将其从您的故事中删除或将其替换为屏幕截图或链接。",
         "httpVideoUncheckable": "此视频具有非安全 (HTTP) URL。 请单击以下按钮以尝试使用此视频的 HTTPS URL。 如果该方法不起作用，请从您的故事中移除此视频，或者将其替换为屏幕截图或超链接。",
@@ -471,7 +471,7 @@ define({
         "httpAudioFixable": "请单击按钮以使用此音频的安全 HTTPS URL。",
         "httpAudioUncheckable": "尝试使用此音频的 HTTPS URL。 如果该方法不起作用，请从您的故事中移除此音频，或者将其替换为链接。",
         "httpWebpageFixable": "请单击按钮以使用此网页的安全 HTTPS URL。",
-        "httpWebpageUncheckable": "尝试使用此 web 页面的 HTTPS URL。 如果该方法不起作用，请从您的故事中移除此 web 页面，或者将其替换为屏幕截图或链接。",
+        "httpWebpageUncheckable": "尝试使用此 Web 页面的 HTTPS URL。 如果该方法不起作用，请从您的故事中移除此 Web 页面，或者将其替换为屏幕截图或链接。",
         "httpVideoFixable": "请单击按钮以使用此视频的安全 HTTPS URL。",
         "httpVideoUncheckable": "尝试使用此视频的 HTTPS URL。 如果该方法不起作用，请从您的故事中移除此视频，或者将其替换为屏幕截图或链接。",
         "httpImageFixable": "请单击按钮以使用图像的安全 HTTPS URL。",
@@ -574,6 +574,30 @@ define({
       "action2": "立即检查我的故事",
       "action3": "了解详细信息",
       "floatingNotification": "此故事包含非安全 (HTTP) 内容。请检查并解决这些问题。"
+    },
+    "extendedSupportMessage": {
+      "bannerMsg": "经典 Esri Story Maps 受扩展支持",
+      "s1h1": "关于经典 Esri Story Maps 的重要信息",
+      "s1p1": "经典 Esri Story Maps 模板受扩展支持 我们鼓励所有客户使用 ArcGIS StoryMaps，这是 Esri 最新一代叙述工具。",
+      "s1p2": "经典模板不再处于积极开发阶段，不推荐用于新工程。 不再计划对其功能进行进一步更新。 使用经典模板创建的故事仍然可用。",
+      "s1p3": "经典模板将于 2021 年 12 月从默认的可配置应用程序库中移除。 如果在过渡到使用 ArcGIS StoryMaps 期间需要支持当前工作流，可以将一个或多个经典模板添加到您组织的自定义可配置应用程序组中。",
+      "s1p4": "有关详细信息，请单击以下的了解更多链接。",
+      "action1": "关闭",
+      "action2": "了解详细信息",
+      "action3": "试用 ArcGIS StoryMaps"
+    },
+    "matureSupportMessage": {
+      "bannerMsg": "经典 Esri Story Maps 受成熟支持",
+      "s1h1": "关于经典 Esri Story Maps 的重要信息",
+      "s1p1": "经典 Esri Story Maps 模板受成熟支持 我们鼓励所有客户使用 ArcGIS StoryMaps，这是 Esri 最新一代叙述工具。",
+      "s1p2": "经典模板不再处于积极开发阶段，不推荐用于新工程。 不再计划对其功能进行进一步更新。 使用经典模板创建的故事仍然可用。",
+      "s1p3": "有关详细信息，请单击以下的了解更多链接。",
+      "action1": "关闭",
+      "action2": "了解详细信息",
+      "action3": "试用 ArcGIS StoryMaps"
+    },
+    "storyTellerUserType": {
+      "notCreatorError": "您的帐户(%USER_NAME%)未获得使用经典 Story Map 构建器的许可。 请求您的组织管理员为您分配一个 Creator 用户类型。"
     }
   }
 });

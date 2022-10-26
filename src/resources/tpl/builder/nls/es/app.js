@@ -1,4 +1,4 @@
-/* eslint quotes: ["error", "double"] */
+﻿/* eslint quotes: ["error", "double"] */
 /* strings files need to be double quotes */
 define({
   "builder": {
@@ -574,6 +574,30 @@ define({
       "action2": "Comprobar mis historias ahora",
       "action3": "Más información",
       "floatingNotification": "Esta historia contiene contenido no seguro (HTTP). Examine los problemas y solvéntelos."
+    },
+    "extendedSupportMessage": {
+      "bannerMsg": "Los Esri Story Maps clásicos están en soporte extendido",
+      "s1h1": "Mensaje importante sobre los Esri Story Maps clásicos",
+      "s1p1": "Las plantillas de Esri Story Maps clásicos están en soporte extendido Se anima a todos los clientes a utilizar ArcGIS StoryMaps, la herramienta de narración de historias de última generación de Esri.",
+      "s1p2": "Las plantillas clásicas ya no están en desarrollo activo y no se recomiendan para nuevos proyectos. No están previstas más actualizaciones de sus funcionalidades. Las historias que haya creado con las plantillas clásicas seguirán estando disponibles.",
+      "s1p3": "En diciembre de 2021, se eliminarán las plantillas clásicas de la galería de aplicaciones configurables predeterminada. Es posible agregar una o varias plantillas clásicas al grupo de aplicaciones configurables personalizadas de su organización si es necesario para apoyar los flujos de trabajo actuales durante su transición al uso de ArcGIS StoryMaps.",
+      "s1p4": "Para obtener más información, haga clic en el siguiente vínculo de información.",
+      "action1": "Cerrar",
+      "action2": "Más información",
+      "action3": "Pruebe ArcGIS StoryMaps"
+    },
+    "matureSupportMessage": {
+      "bannerMsg": "Los Esri Story Maps clásicos están en la fase final de soporte",
+      "s1h1": "Mensaje importante sobre los Esri Story Maps clásicos",
+      "s1p1": "Las plantillas de Esri Story Maps clásicos están en la fase final de soporte Se anima a todos los clientes a utilizar ArcGIS StoryMaps, la herramienta de narración de historias de última generación de Esri.",
+      "s1p2": "Las plantillas clásicas ya no están en desarrollo activo y no se recomiendan para nuevos proyectos. No están previstas más actualizaciones de sus funcionalidades. Las historias que haya creado con las plantillas clásicas seguirán estando disponibles.",
+      "s1p3": "Para obtener más información, haga clic en el siguiente vínculo de información.",
+      "action1": "Cerrar",
+      "action2": "Más información",
+      "action3": "Pruebe ArcGIS StoryMaps"
+    },
+    "storyTellerUserType": {
+      "notCreatorError": "Su cuenta (%USER_NAME%) no tiene licencia para usar builders de story maps clásicos. Pídale al administrador de su organización que le asigne un tipo de usuario Creator."
     }
   }
 });

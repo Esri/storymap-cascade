@@ -320,7 +320,10 @@ export default class WebScene extends Media {
 
     let view = new this._SceneView({
       map: scene,
-      container: this._node.find('.scene')[0]
+      container: this._node.find('.scene')[0],
+      popup: {
+        defaultPopupTemplateEnabled: true
+      }
     });
 
     // Store in the section cache

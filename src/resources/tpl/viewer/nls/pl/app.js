@@ -1,4 +1,4 @@
-/* eslint quotes: ["error", "double"] */
+﻿/* eslint quotes: ["error", "double"] */
 /* nls files need to use double quotes */
 define({
   "viewer": {
@@ -37,7 +37,10 @@ define({
       "builderSupportIpad": "Kreator Kaskada map narracyjnych nie jest obsługiwany na tablecie iPad. Utworzone i udostępnione narracje kaskadowe będą działały na tablecie iPad.",
       "launchBuilder": "Uruchamianie kreatora kaskadowego",
       "notAgain": "Nie pokazuj tego ponownie",
-      "sorry": "Uwaga:"
+      "sorry": "Uwaga:",
+      "nonOwnerOrgUrl": "Aplikacja %TPL_NAME%, do której próbujesz uzyskać dostęp, nie pochodzi z podanego adresu URL.",
+      "nonOwnerOrgProceedToGeneric": "Przejdź do: %HREF%",
+      "advanced": "Advanced"
     },
     "mobileWarning": {
       "message1": "Przeczytano mobilną wersję tej narracji. Pełną wersję z bogatszymi elementami multimedialnymi można wypróbować na komputerze stacjonarnym.",

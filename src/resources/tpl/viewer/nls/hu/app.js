@@ -1,4 +1,4 @@
-/* eslint quotes: ["error", "double"] */
+﻿/* eslint quotes: ["error", "double"] */
 /* nls files need to use double quotes */
 define({
   "viewer": {
@@ -37,7 +37,10 @@ define({
       "builderSupportIpad": "A Story Map Cascade szerkesztő nem támogatott az iPad eszközökön. A létrehozott és megosztott kaszkádolt történetek működni fognak az iPad eszközökön.",
       "launchBuilder": "Cascade szerkesztő elindítása",
       "notAgain": "Ne jelenjen meg újra ez",
-      "sorry": "Figyelem:"
+      "sorry": "Figyelem:",
+      "nonOwnerOrgUrl": "A(z) %TPL_NAME% alkalmazás, amelyhez megpróbál hozzáférni, nem a megadott URL-ből eredeztethető.",
+      "nonOwnerOrgProceedToGeneric": "Folytatás: %HREF%",
+      "advanced": "Haladó"
     },
     "mobileWarning": {
       "message1": "A történet mobil verzióját olvassa. A több médiaelemet tartalmazó teljes verzió megjelenítéséhez tekintse meg asztali számítógépen a történetet.",
@@ -129,7 +132,7 @@ define({
       "audioLabel": "Hang:"
     },
     "licenseChange2018": {
-      "noAccess": "Az Ön fiókjának (%USER_NAME%) licence nem teszi lehetővé a nem nyilvános story map megnyitását.  Igényelje a szervezete adminisztrátorától, hogy rendeljen Önhöz olyan felhasználótípust, amely tartalmazza a story map-eket, vagy egy kiegészítő story map-ekre vonatkozó licencet."
+      "noAccess": "Az Ön fiókjának (%USER_NAME%) licence nem teszi lehetővé a nem nyilvános story map megnyitását. Igényelje a szervezete adminisztrátorától, hogy rendeljen Önhöz olyan felhasználótípust, amely tartalmazza a story map-eket, vagy egy kiegészítő story map-ekre vonatkozó licencet."
     }
   }
 });

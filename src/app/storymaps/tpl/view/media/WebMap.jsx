@@ -9,6 +9,8 @@ import i18n from 'lib-build/i18n!resources/tpl/viewer/nls/app';
 import MapCommand from 'storymaps/tpl/view/media/arcgis/WebMapCommand';
 
 import arcgisUtils from 'esri/arcgis/utils';
+/* not used, but loading here prevents collisions with 4x jsapi */
+import VectorTileLayer from 'esri/layers/VectorTileLayer'; // eslint-disable-line no-unused-vars
 import Extent from 'esri/geometry/Extent';
 import SimpleMarkerSymbol from 'esri/symbols/SimpleMarkerSymbol';
 import webMercatorUtils from 'esri/geometry/webMercatorUtils';
@@ -382,7 +384,8 @@ export default class WebMap extends Media {
           override = $(layerCfg).filter(function(i, l) {
             return l.id == layer.layerObject.id;
           });
-          layer.layerObject.setVisibility(override.length ? override[0].visibility : layer.visibility);
+          var lyrVisOverride = override.length ? override[0].visibility : layer.visibility === undefined ? true : layer.visibility;
+          layer.layerObject.setVisibility(lyrVisOverride);
         }
         else if (layer.featureCollection && layer.featureCollection.layers) {
           $.each(layer.featureCollection.layers, function(i, fcLayer) {
@@ -391,7 +394,8 @@ export default class WebMap extends Media {
               // Should change that and keep V1.0 compatibility
               return l.id.split('_').slice(0,-1).join('_') == fcLayer.layerObject.id.split('_').slice(0,-1).join('_');
             });
-            fcLayer.layerObject.setVisibility(override.length ? override[0].visibility : fcLayer.visibility);
+            var fcVisOverride = override.length ? override[0].visibility : fcLayer.visibility === undefined ? true : fcLayer.visibility;
+            fcLayer.layerObject.setVisibility(fcVisOverride);
           });
         }
       });

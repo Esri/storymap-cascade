@@ -1,4 +1,4 @@
-/* eslint quotes: ["error", "double"] */
+﻿/* eslint quotes: ["error", "double"] */
 /* nls files need to use double quotes */
 define({
   "viewer": {
@@ -37,7 +37,10 @@ define({
       "builderSupportIpad": "Sastavljač Story Map Cascade nije podržan za iPad. Cascade priče koje izradite i podijelite radit će na iPadu.",
       "launchBuilder": "Pokreni sastavljač Cascade",
       "notAgain": "Ne prikazuj ovo ponovno",
-      "sorry": "Pozor:"
+      "sorry": "Pozor:",
+      "nonOwnerOrgUrl": "%TPL_NAME% kojem pokušavate pristupiti ne potječe s URL-a koji ste naveli",
+      "nonOwnerOrgProceedToGeneric": "Nastavite do %HREF%",
+      "advanced": "Napredno"
     },
     "mobileWarning": {
       "message1": "Pročitali ste mobilnu verziju ove priče. Za cijelu verziju s bogatijim elementima medija isprobajte je na stolnom računalu.",

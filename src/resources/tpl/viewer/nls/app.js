@@ -39,7 +39,10 @@ define({
         builderSupportIpad: "Story Map Cascade builder is not supported on iPad. Cascade stories that you create and share will work on iPad.",
         launchBuilder: "Launch Cascade builder",
         notAgain: "Do not show this again",
-        sorry: "Attention:"
+        sorry: "Attention:",
+        nonOwnerOrgUrl: "The %TPL_NAME% you are trying to access does not originate from the URL you provided.",
+        nonOwnerOrgProceedToGeneric: "Proceed to %HREF%",
+        advanced: "Advanced"
       },
       mobileWarning: {
         message1: "You've read the mobile version of this story. For the full version, with richer media elements try it out on a desktop computer.",
@@ -131,11 +134,12 @@ define({
         audioLabel: "Audio:",
       },
       licenseChange2018: {
-		noAccess: "Your account (%USER_NAME%) is not licensed to open a Story Map that is not public.  Please ask your organization administrator to assign you a user type that includes Story Maps or an add-on Essential Apps license."
-	  }
+        noAccess: "Your account (%USER_NAME%) is not licensed to open a Story Map that is not public.  Please ask your organization administrator to assign you a user type that includes Story Maps or an add-on Essential Apps license."
+      }
     }
   }),
   "ar": 1,
+  "bg": 1,
   "bs": 1,
   "ca": 1,
   "cs": 1,
@@ -147,7 +151,6 @@ define({
   "fi": 1,
   "fr": 1,
   "he": 1,
-  "hi": 1,
   "hr": 1,
   "hu": 1,
   "id": 1,
@@ -164,10 +167,12 @@ define({
   "ro": 1,
   "ru": 1,
   "sl": 1,
+  "sk": 1,
   "sr": 1,
   "sv": 1,
   "th": 1,
   "tr": 1,
+  "uk": 1,
   "vi": 1,
   "zh-cn": 1,
   "zh-hk": 1,

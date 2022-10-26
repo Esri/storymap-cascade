@@ -344,42 +344,45 @@ define([
 
       definePortalConfig();
 
-      // If app is configured to use OAuth
-      if (app.indexCfg.oAuthAppId) {
-        var info = new ArcGISOAuthInfo({
-          appId: app.indexCfg.oAuthAppId,
-          popup: false,
-          portalUrl: 'https:' + app.indexCfg.sharingurl.split('/sharing/')[0]
-        });
+      CommonHelper.fetchPortalSelfInfo().then(function() {
 
-        IdentityManager.registerOAuthInfos([info]);
+        // If app is configured to use OAuth
+        if (app.indexCfg.oAuthAppId) {
+          var info = new ArcGISOAuthInfo({
+            appId: app.indexCfg.oAuthAppId,
+            popup: false,
+            portalUrl: 'https:' + app.indexCfg.sharingurl.split('/sharing/')[0]
+          });
 
-        IdentityManager.checkSignInStatus(info.portalUrl + '/sharing/rest').then(
-          function() {
-            // User has signed-in using oAuth
-            if (!builder) {
-              portalLogin().then(initStep3);
+          IdentityManager.registerOAuthInfos([info]);
+
+          IdentityManager.checkSignInStatus(info.portalUrl + '/sharing/rest').then(
+            function() {
+              // User has signed-in using oAuth
+              if (!builder) {
+                portalLogin().then(initStep3);
+              }
+              else {
+                portalLogin().then(initStep3);
+              }
+            },
+            function() {
+              // Not signed-in, redirecting to OAuth sign-in page if builder
+              if (!builder) {
+                initStep3();
+              }
+              else {
+                portalLogin().then(initStep3);
+              }
             }
-            else {
-              portalLogin().then(initStep3);
-            }
-          },
-          function() {
-            // Not signed-in, redirecting to OAuth sign-in page if builder
-            if (!builder) {
-              initStep3();
-            }
-            else {
-              portalLogin().then(initStep3);
-            }
-          }
-        );
-      }
-      else {
-        //if not using oauth,  tell API to grab token from the cookie to use later (avoid login loops). We already call it if you are using oauth.
-        IdentityManager.checkSignInStatus('https:' + app.indexCfg.sharingurl.split('/sharing/')[0] + '/sharing/rest');
-        initStep3();
-      }
+          );
+        }
+        else {
+          //if not using oauth,  tell API to grab token from the cookie to use later (avoid login loops). We already call it if you are using oauth.
+          IdentityManager.checkSignInStatus('https:' + app.indexCfg.sharingurl.split('/sharing/')[0] + '/sharing/rest');
+          initStep3();
+        }
+      });
     });
   }
 
@@ -440,6 +443,11 @@ define([
         IdentityManager.checkAppAccess('https:' + app.indexCfg.sharingurl, 'storymaps').then(function(identityResponse) {
           if (identityResponse && identityResponse.code && identityResponse.code === 'IdentityManagerBase.1') {
             initError('notAuthorizedBuilder');
+            return;
+          }
+          else if (identityResponse.viewOnly) {
+            // Storyteller user type
+            initError('viewOnlyLicense');
             return;
           }
           else {
@@ -507,10 +515,15 @@ define([
           popup: true
         });
         IdentityManager.registerOAuthInfos([oAuthInfo]);
-        if(response.item.access !== 'public') {
+        if(response.item.access !== 'public' || app.isInBuilder) {
           IdentityManager.checkAppAccess('https:' + app.indexCfg.sharingurl, 'storymaps').then(function(identityResponse) {
             if (identityResponse && identityResponse.code && identityResponse.code === 'IdentityManagerBase.1') {
               initError('notAuthorizedLicense');
+              return;
+            }
+            else if(app.isInBuilder && identityResponse.viewOnly) {
+              // Storyteller user type
+              initError('viewOnlyLicense');
               return;
             }
             else {
@@ -522,8 +535,15 @@ define([
             return;
           });
         }
+        else if (!app.isPortal && response.item.contentOrigin && response.item.contentOrigin !== 'self' && (!app.portal || (!CommonHelper.getPortalUser() && !app.portal.getPortalUser())) && window.top === window.self) {
+          // if contentOrigin exists (only happens on org urls) and isn't 'self', that means the org shorturl doesn't match the org of the content owner.
+          // we only throw an error if we're on agol (not portal) and the user is anonymous.
+          // (if window.top === window.self, this Cascade isn't embedded elsewhere)
+          initError('nonOwnerOrgUrl');
+        }
         else {
           loadWebMappingAppStep3(response);
+          return;
         }
       },
       function(error) {
@@ -666,6 +686,11 @@ define([
             initError('notAuthorizedBuilder');
             return;
           }
+          else if(app.isInBuilder && identityResponse.viewOnly) {
+            // Storyteller user type
+            initError('viewOnlyLicense');
+            return;
+          }
           else {
             // If in builder, check that user is user can create/edit item
             if (app.isInBuilder && ! CommonHelper.checkUserItemPrivileges()) {
@@ -673,12 +698,15 @@ define([
               return;
             }
 
-            app.userCanEdit = CommonHelper.userIsAppOwner();
+            // do this again just to be safe...
+            CommonHelper.fetchPortalSelfInfo().then(function() {
+              app.userCanEdit = CommonHelper.userIsAppOwner();
 
-            definePortalConfig();
-            app.portal.signedIn = true;
-            topic.publish('portal-signin');
-            resultDeferred.resolve();
+              definePortalConfig();
+              app.portal.signedIn = true;
+              topic.publish('portal-signin');
+              resultDeferred.resolve();
+            });
           }
         }, function() {
           initError('notAuthorizedBuilder');
@@ -765,6 +793,10 @@ define([
       errorMsg = i18n.print.licenseChange2018.noAccess;
       errorMsg = errorMsg.replace(/%USER_NAME%/g, CommonHelper.getPortalUser() ? CommonHelper.getPortalUser() : '');
     }
+    else if (error == 'viewOnlyLicense') {
+      errorMsg = i18n.builder.storyTellerUserType.notCreatorError;
+      errorMsg = errorMsg.replace(/%USER_NAME%/g, CommonHelper.getPortalUser() ? CommonHelper.getPortalUser() : '');
+    }
     else {
       errorMsg = errorMsg.replace(/%TPL_NAME%/g, app.cfg.TPL_NAME);
     }
@@ -773,6 +805,20 @@ define([
 
     if (error == 'notAuthorized' && app.indexCfg.oAuthAppId) {
       errorMsg += '<div><button class="btn btn-sm btn-default" onclick="esri.id.destroyCredentials(); window.location.reload();">' + i18n.viewer.errors.signOut + '</button></div>';
+    }
+
+    if (error == 'nonOwnerOrgUrl') {
+      // we can use portalHostname here because we're definitely not on enterprise, so there shouldn't be an instance name like "home" to get rid of
+      var hostName = (app.portal && app.portal.portalHostname) || app.cfg.DEFAULT_SHARING_URL.split('/sharing')[0].replace(/\//g, '');
+      var genericUrl = 'https://' + hostName + '/apps/' + app.cfg.TPL_DIR + '/index.html?appid=' + CommonHelper.getAppID(isProd());
+      // gotta put this on window, no way to pass it into the string template otherwise.
+      window.showLink = function() {
+        $('#proceed-to-btn').hide();
+        $('#proceed-to-link').show();
+      };
+      var linkTag = '<a id="proceed-to-link" style="display: none;" href="' + genericUrl + '">' + i18n.viewer.errors.nonOwnerOrgProceedToGeneric.replace(/%HREF%/g, genericUrl); + '</a>';
+      var btnTag = '<button id="proceed-to-btn" class="btn btn-default btn-sm" onclick="showLink();">' + i18n.viewer.errors.advanced + '</button>';
+      errorMsg += '<div class="error-details">' + btnTag + linkTag + '</div>';
     }
 
     if (error == 'appLoadingFail') {

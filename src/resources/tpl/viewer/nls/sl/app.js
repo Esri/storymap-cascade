@@ -1,4 +1,4 @@
-/* eslint quotes: ["error", "double"] */
+﻿/* eslint quotes: ["error", "double"] */
 /* nls files need to use double quotes */
 define({
   "viewer": {
@@ -37,7 +37,10 @@ define({
       "builderSupportIpad": "Graditelj Kaskadnih kart z zgodbo ni podprt na iPadu. Na iPadu bodo delovale kaskadne zgodbe, ki jih boste ustvarili ali delili.",
       "launchBuilder": "Zaženi kaskadnega graditelja",
       "notAgain": "Tega ne kaži več",
-      "sorry": "Pozor:"
+      "sorry": "Pozor:",
+      "nonOwnerOrgUrl": "%TPL_NAME%, do katere želite dostopati, ne izvira iz navedenega URL-ja.",
+      "nonOwnerOrgProceedToGeneric": "Nadaljuj na %HREF%",
+      "advanced": "Napredno"
     },
     "mobileWarning": {
       "message1": "Prebrali ste mobilno različico te zgodbe. Polno različico z bogatejšimi medijskimi elementi lahko preskusite na namiznem računalniku.",
@@ -129,7 +132,7 @@ define({
       "audioLabel": "Zvok:"
     },
     "licenseChange2018": {
-      "noAccess": "Vaš račun (%USER_NAME%) ni licenciran za odpiranje Karte z zgodbo, ki ni javna. Prosite administratorja v vaši organizaciji, da vam dodeli tip uporabnika, ki vsebuje aplikacije Karto z zgodbo ali licenco za dodatne aplikacije Essential Apps."
+      "noAccess": "Vaš račun (%UPORABNIŠKO_IME%) ni licenciran za odpiranje Karte z zgodbo, ki ni javna. Prosite administratorja v vaši organizaciji, da vam dodeli vrsto uporabnika, ki vsebuje aplikacije Karto z zgodbo ali licenco za dodatne aplikacije Essential Apps."
     }
   }
 });

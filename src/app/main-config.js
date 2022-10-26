@@ -77,7 +77,8 @@
       has: {
         'dojo-preload-i18n-Api': false,
         // stop reporting when/then errors from the jsapi
-        'esri-promise-compatibility': 1
+        'esri-promise-compatibility': 1,
+        'esri-webgl-max-contexts': -1
       },
       map: {
         'esri4/core/workers/JobProxy': {

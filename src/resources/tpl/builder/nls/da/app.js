@@ -1,4 +1,4 @@
-/* eslint quotes: ["error", "double"] */
+﻿/* eslint quotes: ["error", "double"] */
 /* strings files need to be double quotes */
 define({
   "builder": {
@@ -475,7 +475,7 @@ define({
         "httpVideoFixable": "Klik på knappen for at bruge en sikker HTTPS URL til denne video.",
         "httpVideoUncheckable": "Prøv at bruge en sikker HTTPS URL til denne video. Hvis det ikke virker, skal du fjerne videoen fra din historie eller erstatte den med et screenshot eller et link.",
         "httpImageFixable": "Klik på knappen for at bruge en sikker HTTPS URL til dette billede.",
-        "httpImageUncheckable": "Prøv at bruge en sikker HTTPS URL til dette billede. Hvis det ikke virker, skal du fjerne billedet fra din historie eller erstatte det med et link.",
+        "httpImageUncheckable": "Prøv at bruge en sikker HTTPS URL til dette billede. Prøv at bruge en sikker HTTPS URL til dette billede.",
         "httpLayerMyMap": "Besøg kortets elementoplysningsside for at opdatere dette lag til at bruge HTTPS. Hvis laget ikke kan opdateres, skal du fjerne det fra kortet.",
         "httpLayerNotMyMap": "Lav en kopi af kortet og og opdater dette lag til at bruge HTTPS. Hvis laget ikke kan opdateres, skal du fjerne det fra kortet.",
         "clickLearnMore": "Klik for at få flere oplysninger."
@@ -574,6 +574,30 @@ define({
       "action2": "Kontrollér mine historier nu",
       "action3": "Lær mere",
       "floatingNotification": "Denne historie indeholder usikkert indhold (HTTP). Gennemse og løs disse problemer."
+    },
+    "extendedSupportMessage": {
+      "bannerMsg": "De klassiske Esri Story Maps er i Extended Support",
+      "s1h1": "Vigtig meddelelse om klassiske Esri Story Maps",
+      "s1p1": "De klassiske Esri Story Maps-skabeloner er i Extended Support Alle kunder opfordres til at bruge ArcGIS StoryMaps, Esris nye værktøj til historiefortælling.",
+      "s1p2": "De klassiske skabeloner er ikke længere under aktiv udvikling, og de anbefales ikke til nye projekter. Der planlægges ikke yderligere opdateringer af deres funktioner. De historier, som du har oprettet ved hjælp af de klassiske skabeloner, vil fortsat være tilgængelige.",
+      "s1p3": "I december 2021 vil de klassiske skabeloner blive fjernet fra galleriet med standard konfigurérbare apps. En eller flere klassiske skabeloner kan være føjet til din organisations gruppe med brugerdefinerede, konfigurérbare apps med henblik på at understøtte de aktuelle arbejdsgange i forbindelse med din overgang til at bruge ArcGIS StoryMaps.",
+      "s1p4": "Klik på \"Lære mere\"-linket nedenfor for at få flere oplysninger.",
+      "action1": "Luk",
+      "action2": "Lær mere",
+      "action3": "Prøv ArcGIS StoryMaps"
+    },
+    "matureSupportMessage": {
+      "bannerMsg": "De klassiske Esri Story Maps er i Mature Support",
+      "s1h1": "Vigtig meddelelse om klassiske Esri Story Maps",
+      "s1p1": "De klassiske Esri Story Maps-skabeloner er i Extended Support Alle kunder opfordres til at bruge ArcGIS StoryMaps, Esris nye værktøj til historiefortælling.",
+      "s1p2": "De klassiske skabeloner er ikke længere under aktiv udvikling, og de anbefales ikke til nye projekter. Der planlægges ikke yderligere opdateringer af deres funktioner. De historier, som du har oprettet ved hjælp af de klassiske skabeloner, vil fortsat være tilgængelige.",
+      "s1p3": "Klik på \"Lære mere\"-linket nedenfor for at få flere oplysninger.",
+      "action1": "Luk",
+      "action2": "Lær mere",
+      "action3": "Prøv ArcGIS StoryMaps"
+    },
+    "storyTellerUserType": {
+      "notCreatorError": "Din konto (%USER_NAME%) er ikke licenseret til at benytte klassiske story map-buildere. Bed din organisationsadministrator om at tildele dig en Creator-licens."
     }
   }
 });

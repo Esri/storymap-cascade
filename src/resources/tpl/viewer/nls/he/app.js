@@ -1,4 +1,4 @@
-/* eslint quotes: ["error", "double"] */
+﻿/* eslint quotes: ["error", "double"] */
 /* nls files need to use double quotes */
 define({
   "viewer": {
@@ -37,7 +37,10 @@ define({
       "builderSupportIpad": "אשף הבנייה של מפל מפת סיפור אינו נתמך ב-iPad. סיפורי מפל שתיצור ותשתף יפעלו ב-iPad.",
       "launchBuilder": "הפעל את אשף הבנייה של 'מפל'",
       "notAgain": "אל תציג הודעה זו שוב",
-      "sorry": "שים לב:"
+      "sorry": "שים לב:",
+      "nonOwnerOrgUrl": "ה-%TPL_NAME% שאתה מנסה לגשת אליו לא נמצא בכתובת ה-URL שציינת.",
+      "nonOwnerOrgProceedToGeneric": "המשך אל %HREF%",
+      "advanced": "מתקדם"
     },
     "mobileWarning": {
       "message1": "קראת את הגרסה הניידת של הסיפור הזה. לקבלת הגרסה המלאה, שכוללת רכיבי מדיה עשירים יותר, מומלץ לעיין בגרסה למחשב השולחני.",

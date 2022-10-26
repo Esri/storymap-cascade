@@ -1,6 +1,10 @@
 /*
- * Modified by Esri
- * lines` 63 and 83
+ * From https://github.com/guybedford/require-less
+ *
+ * Modified by Esri:
+ *
+ * the lessAPI.load function was changed to match this PR
+ * https://github.com/guybedford/require-less/pull/67/files#diff-9d4a71e57b09ae9bbedff88d0778dd60
  */
 
 define(['require'], function(require) {
@@ -10,7 +14,7 @@ define(['require'], function(require) {
   lessAPI.pluginBuilder = './less-builder';
 
   if (typeof window == 'undefined') {
-    lessAPI.load = function(n, r, load) { load(); }
+    lessAPI.load = function(n, r, load) { load(); };
     return lessAPI;
   }
 
@@ -21,7 +25,7 @@ define(['require'], function(require) {
     name = normalize(name);
 
     return name;
-  }
+  };
 
   var head = document.getElementsByTagName('head')[0];
 
@@ -44,7 +48,7 @@ define(['require'], function(require) {
       curStyle.styleSheet.cssText += css;
     else
       curStyle.appendChild(document.createTextNode(css));
-  }
+  };
 
   lessAPI.load = function(lessId, req, load, config) {
     var defaultConfig = {};
@@ -59,14 +63,9 @@ define(['require'], function(require) {
           lessConfig = globalLess;
         globalLess = null;
     }
-
-    // Doesn't seems to help like mentioned at https://github.com/guybedford/require-less/issues/61, see below
-    //lessConfig.relativeUrls = true;
-
     require(globalLess ? ['./normalize'] : ['./normalize', './lessc'], function(normalize, lessc) {
       if (! lessc)
         lessc = globalLess;
-
       if (! ("fileExt" in lessConfig))
         lessConfig.fileExt = ".less";
       var fileUrl = lessId;
@@ -74,21 +73,42 @@ define(['require'], function(require) {
         fileUrl += lessConfig.fileExt;
       fileUrl = normalize.absoluteURI(req.toUrl(fileUrl), pagePath);
 
-      lessc.render('@import (' + (lessConfig.importOption || 'multiple') + ') "' + fileUrl + '";', lessConfig, function(err, output) {
-        if (err)
+      //make it compatible with v1 and v2
+      var generation = (lessc.version || [1])[0];
+      var renderer;
+      var cssGetter;
+      if (generation === 1) {
+        //v1, use parser and toCSS
+        var parser = new lessc.Parser(lessConfig);
+        renderer = function (input, cb) {
+          parser.parse.call(parser, input, cb, lessConfig);
+        };
+        cssGetter = function (tree) {
+          return tree.toCSS(config.less);
+        };
+      } else if (generation >= 2) {
+        //v2 or newer, use render and output
+        renderer = function (input, cb) {
+          lessc.render(input, lessConfig, cb);
+        };
+        cssGetter = function (output) {
+          return output.css;
+        };
+      }
+
+      renderer('@import (' + (lessConfig.importOption || 'multiple') +  ') "' + fileUrl + '";', function(err, output) {
+        if (err) {
+          console.log(err + ' at ' + fileUrl + ', line ' + err.line);
           return load.error(err);
-
-        //lessAPI.inject(normalize(output.css, fileUrl, pagePath));
-
-        // Quicky CSS url path replace that bypass normalize
-        output.css = output.css.replace(/..\/..\/(..\/)*resources/g, 'resources');
-        lessAPI.inject(output.css);
+        }
+        var css = cssGetter(output);
+        lessAPI.inject(normalize(css, fileUrl, pagePath));
 
         setTimeout(load, 7);
       }, lessConfig);
 
     });
-  }
+  };
 
   return lessAPI;
 });

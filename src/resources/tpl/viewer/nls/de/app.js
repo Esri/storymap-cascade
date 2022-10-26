@@ -1,4 +1,4 @@
-/* eslint quotes: ["error", "double"] */
+﻿/* eslint quotes: ["error", "double"] */
 /* nls files need to use double quotes */
 define({
   "viewer": {
@@ -37,7 +37,10 @@ define({
       "builderSupportIpad": "Story Map Cascade-Builder wird nicht auf dem iPad unterstützt. Cascade-Storys, die Sie laden und freigeben hingegen schon.",
       "launchBuilder": "Cascade Builder starten",
       "notAgain": "Diese Meldung nicht mehr anzeigen",
-      "sorry": "Achtung:"
+      "sorry": "Achtung:",
+      "nonOwnerOrgUrl": "Die Vorlage %TPL_NAME%, auf die Sie zugreifen möchten, stammt nicht von der von Ihnen angegebenen URL.",
+      "nonOwnerOrgProceedToGeneric": "Mit %HREF% fortfahren",
+      "advanced": "Erweitert"
     },
     "mobileWarning": {
       "message1": "Sie haben die mobile Version dieser Story angezeigt. Die vollständige Version mit umfangreicheren Medienelementen können Sie auf einem Desktop-Computer testen.",
@@ -66,7 +69,7 @@ define({
     "shareFromCommon": {
       "copy": "Kopieren",
       "copied": "Kopiert",
-      "open": "Öffnen Sie",
+      "open": "Öffnen",
       "embed": "In Webseite einbetten",
       "embedExplain": "Verwenden Sie den folgenden HTML-Code, um die Story in eine Webseite einzubetten.",
       "size": "Größe (Breite/Höhe):",
@@ -95,7 +98,7 @@ define({
       "exitFullScreen": "Vollbild beenden",
       "enlarge": "Vergrößern",
       "newTab": "In neuer Registerkarte öffnen",
-      "tagline": "Eine Story-Map",
+      "tagline": "Eine Story Map",
       "twitter": "Auf Twitter freigeben",
       "facebook": "Auf Facebook freigeben"
     }

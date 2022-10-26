@@ -1,4 +1,4 @@
-/* eslint quotes: ["error", "double"] */
+﻿/* eslint quotes: ["error", "double"] */
 /* strings files need to be double quotes */
 define({
   "builder": {
@@ -13,30 +13,30 @@ define({
     "headerConfig": {
       "toggles": {
         "bookmarks": "Grāmatzīmes",
-        "logoSharing": "Logotips un koplietošana",
+        "logoSharing": "Logo un koplietošana",
         "theme": "Izskats"
       },
       "bookmarks": {
         "title": "Sadaļa",
         "bookmark": "Grāmatzīme",
-        "intro": "Grāmatzīmes ir saites uz galvenē rādītajām stāsta sadaļām. Ja izveidojat lakoniskas stāsta galveno sadaļu grāmatzīmes, lasītājiem ir vieglāk orientēties.",
+        "intro": "Grāmatzīmes ir saites uz galvenē attēlotajām stāsta sadaļām. Šādu galveno sadaļu veidošana palīdz lasītājiem orientēties kartes stāstā.",
         "sequentialDefault": "Virsraksta sadaļa (teksts nav atrasts)",
         "immersiveDefault": "Imersīvā sadaļa (teksts nav atrasts)",
         "titleDefault": "Virsraksta sadaļa (teksts nav atrasts)",
-        "coverDefault": "Vāka sadaļa (teksts nav atrasts)",
-        "coverAppendage": "(Vāks)"
+        "coverDefault": "Titullapas sadaļa (teksts nav atrasts)",
+        "coverAppendage": "(Titillapa)"
       },
       "logoSharing": {
-        "logo": "Logotips",
-        "logoButton": "Izmantot ${ESRI} logotipu",
-        "useOrgLogo": "Izmantot manas organizācijas logotipu",
-        "useOrgLogoHelp": "Izmantot administratora izsniegto logotipu",
-        "logoLink": "Logotipa saite",
-        "logoUploadProgress": "Notiek logotipa augšupielāde",
-        "logoUploadSuccess": "Logotipa augšupielāde izdevās",
-        "logoUploadError": "Logotipa augšupielāde neizdevās, pārslēdzas atpakaļ uz ${ESRI} logotipu",
-        "customHeaderText": "Devīze",
-        "taglineLinkDisabledTooltip": "Ievadiet devīzi, lai aktivizētu saiti",
+        "logo": "Logo",
+        "logoButton": "Izmantot ${ESRI} logo",
+        "useOrgLogo": "Izmantot manas organizācijas logo",
+        "useOrgLogoHelp": "Izmantot administratora izsniegto logo",
+        "logoLink": "Logo saite",
+        "logoUploadProgress": "Notiek logo augšupielāde",
+        "logoUploadSuccess": "Logo augšupielāde izdevās",
+        "logoUploadError": "Logo augšupielāde neizdevās, pārslēdzas atpakaļ uz ${ESRI} logo",
+        "customHeaderText": "Paraksts",
+        "taglineLinkDisabledTooltip": "Ievadiet teksta parakstu, lai aktivizētu saiti",
         "link": "Devīzes saite",
         "enableSocialSharing": "Rādīt koplietošanas pogu"
       },
@@ -64,14 +64,14 @@ define({
       "buttonError": "Saglabāšana neizdevās",
       "buttonShare": "Kopīgošana",
       "buttonSettings": "Iestatījumi",
-      "settingsLogoError": "Jūsu logotipā ir radusies problēma. Noklikšķiniet, lai uzzinātu vairāk.",
+      "settingsLogoError": "Ir problēmas ar jūsu logo. Noklikšķiniet, lai uzzinātu vairāk.",
       "buttonHelp": "Saņemt palīdzību vai iesniegt atsauksmi par GeoNet",
       "buttonPreview": "Skatīt stāstu",
       "buttonHealth": "Darbspējas pārskats",
       "manageStories": "Pārvaldīt manus stāstus",
       "closeWithPendingChange": "Vai tiešām vēlaties apstiprināt šo darbību? Jūsu veiktās izmaiņas tiks zaudētas.",
-      "coverLabel": "Vāks",
-      "creditsLabel": "Kredītpunkti",
+      "coverLabel": "Virsraksts",
+      "creditsLabel": "Atsauces",
       "betaFeedback": "Atsauksmes",
       "betaNote": "Lūdzu, dariet mums zināmu savu viedokli par ${APP_NAME} vai pastāstiet, ja kaut kas nedarbojās tā, kā vajadzētu.",
       "notSharedNote": "Jūsu stāsts nav kopīgots; to varat redzēt tikai jūs pats.",
@@ -82,7 +82,7 @@ define({
       "duplicate": "Dublēt",
       "organize": "Organizēt",
       "done": "Pabeigts",
-      "invite": "Būvējot stāstu, sadaļas tiks rādītas šeit...",
+      "invite": "Veidojot stāstu, tā sadaļas tiks rādītas šeit...",
       "mystoriestooltip": "Cascade Builder brīdina par problēmām stāstā un palīdz tās novērst. Scēnas un iedarinātās lietotnes netiek pārbaudītas, tāpēc pārbaudiet tās manuāli."
     },
     "immersiveViewPanel": {
@@ -97,9 +97,9 @@ define({
       "disabledTooltipMap": "Lai varētu izmantot šo pāreju, abos skatos redzamajiem slāņiem ir jāatšķiras, bet pārējām kartes īpašībām jāsakrīt",
       "disabledConsecutiveSameMap": "Nav pieejama, ja secīgi skati izmanto vienu un to pašu karti",
       "disabledNotInBeta": "Nav pieejama, ja secīgi skati izmanto vienu un to pašu karti",
-      "disabledNonConsecutive": "Nav pieejama, jo ir cits šīs multivides gadījums, kas nav secīgs",
+      "disabledNonConsecutive": "Nav pieejama, jo šī multivide ir izmantota citur un tā nav secīga",
       "addMedia": "Pievienot multividi",
-      "invite": "Būvējot imersīvo sadaļu, skati tiks rādīti šeit..."
+      "invite": "Būvējot kombinēto sadaļu, skati tiks rādīti šeit..."
     },
     "mediaConfig": {
       "tabs": {
@@ -126,14 +126,14 @@ define({
         "muted": "Izslēgta skaņa",
         "volumeAside": "Video tiek atskaņots automātiski, kad lasītājs nonāk šajā skatā. Ja izslēgsiet skaņu, lasītājs to nevarēs aktivizēt.",
         "view": "Skats",
-        "resetLocation": "Izvietojuma atiestatīšana",
+        "resetLocation": "Novietojuma atiestatīšana",
         "resetLayers": "Slāņu atiestatīšana",
         "clearPopup": "Notīrīt uznirtošo logu",
         "interaction": "Mijiedarbība",
         "interactionDisabled": "Mijiedarbība atspējota",
         "buttonToEnable": "Poga aktivizēšanai",
         "interactionEnabled": "Mijiedarbība aktivizēta",
-        "interactionAside": "*Skārienjutīgās ierīces piedāvā mijiedarbība pogu.",
+        "interactionAside": "*Skārienjutīgās ierīces piedāvā mijiedarbības pogu.",
         "slide": "Slaids",
         "noSlides": "Nav pieejams neviens slaids.",
         "mapExtentPrompt": "Atjaunojiet karti ar savu stāstu un, lai saglabātu izmaiņas, noklikšķiniet uz kontrolatzīmes"
@@ -147,7 +147,7 @@ define({
         "medium": "Vidējs",
         "large": "Liels",
         "noCrop": "Neapgriezt garus attēlus",
-        "noCropTallTooltip": "Ja gari attēli netiek apgriezti, var panākt dramatisku efektu, jo lasītājiem ir jāritina, lai skatītu visu attēlu."
+        "noCropTallTooltip": "Ja gari attēli netiek apgriezti, var panākt pārspīlētu efektu, jo lasītājiem ir jāritina, lai skatītu visu attēlu."
       },
       "background": {
         "noCrop": "Neapgriezt",
@@ -169,7 +169,7 @@ define({
         "urls": "Saite uz saturu",
         "urls_short": "Saite",
         "contentType": {
-          "error": "Nav autorizēta datu nesēja.",
+          "error": "Multivide nav atrasta.",
           "imageOnly": "Šajā stāsta daļā varat pievienot attēlu.",
           "imageAndVideo": "Šajā stāsta daļā varat pievienot attēlu vai video.",
           "imageVideoWebpage": "Šajā stāsta daļā varat pievienot audio, attēlu, video vai tīmekļa lapu."
@@ -179,7 +179,7 @@ define({
         "providers": {
           "searchingFor": "Tiek meklēts termins \"${searchterm}\"...",
           "searchedFor": "Termina \"${searchterm}” meklēšanas rezultāti",
-          "albumsOf": "Lietotāja ${Username} albumi",
+          "albumsOf": "Lietotāja ${username} albumi",
           "noPhotosFound": "Neviens fotoattēls neatbilst jūsu meklētajam. Lūdzu, mēģiniet vēlreiz.",
           "noItemsFound": "Neviena vienība neatbilst jūsu meklētajam. Lūdzu, mēģiniet vēlreiz.",
           "noItemsInThisStory": "Šim stāstam vēl nav pievienots saturs no ArcGIS.",
@@ -189,7 +189,7 @@ define({
           },
           "agol": {
             "remove1": "Izdzēsiet šo neizmantoto attēlu no jūsu ArcGIS konta.",
-            "remove2": "(Ja izlemsiet vēlāk to lietot, tas būs jāaugšupielādē vēlreiz.)",
+            "remove2": "(Ja izlemsiet vēlāk to lietot, tas būs jāaugšupielādē atkārtoti.)",
             "removeFailed": "Noņemiet no saraksta šo attēlu, kam nevar piekļūt.",
             "modified": "Mainīšanas datums: ${date}",
             "uploaded": "Augšupielādes datums: ${date}",
@@ -219,7 +219,7 @@ define({
               "imageOnly": "Augstāk esošajā lodziņā varat izveidot saiti tieši uz fotoattēlu.",
               "imageAndVideo1": "Augstāk esošajā lodziņā varat ielīmēt videoklipa no ${YouTube} vai ${Vimeo} saiti vai iframe kodu.",
               "imageAndVideo2": "Varat arī izveidot saiti tieši uz fotoattēlu.",
-              "imageVideoWebpage1": "Augstāk esošajā lodziņā varat ielīmēt tīmekļa satura, piemēram, dinamiskas diagrammas vai videoklipa no ${YouTube} vai ${Vimeo} saiti vai iframe kodu.",
+              "imageVideoWebpage1": "Augstāk esošajā lodziņā varat ielīmēt tīmekļa satura saiti vai iframe kodu, piemēram, video vai dinamiskām diagrammām no ${YouTube} vai ${Vimeo}.",
               "imageVideoWebpage2": "Varat arī izveidot saiti tieši uz fotoattēlu, videoklipu, audio failu, tīmekļa lapu vai tīmekļa lietotni.",
               "ender": "Noteikti izmantojiet drošas (https) saites. Ja jūsu saturs neatbalsta https, pievienojiet tiem saiti stāsta tekstā, lai lasītāji to varētu skatīt jaunā pārlūka cilnē.",
               "httpsError": "Saitei ir jāsākas ar HTTPS"
@@ -295,7 +295,7 @@ define({
               "portalArcGIS": "Portal for ArcGIS",
               "portal": "Portal",
               "myOrg": "Organizācija ${orgname}",
-              "myContent": "Mans Saturs"
+              "myContent": "Mans saturs"
             },
             "createContent": {
               "createNewMap": "Izveidot jaunu karti",
@@ -304,9 +304,9 @@ define({
               "dragAndDropImageAudio": "Nomest attēlus vai audio",
               "uploadButton": "Pārlūkot",
               "agolInfo": "Augšupielādētajiem attēliem un audio varēs piekļūt tikai šajā stāstā.",
-              "saveBeforeUpload": "Pēc šī stāsta saglabāšanas šeit varat augšupielādēt attēlus un audio ArcGIS.",
-              "fileExtsImage": "Atbalstītie tipi: .png, .jpg, .gif, .bmp.",
-              "fileExtsImageAudio": "Atbalstītie tipi: .png, .jpg, .gif, .bmp, .mp3.",
+              "saveBeforeUpload": "Pēc šī stāsta saglabāšanas šeit varat augšupielādēt attēlus un audio uz ArcGIS.",
+              "fileExtsImage": "Atbalstītie veidi: .png, .jpg, .gif, .bmp.",
+              "fileExtsImageAudio": "Atbalstītie veidi: .png, .jpg, .gif, .bmp, .mp3.",
               "maxSize": "Faila izmērs nedrīkst pārsniegt 10 MB."
             },
             "filterAndSort": {
@@ -345,9 +345,9 @@ define({
       },
       "blockAdd": {
         "text": "Teksts",
-        "media": "Informācijas datu nesēji",
+        "media": "Multivide",
         "title": "Virsraksts",
-        "immersive": "Iekļaujošs"
+        "immersive": "Kombinēta sadaļa"
       },
       "link": {
         "invite": "Ielīmējiet vai ierakstiet saiti..."
@@ -370,19 +370,19 @@ define({
       "saveError": "Saglabāšana neizdevās, jo jums jau ir vienība ar šādu virsrakstu"
     },
     "credits": {
-      "sectionInvite": "Pievienojiet kredītpunktu sadaļu",
+      "sectionInvite": "Pievienojiet atsauču sadaļu",
       "warning": "Abi lauki ir jāaizpilda",
       "content": "Saturs...",
       "source": "Avots...",
-      "linkPrompt": "Saite (nav obligāti)...",
-      "introductionPlaceholder": "Ja vēlaties, ievadiet ievadtekstu kredītpunktu sadaļai..."
+      "linkPrompt": "Saite (pēc izvēles)...",
+      "introductionPlaceholder": "Ja vēlaties, ievadiet ievadtekstu atsauču sadaļai..."
     },
     "immersive": {
       "titleConfig": {
         "theme": "Tēma"
       },
       "panelConfig": {
-        "position": "Pozīcija",
+        "position": "Novietojums",
         "theme": "Tēma",
         "size": "Izmērs",
         "background": "Fons",
@@ -410,7 +410,7 @@ define({
     },
     "sections": {
       "sequence": "Stāsts",
-      "immersive": "Iekļaujošs",
+      "immersive": "Kombinēts",
       "title": "Virsraksts"
     },
     "mediaErrors": {
@@ -431,7 +431,7 @@ define({
         "unshared": "Šī vienība nav kopīgota tāpat kā jūsu stāsts.",
         "othersUnshared": "Šī vienība nav kopīgota tāpat kā jūsu stāsts.",
         "subscriptionContent": "Šajā kartē ir abonenta slānis.",
-        "premiumContent": "Šajā kartē ir augstākās klases slānis.",
+        "premiumContent": "Šajā kartē ir augstākā līmeņa slānis.",
         "secureService": "Šajā kartē ir drošs slānis."
       },
       "contentIssues": {
@@ -450,10 +450,10 @@ define({
       },
       "descriptions": {
         "httpAudioUnfixable": "Šis audio saturs neatbalsta protokolu HTTPS. Noņemiet saturu no sava stāsta vai aizstājiet ar saiti.",
-        "httpAudioUncheckable": "Šī audio satura vietrādis URL ir nedrošs (HTTP). Noklikšķiniet uz zemāk redzamās pogas, lai šim audio saturam izmantotu HTTPS vietrādi URL. Ja tas neizdodas, noņemiet audio saturu no jūsu stāsta vai aizstājiet to ar hipersaiti.",
+        "httpAudioUncheckable": "Šī audio satura vietrādis URL ir nedrošs (HTTP). Noklikšķiniet uz zemāk redzamās pogas, lai šim audio saturam izmantotu HTTPS URL vietrādi. Ja tas neizdodas, noņemiet audio saturu no jūsu stāsta vai aizstājiet to ar hipersaiti.",
         "httpAudioFixable": "Šī audio satura vietrādis URL ir nedrošs (HTTP). Noklikšķiniet uz zemāk redzamās pogas, lai šim audio saturam izmantotu drošu HTTPS vietrādi URL.",
         "httpWebpageUnfixable": "Šī tīmekļa lapa neatbalsta protokolu HTTPS. Noņemiet tīmekļa lapu no sava stāsta vai aizstājiet ar ekrānuzņēmumu vai saiti.",
-        "httpWebpageUncheckable": "Šīs tīmekļa lapas vietrādis URL ir nedrošs (HTTP). Noklikšķiniet uz zemāk redzamās pogas, lai šai tīmekļa lapai izmantotu HTTPS vietrādi URL. Ja tas neizdodas, noņemiet tīmekļa lapu no jūsu stāsta vai aizstājiet to ar ekrānuzņēmumu vai hipersaiti.",
+        "httpWebpageUncheckable": "Šīs tīmekļa lapas vietrādis URL ir nedrošs (HTTP). Noklikšķiniet uz zemāk redzamās pogas, lai šai tīmekļa lapai izmantotu HTTPS URL vietrādi. Ja tas neizdodas, noņemiet tīmekļa lapu no jūsu stāsta vai aizstājiet to ar ekrānuzņēmumu vai hipersaiti.",
         "httpWebpageFixable": "Šīs tīmekļa lapas vietrādis URL ir nedrošs (HTTP). Noklikšķiniet uz zemāk redzamās pogas, lai šai tīmekļa lapai izmantotu drošu HTTPS vietrādi URL.",
         "httpVideoUnfixable": "Šis video saturs neatbalsta protokolu HTTPS. Noņemiet video saturu no sava stāsta vai aizstājiet ar ekrānuzņēmumu vai saiti.",
         "httpVideoUncheckable": "Šī video satura vietrādis URL ir nedrošs (HTTP). Noklikšķiniet uz zemāk redzamās pogas, lai šim video saturam izmantotu HTTPS vietrādi URL. Ja tas neizdodas, noņemiet video saturu no jūsu stāsta vai aizstājiet to ar ekrānuzņēmumu vai hipersaiti.",
@@ -463,25 +463,25 @@ define({
         "httpImageFixable": "Šī attēla vietrādis URL ir nedrošs (HTTP). Noklikšķiniet uz zemāk redzamās pogas, lai šim attēlam izmantotu drošu HTTPS vietrādi URL.",
         "httpLayer": "Šī slāņa vietrādis URL ir nedrošs (HTTP).",
         "inaccessibleLogo": "Šis logotips nav pieejams. Aizstājiet to ar citu attēlu.",
-        "httpLogoUnfixable": "Šis logotips neatbalsta protokolu HTTPS. Aizstājiet logotipu ar citu attēlu.",
-        "httpLogoFixable": "Šī logotipa vietrādis URL ir nedrošs (HTTP). Logotipam izmantojiet HTTPS vietrādi URL.",
-        "httpLogoUncheckable": "Šī logotipa vietrādis URL ir nedrošs (HTTP). Logotipam izmantojiet HTTPS vietrādi URL vai aizstājiet logotipu ar citu attēlu."
+        "httpLogoUnfixable": "Šis logotips neatbalsta protokolu HTTPS. Aizstājiet logo ar citu attēlu.",
+        "httpLogoFixable": "Šī logo vietrādis URL ir nedrošs (HTTP). Logom izmantojiet HTTPS vietrādi URL.",
+        "httpLogoUncheckable": "Šī logo vietrādis URL ir nedrošs (HTTP). Logom izmantojiet HTTPS vietrādi URL vai aizstājiet logo ar citu attēlu."
       },
       "tooltips": {
         "httpAudioFixable": "Noklikšķiniet uz pogas, lai šim audio saturam izmantotu drošu HTTPS vietrādi URL.",
-        "httpAudioUncheckable": "Izmantojiet HTTPS vietrādi URL šim audio saturam. Ja tas neizdodas, noņemiet audio saturu no jūsu stāsta vai aizstājiet to ar saiti.",
+        "httpAudioUncheckable": "Pamēģiniet izmantot HPPTS URL vietrādi šim audio saturam. Ja tas neizdodas, noņemiet audio saturu no jūsu stāsta vai aizstājiet to ar saiti.",
         "httpWebpageFixable": "Noklikšķiniet uz pogas, lai šai tīmekļa lapai izmantotu drošu HTTPS vietrādi URL.",
-        "httpWebpageUncheckable": "Izmantojiet HTTPS vietrādi URL šai tīmekļa lapai. Ja tas neizdodas, noņemiet tīmekļa lapu no jūsu stāsta vai aizstājiet to ar ekrānuzņēmumu vai saiti.",
+        "httpWebpageUncheckable": "Pamēģiniet izmantot HTTPS URL vietrādi šai tīmekļa lapai. Ja tas neizdodas, noņemiet tīmekļa lapu no jūsu stāsta vai aizstājiet to ar ekrānuzņēmumu vai saiti.",
         "httpVideoFixable": "Noklikšķiniet uz pogas, lai šim video saturam izmantotu drošu HTTPS vietrādi URL.",
-        "httpVideoUncheckable": "Izmantojiet HTTPS vietrādi URL šim video saturam. Ja tas neizdodas, noņemiet video saturu no jūsu stāsta vai aizstājiet to ar ekrānuzņēmumu vai saiti.",
+        "httpVideoUncheckable": "Pamēģiniet izmantot HTTPS URL vietrādi šim video saturam. Ja tas neizdodas, noņemiet video saturu no jūsu stāsta vai aizstājiet to ar ekrānuzņēmumu vai saiti.",
         "httpImageFixable": "Noklikšķiniet uz pogas, lai šim attēlam izmantotu drošu HTTPS vietrādi URL.",
-        "httpImageUncheckable": "Izmantojiet HTTPS vietrādi URL šim attēlam. Ja tas neizdodas, noņemiet attēlu no jūsu stāsta vai aizstājiet to ar saiti.",
-        "httpLayerMyMap": "Apmeklējiet kartes vienību lapu, lai atjaunotu šo slāni un tajā izmantotu protokolu HTTPS. Ja slāni nevar atjaunot, noņemiet to no kartes.",
+        "httpImageUncheckable": "Pamēģiniet izmantot HTTPS URL vietrādi šim attēlam. Ja tas neizdodas, noņemiet attēlu no jūsu stāsta vai aizstājiet to ar saiti.",
+        "httpLayerMyMap": "Apmeklējiet kartes vienības lapu, lai atjaunotu šo slāni un tajā izmantotu protokolu HTTPS. Ja slāni nevar atjaunot, noņemiet to no kartes.",
         "httpLayerNotMyMap": "Izveidojiet kartes kopiju un atjaunojiet šo slāni, lai tajā tiktu izmantots protokols HTTPS. Ja slāni nevar atjaunot, noņemiet to no kartes.",
         "clickLearnMore": "Noklikšķiniet, lai uzzinātu vairāk."
       },
       "fixButtons": {
-        "agolItemPage": "Vienību lapa",
+        "agolItemPage": "Vienības lapa",
         "openTheMap": "Atvērt karti",
         "updateAudio": "Salabot audio satura vietrādi URL",
         "updateWebpages": "Salabot tīmekļa lapas vietrādi URL",
@@ -500,7 +500,7 @@ define({
           "secureContent": "Drošais saturs",
           "deleted": "Izdzēsts saturs",
           "inaccessible": "Nepieejams saturs",
-          "unauthorized": "Nesankcionēts saturs"
+          "unauthorized": "Neautorizēts saturs"
         },
         "descriptions": {
           "unshared": "Šis saturs nav kopīgots tāpat kā jūsu stāsts.",
@@ -513,17 +513,17 @@ define({
           "subscriptionContent": "Jums abonenta saturs ir jāautorizē publiskai lietošanai.",
           "premiumContent": "Jums augstākā līmeņa saturs ir jāautorizē publiskai lietošanai.",
           "secureService": "Drošais saturs nav pieejams jūsu lasītājiem.",
-          "missingItemWarning": "Ar šo slāni asociētā vienība ir izdzēsta."
+          "missingItemWarning": "Ar šo slāni saistītā vienība ir izdzēsta."
         },
         "tooltips": {
           "unshared": "Noklikšķiniet, lai uzzinātu vairāk par koplietošanu.",
-          "othersUnshared": "Jums nav atļauju kopīgot citiem piederošu saturu. Lūdziet, lai saturu kopīgo īpašnieks, noņemiet karti no sava stāsta vai labojiet karti, noņemot slāņus, kuri nepieder jums. Noklikšķiniet, lai uzzinātu vairāk par karšu labošanu.",
-          "inaccessible": "Noņemiet šo karti no stāsta vai labojiet karti, noņemot nepieejamos slāņus. Noklikšķiniet, lai uzzinātu vairāk par karšu labošanu.",
-          "deleted": "Noņemiet šo karti no stāsta vai labojiet karti, noņemot trūkstošos slāņus. Noklikšķiniet, lai uzzinātu vairāk par karšu labošanu.",
-          "unauthorized": "Noņemiet šo karti no stāsta vai labojiet karti, noņemot neatļautos slāņus. Noklikšķiniet, lai uzzinātu vairāk par karšu labošanu.",
+          "othersUnshared": "Jums nav atļauju kopīgot citiem piederošu saturu. Lūdziet, lai saturu kopīgo īpašnieks, noņemiet karti no sava stāsta vai rediģējiet karti, noņemot slāņus, kuri nepieder jums. Noklikšķiniet, lai uzzinātu vairāk par karšu rediģēšanu.",
+          "inaccessible": "Noņemiet šo karti no stāsta vai rediģējiet karti, noņemot nepieejamos slāņus. Noklikšķiniet, lai uzzinātu vairāk par karšu rediģēšanu.",
+          "deleted": "Noņemiet šo karti no stāsta vai rediģējiet karti, noņemot trūkstošos slāņus. Noklikšķiniet, lai uzzinātu vairāk par karšu rediģēšanu.",
+          "unauthorized": "Noņemiet šo karti no stāsta vai rediģējiet karti, noņemot neatļautos slāņus. Noklikšķiniet, lai uzzinātu vairāk par karšu rediģēšanu.",
           "popupFeatureLayer": "Mozaīkā izkārtota slāņa uznirstošie logi nāk no elementu slāņa, kas nav kopīgots tāpat kā  jūsu stāsts.",
-          "subscriptionContent": "Abonenta saturs nepatērē kredītpunktus. Noklikšķiniet, lai uzzinātu vairāk.",
-          "premiumContent": "Ik reizi, kad kāds apskata augstākā līmeņa slāni jūsu stāstā, jūsu organizācijai tiek atskaitīti kredītpunkti. Noklikšķiniet, lai uzzinātu vairāk.",
+          "subscriptionContent": "Abonenta saturs nepatērē kredītus. Noklikšķiniet, lai uzzinātu vairāk.",
+          "premiumContent": "Ik reizi, kad kāds apskata premium līmeņa slāni jūsu stāstā, tiek noņemti servisa kredīti no jūsu organizācijas konta. Noklikšķiniet, lai uzzinātu vairāk.",
           "secureService": "Noņemiet šo drošo saturu no stāsta vai noklikšķiniet, lai uzzinātu, kā citiem lietotājiem atļaut drošā satura lietošanu.",
           "missingItemWarning": "Šis slānis joprojām darbojas, taču tā simboli, uznirstošie logi vai nosaukums var būt mainījušies. Pārliecinieties, vai slānis parādās, kā paredzēts, vai noņemiet to no sava stāsta."
         },
@@ -531,7 +531,7 @@ define({
           "share": "Kopīgot",
           "hide": "Paslēpt",
           "authorize": "Atļaut",
-          "remove": "Izņemt",
+          "remove": "Noņemt",
           "help": "Saņemt palīdzību",
           "ignore": "Ignorēt",
           "confirm": "Apstiprināt",
@@ -551,14 +551,14 @@ define({
       }
     },
     "saveErrorSocial": {
-      "title": "Sociālās multivides kopīgošana",
-      "panel1": "Jūsu stāsts sociālajā multividē var netikt rādīts pareizi, jo jūsu ArcGIS tīmekļa lietotnes vienības virsraksts atšķiras no stāsta virsraksta.",
+      "title": "Kopīgošana sociālajos medijos",
+      "panel1": "Jūsu stāsts sociālajos medijos var netikt rādīts pareizi, jo jūsu ArcGIS tīmekļa lietotnes vienības virsraksts atšķiras no stāsta virsraksta.",
       "panel1tooltip": "Kad būsiet definējis virsrakstu, kopsavilkumu un sīktēla attēlu, jūsu stāsts izskatīsies šādi:",
-      "panel2": "Kādu virsrakstu vēlaties izmantot sociālajā multividē:",
+      "panel2": "Kādu virsrakstu vēlaties izmantot sociālajos tīklos:",
       "panel2q1": "Stāsta virsraksts (ieteicams)",
-      "panel2q1tooltip": "Ja izvēlēsieties šo opciju, vienības virsraksts tiks modificēts tā, lai atbilstu stāsta virsrakstam, un veidotājā tiks sinhronizētas tālākās izmaiņas.",
+      "panel2q1tooltip": "Ja izvēlēsieties šo opciju, vienības virsraksts tiks mainīts tā, lai atbilstu stāsta virsrakstam, un veidotājā tiks sinhronizētas tālākās izmaiņas.",
       "panel2q2": "Vienības virsraksts",
-      "panel3": "Ja sociālajā multividē vēlaties vēl vairāk uzlabot stāsta izskatu, izmantojiet ${MYSTORIES}, lai pievienotu kopsavilkumu un sīktēla attēlu.",
+      "panel3": "Ja sociālajos medijos vēlaties vēl vairāk uzlabot stāsta izskatu, izmantojiet ${MYSTORIES}, lai pievienotu kopsavilkumu un sīktēla attēlu.",
       "panel4": "Vairs nerādīt brīdinājumus par šo stāstu",
       "save": "Saglabāt",
       "mystories": "Mani stāsti"
@@ -566,7 +566,7 @@ define({
     "httpsTransitionMessage": {
       "bannerMsg": "Svarīgs ziņojums par tīmekļa drošību un Kartes stāstiem (Story Maps)",
       "s1h1": "Esri uzlabo Kartes stāstu drošību",
-      "s1p1": "Jūsu Kartes stāsti dzīvo tīmeklī, un tīmekļa kopiena vienmēr strādā, lai nodrošinātu un uzlabotu drošību. HTTPS, kas nodrošina drošu savienojumu ar internetā pārraidītu saturu, tiek parādīts kā paredzētais veids, kā piekļūt tīmekļa saturam. Lielākā daļa moderno pārlūku tagad parāda brīdinājuma ziņojumus, ja tiek izmantots HTTP, nevis HTTPS. Šī jaunā standarta dēļ mēs stingri iesakām izmantot HTTPS saites Kartes stāstu autorēšanai un koplietošanai, kā arī izmantot HTTPS vietrāžus URL, iegulstot tīmekļa saturu vai sasaistot ar attēliem Kartes stāstā.",
+      "s1p1": "Jūsu Kartes stāsti atrodas tīmeklī, un tīmekļa kopiena vienmēr strādā, lai nodrošinātu un uzlabotu drošību. HTTPS, kas nodrošina drošu savienojumu ar internetā pārraidītu saturu, tiek parādīts kā paredzētais veids, kā piekļūt tīmekļa saturam. Lielākā daļa moderno pārlūku tagad parāda brīdinājuma ziņojumus, ja tiek izmantots HTTP, nevis HTTPS. Šī jaunā standarta dēļ mēs stingri iesakām izmantot HTTPS saites Kartes stāstu autorēšanai un koplietošanai, kā arī izmantot HTTPS vietrāžus URL, iegulstot tīmekļa saturu vai sasaistot ar attēliem Kartes stāstā.",
       "s1p2": "Praktiski runājot, tas nozīmē, ka Kartes stāstam un visam tās saturam (ieskaitot attēlus, slāņus, iegultās lietotnes un tīmekļa vietnes), ir jānodrošina piekļuve, izmantojot saites, kas sākas ar HTTPS, nevis HTTP. Tas nodrošina labāko pieredzi jūsu lasītājiem, jo lielākā daļa tīmekļa pārlūku norāda, ka jūsu stāsti ir droši.",
       "s2h1": "Kas man jādara?",
       "s2p1": "Esri strādā, lai padarītu to par vienkāršu pāreju Kartes stāsta autoriem un lasītājiem. Kartes stāstu veidotājos un Manos stāstos ir pieejami rīki, kas jums palīdzēs atrast nedrošo saturu (HTTP) jūsu stāstos un sniegs ieteikumus, kā to risināt. Lūdzu, pārbaudiet savus stāstus uz nedrošu saturu un pēc iespējas ātrāk atjauniniet HTTPS.",
@@ -574,6 +574,30 @@ define({
       "action2": "Pārbaudīt manus stāstus tūlīt",
       "action3": "Uzziniet vairāk",
       "floatingNotification": "Šajā stāstā ir ietverts nedrošs (HTTP) saturs. Izskatiet un novērsiet problēmas."
+    },
+    "extendedSupportMessage": {
+      "bannerMsg": "Classic Esri Story Maps ir Extended atbalsta fāzē.",
+      "s1h1": "Svarīgs ziņojums par Classic Esri Story Maps",
+      "s1p1": "Classic Esri Story Maps veidnes ir Extended atbalsta fāzē. Visi klienti tiek mudināti izmantot ArcGIS StoryMaps, kas ir šīs paaudzes Esri stāstu veidošanas rīks.",
+      "s1p2": "Klasiskās veidnes vairs netiek aktīvi izstrādātas un nav ieteicamas jaunajiem projektiem. To iespējām nav plānoti turpmāki atjauninājumi. Stāsti, kurus jūs izveidojāt, izmantojot klasiskās veidnes, joprojām būs pieejami.",
+      "s1p3": "2021. gada decembrī klasiskās veidnes tiks noņemtas no noklusējuma konfigurējamo lietotņu galerijas. Ja ir nepieciešams atbalstīt esošās darbplūsmas pārejā uz ArcGIS StoryMaps, jūsu organizācijas pielāgotajai konfigurējamo lietotņu grupai var pievienot vienu vai vairākas klasiskās veidnes.",
+      "s1p4": "Lai uzzinātu vairāk, klikšķiniet uz zemāk redzamās saites.",
+      "action1": "Aizvērt",
+      "action2": "Uzzināt vairāk",
+      "action3": "Izmēģiniet ArcGIS StoryMaps"
+    },
+    "matureSupportMessage": {
+      "bannerMsg": "Classic Esri Story Maps atrodas Mature atbalsta fāzē",
+      "s1h1": "Svarīgs ziņojums par Classic Esri Story Maps",
+      "s1p1": "Classic Esri Story Maps kartes stāstu veidnes ir Mature atbalsta fāzē. Visi klienti tiek mudināti izmantot ArcGIS StoryMaps, kas ir šīs paaudzes Esri stāstu veidošanas rīks.",
+      "s1p2": "Klasiskās veidnes vairs netiek aktīvi izstrādātas un nav ieteicamas jaunajiem projektiem. To iespējām nav plānoti turpmāki atjauninājumi. Stāsti, kurus jūs izveidojāt, izmantojot klasiskās veidnes, joprojām būs pieejami.",
+      "s1p3": "Lai uzzinātu vairāk, klikšķiniet uz zemāk redzamās saites.",
+      "action1": "Aizvērt",
+      "action2": "Uzzināt vairāk",
+      "action3": "Izmēģiniet ArcGIS StoryMaps"
+    },
+    "storyTellerUserType": {
+      "notCreatorError": "Jūsu kontam (%USER_NAME%) nav atļaujas izmantot klasisko stāstu karšu veidotājus. Lūdzu, sazinieties ar savas organizācijas administratoru, lai jums tiktu piešķirts lietotāja veids Creator."
     }
   }
 });

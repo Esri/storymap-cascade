@@ -1,4 +1,4 @@
-/* eslint quotes: ["error", "double"] */
+﻿/* eslint quotes: ["error", "double"] */
 /* nls files need to use double quotes */
 define({
   "viewer": {
@@ -37,7 +37,10 @@ define({
       "builderSupportIpad": "Builder Story Map Cascade tidak didukung di iPad. Cerita Cascade yang Anda buat dan bagikan akan berjalan di iPad.",
       "launchBuilder": "Jalankan builder Cascade",
       "notAgain": "Jangan perlihatkan ini lagi",
-      "sorry": "Perhatian:"
+      "sorry": "Perhatian:",
+      "nonOwnerOrgUrl": "%TPL_NAME% yang hendak Anda akses tidak berasal dari URL yang Anda berikan.",
+      "nonOwnerOrgProceedToGeneric": "Lanjutkan ke %HREF%",
+      "advanced": "Advanced"
     },
     "mobileWarning": {
       "message1": "Anda sudah membaca versi seluler cerita ini. Untuk versi lengkap, dengan unsur media yang lebih kaya, cobalah di komputer desktop.",
@@ -129,7 +132,7 @@ define({
       "audioLabel": "Audio:"
     },
     "licenseChange2018": {
-      "noAccess": "Akun Anda (%USER_NAME%) tidak dilisensikan untuk membuka Peta Cerita yang bukan bersifat publik.  Harap minta administrator organisasi Anda untuk menetapkan Anda jenis pengguna yang menyertakan Peta Cerita atau lisensi add-on Essential App."
+      "noAccess": "Akun Anda (%USER_NAME%) tidak dilisensikan untuk membuka Story Map yang bukan bersifat publik. Harap meminta administrator organisasi Anda untuk memberikan Anda akses pengguna yang memiliki lisensi Story Map atau lisensi add-on Essential App."
     }
   }
 });

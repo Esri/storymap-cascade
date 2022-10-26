@@ -1,4 +1,4 @@
-/* eslint quotes: ["error", "double"] */
+﻿/* eslint quotes: ["error", "double"] */
 /* strings files need to be double quotes */
 define({
   "builder": {
@@ -475,7 +475,7 @@ define({
         "httpVideoFixable": "Kliknite na gumb da biste upotrijebili siguran HTTPS URL za ovaj videozapis.",
         "httpVideoUncheckable": "Pokušajte upotrijebiti HTTPS URL za ovaj videozapis. Ako to ne uspije, uklonite videozapis s priče ili ga zamijenite snimkom zaslona ili poveznicom.",
         "httpImageFixable": "Kliknite na gumb da biste upotrijebili siguran HTTPS URL za ovu sliku.",
-        "httpImageUncheckable": "Pokušajte upotrijebiti HTTPS URL za ovu sliku. Ako to ne uspije, uklonite sliku s priče ili ga zamijenite poveznicom.",
+        "httpImageUncheckable": "Pokušajte upotrijebiti HTTPS URL za ovu sliku. Ako to ne uspije, uklonite sliku s priče ili je zamijenite poveznicom.",
         "httpLayerMyMap": "Posjetite stranicu sa stavkama karte da biste ažurirali ovaj sloj da upotrebljava HTTPS. Ako se sloj ne može ažurirati, uklonite ga s karte.",
         "httpLayerNotMyMap": "Kopirajte kartu i ažurirajte ovaj sloj upotrebljava HTTPS. Ako se sloj ne može ažurirati, uklonite ga s karte.",
         "clickLearnMore": "Kliknite da biste saznali više."
@@ -574,6 +574,30 @@ define({
       "action2": "Sada pregledaj moje priče",
       "action3": "Saznajte više",
       "floatingNotification": "Ova priča sadrži nesiguran (HTTP) sadržaj. Pregledajte i riješite te probleme."
+    },
+    "extendedSupportMessage": {
+      "bannerMsg": "Klasične Esrijeve karte s pričama su u proširenoj podršci",
+      "s1h1": "Važna poruka o klasičnim Esrijevim kartama s pričama",
+      "s1p1": "Predlošci klasičnih Esrijevih karata s pričama su u proširenoj podršci Svi se kupci potiču na korištenje programa ArcGIS StoryMaps, Esrijevog alata za pripovijedanje priča trenutne generacije.",
+      "s1p2": "Klasični predlošci više nisu u aktivnom razvoju i ne preporučuju se za nove projekte. Ne planiraju se daljnja ažuriranja njihovih sposobnosti. Priče koje ste stvorili pomoću klasičnih predložaka i dalje će biti dostupne.",
+      "s1p3": "U prosincu 2021. klasični će predlošci biti uklonjeni iz zadane galerije konfigurabilnih aplikacija. Jedan ili više klasičnih predložaka može se dodati u prilagođenu grupu konfigurabilnih aplikacija vaše organizacije ako je potrebno za podršku trenutnih tijekova rada tijekom prijelaza na korištenje programa ArcGIS StoryMaps.",
+      "s1p4": "Za više informacija kliknite poveznicu u nastavku.",
+      "action1": "Zatvori",
+      "action2": "Saznajte više",
+      "action3": "Isprobajte ArcGIS StoryMaps"
+    },
+    "matureSupportMessage": {
+      "bannerMsg": "Klasične Esrijeve karte s pričama su u zreloj podršci",
+      "s1h1": "Važna poruka o klasičnim Esrijevim kartama s pričama",
+      "s1p1": "Predlošci klasičnih Esrijevih karata s pričama su u zreloj podršci Svi se kupci potiču na korištenje programa ArcGIS StoryMaps, Esrijevog alata za pripovijedanje priča trenutne generacije.",
+      "s1p2": "Klasični predlošci više nisu u aktivnom razvoju i ne preporučuju se za nove projekte. Ne planiraju se daljnja ažuriranja njihovih sposobnosti. Priče koje ste stvorili pomoću klasičnih predložaka i dalje će biti dostupne.",
+      "s1p3": "Za više informacija kliknite poveznicu u nastavku.",
+      "action1": "Zatvori",
+      "action2": "Saznajte više",
+      "action3": "Isprobajte ArcGIS StoryMaps"
+    },
+    "storyTellerUserType": {
+      "notCreatorError": "Vaš račun (%USER_NAME%) nije licenciran za upotrebu classic story map builder softvera. Upitajte administratora svoje organizacije da vam dodijeli vrstu korisnika Creator."
     }
   }
 });

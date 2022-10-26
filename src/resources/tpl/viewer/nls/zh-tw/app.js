@@ -1,4 +1,4 @@
-/* eslint quotes: ["error", "double"] */
+﻿/* eslint quotes: ["error", "double"] */
 /* nls files need to use double quotes */
 define({
   "viewer": {
@@ -26,7 +26,7 @@ define({
       "notConfiguredMobile2": "請將裝置旋轉為橫向以使用 {TPL_NAME} 建立器。",
       "notAuthorized": "您未取得存取該故事的授權",
       "notAuthorizedBuilder": "您未取得使用 {TPL_NAME} 建立器的授權。",
-      "noViewerIE": "低於版本 ${version} 的 Internet Explorer 不支援該故事。${UPGRADE}。",
+      "noViewerIE": "低於版本 ${VERSION} 的 Internet Explorer 不支援該故事。${UPGRADE}。",
       "noViewerIE2": "您正在嘗試使用較舊、不支援的瀏覽器來檢視此故事。可能有未運作的圖徵或發生其他非預期的問題。我們建議您升級至 Internet Explorer 11 或使用其他瀏覽器，例如 Chrome。",
       "noViewerIE3": "在 2017 年末，無法再於此瀏覽器上載入此故事。到時您必須使用支援的瀏覽器來檢視此故事。",
       "upgradeBrowser": "請更新您的瀏覽器",
@@ -37,7 +37,10 @@ define({
       "builderSupportIpad": "iPad 不支援 Story Map Cascade 建立器。您建立和分享的 Cascade 故事將在 iPad 上運作。",
       "launchBuilder": "啟動 Cascade 建立器",
       "notAgain": "不再顯示此訊息",
-      "sorry": "注意:"
+      "sorry": "注意:",
+      "nonOwnerOrgUrl": "您正在嘗試存取的 %TPL_NAME% 並非源自您提供的 URL。",
+      "nonOwnerOrgProceedToGeneric": "繼續執行 %HREF%",
+      "advanced": "高級"
     },
     "mobileWarning": {
       "message1": "您已閱讀此故事的行動版本。如需包含較豐富的媒體元素的完整版本，請在桌上型電腦中試用。",

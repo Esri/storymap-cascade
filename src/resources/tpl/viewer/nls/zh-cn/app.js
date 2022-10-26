@@ -1,4 +1,4 @@
-/* eslint quotes: ["error", "double"] */
+﻿/* eslint quotes: ["error", "double"] */
 /* nls files need to use double quotes */
 define({
   "viewer": {
@@ -37,7 +37,10 @@ define({
       "builderSupportIpad": "iPad 不支持 Story Map Cascade 构建器。但创建和共享的 Cascade 故事可在 iPad 上运行。",
       "launchBuilder": "启动 Cascade 构建器",
       "notAgain": "不再显示此消息",
-      "sorry": "注意："
+      "sorry": "注意：",
+      "nonOwnerOrgUrl": "您正在尝试访问的 %TPL_NAME% 并非源自您已提供的 URL。",
+      "nonOwnerOrgProceedToGeneric": "跳转至 %HREF%",
+      "advanced": "高级"
     },
     "mobileWarning": {
       "message1": "您已阅读此故事的移动版本。有关含丰富媒体元素的完整版本，请尝试使用台式电脑。",

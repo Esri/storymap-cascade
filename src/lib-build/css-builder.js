@@ -1,6 +1,6 @@
 define(['require', './normalize'], function(req, normalize) {
   var cssAPI = {};
-  
+
   var isWindows = !!process.platform.match(/^win/);
 
   function compress(css) {
@@ -26,7 +26,7 @@ define(['require', './normalize'], function(req, normalize) {
     console.log('Compression not supported outside of nodejs environments.');
     return css;
   }
-  
+
   //load file code - stolen from text plugin
   function loadFile(path) {
     if (typeof process !== "undefined" && process.versions && !!process.versions.node && require.nodeRequire) {
@@ -57,8 +57,8 @@ define(['require', './normalize'], function(req, normalize) {
       }
     }
   }
-  
-  
+
+
   function saveFile(path, data) {
     if (typeof process !== "undefined" && process.versions && !!process.versions.node && require.nodeRequire) {
       var fs = require.nodeRequire('fs');
@@ -67,7 +67,7 @@ define(['require', './normalize'], function(req, normalize) {
     else {
       var content = new java.lang.String(data);
       var output = new java.io.BufferedWriter(new java.io.OutputStreamWriter(new java.io.FileOutputStream(path), 'utf-8'));
-  
+
       try {
         output.write(content, 0, content.length());
         output.flush();
@@ -77,7 +77,7 @@ define(['require', './normalize'], function(req, normalize) {
       }
     }
   }
-  
+
   //when adding to the link buffer, paths are normalised to the baseUrl
   //when removing from the link buffer, paths are normalised to the output file path
   function escape(content) {
@@ -99,7 +99,7 @@ define(['require', './normalize'], function(req, normalize) {
   var baseParts = req.toUrl('base_url').split('/');
   baseParts[baseParts.length - 1] = '';
   var baseUrl = baseParts.join('/');
-  
+
   var curModule = 0;
   var config;
 
@@ -128,33 +128,33 @@ define(['require', './normalize'], function(req, normalize) {
 
     load();
   }
-  
+
   cssAPI.normalize = function(name, normalize) {
     if (name.substr(name.length - 4, 4) == '.css')
       name = name.substr(0, name.length - 4);
     return normalize(name);
   }
-  
+
   cssAPI.write = function(pluginName, moduleName, write, parse) {
     //external URLS don't get added (just like JS requires)
     if (moduleName.match(absUrlRegEx))
       return;
 
     layerBuffer.push(cssBuffer[moduleName]);
-    
+
     if (config.buildCSS != false)
     write.asModule(pluginName + '!' + moduleName, 'define(function(){})');
   }
-  
+
   cssAPI.onLayerEnd = function(write, data) {
     //calculate layer css
     var css = layerBuffer.join('');
-    
+
     if (config.separateCSS) {
       console.log('Writing CSS! file: ' + data.name + '\n');
 
       var outPath = config.appDir ? config.baseUrl + data.name + '.css' : config.out.replace(/(\.js)?$/, '.css');
-      
+
       saveFile(outPath, compress(css));
     }
     else if (config.buildCSS != false) {
@@ -165,10 +165,10 @@ define(['require', './normalize'], function(req, normalize) {
         + "('" + escape(compress(css)) + "');\n"
       );
     }
-    
+
     //clear layer buffer for next layer
     layerBuffer = [];
   }
-  
+
   return cssAPI;
 });

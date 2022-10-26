@@ -10,6 +10,7 @@ app.cfg = {
 
   TPL_NAME: 'Story Map Cascade',
   TPL_ID: 'storymap-cascade',
+  TPL_DIR: 'Cascade',
 
   WEBAPP_TAG: ['Story Map', 'Cascade'],
   WEBAPP_KEYWORD_GENERIC: ['JavaScript', 'Map', 'Mapping Site', 'Online Map', 'Ready To Use', 'selfConfigured', 'Web Map'],
@@ -77,6 +78,8 @@ app.cfg = {
   // If you are using ArcGIS Online or deploying the template on a Portal instance, you don't have to edit those URL
   DEFAULT_SHARING_URL: '//www.arcgis.com/sharing/rest/content/items',
   //DEFAULT_SHARING_URL: "//portal.internal.com/arcgis/sharing/rest/content/items",
-  DEFAULT_PROXY_URL: '//www.arcgis.com/sharing/proxy'
+  DEFAULT_PROXY_URL: '//www.arcgis.com/sharing/proxy',
   //DEFAULT_PROXY_URL: "//portal.internal.com/arcgis/sharing/proxy"
+  DEFAULT_CLIENT_ID: 'storymaps'
+
 };
