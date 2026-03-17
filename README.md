@@ -1,7 +1,7 @@
 > [!IMPORTANT]  
 > **********ESRI CLASSIC STORY MAPS RETIRED ON FEB 25, 2026**********
 >
-> This application code is no longer maintained and the repo has been archived.
+> This application code is no longer being maintained and is available only for archival purposes.
 >
 > For more information, see the following resources:
 >
